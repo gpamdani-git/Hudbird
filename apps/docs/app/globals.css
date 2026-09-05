@@ -1,0 +1,36 @@
+/* apps/docs/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+    --primary: 79 70 229;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+  }
+
+  .dark {
+    --background: 3 7 18;
+    --foreground: 248 250 252;
+    --primary: 99 102 241;
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+    --border: 30 41 59;
+  }
+}
+
+@layer base {
+  body {
+    background-color: rgb(var(--background));
+    color: rgb(var(--foreground));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
