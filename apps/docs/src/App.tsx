@@ -15,8 +15,11 @@ import DividerDoc, { dividerTocItems } from "./pages/DividerDoc";
 import DropdownDoc, { dropdownTocItems } from "./pages/DropdownDoc";
 import FieldsetDoc, { fieldsetTocItems } from "./pages/FieldsetDoc";
 import HeadingDoc, { headingTocItems } from "./pages/HeadingDoc";
-import InputDoc from "./pages/InputDoc";
-import CardDoc from "./pages/CardDoc";
+import InputDoc, { inputTocItems } from "./pages/InputDoc";
+import CardDoc, { cardTocItems } from "./pages/CardDoc";
+import NavbarDoc, { navbarTocItems } from "./pages/NavbarDoc";
+import PaginationDoc, { paginationTocItems } from "./pages/PaginationDoc";
+import SelectDoc, { selectTocItems } from "./pages/SelectDoc";
 
 // Generic Showcase Page for items in the sidebar
 const GenericComponentPage = ({
@@ -94,12 +97,19 @@ export default function App() {
       return headingTocItems;
     }
     if (location.pathname === "/input") {
-      return [
-        { id: "variants", title: "Variants" },
-        { id: "sizes", title: "Sizes" },
-        { id: "icons", title: "Icons & Slots" },
-        { id: "states", title: "States" },
-      ];
+      return inputTocItems;
+    }
+    if (location.pathname === "/card") {
+      return cardTocItems;
+    }
+    if (location.pathname === "/navbar") {
+      return navbarTocItems;
+    }
+    if (location.pathname === "/pagination") {
+      return paginationTocItems;
+    }
+    if (location.pathname === "/select") {
+      return selectTocItems;
     }
     return [
       { id: "overview", title: "Overview" },
@@ -141,6 +151,9 @@ export default function App() {
                 <Route path="/dropdown" element={<DropdownDoc />} />
                 <Route path="/fieldset" element={<FieldsetDoc />} />
                 <Route path="/heading" element={<HeadingDoc />} />
+                <Route path="/navbar" element={<NavbarDoc />} />
+                <Route path="/pagination" element={<PaginationDoc />} />
+                <Route path="/select" element={<SelectDoc />} />
                 <Route
                   path="*"
                   element={<Navigate to="/button" replace />}

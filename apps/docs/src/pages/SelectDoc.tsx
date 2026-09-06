@@ -1,0 +1,658 @@
+// apps/docs/src/pages/SelectDoc.tsx
+import React, { useState } from "react";
+import {
+  Select,
+  SelectItem,
+  type SelectVariant,
+  type SelectSize,
+  type SelectRadius,
+  Button,
+} from "@my-lib/core";
+import {
+  Shield,
+  UserCheck,
+  Eye,
+  Settings,
+  Sparkles,
+  Globe,
+  Lock,
+  Mail,
+  CheckCircle2,
+} from "lucide-react";
+import { ComponentPreview } from "../components/ComponentPreview";
+import { CodeBlock } from "../components/CodeBlock";
+import { ApiTable, type ApiPropRow } from "../components/ApiTable";
+
+export const selectTocItems = [
+  { id: "component-api", title: "Component API" },
+  {
+    id: "select-examples",
+    title: "Select Examples",
+    children: [
+      { id: "basic-select", title: "Basic Select" },
+      { id: "select-variants-sizes", title: "Variants & Sizes" },
+      { id: "select-radius", title: "Corner Radii" },
+      { id: "select-icons", title: "With Option Icons" },
+      { id: "select-states", title: "Error & Disabled States" },
+    ],
+  },
+];
+
+export default function SelectDoc() {
+  // --- Interactive Hero State ---
+  const [heroValue, setHeroValue] = useState<string>("admin");
+  const [heroVariant, setHeroVariant] = useState<SelectVariant>("flat");
+  const [heroSize, setHeroSize] = useState<SelectSize>("md");
+  const [heroRadius, setHeroRadius] = useState<SelectRadius>("md");
+
+  // --- Example States ---
+  const [roleValue, setRoleValue] = useState("editor");
+  const [sizeSmVal, setSizeSmVal] = useState("eu");
+  const [sizeMdVal, setSizeMdVal] = useState("us");
+  const [sizeLgVal, setSizeLgVal] = useState("ap");
+  const [iconVal, setIconVal] = useState("public");
+  const [submitted, setSubmitted] = useState(false);
+
+  // API Prop Tables
+  const selectApiRows: ApiPropRow[] = [
+    {
+      prop: "value",
+      defaultVal: "-",
+      description: (
+        <span>
+          Controlled active selected key/value. Pair with{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">onValueChange</code>.
+        </span>
+      ),
+    },
+    {
+      prop: "defaultValue",
+      defaultVal: "''",
+      description: "Default initial value for uncontrolled usage.",
+    },
+    {
+      prop: "onValueChange",
+      defaultVal: "-",
+      description: (
+        <span>
+          Callback emitted when a user picks an option:{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">(value: string) =&gt; void</code>.
+        </span>
+      ),
+    },
+    {
+      prop: "placeholder",
+      defaultVal: "'Select an option'",
+      description: "Placeholder text shown when no item is selected.",
+    },
+    {
+      prop: "label",
+      defaultVal: "-",
+      description: "Label text rendered above the Select trigger.",
+    },
+    {
+      prop: "description",
+      defaultVal: "-",
+      description: "Helpful secondary text displayed beneath the trigger.",
+    },
+    {
+      prop: "errorMessage",
+      defaultVal: "-",
+      description: "Validation error message displayed when isInvalid is true.",
+    },
+    {
+      prop: "variant",
+      defaultVal: "'flat'",
+      description: (
+        <span>
+          Visual variant of the trigger:{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> or{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code>.
+        </span>
+      ),
+    },
+    {
+      prop: "size",
+      defaultVal: "'md'",
+      description: (
+        <span>
+          Control size scale:{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm' | 'md' | 'lg'</code>.
+        </span>
+      ),
+    },
+    {
+      prop: "radius",
+      defaultVal: "'md'",
+      description: (
+        <span>
+          Corner radius token:{" "}
+          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none' | 'md' | 'lg' | 'full'</code>.
+        </span>
+      ),
+    },
+    {
+      prop: "isInvalid",
+      defaultVal: "false",
+      description: "Renders red validation highlight borders on the trigger.",
+    },
+    {
+      prop: "disabled",
+      defaultVal: "false",
+      description: "Disables all user interaction and dims the trigger opacity.",
+    },
+  ];
+
+  const selectItemApiRows: ApiPropRow[] = [
+    {
+      prop: "value",
+      defaultVal: "required",
+      description: "Unique string key identifier for this option item.",
+    },
+    {
+      prop: "icon",
+      defaultVal: "-",
+      description: "Optional left-aligned leading icon for the option row.",
+    },
+    {
+      prop: "disabled",
+      defaultVal: "false",
+      description: "Disables picking this specific item from the dropdown list.",
+    },
+    {
+      prop: "children",
+      defaultVal: "required",
+      description: "Label and rendered content of the option.",
+    },
+  ];
+
+  return (
+    <div className="space-y-16 pb-24">
+      {/* Header Section */}
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
+          Select
+        </h1>
+        <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Modular dropdown select component featuring pure React state interaction, outside click handling, animated chevron rotation, high-elevation floating menus, and comprehensive dark mode support.
+        </p>
+      </div>
+
+      {/* Hero Interactive Playground */}
+      <section className="space-y-4">
+        <ComponentPreview>
+          <div className="flex flex-col items-center justify-center gap-6 w-full max-w-md mx-auto py-4">
+            {/* Customizer Controls Bar */}
+            <div className="flex flex-wrap items-center justify-center gap-3 p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-xs w-full">
+              {/* Variant Selector */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-zinc-500 font-medium">Variant:</span>
+                {(["flat", "bordered"] as SelectVariant[]).map((v) => (
+                  <button
+                    key={v}
+                    onClick={() => setHeroVariant(v)}
+                    className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                      heroVariant === v
+                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
+                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                    }`}
+                  >
+                    {v}
+                  </button>
+                ))}
+              </div>
+
+              <div className="h-4 w-[1px] bg-zinc-300 dark:bg-zinc-700 hidden sm:block" />
+
+              {/* Size Selector */}
+              <div className="flex items-center gap-1.5">
+                <span className="text-zinc-500 font-medium">Size:</span>
+                {(["sm", "md", "lg"] as SelectSize[]).map((s) => (
+                  <button
+                    key={s}
+                    onClick={() => setHeroSize(s)}
+                    className={`px-2.5 py-1 rounded-lg font-medium transition-all uppercase ${
+                      heroSize === s
+                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
+                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Live Interactive Select */}
+            <div className="w-full">
+              <Select
+                label="Assigned Access Role"
+                placeholder="Choose user permissions"
+                value={heroValue}
+                onValueChange={setHeroValue}
+                variant={heroVariant}
+                size={heroSize}
+                radius={heroRadius}
+                description="Governs data authorization levels across the workspace"
+              >
+                <SelectItem value="admin" icon={<Shield className="w-4 h-4 text-indigo-500" />}>
+                  Administrator (Full Access)
+                </SelectItem>
+                <SelectItem value="editor" icon={<UserCheck className="w-4 h-4 text-emerald-500" />}>
+                  Content Editor
+                </SelectItem>
+                <SelectItem value="viewer" icon={<Eye className="w-4 h-4 text-amber-500" />}>
+                  Read-Only Viewer
+                </SelectItem>
+                <SelectItem value="billing" icon={<Settings className="w-4 h-4 text-zinc-500" />}>
+                  Billing Manager
+                </SelectItem>
+              </Select>
+            </div>
+
+            {/* Selected feedback pill */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-zinc-500 font-medium">Active Value:</span>
+              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+                "{heroValue}"
+              </code>
+            </div>
+          </div>
+        </ComponentPreview>
+
+        <CodeBlock
+          code={`import { useState } from "react";
+import { Select, SelectItem } from "@my-lib/core";
+import { Shield, UserCheck, Eye, Settings } from "lucide-react";
+
+export default function SelectHero() {
+  const [role, setRole] = useState("admin");
+
+  return (
+    <Select
+      label="Assigned Access Role"
+      placeholder="Choose user permissions"
+      value={role}
+      onValueChange={setRole}
+      variant="${heroVariant}"
+      size="${heroSize}"
+      radius="${heroRadius}"
+      description="Governs data authorization levels across the workspace"
+    >
+      <SelectItem value="admin" icon={<Shield className="w-4 h-4 text-indigo-500" />}>
+        Administrator (Full Access)
+      </SelectItem>
+      <SelectItem value="editor" icon={<UserCheck className="w-4 h-4 text-emerald-500" />}>
+        Content Editor
+      </SelectItem>
+      <SelectItem value="viewer" icon={<Eye className="w-4 h-4 text-amber-500" />}>
+        Read-Only Viewer
+      </SelectItem>
+      <SelectItem value="billing" icon={<Settings className="w-4 h-4 text-zinc-500" />}>
+        Billing Manager
+      </SelectItem>
+    </Select>
+  );
+}`}
+        />
+      </section>
+
+      {/* Component API Documentation */}
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <div>
+          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Component API
+          </h2>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            Complete props interface specification for <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;Select&gt;</code> and <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;SelectItem&gt;</code>.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+            Select Props
+          </h3>
+          <ApiTable rows={selectApiRows} />
+        </div>
+
+        <div className="space-y-4 pt-4">
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+            SelectItem Props
+          </h3>
+          <ApiTable rows={selectItemApiRows} />
+        </div>
+      </section>
+
+      {/* Showcase Examples */}
+      <section id="select-examples" className="space-y-12">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Select Examples
+          </h2>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+            Explore diverse usage patterns, layout variants, size scales, and validation states.
+          </p>
+        </div>
+
+        {/* 1. Basic Select */}
+        <div id="basic-select" className="scroll-mt-24 space-y-4">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Basic Select
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Standard role selector with clean flat styling, chevron toggle indicator, and automatic outside click dismissal.
+          </p>
+
+          <ComponentPreview>
+            <div className="w-full max-w-sm mx-auto py-2">
+              <Select
+                label="Select Role"
+                placeholder="Choose account role..."
+                value={roleValue}
+                onValueChange={setRoleValue}
+              >
+                <SelectItem value="admin">Administrator</SelectItem>
+                <SelectItem value="editor">Editor</SelectItem>
+                <SelectItem value="viewer">Viewer</SelectItem>
+              </Select>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`<Select
+  label="Select Role"
+  placeholder="Choose account role..."
+  value={role}
+  onValueChange={setRole}
+>
+  <SelectItem value="admin">Administrator</SelectItem>
+  <SelectItem value="editor">Editor</SelectItem>
+  <SelectItem value="viewer">Viewer</SelectItem>
+</Select>`}
+          />
+        </div>
+
+        {/* 2. Variants & Sizes */}
+        <div id="select-variants-sizes" className="scroll-mt-24 space-y-4">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Select Variants & Sizes
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Compare <code className="font-mono text-xs">flat</code> and <code className="font-mono text-xs">bordered</code> styling across small (<code className="font-mono text-xs">sm</code>), medium (<code className="font-mono text-xs">md</code>), and large (<code className="font-mono text-xs">lg</code>) dimensions.
+          </p>
+
+          <ComponentPreview>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mx-auto py-2">
+              {/* Flat Column */}
+              <div className="space-y-4 p-4 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/80 dark:border-zinc-800">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">
+                  Flat Variant (Default)
+                </span>
+
+                <Select
+                  label="Small (sm - h-9)"
+                  size="sm"
+                  variant="flat"
+                  value={sizeSmVal}
+                  onValueChange={setSizeSmVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+
+                <Select
+                  label="Medium (md - h-10)"
+                  size="md"
+                  variant="flat"
+                  value={sizeMdVal}
+                  onValueChange={setSizeMdVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+
+                <Select
+                  label="Large (lg - h-12)"
+                  size="lg"
+                  variant="flat"
+                  value={sizeLgVal}
+                  onValueChange={setSizeLgVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+              </div>
+
+              {/* Bordered Column */}
+              <div className="space-y-4 p-4 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/80 dark:border-zinc-800">
+                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">
+                  Bordered Variant
+                </span>
+
+                <Select
+                  label="Small (sm - h-9)"
+                  size="sm"
+                  variant="bordered"
+                  value={sizeSmVal}
+                  onValueChange={setSizeSmVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+
+                <Select
+                  label="Medium (md - h-10)"
+                  size="md"
+                  variant="bordered"
+                  value={sizeMdVal}
+                  onValueChange={setSizeMdVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+
+                <Select
+                  label="Large (lg - h-12)"
+                  size="lg"
+                  variant="bordered"
+                  value={sizeLgVal}
+                  onValueChange={setSizeLgVal}
+                >
+                  <SelectItem value="us">United States (East)</SelectItem>
+                  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+                  <SelectItem value="ap">Asia Pacific (Tokyo)</SelectItem>
+                </Select>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`{/* Small Flat */}
+<Select size="sm" variant="flat" label="Region" value={region} onValueChange={setRegion}>
+  <SelectItem value="us">United States (East)</SelectItem>
+  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+</Select>
+
+{/* Medium Bordered */}
+<Select size="md" variant="bordered" label="Region" value={region} onValueChange={setRegion}>
+  <SelectItem value="us">United States (East)</SelectItem>
+  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+</Select>
+
+{/* Large Bordered */}
+<Select size="lg" variant="bordered" label="Region" value={region} onValueChange={setRegion}>
+  <SelectItem value="us">United States (East)</SelectItem>
+  <SelectItem value="eu">Europe (Frankfurt)</SelectItem>
+</Select>`}
+          />
+        </div>
+
+        {/* 3. Corner Radii */}
+        <div id="select-radius" className="scroll-mt-24 space-y-4">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Corner Radii
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Shape tokens ranging from modern rounded (<code className="font-mono text-xs">md</code> / <code className="font-mono text-xs">lg</code>) to full pill (<code className="font-mono text-xs">full</code>).
+          </p>
+
+          <ComponentPreview>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl mx-auto py-2">
+              <Select label="Radius: md (rounded-xl)" radius="md" defaultValue="standard">
+                <SelectItem value="basic">Basic Tier</SelectItem>
+                <SelectItem value="standard">Standard Tier</SelectItem>
+                <SelectItem value="pro">Pro Tier</SelectItem>
+              </Select>
+
+              <Select label="Radius: lg (rounded-2xl)" radius="lg" defaultValue="pro">
+                <SelectItem value="basic">Basic Tier</SelectItem>
+                <SelectItem value="standard">Standard Tier</SelectItem>
+                <SelectItem value="pro">Pro Tier</SelectItem>
+              </Select>
+
+              <Select label="Radius: full (rounded-full)" radius="full" defaultValue="pro">
+                <SelectItem value="basic">Basic Tier</SelectItem>
+                <SelectItem value="standard">Standard Tier</SelectItem>
+                <SelectItem value="pro">Pro Tier</SelectItem>
+              </Select>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`<Select radius="md" label="Standard" defaultValue="standard">
+  <SelectItem value="standard">Standard Tier</SelectItem>
+</Select>
+
+<Select radius="lg" label="Enhanced" defaultValue="pro">
+  <SelectItem value="pro">Pro Tier</SelectItem>
+</Select>
+
+<Select radius="full" label="Pill Rounded" defaultValue="pro">
+  <SelectItem value="pro">Pro Tier</SelectItem>
+</Select>`}
+          />
+        </div>
+
+        {/* 4. With Option Icons */}
+        <div id="select-icons" className="scroll-mt-24 space-y-4">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            With Option Icons
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Enhance visual clarity and recognition by passing custom icons into individual <code className="font-mono text-xs">&lt;SelectItem icon=...&gt;</code> rows.
+          </p>
+
+          <ComponentPreview>
+            <div className="w-full max-w-sm mx-auto py-2">
+              <Select
+                label="Repository Visibility"
+                value={iconVal}
+                onValueChange={setIconVal}
+                description="Controls who can fork or clone this repository"
+              >
+                <SelectItem
+                  value="public"
+                  icon={<Globe className="w-4 h-4 text-emerald-500" />}
+                >
+                  Public (Anyone on the internet)
+                </SelectItem>
+                <SelectItem
+                  value="private"
+                  icon={<Lock className="w-4 h-4 text-rose-500" />}
+                >
+                  Private (Restricted to members)
+                </SelectItem>
+                <SelectItem
+                  value="internal"
+                  icon={<Sparkles className="w-4 h-4 text-indigo-500" />}
+                >
+                  Internal (Organization only)
+                </SelectItem>
+              </Select>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`<Select label="Repository Visibility" value={visibility} onValueChange={setVisibility}>
+  <SelectItem value="public" icon={<Globe className="w-4 h-4 text-emerald-500" />}>
+    Public (Anyone on the internet)
+  </SelectItem>
+  <SelectItem value="private" icon={<Lock className="w-4 h-4 text-rose-500" />}>
+    Private (Restricted to members)
+  </SelectItem>
+</Select>`}
+          />
+        </div>
+
+        {/* 5. Error & Disabled States */}
+        <div id="select-states" className="scroll-mt-24 space-y-4">
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+            Error & Disabled States
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Display validation feedback when <code className="font-mono text-xs">isInvalid</code> is triggered, or prevent interactions with <code className="font-mono text-xs">disabled</code>.
+          </p>
+
+          <ComponentPreview>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl mx-auto py-2">
+              {/* Invalid Select */}
+              <Select
+                label="Notification Email Channel"
+                placeholder="Choose destination channel"
+                isInvalid={true}
+                errorMessage="Please select a verified notification channel."
+                defaultValue=""
+              >
+                <SelectItem value="primary" icon={<Mail className="w-4 h-4 text-zinc-500" />}>
+                  Primary Admin Email
+                </SelectItem>
+                <SelectItem value="security" icon={<Shield className="w-4 h-4 text-zinc-500" />}>
+                  Security Incident Desk
+                </SelectItem>
+              </Select>
+
+              {/* Disabled Select */}
+              <Select
+                label="Organization Plan (Locked)"
+                defaultValue="enterprise"
+                disabled={true}
+                description="Upgraded by Workspace Owner"
+              >
+                <SelectItem value="enterprise">Enterprise Custom Tier</SelectItem>
+                <SelectItem value="team">Team Tier</SelectItem>
+              </Select>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`{/* Invalid with Error Message */}
+<Select
+  label="Notification Email Channel"
+  placeholder="Choose destination channel"
+  isInvalid={true}
+  errorMessage="Please select a verified notification channel."
+>
+  <SelectItem value="primary">Primary Admin Email</SelectItem>
+</Select>
+
+{/* Disabled Select */}
+<Select
+  label="Organization Plan (Locked)"
+  defaultValue="enterprise"
+  disabled={true}
+  description="Upgraded by Workspace Owner"
+>
+  <SelectItem value="enterprise">Enterprise Custom Tier</SelectItem>
+</Select>`}
+          />
+        </div>
+      </section>
+    </div>
+  );
+}

@@ -19,6 +19,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { name: "Avatar", path: "/avatar" },
     { name: "Badge", path: "/badge" },
     { name: "Button", path: "/button" },
+    { name: "Card", path: "/card" },
     { name: "Checkbox", path: "/checkbox" },
     { name: "Combobox", path: "/combobox", isNew: true },
     { name: "Description list", path: "/description-list" },
@@ -28,7 +29,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { name: "Fieldset", path: "/fieldset" },
     { name: "Heading", path: "/heading" },
     { name: "Input", path: "/input" },
-    { name: "Card", path: "/card" },
+    { name: "Navbar", path: "/navbar", isNew: true },
+    { name: "Pagination", path: "/pagination", isNew: true },
+    { name: "Select", path: "/select", isNew: true },
   ];
 
   return (

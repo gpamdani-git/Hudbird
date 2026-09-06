@@ -8,22 +8,31 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      return (
-        localStorage.getItem("theme") === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      );
+    try {
+      if (typeof window !== "undefined") {
+        const storedTheme = window.localStorage?.getItem("theme");
+        if (storedTheme) {
+          return storedTheme === "dark";
+        }
+        return Boolean(window.matchMedia?.("(prefers-color-scheme: dark)")?.matches);
+      }
+    } catch {
+      return false;
     }
     return false;
   });
 
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+    try {
+      if (isDark) {
+        document.documentElement.classList.add("dark");
+        window.localStorage?.setItem("theme", "dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        window.localStorage?.setItem("theme", "light");
+      }
+    } catch {
+      // Ignore storage restrictions in sandboxed or cross-origin iframes
     }
   }, [isDark]);
 

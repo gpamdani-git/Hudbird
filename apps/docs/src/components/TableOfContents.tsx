@@ -62,7 +62,6 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       setActiveId(id);
-      window.history.pushState(null, "", `#${id}`);
     }
   };
 

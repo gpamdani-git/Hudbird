@@ -14,3 +14,7 @@ export * from './components/Divider';
 export * from './components/Dropdown';
 export * from './components/Fieldset';
 export * from './components/Heading';
+export * from './components/Navbar';
+export * from './components/Pagination';
+export * from './components/InfiniteScroll';
+export * from './components/Select';
