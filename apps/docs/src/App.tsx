@@ -13,6 +13,8 @@ import DescriptionListDoc, { descriptionListTocItems } from "./pages/Description
 import DialogDoc, { dialogTocItems } from "./pages/DialogDoc";
 import DividerDoc, { dividerTocItems } from "./pages/DividerDoc";
 import DropdownDoc, { dropdownTocItems } from "./pages/DropdownDoc";
+import FieldsetDoc, { fieldsetTocItems } from "./pages/FieldsetDoc";
+import HeadingDoc, { headingTocItems } from "./pages/HeadingDoc";
 import InputDoc from "./pages/InputDoc";
 import CardDoc from "./pages/CardDoc";
 
@@ -85,6 +87,12 @@ export default function App() {
     if (location.pathname === "/dropdown") {
       return dropdownTocItems;
     }
+    if (location.pathname === "/fieldset") {
+      return fieldsetTocItems;
+    }
+    if (location.pathname === "/heading") {
+      return headingTocItems;
+    }
     if (location.pathname === "/input") {
       return [
         { id: "variants", title: "Variants" },
@@ -131,6 +139,8 @@ export default function App() {
                 <Route path="/dialog" element={<DialogDoc />} />
                 <Route path="/divider" element={<DividerDoc />} />
                 <Route path="/dropdown" element={<DropdownDoc />} />
+                <Route path="/fieldset" element={<FieldsetDoc />} />
+                <Route path="/heading" element={<HeadingDoc />} />
                 <Route
                   path="*"
                   element={<Navigate to="/button" replace />}

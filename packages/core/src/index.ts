@@ -12,3 +12,5 @@ export * from './components/DescriptionList';
 export * from './components/Dialog';
 export * from './components/Divider';
 export * from './components/Dropdown';
+export * from './components/Fieldset';
+export * from './components/Heading';
