@@ -1,225 +1,107 @@
 #!/bin/bash
 
-echo "🚀 Memulai otomatisasi instalasi Monorepo UI Library..."
+if [ -z "$1" ]; then
+  echo "❌ Error: Harap masukkan nama komponen."
+  echo "Cara penggunaan: ./setup.sh <NamaKomponen>"
+  echo "Contoh: ./setup.sh Badge"
+  exit 1
+fi
 
-# 1. Membuat struktur folder utama (Workspace)
-echo "📁 Membuat direktori utama..."
-mkdir -p packages/core/src/components/Button
-mkdir -p packages/core/src/components/Input
-mkdir -p packages/core/src/components/Card
-mkdir -p packages/core/src/utils
-mkdir -p packages/theme/src
-mkdir -p apps/docs/app/components/button
-mkdir -p apps/docs/app/components/input
-mkdir -p apps/docs/app/components/card
-mkdir -p apps/docs/public
+COMPONENT_NAME=$1
+LOWER_NAME=$(echo "$COMPONENT_NAME" | tr '[:upper:]' '[:lower:]')
 
-# 2. Membuat Root package.json
-echo "📄 Membuat Root package.json..."
-cat << 'PACKAGE_JSON' > package.json
-{
-  "name": "my-ui-library-monorepo",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint"
-  },
-  "devDependencies": {
-    "turbo": "^1.11.2"
-  }
-}
-PACKAGE_JSON
+echo "🚀 Memulai Generator Komponen: $COMPONENT_NAME..."
 
-# 3. Membuat konfigurasi Turborepo
-echo "📄 Membuat turbo.json..."
-cat << 'TURBO_JSON' > turbo.json
-{
-  "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+# 1. Buat folder komponen di packages/core
+mkdir -p "packages/core/src/components/$COMPONENT_NAME"
+
+# 2. Buat file implementasi komponen ({Name}.tsx)
+cat << COMPONENT_TSX > "packages/core/src/components/$COMPONENT_NAME/$COMPONENT_NAME.tsx"
+"use client";
+
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../utils/cn";
+
+const ${LOWER_NAME}Variants = cva(
+  "inline-flex items-center justify-center transition-colors font-medium rounded-xl",
+  {
+    variants: {
+      variant: {
+        solid: "bg-zinc-900 text-zinc-50 dark:bg-zinc-50 dark:text-zinc-900",
+        flat: "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50",
+      },
+      size: {
+        sm: "h-8 px-3 text-xs",
+        md: "h-10 px-4 text-sm",
+        lg: "h-12 px-6 text-base",
+      },
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    }
+    defaultVariants: {
+      variant: "solid",
+      size: "md",
+    },
   }
-}
-TURBO_JSON
+);
 
-# 4. Membuat konfigurasi @my-lib/core
-echo "📦 Mengkonfigurasi paket core..."
-cat << 'CORE_PKG' > packages/core/package.json
-{
-  "name": "@my-lib/core",
-  "version": "0.1.0",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    }
-  },
-  "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
-  },
-  "dependencies": {
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.1",
-    "class-variance-authority": "^0.7.0"
-  },
-  "devDependencies": {
-    "tsup": "^8.5.1",
-    "typescript": "^5.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
-    "tailwindcss": ">=3.4.0"
+export interface ${COMPONENT_NAME}Props
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof ${LOWER_NAME}Variants> {}
+
+const ${COMPONENT_NAME} = React.forwardRef<HTMLDivElement, ${COMPONENT_NAME}Props>(
+  ({ className, variant, size, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(${LOWER_NAME}Variants({ variant, size, className }))}
+        {...props}
+      />
+    );
   }
+);
+${COMPONENT_NAME}.displayName = "${COMPONENT_NAME}";
+
+export { ${COMPONENT_NAME}, ${LOWER_NAME}Variants };
+COMPONENT_TSX
+
+# 3. Buat file index.ts untuk ekspor
+cat << COMPONENT_INDEX > "packages/core/src/components/$COMPONENT_NAME/index.ts"
+export * from './$COMPONENT_NAME';
+COMPONENT_INDEX
+
+# 4. Buat Halaman Preview Dokumentasi Vite
+mkdir -p "apps/docs/src/pages"
+cat << PAGE_TSX > "apps/docs/src/pages/${COMPONENT_NAME}Doc.tsx"
+import React from "react";
+// import { ${COMPONENT_NAME} } from "@my-lib/core"; // Uncomment jika sudah di-export di packages/core/src/index.ts
+
+export default function ${COMPONENT_NAME}Doc() {
+  return (
+    <div className="space-y-12">
+      <div>
+        <h1 className="text-4xl font-bold tracking-tight mb-2 text-zinc-900 dark:text-zinc-50">${COMPONENT_NAME}</h1>
+        <p className="text-lg text-zinc-500 dark:text-zinc-400 font-normal">
+          A premium ${COMPONENT_NAME} component.
+        </p>
+      </div>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">Preview</h2>
+        <div className="bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/60 dark:border-zinc-800/60 rounded-2xl p-12 flex items-center justify-center">
+          <div className="text-zinc-500 dark:text-zinc-400">
+            {/* <${COMPONENT_NAME} variant="solid">Example</${COMPONENT_NAME}> */}
+            ${COMPONENT_NAME} Preview
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
-CORE_PKG
+PAGE_TSX
 
-cat << 'CORE_TSUP' > packages/core/tsup.config.ts
-import { defineConfig } from "tsup";
-
-export default defineConfig({
-  entry: ["src/index.ts"],
-  format: ["cjs", "esm"],
-  dts: true,
-  clean: true,
-  external: ["react", "react-dom"],
-  esbuildOptions(options) {
-    options.banner = {
-      js: '"use client";',
-    };
-  },
-});
-CORE_TSUP
-
-cat << 'CORE_CN' > packages/core/src/utils/cn.ts
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-CORE_CN
-
-cat << 'CORE_INDEX' > packages/core/src/index.ts
-export * from './utils/cn';
-CORE_INDEX
-
-# 5. Membuat konfigurasi Docs (Next.js)
-echo "🌐 Mengkonfigurasi situs dokumentasi (Next.js)..."
-cat << 'DOCS_PKG' > apps/docs/package.json
-{
-  "name": "docs",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "^15.1.5",
-    "react": "^19.0.1",
-    "react-dom": "^19.0.1",
-    "@my-lib/core": "*"
-  },
-  "devDependencies": {
-    "typescript": "^5.0.0",
-    "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "postcss": "^8.4.0",
-    "tailwindcss": "^3.4.3",
-    "autoprefixer": "^10.4.19"
-  }
-}
-DOCS_PKG
-
-cat << 'DOCS_POSTCSS' > apps/docs/postcss.config.js
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-}
-DOCS_POSTCSS
-
-cat << 'DOCS_TAILWIND' > apps/docs/tailwind.config.ts
-import type { Config } from "tailwindcss";
-
-export default {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx}", 
-    "../../packages/core/src/**/*.{js,ts,jsx,tsx}"
-  ],
-  theme: { 
-    extend: { 
-      colors: { 
-        background: "hsl(var(--background))", 
-        foreground: "hsl(var(--foreground))", 
-        border: "hsl(var(--border))" 
-      } 
-    } 
-  },
-  plugins: [],
-} satisfies Config;
-DOCS_TAILWIND
-
-cat << 'DOCS_TSCONFIG' > apps/docs/tsconfig.json
-{
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
-}
-DOCS_TSCONFIG
-
-# Memberi izin eksekusi otomatis
 chmod +x setup.sh
 
-echo ""
-echo "✅ SELESAI! File bash script setup.sh telah dibuat dan diperbarui."
-echo "Untuk menginstal ulang atau mem-bootstrap proyek dari nol di lokal Anda,"
-echo "cukup salin file setup.sh ini ke laptop Anda dan jalankan:"
-echo "$ ./setup.sh"
-echo "$ npm install"
-echo "$ npm run dev"
+echo "✅ Berhasil membuat komponen $COMPONENT_NAME!"
+echo "⚠️  Langkah Selanjutnya:"
+echo "1. Export komponen ini di packages/core/src/index.ts: export * from './components/$COMPONENT_NAME';"
+echo "2. Daftarkan halamannya di apps/docs/src/App.tsx"

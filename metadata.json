@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "description": "",
+  "name": "My UI Library",
+  "description": "A premium UI Component Library built with React, TypeScript, Tailwind CSS, and Class Variance Authority (CVA).",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

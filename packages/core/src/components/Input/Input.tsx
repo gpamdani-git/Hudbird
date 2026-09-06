@@ -1,51 +1,80 @@
 "use client";
+
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-const inputVariants = cva(
-  "flex w-full rounded-xl border bg-transparent px-3 py-2 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:focus-visible:ring-offset-slate-900",
+const inputWrapperVariants = cva(
+  "flex items-center w-full px-3 gap-2 text-sm transition-colors border overflow-hidden text-zinc-900 dark:text-zinc-50 focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500",
   {
     variants: {
       variant: {
-        default: "border-input border-slate-200 dark:border-slate-800 focus-visible:ring-indigo-500",
-        filled: "border-transparent bg-slate-100 dark:bg-slate-800 focus-visible:ring-indigo-500",
-        underlined: "rounded-none border-0 border-b-2 border-slate-200 dark:border-slate-800 px-0 focus-visible:border-indigo-500 focus-visible:ring-0",
+        flat: "bg-zinc-100 border-transparent dark:bg-zinc-800",
+        bordered: "bg-transparent border-zinc-200 dark:border-zinc-800",
       },
       inputSize: {
-        sm: "h-8 text-xs",
-        md: "h-10",
-        lg: "h-12 text-base rounded-2xl",
+        sm: "h-8 rounded-lg text-xs",
+        md: "h-10 rounded-xl",
+        lg: "h-12 rounded-2xl text-base",
+      },
+      isInvalid: {
+        true: "!border-rose-500 focus-within:!border-rose-500 focus-within:!ring-rose-500/20",
+        false: "",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "bordered",
       inputSize: "md",
+      isInvalid: false,
     },
   }
 );
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
-    VariantProps<typeof inputVariants> {
-  error?: boolean;
+    VariantProps<typeof inputWrapperVariants> {
+  label?: React.ReactNode;
+  startContent?: React.ReactNode;
+  endContent?: React.ReactNode;
+  isInvalid?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, inputSize, error, type, ...props }, ref) => {
+  ({ className, variant, inputSize, isInvalid, label, startContent, endContent, type, ...props }, ref) => {
     return (
-      <input
-        type={type}
-        className={cn(
-          inputVariants({ variant, inputSize, className }),
-          error && "border-red-500 focus-visible:ring-red-500 dark:border-red-500 dark:focus-visible:ring-red-500"
+      <div className={cn("flex flex-col w-full gap-1.5", className)}>
+        {label && (
+          <label
+            className={cn(
+              "text-xs font-semibold text-zinc-700 dark:text-zinc-300",
+              isInvalid && "text-rose-500 dark:text-rose-500"
+            )}
+          >
+            {label}
+          </label>
         )}
-        ref={ref}
-        {...props}
-      />
+        <div className={inputWrapperVariants({ variant, inputSize, isInvalid })}>
+          {startContent && (
+            <div className="flex-shrink-0 text-zinc-500 dark:text-zinc-400 flex items-center justify-center">
+              {startContent}
+            </div>
+          )}
+          <input
+            type={type}
+            className="w-full h-full bg-transparent outline-none placeholder:text-zinc-400 dark:placeholder:text-zinc-500 disabled:cursor-not-allowed disabled:opacity-50"
+            ref={ref}
+            {...props}
+          />
+          {endContent && (
+            <div className="flex-shrink-0 text-zinc-500 dark:text-zinc-400 flex items-center justify-center">
+              {endContent}
+            </div>
+          )}
+        </div>
+      </div>
     );
   }
 );
 Input.displayName = "Input";
 
-export { Input, inputVariants };
+export { Input, inputWrapperVariants };

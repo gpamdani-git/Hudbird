@@ -6,7 +6,16 @@ import { defineConfig } from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
-    resolve: { alias: { '@': path.resolve(__dirname, '.') } },
-    server: { port: 3001, host: '0.0.0.0' }
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './apps/docs/src'),
+        '@my-lib/core': path.resolve(__dirname, './packages/core/src'),
+        '@my-lib/theme': path.resolve(__dirname, './packages/theme/src'),
+      },
+    },
+    server: {
+      port: 3000,
+      host: '0.0.0.0',
+    },
   };
 });

@@ -7,32 +7,38 @@
   ],
   "version": "0.0.0",
   "scripts": {
-    "build": "vite build && turbo run build",
-    "dev": "turbo run dev",
+    "build": "vite build",
+    "dev": "vite",
     "lint": "tsc --noEmit && turbo run lint"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.1.14",
     "@vitejs/plugin-react": "^5.0.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "lucide-react": "^0.546.0",
     "motion": "^12.23.24",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
+    "react-router-dom": "^7.1.5",
+    "tailwind-merge": "^3.0.1",
     "vite": "^6.2.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.21",
     "esbuild": "^0.25.0",
-    "tailwindcss": "^4.1.14",
-    "tsx": "^4.21.0",
-    "typescript": "^5.0.0",
     "eslint": "^9.0.0",
+    "tailwindcss": "^4.1.14",
     "tsup": "^8.5.1",
-    "turbo": "^1.13.0"
+    "tsx": "^4.21.0",
+    "turbo": "^1.13.0",
+    "typescript": "^5.0.0"
   }
 }

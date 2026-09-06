@@ -2,22 +2,23 @@
   "name": "docs",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "next": "15.1.0",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
-    "@my-lib/core": "*",
-    "@my-lib/theme": "*"
+    "react-router-dom": "^6.22.3",
+    "lucide-react": "^0.475.0",
+    "@my-lib/core": "*"
   },
   "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0",
     "typescript": "^5.0.0",
-    "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "postcss": "^8.4.0",
