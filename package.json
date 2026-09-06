@@ -5,11 +5,10 @@
     "packages/*",
     "apps/*"
   ],
-  "packageManager": "npm@10.8.2",
   "version": "0.0.0",
   "scripts": {
     "build": "vite build && turbo run build",
-    "dev": "vite --port=3000 --host=0.0.0.0",
+    "dev": "turbo run dev",
     "lint": "tsc --noEmit && turbo run lint"
   },
   "dependencies": {
@@ -31,8 +30,8 @@
     "esbuild": "^0.25.0",
     "tailwindcss": "^4.1.14",
     "tsx": "^4.21.0",
-    "typescript": "~5.8.2",
-    "eslint": "^10.10.0",
+    "typescript": "^5.0.0",
+    "eslint": "^9.0.0",
     "tsup": "^8.5.1",
     "turbo": "^1.13.0"
   }
