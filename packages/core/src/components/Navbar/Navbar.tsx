@@ -36,13 +36,13 @@ export function useNavbarContext() {
 }
 
 const navbarVariants = cva(
-  "w-full z-40 transition-all duration-200 box-border",
+  "w-full transition-all duration-200 box-border",
   {
     variants: {
       position: {
-        static: "static",
-        sticky: "sticky top-0",
-        fixed: "fixed top-0 left-0 right-0",
+        static: "relative z-40",
+        sticky: "sticky top-0 z-40",
+        fixed: "fixed top-0 left-0 right-0 z-40",
       },
       styleVariant: {
         glassmorphism:
@@ -119,6 +119,22 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     },
     ref
   ) => {
+    const internalRef = React.useRef<HTMLElement>(null);
+    const mergedRef = React.useMemo(() => {
+      if (typeof ref === "function") {
+        return (node: HTMLElement | null) => {
+          ref(node);
+          internalRef.current = node;
+        };
+      } else if (ref) {
+        return (node: HTMLElement | null) => {
+          (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+          internalRef.current = node;
+        };
+      }
+      return internalRef;
+    }, [ref]);
+
     const [uncontrolledIsMenuOpen, setUncontrolledIsMenuOpen] =
       React.useState<boolean>(isMenuDefaultOpen);
 
@@ -138,25 +154,32 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
 
     // Prevent body-scroll leak when mobile drawer is open in full viewport mode
     React.useEffect(() => {
-      if (isMenuOpen && lockScroll && !isContained && typeof document !== "undefined") {
-        const originalOverflow = document.body.style.overflow;
-        const originalPaddingRight = document.body.style.paddingRight;
+      // Find the correct document context in case we are rendered in an iframe portal
+      const currentDocument = 
+        (typeof window !== "undefined" && internalRef.current?.ownerDocument) ||
+        (typeof document !== "undefined" ? document : null);
+        
+      if (isMenuOpen && lockScroll && !isContained && currentDocument) {
+        const docBody = currentDocument.body;
+        const originalOverflow = docBody.style.overflow;
+        const originalPaddingRight = docBody.style.paddingRight;
+        const currentWindow = currentDocument.defaultView || window;
         const scrollbarWidth =
-          typeof window !== "undefined"
-            ? window.innerWidth - document.documentElement.clientWidth
+          currentWindow
+            ? currentWindow.innerWidth - currentDocument.documentElement.clientWidth
             : 0;
 
-        document.body.style.overflow = "hidden";
+        docBody.style.overflow = "hidden";
         if (scrollbarWidth > 0) {
-          document.body.style.paddingRight = `${scrollbarWidth}px`;
+          docBody.style.paddingRight = `${scrollbarWidth}px`;
         }
 
         return () => {
-          document.body.style.overflow = originalOverflow;
-          document.body.style.paddingRight = originalPaddingRight;
+          docBody.style.overflow = originalOverflow;
+          docBody.style.paddingRight = originalPaddingRight;
         };
       }
-    }, [isMenuOpen, lockScroll, isContained]);
+    }, [isMenuOpen, lockScroll, isContained, internalRef.current]);
 
     const contextValue = React.useMemo(
       () => ({
@@ -207,7 +230,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     return (
       <NavbarContext.Provider value={contextValue}>
         <nav
-          ref={ref}
+          ref={mergedRef}
           data-logo-position={logoPosition}
           data-style-variant={styleVariant}
           data-mobile-variant={mobileMenuVariant}
@@ -219,9 +242,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
               isBlurred,
               className,
             }),
-            isMenuOpen ? (isContained ? "z-[999]" : "z-[9999]") : "z-40",
-            // When isContained is false and position is static and menu is closed, keep relative on nav
-            !isContained && position === "static" && !isMenuOpen && "relative"
+            isMenuOpen && "z-50"
           )}
           {...props}
         >
@@ -506,9 +527,10 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
+                "absolute left-0 w-full z-50 bg-white dark:bg-zinc-950 flex flex-col p-6 shadow-xl overflow-y-auto",
                 isContained
-                  ? "absolute inset-x-0 top-full z-[999] bg-white dark:bg-zinc-950 flex flex-col p-6 overflow-y-auto shadow-2xl rounded-b-2xl border-b border-x border-zinc-200/80 dark:border-zinc-800 max-h-[500px]"
-                  : "fixed inset-x-0 top-16 bottom-0 z-[9999] bg-white dark:bg-zinc-950 flex flex-col p-6 overflow-y-auto shadow-2xl",
+                  ? "top-full rounded-b-2xl max-h-[500px]"
+                  : "top-16 max-h-[calc(100vh-4rem)]",
                 isFloating && !isContained && "top-20",
                 className
               )}
@@ -549,7 +571,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
             <div
               className={cn(
                 isContained ? "absolute inset-0" : "fixed inset-0",
-                "z-[999] overflow-hidden pointer-events-auto"
+                "z-[99999] overflow-hidden pointer-events-auto"
               )}
             >
               {/* Backdrop Overlay */}
@@ -625,7 +647,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
             <div
               className={cn(
                 isContained ? "absolute inset-0" : "fixed inset-0",
-                "z-[999] overflow-hidden flex justify-end pointer-events-auto"
+                "z-[99999] overflow-hidden flex justify-end pointer-events-auto"
               )}
             >
               {/* Backdrop Overlay */}
@@ -718,7 +740,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
               transition: { duration: 0.2, ease: [0.32, 0.72, 0, 1] },
             }}
             className={cn(
-              isContained ? "absolute inset-0 z-[999]" : "fixed inset-0 z-[9999]",
+              isContained ? "absolute inset-0 z-[99999]" : "fixed inset-0 z-[99999]",
               "h-full w-full bg-white dark:bg-zinc-950 p-6 sm:p-10 flex flex-col justify-between overflow-y-auto pointer-events-auto shadow-2xl",
               className
             )}

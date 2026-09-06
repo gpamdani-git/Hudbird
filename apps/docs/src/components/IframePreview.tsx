@@ -48,7 +48,7 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
                 -moz-osx-font-smoothing: grayscale;
               }
               body {
-                padding: 12px;
+                padding: 0;
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
@@ -56,7 +56,7 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
               }
             </style>
           </head>
-          <body class="text-zinc-900 dark:text-zinc-50 font-sans">
+          <body class="text-zinc-900 dark:text-zinc-50 font-sans p-4 relative overflow-x-hidden min-h-[${minHeight}px]">
             <div id="frame-root" class="w-full flex flex-col items-center justify-center"></div>
           </body>
         </html>

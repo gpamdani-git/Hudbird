@@ -49,7 +49,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
-import { IframeMobileSimulator } from "../components/IframeMobileSimulator";
+import { IframePreview } from "../components/IframePreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
@@ -511,89 +511,86 @@ export default function StandardNavbarExample() {
             </div>
 
             <ComponentPreview>
-              <div className="w-full flex flex-col items-center justify-center py-4">
-                <IframeMobileSimulator height={480}>
-                  <div className="relative w-full h-full flex flex-col justify-between bg-white dark:bg-zinc-950 overflow-hidden select-none">
-                    <Navbar
-                      position="static"
-                      isBordered
-                      mobileMenuVariant="top"
-                      isMenuOpen={topDrawerOpen}
-                      onMenuOpenChange={setTopDrawerOpen}
-                      isContained
-                      className="bg-white/95 dark:bg-zinc-950/95 shrink-0"
-                    >
-                      <NavbarContent justify="start">
-                        <NavbarMenuToggle />
-                        <NavbarBrand>
-                          <div className="flex items-center gap-1.5">
-                            <div className="h-6 w-6 rounded-md bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">
-                              ✦
-                            </div>
-                            <span className="font-extrabold text-sm tracking-tight">Vapor Studio</span>
-                          </div>
-                        </NavbarBrand>
-                      </NavbarContent>
-
-                      <NavbarContent justify="end">
-                        <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
-                          Join
-                        </Button>
-                      </NavbarContent>
-
-                      <NavbarMenu
-                        variant="top"
-                        isContained
-                        title="Navigation Menu"
-                        footer={
-                          <div className="flex flex-col gap-2">
-                            <Button size="sm" color="indigo" className="w-full justify-center text-xs">
-                              Get Started Free
-                            </Button>
-                          </div>
-                        }
-                      >
-                        {["Products", "Features", "Pricing", "Integrations", "Documentation"].map((item) => (
-                          <NavbarMenuItem
-                            key={item}
-                            isActive={topActiveItem === item}
-                            onClick={() => {
-                              setTopActiveItem(item);
-                              setTopDrawerOpen(false);
-                            }}
-                          >
-                            <div className="flex items-center justify-between w-full">
-                              <span className="font-medium text-sm">{item}</span>
-                              <ChevronRight size={14} className="text-zinc-400" />
-                            </div>
-                          </NavbarMenuItem>
-                        ))}
-                      </NavbarMenu>
-                    </Navbar>
-
-                    {/* Simulator Canvas Body */}
-                    <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
-                      <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
-                        <ArrowDownToLine size={24} />
+              <div className="w-full py-4">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[480px] flex flex-col select-none">
+                  <Navbar
+                  position="static"
+                  isBordered
+                  mobileMenuVariant="top"
+                  isMenuOpen={topDrawerOpen}
+                  onMenuOpenChange={setTopDrawerOpen}
+                  className="bg-white/95 dark:bg-zinc-950/95 shrink-0 rounded-t-2xl"
+                  isContained
+                >
+                  <NavbarContent justify="start">
+                    <NavbarMenuToggle />
+                    <NavbarBrand>
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-6 w-6 rounded-md bg-indigo-600 text-white flex items-center justify-center font-bold text-xs">
+                          ✦
+                        </div>
+                        <span className="font-extrabold text-sm tracking-tight">Vapor Studio</span>
                       </div>
-                      <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Top Slide-Down Variant
-                      </h5>
-                      <p className="text-xs text-zinc-500 max-w-xs mb-3">
-                        Dropdown banner navigation with smooth vertical collapse animation.
-                      </p>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        color="indigo"
-                        onClick={() => setTopDrawerOpen(!topDrawerOpen)}
+                    </NavbarBrand>
+                  </NavbarContent>
+
+                  <NavbarContent justify="end">
+                    <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
+                      Join
+                    </Button>
+                  </NavbarContent>
+
+                  <NavbarMenu
+                    variant="top"
+                    title="Navigation Menu"
+                    footer={
+                      <div className="flex flex-col gap-2">
+                        <Button size="sm" color="indigo" className="w-full justify-center text-xs">
+                          Get Started Free
+                        </Button>
+                      </div>
+                    }
+                  >
+                    {["Products", "Features", "Pricing", "Integrations", "Documentation"].map((item) => (
+                      <NavbarMenuItem
+                        key={item}
+                        isActive={topActiveItem === item}
+                        onClick={() => {
+                          setTopActiveItem(item);
+                          setTopDrawerOpen(false);
+                        }}
                       >
-                        {topDrawerOpen ? "Close Menu" : "Open Menu"}
-                      </Button>
-                    </div>
+                        <div className="flex items-center justify-between w-full">
+                          <span className="font-medium text-sm">{item}</span>
+                          <ChevronRight size={14} className="text-zinc-400" />
+                        </div>
+                      </NavbarMenuItem>
+                    ))}
+                  </NavbarMenu>
+                </Navbar>
+
+                {/* Simulator Canvas Body */}
+                <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
+                  <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
+                    <ArrowDownToLine size={24} />
                   </div>
-                </IframeMobileSimulator>
+                  <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
+                    Top Slide-Down Variant
+                  </h5>
+                  <p className="text-xs text-zinc-500 max-w-xs mb-3">
+                    Dropdown banner navigation with smooth vertical collapse animation.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    color="indigo"
+                    onClick={() => setTopDrawerOpen(!topDrawerOpen)}
+                  >
+                    {topDrawerOpen ? "Close Menu" : "Open Menu"}
+                  </Button>
+                </div>
               </div>
+            </div>
             </ComponentPreview>
 
             <CodeBlock
@@ -638,98 +635,95 @@ export default function StandardNavbarExample() {
             </div>
 
             <ComponentPreview>
-              <div className="w-full flex flex-col items-center justify-center py-4">
-                <IframeMobileSimulator height={490}>
-                  <div className="relative w-full h-full flex flex-col justify-between bg-white dark:bg-zinc-950 overflow-hidden select-none">
-                    <Navbar
-                      position="static"
-                      isBordered
-                      mobileMenuVariant="left"
-                      isMenuOpen={leftDrawerOpen}
-                      onMenuOpenChange={setLeftDrawerOpen}
-                      isContained
-                      className="bg-white/95 dark:bg-zinc-950/95 shrink-0"
-                    >
-                      <NavbarContent justify="start">
-                        <NavbarMenuToggle />
-                        <NavbarBrand>
-                          <div className="flex items-center gap-1.5">
-                            <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
-                              ✦
-                            </div>
-                            <span className="font-extrabold text-sm tracking-tight">DE VORM</span>
-                          </div>
-                        </NavbarBrand>
-                      </NavbarContent>
-
-                      <NavbarContent justify="end">
-                        <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
-                          Inquire
-                        </Button>
-                      </NavbarContent>
-
-                      <NavbarMenu
-                        variant="left"
-                        isContained
-                        title="DE VORM"
-                        footer={
-                          <div className="space-y-3 text-left">
-                            <div className="space-y-0.5">
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
-                                Sales Inquiries
-                              </span>
-                              <p className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-1">
-                                <Phone size={11} className="text-indigo-500" />
-                                +31 (0) 26 820 03 60
-                              </p>
-                            </div>
-                            <div className="space-y-0.5 text-[11px] text-zinc-500 dark:text-zinc-400">
-                              <span className="font-semibold text-zinc-900 dark:text-zinc-200">Office:</span> Leemansweg 45, Arnhem Netherlands
-                            </div>
-                          </div>
-                        }
-                      >
-                        {["Products", "Projects", "About Us", "Sustainability", "Stories", "Contact"].map((item) => (
-                          <NavbarMenuItem
-                            key={item}
-                            isActive={leftActiveItem === item}
-                            onClick={() => {
-                              setLeftActiveItem(item);
-                              setLeftDrawerOpen(false);
-                            }}
-                          >
-                            <div className="flex items-center justify-between w-full">
-                              <span className="font-medium text-sm">{item}</span>
-                              <ChevronRight size={14} className="text-zinc-400" />
-                            </div>
-                          </NavbarMenuItem>
-                        ))}
-                      </NavbarMenu>
-                    </Navbar>
-
-                    {/* Simulator Canvas Body */}
-                    <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
-                      <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
-                        <PanelLeft size={24} />
+              <div className="w-full py-4">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                  <Navbar
+                    position="static"
+                    isBordered
+                    mobileMenuVariant="left"
+                  isMenuOpen={leftDrawerOpen}
+                  onMenuOpenChange={setLeftDrawerOpen}
+                  className="bg-white/95 dark:bg-zinc-950/95 shrink-0 rounded-t-2xl"
+                  isContained
+                >
+                  <NavbarContent justify="start">
+                    <NavbarMenuToggle />
+                    <NavbarBrand>
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
+                          ✦
+                        </div>
+                        <span className="font-extrabold text-sm tracking-tight">DE VORM</span>
                       </div>
-                      <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Left Slide-In Drawer
-                      </h5>
-                      <p className="text-xs text-zinc-500 max-w-xs mb-3">
-                        Off-canvas sidebar drawer sliding from the left boundary.
-                      </p>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        color="indigo"
-                        onClick={() => setLeftDrawerOpen(!leftDrawerOpen)}
+                    </NavbarBrand>
+                  </NavbarContent>
+
+                  <NavbarContent justify="end">
+                    <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
+                      Inquire
+                    </Button>
+                  </NavbarContent>
+
+                  <NavbarMenu
+                    variant="left"
+                    title="DE VORM"
+                    footer={
+                      <div className="space-y-3 text-left">
+                        <div className="space-y-0.5">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+                            Sales Inquiries
+                          </span>
+                          <p className="text-xs font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-1">
+                            <Phone size={11} className="text-indigo-500" />
+                            +31 (0) 26 820 03 60
+                          </p>
+                        </div>
+                        <div className="space-y-0.5 text-[11px] text-zinc-500 dark:text-zinc-400">
+                          <span className="font-semibold text-zinc-900 dark:text-zinc-200">Office:</span> Leemansweg 45, Arnhem Netherlands
+                        </div>
+                      </div>
+                    }
+                  >
+                    {["Products", "Projects", "About Us", "Sustainability", "Stories", "Contact"].map((item) => (
+                      <NavbarMenuItem
+                        key={item}
+                        isActive={leftActiveItem === item}
+                        onClick={() => {
+                          setLeftActiveItem(item);
+                          setLeftDrawerOpen(false);
+                        }}
                       >
-                        {leftDrawerOpen ? "Close Drawer" : "Open Drawer"}
-                      </Button>
-                    </div>
+                        <div className="flex items-center justify-between w-full">
+                          <span className="font-medium text-sm">{item}</span>
+                          <ChevronRight size={14} className="text-zinc-400" />
+                        </div>
+                      </NavbarMenuItem>
+                    ))}
+                  </NavbarMenu>
+                </Navbar>
+
+                {/* Simulator Canvas Body */}
+                <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
+                  <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
+                    <PanelLeft size={24} />
                   </div>
-                </IframeMobileSimulator>
+                  <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
+                    Left Slide-In Drawer
+                  </h5>
+                  <p className="text-xs text-zinc-500 max-w-xs mb-3">
+                    Off-canvas sidebar drawer sliding from the left boundary.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    color="indigo"
+                    onClick={() => setLeftDrawerOpen(!leftDrawerOpen)}
+                  >
+                    {leftDrawerOpen ? "Close Drawer" : "Open Drawer"}
+                  </Button>
+                </div>
               </div>
+            </div>
             </ComponentPreview>
 
             <CodeBlock
@@ -782,96 +776,93 @@ export default function StandardNavbarExample() {
             </div>
 
             <ComponentPreview>
-              <div className="w-full flex flex-col items-center justify-center py-4">
-                <IframeMobileSimulator height={490}>
-                  <div className="relative w-full h-full flex flex-col justify-between bg-white dark:bg-zinc-950 overflow-hidden select-none">
-                    <Navbar
-                      position="static"
-                      isBordered
-                      mobileMenuVariant="right"
-                      isMenuOpen={rightDrawerOpen}
-                      onMenuOpenChange={setRightDrawerOpen}
-                      isContained
-                      className="bg-white/95 dark:bg-zinc-950/95 shrink-0"
-                    >
-                      <NavbarContent justify="start">
-                        <NavbarMenuToggle />
-                        <NavbarBrand>
-                          <div className="flex items-center gap-1.5">
-                            <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
-                              ✦
-                            </div>
-                            <span className="font-extrabold text-sm tracking-tight">avenoria</span>
-                          </div>
-                        </NavbarBrand>
-                      </NavbarContent>
-
-                      <NavbarContent justify="end">
-                        <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
-                          Shop
-                        </Button>
-                      </NavbarContent>
-
-                      <NavbarMenu
-                        variant="right"
-                        isContained
-                        title="avenoria."
-                        footer={
-                          <div className="space-y-3 text-left">
-                            <div className="space-y-1 text-[11px] text-zinc-500 dark:text-zinc-400">
-                              <div>Collaborations: <span className="text-zinc-900 dark:text-zinc-200 font-medium">collab@avenoria.it</span></div>
-                              <div>Support: <span className="text-zinc-900 dark:text-zinc-200 font-medium">support@avenoria.it</span></div>
-                            </div>
-                            <div className="flex items-center gap-2 pt-1">
-                              <Button size="sm" variant="outline" color="zinc" className="flex-1 text-xs">
-                                Sign In
-                              </Button>
-                              <Button size="sm" color="dark" className="flex-1 text-xs">
-                                Sign Up
-                              </Button>
-                            </div>
-                          </div>
-                        }
-                      >
-                        {["Men's Store", "Women's Store", "About Us", "Editorial", "Press"].map((item) => (
-                          <NavbarMenuItem
-                            key={item}
-                            isActive={rightActiveItem === item}
-                            onClick={() => {
-                              setRightActiveItem(item);
-                              setRightDrawerOpen(false);
-                            }}
-                            className="text-base font-bold text-zinc-900 dark:text-zinc-100"
-                          >
-                            {item}
-                          </NavbarMenuItem>
-                        ))}
-                      </NavbarMenu>
-                    </Navbar>
-
-                    {/* Simulator Canvas Body */}
-                    <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
-                      <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
-                        <PanelRight size={24} />
+              <div className="w-full py-4">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                  <Navbar
+                    position="static"
+                    isBordered
+                    mobileMenuVariant="right"
+                  isMenuOpen={rightDrawerOpen}
+                  onMenuOpenChange={setRightDrawerOpen}
+                  className="bg-white/95 dark:bg-zinc-950/95 shrink-0 rounded-t-2xl"
+                  isContained
+                >
+                  <NavbarContent justify="start">
+                    <NavbarMenuToggle />
+                    <NavbarBrand>
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
+                          ✦
+                        </div>
+                        <span className="font-extrabold text-sm tracking-tight">avenoria</span>
                       </div>
-                      <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Right Slide-In Drawer
-                      </h5>
-                      <p className="text-xs text-zinc-500 max-w-xs mb-3">
-                        Off-canvas sidebar drawer sliding from the right boundary.
-                      </p>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        color="indigo"
-                        onClick={() => setRightDrawerOpen(!rightDrawerOpen)}
+                    </NavbarBrand>
+                  </NavbarContent>
+
+                  <NavbarContent justify="end">
+                    <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
+                      Shop
+                    </Button>
+                  </NavbarContent>
+
+                  <NavbarMenu
+                    variant="right"
+                    title="avenoria."
+                    footer={
+                      <div className="space-y-3 text-left">
+                        <div className="space-y-1 text-[11px] text-zinc-500 dark:text-zinc-400">
+                          <div>Collaborations: <span className="text-zinc-900 dark:text-zinc-200 font-medium">collab@avenoria.it</span></div>
+                          <div>Support: <span className="text-zinc-900 dark:text-zinc-200 font-medium">support@avenoria.it</span></div>
+                        </div>
+                        <div className="flex items-center gap-2 pt-1">
+                          <Button size="sm" variant="outline" color="zinc" className="flex-1 text-xs">
+                            Sign In
+                          </Button>
+                          <Button size="sm" color="dark" className="flex-1 text-xs">
+                            Sign Up
+                          </Button>
+                        </div>
+                      </div>
+                    }
+                  >
+                    {["Men's Store", "Women's Store", "About Us", "Editorial", "Press"].map((item) => (
+                      <NavbarMenuItem
+                        key={item}
+                        isActive={rightActiveItem === item}
+                        onClick={() => {
+                          setRightActiveItem(item);
+                          setRightDrawerOpen(false);
+                        }}
+                        className="text-base font-bold text-zinc-900 dark:text-zinc-100"
                       >
-                        {rightDrawerOpen ? "Close Drawer" : "Open Drawer"}
-                      </Button>
-                    </div>
+                        {item}
+                      </NavbarMenuItem>
+                    ))}
+                  </NavbarMenu>
+                </Navbar>
+
+                {/* Simulator Canvas Body */}
+                <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
+                  <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
+                    <PanelRight size={24} />
                   </div>
-                </IframeMobileSimulator>
+                  <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
+                    Right Slide-In Drawer
+                  </h5>
+                  <p className="text-xs text-zinc-500 max-w-xs mb-3">
+                    Off-canvas sidebar drawer sliding from the right boundary.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    color="indigo"
+                    onClick={() => setRightDrawerOpen(!rightDrawerOpen)}
+                  >
+                    {rightDrawerOpen ? "Close Drawer" : "Open Drawer"}
+                  </Button>
+                </div>
               </div>
+            </div>
             </ComponentPreview>
 
             <CodeBlock
@@ -923,91 +914,88 @@ export default function StandardNavbarExample() {
             </div>
 
             <ComponentPreview>
-              <div className="w-full flex flex-col items-center justify-center py-4">
-                <IframeMobileSimulator height={490}>
-                  <div className="relative w-full h-full flex flex-col justify-between bg-white dark:bg-zinc-950 overflow-hidden select-none">
-                    <Navbar
-                      position="static"
-                      isBordered
-                      mobileMenuVariant="fullscreen"
-                      isMenuOpen={fullscreenDrawerOpen}
-                      onMenuOpenChange={setFullscreenDrawerOpen}
-                      isContained
-                      className="bg-white/95 dark:bg-zinc-950/95 shrink-0"
-                    >
-                      <NavbarContent justify="start">
-                        <NavbarMenuToggle />
-                        <NavbarBrand>
-                          <div className="flex items-center gap-1.5">
-                            <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
-                              ✦
-                            </div>
-                            <span className="font-extrabold text-sm tracking-tight">WANDERGATES</span>
-                          </div>
-                        </NavbarBrand>
-                      </NavbarContent>
-
-                      <NavbarContent justify="end">
-                        <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
-                          Inquire
-                        </Button>
-                      </NavbarContent>
-
-                      <NavbarMenu
-                        variant="fullscreen"
-                        isContained
-                        title="WANDERGATES™"
-                        footer={
-                          <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-2 border-t border-zinc-200 dark:border-zinc-800">
-                            <span>DUBAI DIGITAL PARK, A1</span>
-                            <span className="font-mono">©2026 UNIKO</span>
-                          </div>
-                        }
-                      >
-                        <div className="flex flex-col gap-3 text-left py-2">
-                          {["Home", "Portfolio", "About Studio", "Contact Agency"].map((item) => (
-                            <div
-                              key={item}
-                              onClick={() => {
-                                setFullscreenActiveItem(item);
-                                setFullscreenDrawerOpen(false);
-                              }}
-                              className={`text-2xl font-extrabold tracking-tight transition-colors cursor-pointer ${
-                                fullscreenActiveItem === item
-                                  ? "text-indigo-600 dark:text-indigo-400"
-                                  : "text-zinc-900 dark:text-zinc-50 hover:text-indigo-600 dark:hover:text-indigo-400"
-                              }`}
-                            >
-                              {item}
-                            </div>
-                          ))}
+              <div className="w-full py-4">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                  <Navbar
+                    position="static"
+                    isBordered
+                    mobileMenuVariant="fullscreen"
+                  isMenuOpen={fullscreenDrawerOpen}
+                  onMenuOpenChange={setFullscreenDrawerOpen}
+                  className="bg-white/95 dark:bg-zinc-950/95 shrink-0 rounded-t-2xl"
+                  isContained
+                >
+                  <NavbarContent justify="start">
+                    <NavbarMenuToggle />
+                    <NavbarBrand>
+                      <div className="flex items-center gap-1.5">
+                        <div className="h-6 w-6 rounded-md bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 flex items-center justify-center font-bold text-xs">
+                          ✦
                         </div>
-                      </NavbarMenu>
-                    </Navbar>
-
-                    {/* Simulator Canvas Body */}
-                    <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
-                      <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
-                        <Maximize2 size={24} />
+                        <span className="font-extrabold text-sm tracking-tight">WANDERGATES</span>
                       </div>
-                      <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
-                        Fullscreen Overlay
-                      </h5>
-                      <p className="text-xs text-zinc-500 max-w-xs mb-3">
-                        100% viewport takeover with large display typography.
-                      </p>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        color="indigo"
-                        onClick={() => setFullscreenDrawerOpen(!fullscreenDrawerOpen)}
-                      >
-                        {fullscreenDrawerOpen ? "Close Overlay" : "Open Overlay"}
-                      </Button>
+                    </NavbarBrand>
+                  </NavbarContent>
+
+                  <NavbarContent justify="end">
+                    <Button size="sm" color="indigo" variant="solid" className="h-7 text-xs px-2.5">
+                      Inquire
+                    </Button>
+                  </NavbarContent>
+
+                  <NavbarMenu
+                    variant="fullscreen"
+                    title="WANDERGATES™"
+                    footer={
+                      <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+                        <span>DUBAI DIGITAL PARK, A1</span>
+                        <span className="font-mono">©2026 UNIKO</span>
+                      </div>
+                    }
+                  >
+                    <div className="flex flex-col gap-3 text-left py-2">
+                      {["Home", "Portfolio", "About Studio", "Contact Agency"].map((item) => (
+                        <div
+                          key={item}
+                          onClick={() => {
+                            setFullscreenActiveItem(item);
+                            setFullscreenDrawerOpen(false);
+                          }}
+                          className={`text-2xl font-extrabold tracking-tight transition-colors cursor-pointer ${
+                            fullscreenActiveItem === item
+                              ? "text-indigo-600 dark:text-indigo-400"
+                              : "text-zinc-900 dark:text-zinc-50 hover:text-indigo-600 dark:hover:text-indigo-400"
+                          }`}
+                        >
+                          {item}
+                        </div>
+                      ))}
                     </div>
+                  </NavbarMenu>
+                </Navbar>
+
+                {/* Simulator Canvas Body */}
+                <div className="p-6 flex-1 flex flex-col items-center justify-center text-center bg-zinc-50/70 dark:bg-zinc-900/30">
+                  <div className="p-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 mb-3">
+                    <Maximize2 size={24} />
                   </div>
-                </IframeMobileSimulator>
+                  <h5 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-1">
+                    Fullscreen Overlay
+                  </h5>
+                  <p className="text-xs text-zinc-500 max-w-xs mb-3">
+                    100% viewport takeover with large display typography.
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    color="indigo"
+                    onClick={() => setFullscreenDrawerOpen(!fullscreenDrawerOpen)}
+                  >
+                    {fullscreenDrawerOpen ? "Close Overlay" : "Open Overlay"}
+                  </Button>
+                </div>
               </div>
+            </div>
             </ComponentPreview>
 
             <CodeBlock

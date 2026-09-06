@@ -24,6 +24,7 @@ interface ComponentPreviewProps {
   showControls?: boolean;
   defaultViewport?: ViewportMode;
   allowFullscreen?: boolean;
+  iframeMode?: "auto" | "always" | "none";
 }
 
 export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
@@ -34,6 +35,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   showControls = true,
   defaultViewport = "desktop",
   allowFullscreen = true,
+  iframeMode = "auto",
 }) => {
   const [viewport, setViewport] = useState<ViewportMode>(defaultViewport);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -191,13 +193,13 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             <div
               data-viewport={viewport}
               className={`w-full ${
-                viewport !== "desktop"
+                (iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always"
                   ? "rounded-2xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 shadow-md bg-white dark:bg-zinc-950 overflow-hidden"
                   : ""
               }`}
             >
-              {viewport !== "desktop" ? (
-                <IframePreview key={`frame-${key}-${viewport}`}>
+              {(iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always" ? (
+                <IframePreview minHeight={600} key={`frame-${key}-${viewport}`}>
                   {children}
                 </IframePreview>
               ) : (
@@ -273,13 +275,13 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                   )}
                   <div
                     className={`w-full overflow-hidden ${
-                      viewport !== "desktop"
+                      (iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always"
                         ? "rounded-3xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 shadow-2xl bg-white dark:bg-zinc-950"
                         : ""
                     }`}
                   >
-                    {viewport !== "desktop" ? (
-                      <IframePreview minHeight={450} key={`modal-frame-${key}-${viewport}`}>
+                    {(iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always" ? (
+                      <IframePreview minHeight={600} key={`modal-frame-${key}-${viewport}`}>
                         {children}
                       </IframePreview>
                     ) : (
