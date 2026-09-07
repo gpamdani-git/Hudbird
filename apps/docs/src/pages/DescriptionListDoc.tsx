@@ -7,7 +7,7 @@ import {
   DescriptionListValue,
   Badge,
   Button,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -66,9 +66,14 @@ export default function DescriptionListDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Description List
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Description List
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Clean, structured key-value display components for presenting metadata, user profile specifications, transaction breakdowns, and configuration records.
         </p>
@@ -110,7 +115,7 @@ export default function DescriptionListDoc() {
   DescriptionListLabel,
   DescriptionListValue,
   Badge,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -207,7 +212,7 @@ function Example() {
   DescriptionListItem,
   DescriptionListLabel,
   DescriptionListValue,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -277,7 +282,7 @@ function Example() {
   DescriptionListItem,
   DescriptionListLabel,
   DescriptionListValue,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -340,7 +345,7 @@ function Example() {
   DescriptionListItem,
   DescriptionListLabel,
   DescriptionListValue,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -423,7 +428,7 @@ function Example() {
   DescriptionListValue,
   Badge,
   Button,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (

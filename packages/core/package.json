@@ -1,5 +1,5 @@
 {
-  "name": "@my-lib/core",
+  "name": "@hudbird/ui",
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

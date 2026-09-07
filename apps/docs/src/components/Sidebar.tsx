@@ -9,12 +9,13 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const layouts = [
-    { name: "Sidebar layout", path: "/layouts/sidebar" },
-    { name: "Stacked layout", path: "/layouts/stacked" },
-    { name: "Auth layout", path: "/layouts/auth", isNew: true },
+    { name: "Sidebar Layout", path: "/layouts/sidebar", isNew: true },
+    { name: "Stacked Layout", path: "/layouts/stacked", isNew: true },
+    { name: "Auth Layout", path: "/layouts/auth", isNew: true },
   ];
 
   const components = [
+    { name: "Accordion", path: "/accordion", isNew: true },
     { name: "Alert", path: "/alert" },
     { name: "Avatar", path: "/avatar" },
     { name: "Badge", path: "/badge" },
@@ -31,8 +32,15 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { name: "Input", path: "/input" },
     { name: "Navbar", path: "/navbar", isNew: true },
     { name: "Pagination", path: "/pagination", isNew: true },
+    { name: "Radio group", path: "/radio-group", isNew: true },
     { name: "Select", path: "/select", isNew: true },
     { name: "Skeleton", path: "/skeleton", isNew: true },
+    { name: "Switch", path: "/switch", isNew: true },
+    { name: "Table", path: "/table", isNew: true },
+    { name: "Tabs", path: "/tabs", isNew: true },
+    { name: "Text", path: "/text", isNew: true },
+    { name: "Textarea", path: "/textarea", isNew: true },
+    { name: "Tooltip", path: "/tooltip", isNew: true },
   ];
 
   return (
@@ -46,7 +54,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
       )}
 
       <aside
-        className={`fixed top-14 bottom-0 left-0 z-40 w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-y-auto px-4 py-6 transition-transform lg:translate-x-0 ${
+        className={`fixed bottom-0 left-0 z-40 w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-y-auto px-4 py-6 transition-transform lg:translate-x-0 top-0 lg:top-14 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

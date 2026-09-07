@@ -9,10 +9,11 @@ import {
   FieldsetHelperText,
   FieldsetErrorText,
   Input,
+  Textarea,
   Button,
   Checkbox,
   Divider,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -82,9 +83,14 @@ export default function FieldsetDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Fieldset
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Fieldset
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Structural container used to group related form controls, provide legends, render descriptive helper guidance, support left-aligned labels or split section layouts, and broadcast collective error states.
         </p>
@@ -115,7 +121,7 @@ export default function FieldsetDoc() {
                   <div className="relative">
                     <select
                       defaultValue="Canada"
-                      className="w-full h-10 px-3.5 pr-9 bg-zinc-900/60 dark:bg-zinc-900/80 border border-zinc-700/80 dark:border-zinc-800 rounded-xl text-sm text-zinc-100 outline-none appearance-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors cursor-pointer"
+                      className="w-full h-10 px-3.5 pr-9 bg-zinc-100 dark:bg-zinc-800 border-none dark:border-zinc-700 rounded-xl text-sm text-zinc-100 outline-none appearance-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors cursor-pointer"
                     >
                       <option value="United States">United States</option>
                       <option value="Canada">Canada</option>
@@ -132,11 +138,7 @@ export default function FieldsetDoc() {
                 </FieldsetRow>
 
                 <FieldsetRow label="Delivery notes">
-                  <textarea
-                    rows={3}
-                    placeholder=""
-                    className="w-full p-3 bg-zinc-900/60 dark:bg-zinc-900/80 border border-zinc-700/80 dark:border-zinc-800 rounded-xl text-sm text-zinc-100 placeholder:text-zinc-500 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors resize-y min-h-[80px]"
-                  />
+                  <Textarea rows={3} placeholder="" />
                 </FieldsetRow>
               </FieldsetContent>
             </Fieldset>
@@ -152,7 +154,7 @@ export default function FieldsetDoc() {
   FieldsetLegend,
   FieldsetHelperText,
   Input,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function ShippingDetailsExample() {
   return (
@@ -282,7 +284,7 @@ function ShippingDetailsExample() {
   FieldsetLegend,
   FieldsetHelperText,
   Input,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -358,7 +360,7 @@ function Example() {
   FieldsetLegend,
   FieldsetHelperText,
   Input,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -446,7 +448,7 @@ function Example() {
   Input,
   Checkbox,
   Divider,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function SideBySideExample() {
   return (
@@ -557,7 +559,7 @@ function SideBySideExample() {
   FieldsetHelperText,
   Input,
   Checkbox,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 {/* 1. Bordered Style */}
 <Fieldset variant="bordered">
@@ -666,7 +668,7 @@ function SideBySideExample() {
   FieldsetHelperText,
   FieldsetErrorText,
   Input,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (

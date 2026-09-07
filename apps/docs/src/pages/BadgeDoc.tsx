@@ -1,6 +1,6 @@
 // apps/docs/src/pages/BadgeDoc.tsx
 import React, { useState } from "react";
-import { Badge, Avatar, Button } from "@my-lib/core";
+import { Badge, Avatar, Button } from "@hudbird/ui";
 import { Bell, Mail, ShoppingCart, MessageSquare, Check, Sparkles } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -96,9 +96,14 @@ export default function BadgeDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Badge
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Badge
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Small status descriptors, labels, and notification counters used for highlighting metadata or activity.
         </p>
@@ -138,7 +143,7 @@ export default function BadgeDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Badge, Avatar, Button } from '@my-lib/core'
+          code={`import { Badge, Avatar, Button } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -231,7 +236,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@my-lib/core'
+            code={`import { Badge } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -277,7 +282,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@my-lib/core'
+            code={`import { Badge } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -365,7 +370,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge, Avatar, Button } from '@my-lib/core'
+            code={`import { Badge, Avatar, Button } from '@hudbird/ui'
 import { ShoppingCart, Bell, Check } from 'lucide-react'
 
 function Example() {
@@ -455,7 +460,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge, Avatar } from '@my-lib/core'
+            code={`import { Badge, Avatar } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -523,7 +528,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@my-lib/core'
+            code={`import { Badge } from '@hudbird/ui'
 
 function Example() {
   return (

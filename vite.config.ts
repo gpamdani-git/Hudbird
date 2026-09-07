@@ -10,13 +10,25 @@ export default defineConfig(() => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './apps/docs/src'),
-        '@my-lib/core': path.resolve(__dirname, './packages/core/src'),
+        '@hudbird/ui': path.resolve(__dirname, './packages/core/src'),
         '@my-lib/theme': path.resolve(__dirname, './packages/theme/src'),
       },
     },
     server: {
       port: 3000,
       host: '0.0.0.0',
+      strictPort: true,
+    },
+    optimizeDeps: {
+      include: [
+        'react',
+        'react-dom',
+        'react-router-dom',
+        'lucide-react',
+        'clsx',
+        'tailwind-merge',
+        'class-variance-authority',
+      ],
     },
   };
 });

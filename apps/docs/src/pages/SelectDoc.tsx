@@ -7,7 +7,7 @@ import {
   type SelectSize,
   type SelectRadius,
   Button,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import {
   Shield,
   UserCheck,
@@ -170,9 +170,14 @@ export default function SelectDoc() {
     <div className="space-y-16 pb-24">
       {/* Header Section */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Select
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Select
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
           Modular dropdown select component featuring pure React state interaction, outside click handling, animated chevron rotation, high-elevation floating menus, and comprehensive dark mode support.
         </p>
@@ -263,7 +268,7 @@ export default function SelectDoc() {
 
         <CodeBlock
           code={`import { useState } from "react";
-import { Select, SelectItem } from "@my-lib/core";
+import { Select, SelectItem } from "@hudbird/ui";
 import { Shield, UserCheck, Eye, Settings } from "lucide-react";
 
 export default function SelectHero() {

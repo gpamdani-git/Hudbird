@@ -8,7 +8,7 @@ import {
   type PaginationSize,
   InfiniteScroll,
   Button,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import {
   RefreshCw,
   Database,
@@ -246,9 +246,14 @@ export default function PaginationDoc() {
     <div className="space-y-16 pb-24">
       {/* Header Section */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Pagination & Infinite Scroll
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Pagination & Infinite Scroll
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
           High-performance data management components for handling paginated datasets and endless feeds with smooth micro-interactions, smart ellipsis calculation, and native IntersectionObserver integration.
         </p>
@@ -323,7 +328,7 @@ export default function PaginationDoc() {
 
         <CodeBlock
           code={`import { useState } from "react";
-import { Pagination } from "@my-lib/core";
+import { Pagination } from "@hudbird/ui";
 
 export default function Example() {
   const [page, setPage] = useState(1);
@@ -754,7 +759,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from "react";
-import { InfiniteScroll } from "@my-lib/core";
+import { InfiniteScroll } from "@hudbird/ui";
 
 export default function InfiniteFeed() {
   const [items, setItems] = useState(initialItems);

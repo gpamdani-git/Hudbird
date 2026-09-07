@@ -1,126 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { TableOfContents } from "./components/TableOfContents";
-import ButtonDoc, { buttonTocItems } from "./pages/ButtonDoc";
-import AlertDoc, { alertTocItems } from "./pages/AlertDoc";
-import AvatarDoc, { avatarTocItems } from "./pages/AvatarDoc";
-import BadgeDoc, { badgeTocItems } from "./pages/BadgeDoc";
-import CheckboxDoc, { checkboxTocItems } from "./pages/CheckboxDoc";
-import ComboBoxDoc, { comboBoxTocItems } from "./pages/ComboBoxDoc";
-import DescriptionListDoc, { descriptionListTocItems } from "./pages/DescriptionListDoc";
-import DialogDoc, { dialogTocItems } from "./pages/DialogDoc";
-import DividerDoc, { dividerTocItems } from "./pages/DividerDoc";
-import DropdownDoc, { dropdownTocItems } from "./pages/DropdownDoc";
-import FieldsetDoc, { fieldsetTocItems } from "./pages/FieldsetDoc";
-import HeadingDoc, { headingTocItems } from "./pages/HeadingDoc";
-import InputDoc, { inputTocItems } from "./pages/InputDoc";
-import CardDoc, { cardTocItems } from "./pages/CardDoc";
-import NavbarDoc, { navbarTocItems } from "./pages/NavbarDoc";
-import PaginationDoc, { paginationTocItems } from "./pages/PaginationDoc";
-import SelectDoc, { selectTocItems } from "./pages/SelectDoc";
-import SkeletonDoc, { skeletonTocItems } from "./pages/SkeletonDoc";
+import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
+import { getTocForPath } from "./tocData";
 
-// Generic Showcase Page for items in the sidebar
-const GenericComponentPage = ({
-  title,
-  description,
-  tag,
-}: {
-  title: string;
-  description: string;
-  tag?: string;
-}) => (
-  <div className="space-y-8 pb-20">
-    <div>
-      <div className="flex items-center gap-3 mb-2">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          {title}
-        </h1>
-        {tag && (
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
-            {tag}
-          </span>
-        )}
-      </div>
-      <p className="text-base text-zinc-600 dark:text-zinc-400">{description}</p>
-    </div>
+// Lazy-load all documentation pages for lightning-fast initial load & low memory footprint
+const GettingStartedDoc = lazy(() => import("./pages/GettingStartedDoc"));
+const ButtonDoc = lazy(() => import("./pages/ButtonDoc"));
+const AlertDoc = lazy(() => import("./pages/AlertDoc"));
+const AvatarDoc = lazy(() => import("./pages/AvatarDoc"));
+const BadgeDoc = lazy(() => import("./pages/BadgeDoc"));
+const CheckboxDoc = lazy(() => import("./pages/CheckboxDoc"));
+const ComboBoxDoc = lazy(() => import("./pages/ComboBoxDoc"));
+const DescriptionListDoc = lazy(() => import("./pages/DescriptionListDoc"));
+const DialogDoc = lazy(() => import("./pages/DialogDoc"));
+const DividerDoc = lazy(() => import("./pages/DividerDoc"));
+const DropdownDoc = lazy(() => import("./pages/DropdownDoc"));
+const FieldsetDoc = lazy(() => import("./pages/FieldsetDoc"));
+const HeadingDoc = lazy(() => import("./pages/HeadingDoc"));
+const InputDoc = lazy(() => import("./pages/InputDoc"));
+const CardDoc = lazy(() => import("./pages/CardDoc"));
+const NavbarDoc = lazy(() => import("./pages/NavbarDoc"));
+const PaginationDoc = lazy(() => import("./pages/PaginationDoc"));
+const SelectDoc = lazy(() => import("./pages/SelectDoc"));
+const SkeletonDoc = lazy(() => import("./pages/SkeletonDoc"));
+const SwitchDoc = lazy(() => import("./pages/SwitchDoc"));
+const TextDoc = lazy(() => import("./pages/TextDoc"));
+const TextareaDoc = lazy(() => import("./pages/TextareaDoc"));
+const TableDoc = lazy(() => import("./pages/TableDoc"));
+const TabsDoc = lazy(() => import("./pages/TabsDoc"));
+const RadioGroupDoc = lazy(() => import("./pages/RadioGroupDoc"));
+const TooltipDoc = lazy(() => import("./pages/TooltipDoc"));
+const AccordionDoc = lazy(() => import("./pages/AccordionDoc"));
 
-    <div className="rounded-xl border border-dashed border-zinc-300 dark:border-zinc-800 p-12 text-center bg-zinc-50/50 dark:bg-zinc-900/20">
-      <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-        Component documentation and interactive playground for <span className="font-semibold text-zinc-900 dark:text-zinc-100">{title}</span>.
-      </p>
-    </div>
-  </div>
-);
+const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
+const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
+const AuthLayoutDoc = lazy(() => import("./pages/AuthLayoutDoc"));
+
+const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
+const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
+const StackedLayoutDemo = lazy(() => import("./pages/demos/StackedLayoutDemo"));
+const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
 
 export default function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const location = useLocation();
 
-  // Determine current TOC items based on active route
-  const getTocItems = () => {
-    if (location.pathname === "/button" || location.pathname === "/") {
-      return buttonTocItems;
-    }
-    if (location.pathname === "/alert") {
-      return alertTocItems;
-    }
-    if (location.pathname === "/avatar") {
-      return avatarTocItems;
-    }
-    if (location.pathname === "/badge") {
-      return badgeTocItems;
-    }
-    if (location.pathname === "/checkbox") {
-      return checkboxTocItems;
-    }
-    if (location.pathname === "/combobox") {
-      return comboBoxTocItems;
-    }
-    if (location.pathname === "/description-list") {
-      return descriptionListTocItems;
-    }
-    if (location.pathname === "/dialog") {
-      return dialogTocItems;
-    }
-    if (location.pathname === "/divider") {
-      return dividerTocItems;
-    }
-    if (location.pathname === "/dropdown") {
-      return dropdownTocItems;
-    }
-    if (location.pathname === "/fieldset") {
-      return fieldsetTocItems;
-    }
-    if (location.pathname === "/heading") {
-      return headingTocItems;
-    }
-    if (location.pathname === "/input") {
-      return inputTocItems;
-    }
-    if (location.pathname === "/card") {
-      return cardTocItems;
-    }
-    if (location.pathname === "/navbar") {
-      return navbarTocItems;
-    }
-    if (location.pathname === "/pagination") {
-      return paginationTocItems;
-    }
-    if (location.pathname === "/select") {
-      return selectTocItems;
-    }
-    if (location.pathname === "/skeleton") {
-      return skeletonTocItems;
-    }
-    return [
-      { id: "overview", title: "Overview" },
-      { id: "usage", title: "Usage" },
-      { id: "api", title: "API Reference" },
-    ];
-  };
+  if (location.pathname.startsWith("/demos/")) {
+    return (
+      <Suspense fallback={<DocLoadingSkeleton />}>
+        <Routes>
+          <Route path="/demos/sidebar" element={<SidebarBorderedDemo />} />
+          <Route path="/demos/sidebar-flat" element={<SidebarFlatDemo />} />
+          <Route path="/demos/stacked" element={<StackedLayoutDemo />} />
+          <Route path="/demos/auth" element={<AuthLayoutDemo />} />
+        </Routes>
+      </Suspense>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-50 selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
@@ -139,37 +78,51 @@ export default function App() {
           <div className="w-full max-w-7xl px-4 py-8 sm:px-8 lg:px-12 flex gap-12 justify-between">
             {/* Center Main Content Container */}
             <div className="flex-1 max-w-3xl min-w-0">
-              <Routes>
-                <Route path="/" element={<Navigate to="/button" replace />} />
-                <Route path="/button" element={<ButtonDoc />} />
-                <Route path="/input" element={<InputDoc />} />
-                <Route path="/card" element={<CardDoc />} />
-                <Route path="/alert" element={<AlertDoc />} />
-                <Route path="/avatar" element={<AvatarDoc />} />
-                <Route path="/badge" element={<BadgeDoc />} />
-                <Route path="/checkbox" element={<CheckboxDoc />} />
-                <Route path="/combobox" element={<ComboBoxDoc />} />
-                <Route path="/description-list" element={<DescriptionListDoc />} />
-                <Route path="/dialog" element={<DialogDoc />} />
-                <Route path="/divider" element={<DividerDoc />} />
-                <Route path="/dropdown" element={<DropdownDoc />} />
-                <Route path="/fieldset" element={<FieldsetDoc />} />
-                <Route path="/heading" element={<HeadingDoc />} />
-                <Route path="/navbar" element={<NavbarDoc />} />
-                <Route path="/pagination" element={<PaginationDoc />} />
-                <Route path="/select" element={<SelectDoc />} />
-                <Route path="/skeleton" element={<SkeletonDoc />} />
-                <Route
-                  path="*"
-                  element={<Navigate to="/button" replace />}
-                />
-              </Routes>
+              <Suspense fallback={<DocLoadingSkeleton />}>
+                <Routes>
+                  <Route path="/" element={<GettingStartedDoc />} />
+                  <Route path="/button" element={<ButtonDoc />} />
+                  <Route path="/input" element={<InputDoc />} />
+                  <Route path="/card" element={<CardDoc />} />
+                  <Route path="/alert" element={<AlertDoc />} />
+                  <Route path="/avatar" element={<AvatarDoc />} />
+                  <Route path="/badge" element={<BadgeDoc />} />
+                  <Route path="/checkbox" element={<CheckboxDoc />} />
+                  <Route path="/combobox" element={<ComboBoxDoc />} />
+                  <Route path="/description-list" element={<DescriptionListDoc />} />
+                  <Route path="/dialog" element={<DialogDoc />} />
+                  <Route path="/divider" element={<DividerDoc />} />
+                  <Route path="/dropdown" element={<DropdownDoc />} />
+                  <Route path="/fieldset" element={<FieldsetDoc />} />
+                  <Route path="/heading" element={<HeadingDoc />} />
+                  <Route path="/navbar" element={<NavbarDoc />} />
+                  <Route path="/pagination" element={<PaginationDoc />} />
+                  <Route path="/select" element={<SelectDoc />} />
+                  <Route path="/layouts/sidebar" element={<SidebarDoc />} />
+                  <Route path="/layouts/stacked" element={<StackedLayoutDoc />} />
+                  <Route path="/layouts/auth" element={<AuthLayoutDoc />} />
+                  <Route path="/skeleton" element={<SkeletonDoc />} />
+                  <Route path="/switch" element={<SwitchDoc />} />
+                  <Route path="/text" element={<TextDoc />} />
+                  <Route path="/textarea" element={<TextareaDoc />} />
+                  <Route path="/table" element={<TableDoc />} />
+                  <Route path="/accordion" element={<AccordionDoc />} />
+                  <Route path="/radio-group" element={<RadioGroupDoc />} />
+                  <Route path="/tabs" element={<TabsDoc />} />
+                  <Route path="/tooltip" element={<TooltipDoc />} />
+
+                  <Route
+                    path="*"
+                    element={<Navigate to="/button" replace />}
+                  />
+                </Routes>
+              </Suspense>
             </div>
 
             {/* Right Sticky Table of Contents Sidebar */}
             <aside className="hidden xl:block w-56 shrink-0">
               <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
-                <TableOfContents items={getTocItems()} />
+                <TableOfContents items={getTocForPath(location.pathname)} />
               </div>
             </aside>
           </div>

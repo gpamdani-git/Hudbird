@@ -1,6 +1,6 @@
 // apps/docs/src/pages/CheckboxDoc.tsx
 import React, { useState } from "react";
-import { Checkbox, Button } from "@my-lib/core";
+import { Checkbox, Button } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -93,9 +93,14 @@ export default function CheckboxDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Checkbox
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Checkbox
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Interactive control allowing users to select one or multiple items from a set, complete with animated checkmarks and accessible focus rings.
         </p>
@@ -112,7 +117,7 @@ export default function CheckboxDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Checkbox } from '@my-lib/core'
+          code={`import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -168,7 +173,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@my-lib/core'
+            code={`import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -201,7 +206,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@my-lib/core'
+            code={`import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -242,7 +247,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@my-lib/core'
+            code={`import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -282,7 +287,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@my-lib/core'
+            code={`import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -345,7 +350,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Checkbox } from '@my-lib/core'
+import { Checkbox } from '@hudbird/ui'
 
 function Example() {
   const [selected, setSelected] = useState(['notifications'])

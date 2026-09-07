@@ -7,7 +7,7 @@ import {
   type HeadingTracking,
   type HeadingColor,
   Button,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -106,9 +106,14 @@ export default function HeadingDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Heading
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Heading
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Typographic heading primitives rendered with semantic HTML levels (H1–H6), optical letter-spacing, fluid responsiveness, and native dark mode contrast.
         </p>
@@ -126,7 +131,7 @@ export default function HeadingDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Heading } from '@my-lib/core'
+          code={`import { Heading } from '@hudbird/ui'
 
 export default function Example() {
   return (
@@ -201,7 +206,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@my-lib/core'
+            code={`import { Heading } from '@hudbird/ui'
 
 export default function HierarchyExample() {
   return (
@@ -260,7 +265,7 @@ export default function HierarchyExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@my-lib/core'
+            code={`import { Heading } from '@hudbird/ui'
 
 {/* 1. Default high-contrast */}
 <Heading as="h2" color="default">
@@ -318,7 +323,7 @@ export default function HierarchyExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@my-lib/core'
+            code={`import { Heading } from '@hudbird/ui'
 
 export default function ArticleSections() {
   return (

@@ -1,6 +1,6 @@
 // apps/docs/src/pages/InputDoc.tsx
 import React, { useState } from "react";
-import { Input, Button, type InputVariant, type InputSize, type InputRadius, type InputLabelPlacement } from "@my-lib/core";
+import { Input, Button, type InputVariant, type InputSize, type InputRadius, type InputLabelPlacement } from "@hudbird/ui";
 import { Search, Eye, EyeOff, Mail, Lock, DollarSign, Sparkles } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -122,9 +122,14 @@ export default function InputDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Input
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Input
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           A high-performance form field primitive with rich visual variants, embedded inside/outside labels, interactive clear buttons, custom start/end content slots, and robust validation state handling.
         </p>
@@ -146,7 +151,7 @@ export default function InputDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Input } from '@my-lib/core'
+          code={`import { Input } from '@hudbird/ui'
 import { Mail } from 'lucide-react'
 
 export default function Example() {
@@ -213,7 +218,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@my-lib/core'
+            code={`import { Input } from '@hudbird/ui'
 
 {/* 1. Flat Variant (Default) */}
 <Input variant="flat" label="Flat (Default)" placeholder="Enter workspace name" />
@@ -253,7 +258,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@my-lib/core'
+            code={`import { Input } from '@hudbird/ui'
 
 {/* Standard Outside Placement */}
 <Input
@@ -334,7 +339,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Input } from '@my-lib/core'
+import { Input } from '@hudbird/ui'
 import { Search, DollarSign, Lock, Eye, EyeOff } from 'lucide-react'
 
 export function ContentSlotsExample() {
@@ -403,7 +408,7 @@ export function ContentSlotsExample() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Input } from '@my-lib/core'
+import { Input } from '@hudbird/ui'
 
 export function ClearableExample() {
   const [value, setValue] = useState('john.doe@company.org')
@@ -463,7 +468,7 @@ export function ClearableExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@my-lib/core'
+            code={`import { Input } from '@hudbird/ui'
 
 <Input
   label="Email"
@@ -520,7 +525,7 @@ export function ClearableExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@my-lib/core'
+            code={`import { Input } from '@hudbird/ui'
 
 {/* Small */}
 <Input size="sm" radius="md" label="Small (h-8)" />

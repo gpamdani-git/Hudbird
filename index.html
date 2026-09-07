@@ -3,12 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My UI Library</title>
-    <meta name="description" content="A premium UI Component Library built with React, TypeScript, Tailwind CSS, and Class Variance Authority (CVA)." />
-    <meta property="og:title" content="My UI Library" />
-    <meta property="og:description" content="A premium UI Component Library built with React, TypeScript, Tailwind CSS, and Class Variance Authority (CVA)." />
+    <title>Hudbird UI - Fly through your development</title>
+    <meta name="description" content="A premium, featherweight UI Component Library built with React, TypeScript, and Tailwind CSS." />
+    <meta property="og:title" content="Hudbird UI - Fly through your development" />
+    <meta property="og:description" content="A premium, featherweight UI Component Library built with React, TypeScript, and Tailwind CSS." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme') || 'system';
+          var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+
+        window.addEventListener('error', function(e) {
+          if (e.message && (e.message.indexOf('ResizeObserver loop') !== -1 || e.message.indexOf('undelivered notifications') !== -1)) {
+            e.stopImmediatePropagation();
+          }
+        });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

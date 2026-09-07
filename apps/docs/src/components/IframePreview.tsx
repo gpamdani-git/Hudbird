@@ -46,18 +46,19 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
                 background-color: transparent;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
+                overflow: visible !important;
               }
               body {
                 padding: 0;
                 box-sizing: border-box;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
               }
             </style>
           </head>
-          <body class="text-zinc-900 dark:text-zinc-50 font-sans p-4 relative overflow-x-hidden min-h-[${minHeight}px]">
-            <div id="frame-root" class="w-full flex flex-col items-center justify-center"></div>
+          <body class="text-zinc-900 dark:text-zinc-50 font-sans p-4 relative overflow-visible min-h-[${minHeight}px] m-0">
+            <div id="frame-root" class="w-full flex flex-col items-center justify-start overflow-visible min-h-full"></div>
           </body>
         </html>
       `);
@@ -76,15 +77,21 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
       const root = doc.getElementById("frame-root");
       setMountNode(root);
 
-      // Auto-adjust height dynamically based on content changes
-      if (doc.body) {
+      // Auto-adjust height dynamically based on content changes using requestAnimationFrame to prevent notification loops
+      if (root) {
+        let rafId: number | null = null;
         resizeObserver = new ResizeObserver(() => {
-          if (doc.body) {
-            const newHeight = Math.max(doc.body.scrollHeight, minHeight);
-            setFrameHeight(newHeight);
+          if (rafId) {
+            cancelAnimationFrame(rafId);
           }
+          rafId = requestAnimationFrame(() => {
+            if (doc.body) {
+              const contentHeight = Math.max(root.scrollHeight, doc.body.scrollHeight, minHeight);
+              setFrameHeight((prev) => (Math.abs(prev - contentHeight) > 3 ? contentHeight : prev));
+            }
+          });
         });
-        resizeObserver.observe(doc.body);
+        resizeObserver.observe(root);
       }
     };
 
@@ -118,7 +125,7 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
       ref={iframeRef}
       title="Responsive Isolated Canvas"
       style={{ height: `${frameHeight}px` }}
-      className={`w-full border-0 transition-[height] duration-200 block bg-transparent ${className}`}
+      className={`w-full border-0 block bg-transparent ${className}`}
     >
       {mountNode && ReactDOM.createPortal(children, mountNode)}
     </iframe>

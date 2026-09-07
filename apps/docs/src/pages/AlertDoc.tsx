@@ -1,6 +1,6 @@
 // apps/docs/src/pages/AlertDoc.tsx
 import React, { useState } from "react";
-import { Alert, Button } from "@my-lib/core";
+import { Alert, Button } from "@hudbird/ui";
 import { Info, CheckCircle2, AlertTriangle, AlertCircle, RotateCcw } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -80,9 +80,14 @@ export default function AlertDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Alert
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Alert
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Displays a callout banner for communicating status, contextual feedback, and user attention.
         </p>
@@ -101,7 +106,7 @@ export default function AlertDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Alert } from '@my-lib/core'
+          code={`import { Alert } from '@hudbird/ui'
 import { Info } from 'lucide-react'
 
 function Example() {
@@ -172,7 +177,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@my-lib/core'
+            code={`import { Alert } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -221,7 +226,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@my-lib/core'
+            code={`import { Alert } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -269,7 +274,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@my-lib/core'
+            code={`import { Alert } from '@hudbird/ui'
 import { CheckCircle2, AlertTriangle, AlertCircle } from 'lucide-react'
 
 function Example() {
@@ -348,7 +353,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@my-lib/core'
+            code={`import { Alert } from '@hudbird/ui'
 
 function Example() {
   return (

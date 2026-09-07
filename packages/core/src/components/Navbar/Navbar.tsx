@@ -247,7 +247,10 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
               isBlurred,
               className,
             }),
-            isMenuOpen && "z-50"
+            isMenuOpen && "z-50",
+            isMenuOpen && styleVariant === "transparent" && "bg-white dark:bg-zinc-950 transition-colors",
+            isContained && styleVariant !== "floating-full" && "rounded-t-2xl",
+            isContained && !isMenuOpen && styleVariant !== "floating-full" && "rounded-b-2xl"
           )}
           {...props}
         >
@@ -533,11 +536,22 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
-                "left-0 w-full z-50 bg-white dark:bg-zinc-950 flex flex-col p-6 shadow-xl overflow-y-auto",
+                "left-0 w-full z-50 flex flex-col p-6 overflow-y-auto",
+                // Conditional styling based on styleVariant
+                styleVariant === "glassmorphism" || isFloating
+                  ? "bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-2xl border-x border-b border-zinc-200/50 dark:border-zinc-800/50"
+                  : "bg-white dark:bg-zinc-950 shadow-xl",
+                
                 isContained
-                  ? "absolute top-16 rounded-b-2xl max-h-[500px]"
+                  ? "absolute top-16 max-h-[500px]"
                   : "fixed top-16 max-h-[calc(100vh-4rem)]",
-                isFloating && !isContained && "fixed top-20",
+                
+                // When floating, detach from top edge and fully round it
+                isFloating
+                  ? "mt-2 rounded-2xl border-t"
+                  : "rounded-b-2xl",
+                
+                isFloating && !isContained && "fixed top-20 mt-2",
                 className
               )}
               {...(props as any)}

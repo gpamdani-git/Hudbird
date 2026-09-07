@@ -1,6 +1,6 @@
 // apps/docs/src/pages/ComboBoxDoc.tsx
 import React, { useState } from "react";
-import { ComboBox, type ComboBoxOption } from "@my-lib/core";
+import { ComboBox, type ComboBoxOption } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -147,9 +147,14 @@ export default function ComboBoxDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          ComboBox
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            ComboBox
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Advanced searchable autocomplete dropdown supporting single selection and multi-select tags/chips with live fuzzy filtering.
         </p>
@@ -171,7 +176,7 @@ export default function ComboBoxDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { ComboBox } from '@my-lib/core'
+          code={`import { ComboBox } from '@hudbird/ui'
 
 const frameworks = [
   { value: 'react', label: 'React' },
@@ -247,7 +252,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { ComboBox } from '@my-lib/core'
+import { ComboBox } from '@hudbird/ui'
 
 function Example() {
   const [selectedCountry, setSelectedCountry] = useState('id')
@@ -297,7 +302,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { ComboBox } from '@my-lib/core'
+import { ComboBox } from '@hudbird/ui'
 
 function Example() {
   const [skills, setSkills] = useState(['react', 'typescript', 'tailwind'])
@@ -357,7 +362,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { ComboBox } from '@my-lib/core'
+            code={`import { ComboBox } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -402,7 +407,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { ComboBox } from '@my-lib/core'
+            code={`import { ComboBox } from '@hudbird/ui'
 
 function Example() {
   return (

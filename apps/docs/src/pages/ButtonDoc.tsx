@@ -1,6 +1,6 @@
 // apps/docs/src/pages/ButtonDoc.tsx
 import React, { useState } from "react";
-import { Button } from "@my-lib/core";
+import { Button } from "@hudbird/ui";
 import {
   Plus,
   ArrowRight,
@@ -162,9 +162,14 @@ export default function ButtonDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Button
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Button
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Interactive trigger component with rich slot support for icons, loaders, compound variants, and corner radiuses.
         </p>
@@ -190,7 +195,7 @@ export default function ButtonDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Button } from '@my-lib/core'
+          code={`import { Button } from '@hudbird/ui'
 import { Sparkles, CheckCircle2, Heart } from 'lucide-react'
 
 function Example() {
@@ -264,7 +269,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -302,7 +307,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -344,7 +349,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 import { Plus, Mail, ArrowRight, Trash2 } from 'lucide-react'
 
 function Example() {
@@ -408,7 +413,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 import { Search, Edit, Download, Trash2, Send } from 'lucide-react'
 
 function Example() {
@@ -458,7 +463,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -509,7 +514,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 
 function Example() {
   return (
@@ -548,7 +553,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@my-lib/core'
+            code={`import { Button } from '@hudbird/ui'
 import { ArrowRight } from 'lucide-react'
 
 function Example() {

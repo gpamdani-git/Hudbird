@@ -10,7 +10,7 @@ import {
   Badge,
   type CardVariant,
   type CardRadius,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import {
   Heart,
   Share2,
@@ -101,9 +101,14 @@ export default function CardDoc() {
     <div className="space-y-16 pb-24">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Card
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Card
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           A modular, versatile surface container composed of <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">Card</code>, <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardHeader</code>, <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardBody</code>, and <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardFooter</code> with interactive hover, press feedback, and glassmorphic overlay support.
         </p>
@@ -160,7 +165,7 @@ export default function CardDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from '@my-lib/core'
+          code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from '@hudbird/ui'
 
 export default function Example() {
   const [isFollowing, setIsFollowing] = useState(false)
@@ -291,7 +296,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardHeader, CardBody, CardFooter } from '@my-lib/core'
+            code={`import { Card, CardHeader, CardBody, CardFooter } from '@hudbird/ui'
 
 {/* 1. Shadow Variant (Default) */}
 <Card variant="shadow">
@@ -386,7 +391,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Badge } from '@my-lib/core'
+import { Card, CardHeader, CardBody, CardFooter, Badge } from '@hudbird/ui'
 
 export function InteractiveCardsExample() {
   const [clicks, setClicks] = useState(0)
@@ -520,7 +525,7 @@ export function InteractiveCardsExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Badge } from '@my-lib/core'
+            code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Badge } from '@hudbird/ui'
 import { Heart, Share2, Bookmark, MoreVertical } from 'lucide-react'
 
 export function RichContentCard() {
@@ -627,7 +632,7 @@ export function RichContentCard() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardFooter, Button } from '@my-lib/core'
+            code={`import { Card, CardFooter, Button } from '@hudbird/ui'
 import { Play, Music2 } from 'lucide-react'
 
 export function ImageCoverCard() {
@@ -747,7 +752,7 @@ export function ImageCoverCard() {
                   </p>
                 </CardBody>
                 <CardFooter className="justify-between">
-                  <span className="text-xs text-zinc-400">@my-lib/core</span>
+                  <span className="text-xs text-zinc-400">@hudbird/ui</span>
                   <Button size="sm" color="indigo" variant="flat">
                     Action
                   </Button>

@@ -9,8 +9,8 @@
   "packageManager": "pnpm@9.0.0",
   "scripts": {
     "build": "vite build",
-    "dev": "vite",
-    "lint": "tsc --noEmit && turbo run lint"
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",

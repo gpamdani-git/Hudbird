@@ -1,9 +1,9 @@
 import React from "react";
-import { Skeleton } from "@my-lib/core";
+import { Skeleton } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
-import { Card, CardBody, CardHeader } from "@my-lib/core";
+import { Card, CardBody, CardHeader } from "@hudbird/ui";
 
 export const skeletonTocItems = [
   { id: "component-api", title: "Component API" },
@@ -54,9 +54,14 @@ export default function SkeletonDoc() {
     <div className="max-w-4xl pb-24">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Skeleton
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Skeleton
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           A placeholder component to show content is loading. Features customizable shapes and smooth pulse/wave animations matching the design system.
         </p>
@@ -75,7 +80,7 @@ export default function SkeletonDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Skeleton } from "@my-lib/core";
+          code={`import { Skeleton } from "@hudbird/ui";
 
 export function App() {
   return (

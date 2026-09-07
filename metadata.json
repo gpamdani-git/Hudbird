@@ -1,6 +1,6 @@
 {
-  "name": "My UI Library",
-  "description": "A premium UI Component Library built with React, TypeScript, Tailwind CSS, and Class Variance Authority (CVA).",
+  "name": "Hudbird UI",
+  "description": "A premium, featherweight UI Component Library built with React, TypeScript, and Tailwind CSS.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

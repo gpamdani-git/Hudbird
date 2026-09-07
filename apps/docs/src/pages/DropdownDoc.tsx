@@ -8,7 +8,7 @@ import {
   DropdownSection,
   Button,
   type DropdownPlacement,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import {
   ChevronDown,
   Edit,
@@ -129,9 +129,14 @@ export default function DropdownDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Dropdown
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Dropdown
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Versatile popover menus for triggering contextual actions with customizable placement positions (Center, Top, Bottom, Left, Right), high elevation, and automatic dismiss.
         </p>
@@ -196,7 +201,7 @@ export default function DropdownDoc() {
   DropdownMenu,
   DropdownItem,
   Button,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 import { Edit, Copy, Share2, Trash2, ChevronDown } from 'lucide-react'
 
 function Example() {
@@ -292,7 +297,7 @@ function Example() {
   DropdownMenu,
   DropdownItem,
   Button,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 
 function Example() {
   return (
@@ -383,7 +388,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@my-lib/core'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@hudbird/ui'
 
 {/* Configured for: "${selectedPlacement}" */}
 <Dropdown placement="${selectedPlacement}">
@@ -448,7 +453,7 @@ function Example() {
   DropdownMenu,
   DropdownItem,
   Button,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 import { FilePlus, FolderPlus, ExternalLink } from 'lucide-react'
 
 function Example() {
@@ -534,7 +539,7 @@ function Example() {
   DropdownItem,
   DropdownSection,
   Button,
-} from '@my-lib/core'
+} from '@hudbird/ui'
 import { User, Settings, Shield, LogOut } from 'lucide-react'
 
 function Example() {

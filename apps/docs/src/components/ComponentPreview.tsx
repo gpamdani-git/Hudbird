@@ -10,6 +10,7 @@ import {
   Sparkles,
   X,
   Layers,
+  ExternalLink,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IframePreview } from "./IframePreview";
@@ -25,6 +26,7 @@ interface ComponentPreviewProps {
   defaultViewport?: ViewportMode;
   allowFullscreen?: boolean;
   iframeMode?: "auto" | "always" | "none";
+  demoUrl?: string;
 }
 
 export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
@@ -36,6 +38,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   defaultViewport = "desktop",
   allowFullscreen = true,
   iframeMode = "auto",
+  demoUrl,
 }) => {
   const [viewport, setViewport] = useState<ViewportMode>(defaultViewport);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -138,6 +141,18 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           <RotateCcw size={12} />
         </button>
 
+        {demoUrl && (
+          <a
+            href={demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 h-7 px-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-colors shadow-xs font-medium text-xs ml-2"
+            title="Open demo in new tab"
+          >
+            <span>Open in new tab</span>
+            <ExternalLink size={12} />
+          </a>
+        )}
         {allowFullscreen && !inModal && (
           <button
             type="button"
@@ -194,7 +209,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
               data-viewport={viewport}
               className={`w-full ${
                 (iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always"
-                  ? "rounded-2xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 shadow-md bg-white dark:bg-zinc-950 overflow-hidden"
+                  ? "w-full overflow-visible"
                   : ""
               }`}
             >
@@ -276,7 +291,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                   <div
                     className={`w-full overflow-hidden ${
                       (iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always"
-                        ? "rounded-3xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 shadow-2xl bg-white dark:bg-zinc-950"
+                        ? "w-full overflow-visible"
                         : ""
                     }`}
                   >

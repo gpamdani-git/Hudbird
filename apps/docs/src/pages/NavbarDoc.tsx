@@ -19,7 +19,7 @@ import {
   type NavbarLogoPosition,
   type NavbarStyleVariant,
   type NavbarMobileMenuVariant,
-} from "@my-lib/core";
+} from "@hudbird/ui";
 import {
   Search,
   Bell,
@@ -216,9 +216,14 @@ export default function NavbarDoc() {
     <div className="space-y-16 pb-24">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl mb-3">
-          Navbar
-        </h1>
+        <div className="flex items-center gap-3 mb-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+            Navbar
+          </h1>
+          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+            Component
+          </span>
+        </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           A production-grade, highly responsive navigation bar engineered with TypeScript, Tailwind CSS, and Class Variance Authority (CVA). Features mechanical Framer Motion hamburger transitions, 4 mobile drawer variants, multi-column E-commerce Mega Menus, floating pills, and flexible logo placements.
         </p>
@@ -228,7 +233,7 @@ export default function NavbarDoc() {
       <section className="space-y-4">
         <ComponentPreview>
           <div className="w-full py-4">
-            <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm relative">
+            <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm relative min-h-[460px]">
               <Navbar
                 position="static"
                 styleVariant="glassmorphism"
@@ -329,7 +334,7 @@ export default function NavbarDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button } from '@my-lib/core'
+          code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button } from '@hudbird/ui'
 
 export default function StandardNavbarExample() {
   const [activeTab, setActiveTab] = useState('features')
@@ -408,7 +413,7 @@ export default function StandardNavbarExample() {
 
           <ComponentPreview>
             <div className="w-full py-2">
-              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs relative">
+              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs relative min-h-[400px]">
                 <Navbar
                   position="static"
                   isBordered
@@ -1055,7 +1060,7 @@ export default function StandardNavbarExample() {
 
           <ComponentPreview>
             <div className="w-full py-2">
-              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs bg-white dark:bg-zinc-950 relative">
+              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs bg-white dark:bg-zinc-950 relative min-h-[400px]">
                 <Navbar
                   position="static"
                   logoPosition={selectedLogoPos}
@@ -1174,7 +1179,7 @@ export default function StandardNavbarExample() {
 
           <ComponentPreview>
             <div className="w-full py-4">
-              <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 relative bg-gradient-to-br from-indigo-500/10 via-zinc-100 to-rose-500/10 dark:from-indigo-950/40 dark:via-zinc-950 dark:to-rose-950/30 p-2 sm:p-6 min-h-[300px] flex flex-col justify-between">
+              <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 relative bg-gradient-to-br from-indigo-500/10 via-zinc-100 to-rose-500/10 dark:from-indigo-950/40 dark:via-zinc-950 dark:to-rose-950/30 p-2 sm:p-6 min-h-[400px] flex flex-col justify-between">
                 <Navbar
                   position="static"
                   styleVariant={selectedStyle}
@@ -1406,7 +1411,7 @@ export default function StandardNavbarExample() {
 
           <ComponentPreview>
             <div className="w-full py-2">
-              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs relative">
+              <div className="w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-xs relative min-h-[400px]">
                 <Navbar
                   layout="admin"
                   position="static"
@@ -1581,7 +1586,7 @@ export default function StandardNavbarExample() {
 
           <ComponentPreview>
             <div className="w-full py-4">
-              <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm relative min-h-[380px] bg-zinc-100/50 dark:bg-zinc-950 flex flex-col justify-between">
+              <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-sm relative min-h-[460px] bg-zinc-100/50 dark:bg-zinc-950 flex flex-col justify-between">
                 <Navbar
                   position={playPosition}
                   logoPosition={playLogoPos}
