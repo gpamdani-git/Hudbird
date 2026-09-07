@@ -13,7 +13,7 @@
     "react-dom": "^19.0.1",
     "react-router-dom": "^6.22.3",
     "lucide-react": "^0.475.0",
-    "@hudbird/ui": "*"
+    "@hudbird/ui": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
