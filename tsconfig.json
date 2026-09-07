@@ -11,7 +11,7 @@
     "baseUrl": ".",
     "paths": {
       "@hudbird/ui": ["packages/core/src/index.ts"],
-      "@my-lib/theme": ["packages/theme/src/index.ts"]
+      "@hudbird/theme": ["packages/theme/src/index.ts"]
     }
   }
 }

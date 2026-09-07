@@ -8,7 +8,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@hudbird/ui': path.resolve(__dirname, '../../packages/core/src'),
-      '@my-lib/theme': path.resolve(__dirname, '../../packages/theme/src'),
+      '@hudbird/theme': path.resolve(__dirname, '../../packages/theme/src'),
     },
   },
   server: {
