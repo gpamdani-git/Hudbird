@@ -21,6 +21,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('@my-lib/theme')
+    require('@hudbird/theme')
   ],
 }
