@@ -115,6 +115,9 @@ importers:
         specifier: ^6.22.3
         version: 6.30.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
+      '@hudbird/theme':
+        specifier: workspace:*
+        version: link:../../packages/theme
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.18
