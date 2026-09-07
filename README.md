@@ -1,3 +1,4 @@
+<img width="1810" height="576" alt="image" src="https://github.com/user-attachments/assets/c7fd4e05-8349-47c1-8a2a-f91e6390980d" />
 # Hudbird UI
 
 **Fly through your development. Minimize the noise, keep the essence.**
