@@ -25,6 +25,14 @@ module.exports = plugin(
   {
     theme: {
       extend: {
+        keyframes: {
+          shimmer: {
+            '100%': { transform: 'translateX(100%)' },
+          },
+        },
+        animation: {
+          shimmer: 'shimmer 2s infinite',
+        },
         colors: {
           background: 'rgb(var(--background) / <alpha-value>)',
           elevated: 'rgb(var(--elevated) / <alpha-value>)',

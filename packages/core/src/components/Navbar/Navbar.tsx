@@ -210,7 +210,8 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
 
     // Separate NavbarMenu from main header children so drawer overlays are never constrained by the h-16 flex row
     const barChildren: React.ReactNode[] = [];
-    const menuChildren: React.ReactNode[] = [];
+    const leftRightFullscreenMenuChildren: React.ReactNode[] = [];
+    const topMenuChildren: React.ReactNode[] = [];
 
     React.Children.forEach(children, (child) => {
       if (
@@ -221,7 +222,11 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
           (child.props as any)?.variant !== undefined ||
           (child.props as any)?.isContained !== undefined)
       ) {
-        menuChildren.push(child);
+        if ((child.props as any)?.variant === "top" || !(child.props as any)?.variant) {
+           topMenuChildren.push(child);
+        } else {
+           leftRightFullscreenMenuChildren.push(child);
+        }
       } else {
         barChildren.push(child);
       }
@@ -255,8 +260,9 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
           >
             {barChildren}
           </div>
-          {menuChildren}
+          {topMenuChildren}
         </nav>
+        {leftRightFullscreenMenuChildren}
       </NavbarContext.Provider>
     );
   }
@@ -527,11 +533,11 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
-                "absolute left-0 w-full z-50 bg-white dark:bg-zinc-950 flex flex-col p-6 shadow-xl overflow-y-auto",
+                "left-0 w-full z-50 bg-white dark:bg-zinc-950 flex flex-col p-6 shadow-xl overflow-y-auto",
                 isContained
-                  ? "top-full rounded-b-2xl max-h-[500px]"
-                  : "top-16 max-h-[calc(100vh-4rem)]",
-                isFloating && !isContained && "top-20",
+                  ? "absolute top-16 rounded-b-2xl max-h-[500px]"
+                  : "fixed top-16 max-h-[calc(100vh-4rem)]",
+                isFloating && !isContained && "fixed top-20",
                 className
               )}
               {...(props as any)}

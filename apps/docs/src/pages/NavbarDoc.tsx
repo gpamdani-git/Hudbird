@@ -512,7 +512,7 @@ export default function StandardNavbarExample() {
 
             <ComponentPreview>
               <div className="w-full py-4">
-                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[480px] flex flex-col select-none">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[640px] flex flex-col select-none">
                   <Navbar
                   position="static"
                   isBordered
@@ -636,7 +636,7 @@ export default function StandardNavbarExample() {
 
             <ComponentPreview>
               <div className="w-full py-4">
-                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[640px] flex flex-col select-none">
                   <Navbar
                     position="static"
                     isBordered
@@ -777,7 +777,7 @@ export default function StandardNavbarExample() {
 
             <ComponentPreview>
               <div className="w-full py-4">
-                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[640px] flex flex-col select-none">
                   <Navbar
                     position="static"
                     isBordered
@@ -915,7 +915,7 @@ export default function StandardNavbarExample() {
 
             <ComponentPreview>
               <div className="w-full py-4">
-                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[490px] flex flex-col select-none">
+                <div className="w-full rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-sm relative min-h-[640px] flex flex-col select-none">
                   <Navbar
                     position="static"
                     isBordered

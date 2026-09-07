@@ -20,6 +20,7 @@ import CardDoc, { cardTocItems } from "./pages/CardDoc";
 import NavbarDoc, { navbarTocItems } from "./pages/NavbarDoc";
 import PaginationDoc, { paginationTocItems } from "./pages/PaginationDoc";
 import SelectDoc, { selectTocItems } from "./pages/SelectDoc";
+import SkeletonDoc, { skeletonTocItems } from "./pages/SkeletonDoc";
 
 // Generic Showcase Page for items in the sidebar
 const GenericComponentPage = ({
@@ -111,6 +112,9 @@ export default function App() {
     if (location.pathname === "/select") {
       return selectTocItems;
     }
+    if (location.pathname === "/skeleton") {
+      return skeletonTocItems;
+    }
     return [
       { id: "overview", title: "Overview" },
       { id: "usage", title: "Usage" },
@@ -154,6 +158,7 @@ export default function App() {
                 <Route path="/navbar" element={<NavbarDoc />} />
                 <Route path="/pagination" element={<PaginationDoc />} />
                 <Route path="/select" element={<SelectDoc />} />
+                <Route path="/skeleton" element={<SkeletonDoc />} />
                 <Route
                   path="*"
                   element={<Navigate to="/button" replace />}

@@ -32,6 +32,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { name: "Navbar", path: "/navbar", isNew: true },
     { name: "Pagination", path: "/pagination", isNew: true },
     { name: "Select", path: "/select", isNew: true },
+    { name: "Skeleton", path: "/skeleton", isNew: true },
   ];
 
   return (

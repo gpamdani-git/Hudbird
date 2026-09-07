@@ -18,3 +18,4 @@ export * from './components/Navbar';
 export * from './components/Pagination';
 export * from './components/InfiniteScroll';
 export * from './components/Select';
+export * from './components/Skeleton';
