@@ -55,14 +55,21 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
       )}
 
       <aside
-        className={`fixed bottom-0 left-0 z-50 w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-y-auto px-4 py-6 transition-all duration-300 top-0 ${forceMobileBehavior ? "" : "lg:top-14"} ${
+        className={`fixed top-0 bottom-0 left-0 z-50 w-64 overflow-y-auto border-r border-zinc-200 bg-white px-4 py-6 transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-950 ${forceMobileBehavior ? "" : "lg:top-14"} ${
           forceMobileBehavior ? "" : "lg:translate-x-0"
         } ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className={`flex items-center justify-between mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 ${forceMobileBehavior ? "" : "lg:hidden"}`}>
-          <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Navigation</span>
-          <button onClick={onClose} className="p-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">
-            <X className="w-4 h-4" />
+        <div
+          className={`mb-4 flex items-center justify-between border-b border-zinc-200 pb-2 dark:border-zinc-800 ${forceMobileBehavior ? "" : "lg:hidden"}`}
+        >
+          <span className="text-xs font-semibold tracking-wider text-zinc-400 uppercase">
+            Navigation
+          </span>
+          <button
+            onClick={onClose}
+            className="p-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
+          >
+            <X className="h-4 w-4" />
           </button>
         </div>
 
@@ -72,35 +79,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
             to="/"
             onClick={onClose}
             className={({ isActive }) =>
-              `flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 isActive
-                  ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
               }`
             }
           >
-            <Home className="w-4 h-4 text-zinc-400" />
+            <Home className="h-4 w-4 text-zinc-400" />
             <span>Getting started</span>
           </NavLink>
           <NavLink
             to="/changelog"
             onClick={onClose}
             className={({ isActive }) =>
-              `flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
                 isActive
-                  ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                  : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
               }`
             }
           >
-            <div className="w-4 h-4 flex items-center justify-center text-zinc-400">✨</div>
+            <div className="flex h-4 w-4 items-center justify-center text-zinc-400">✨</div>
             <span>Changelog</span>
           </NavLink>
         </div>
 
         {/* Layouts Section */}
         <div className="mb-6">
-          <h5 className="px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200 mb-2">
+          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
             Layouts
           </h5>
           <ul className="space-y-0.5">
@@ -110,16 +117,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                   to={item.path}
                   onClick={onClose}
                   className={({ isActive }) =>
-                    `flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                    `flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                       isActive
-                        ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                        ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                     }`
                   }
                 >
                   <span>{item.name}</span>
                   {item.isNew && (
-                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+                    <span className="py-0.2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
                       New
                     </span>
                   )}
@@ -131,26 +138,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
 
         {/* Marketing Sections */}
         <div className="mb-6">
-          <h5 className="px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200 mb-2">
+          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
             Marketing Sections
           </h5>
-          <ul className="space-y-0.5 relative">
+          <ul className="relative space-y-0.5">
             <li>
               <NavLink
                 to="/marketing/hero"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                     isActive
-                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Hero Section</span>
                   </>
@@ -162,20 +169,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                 to="/marketing/bento-grid"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                     isActive
-                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Bento Grid</span>
-                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
                       New
                     </span>
                   </>
@@ -187,20 +194,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                 to="/marketing/logo-clouds"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                     isActive
-                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Logo Clouds</span>
-                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
                       New
                     </span>
                   </>
@@ -212,20 +219,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                 to="/marketing/feature-sections"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                     isActive
-                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Feature Sections</span>
-                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
                       New
                     </span>
                   </>
@@ -237,20 +244,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                 to="/marketing/pricing"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                     isActive
-                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     {isActive && (
-                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Pricing</span>
-                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
                       New
                     </span>
                   </>
@@ -262,20 +269,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
 
         {/* Components Section */}
         <div className="mb-8">
-          <h5 className="px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200 mb-2">
+          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
             Components
           </h5>
-          <ul className="space-y-0.5 relative">
+          <ul className="relative space-y-0.5">
             {components.map((item) => (
               <li key={item.name}>
                 <NavLink
                   to={item.path}
                   onClick={onClose}
                   className={({ isActive }) =>
-                    `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                    `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
                       isActive
-                        ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                        ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                     }`
                   }
                 >
@@ -283,11 +290,11 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                     <>
                       {/* Left vertical active bar */}
                       {isActive && (
-                        <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                        <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                       )}
                       <span className="pl-1">{item.name}</span>
                       {item.isNew && (
-                        <span className="text-[10px] font-medium px-1.5 py-0.2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+                        <span className="py-0.2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
                           New
                         </span>
                       )}
@@ -296,6 +303,35 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                 </NavLink>
               </li>
             ))}
+          </ul>
+        </div>
+
+        {/* Community Section */}
+        <div className="mb-8">
+          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
+            Community
+          </h5>
+          <ul className="relative space-y-0.5">
+            <li>
+              <a
+                href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
+                target="_blank"
+                rel="noreferrer"
+                className="group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
+              >
+                <span className="pl-1">GitHub Discussions</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new/choose"
+                target="_blank"
+                rel="noreferrer"
+                className="group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
+              >
+                <span className="pl-1">Report an Issue</span>
+              </a>
+            </li>
           </ul>
         </div>
       </aside>

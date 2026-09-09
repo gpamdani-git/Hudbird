@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Moon, Sun, ArrowUpRight, Menu, Monitor } from "lucide-react";
-import { Badge } from "@hudbird/ui";
+import { Moon, Sun, ArrowUpRight, Menu, Monitor, Github, Coffee, Sparkles } from "lucide-react";
+import { Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
 import { Link } from "react-router-dom";
 import { GlobalSearch } from "./GlobalSearch";
 
@@ -65,81 +65,117 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   }, [theme]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md transition-colors duration-300">
-      <div className="flex h-14 items-center justify-between px-4 sm:px-8 gap-3 sm:gap-6">
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md transition-colors duration-300 dark:border-zinc-800 dark:bg-zinc-950/95">
+      <div className="flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
         {/* Left: Brand / Logo */}
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex shrink-0 items-center gap-3">
           <button
             onClick={onToggleMobileSidebar}
-            className="lg:hidden p-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+            className="p-2 text-zinc-600 hover:text-zinc-900 lg:hidden dark:text-zinc-400 dark:hover:text-zinc-100"
             aria-label="Open sidebar"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="h-5 w-5" />
           </button>
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link to="/" className="group flex items-center gap-2.5">
             {/* Logo Icon (Light Mode) */}
             <img
               src="/assets/marketing-section/logo-hudbird/logo-ico-blue.svg"
               alt="Hudbird UI"
-              className="w-8 h-8 object-contain dark:hidden"
+              className="h-8 w-8 object-contain dark:hidden"
             />
             {/* Logo Icon (Dark Mode) */}
             <img
               src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
               alt="Hudbird UI"
-              className="hidden w-8 h-8 object-contain dark:block"
+              className="hidden h-8 w-8 object-contain dark:block"
             />
 
             {/* Logo Text */}
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg tracking-tight text-zinc-900 dark:text-white">
+              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
                 Hudbird UI
               </span>
-              <Badge variant="solid" color="primary">1.1.2</Badge>
+              <Badge variant="solid" color="primary">
+                1.1.2
+              </Badge>
             </div>
           </Link>
         </div>
 
         {/* Center: Global Search Bar */}
-        <div className="flex-1 max-w-md mx-auto flex justify-end sm:justify-center">
+        <div className="mx-auto flex max-w-md flex-1 justify-end sm:justify-center">
           <GlobalSearch />
         </div>
 
         {/* Right: Navigation items & Theme Segmented Switch UI */}
-        <div className="flex items-center gap-3 sm:gap-6 text-sm font-medium shrink-0">
+        <div className="flex shrink-0 items-center gap-3 text-sm font-medium sm:gap-6">
           <Link
             to="/"
-            className="text-zinc-900 dark:text-white font-semibold transition-colors"
+            className="hidden font-semibold text-zinc-900 transition-colors sm:block dark:text-white"
           >
             Docs
           </Link>
           <a
+            href="https://hudbird-editor.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+            title="Hudbird AI Editor"
+          >
+            <Sparkles className="h-4 w-4 fill-indigo-500/20 text-indigo-500" />
+            <span className="hidden font-medium sm:inline">AI Editor</span>
+            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-indigo-600 uppercase dark:text-indigo-400">
+              Alpha
+            </span>
+          </a>
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger
+              className="flex items-center text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              title="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </DropdownTrigger>
+            <DropdownMenu>
+              <DropdownItem
+                onClick={() =>
+                  window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
+                }
+                endContent={<ArrowUpRight className="h-3 w-3" />}
+              >
+                Public Tracker & Discussions
+              </DropdownItem>
+              <DropdownItem disabled>Source Code (Private)</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <a
             href="https://www.buymeacoffee.com/daniakbar"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:flex hover:opacity-80 transition-opacity"
+            className="hidden items-center text-zinc-600 transition-colors hover:text-amber-600 sm:flex dark:text-zinc-400 dark:hover:text-amber-500"
+            title="Buy me a coffee"
           >
-            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=daniakbar&button_colour=5F7FFF&font_colour=ffffff&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" alt="Buy me a coffee" className="h-8" />
+            <Coffee className="h-5 w-5" />
           </a>
 
           {/* Segmented Switch UI: Light | Dark | System */}
           <div
             role="radiogroup"
             aria-label="Theme mode switcher"
-            className="flex items-center p-0.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
+            className="flex items-center rounded-xl border border-zinc-200 bg-zinc-100 p-0.5 dark:border-zinc-800 dark:bg-zinc-900"
           >
             <button
               type="button"
               role="radio"
               aria-checked={theme === "light"}
               onClick={() => setTheme("light")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "light"
-                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                theme === "light"
+                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+              }`}
               title="Light mode"
             >
-              <Sun className={`w-3.5 h-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
+              <Sun className={`h-3.5 w-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
               <span className="hidden md:inline">Light</span>
             </button>
 
@@ -148,13 +184,16 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               role="radio"
               aria-checked={theme === "dark"}
               onClick={() => setTheme("dark")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "dark"
-                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                theme === "dark"
+                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+              }`}
               title="Dark mode"
             >
-              <Moon className={`w-3.5 h-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`} />
+              <Moon
+                className={`h-3.5 w-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+              />
               <span className="hidden md:inline">Dark</span>
             </button>
 
@@ -163,13 +202,16 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               role="radio"
               aria-checked={theme === "system"}
               onClick={() => setTheme("system")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "system"
-                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
+              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                theme === "system"
+                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+              }`}
               title="System preference"
             >
-              <Monitor className={`w-3.5 h-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`} />
+              <Monitor
+                className={`h-3.5 w-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+              />
               <span className="hidden md:inline">System</span>
             </button>
           </div>
@@ -178,4 +220,3 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
     </header>
   );
 };
-

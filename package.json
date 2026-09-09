@@ -9,7 +9,18 @@
     "dev": "vite --host 0.0.0.0 --port 3000",
     "lint": "eslint .",
     "format:check": "prettier --check .",
-    "format:fix": "prettier --write ."
+    "format:fix": "prettier --write .",
+    "prepare": "husky",
+    "release": "changeset publish"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -31,6 +42,7 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.31.1",
     "@eslint/js": "^10.0.1",
     "@types/express": "^4.17.21",
     "@types/node": "^22.14.0",
@@ -40,6 +52,8 @@
     "esbuild": "^0.25.0",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.0",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.1.14",

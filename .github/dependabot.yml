@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Konfigurasi untuk ekosistem NPM / Node.js
+  - package-ecosystem: "npm"
+    # Direktori root (karena monorepo, dependabot akan membaca seluruh workspaces dari sini)
+    directory: "/"
+    # Seberapa sering dependabot mengecek update? (bisa daily, weekly, atau monthly)
+    schedule:
+      interval: "weekly"
+    # Format pesan commit agar rapi dan tidak mengganggu changelog utama
+    commit-message:
+      prefix: "chore(deps)"
+    # Label otomatis pada Pull Request yang dibuat
+    labels:
+      - "dependencies"
