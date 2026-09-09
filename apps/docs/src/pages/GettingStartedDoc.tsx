@@ -64,10 +64,10 @@ export default function GettingStartedDoc() {
         <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-xl p-4 my-6">
           <h3 className="text-sm font-bold text-emerald-900 dark:text-emerald-300 flex items-center gap-2 mb-2">
             <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-200 dark:bg-emerald-800 text-xs">✨</span>
-            New in v1.1.0: CLI & Schema Improvements
+            New in v1.1.2: Native Tailwind CSS v4 Support
           </h3>
           <p className="text-sm text-emerald-800/80 dark:text-emerald-200/80">
-            The Hudbird CLI has been completely revamped! We now fully support <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">pnpm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">npm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">yarn</Code>, and <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">bun</Code> natively. Plus, a brand new component schema standardizes how layouts and marketing components are added to your project. See the <a href="/changelog" className="font-semibold underline underline-offset-2">Changelog</a> for full details.
+            The Hudbird CLI now seamlessly supports Tailwind CSS v4! When initialized in a v4 project, it skips legacy configuration files and natively injects <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">@theme</Code> variables directly into your CSS. We also fully support <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">pnpm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">npm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">yarn</Code>, and <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">bun</Code> natively. See the <a href="/changelog" className="font-semibold underline underline-offset-2">Changelog</a> for full details.
           </p>
         </div>
 

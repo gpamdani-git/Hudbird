@@ -15,6 +15,27 @@ export default function ChangelogDoc() {
 
       <section className="space-y-12">
         {/* Latest Update */}
+        <div id="v1-1-2" className="scroll-mt-24 relative pl-8 border-l border-zinc-200 dark:border-zinc-800">
+          <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-2">
+            v1.1.2 - Tailwind CSS v4 Native Support
+          </h2>
+          <p className="text-sm text-zinc-500 mb-6">September 2026</p>
+          
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+                CLI Enhancements
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 text-zinc-600 dark:text-zinc-400">
+                <li><strong className="text-zinc-900 dark:text-zinc-100">Tailwind CSS v4 Native Support:</strong> The CLI now automatically detects Tailwind CSS v4 in your project. It skips creating legacy <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">tailwind.config.js</code> files and directly injects a native <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">@theme</code> block and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">@import "tailwindcss";</code> into your CSS file for a cleaner, modern setup.</li>
+                <li>Ensured robust backward compatibility for projects still running on Tailwind CSS v3.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Previous Update */}
         <div id="v1-1-0" className="scroll-mt-24 relative pl-8 border-l border-zinc-200 dark:border-zinc-800">
           <div className="absolute left-[-5px] top-1.5 w-2.5 h-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
           <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-2">

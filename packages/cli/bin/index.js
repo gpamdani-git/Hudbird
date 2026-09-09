@@ -43,19 +43,28 @@ async function runInit() {
 
   let configContent = '';
   let isESM = false;
+  let isTailwindV4 = false;
   const pkgPath = path.join(cwd, 'package.json');
   
-  if (targetConfig) {
-    configContent = fs.readFileSync(path.join(cwd, targetConfig), 'utf-8');
-    isESM = targetConfig.endsWith('.ts') || targetConfig.endsWith('.mjs') || configContent.includes('export default');
-  } else {
-    if (fs.existsSync(pkgPath)) {
-      const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
-      if (pkg.type === 'module') isESM = true;
+  if (fs.existsSync(pkgPath)) {
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+    if (pkg.type === 'module') isESM = true;
+    const deps = Object.assign({}, pkg.dependencies, pkg.devDependencies);
+    if (
+      (deps['tailwindcss'] && (deps['tailwindcss'].startsWith('^4') || deps['tailwindcss'].startsWith('4.') || deps['tailwindcss'].startsWith('~4'))) ||
+      deps['@tailwindcss/vite'] || deps['@tailwindcss/postcss'] || deps['@tailwindcss/cli']
+    ) {
+      isTailwindV4 = true;
     }
   }
 
-  if (!targetConfig) {
+  if (targetConfig) {
+    configContent = fs.readFileSync(path.join(cwd, targetConfig), 'utf-8');
+    isESM = targetConfig.endsWith('.ts') || targetConfig.endsWith('.mjs') || configContent.includes('export default');
+  }
+
+  if (!isTailwindV4) {
+    if (!targetConfig) {
     const isTSProject = fs.existsSync(path.join(cwd, 'tsconfig.json'));
     targetConfig = isTSProject ? 'tailwind.config.ts' : 'tailwind.config.js';
   }
@@ -146,6 +155,9 @@ async function runInit() {
       }
     }
   }
+  } else {
+    console.log(pc.blue(`ℹ Detected Tailwind CSS v4. Using native CSS @theme injection.`));
+  }
 
   const possibleCssFiles = ['src/index.css', 'src/globals.css', 'index.css', 'globals.css', 'src/app/globals.css', 'app/globals.css'];
   let targetCss = null;
@@ -156,19 +168,42 @@ async function runInit() {
     }
   }
 
-  const cssDirectives = `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n`;
+  const cssDirectives = isTailwindV4 
+    ? `@import "tailwindcss";\n\n@theme {\n  --color-hudbird-primary: #0ea5e9;\n  --color-hudbird-secondary: #8b5cf6;\n  --color-hudbird-accent: #f43f5e;\n  --color-hudbird-background: #f8fafc;\n  --color-hudbird-foreground: #0f172a;\n  --color-hudbird-muted: #cbd5e1;\n}\n\n`
+    : `@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n`;
 
   if (targetCss) {
     let content = fs.readFileSync(path.join(cwd, targetCss), 'utf-8');
-    if (!content.includes('@tailwind base')) {
-      const response = await prompts({
-        type: 'confirm', name: 'injectCss',
-        message: `Would you like to inject Tailwind directives into ${targetCss}?`,
-        initial: true
-      });
-      if (response.injectCss) {
-        fs.writeFileSync(path.join(cwd, targetCss), cssDirectives + content, 'utf-8');
-        console.log(pc.green(`✔ Injected Tailwind directives into ${targetCss}`));
+    
+    if (isTailwindV4) {
+      if (!content.includes('--color-hudbird-primary')) {
+        const response = await prompts({
+          type: 'confirm', name: 'injectCss',
+          message: `Would you like to inject Tailwind v4 theme variables into ${targetCss}?`,
+          initial: true
+        });
+        if (response.injectCss) {
+          let injectedContent = content;
+          const themeBlock = `\n@theme {\n  --color-hudbird-primary: #0ea5e9;\n  --color-hudbird-secondary: #8b5cf6;\n  --color-hudbird-accent: #f43f5e;\n  --color-hudbird-background: #f8fafc;\n  --color-hudbird-foreground: #0f172a;\n  --color-hudbird-muted: #cbd5e1;\n}\n`;
+          if (!content.includes('@import "tailwindcss"')) {
+            injectedContent = `@import "tailwindcss";\n` + injectedContent;
+          }
+          injectedContent = injectedContent + themeBlock;
+          fs.writeFileSync(path.join(cwd, targetCss), injectedContent, 'utf-8');
+          console.log(pc.green(`✔ Injected Tailwind v4 theme into ${targetCss}`));
+        }
+      }
+    } else {
+      if (!content.includes('@tailwind base')) {
+        const response = await prompts({
+          type: 'confirm', name: 'injectCss',
+          message: `Would you like to inject Tailwind directives into ${targetCss}?`,
+          initial: true
+        });
+        if (response.injectCss) {
+          fs.writeFileSync(path.join(cwd, targetCss), cssDirectives + content, 'utf-8');
+          console.log(pc.green(`✔ Injected Tailwind directives into ${targetCss}`));
+        }
       }
     }
   } else {
