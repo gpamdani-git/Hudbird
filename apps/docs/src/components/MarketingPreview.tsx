@@ -12,6 +12,7 @@ interface MarketingPreviewProps {
   codeHtml?: string;
   codeVue?: string;
   skill?: string;
+  minHeight?: number;
 }
 
 export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
@@ -21,6 +22,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
   codeHtml,
   codeVue,
   skill,
+  minHeight = 400,
 }) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code" | "skill">("preview");
   const [viewport, setViewport] = useState<ViewportMode>("desktop");
@@ -166,9 +168,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
       {/* Main Container */}
       <div className="w-full relative rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50 dark:bg-[#0a0a0a] overflow-hidden shadow-xs">
         {activeTab === "preview" ? (
-          <div className="w-full flex items-center justify-center bg-zinc-100 dark:bg-[#050505] min-h-[600px]">
+          <div className="w-full flex items-center justify-center bg-zinc-100 dark:bg-[#050505]" style={{ minHeight: `${minHeight}px` }}>
             <div
-              className="transition-all duration-300 ease-in-out h-full w-full"
+              className="transition-all duration-300 ease-in-out w-full h-full"
               style={{ maxWidth: viewportWidths[viewport] }}
             >
               {viewport === "desktop" ? (
@@ -183,7 +185,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             </div>
           </div>
         ) : (
-          <div className="w-full p-4 sm:p-6 bg-zinc-50 dark:bg-[#0d1117] overflow-x-auto text-sm min-h-[600px]">
+          <div className="w-full p-4 sm:p-6 bg-zinc-50 dark:bg-[#0d1117] overflow-x-auto text-sm" style={{ minHeight: `${minHeight}px` }}>
             {activeTab === "code" ? (
               framework === "React" ? (
                 code ? <CodeBlock code={code} /> : <div className="flex items-center justify-center h-full min-h-[400px] text-zinc-500"><p>React code export coming soon.</p></div>

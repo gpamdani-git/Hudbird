@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Moon, Sun, ArrowUpRight, Menu, Monitor } from "lucide-react";
+import { Badge } from "@hudbird/ui";
 import { Link } from "react-router-dom";
-import { HudbirdLogo } from "./HudbirdLogo";
 import { GlobalSearch } from "./GlobalSearch";
 
 interface HeaderProps {
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   }, [theme]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md transition-colors duration-300">
       <div className="flex h-14 items-center justify-between px-4 sm:px-8 gap-3 sm:gap-6">
         {/* Left: Brand / Logo */}
         <div className="flex items-center gap-3 shrink-0">
@@ -77,17 +77,25 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
             <Menu className="w-5 h-5" />
           </button>
           <Link to="/" className="flex items-center gap-2.5 group">
-            {/* Hudbird Logo Icon */}
-            <div className="w-8 h-8 rounded-xl bg-indigo-600 dark:bg-indigo-500 flex items-center justify-center text-white shadow-sm shadow-indigo-500/20">
-              <HudbirdLogo className="w-5 h-5" />
-            </div>
+            {/* Logo Icon (Light Mode) */}
+            <img
+              src="/assets/marketing-section/logo-hudbird/logo-ico-blue.svg"
+              alt="Hudbird UI"
+              className="w-8 h-8 object-contain dark:hidden"
+            />
+            {/* Logo Icon (Dark Mode) */}
+            <img
+              src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+              alt="Hudbird UI"
+              className="hidden w-8 h-8 object-contain dark:block"
+            />
+
+            {/* Logo Text */}
             <div className="flex items-center gap-2">
               <span className="font-bold text-lg tracking-tight text-zinc-900 dark:text-white">
                 Hudbird UI
               </span>
-              <span className="hidden sm:flex px-1.5 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-[10px] font-semibold text-indigo-600 dark:text-indigo-400 uppercase tracking-widest leading-none">
-                Beta
-              </span>
+              <Badge variant="solid" color="primary">1.1.2</Badge>
             </div>
           </Link>
         </div>
@@ -125,11 +133,10 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               role="radio"
               aria-checked={theme === "light"}
               onClick={() => setTheme("light")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-                theme === "light"
-                  ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "light"
+                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
+                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
               title="Light mode"
             >
               <Sun className={`w-3.5 h-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
@@ -141,11 +148,10 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               role="radio"
               aria-checked={theme === "dark"}
               onClick={() => setTheme("dark")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-                theme === "dark"
-                  ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "dark"
+                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
+                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
               title="Dark mode"
             >
               <Moon className={`w-3.5 h-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`} />
@@ -157,11 +163,10 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
               role="radio"
               aria-checked={theme === "system"}
               onClick={() => setTheme("system")}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
-                theme === "system"
-                  ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
+              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${theme === "system"
+                ? "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white font-semibold"
+                : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
               title="System preference"
             >
               <Monitor className={`w-3.5 h-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`} />

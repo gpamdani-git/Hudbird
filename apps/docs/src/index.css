@@ -2,6 +2,12 @@
 @source "../../../packages";
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-indigo-500: #5077ff;
+  --color-indigo-600: #315dfd;
+  --color-indigo-700: #264be6;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

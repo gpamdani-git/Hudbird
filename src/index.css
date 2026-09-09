@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-indigo-500: #5077ff;
+  --color-indigo-600: #315dfd;
+  --color-indigo-700: #264be6;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {

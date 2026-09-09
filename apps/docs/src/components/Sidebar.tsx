@@ -50,16 +50,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
       {isOpen && (
         <div
           onClick={onClose}
-          className={`fixed inset-0 z-40 bg-zinc-950/50 backdrop-blur-xs ${forceMobileBehavior ? "" : "lg:hidden"}`}
+          className={`fixed inset-0 z-50 bg-zinc-950/50 backdrop-blur-xs ${forceMobileBehavior ? "" : "lg:hidden"}`}
         />
       )}
 
       <aside
-        className={`fixed bottom-0 left-0 z-40 w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-y-auto px-4 py-6 transition-transform top-0 lg:top-14 ${
+        className={`fixed bottom-0 left-0 z-50 w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-y-auto px-4 py-6 transition-all duration-300 top-0 ${forceMobileBehavior ? "" : "lg:top-14"} ${
           forceMobileBehavior ? "" : "lg:translate-x-0"
         } ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        <div className="flex items-center justify-between lg:hidden mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800">
+        <div className={`flex items-center justify-between mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 ${forceMobileBehavior ? "" : "lg:hidden"}`}>
           <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Navigation</span>
           <button onClick={onClose} className="p-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100">
             <X className="w-4 h-4" />
@@ -175,6 +175,81 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                       <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
                     )}
                     <span className="pl-1">Bento Grid</span>
+                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                      New
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/marketing/logo-clouds"
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                    isActive
+                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                    )}
+                    <span className="pl-1">Logo Clouds</span>
+                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                      New
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/marketing/feature-sections"
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                    isActive
+                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                    )}
+                    <span className="pl-1">Feature Sections</span>
+                    <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
+                      New
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/marketing/pricing"
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `group relative flex items-center justify-between px-3 py-1.5 rounded-lg text-xs transition-colors ${
+                    isActive
+                      ? "text-zinc-950 dark:text-white font-semibold bg-zinc-100 dark:bg-zinc-900"
+                      : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute left-0 top-1.5 bottom-1.5 w-1 bg-zinc-950 dark:bg-white rounded-r-full" />
+                    )}
+                    <span className="pl-1">Pricing</span>
                     <span className="text-[10px] font-medium px-1.5 py-0.2 bg-fuchsia-500/10 text-fuchsia-600 dark:text-fuchsia-400 rounded-full border border-fuchsia-500/20">
                       New
                     </span>

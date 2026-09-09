@@ -42,6 +42,9 @@ const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
 const AuthLayoutDoc = lazy(() => import("./pages/AuthLayoutDoc"));
 
 const HeroDoc = lazy(() => import("./pages/marketing/HeroDoc"));
+const LogoCloudDoc = lazy(() => import("./pages/marketing/LogoCloudDoc"));
+const FeatureSectionDoc = lazy(() => import("./pages/marketing/FeatureSectionDoc"));
+const PricingDoc = lazy(() => import("./pages/marketing/PricingDoc"));
 const BentoGridDoc = lazy(() => import("./pages/marketing/BentoGridDoc"));
 
 const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
@@ -68,7 +71,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-50 selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950">
+    <div className="min-h-screen bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-50 selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-950 transition-colors duration-300">
       {/* Global Top Navbar */}
       <Header onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)} />
 
@@ -119,6 +122,9 @@ export default function App() {
                   <Route path="/tabs" element={<TabsDoc />} />
                   <Route path="/tooltip" element={<TooltipDoc />} />
                   <Route path="/marketing/hero" element={<HeroDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />} />
+                  <Route path="/marketing/logo-clouds" element={<LogoCloudDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />} />
+                  <Route path="/marketing/feature-sections" element={<FeatureSectionDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />} />
+                  <Route path="/marketing/pricing" element={<PricingDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />} />
                   <Route path="/marketing/bento-grid" element={<BentoGridDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />} />
 
                   <Route
