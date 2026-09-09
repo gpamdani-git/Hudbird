@@ -5,6 +5,15 @@
 
 Hudbird UI is a premium, headless-friendly React component library built with Tailwind CSS and Class Variance Authority (CVA). Designed to be beautiful out of the box, it seamlessly blends precise engineering with aesthetic elegance.
 
+### 🔗 Quick Links
+
+- **Hudbird Installation & Docs**: [https://hudbird.vercel.app/](https://hudbird.vercel.app/)
+- **Alpha Version Theme Builder**: [https://hudbird-editor.vercel.app](https://hudbird-editor.vercel.app)
+
+### ☕ Support this project
+
+<a href="https://www.buymeacoffee.com/daniakbar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
+
 ## 🧬 The Hudbird DNA
 
 - **Precise Navigation:** Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang sangat presisi.
@@ -22,7 +31,7 @@ pnpm dlx hudbird-ui@latest init
 ### Usage
 
 ```tsx
-import { Button, Card, Text } from '@hudbird/ui'
+import { Button, Card, Text } from "@hudbird/ui";
 
 export default function App() {
   return (
@@ -31,7 +40,7 @@ export default function App() {
       <Text className="mt-2 mb-4">Minimize the noise, keep the essence.</Text>
       <Button color="indigo">Get Started</Button>
     </Card>
-  )
+  );
 }
 ```
 
