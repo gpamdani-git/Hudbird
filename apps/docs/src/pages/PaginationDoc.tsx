@@ -1,4 +1,6 @@
 // apps/docs/src/pages/PaginationDoc.tsx
+import paginationCode from "../../../../packages/core/src/components/Pagination/Pagination.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import {
   Pagination,
@@ -19,6 +21,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const paginationTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "pagination-examples",
@@ -350,6 +353,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="pagination" manualCode={paginationCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-6">

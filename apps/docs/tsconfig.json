@@ -16,7 +16,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@hudbird/ui": ["../../packages/core/src/index.ts"],
-      "@hudbird/theme": ["../../packages/theme/src/index.ts"]
+      "@hudbird/theme": ["../../packages/theme/src/index.ts"],
+      "@hudbird/marketing": ["../../packages/marketing/src/index.ts"]
     }
   },
   "include": ["src/**/*", "vite.config.ts"],

@@ -437,10 +437,10 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     if (href) {
       return (
         <a
-          ref={ref as React.ForwardedRef<HTMLAnchorElement>}
+          ref={ref as any}
           href={href}
           className={computedClass}
-          {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+          {...(props as any)}
         >
           {buttonBody}
         </a>

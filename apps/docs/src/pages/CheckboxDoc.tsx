@@ -1,4 +1,6 @@
 // apps/docs/src/pages/CheckboxDoc.tsx
+import checkboxCode from "../../../../packages/core/src/components/Checkbox/Checkbox.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Checkbox, Button } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -6,6 +8,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const checkboxTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -130,6 +133,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="checkbox" manualCode={checkboxCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

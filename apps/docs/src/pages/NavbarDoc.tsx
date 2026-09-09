@@ -1,4 +1,6 @@
 // apps/docs/src/pages/NavbarDoc.tsx
+import navbarCode from "../../../../packages/core/src/components/Navbar/Navbar.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import {
   Navbar,
@@ -54,6 +56,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const navbarTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -382,6 +385,10 @@ export default function StandardNavbarExample() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="navbar" manualCode={navbarCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

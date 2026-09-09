@@ -1,9 +1,6 @@
 {
-  "name": "hudbird-ui",
+  "name": "blankui-monorepo",
   "type": "module",
-  "bin": {
-    "hudbird-ui": "./bin/index.js"
-  },
   "private": false,
   "version": "1.0.0",
   "packageManager": "pnpm@9.0.0",

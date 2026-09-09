@@ -1,4 +1,6 @@
 // apps/docs/src/pages/SelectDoc.tsx
+import selectCode from "../../../../packages/core/src/components/Select/Select.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import {
   Select,
@@ -24,6 +26,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const selectTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "select-examples",
@@ -302,6 +305,10 @@ export default function SelectHero() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="select" manualCode={selectCode} />
+      </div>
+
 
       {/* Component API Documentation */}
       <section id="component-api" className="scroll-mt-24 space-y-6">

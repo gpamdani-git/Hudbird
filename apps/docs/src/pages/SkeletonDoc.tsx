@@ -1,4 +1,6 @@
 import React from "react";
+import skeletonCode from "../../../../packages/core/src/components/Skeleton/Skeleton.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import { Skeleton } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -6,6 +8,7 @@ import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 import { Card, CardBody, CardHeader } from "@hudbird/ui";
 
 export const skeletonTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -96,6 +99,10 @@ export function App() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="skeleton" manualCode={skeletonCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="mt-16 scroll-mt-24">

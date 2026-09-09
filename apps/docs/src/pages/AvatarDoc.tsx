@@ -1,4 +1,6 @@
 // apps/docs/src/pages/AvatarDoc.tsx
+import avatarCode from "../../../../packages/core/src/components/Avatar/Avatar.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Avatar, Button } from "@hudbird/ui";
 import { RefreshCw } from "lucide-react";
@@ -7,6 +9,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const avatarTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -145,6 +148,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="avatar" manualCode={avatarCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

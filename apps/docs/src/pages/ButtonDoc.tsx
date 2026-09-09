@@ -1,4 +1,6 @@
 // apps/docs/src/pages/ButtonDoc.tsx
+import buttonCode from "../../../../packages/core/src/components/Button/Button.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Button } from "@hudbird/ui";
 import {
@@ -19,6 +21,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const buttonTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -218,6 +221,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="button" manualCode={buttonCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

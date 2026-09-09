@@ -4,6 +4,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { Text, Strong, Code, Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@hudbird/ui";
 
 export const gettingStartedTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "getting-started", title: "Getting started" },
   { id: "before-you-start", title: "Before you start" },
   { id: "adding-hudbird", title: "Adding Hudbird to your project" },
@@ -59,17 +60,28 @@ export default function GettingStartedDoc() {
       {/* 3. Adding Catalyst (Hudbird) to your project */}
       <section id="adding-hudbird" className="scroll-mt-24 space-y-4">
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Adding Hudbird to your project</h2>
+        
+        <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-100 dark:border-emerald-900/50 rounded-xl p-4 my-6">
+          <h3 className="text-sm font-bold text-emerald-900 dark:text-emerald-300 flex items-center gap-2 mb-2">
+            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-200 dark:bg-emerald-800 text-xs">✨</span>
+            New in v1.1.0: CLI & Schema Improvements
+          </h3>
+          <p className="text-sm text-emerald-800/80 dark:text-emerald-200/80">
+            The Hudbird CLI has been completely revamped! We now fully support <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">pnpm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">npm</Code>, <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">yarn</Code>, and <Code className="text-xs bg-emerald-100 dark:bg-emerald-800">bun</Code> natively. Plus, a brand new component schema standardizes how layouts and marketing components are added to your project. See the <a href="/changelog" className="font-semibold underline underline-offset-2">Changelog</a> for full details.
+          </p>
+        </div>
+
         <Text>
           The fastest way to get started is by using our CLI tool. This will scaffold the core configuration and allow you to cherry-pick the exact components you need.
         </Text>
         <div className="mt-4">
-          <CodeBlock code="pnpm dlx hudbird-ui@latest init" />
+          <CodeBlock code="npx hudbird-ui@latest init" />
         </div>
         <Text className="mt-4">
-          After initialization, you can start importing components directly into your application files:
+          You can now use the new <Code>add</Code> command to seamlessly install any component into your project:
         </Text>
         <div className="mt-4">
-          <CodeBlock code="import { Button, Card, Text } from '@hudbird/ui';" />
+          <CodeBlock code="npx hudbird-ui@latest add [component-name]" />
         </div>
       </section>
 

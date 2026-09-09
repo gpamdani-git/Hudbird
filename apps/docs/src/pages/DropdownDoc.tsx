@@ -1,4 +1,6 @@
 // apps/docs/src/pages/DropdownDoc.tsx
+import dropdownCode from "../../../../packages/core/src/components/Dropdown/Dropdown.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import {
   Dropdown,
@@ -34,6 +36,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const dropdownTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -233,6 +236,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="dropdown" manualCode={dropdownCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

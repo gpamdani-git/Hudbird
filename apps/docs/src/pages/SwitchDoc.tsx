@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import switchCode from "../../../../packages/core/src/components/Switch/Switch.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import { Switch } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const switchTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "sizes", title: "Sizes" },
   { id: "colors", title: "Colors" },
@@ -72,6 +75,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="switch" manualCode={switchCode} />
+      </div>
+
 
       {/* Sizes */}
       <section className="space-y-4" id="sizes">

@@ -5,16 +5,20 @@ interface CodeBlockProps {
   code: string;
   language?: string;
   filename?: string;
+  expandable?: boolean;
 }
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "tsx", filename }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "tsx", filename, expandable = false }) => {
   const [copied, setCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(!expandable);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  const toggleExpand = () => setIsExpanded((prev) => !prev);
 
   // Basic syntax highlighter for nice visual presentation
   const highlightCode = (rawCode: string) => {
@@ -83,20 +87,64 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "tsx", fi
     <div className="relative group my-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-950/5 dark:bg-zinc-900/60 overflow-hidden text-sm">
       {filename && (
         <div className="px-4 py-2 text-xs font-mono border-b border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 dark:text-zinc-400 flex items-center justify-between">
-          <span>{filename}</span>
-          <span className="text-[10px] uppercase tracking-wider">{language}</span>
+          <div className="flex items-center gap-2">
+            <span className="font-semibold bg-zinc-200/50 dark:bg-zinc-800/50 text-zinc-800 dark:text-zinc-200 px-1.5 py-0.5 rounded text-[10px]">TS</span>
+            <span>{filename}</span>
+          </div>
+          <div className="flex items-center gap-3">
+            {expandable && (
+              <button 
+                onClick={toggleExpand}
+                className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 font-sans transition-colors"
+              >
+                {isExpanded ? "Collapse" : "Expand"}
+              </button>
+            )}
+            <button
+              onClick={handleCopy}
+              aria-label="Copy code"
+              className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            >
+              {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+            </button>
+          </div>
         </div>
       )}
-      <div className="p-4 overflow-x-auto font-mono text-[13px] text-zinc-800 dark:text-zinc-200">
+      
+      {!filename && (
+        <div className="absolute top-3 right-3 flex items-center gap-3 z-20">
+          {expandable && (
+            <button 
+              onClick={toggleExpand}
+              className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 bg-white/80 dark:bg-zinc-800/80 px-2 py-1 rounded shadow-xs backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all"
+            >
+              {isExpanded ? "Collapse" : "Expand"}
+            </button>
+          )}
+          <button
+            onClick={handleCopy}
+            aria-label="Copy code"
+            className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 bg-white/80 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/80 shadow-xs backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
+          >
+            {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+          </button>
+        </div>
+      )}
+
+      <div className={`relative p-4 overflow-x-auto font-mono text-[13px] text-zinc-800 dark:text-zinc-200 transition-all duration-300 ${!isExpanded ? "max-h-[300px] overflow-hidden" : ""}`}>
         <pre className="m-0 font-mono">{highlightCode(code)}</pre>
+        
+        {!isExpanded && (
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-50 dark:from-zinc-900 to-transparent flex items-end justify-center pb-4">
+            <button 
+              onClick={toggleExpand}
+              className="px-3 py-1.5 rounded-md bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm text-xs font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-700 transition-colors z-10"
+            >
+              Expand
+            </button>
+          </div>
+        )}
       </div>
-      <button
-        onClick={handleCopy}
-        aria-label="Copy code"
-        className="absolute top-3 right-3 p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 bg-white/80 dark:bg-zinc-800/80 border border-zinc-200/80 dark:border-zinc-700/80 shadow-xs backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity"
-      >
-        {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
-      </button>
     </div>
   );
 };

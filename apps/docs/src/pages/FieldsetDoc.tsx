@@ -1,4 +1,6 @@
 // apps/docs/src/pages/FieldsetDoc.tsx
+import fieldsetCode from "../../../../packages/core/src/components/Fieldset/Fieldset.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import {
   Fieldset,
@@ -19,6 +21,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const fieldsetTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -191,6 +194,10 @@ function ShippingDetailsExample() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="fieldset" manualCode={fieldsetCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

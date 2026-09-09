@@ -1,4 +1,6 @@
 // apps/docs/src/pages/TabsDoc.tsx
+import tabsCode from "../../../../packages/core/src/components/Tabs/Tabs.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Tabs, Tab, TabList, TabPanel, Card, CardBody, Button, Badge } from "@hudbird/ui";
 import { Music, Image, Video, Settings, User, Bell, Shield, Heart } from "lucide-react";
@@ -7,6 +9,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const tabsTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -226,6 +229,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="tabs" manualCode={tabsCode} />
+      </div>
+
 
       {/* Component API */}
       <section className="space-y-6" id="component-api">

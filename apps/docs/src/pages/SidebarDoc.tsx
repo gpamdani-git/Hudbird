@@ -1,3 +1,4 @@
+import sidebarCode from "../../../../packages/core/src/components/Sidebar/Sidebar.tsx?raw";
 import React, { useState } from "react";
 import {
   Sidebar,
@@ -23,13 +24,17 @@ import {
   ShoppingBag,
   Radio,
   LifeBuoy,
-  FileText
+  FileText,
+  Menu,
+  ChevronRight
 } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
+import { InstallationTabs } from "../components/InstallationTabs";
 
 export const sidebarTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -230,7 +235,7 @@ export default function FlatSidebar() {
   );
 }`;
 
-export default function SidebarDoc() {
+export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }) {
   const [activeItem1, setActiveItem1] = useState("Home");
   const [activeItem2, setActiveItem2] = useState("Home");
 
@@ -244,9 +249,27 @@ export default function SidebarDoc() {
   };
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="pb-24 w-full flex flex-col items-center">
+      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
+        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+          {onOpenSidebar && (
+            <button 
+              onClick={onOpenSidebar}
+              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              aria-label="Open Navigation"
+            >
+              <Menu size={18} />
+            </button>
+          )}
+          <span>Layouts section</span>
+          <ChevronRight size={14} className="text-zinc-400" />
+          <span className="text-zinc-900 dark:text-zinc-100">Sidebar Layout</span>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 space-y-16">
       {/* Title & Subtitle */}
-      <div>
+      <div className="-mt-8">
         <div className="flex items-center gap-3 mb-3">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
             Sidebar Layout
@@ -259,6 +282,8 @@ export default function SidebarDoc() {
           A production-ready application layout simulating page transitions. Inspired by Catalyst UI.
         </p>
       </div>
+
+      
 
       {/* Main Preview & Code */}
       <section className="space-y-4">
@@ -402,6 +427,10 @@ export default function SidebarDoc() {
         <CodeBlock code={codeBordered} />
       </section>
 
+      <div id="installation" className="scroll-mt-24">
+        <InstallationTabs componentName="sidebar" manualCode={sidebarCode} />
+      </div>
+
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -508,6 +537,7 @@ export default function SidebarDoc() {
           <CodeBlock code={codeFlat} />
         </div>
       </section>
+      </div>
     </div>
   );
 }

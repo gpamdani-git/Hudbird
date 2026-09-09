@@ -1,4 +1,6 @@
 // apps/docs/src/pages/DividerDoc.tsx
+import dividerCode from "../../../../packages/core/src/components/Divider/Divider.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
 import { Divider, Button, Input } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -6,6 +8,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const dividerTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -136,6 +139,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="divider" manualCode={dividerCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

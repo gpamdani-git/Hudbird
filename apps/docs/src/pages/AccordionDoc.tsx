@@ -1,4 +1,6 @@
 // apps/docs/src/pages/AccordionDoc.tsx
+import accordionCode from "../../../../packages/core/src/components/Accordion/Accordion.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Accordion, AccordionItem, Button, Badge } from "@hudbird/ui";
 import { Shield, Zap, Sparkles, HelpCircle, FileText, ChevronRight, Lock } from "lucide-react";
@@ -7,6 +9,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const accordionTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -207,6 +210,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="accordion" manualCode={accordionCode} />
+      </div>
+
 
       {/* Component API */}
       <section className="space-y-6" id="component-api">

@@ -1,10 +1,13 @@
 import React from "react";
+import textCode from "../../../../packages/core/src/components/Text/Text.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import { Text, Strong, Code } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const textTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "variants", title: "Variants" },
   { id: "strong-and-code", title: "Strong & Code" },
@@ -66,6 +69,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="text" manualCode={textCode} />
+      </div>
+
 
       {/* Variants */}
       <section className="space-y-4" id="variants">

@@ -17,11 +17,12 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.1",
+    "@hudbird/theme": "workspace:*",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "framer-motion": "^11.0.0 || ^12.0.0",
-    "@hudbird/theme": "workspace:*"
+    "lucide-react": "^1.43.0",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

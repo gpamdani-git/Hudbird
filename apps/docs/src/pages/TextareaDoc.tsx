@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import textareaCode from "../../../../packages/core/src/components/Textarea/Textarea.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import { Textarea } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const textareaTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "variants", title: "Variants" },
   { id: "invalid-state", title: "Invalid State" },
@@ -77,6 +80,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="textarea" manualCode={textareaCode} />
+      </div>
+
 
       {/* Variants */}
       <section className="space-y-4" id="variants">

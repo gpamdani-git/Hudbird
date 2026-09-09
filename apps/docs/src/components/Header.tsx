@@ -106,13 +106,12 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
             Docs
           </Link>
           <a
-            href="https://github.com"
+            href="https://www.buymeacoffee.com/daniakbar"
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:flex items-center gap-1 text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white transition-colors"
+            className="hidden sm:flex hover:opacity-80 transition-opacity"
           >
-            <span>GitHub</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=daniakbar&button_colour=5F7FFF&font_colour=ffffff&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00" alt="Buy me a coffee" className="h-8" />
           </a>
 
           {/* Segmented Switch UI: Light | Dark | System */}

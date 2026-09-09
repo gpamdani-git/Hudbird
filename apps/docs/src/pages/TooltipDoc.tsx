@@ -1,4 +1,6 @@
 // apps/docs/src/pages/TooltipDoc.tsx
+import tooltipCode from "../../../../packages/core/src/components/Tooltip/Tooltip.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Tooltip, Button, Avatar, Badge } from "@hudbird/ui";
 import { Info, HelpCircle, Bell, Share2, Sparkles, Check, Heart } from "lucide-react";
@@ -7,6 +9,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const tooltipTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -167,6 +170,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="tooltip" manualCode={tooltipCode} />
+      </div>
+
 
       {/* Component API */}
       <section className="space-y-6" id="component-api">

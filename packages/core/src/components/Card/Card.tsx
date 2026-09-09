@@ -145,7 +145,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
         className={cn(
           "p-5 pt-0 flex items-center justify-between w-full z-10 shrink-0 border-zinc-200/50 dark:border-zinc-800/50",
           isBlurred &&
-            "bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md absolute bottom-0 inset-x-0 pt-3.5 pb-3.5 border-t border-white/20 dark:border-zinc-700/30",
+            "bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md absolute bottom-0 inset-x-0 pt-3.5 pb-3.5 border-t border-white/20 dark:border-zinc-700/30 rounded-b-2xl",
           className
         )}
         {...props}

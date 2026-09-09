@@ -1,4 +1,6 @@
 // apps/docs/src/pages/RadioGroupDoc.tsx
+import radioGroupCode from "../../../../packages/core/src/components/RadioGroup/RadioGroup.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { RadioGroup, Radio } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -6,6 +8,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const radioGroupTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -203,6 +206,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="radio-group" manualCode={radioGroupCode} />
+      </div>
+
 
       {/* Component API */}
       <section className="space-y-6" id="component-api">

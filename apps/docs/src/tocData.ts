@@ -11,6 +11,7 @@ export const gettingStartedTocItems: TocItem[] = [
 ];
 
 export const buttonTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -35,6 +36,7 @@ export const buttonTocItems: TocItem[] = [
 ];
 
 export const alertTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -49,6 +51,7 @@ export const alertTocItems: TocItem[] = [
 ];
 
 export const avatarTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -65,6 +68,7 @@ export const avatarTocItems: TocItem[] = [
 ];
 
 export const badgeTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -80,6 +84,7 @@ export const badgeTocItems: TocItem[] = [
 ];
 
 export const checkboxTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -95,6 +100,7 @@ export const checkboxTocItems: TocItem[] = [
 ];
 
 export const comboBoxTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -109,6 +115,7 @@ export const comboBoxTocItems: TocItem[] = [
 ];
 
 export const descriptionListTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -123,6 +130,7 @@ export const descriptionListTocItems: TocItem[] = [
 ];
 
 export const dialogTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -136,6 +144,7 @@ export const dialogTocItems: TocItem[] = [
 ];
 
 export const dividerTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -150,6 +159,7 @@ export const dividerTocItems: TocItem[] = [
 ];
 
 export const dropdownTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -164,6 +174,7 @@ export const dropdownTocItems: TocItem[] = [
 ];
 
 export const fieldsetTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -179,6 +190,7 @@ export const fieldsetTocItems: TocItem[] = [
 ];
 
 export const headingTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -193,6 +205,7 @@ export const headingTocItems: TocItem[] = [
 ];
 
 export const inputTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -210,6 +223,7 @@ export const inputTocItems: TocItem[] = [
 ];
 
 export const cardTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -225,6 +239,7 @@ export const cardTocItems: TocItem[] = [
 ];
 
 export const navbarTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -246,6 +261,7 @@ export const navbarTocItems: TocItem[] = [
 ];
 
 export const paginationTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "pagination-examples",
@@ -269,6 +285,7 @@ export const paginationTocItems: TocItem[] = [
 ];
 
 export const selectTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "select-examples",
@@ -284,6 +301,7 @@ export const selectTocItems: TocItem[] = [
 ];
 
 export const sidebarTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -295,14 +313,17 @@ export const sidebarTocItems: TocItem[] = [
 ];
 
 export const stackedTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "preview", title: "Preview" },
 ];
 
 export const authTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "preview", title: "Preview" },
 ];
 
 export const skeletonTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -317,6 +338,7 @@ export const skeletonTocItems: TocItem[] = [
 ];
 
 export const switchTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "sizes", title: "Sizes" },
   { id: "colors", title: "Colors" },
@@ -325,11 +347,13 @@ export const switchTocItems: TocItem[] = [
 ];
 
 export const tableTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "api", title: "API Reference" },
 ];
 
 export const tabsTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -348,6 +372,7 @@ export const tabsTocItems: TocItem[] = [
 ];
 
 export const radioGroupTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -365,6 +390,7 @@ export const radioGroupTocItems: TocItem[] = [
 ];
 
 export const tooltipTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -382,6 +408,7 @@ export const tooltipTocItems: TocItem[] = [
 ];
 
 export const accordionTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -399,6 +426,7 @@ export const accordionTocItems: TocItem[] = [
 ];
 
 export const textTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "variants", title: "Variants" },
   { id: "strong-and-code", title: "Strong & Code" },
@@ -406,14 +434,21 @@ export const textTocItems: TocItem[] = [
 ];
 
 export const textareaTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "variants", title: "Variants" },
   { id: "invalid-state", title: "Invalid State" },
   { id: "api", title: "API Reference" },
 ];
 
+export const changelogTocItems: TocItem[] = [
+  { id: "v1-1-0", title: "v1.1.0 - CLI Improvements" },
+  { id: "v1-0-0", title: "v1.0.0 - Initial Release" },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
+  "/changelog": changelogTocItems,
   "/button": buttonTocItems,
   "/alert": alertTocItems,
   "/avatar": avatarTocItems,

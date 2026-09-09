@@ -1,4 +1,6 @@
 import React from "react";
+import tableCode from "../../../../packages/core/src/components/Table/Table.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import { 
   Table, 
   TableHeader, 
@@ -13,6 +15,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const tableTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "overview", title: "Overview" },
   { id: "api", title: "API Reference" },
 ];
@@ -135,6 +138,10 @@ export default function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="table" manualCode={tableCode} />
+      </div>
+
 
       {/* API Reference */}
       <section className="space-y-4" id="api">

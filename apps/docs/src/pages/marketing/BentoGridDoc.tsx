@@ -1,0 +1,422 @@
+import React from "react";
+import bentoGridCode from "../../../../../packages/marketing/src/components/BentoGrid/BentoGrid.tsx?raw";
+import { InstallationTabs } from "../../components/InstallationTabs";
+import { BentoGrid, BentoCard, BentoCardBackground, BentoCardContent, BentoCardHeader, BentoCardBody, BentoCardFooter } from "@hudbird/marketing";
+import { Badge, Button, Text } from "@hudbird/ui";
+import { MarketingPreview } from "../../components/MarketingPreview";
+import { ApiTable, type ApiPropRow } from "../../components/ApiTable";
+import { ArrowRight, Sparkles, Zap, ChevronRight, Menu, Globe, Cpu, Shield, Code, LayoutDashboard, Fingerprint, Database, BarChart3 } from "lucide-react";
+import { motion } from "framer-motion";
+import skillContent from "../../../../../.agents/skills/marketing-bento-grid/SKILL.md?raw";
+
+export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }) {
+  const apiRows: ApiPropRow[] = [
+    {
+      prop: "children",
+      type: "ReactNode",
+      defaultVal: "-",
+      description: "Konten utama yang berisi kumpulan BentoCard.",
+    },
+    {
+      prop: "className",
+      type: "string",
+      defaultVal: '""',
+      description: "Gunakan Tailwind class (contoh: col-span-2) untuk mengatur layout card.",
+    },
+    {
+      prop: "src (BentoCardBackground)",
+      type: "string",
+      defaultVal: "undefined",
+      description: "URL gambar untuk background layer card.",
+    },
+    {
+      prop: "isBlurred (BentoCardFooter)",
+      type: "boolean",
+      defaultVal: "false",
+      description: "Mengaktifkan efek glassmorphism pada area footer.",
+    },
+    {
+      prop: "asChild",
+      type: "boolean",
+      defaultVal: "false",
+      description: "Meneruskan (delegate) rendering ke elemen HTML turunannya (Radix Slot).",
+    }
+  ];
+
+  const codeCssIllusReact = `
+<BentoGrid className="md:grid-cols-3 auto-rows-[24rem]">
+  {/* Card 1 */}
+  <BentoCard className="p-2 flex flex-col gap-2">
+    <div className="relative w-full h-48 bg-indigo-50/50 dark:bg-indigo-900/20 flex flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border border-indigo-100/50 dark:border-indigo-800/50">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-700/30 blur-2xl" />
+      {/* CSS Illustration elements */}
+    </div>
+    <BentoCardBody className="pt-2 flex flex-col gap-1 pb-1">
+      <Text variant="strong" className="text-lg">Predictive Modeling</Text>
+      <Text variant="muted" className="text-sm leading-relaxed">Our proprietary models analyze thousands of behavioral signals.</Text>
+    </BentoCardBody>
+  </BentoCard>
+  {/* ... other 5 cards */}
+</BentoGrid>
+  `.trim();
+
+  return (
+    <div className="flex flex-col w-full pb-20">
+      {/* Header section with breadcrumbs and description */}
+      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
+        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+          {onOpenSidebar && (
+            <button 
+              onClick={onOpenSidebar}
+              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              aria-label="Open Navigation"
+            >
+              <Menu size={18} />
+            </button>
+          )}
+          <span>Marketing section</span>
+          <ChevronRight size={14} className="text-zinc-400" />
+          <span className="text-zinc-900 dark:text-zinc-100">Bento Grid</span>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full space-y-12">
+        <div className="space-y-4">
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 tracking-tight">
+            Bento Grid
+          </h1>
+          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl">
+            A premium, highly composable grid layout optimized for modern marketing pages. Features snappy spring entrance animations and zero layout thrashing.
+          </p>
+        </div>
+
+        <div id="installation" className="scroll-mt-24 space-y-4">
+          <InstallationTabs componentName="bento-grid" manualCode={bentoGridCode} />
+        </div>
+
+        <div className="flex flex-col gap-16">
+
+          {/* 6-CARD LAYOUT CSS ILLUSTRATIONS (Replaced Fill Width) */}
+          <MarketingPreview 
+            title="6-Card Layout (CSS Illustrations)" 
+            skill={skillContent}
+            code={codeCssIllusReact}
+          >
+            <div className="w-full bg-zinc-50 dark:bg-[#0f111a] py-16 px-4 sm:px-8 overflow-hidden relative">
+              <div className="max-w-5xl mx-auto space-y-12">
+                <div className="text-center max-w-3xl mx-auto space-y-4">
+                  <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 tracking-wide uppercase">
+                    AI Native
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                    Built for the future of work
+                  </h2>
+                </div>
+
+                <BentoGrid className="md:grid-cols-4 md:auto-rows-[22rem]">
+                  
+                  {/* Card 1: Predictive Modeling */}
+                  <BentoCard className="md:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-indigo-50/50 dark:bg-indigo-900/20 flex flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border border-indigo-100/50 dark:border-indigo-800/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-700/30 blur-2xl" />
+                      {[
+                        { name: "Lead Scoring", score: "96%", delay: 0, width: "w-[85%]" },
+                        { name: "Predictive", score: "82%", delay: 0.2, width: "w-[95%]" },
+                        { name: "Conversion", score: "75%", delay: 0.4, width: "w-[75%]" }
+                      ].map((item, i) => (
+                        <motion.div 
+                          key={i}
+                          initial={{ y: 10, opacity: 0 }}
+                          animate={{ y: [0, -4, 0], opacity: 1 }}
+                          transition={{ y: { repeat: Infinity, duration: 4, delay: item.delay, ease: "easeInOut" } }}
+                          className={`relative z-10 flex items-center justify-between bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 rounded-full h-8 px-2 ${item.width} max-w-[200px]`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center shrink-0">
+                              <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
+                            </div>
+                            <span className="text-[10px] font-medium text-zinc-600 dark:text-zinc-300">{item.name}</span>
+                          </div>
+                          <span className="text-[10px] font-semibold text-indigo-600 dark:text-indigo-400">{item.score}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Predictive Modeling</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Our proprietary models analyze thousands of behavioral signals for sales.</Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 2: AI Marketing */}
+                  <BentoCard className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-blue-50/50 dark:bg-blue-900/20 flex items-center justify-center overflow-hidden rounded-xl border border-blue-100/50 dark:border-blue-800/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-200/50 via-transparent to-transparent dark:from-blue-700/30 blur-2xl" />
+                      <div className="absolute w-36 h-36 rounded-full border border-blue-200 dark:border-blue-700/50" />
+                      <div className="absolute w-24 h-24 rounded-full border border-blue-300 dark:border-blue-600/50" />
+                      <motion.div 
+                        animate={{ scale: [1, 1.05, 1], boxShadow: ["0 0 0 0 rgba(59,130,246,0)", "0 0 20px 4px rgba(59,130,246,0.3)", "0 0 0 0 rgba(59,130,246,0)"] }}
+                        transition={{ repeat: Infinity, duration: 3 }}
+                        className="relative z-10 w-12 h-12 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-full flex items-center justify-center shadow-lg"
+                      >
+                        <span className="text-white font-bold text-sm tracking-wider">AI</span>
+                      </motion.div>
+                      <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 4, delay: 0.5 }} className="absolute top-6 left-12 w-6 h-6 bg-white dark:bg-zinc-800 rounded-full shadow-md flex items-center justify-center border border-zinc-100 dark:border-zinc-700">
+                        <Globe className="w-3 h-3 text-blue-500" />
+                      </motion.div>
+                      <motion.div animate={{ y: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 5, delay: 1 }} className="absolute bottom-8 right-10 w-7 h-7 bg-white dark:bg-zinc-800 rounded-full shadow-md flex items-center justify-center border border-zinc-100 dark:border-zinc-700">
+                        <BarChart3 className="w-3.5 h-3.5 text-indigo-500" />
+                      </motion.div>
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Automatic AI Marketing</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Sends predictive signals directly to your ad platforms instantly.</Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 3: AI Sales Agent */}
+                  <BentoCard className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-sky-50/50 dark:bg-sky-900/20 flex flex-col items-center justify-center overflow-hidden rounded-xl border border-sky-100/50 dark:border-sky-800/50 p-4">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-sky-200/50 via-transparent to-transparent dark:from-sky-700/30 blur-2xl" />
+                      <div className="w-full max-w-[200px] flex flex-col gap-3 relative z-10">
+                        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} className="self-start bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 p-2.5 rounded-2xl rounded-tl-sm shadow-sm w-[85%]">
+                          <div className="h-1.5 w-full bg-zinc-200 dark:bg-zinc-600 rounded-full mb-1.5" />
+                          <div className="h-1.5 w-2/3 bg-zinc-200 dark:bg-zinc-600 rounded-full" />
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }} className="self-end bg-blue-500 p-2.5 rounded-2xl rounded-tr-sm shadow-sm w-[75%]">
+                          <div className="h-1.5 w-full bg-blue-200 rounded-full mb-1.5" />
+                          <div className="h-1.5 w-1/2 bg-blue-200 rounded-full" />
+                        </motion.div>
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="self-start bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 p-2 rounded-2xl rounded-tl-sm shadow-sm flex items-center gap-1 h-6">
+                          <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1, delay: 0 }} className="w-1 h-1 bg-zinc-400 rounded-full" />
+                          <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1, delay: 0.2 }} className="w-1 h-1 bg-zinc-400 rounded-full" />
+                          <motion.div animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 1, delay: 0.4 }} className="w-1 h-1 bg-zinc-400 rounded-full" />
+                        </motion.div>
+                      </div>
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">AI Sales Agent</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Uses proprietary models to identify who to engage and what to offer.</Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 4: Analyzes All Website */}
+                  <BentoCard className="md:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-cyan-50/50 dark:bg-cyan-900/20 flex items-center justify-center overflow-hidden rounded-xl border border-cyan-100/50 dark:border-cyan-800/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-cyan-200/50 via-transparent to-transparent dark:from-cyan-700/30 blur-2xl" />
+                      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 150">
+                        <path d="M 100 75 L 60 40 M 100 75 L 140 40 M 100 75 L 70 110 M 100 75 L 130 110" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" className="text-cyan-300 dark:text-cyan-700" />
+                      </svg>
+                      <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute z-10 w-12 h-12 bg-zinc-900 dark:bg-white rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white dark:text-zinc-900 font-bold text-sm">AI</span>
+                      </motion.div>
+                      <motion.div animate={{ y: [0, -3, 0] }} transition={{ repeat: Infinity, duration: 3, delay: 0.1 }} className="absolute top-[30px] left-[45px] w-7 h-7 bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 rounded-full shadow-sm flex items-center justify-center">
+                        <Globe className="w-3.5 h-3.5 text-zinc-500" />
+                      </motion.div>
+                      <motion.div animate={{ y: [0, 4, 0] }} transition={{ repeat: Infinity, duration: 4, delay: 0.5 }} className="absolute top-[30px] right-[45px] w-7 h-7 bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 rounded-full shadow-sm flex items-center justify-center">
+                        <Database className="w-3.5 h-3.5 text-zinc-500" />
+                      </motion.div>
+                      <motion.div animate={{ y: [0, -4, 0] }} transition={{ repeat: Infinity, duration: 3.5, delay: 0.8 }} className="absolute bottom-[25px] left-[55px] w-7 h-7 bg-white dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700 rounded-full shadow-sm flex items-center justify-center">
+                        <LayoutDashboard className="w-3.5 h-3.5 text-zinc-500" />
+                      </motion.div>
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Analyzes All Data</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Sales engagement and product usage to score every lead seamlessly.</Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 5: Engages via text */}
+                  <BentoCard className="md:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-blue-50/50 dark:bg-blue-900/20 flex items-center justify-center overflow-hidden rounded-xl border border-blue-100/50 dark:border-blue-800/50 p-4">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-blue-200/50 via-transparent to-transparent dark:from-blue-700/30 blur-2xl" />
+                      <motion.div animate={{ opacity: [0.3, 0.6, 0.3] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute w-40 h-10 bg-blue-400/30 blur-xl rounded-full" />
+                      
+                      <div className="relative z-10 w-full max-w-[200px] h-9 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md rounded-full shadow-lg border border-white/50 dark:border-zinc-700/50 p-1 flex items-center justify-between">
+                        <div className="pl-3 flex items-center gap-2">
+                          <Sparkles className="w-3 h-3 text-blue-500" />
+                          <div className="w-12 h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full" />
+                        </div>
+                        <div className="h-full px-3 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full flex items-center justify-center shadow-inner">
+                          <span className="text-white text-[9px] font-semibold">AI Assistant</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Engages instantly</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Our agents use predictive insights to instantly prioritize leads.</Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 6: Actionable Insights */}
+                  <BentoCard className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-indigo-50/50 dark:bg-indigo-900/20 flex items-end justify-center overflow-hidden rounded-xl border border-indigo-100/50 dark:border-indigo-800/50 p-4">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-700/30 blur-xl" />
+                      
+                      <div className="relative z-10 flex items-end gap-1.5 h-20 w-full justify-center">
+                        {[30, 50, 40, 70, 90, 60].map((h, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ height: "10%" }}
+                            animate={{ height: [`${h}%`, `${h - 10}%`, `${h}%`] }}
+                            transition={{ repeat: Infinity, duration: 3, delay: i * 0.1, ease: "easeInOut" }}
+                            className={`w-5 rounded-t-sm ${i === 4 ? "bg-gradient-to-t from-blue-600 to-indigo-400 shadow-[0_0_15px_rgba(59,130,246,0.5)]" : "bg-indigo-200 dark:bg-indigo-800"}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Actionable Insights</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">Turn your data into growth with auto-generated charts and insights.</Text>
+                    </div>
+                  </BentoCard>
+
+                </BentoGrid>
+              </div>
+            </div>
+          </MarketingPreview>
+
+          {/* 2-CARD LAYOUT FILL WIDTH */}
+          <MarketingPreview 
+            title="2-Card Layout (Fill Width)" 
+            skill={skillContent}
+          >
+            <div className="w-full bg-zinc-50 dark:bg-zinc-950 py-16 px-4 sm:px-8 overflow-hidden relative">
+              <div className="max-w-5xl mx-auto space-y-12">
+                <div className="text-center max-w-3xl mx-auto space-y-4">
+                  <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                    Powerful Integrations
+                  </h2>
+                </div>
+
+                <BentoGrid className="md:grid-cols-3 xl:grid-cols-3 md:auto-rows-[24rem]">
+                  {/* Card 1 */}
+                  <BentoCard className="md:col-span-2 border-transparent dark:border-white/10">
+                    <BentoCardBackground src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200&keywords=photography,minimal" />
+                    <BentoCardContent>
+                      <BentoCardFooter isBlurred className="flex-col items-start gap-1 p-6 text-zinc-900 dark:text-white">
+                        <Text variant="strong" className="text-zinc-900 dark:text-white text-xl">Cloud Storage</Text>
+                        <Text className="text-zinc-600 dark:text-zinc-300 text-sm">Access your files anywhere.</Text>
+                      </BentoCardFooter>
+                    </BentoCardContent>
+                  </BentoCard>
+
+                  {/* Card 2 */}
+                  <BentoCard className="border-transparent dark:border-white/10">
+                    <BentoCardBackground src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80&w=1200&keywords=photography,minimal" />
+                    <BentoCardContent>
+                      <BentoCardFooter isBlurred className="flex-col items-start gap-1 p-6 text-zinc-900 dark:text-white">
+                        <Text variant="strong" className="text-zinc-900 dark:text-white text-xl">Biometric Auth</Text>
+                        <Text className="text-zinc-600 dark:text-zinc-300 text-sm">Secure access via Fingerprint.</Text>
+                      </BentoCardFooter>
+                    </BentoCardContent>
+                  </BentoCard>
+                </BentoGrid>
+              </div>
+            </div>
+          </MarketingPreview>
+
+          {/* 4-CARD LAYOUT */}
+          <MarketingPreview title="4-Card Layout (Exactly 2 Rows)" skill={skillContent}>
+            <div className="w-full bg-zinc-50 dark:bg-zinc-950 py-16 px-4 sm:px-8 overflow-hidden relative">
+              <div className="max-w-5xl mx-auto space-y-12">
+                <div className="text-left space-y-4">
+                  <span className="text-sm font-semibold text-rose-500 dark:text-rose-400 tracking-wide uppercase">
+                    Workflow
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                    Ship faster, together.
+                  </h2>
+                </div>
+
+                <BentoGrid className="md:grid-cols-4 md:auto-rows-[16rem]">
+                  {/* Card 1: Instant Deployments */}
+                  <BentoCard className="md:col-span-1 md:row-span-2 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="pt-2 pb-4 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">Instant Deployments</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">
+                        Push to main and watch your site go live in milliseconds across our edge network.
+                      </Text>
+                    </div>
+                    <div className="relative w-full flex-1 bg-orange-50/50 dark:bg-orange-900/20 flex flex-col items-center justify-center overflow-hidden rounded-xl border border-orange-100/50 dark:border-orange-800/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-200/50 via-transparent to-transparent dark:from-orange-700/30 blur-2xl" />
+                      
+                      {/* Pulse Rings */}
+                      <motion.div animate={{ scale: [1, 2, 2], opacity: [0.5, 0, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute w-12 h-12 rounded-full border-2 border-orange-400 dark:border-orange-500" />
+                      <motion.div animate={{ scale: [1, 2.5, 2.5], opacity: [0.3, 0, 0] }} transition={{ repeat: Infinity, duration: 2, delay: 0.5 }} className="absolute w-12 h-12 rounded-full border-2 border-orange-300 dark:border-orange-600" />
+                      
+                      {/* Center Node */}
+                      <div className="relative z-10 w-10 h-10 bg-gradient-to-tr from-orange-500 to-amber-400 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/30">
+                        <Zap className="w-4 h-4 text-white" />
+                      </div>
+                      
+                      {/* Edge Nodes */}
+                      <motion.div animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2, delay: 0.2 }} className="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-500 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.8)]" />
+                      <motion.div animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2, delay: 0.8 }} className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-amber-500 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
+                      <motion.div animate={{ opacity: [0, 1, 0], scale: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2, delay: 1.4 }} className="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-orange-400 rounded-full shadow-[0_0_8px_rgba(251,146,60,0.8)]" />
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 2: Image */}
+                  <BentoCard className="md:col-span-2 md:row-span-1 border-transparent dark:border-white/10">
+                    <BentoCardBackground src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200&keywords=abstract,minimal,white" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-0 rounded-[inherit]" />
+                    <BentoCardContent className="justify-end p-6">
+                      <div className="space-y-1">
+                        <Text variant="strong" className="text-2xl text-white">Collaborative Workspaces</Text>
+                        <Text className="text-zinc-300">Invite your whole team and work in real-time.</Text>
+                      </div>
+                    </BentoCardContent>
+                  </BentoCard>
+
+                  {/* Card 3: DDoS Protection */}
+                  <BentoCard className="md:col-span-1 md:row-span-2 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-white/10 shadow-sm p-2 flex flex-col justify-between">
+                    <div className="relative w-full flex-1 bg-indigo-50/50 dark:bg-indigo-900/20 flex items-center justify-center overflow-hidden rounded-xl border border-indigo-100/50 dark:border-indigo-800/50">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-700/30 blur-2xl" />
+                      
+                      {/* Shield Barrier */}
+                      <motion.div animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.8, 0.4] }} transition={{ repeat: Infinity, duration: 2 }} className="absolute w-20 h-20 rounded-full border border-indigo-400/50 bg-indigo-500/10" />
+                      
+                      {/* Center Shield */}
+                      <div className="relative z-10 w-10 h-10 bg-gradient-to-tr from-indigo-600 to-purple-500 rounded-full flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                        <Shield className="w-4 h-4 text-white" />
+                      </div>
+                      
+                      {/* Attack Interceptions */}
+                      <motion.div initial={{ opacity: 0, x: -40, y: -20, scale: 0 }} animate={{ opacity: [0, 1, 0], x: -20, y: -10, scale: [0, 1.5, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0 }} className="absolute z-20 w-1.5 h-1.5 bg-red-500 rounded-full shadow-[0_0_6px_rgba(239,68,68,1)]" />
+                      <motion.div initial={{ opacity: 0, x: 40, y: 20, scale: 0 }} animate={{ opacity: [0, 1, 0], x: 20, y: 10, scale: [0, 1.5, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.5 }} className="absolute z-20 w-1.5 h-1.5 bg-rose-500 rounded-full shadow-[0_0_6px_rgba(244,63,94,1)]" />
+                      <motion.div initial={{ opacity: 0, x: -10, y: -40, scale: 0 }} animate={{ opacity: [0, 1, 0], x: -5, y: -20, scale: [0, 1.5, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 1 }} className="absolute z-20 w-1.5 h-1.5 bg-red-500 rounded-full shadow-[0_0_6px_rgba(239,68,68,1)]" />
+                    </div>
+                    <div className="pt-4 pb-2 px-2 shrink-0">
+                      <Text variant="strong" className="text-lg text-zinc-900 dark:text-white">DDoS Protection</Text>
+                      <Text variant="muted" className="text-sm mt-1 leading-relaxed">
+                        Enterprise-grade mitigation automatically enabled for all your endpoints.
+                      </Text>
+                    </div>
+                  </BentoCard>
+
+                  {/* Card 4: Image & Blurred Footer (Formerly Card 3) */}
+                  <BentoCard className="md:col-span-2 md:row-span-1 border-transparent dark:border-white/10">
+                    <BentoCardBackground src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1200&keywords=architecture,minimal,monochrome" />
+                    <BentoCardContent>
+                      <BentoCardFooter isBlurred className="flex-col items-start gap-2 p-6 text-zinc-900 dark:text-white">
+                        <Text variant="strong" className="text-xl text-zinc-900 dark:text-white">Visual Analytics</Text>
+                        <Text className="text-zinc-600 dark:text-zinc-300">Understand your traffic with beautiful, native charts.</Text>
+                      </BentoCardFooter>
+                    </BentoCardContent>
+                  </BentoCard>
+                </BentoGrid>
+              </div>
+            </div>
+          </MarketingPreview>
+        </div>
+
+        <section id="component-api" className="scroll-mt-24 space-y-4 mt-16">
+          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            Component API
+          </h2>
+          <ApiTable rows={apiRows} />
+        </section>
+      </div>
+    </div>
+  );
+}

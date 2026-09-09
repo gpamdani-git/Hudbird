@@ -1,12 +1,15 @@
 import React from "react";
+import { Menu, ChevronRight } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
+import { InstallationTabs } from "../components/InstallationTabs";
 
 export const stackedTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "preview", title: "Preview" },
 ];
 
-export default function StackedLayoutDoc() {
+export default function StackedLayoutDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }) {
   const codeString = `// Full source code available in the demo URL.
 // The Stacked Layout features a top Navbar and a centered max-w-7xl main content area.
 import StackedLayoutDemo from "./demos/StackedLayoutDemo";
@@ -17,7 +20,25 @@ export default function App() {
 `;
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="pb-24 w-full flex flex-col items-center">
+      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
+        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+          {onOpenSidebar && (
+            <button 
+              onClick={onOpenSidebar}
+              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              aria-label="Open Navigation"
+            >
+              <Menu size={18} />
+            </button>
+          )}
+          <span>Layouts section</span>
+          <ChevronRight size={14} className="text-zinc-400" />
+          <span className="text-zinc-900 dark:text-zinc-100">Stacked Layout</span>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 space-y-16">
       {/* Title & Subtitle */}
       <div>
         <div className="flex items-center gap-3 mb-3">
@@ -32,6 +53,8 @@ export default function App() {
           A classic application layout featuring a top navigation bar and a centered content area.
         </p>
       </div>
+
+      
 
       {/* Main Preview & Code */}
       <section className="space-y-4" id="preview">
@@ -77,6 +100,24 @@ export default function App() {
         </ComponentPreview>
         <CodeBlock code={codeString} />
       </section>
+
+      <div id="installation" className="scroll-mt-24">
+        <InstallationTabs componentName="stacked-layout"  manualCode={`import { Navbar, NavbarItem } from "@hudbird/ui";
+
+export default function Example() {
+  return (
+    <div className="min-h-screen bg-zinc-50">
+      <Navbar>
+        <NavbarItem href="/">Home</NavbarItem>
+      </Navbar>
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        Content goes here
+      </main>
+    </div>
+  );
+}`} />
+      </div>
+      </div>
     </div>
   );
 }

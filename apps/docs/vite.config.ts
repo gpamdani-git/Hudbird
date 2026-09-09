@@ -4,11 +4,13 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  publicDir: '../../public',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@hudbird/ui': path.resolve(__dirname, '../../packages/core/src'),
       '@hudbird/theme': path.resolve(__dirname, '../../packages/theme/src'),
+      '@hudbird/marketing': path.resolve(__dirname, '../../packages/marketing/src'),
     },
   },
   server: {

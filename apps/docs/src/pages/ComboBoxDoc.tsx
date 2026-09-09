@@ -1,4 +1,6 @@
 // apps/docs/src/pages/ComboBoxDoc.tsx
+import comboBoxCode from "../../../../packages/core/src/components/ComboBox/ComboBox.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { ComboBox, type ComboBoxOption } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -6,6 +8,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const comboBoxTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -199,6 +202,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="combo-box" manualCode={comboBoxCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

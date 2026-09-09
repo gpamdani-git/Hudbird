@@ -1,4 +1,6 @@
 // apps/docs/src/pages/AlertDoc.tsx
+import alertCode from "../../../../packages/core/src/components/Alert/Alert.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { Alert, Button } from "@hudbird/ui";
 import { Info, CheckCircle2, AlertTriangle, AlertCircle, RotateCcw } from "lucide-react";
@@ -7,6 +9,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const alertTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -120,6 +123,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="alert" manualCode={alertCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">

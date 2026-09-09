@@ -1,4 +1,6 @@
 // apps/docs/src/pages/DescriptionListDoc.tsx
+import descriptionListCode from "../../../../packages/core/src/components/DescriptionList/DescriptionList.tsx?raw";
+import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
 import {
   DescriptionList,
@@ -13,6 +15,7 @@ import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
 
 export const descriptionListTocItems = [
+  { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
   {
     id: "examples",
@@ -148,6 +151,10 @@ function Example() {
 }`}
         />
       </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="description-list" manualCode={descriptionListCode} />
+      </div>
+
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
