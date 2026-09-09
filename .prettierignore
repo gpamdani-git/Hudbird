@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+coverage/
+.next/
+out/
+.turbo/
+*.min.js
+*.min.css
+public/
+!public/assets/
+.gemini/
+.agents/
