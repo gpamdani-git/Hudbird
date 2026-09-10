@@ -1,5 +1,11 @@
 # @hudbird/ui
 
+## 1.2.4
+
+### Patch Changes
+
+- @hudbird/theme@1.2.4
+
 ## 1.2.3
 
 ### Patch Changes

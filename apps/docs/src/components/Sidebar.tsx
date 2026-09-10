@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Home, X } from "lucide-react";
+import { Home, X, LifeBuoy } from "lucide-react";
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -102,6 +102,20 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
           >
             <div className="flex h-4 w-4 items-center justify-center text-zinc-400">✨</div>
             <span>Changelog</span>
+          </NavLink>
+          <NavLink
+            to="/support"
+            onClick={onClose}
+            className={({ isActive }) =>
+              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
+                isActive
+                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
+              }`
+            }
+          >
+            <LifeBuoy className="h-4 w-4 text-zinc-400" />
+            <span>Support & FAQ</span>
           </NavLink>
         </div>
 

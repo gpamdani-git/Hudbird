@@ -49,6 +49,7 @@ const PricingDoc = lazy(() => import("./pages/marketing/PricingDoc"));
 const BentoGridDoc = lazy(() => import("./pages/marketing/BentoGridDoc"));
 const TestimonialsDoc = lazy(() => import("./pages/marketing/TestimonialsDoc"));
 const FaqDoc = lazy(() => import("./pages/marketing/FaqDoc"));
+const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 
 const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
@@ -101,6 +102,7 @@ export default function App() {
               <Suspense fallback={<DocLoadingSkeleton />}>
                 <Routes>
                   <Route path="/" element={<GettingStartedDoc />} />
+                  <Route path="/support" element={<SupportDoc />} />
                   <Route path="/changelog" element={<ChangelogDoc />} />
                   <Route path="/button" element={<ButtonDoc />} />
                   <Route path="/input" element={<InputDoc />} />

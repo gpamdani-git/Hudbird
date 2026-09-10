@@ -406,14 +406,30 @@ async function installComponent(componentName, installedSet = new Set()) {
     }
   }
 
-  const targetDir = path.join(cwd, "src/components/hudbird-ui", componentName);
+  const componentsBaseDir = fs.existsSync(path.join(cwd, "src"))
+    ? "src/components/hudbird-ui"
+    : "components/hudbird-ui";
+  const targetDir = path.join(cwd, componentsBaseDir, componentName);
+
+  if (fs.existsSync(targetDir)) {
+    const response = await prompts({
+      type: "confirm",
+      name: "overwrite",
+      message: `Component "${componentName}" already exists. Overwrite?`,
+      initial: false,
+    });
+    if (!response.overwrite) {
+      console.log(pc.yellow(`⚠ Skipped ${componentName}.`));
+      return;
+    }
+  }
 
   console.log(pc.cyan(`📦 Installing ${componentName}...`));
   copyDirWithTransformSync(sourceDir, targetDir);
   installedSet.add(componentName);
 
   console.log(
-    pc.green(`✔ Successfully added ${componentName} to src/components/hudbird-ui/${componentName}`)
+    pc.green(`✔ Successfully added ${componentName} to ${componentsBaseDir}/${componentName}`)
   );
 }
 
@@ -423,20 +439,24 @@ async function runAdd(componentName) {
     process.exit(1);
   }
 
+  const componentsBaseDir = fs.existsSync(path.join(cwd, "src"))
+    ? "src/components/hudbird-ui"
+    : "components/hudbird-ui";
+
   // Ensure utils are copied first
-  const targetUtilsDir = path.join(cwd, "src/components/hudbird-ui/utils");
+  const targetUtilsDir = path.join(cwd, componentsBaseDir, "utils");
   const sourceUtilsDir = path.join(TEMPLATES_DIR, "utils");
   if (fs.existsSync(sourceUtilsDir) && !fs.existsSync(targetUtilsDir)) {
-    console.log(pc.blue(`ℹ Copying utility files to src/components/hudbird-ui/utils...`));
+    console.log(pc.blue(`ℹ Copying utility files to ${componentsBaseDir}/utils...`));
     copyDirWithTransformSync(sourceUtilsDir, targetUtilsDir);
   }
 
   await installComponent(componentName);
 
   // Generate index.ts to export all installed components
-  const baseDir = path.join(cwd, "src/components/hudbird-ui");
+  const baseDir = path.join(cwd, componentsBaseDir);
   generateIndexTs(baseDir);
-  console.log(pc.green(`✔ Updated src/components/hudbird-ui/index.ts`));
+  console.log(pc.green(`✔ Updated ${componentsBaseDir}/index.ts`));
 
   // Install collected missing NPM dependencies
   const pkgJsonPath = path.join(cwd, "package.json");
@@ -474,8 +494,26 @@ async function runAdd(componentName) {
       execSync(`${installCmd} ${missingDeps.join(" ")}`, { stdio: "inherit", cwd });
       console.log(pc.green(`✔ NPM Dependencies installed successfully.\n`));
     } catch (err) {
-      console.log(pc.red(`✖ Failed to install NPM dependencies. You can install them manually:`));
-      console.log(pc.white(`  ${installCmd} ${missingDeps.join(" ")}\n`));
+      console.log(pc.red(`\n✖ Failed to install NPM dependencies.`));
+      if (pm === "npm") {
+        console.log(
+          pc.yellow(`If you see an ERESOLVE or peer dependency error (common with React 19), try:`)
+        );
+        console.log(
+          pc.white(`  1. Use overrides in package.json or force install: `) +
+            pc.cyan(`npm install ${missingDeps.join(" ")} --legacy-peer-deps`)
+        );
+        console.log(
+          pc.white(`  2. Use a modern package manager: `) +
+            pc.cyan(`pnpm add ${missingDeps.join(" ")}`)
+        );
+        console.log(
+          pc.white(`  3. Downgrade to React 18: `) + pc.cyan(`npm install react@18 react-dom@18\n`)
+        );
+      } else {
+        console.log(pc.white(`You can install them manually:`));
+        console.log(pc.white(`  ${installCmd} ${missingDeps.join(" ")}\n`));
+      }
     }
   }
 }

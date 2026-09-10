@@ -1,5 +1,11 @@
 # hudbird-ui
 
+## 1.2.4
+
+### Patch Changes
+
+- **Smart CLI v2**: Introduced automatic resolution of nested components and on-the-fly installation of required NPM dependencies. Overhauled the Getting Started documentation with a robust new setup guide, implemented auto-generation of index exports, and resolved critical bugs.
+
 ## 1.2.3
 
 ### Patch Changes

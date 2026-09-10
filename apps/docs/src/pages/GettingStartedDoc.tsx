@@ -15,14 +15,12 @@ import {
 } from "@hudbird/ui";
 
 export const gettingStartedTocItems = [
-  { id: "installation", title: "Installation" },
   { id: "getting-started", title: "Getting started" },
-  { id: "before-you-start", title: "Before you start" },
-  { id: "adding-hudbird", title: "Adding Hudbird to your project" },
-  { id: "installing-dependencies", title: "Installing dependencies" },
-  { id: "router-integration", title: "Client-side router integration" },
-  { id: "setup-font", title: "Optional: Setup font family" },
-  { id: "framework-examples", title: "Framework integration" },
+  { id: "new-project", title: "New Project Quickstart" },
+  { id: "existing-project", title: "Existing Project Installation" },
+  { id: "smart-cli", title: "Using the Smart CLI" },
+  { id: "router-integration", title: "Router integration" },
+  { id: "setup-font", title: "Setup font family" },
 ];
 
 export default function GettingStartedDoc() {
@@ -62,73 +60,91 @@ export default function GettingStartedDoc() {
         </div>
       </div>
 
-      {/* 2. Before you start */}
-      <section id="before-you-start" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Before you start</h2>
+      {/* 2. New Project */}
+      <section id="new-project" className="scroll-mt-24 space-y-4">
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+          New Project Quickstart
+        </h2>
         <Text>
-          Hudbird UI is built on top of modern web technologies. Before integrating our components,
-          ensure your project meets the following prerequisites:
+          If you are starting from scratch, the fastest way to begin is by generating a new Vite or
+          Next.js project with Tailwind CSS already configured.
         </Text>
-        <ul className="mt-4 list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
-          <li>A working React 18+ environment (Next.js, Vite, or Remix).</li>
-          <li>Tailwind CSS installed and configured in your project.</li>
-          <li>Basic familiarity with Tailwind CSS utility classes.</li>
-        </ul>
+
+        <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          For Vite (React):
+        </h3>
+        <CodeBlock
+          code="npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install -D tailwindcss @tailwindcss/vite
+npm run dev"
+        />
+
+        <h3 className="mt-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          For Next.js:
+        </h3>
+        <CodeBlock
+          code="npx create-next-app@latest my-app
+cd my-app
+npm run dev"
+        />
       </section>
 
-      {/* 3. Adding Catalyst (Hudbird) to your project */}
-      <section id="adding-hudbird" className="scroll-mt-24 space-y-4">
+      {/* 3. Existing Project */}
+      <section id="existing-project" className="scroll-mt-24 space-y-4">
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-          Adding Hudbird to your project
+          Adding to an Existing Project
         </h2>
-
-        <div className="my-6 rounded-xl border border-emerald-100 bg-emerald-50 p-4 dark:border-emerald-900/50 dark:bg-emerald-950/30">
-          <h3 className="mb-2 flex items-center gap-2 text-sm font-bold text-emerald-900 dark:text-emerald-300">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-200 text-xs dark:bg-emerald-800">
-              ✨
-            </span>
-            New in v1.1.2: Native Tailwind CSS v4 Support
-          </h3>
-          <p className="text-sm text-emerald-800/80 dark:text-emerald-200/80">
-            The Hudbird CLI now seamlessly supports Tailwind CSS v4! When initialized in a v4
-            project, it skips legacy configuration files and natively injects{" "}
-            <Code className="bg-emerald-100 text-xs dark:bg-emerald-800">@theme</Code> variables
-            directly into your CSS. We also fully support{" "}
-            <Code className="bg-emerald-100 text-xs dark:bg-emerald-800">pnpm</Code>,{" "}
-            <Code className="bg-emerald-100 text-xs dark:bg-emerald-800">npm</Code>,{" "}
-            <Code className="bg-emerald-100 text-xs dark:bg-emerald-800">yarn</Code>, and{" "}
-            <Code className="bg-emerald-100 text-xs dark:bg-emerald-800">bun</Code> natively. See
-            the{" "}
-            <a href="/changelog" className="font-semibold underline underline-offset-2">
-              Changelog
-            </a>{" "}
-            for full details.
-          </p>
-        </div>
-
         <Text>
-          The fastest way to get started is by using our CLI tool. This will scaffold the core
-          configuration and allow you to cherry-pick the exact components you need.
+          Ensure your project has React 18+ and Tailwind CSS installed. To initialize Hudbird UI,
+          run our setup command at the root of your project:
         </Text>
         <CliCommandTabs commandType="init" />
-        <Text className="mt-4">
-          You can now use the new <Code>add</Code> command to seamlessly install any component into
-          your project:
+        <Text className="text-sm text-zinc-500">
+          This command will set up the necessary base dependencies and prepare your project for
+          component installation.
         </Text>
-        <CliCommandTabs commandType="add" />
       </section>
 
-      {/* 4. Installing dependencies */}
-      <section id="installing-dependencies" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-          Installing dependencies
-        </h2>
+      {/* 4. Smart CLI */}
+      <section id="smart-cli" className="scroll-mt-24 space-y-4">
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Using the Smart CLI</h2>
         <Text>
-          Hudbird UI relies on a few featherweight, highly optimized headless libraries to handle
-          complex interactions, accessibility, and animations. Install the core dependencies:
+          Hudbird UI features a highly intelligent CLI designed to make adding components a breeze.
+          To add any component, simply run:
         </Text>
-        <div className="mt-4">
-          <CodeBlock code="pnpm add @radix-ui/react-slot class-variance-authority clsx tailwind-merge lucide-react" />
+        <CliCommandTabs commandType="add" />
+
+        <div className="mt-6 space-y-4">
+          <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+              🧠 Auto Dependency Resolution
+            </h4>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+              When you install a component (e.g. <Code>Hero</Code>), the CLI will automatically
+              detect and install any nested component dependencies it requires (e.g.{" "}
+              <Code>Button</Code>, <Code>Badge</Code>), and auto-install required NPM packages like{" "}
+              <Code>framer-motion</Code> using your preferred package manager (npm, pnpm, bun, or
+              yarn).
+            </p>
+          </div>
+          <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">📁 Smart Pathing</h4>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+              The CLI detects your folder structure. If you have a <Code>src/</Code> directory,
+              components are placed in <Code>src/components/hudbird-ui</Code>. If not, they are
+              placed in <Code>components/hudbird-ui</Code>.
+            </p>
+          </div>
+          <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+              🛡️ Overwrite Protection
+            </h4>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+              Accidentally ran the install command twice? The CLI checks if a component already
+              exists and prompts you before overwriting, protecting your customized code.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -140,11 +156,8 @@ export default function GettingStartedDoc() {
         <Text>
           For components that perform navigation (like <Code>Navbar</Code> or <Code>Sidebar</Code>{" "}
           items), you may want to integrate them with your framework's router (e.g., React Router or
-          Next.js Router) to prevent full-page reloads.
-        </Text>
-        <Text className="mt-2">
-          When configuring your <Code>HudbirdProvider</Code>, pass your router's navigation
-          function:
+          Next.js Router) to prevent full-page reloads. Pass your router's navigation function to
+          the <Code>HudbirdProvider</Code>:
         </Text>
         <div className="mt-4">
           <CodeBlock
@@ -164,23 +177,23 @@ export function App() {
         </div>
       </section>
 
-      {/* 6. Optional: Setup Plus Jakarta Sans font family */}
+      {/* 6. Setup font family */}
       <section id="setup-font" className="scroll-mt-24 space-y-4">
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
           Optional: Setup Plus Jakarta Sans
         </h2>
         <Text>
           To achieve the exact typography aesthetic seen in our documentation, we recommend using{" "}
-          <Strong>Plus Jakarta Sans</Strong>.
+          <Strong>Plus Jakarta Sans</Strong>. First, import the font in your main CSS or HTML file:
         </Text>
-        <Text className="mt-2">First, import the font in your main CSS or HTML file:</Text>
         <div className="mt-4">
           <CodeBlock
             code={`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');`}
           />
         </div>
         <Text className="mt-4">
-          Then, configure it as your default sans font in <Code>tailwind.config.js</Code>:
+          Then, configure it as your default sans font in <Code>tailwind.config.js</Code> (or CSS
+          via <Code>@theme</Code> for Tailwind v4):
         </Text>
         <div className="mt-4">
           <CodeBlock
@@ -195,69 +208,6 @@ export default {
   },
 }`}
           />
-        </div>
-      </section>
-
-      {/* 7. Framework integration examples */}
-      <section id="framework-examples" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-          Framework integration examples
-        </h2>
-        <Text>Hudbird UI works seamlessly across all modern React frameworks.</Text>
-        <div className="mt-6">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Framework</TableHead>
-                <TableHead>Support Status</TableHead>
-                <TableHead>Notes</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-semibold text-zinc-900 dark:text-zinc-50">
-                  Next.js (App Router)
-                </TableCell>
-                <TableCell>
-                  <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                    First-class
-                  </span>
-                </TableCell>
-                <TableCell className="text-zinc-500 dark:text-zinc-400">
-                  Fully supported. Requires <Code>"use client"</Code> on interactive components.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-semibold text-zinc-900 dark:text-zinc-50">
-                  Vite (React)
-                </TableCell>
-                <TableCell>
-                  <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                    First-class
-                  </span>
-                </TableCell>
-                <TableCell className="text-zinc-500 dark:text-zinc-400">
-                  Fully supported out of the box.
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-semibold text-zinc-900 dark:text-zinc-50">
-                  Remix
-                </TableCell>
-                <TableCell>
-                  <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
-                    First-class
-                  </span>
-                </TableCell>
-                <TableCell className="text-zinc-500 dark:text-zinc-400">
-                  Supported with standard Tailwind config.
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
         </div>
       </section>
     </div>
