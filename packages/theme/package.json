@@ -4,5 +4,8 @@
   "main": "src/index.js",
   "dependencies": {
     "tailwindcss": "^4.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
