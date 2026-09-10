@@ -1,5 +1,12 @@
 # @hudbird/marketing
 
+## 1.2.3
+
+### Patch Changes
+
+- @hudbird/ui@1.2.3
+- @hudbird/theme@1.2.3
+
 ## 1.2.2
 
 ### Patch Changes

@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.2.3",
+    "date": "September 2026",
+    "content": "- 363f555: ### 🚀 Smart CLI Upgrades & Enhanced Documentation\n\n  - **Intelligent Dependency Resolution:** The CLI now automatically detects and installs required sub-components and missing NPM packages on the fly for a completely frictionless experience.\n  - **Automated Exports:** Automatically generates and updates `index.ts` when adding new components, keeping your imports perfectly clean and organized.\n  - **Precision Docs Formatting:** Component installation commands are now strictly formatted in PascalCase across the documentation, eliminating typos and ensuring a perfectly smooth installation flow."
+  },
+  {
     "version": "1.2.2",
     "date": "September 2026",
     "content": "- fix: resolve partial publish issue"
