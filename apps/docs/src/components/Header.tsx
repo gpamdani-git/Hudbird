@@ -264,14 +264,44 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
                 >
                   AI Editor
                 </DropdownItem>
-                <DropdownItem
-                  onClick={() =>
-                    window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
-                  }
-                  startContent={<GithubIcon className="h-4 w-4" />}
-                >
-                  GitHub
-                </DropdownItem>
+                <Dropdown placement="left-start">
+                  <DropdownTrigger className="w-full">
+                    <div className="relative flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-zinc-700 transition-all duration-150 outline-none select-none hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800/80">
+                      <div className="flex min-w-0 items-center gap-2.5 truncate">
+                        <span className="shrink-0 text-zinc-400 dark:text-zinc-500">
+                          <GithubIcon className="h-4 w-4" />
+                        </span>
+                        <span className="truncate">GitHub</span>
+                      </div>
+                      <span className="ml-auto shrink-0 pl-2 text-zinc-400 dark:text-zinc-500">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </span>
+                    </div>
+                  </DropdownTrigger>
+                  <DropdownMenu>
+                    <DropdownItem
+                      onClick={() =>
+                        window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
+                      }
+                      endContent={<ArrowUpRight className="h-3 w-3" />}
+                    >
+                      Public Tracker & Discussions
+                    </DropdownItem>
+                    <DropdownItem disabled>Source Code (Private)</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
                 <DropdownItem
                   onClick={() => window.open("https://www.buymeacoffee.com/daniakbar", "_blank")}
                   startContent={<Coffee className="h-4 w-4" />}
