@@ -95,7 +95,7 @@ function MarqueeRow({
           const snapTarget = Math.round(targetX / itemWidth) * itemWidth;
 
           animationControls.current = animate(baseX, snapTarget, {
-            type: "spring",
+            type: "spring" as const,
             stiffness: 400,
             damping: 40,
             velocity: velocity,

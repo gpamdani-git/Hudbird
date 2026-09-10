@@ -28,9 +28,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ className, variant, as: Component = "p", ...props }, ref) => {
     return (
       <Component
-        // @ts-expect-error - Polymorphic component ref assignment
-        ref={ref as any}
-        // @ts-expect-error - Typescript complains about polymorphic component className
+        ref={ref as React.Ref<HTMLElement>}
         className={cn(textVariants({ variant }), className)}
         {...(props as any)}
       />

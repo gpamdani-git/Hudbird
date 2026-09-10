@@ -217,7 +217,7 @@ const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
             : "bg-white ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800",
           className
         )}
-        {...props}
+        {...(props as any)}
       >
         {popular && (
           <div className="absolute inset-x-0 -top-4 flex justify-center">

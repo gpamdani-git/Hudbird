@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Card, Avatar } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Play } from "lucide-react";
@@ -178,13 +178,12 @@ export const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) =
       </blockquote>
       <figcaption className="mt-8 flex items-center gap-x-4 border-t border-zinc-100 pt-6 dark:border-zinc-800/50">
         <Avatar
-          src={testimonial.avatarUrl!}
-          fallback={testimonial.name?.charAt(0) || "U"}
+          src={testimonial.avatar!}
           className="h-10 w-10 ring-2 ring-white transition-transform group-hover:scale-105 dark:ring-zinc-900"
         />
         <div>
           <div className="text-sm font-semibold text-zinc-900 dark:text-white">
-            {testimonial.name}
+            {testimonial.author}
           </div>
           <div className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{testimonial.role}</div>
         </div>
@@ -199,7 +198,7 @@ export function Testimonials({
   testimonials = DEFAULT_TESTIMONIALS,
   className,
 }: TestimonialsProps) {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -210,13 +209,13 @@ export function Testimonials({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
       },

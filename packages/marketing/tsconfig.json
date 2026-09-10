@@ -13,9 +13,12 @@
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-jsx",
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@hudbird/ui": ["../core/dist/index.d.mts"],
+      "@hudbird/theme": ["../theme/src/index.js"]
     }
   },
   "include": ["src/**/*"],

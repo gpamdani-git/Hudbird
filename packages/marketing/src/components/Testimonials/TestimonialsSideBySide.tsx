@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Card, Avatar } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Testimonial, DEFAULT_TESTIMONIALS } from "./Testimonials";
@@ -26,7 +26,7 @@ export function TestimonialsSideBySide({
   testimonials = DEFAULT_TESTIMONIALS.filter((t) => !t.featured).slice(0, 6),
   className,
 }: TestimonialsSideBySideProps) {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -36,13 +36,13 @@ export function TestimonialsSideBySide({
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
       },
@@ -107,7 +107,6 @@ export function TestimonialsSideBySide({
                     <div className="mb-4 flex items-center gap-3">
                       <Avatar
                         src={testimonial.avatar!}
-                        fallback={testimonial.author?.charAt(0) || "U"}
                         className="h-10 w-10 ring-2 ring-transparent transition-all group-hover:ring-zinc-100 dark:group-hover:ring-zinc-800"
                       />
                       <div>

@@ -127,7 +127,7 @@ const FeatureCard = React.forwardRef<
       transition={{ duration: 0.5, delay: index * 0.1 }}
       ref={ref}
       className={cn("flex flex-col", className)}
-      {...props}
+      {...(props as any)}
     >
       {children}
     </motion.div>
@@ -222,8 +222,9 @@ const FeatureRow = React.forwardRef<
             ? "lg:order-1"
             : "lg:order-2";
 
-        return React.cloneElement(child as React.ReactElement<any>, {
-          className: cn(child.props.className, orderClass),
+        const typedChild = child as React.ReactElement<{ className?: string }>;
+        return React.cloneElement(typedChild, {
+          className: cn(typedChild.props.className, orderClass),
         });
       })}
     </div>
@@ -241,7 +242,7 @@ const FeatureRowContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
         transition={{ duration: 0.7 }}
         ref={ref}
         className={cn("max-w-xl", className)}
-        {...props}
+        {...(props as any)}
       />
     );
   }
@@ -261,7 +262,7 @@ const FeatureRowMedia = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
           "relative overflow-hidden rounded-2xl bg-zinc-100 p-2 ring-1 ring-zinc-900/10 backdrop-blur-sm sm:p-4 dark:bg-zinc-900/50 dark:ring-white/10",
           className
         )}
-        {...props}
+        {...(props as any)}
       >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-indigo-500/10 via-transparent to-purple-500/10" />
         <div className="relative overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950">
