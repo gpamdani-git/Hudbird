@@ -1,5 +1,13 @@
 # @hudbird/ui
 
+## 1.2.2
+
+### Patch Changes
+
+- fix: resolve partial publish issue
+- Updated dependencies
+  - @hudbird/theme@1.2.2
+
 ## 1.2.1
 
 ### Patch Changes

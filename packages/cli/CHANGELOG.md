@@ -1,5 +1,11 @@
 # hudbird-ui
 
+## 1.2.2
+
+### Patch Changes
+
+- fix: resolve partial publish issue
+
 ## 1.2.1
 
 ### Patch Changes

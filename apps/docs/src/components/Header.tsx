@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Moon, Sun, ArrowUpRight, Menu, Monitor, Coffee, Sparkles } from "lucide-react";
+import changelogData from "../data/changelog.json";
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -114,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
                 Hudbird UI
               </span>
               <Badge variant="solid" color="primary">
-                1.2.0
+                {changelogData[0]?.version || "1.2.0"}
               </Badge>
             </div>
           </Link>

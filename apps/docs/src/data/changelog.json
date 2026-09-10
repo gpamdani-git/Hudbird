@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.2.2",
+    "date": "September 2026",
+    "content": "- fix: resolve partial publish issue"
+  },
+  {
     "version": "1.2.1",
     "date": "September 2026",
     "content": "- - **Navigation & Layout Fixes**: Resolved duplicate hamburger menu issues across all documentation pages and unified the mobile layout.\n  - **Global Search Optimization**: Fixed horizontal scroll overflow bugs in the search modal for small screens by enforcing flexible text wrapping.\n  - **Nested Mobile Menus**: Upgraded the mobile header dropdown to support nested sub-menus, specifically bringing full GitHub tracking links to mobile users.\n  - **Automated Changelog System**: Implemented a zero-runtime build script (`sync-changelog`) that automatically parses Changesets to keep the Docs version badges and Changelog page perfectly in sync.\n  - **Monorepo Publish Configs**: Enforced `fixed` versioning across all packages and added `publishConfig` to resolve NPM unscoped access errors."

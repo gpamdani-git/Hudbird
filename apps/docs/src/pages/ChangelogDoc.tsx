@@ -8,8 +8,10 @@ function renderChangelogContent(content: string) {
 
     if (trimmed.startsWith("- ")) {
       const isIndented = line.startsWith("  ");
-      // Replace inline code block backticks with styled span
-      const parts = trimmed.replace(/^- /, "").split(/`([^`]+)`/g);
+      const textWithoutBullet = trimmed.replace(/^- /, "");
+
+      // Parse code and bold
+      const codeParts = textWithoutBullet.split(/`([^`]+)`/g);
 
       return (
         <div
@@ -18,18 +20,29 @@ function renderChangelogContent(content: string) {
         >
           <span className="text-zinc-400 select-none">•</span>
           <span className={isIndented ? "text-zinc-600 dark:text-zinc-400" : ""}>
-            {parts.map((part, index) =>
-              index % 2 === 1 ? (
-                <code
-                  key={index}
-                  className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-900 dark:bg-zinc-800 dark:text-zinc-200"
-                >
-                  {part}
-                </code>
-              ) : (
-                part
-              )
-            )}
+            {codeParts.map((part, index) => {
+              if (index % 2 === 1) {
+                return (
+                  <code
+                    key={index}
+                    className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-900 dark:bg-zinc-800 dark:text-zinc-200"
+                  >
+                    {part}
+                  </code>
+                );
+              }
+              // Parse bold within non-code parts
+              const boldParts = part.split(/\*\*([^*]+)\*\*/g);
+              return boldParts.map((bp, bIndex) =>
+                bIndex % 2 === 1 ? (
+                  <strong key={`${index}-${bIndex}`} className="text-zinc-900 dark:text-zinc-100">
+                    {bp}
+                  </strong>
+                ) : (
+                  bp
+                )
+              );
+            })}
           </span>
         </div>
       );
