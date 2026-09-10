@@ -12,7 +12,9 @@
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "prepare": "husky",
-    "release": "pnpm build:packages && changeset publish"
+    "release": "pnpm build:packages && changeset publish",
+    "sync-changelog": "node scripts/sync-changelog.js",
+    "bump": "changeset version && pnpm sync-changelog"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

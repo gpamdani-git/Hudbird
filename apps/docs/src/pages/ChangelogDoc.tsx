@@ -1,5 +1,46 @@
 import React from "react";
-import cliPkg from "../../../../packages/cli/package.json";
+import changelogData from "../data/changelog.json";
+
+function renderChangelogContent(content: string) {
+  return content.split("\n").map((line, i) => {
+    const trimmed = line.trim();
+    if (trimmed.length === 0) return null;
+
+    if (trimmed.startsWith("- ")) {
+      const isIndented = line.startsWith("  ");
+      // Replace inline code block backticks with styled span
+      const parts = trimmed.replace(/^- /, "").split(/`([^`]+)`/g);
+
+      return (
+        <div
+          key={i}
+          className={`mt-1.5 flex gap-2 ${isIndented ? "ml-6" : "ml-2 font-medium text-zinc-900 dark:text-zinc-100"}`}
+        >
+          <span className="text-zinc-400 select-none">•</span>
+          <span className={isIndented ? "text-zinc-600 dark:text-zinc-400" : ""}>
+            {parts.map((part, index) =>
+              index % 2 === 1 ? (
+                <code
+                  key={index}
+                  className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs text-zinc-900 dark:bg-zinc-800 dark:text-zinc-200"
+                >
+                  {part}
+                </code>
+              ) : (
+                part
+              )
+            )}
+          </span>
+        </div>
+      );
+    }
+    return (
+      <p key={i} className="mt-4 mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+        {line}
+      </p>
+    );
+  });
+}
 
 export default function ChangelogDoc() {
   return (
@@ -15,136 +56,22 @@ export default function ChangelogDoc() {
       </div>
 
       <section className="space-y-12">
-        {/* Latest Release */}
-        <div
-          id={`v${cliPkg.version.replace(/\./g, "-")}`}
-          className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
-        >
-          <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
-            v{cliPkg.version} — FAQ Components & Major Dependency Upgrades
-          </h2>
-          <p className="mb-6 text-sm text-zinc-500">September 2026</p>
+        {/* Dynamic Releases from Changesets */}
+        {changelogData.map((release) => (
+          <div
+            key={release.version}
+            id={`v${release.version.replace(/\./g, "-")}`}
+            className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
+          >
+            <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
+            <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+              v{release.version}
+            </h2>
+            <p className="mb-6 text-sm text-zinc-500">{release.date}</p>
 
-          <div className="space-y-6">
-            {/* New Components */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                New Marketing Components
-              </h3>
-              <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">NEW: Faq (Simple):</strong>{" "}
-                  Clean accordion-style FAQ with smooth open/close animation and scroll-triggered
-                  appear effects.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">NEW: FaqCategorized:</strong>{" "}
-                  FAQ with horizontal category tabs and animated panel transitions, perfect for
-                  product documentation or support pages.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">
-                    NEW: FaqWithIllustration:
-                  </strong>{" "}
-                  A unique two-column FAQ layout pairing accordion questions with a fully procedural
-                  animated SVG illustration built entirely with Framer Motion looping animations —
-                  no external assets required.
-                </li>
-              </ul>
-            </div>
-
-            {/* Dependency Upgrades */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                Major Dependency Upgrades
-              </h3>
-              <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">React 19.3:</strong> Upgraded
-                  React and React DOM to 19.3.0 for the latest stability and performance
-                  improvements.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">TypeScript 6.x:</strong>{" "}
-                  Moved from TypeScript 5.x to the latest TypeScript 6 stable release, with all type
-                  errors and strict rules resolved.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">Vite 8:</strong> Upgraded the
-                  build tool to Vite 8. Updated{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    vite.config.ts
-                  </code>{" "}
-                  to use{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    import.meta.dirname
-                  </code>{" "}
-                  instead of{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    __dirname
-                  </code>{" "}
-                  for compatibility with the new native config loader.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">
-                    Framer Motion / Motion 13:
-                  </strong>{" "}
-                  Full upgrade to Motion 13 across the monorepo.
-                </li>
-              </ul>
-            </div>
-
-            {/* DX Improvements */}
-            <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                Developer Experience
-              </h3>
-              <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">ApiTable title prop:</strong>{" "}
-                  Added a{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    title
-                  </code>{" "}
-                  prop to the{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    ApiTable
-                  </code>{" "}
-                  documentation component for clearer section headings on pages with multiple API
-                  tables.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">ESLint strict fixes:</strong>{" "}
-                  Replaced all{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    @ts-ignore
-                  </code>{" "}
-                  directives with{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    @ts-expect-error
-                  </code>{" "}
-                  with required descriptions, as enforced by the updated{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    @typescript-eslint/ban-ts-comment
-                  </code>{" "}
-                  rule.
-                </li>
-                <li>
-                  <strong className="text-zinc-900 dark:text-zinc-100">
-                    Lucide React icon fix:
-                  </strong>{" "}
-                  Resolved missing{" "}
-                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
-                    Github
-                  </code>{" "}
-                  icon export (removed from lucide-react latest) by using an inline SVG component in
-                  the docs header.
-                </li>
-              </ul>
-            </div>
+            <div className="space-y-2">{renderChangelogContent(release.content)}</div>
           </div>
-        </div>
+        ))}
 
         {/* Previous Update (v1.1.3) */}
         <div
