@@ -293,6 +293,35 @@ async function runInit() {
   console.log(pc.green(pc.bold("✨ All done! Hudbird UI is ready to use.")));
 }
 
+const collectedNpmDeps = new Set();
+const CORE_DEPS = ["react", "react-dom"];
+
+function extractNpmDependencies(content) {
+  const deps = new Set();
+  const importRegex = /import\s+(?:[^"']+\s+from\s+)?["']([^"']+)["']/g;
+  let match;
+  while ((match = importRegex.exec(content)) !== null) {
+    const pkg = match[1];
+    // Exclude relative, absolute, aliases, and hudbird specific paths
+    if (
+      !pkg.startsWith(".") &&
+      !pkg.startsWith("/") &&
+      !pkg.startsWith("@/") &&
+      !pkg.startsWith("@hudbird/")
+    ) {
+      let basePkg = pkg;
+      if (pkg.startsWith("@")) {
+        const parts = pkg.split("/");
+        if (parts.length >= 2) basePkg = `${parts[0]}/${parts[1]}`;
+      } else {
+        basePkg = pkg.split("/")[0];
+      }
+      if (!CORE_DEPS.includes(basePkg)) deps.add(basePkg);
+    }
+  }
+  return deps;
+}
+
 function copyDirWithTransformSync(src, dest) {
   if (!fs.existsSync(src)) return;
   if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
@@ -308,6 +337,17 @@ function copyDirWithTransformSync(src, dest) {
     } else {
       let content = fs.readFileSync(srcPath, "utf-8");
 
+      // Extract external NPM dependencies
+      if (
+        entry.name.endsWith(".tsx") ||
+        entry.name.endsWith(".ts") ||
+        entry.name.endsWith(".jsx") ||
+        entry.name.endsWith(".js")
+      ) {
+        const deps = extractNpmDependencies(content);
+        for (const dep of deps) collectedNpmDeps.add(dep);
+      }
+
       // Transform imports from internal relative paths to user project relative paths
       // 1. Fix utils import (e.g. "../../utils/cn" -> "../utils/cn")
       content = content.replace(/(\.\.\/)+utils\//g, "../utils/");
@@ -317,6 +357,64 @@ function copyDirWithTransformSync(src, dest) {
       fs.writeFileSync(destPath, content, "utf-8");
     }
   }
+}
+
+const DEPENDENCY_MAP = {
+  Testimonials: ["Card", "Avatar"],
+  Faq: ["Accordion"],
+  BentoGrid: ["Card"],
+  Hero: ["Button", "Dropdown"],
+};
+
+function generateIndexTs(baseDir) {
+  const indexPath = path.join(baseDir, "index.ts");
+  if (!fs.existsSync(baseDir)) return;
+  const entries = fs.readdirSync(baseDir, { withFileTypes: true });
+  let exportsContent = "";
+  for (const entry of entries) {
+    if (entry.isDirectory() && entry.name !== "utils") {
+      exportsContent += `export * from "./${entry.name}";\n`;
+    }
+  }
+  fs.writeFileSync(indexPath, exportsContent, "utf-8");
+}
+
+async function installComponent(componentName, installedSet = new Set()) {
+  if (installedSet.has(componentName)) return;
+
+  let sourceDir = path.join(TEMPLATES_DIR, "core", componentName);
+  let isMarketing = false;
+
+  // Check if it's a marketing component
+  if (!fs.existsSync(sourceDir)) {
+    sourceDir = path.join(TEMPLATES_DIR, "marketing", componentName);
+    if (fs.existsSync(sourceDir)) isMarketing = true;
+  }
+
+  if (!fs.existsSync(sourceDir)) {
+    console.log(pc.red(`✖ Component "${componentName}" not found in Hudbird UI registry.`));
+    if (installedSet.size === 0) process.exit(1);
+    return;
+  }
+
+  // Check dependencies first
+  const deps = DEPENDENCY_MAP[componentName] || [];
+  for (const dep of deps) {
+    if (!installedSet.has(dep)) {
+      console.log(pc.blue(`ℹ "${componentName}" requires "${dep}". Installing...`));
+      await installComponent(dep, installedSet);
+    }
+  }
+
+  const targetDir = path.join(cwd, "src/components/hudbird-ui", componentName);
+
+  console.log(pc.cyan(`📦 Installing ${componentName}...`));
+  copyDirWithTransformSync(sourceDir, targetDir);
+  installedSet.add(componentName);
+
+  console.log(
+    pc.green(`✔ Successfully added ${componentName} to src/components/hudbird-ui/${componentName}`)
+  );
 }
 
 async function runAdd(componentName) {
@@ -333,35 +431,52 @@ async function runAdd(componentName) {
     copyDirWithTransformSync(sourceUtilsDir, targetUtilsDir);
   }
 
-  let sourceDir = path.join(TEMPLATES_DIR, "core", componentName);
-  let isMarketing = false;
+  await installComponent(componentName);
 
-  // Check if it's a marketing component
-  if (!fs.existsSync(sourceDir)) {
-    sourceDir = path.join(TEMPLATES_DIR, "marketing", componentName);
-    if (fs.existsSync(sourceDir)) isMarketing = true;
+  // Generate index.ts to export all installed components
+  const baseDir = path.join(cwd, "src/components/hudbird-ui");
+  generateIndexTs(baseDir);
+  console.log(pc.green(`✔ Updated src/components/hudbird-ui/index.ts`));
+
+  // Install collected missing NPM dependencies
+  const pkgJsonPath = path.join(cwd, "package.json");
+  let missingDeps = [];
+  if (fs.existsSync(pkgJsonPath)) {
+    try {
+      const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, "utf-8"));
+      const allInstalled = { ...pkg.dependencies, ...pkg.devDependencies };
+      missingDeps = Array.from(collectedNpmDeps).filter((dep) => !allInstalled[dep]);
+    } catch (e) {
+      // Ignore if package.json cannot be parsed
+    }
+  } else {
+    missingDeps = Array.from(collectedNpmDeps);
   }
 
-  if (!fs.existsSync(sourceDir)) {
-    console.log(pc.red(`✖ Component "${componentName}" not found in Hudbird UI registry.`));
-    process.exit(1);
-  }
+  if (missingDeps.length > 0) {
+    let pm = "npm";
+    if (fs.existsSync(path.join(cwd, "pnpm-lock.yaml"))) pm = "pnpm";
+    else if (fs.existsSync(path.join(cwd, "yarn.lock"))) pm = "yarn";
+    else if (fs.existsSync(path.join(cwd, "bun.lockb"))) pm = "bun";
 
-  const targetDir = path.join(cwd, "src/components/hudbird-ui", componentName);
-
-  console.log(pc.cyan(`📦 Installing ${componentName}...`));
-  copyDirWithTransformSync(sourceDir, targetDir);
-
-  console.log(
-    pc.green(`✔ Successfully added ${componentName} to src/components/hudbird-ui/${componentName}`)
-  );
-
-  if (isMarketing) {
     console.log(
-      pc.yellow(
-        `⚠ Note: "${componentName}" might depend on core components. Check the imports inside the file to ensure all dependencies are added!`
-      )
+      pc.cyan(`\n📦 Installing required NPM dependencies: ${missingDeps.join(", ")} using ${pm}...`)
     );
+    const installCmd =
+      pm === "npm"
+        ? "npm install"
+        : pm === "yarn"
+          ? "yarn add"
+          : pm === "bun"
+            ? "bun add"
+            : "pnpm add";
+    try {
+      execSync(`${installCmd} ${missingDeps.join(" ")}`, { stdio: "inherit", cwd });
+      console.log(pc.green(`✔ NPM Dependencies installed successfully.\n`));
+    } catch (err) {
+      console.log(pc.red(`✖ Failed to install NPM dependencies. You can install them manually:`));
+      console.log(pc.white(`  ${installCmd} ${missingDeps.join(" ")}\n`));
+    }
   }
 }
 

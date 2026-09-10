@@ -487,7 +487,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
-          <InstallationTabs componentName="hero-section" manualCode={heroCode} />
+          <InstallationTabs componentName="hero" manualCode={heroCode} />
         </div>
 
         <div className="flex flex-col gap-16">

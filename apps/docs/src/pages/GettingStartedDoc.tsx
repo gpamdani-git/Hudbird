@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
+import { CliCommandTabs } from "../components/CliCommandTabs";
 import {
   Text,
   Strong,
@@ -109,16 +110,12 @@ export default function GettingStartedDoc() {
           The fastest way to get started is by using our CLI tool. This will scaffold the core
           configuration and allow you to cherry-pick the exact components you need.
         </Text>
-        <div className="mt-4">
-          <CodeBlock code="npx hudbird-ui@latest init" />
-        </div>
+        <CliCommandTabs commandType="init" />
         <Text className="mt-4">
           You can now use the new <Code>add</Code> command to seamlessly install any component into
           your project:
         </Text>
-        <div className="mt-4">
-          <CodeBlock code="npx hudbird-ui@latest add [component-name]" />
-        </div>
+        <CliCommandTabs commandType="add" />
       </section>
 
       {/* 4. Installing dependencies */}

@@ -21,17 +21,22 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
   const [activeTab, setActiveTab] = useState<"command" | "manual">("command");
   const [pkgManager, setPkgManager] = useState<"pnpm" | "npm" | "yarn" | "bun">("pnpm");
 
+  const formattedName = componentName
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join("");
+
   const getCommand = () => {
     switch (pkgManager) {
       case "npm":
-        return `npx hudbird-ui@latest add ${componentName}`;
+        return `npx hudbird-ui@latest add ${formattedName}`;
       case "yarn":
-        return `yarn dlx hudbird-ui@latest add ${componentName}`;
+        return `yarn dlx hudbird-ui@latest add ${formattedName}`;
       case "bun":
-        return `bunx --bun hudbird-ui@latest add ${componentName}`;
+        return `bunx --bun hudbird-ui@latest add ${formattedName}`;
       case "pnpm":
       default:
-        return `pnpm dlx hudbird-ui@latest add ${componentName}`;
+        return `pnpm dlx hudbird-ui@latest add ${formattedName}`;
     }
   };
 
