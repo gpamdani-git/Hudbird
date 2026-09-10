@@ -147,7 +147,7 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           {onOpenSidebar && (
             <button
               onClick={onOpenSidebar}
-              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />

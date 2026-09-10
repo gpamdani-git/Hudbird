@@ -127,111 +127,167 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
 
         {/* Right: Navigation items & Theme Segmented Switch UI */}
         <div className="flex shrink-0 items-center gap-3 text-sm font-medium sm:gap-6">
-          <Link
-            to="/"
-            className="hidden font-semibold text-zinc-900 transition-colors sm:block dark:text-white"
-          >
-            Docs
-          </Link>
-          <a
-            href="https://hudbird-editor.vercel.app/"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            title="Hudbird AI Editor"
-          >
-            <Sparkles className="h-4 w-4 fill-indigo-500/20 text-indigo-500" />
-            <span className="hidden font-medium sm:inline">AI Editor</span>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-indigo-600 uppercase dark:text-indigo-400">
-              Alpha
-            </span>
-          </a>
-          <Dropdown placement="bottom-end">
-            <DropdownTrigger
-              className="flex items-center text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-              title="GitHub"
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-6 sm:flex">
+            <Link to="/" className="font-semibold text-zinc-900 transition-colors dark:text-white">
+              Docs
+            </Link>
+            <a
+              href="https://hudbird-editor.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              title="Hudbird AI Editor"
             >
-              <GithubIcon className="h-5 w-5" />
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem
-                onClick={() =>
-                  window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
-                }
-                endContent={<ArrowUpRight className="h-3 w-3" />}
+              <Sparkles className="h-4 w-4 fill-indigo-500/20 text-indigo-500" />
+              <span className="font-medium">AI Editor</span>
+              <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-indigo-600 uppercase dark:text-indigo-400">
+                Alpha
+              </span>
+            </a>
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger
+                className="flex items-center text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                title="GitHub"
               >
-                Public Tracker & Discussions
-              </DropdownItem>
-              <DropdownItem disabled>Source Code (Private)</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <a
-            href="https://www.buymeacoffee.com/daniakbar"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden items-center text-zinc-600 transition-colors hover:text-amber-600 sm:flex dark:text-zinc-400 dark:hover:text-amber-500"
-            title="Buy me a coffee"
-          >
-            <Coffee className="h-5 w-5" />
-          </a>
-
-          {/* Segmented Switch UI: Light | Dark | System */}
-          <div
-            role="radiogroup"
-            aria-label="Theme mode switcher"
-            className="flex items-center rounded-xl border border-zinc-200 bg-zinc-100 p-0.5 dark:border-zinc-800 dark:bg-zinc-900"
-          >
-            <button
-              type="button"
-              role="radio"
-              aria-checked={theme === "light"}
-              onClick={() => setTheme("light")}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                theme === "light"
-                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
-              title="Light mode"
+                <GithubIcon className="h-5 w-5" />
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem
+                  onClick={() =>
+                    window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
+                  }
+                  endContent={<ArrowUpRight className="h-3 w-3" />}
+                >
+                  Public Tracker & Discussions
+                </DropdownItem>
+                <DropdownItem disabled>Source Code (Private)</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+            <a
+              href="https://www.buymeacoffee.com/daniakbar"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center text-zinc-600 transition-colors hover:text-amber-600 dark:text-zinc-400 dark:hover:text-amber-500"
+              title="Buy me a coffee"
             >
-              <Sun className={`h-3.5 w-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
-              <span className="hidden md:inline">Light</span>
-            </button>
+              <Coffee className="h-5 w-5" />
+            </a>
 
-            <button
-              type="button"
-              role="radio"
-              aria-checked={theme === "dark"}
-              onClick={() => setTheme("dark")}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                theme === "dark"
-                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
-              title="Dark mode"
+            {/* Segmented Switch UI: Light | Dark | System */}
+            <div
+              role="radiogroup"
+              aria-label="Theme mode switcher"
+              className="flex items-center rounded-xl border border-zinc-200 bg-zinc-100 p-0.5 dark:border-zinc-800 dark:bg-zinc-900"
             >
-              <Moon
-                className={`h-3.5 w-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-              />
-              <span className="hidden md:inline">Dark</span>
-            </button>
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === "light"}
+                onClick={() => setTheme("light")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                  theme === "light"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="Light mode"
+              >
+                <Sun className={`h-3.5 w-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
+                <span>Light</span>
+              </button>
 
-            <button
-              type="button"
-              role="radio"
-              aria-checked={theme === "system"}
-              onClick={() => setTheme("system")}
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                theme === "system"
-                  ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
-              title="System preference"
-            >
-              <Monitor
-                className={`h-3.5 w-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-              />
-              <span className="hidden md:inline">System</span>
-            </button>
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === "dark"}
+                onClick={() => setTheme("dark")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                  theme === "dark"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="Dark mode"
+              >
+                <Moon
+                  className={`h-3.5 w-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                />
+                <span>Dark</span>
+              </button>
+
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === "system"}
+                onClick={() => setTheme("system")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                  theme === "system"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="System preference"
+              >
+                <Monitor
+                  className={`h-3.5 w-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                />
+                <span>System</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Navigation Dropdown */}
+          <div className="flex sm:hidden">
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger
+                className="flex items-center justify-center rounded-lg p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                title="Menu"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="1" />
+                  <circle cx="12" cy="5" r="1" />
+                  <circle cx="12" cy="19" r="1" />
+                </svg>
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem
+                  onClick={() => window.open("https://hudbird-editor.vercel.app/", "_blank")}
+                  startContent={<Sparkles className="h-4 w-4 text-indigo-500" />}
+                >
+                  AI Editor
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() =>
+                    window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
+                  }
+                  startContent={<GithubIcon className="h-4 w-4" />}
+                >
+                  GitHub
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => window.open("https://www.buymeacoffee.com/daniakbar", "_blank")}
+                  startContent={<Coffee className="h-4 w-4" />}
+                >
+                  Sponsor
+                </DropdownItem>
+                <DropdownItem
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  startContent={
+                    theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
+                  }
+                >
+                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
       </div>

@@ -268,7 +268,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleInputKeyDown}
                 placeholder="Search components, layouts, guides, props..."
-                className="w-full border-none bg-transparent p-0 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-0 sm:text-base dark:text-white dark:placeholder:text-zinc-500"
+                className="w-full min-w-0 border-none bg-transparent p-0 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-0 sm:text-base dark:text-white dark:placeholder:text-zinc-500"
                 aria-autocomplete="list"
                 aria-controls="search-results-list"
               />
@@ -333,7 +333,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                           </div>
 
                           <div className="min-w-0">
-                            <div className="flex items-center gap-2">
+                            <div className="flex flex-wrap items-center gap-2">
                               {item.parent && (
                                 <span className="truncate text-xs font-normal text-zinc-400 dark:text-zinc-500">
                                   {item.parent} &gt;
