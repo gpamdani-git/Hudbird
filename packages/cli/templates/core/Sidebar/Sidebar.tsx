@@ -49,7 +49,10 @@ const sidebarVariants = cva(
   }
 );
 
-export interface SidebarProps extends React.HTMLAttributes<HTMLElement>, Omit<VariantProps<typeof sidebarVariants>, "isCollapsed"> {
+export interface SidebarProps
+  extends
+    React.HTMLAttributes<HTMLElement>,
+    Omit<VariantProps<typeof sidebarVariants>, "isCollapsed"> {
   defaultCollapsed?: boolean;
   isCollapsed?: boolean;
   onCollapseChange?: (collapsed: boolean) => void;
@@ -124,7 +127,7 @@ export const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps
       <div
         ref={ref}
         className={cn(
-          "flex items-center shrink-0 min-h-16 px-4 py-3 transition-all duration-300",
+          "flex min-h-16 shrink-0 items-center px-4 py-3 transition-all duration-300",
           isCollapsed ? "justify-center" : "justify-between",
           className
         )}
@@ -146,7 +149,7 @@ export interface SidebarToggleProps extends React.ButtonHTMLAttributes<HTMLButto
 export const SidebarToggle = React.forwardRef<HTMLButtonElement, SidebarToggleProps>(
   ({ className, ...props }, ref) => {
     const { isCollapsed, toggleCollapse } = useSidebar();
-    
+
     return (
       <button
         ref={ref}
@@ -154,7 +157,7 @@ export const SidebarToggle = React.forwardRef<HTMLButtonElement, SidebarTogglePr
         onClick={toggleCollapse}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         className={cn(
-          "flex items-center justify-center w-7 h-7 rounded-md text-zinc-500 hover:bg-zinc-200/50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
+          "flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-200/50 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none dark:hover:bg-zinc-800 dark:hover:text-zinc-100",
           className
         )}
         {...props}
@@ -184,7 +187,7 @@ export const SidebarContent = React.forwardRef<HTMLDivElement, SidebarContentPro
       <div
         ref={ref}
         className={cn(
-          "flex-1 overflow-y-auto overflow-x-hidden p-3 flex flex-col gap-6",
+          "flex flex-1 flex-col gap-6 overflow-x-hidden overflow-y-auto p-3",
           className
         )}
         {...props}
@@ -203,11 +206,11 @@ export interface SidebarNavProps extends React.HTMLAttributes<HTMLDivElement> {
 export const SidebarNav = React.forwardRef<HTMLDivElement, SidebarNavProps>(
   ({ className, title, children, ...props }, ref) => {
     const { isCollapsed } = useSidebar();
-    
+
     return (
-      <nav ref={ref} className={cn("flex flex-col gap-1 w-full relative", className)} {...props}>
+      <nav ref={ref} className={cn("relative flex w-full flex-col gap-1", className)} {...props}>
         {title && !isCollapsed && (
-          <h4 className="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 select-none">
+          <h4 className="mb-2 px-3 text-xs font-semibold tracking-wider text-zinc-500 uppercase select-none dark:text-zinc-400">
             {title}
           </h4>
         )}
@@ -239,7 +242,8 @@ const sidebarItemVariants = cva(
       },
       isActive: {
         true: "bg-indigo-50/80 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-semibold",
-        false: "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-850 hover:text-zinc-900 dark:hover:text-zinc-50 cursor-pointer",
+        false:
+          "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-850 hover:text-zinc-900 dark:hover:text-zinc-50 cursor-pointer",
       },
       isDisabled: {
         true: "opacity-50 cursor-not-allowed pointer-events-none",
@@ -247,7 +251,7 @@ const sidebarItemVariants = cva(
       isCollapsed: {
         true: "justify-center",
         false: "justify-start",
-      }
+      },
     },
     defaultVariants: {
       size: "md",
@@ -260,7 +264,8 @@ const sidebarItemVariants = cva(
 );
 
 export interface SidebarItemProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  extends
+    React.AnchorHTMLAttributes<HTMLAnchorElement>,
     Omit<VariantProps<typeof sidebarItemVariants>, "size" | "radius" | "isCollapsed"> {
   icon?: React.ReactNode;
   badge?: React.ReactNode;
@@ -269,20 +274,11 @@ export interface SidebarItemProps
 
 export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>(
   (
-    {
-      className,
-      isActive = false,
-      isDisabled = false,
-      icon,
-      badge,
-      label,
-      children,
-      ...props
-    },
+    { className, isActive = false, isDisabled = false, icon, badge, label, children, ...props },
     ref
   ) => {
     const { isCollapsed, size, radius } = useSidebar();
-    
+
     // Derived label for tooltip if explicitly provided or if child is a string
     const tooltipText = label || (typeof children === "string" ? children : undefined);
 
@@ -306,11 +302,18 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>
         {...props}
       >
         {icon && (
-          <span className={cn("shrink-0 flex items-center justify-center", isActive ? "text-indigo-600 dark:text-indigo-400" : "text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-50")}>
+          <span
+            className={cn(
+              "flex shrink-0 items-center justify-center",
+              isActive
+                ? "text-indigo-600 dark:text-indigo-400"
+                : "text-zinc-500 group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-zinc-50"
+            )}
+          >
             {icon}
           </span>
         )}
-        
+
         {!isCollapsed && (
           <span className="flex-1 truncate transition-opacity duration-300">
             {children || label}
@@ -318,14 +321,12 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>
         )}
 
         {!isCollapsed && badge && (
-          <span className="shrink-0 transition-opacity duration-300">
-            {badge}
-          </span>
+          <span className="shrink-0 transition-opacity duration-300">{badge}</span>
         )}
 
         {/* Floating Tooltip (Visible only when collapsed and hovered/focused) */}
         {isCollapsed && tooltipText && (
-          <div className="absolute left-full ml-4 px-2.5 py-1.5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-xs font-medium rounded-md shadow-lg pointer-events-none opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 z-50 whitespace-nowrap">
+          <div className="pointer-events-none absolute left-full z-50 ml-4 rounded-md bg-zinc-900 px-2.5 py-1.5 text-xs font-medium whitespace-nowrap text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 dark:bg-zinc-100 dark:text-zinc-900">
             {tooltipText}
             {/* Tooltip Arrow */}
             <div className="absolute top-1/2 -left-1 -translate-y-1/2 border-[4px] border-transparent border-r-zinc-900 dark:border-r-zinc-100" />
@@ -349,7 +350,7 @@ export const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps
       <div
         ref={ref}
         className={cn(
-          "mt-auto p-4 border-t border-zinc-200/50 dark:border-zinc-800/50 shrink-0",
+          "mt-auto shrink-0 border-t border-zinc-200/50 p-4 dark:border-zinc-800/50",
           className
         )}
         {...props}

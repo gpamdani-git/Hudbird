@@ -136,27 +136,27 @@ export default function RadioGroupDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             RadioGroup
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             New
           </span>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Radio groups let users select a single choice from a set of mutually exclusive options with
-          accessible keyboard arrow navigation and clear visual indicators.
+          Radio groups let users select a single choice from a set of mutually exclusive options
+          with accessible keyboard arrow navigation and clear visual indicators.
         </p>
       </div>
 
       {/* Main Preview */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="w-full max-w-sm mx-auto">
+          <div className="mx-auto w-full max-w-sm">
             <RadioGroup
               label="Select subscription tier"
               description="You can upgrade or downgrade anytime"
@@ -210,27 +210,32 @@ export default function Example() {
         <InstallationTabs componentName="radio-group" manualCode={radioGroupCode} />
       </div>
 
-
       {/* Component API */}
       <section className="space-y-6" id="component-api">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Properties for <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">RadioGroup</code> container and <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">Radio</code> items.
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Properties for{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              RadioGroup
+            </code>{" "}
+            container and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              Radio
+            </code>{" "}
+            items.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             RadioGroup Props
           </h3>
           <ApiTable rows={radioGroupApiRows} />
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Radio Item Props
           </h3>
           <ApiTable rows={radioApiRows} />
@@ -239,7 +244,7 @@ export default function Example() {
 
       {/* Examples & Variants */}
       <div className="space-y-12" id="examples">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             Examples & Variants
           </h2>
@@ -247,9 +252,7 @@ export default function Example() {
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-radio-group">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Basic Usage
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Standard vertical stack with label and simple choices.
           </p>
@@ -279,7 +282,11 @@ export default function Example() {
             Horizontal Orientation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Set <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">orientation="horizontal"</code> to arrange items in an inline row.
+            Set{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              orientation="horizontal"
+            </code>{" "}
+            to arrange items in an inline row.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">
@@ -313,7 +320,7 @@ export default function Example() {
             Choose from 5 dynamic semantic colors for the selected active circle and dot.
           </p>
           <ComponentPreview>
-            <div className="w-full max-w-md grid grid-cols-2 gap-6 sm:grid-cols-3">
+            <div className="grid w-full max-w-md grid-cols-2 gap-6 sm:grid-cols-3">
               <RadioGroup color="primary" defaultValue="opt">
                 <Radio value="opt" label="Primary (Indigo)" />
               </RadioGroup>
@@ -347,7 +354,11 @@ export default function Example() {
             Sizes (sm, md, lg)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Radios are available in three proportions: <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">sm</code>, <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">md</code>, and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">lg</code>.
+            Radios are available in three proportions:{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">sm</code>,{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">md</code>,
+            and <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">lg</code>
+            .
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md space-y-4">
@@ -430,7 +441,11 @@ export default function Example() {
             Custom Radio Card Tiles
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Render rich bordered card tiles using <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">variant="card"</code> for checkout forms and pricing options.
+            Render rich bordered card tiles using{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              variant="card"
+            </code>{" "}
+            for checkout forms and pricing options.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">
@@ -480,7 +495,15 @@ export default function Example() {
             Validation & Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Handle form validation feedback with <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isInvalid</code> and error messaging, or disable items with <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isDisabled</code>.
+            Handle form validation feedback with{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              isInvalid
+            </code>{" "}
+            and error messaging, or disable items with{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              isDisabled
+            </code>
+            .
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md space-y-6">
@@ -494,7 +517,7 @@ export default function Example() {
                 <Radio value="no" label="I decline" />
               </RadioGroup>
 
-              <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="border-t border-zinc-200 pt-2 dark:border-zinc-800">
                 <RadioGroup label="Disabled Group" isDisabled defaultValue="1">
                   <Radio value="1" label="Disabled Option 1" />
                   <Radio value="2" label="Disabled Option 2" />

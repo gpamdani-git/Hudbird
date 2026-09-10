@@ -42,7 +42,8 @@ export const radioCircleVariants = cva(
       },
       isChecked: {
         true: "",
-        false: "bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600",
+        false:
+          "bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600",
       },
       isInvalid: {
         true: "!border-rose-500 dark:!border-rose-400",
@@ -112,7 +113,8 @@ export const radioDotVariants = cva("rounded-full transition-transform duration-
 });
 
 export interface RadioProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
     Omit<VariantProps<typeof radioCircleVariants>, "disabled" | "isChecked"> {
   value: string;
   label?: React.ReactNode;
@@ -169,14 +171,14 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     return (
       <label
         className={cn(
-          "group relative inline-flex items-start select-none transition-all duration-150",
-          isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
+          "group relative inline-flex items-start transition-all duration-150 select-none",
+          isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
           isCard
             ? cn(
-                "p-4 rounded-xl border transition-all duration-200",
+                "rounded-xl border p-4 transition-all duration-200",
                 isChecked
-                  ? "border-indigo-600 dark:border-indigo-500 bg-indigo-50/40 dark:bg-indigo-950/20 ring-1 ring-indigo-600/30 dark:ring-indigo-500/30"
-                  : "border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700"
+                  ? "border-indigo-600 bg-indigo-50/40 ring-1 ring-indigo-600/30 dark:border-indigo-500 dark:bg-indigo-950/20 dark:ring-indigo-500/30"
+                  : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
               )
             : "gap-3",
           classNames?.base,
@@ -227,7 +229,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             {(label || children) && (
               <span
                 className={cn(
-                  "font-medium leading-tight text-zinc-900 dark:text-zinc-100",
+                  "leading-tight font-medium text-zinc-900 dark:text-zinc-100",
                   size === "sm" ? "text-xs" : size === "md" ? "text-sm" : "text-base",
                   classNames?.label
                 )}
@@ -238,7 +240,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             {description && (
               <span
                 className={cn(
-                  "text-zinc-500 dark:text-zinc-400 mt-1 leading-normal",
+                  "mt-1 leading-normal text-zinc-500 dark:text-zinc-400",
                   size === "sm" ? "text-[11px]" : "text-xs",
                   classNames?.description
                 )}

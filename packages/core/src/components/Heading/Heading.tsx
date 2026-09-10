@@ -45,8 +45,7 @@ const headingVariants = cva("font-display transition-colors duration-150 leading
 });
 
 export interface HeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
-    VariantProps<typeof headingVariants> {
+  extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {
   as?: HeadingLevel;
   size?: HeadingSize;
   tracking?: HeadingTracking;
@@ -77,8 +76,8 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       resolvedSize === "h1" || resolvedSize === "h2"
         ? "tight"
         : resolvedSize === "h3" || resolvedSize === "h4"
-        ? "tight"
-        : "normal";
+          ? "tight"
+          : "normal";
 
     const resolvedTracking = tracking ?? defaultTrackingForSize;
 

@@ -33,9 +33,18 @@ export default function AlertDoc() {
       description: (
         <span>
           The visual styling of the alert:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'solid'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'solid'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>
+          .
         </span>
       ),
     },
@@ -45,10 +54,22 @@ export default function AlertDoc() {
       description: (
         <span>
           The status color:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'primary'</code> (info),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'success'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'warning'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'primary'
+          </code>{" "}
+          (info),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'success'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'warning'
+          </code>
+          .
         </span>
       ),
     },
@@ -83,16 +104,17 @@ export default function AlertDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Alert
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Displays a callout banner for communicating status, contextual feedback, and user attention.
+          Displays a callout banner for communicating status, contextual feedback, and user
+          attention.
         </p>
       </div>
 
@@ -101,7 +123,7 @@ export default function AlertDoc() {
         <ComponentPreview>
           <div className="w-full max-w-xl">
             <Alert
-              icon={<Info className="w-5 h-5 text-indigo-500" />}
+              icon={<Info className="h-5 w-5 text-indigo-500" />}
               title="System update scheduled"
               description="A new maintenance release will be deployed tonight at 02:00 UTC."
             />
@@ -127,7 +149,6 @@ function Example() {
         <InstallationTabs componentName="alert" manualCode={alertCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -136,7 +157,8 @@ function Example() {
         <ApiTable
           note={
             <span>
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Alert</strong> adheres to WAI-ARIA alert role standards and supports all native HTML div attributes.
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Alert</strong>{" "}
+              adheres to WAI-ARIA alert role standards and supports all native HTML div attributes.
             </span>
           }
           rows={apiRows}
@@ -146,18 +168,28 @@ function Example() {
       {/* Examples */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
 
         {/* 1. Alert variants */}
         <div id="alert-variants" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Alert variants
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Alert variants</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'flat'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'solid'</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'bordered'</code>:
+            Choose between{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'flat'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'solid'
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'bordered'
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -200,9 +232,7 @@ function Example() {
 
         {/* 2. Status colors */}
         <div id="status-colors" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Status colors
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Status colors</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Semantic state colors communicate different severity levels:
           </p>
@@ -250,9 +280,7 @@ function Example() {
 
         {/* 3. With icon */}
         <div id="with-icon" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            With icon
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">With icon</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Pass custom leading icons to give instant visual cues:
           </p>
@@ -261,19 +289,19 @@ function Example() {
             <div className="w-full max-w-xl space-y-3">
               <Alert
                 color="success"
-                icon={<CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />}
+                icon={<CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />}
                 title="Payment processed"
                 description="Invoice #2049 has been paid in full."
               />
               <Alert
                 color="warning"
-                icon={<AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />}
+                icon={<AlertTriangle className="h-5 w-5 text-amber-600 dark:text-amber-400" />}
                 title="API key expiring"
                 description="Please rotate your secret keys within 48 hours."
               />
               <Alert
                 color="danger"
-                icon={<AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400" />}
+                icon={<AlertCircle className="h-5 w-5 text-rose-600 dark:text-rose-400" />}
                 title="Connection lost"
                 description="Check your network connection and retry."
               />
@@ -323,12 +351,16 @@ function Example() {
               onClick={() => setClosableKey((k) => k + 1)}
               className="flex items-center gap-1.5"
             >
-              <RotateCcw className="w-3.5 h-3.5" />
+              <RotateCcw className="h-3.5 w-3.5" />
               Reset Demo
             </Button>
           </div>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Set <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'isClosable'</code> to true to render a dismissal button:
+            Set{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'isClosable'
+            </code>{" "}
+            to true to render a dismissal button:
           </p>
 
           <ComponentPreview>
@@ -336,7 +368,7 @@ function Example() {
               <Alert
                 isClosable
                 color="primary"
-                icon={<Info className="w-5 h-5 text-indigo-500" />}
+                icon={<Info className="h-5 w-5 text-indigo-500" />}
                 title="Dismissible Information"
                 description="Click the close button on the right to dismiss this alert."
               />
@@ -344,7 +376,7 @@ function Example() {
                 isClosable
                 variant="solid"
                 color="success"
-                icon={<CheckCircle2 className="w-5 h-5 text-white" />}
+                icon={<CheckCircle2 className="h-5 w-5 text-white" />}
                 title="Solid Dismissible Alert"
                 description="Dismiss button dynamically adapts its hover contrast to solid styles."
               />
@@ -352,7 +384,7 @@ function Example() {
                 isClosable
                 variant="bordered"
                 color="danger"
-                icon={<AlertCircle className="w-5 h-5 text-rose-500" />}
+                icon={<AlertCircle className="h-5 w-5 text-rose-500" />}
                 title="Bordered Dismissible Alert"
                 description="Supports dismissal on all variant combinations."
               />

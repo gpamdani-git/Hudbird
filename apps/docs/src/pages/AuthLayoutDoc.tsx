@@ -20,13 +20,13 @@ export default function App() {
 `;
 
   return (
-    <div className="pb-24 w-full flex flex-col items-center">
-      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
-        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+    <div className="flex w-full flex-col items-center pb-24">
+      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
+        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
           {onOpenSidebar && (
-            <button 
+            <button
               onClick={onOpenSidebar}
-              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />
@@ -38,58 +38,62 @@ export default function App() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 space-y-16">
-      {/* Title & Subtitle */}
-      <div className="-mt-8">
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-            Auth Layout
-          </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
-            New
-          </span>
+      <div className="mx-auto w-full max-w-7xl space-y-16 px-4 sm:px-8 lg:px-12">
+        {/* Title & Subtitle */}
+        <div className="-mt-8">
+          <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Auth Layout
+            </h1>
+            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              New
+            </span>
+          </div>
+          <p className="text-base text-zinc-600 dark:text-zinc-400">
+            A clean, distraction-free layout optimized for authentication and onboarding flows.
+          </p>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400">
-          A clean, distraction-free layout optimized for authentication and onboarding flows.
-        </p>
-      </div>
 
-      
+        {/* Main Preview & Code */}
+        <section className="space-y-4" id="preview">
+          <ComponentPreview demoUrl="/demos/auth" iframeMode="always">
+            <div className="flex w-full items-center justify-center p-4">
+              <div className="w-full max-w-5xl overflow-hidden rounded-2xl border border-zinc-200 shadow-xl dark:border-zinc-800">
+                {/* Fake Mini Preview */}
+                <div className="relative flex h-[600px] w-full flex-col items-center justify-center bg-zinc-50 dark:bg-zinc-950">
+                  <div className="w-full max-w-[400px]">
+                    <div className="mx-auto mb-6 h-10 w-10 rounded-lg bg-indigo-600"></div>
+                    <div className="mx-auto mb-8 h-6 w-48 rounded bg-zinc-200 dark:bg-zinc-800"></div>
+                    <div className="rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                      <div className="mb-2 h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-800"></div>
+                      <div className="mb-4 h-10 w-full rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950"></div>
 
-      {/* Main Preview & Code */}
-      <section className="space-y-4" id="preview">
-        <ComponentPreview demoUrl="/demos/auth" iframeMode="always">
-          <div className="w-full flex items-center justify-center p-4">
-            <div className="w-full max-w-5xl rounded-2xl overflow-hidden shadow-xl border border-zinc-200 dark:border-zinc-800">
-              {/* Fake Mini Preview */}
-              <div className="h-[600px] w-full bg-zinc-50 dark:bg-zinc-950 flex flex-col relative items-center justify-center">
-                <div className="w-full max-w-[400px]">
-                  <div className="w-10 h-10 rounded-lg bg-indigo-600 mx-auto mb-6"></div>
-                  <div className="h-6 w-48 bg-zinc-200 dark:bg-zinc-800 rounded mx-auto mb-8"></div>
-                  <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-8 shadow-sm">
-                    <div className="h-4 w-24 bg-zinc-200 dark:bg-zinc-800 rounded mb-2"></div>
-                    <div className="h-10 w-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg mb-4"></div>
-                    
-                    <div className="h-4 w-24 bg-zinc-200 dark:bg-zinc-800 rounded mb-2"></div>
-                    <div className="h-10 w-full bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg mb-6"></div>
-                    
-                    <div className="h-10 w-full bg-indigo-600 rounded-lg"></div>
+                      <div className="mb-2 h-4 w-24 rounded bg-zinc-200 dark:bg-zinc-800"></div>
+                      <div className="mb-6 h-10 w-full rounded-lg border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-950"></div>
+
+                      <div className="h-10 w-full rounded-lg bg-indigo-600"></div>
+                    </div>
                   </div>
-                </div>
-                {/* Overlay text */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/10 dark:bg-black/40 backdrop-blur-[2px]">
-                  <p className="text-zinc-900 dark:text-white font-medium text-sm mb-2 shadow-sm">Interactive Preview Available</p>
-                  <span className="text-xs text-zinc-600 dark:text-zinc-300">Click "Open in new tab" to interact</span>
+                  {/* Overlay text */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-zinc-900/10 backdrop-blur-[2px] dark:bg-black/40">
+                    <p className="mb-2 text-sm font-medium text-zinc-900 shadow-sm dark:text-white">
+                      Interactive Preview Available
+                    </p>
+                    <span className="text-xs text-zinc-600 dark:text-zinc-300">
+                      Click "Open in new tab" to interact
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </ComponentPreview>
-        <CodeBlock code={codeString} />
-      </section>
+          </ComponentPreview>
+          <CodeBlock code={codeString} />
+        </section>
 
-      <div id="installation" className="scroll-mt-24">
-        <InstallationTabs componentName="auth-layout"  manualCode={`import { Card, CardBody, Heading } from "@hudbird/ui";
+        <div id="installation" className="scroll-mt-24">
+          <InstallationTabs
+            componentName="auth-layout"
+            manualCode={`import { Card, CardBody, Heading } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -102,8 +106,9 @@ export default function Example() {
       </Card>
     </div>
   );
-}`} />
-      </div>
+}`}
+          />
+        </div>
       </div>
     </div>
   );

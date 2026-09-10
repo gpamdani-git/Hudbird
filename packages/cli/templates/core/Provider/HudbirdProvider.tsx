@@ -14,9 +14,5 @@ export interface HudbirdProviderProps {
 }
 
 export const HudbirdProvider: React.FC<HudbirdProviderProps> = ({ children, navigate }) => {
-  return (
-    <HudbirdContext.Provider value={{ navigate }}>
-      {children}
-    </HudbirdContext.Provider>
-  );
+  return <HudbirdContext.Provider value={{ navigate }}>{children}</HudbirdContext.Provider>;
 };

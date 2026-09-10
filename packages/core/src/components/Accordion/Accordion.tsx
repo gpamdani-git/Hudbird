@@ -3,17 +3,14 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
-import {
-  AccordionContext,
-  type AccordionVariant,
-  AccordionItem,
-} from "./AccordionItem";
+import { AccordionContext, type AccordionVariant, AccordionItem } from "./AccordionItem";
 
 export const accordionVariants = cva("w-full transition-all duration-200", {
   variants: {
     variant: {
       light: "border-t border-zinc-200 dark:border-zinc-800",
-      bordered: "border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden bg-white dark:bg-zinc-900/50",
+      bordered:
+        "border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden bg-white dark:bg-zinc-900/50",
       shadow: "space-y-2",
       splitted: "space-y-3",
     },
@@ -24,7 +21,8 @@ export const accordionVariants = cva("w-full transition-all duration-200", {
 });
 
 export interface AccordionProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
     VariantProps<typeof accordionVariants> {
   selectionMode?: "single" | "multiple";
   selectedKeys?: string[] | Set<string>;

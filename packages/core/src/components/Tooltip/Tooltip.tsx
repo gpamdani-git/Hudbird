@@ -6,13 +6,7 @@ import { cn } from "../../utils/cn";
 
 export type TooltipPlacement = "top" | "bottom" | "left" | "right";
 export type TooltipColor =
-  | "default"
-  | "foreground"
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger";
+  "default" | "foreground" | "primary" | "secondary" | "success" | "warning" | "danger";
 export type TooltipSize = "sm" | "md" | "lg";
 export type TooltipRadius = "none" | "sm" | "md" | "lg" | "full";
 
@@ -219,7 +213,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
           id={tooltipId}
           role="tooltip"
           className={cn(
-            "absolute animate-in fade-in-0 zoom-in-95 duration-150",
+            "animate-in fade-in-0 zoom-in-95 absolute duration-150",
             positionClasses,
             tooltipVariants({ color, size, radius }),
             classNames?.content,
@@ -238,7 +232,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
             <span
               aria-hidden="true"
               className={cn(
-                "absolute w-2 h-2",
+                "absolute h-2 w-2",
                 arrowClasses,
                 arrowColorStyles[color || "default"],
                 classNames?.arrow

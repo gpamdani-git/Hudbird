@@ -19,29 +19,30 @@ const logoCloudVariants = cva("py-16 sm:py-24", {
 });
 
 export interface LogoCloudProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof logoCloudVariants> {}
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof logoCloudVariants> {}
 
 const LogoCloud = React.forwardRef<HTMLDivElement, LogoCloudProps>(
   ({ className, variant, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cn(logoCloudVariants({ variant }), className)} {...props} />
-    );
+    return <div ref={ref} className={cn(logoCloudVariants({ variant }), className)} {...props} />;
   }
 );
 LogoCloud.displayName = "LogoCloud";
 
-const LogoCloudTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <h2
-        ref={ref}
-        className={cn("text-center text-base sm:text-lg md:text-xl font-semibold leading-8 text-zinc-900 dark:text-zinc-100", className)}
-        {...props}
-      />
-    );
-  }
-);
+const LogoCloudTitle = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => {
+  return (
+    <h2
+      ref={ref}
+      className={cn(
+        "text-center text-base leading-8 font-semibold text-zinc-900 sm:text-lg md:text-xl dark:text-zinc-100",
+        className
+      )}
+      {...props}
+    />
+  );
+});
 LogoCloudTitle.displayName = "LogoCloud.Title";
 
 const LogoCloudGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
@@ -65,7 +66,10 @@ const LogoCloudItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
     return (
       <div
         ref={ref}
-        className={cn("col-span-2 max-h-12 w-full object-contain lg:col-span-1 flex justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300", className)}
+        className={cn(
+          "col-span-2 flex max-h-12 w-full justify-center object-contain opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 lg:col-span-1",
+          className
+        )}
         {...props}
       />
     );
@@ -83,22 +87,26 @@ const LogoCloudTicker = React.forwardRef<HTMLDivElement, LogoCloudTickerProps>(
     const duration = speed === "fast" ? 10 : speed === "slow" ? 40 : 25;
 
     return (
-      <div ref={ref} className={cn("relative flex w-full overflow-hidden mt-10", className)} {...props}>
+      <div
+        ref={ref}
+        className={cn("relative mt-10 flex w-full overflow-hidden", className)}
+        {...props}
+      >
         {/* Left and Right Fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-zinc-950 to-transparent z-10"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-zinc-950 to-transparent z-10"></div>
-        
-        <div className="flex overflow-hidden group">
-          <motion.div 
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-1/3 bg-gradient-to-r from-white to-transparent dark:from-zinc-950"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-1/3 bg-gradient-to-l from-white to-transparent dark:from-zinc-950"></div>
+
+        <div className="group flex overflow-hidden">
+          <motion.div
             className="flex min-w-full shrink-0 items-center justify-around gap-16 py-4 pr-16"
-            animate={{ x: direction === 'left' ? ["0%", "-100%"] : ["-100%", "0%"] }}
+            animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
             transition={{ duration, ease: "linear", repeat: Infinity }}
           >
             {children}
           </motion.div>
-          <motion.div 
+          <motion.div
             className="flex min-w-full shrink-0 items-center justify-around gap-16 py-4 pr-16"
-            animate={{ x: direction === 'left' ? ["0%", "-100%"] : ["-100%", "0%"] }}
+            animate={{ x: direction === "left" ? ["0%", "-100%"] : ["-100%", "0%"] }}
             transition={{ duration, ease: "linear", repeat: Infinity }}
           >
             {children}

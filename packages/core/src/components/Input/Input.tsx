@@ -78,7 +78,8 @@ const inputWrapperVariants = cva(
 );
 
 export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     VariantProps<typeof inputWrapperVariants> {
   variant?: InputVariant;
   size?: InputSize;
@@ -168,16 +169,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const isInsideLabel = labelPlacement === "inside" && Boolean(label);
 
     return (
-      <div className={cn("flex flex-col w-full text-left", className)}>
+      <div className={cn("flex w-full flex-col text-left", className)}>
         {/* Outside Label */}
         {label && labelPlacement === "outside" && (
           <label
             className={cn(
-              "text-xs font-semibold mb-1.5 transition-colors select-none",
-              isInvalid
-                ? "text-rose-600 dark:text-rose-400"
-                : "text-zinc-700 dark:text-zinc-300",
-              disabled && "opacity-50 cursor-not-allowed"
+              "mb-1.5 text-xs font-semibold transition-colors select-none",
+              isInvalid ? "text-rose-600 dark:text-rose-400" : "text-zinc-700 dark:text-zinc-300",
+              disabled && "cursor-not-allowed opacity-50"
             )}
           >
             {label}
@@ -200,17 +199,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         >
           {/* Start Content Slot */}
           {startContent && (
-            <div className="shrink-0 flex items-center justify-center text-zinc-400 dark:text-zinc-500 select-none">
+            <div className="flex shrink-0 items-center justify-center text-zinc-400 select-none dark:text-zinc-500">
               {startContent}
             </div>
           )}
 
           {/* Main Input Element or Inside Label Wrapper */}
           {isInsideLabel ? (
-            <div className="flex flex-col justify-center flex-1 min-w-0 h-full py-0.5">
+            <div className="flex h-full min-w-0 flex-1 flex-col justify-center py-0.5">
               <span
                 className={cn(
-                  "text-[10px] font-semibold tracking-wide uppercase transition-colors select-none leading-tight",
+                  "text-[10px] leading-tight font-semibold tracking-wide uppercase transition-colors select-none",
                   isInvalid
                     ? "text-rose-600 dark:text-rose-400"
                     : "text-zinc-500 dark:text-zinc-400"
@@ -225,7 +224,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 onChange={handleInputChange}
                 disabled={disabled}
                 aria-invalid={isInvalid ? "true" : undefined}
-                className="w-full bg-transparent p-0 text-zinc-900 dark:text-zinc-50 outline-none border-none placeholder:text-zinc-400 dark:placeholder:text-zinc-500 font-normal leading-tight disabled:cursor-not-allowed"
+                className="w-full border-none bg-transparent p-0 leading-tight font-normal text-zinc-900 outline-none placeholder:text-zinc-400 disabled:cursor-not-allowed dark:text-zinc-50 dark:placeholder:text-zinc-500"
                 {...props}
               />
             </div>
@@ -237,7 +236,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               onChange={handleInputChange}
               disabled={disabled}
               aria-invalid={isInvalid ? "true" : undefined}
-              className="w-full h-full bg-transparent outline-none border-none text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 font-normal disabled:cursor-not-allowed"
+              className="h-full w-full border-none bg-transparent font-normal text-zinc-900 outline-none placeholder:text-zinc-400 disabled:cursor-not-allowed dark:text-zinc-50 dark:placeholder:text-zinc-500"
               {...props}
             />
           )}
@@ -249,10 +248,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               aria-label="Clear input value"
               tabIndex={-1}
               onClick={handleClearClick}
-              className="shrink-0 p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-200/80 dark:hover:bg-zinc-800 rounded-lg active:scale-90 transition-all cursor-pointer"
+              className="shrink-0 cursor-pointer rounded-lg p-1 text-zinc-400 transition-all hover:bg-zinc-200/80 hover:text-zinc-600 active:scale-90 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
             >
               <svg
-                className="w-3.5 h-3.5"
+                className="h-3.5 w-3.5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -268,7 +267,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {/* End Content Slot */}
           {endContent && (
-            <div className="shrink-0 flex items-center justify-center text-zinc-400 dark:text-zinc-500 select-none">
+            <div className="flex shrink-0 items-center justify-center text-zinc-400 select-none dark:text-zinc-500">
               {endContent}
             </div>
           )}
@@ -278,14 +277,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {isInvalid && errorMessage ? (
           <p
             role="alert"
-            className="text-xs font-medium text-rose-600 dark:text-rose-400 mt-1.5 flex items-center gap-1 animate-in fade-in-0 slide-in-from-top-0.5 duration-150"
+            className="animate-in fade-in-0 slide-in-from-top-0.5 mt-1.5 flex items-center gap-1 text-xs font-medium text-rose-600 duration-150 dark:text-rose-400"
           >
             {errorMessage}
           </p>
         ) : description ? (
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5">
-            {description}
-          </p>
+          <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
         ) : null}
       </div>
     );

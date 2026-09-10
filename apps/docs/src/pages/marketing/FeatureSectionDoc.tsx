@@ -25,74 +25,108 @@ import { ProStyleVisualEditor } from "./ProStyleVisualEditor";
 import skillContent from "../../../../../.agents/skills/marketing-bento-grid/SKILL.md?raw"; // fallback skill for now
 
 const PushToDeployIllustration = () => (
-  <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-hidden rounded-2xl bg-indigo-50/50 dark:bg-indigo-900/20 border border-indigo-100/50 dark:border-indigo-800/50">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent dark:from-indigo-700/30 blur-2xl" />
-    
+  <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl border border-indigo-100/50 bg-indigo-50/50 dark:border-indigo-800/50 dark:bg-indigo-900/20">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent blur-2xl dark:from-indigo-700/30" />
+
     <div className="relative z-10 flex flex-col items-center gap-4">
-      <motion.div 
+      <motion.div
         animate={{ opacity: [0, 1, 1, 0], y: [20, 0, 0, -20] }}
         transition={{ repeat: Infinity, duration: 5, times: [0, 0.1, 0.8, 1] }}
-        className="w-48 bg-zinc-900 rounded-lg shadow-xl overflow-hidden border border-zinc-800"
+        className="w-48 overflow-hidden rounded-lg border border-zinc-800 bg-zinc-900 shadow-xl"
       >
-        <div className="flex gap-1.5 px-3 py-2 bg-zinc-800/50 border-b border-zinc-800">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-          <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+        <div className="flex gap-1.5 border-b border-zinc-800 bg-zinc-800/50 px-3 py-2">
+          <div className="h-2.5 w-2.5 rounded-full bg-red-500" />
+          <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+          <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
         </div>
-        <div className="p-4 flex flex-col gap-3">
-          <div className="w-3/4 h-2 bg-zinc-700 rounded-full" />
-          <div className="w-1/2 h-2 bg-indigo-500 rounded-full" />
-          <div className="w-5/6 h-2 bg-zinc-700 rounded-full mt-2" />
+        <div className="flex flex-col gap-3 p-4">
+          <div className="h-2 w-3/4 rounded-full bg-zinc-700" />
+          <div className="h-2 w-1/2 rounded-full bg-indigo-500" />
+          <div className="mt-2 h-2 w-5/6 rounded-full bg-zinc-700" />
         </div>
       </motion.div>
-      
+
       <motion.div
         animate={{ opacity: [0, 1, 1, 0], scale: [0.5, 1, 1, 0.5] }}
         transition={{ repeat: Infinity, duration: 5, times: [0, 0.1, 0.8, 1], delay: 0.2 }}
-        className="w-8 h-8 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400"
+        className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M12 5v14M19 12l-7 7-7-7" />
+        </svg>
       </motion.div>
-      
+
       <motion.div
         animate={{ opacity: [0, 1, 1, 0], y: [-20, 0, 0, 20] }}
         transition={{ repeat: Infinity, duration: 5, times: [0, 0.1, 0.8, 1], delay: 0.4 }}
-        className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-zinc-800 rounded-full shadow-lg border border-zinc-100 dark:border-zinc-700"
+        className="flex items-center gap-2 rounded-full border border-zinc-100 bg-white px-4 py-2 shadow-lg dark:border-zinc-700 dark:bg-zinc-800"
       >
-        <div className="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center">
-           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
+        <div className="flex h-4 w-4 items-center justify-center rounded-full bg-green-500">
+          <svg
+            width="10"
+            height="10"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="3"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
         </div>
-        <span className="text-xs font-semibold text-zinc-900 dark:text-white">Deployed to Production</span>
+        <span className="text-xs font-semibold text-zinc-900 dark:text-white">
+          Deployed to Production
+        </span>
       </motion.div>
     </div>
-    
-    <motion.div animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 4 }} className="absolute top-12 right-12 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl" />
-    <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 5 }} className="absolute bottom-12 left-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl" />
+
+    <motion.div
+      animate={{ y: [0, -10, 0] }}
+      transition={{ repeat: Infinity, duration: 4 }}
+      className="absolute top-12 right-12 h-24 w-24 rounded-full bg-blue-500/10 blur-2xl"
+    />
+    <motion.div
+      animate={{ y: [0, 10, 0] }}
+      transition={{ repeat: Infinity, duration: 5 }}
+      className="absolute bottom-12 left-12 h-32 w-32 rounded-full bg-indigo-500/10 blur-2xl"
+    />
   </div>
 );
 
 const AnalyticsIllustration = () => (
-  <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-hidden rounded-2xl bg-sky-50/50 dark:bg-sky-900/20 border border-sky-100/50 dark:border-sky-800/50 p-6">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-sky-200/50 via-transparent to-transparent dark:from-sky-700/30 blur-2xl" />
-    
-    <div className="relative z-10 w-full h-[60%] flex items-end justify-center gap-2">
+  <div className="relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl border border-sky-100/50 bg-sky-50/50 p-6 dark:border-sky-800/50 dark:bg-sky-900/20">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-sky-200/50 via-transparent to-transparent blur-2xl dark:from-sky-700/30" />
+
+    <div className="relative z-10 flex h-[60%] w-full items-end justify-center gap-2">
       {[30, 50, 40, 70, 60, 100, 80].map((h, i) => (
         <motion.div
           key={i}
           animate={{ height: [`0%`, `${h}%`, `${h}%`, `0%`] }}
-          transition={{ duration: 6, repeat: Infinity, times: [0, 0.2, 0.8, 1], delay: i * 0.1, ease: "easeInOut" }}
-          className={`w-8 sm:w-10 rounded-t-md ${i === 5 ? "bg-gradient-to-t from-sky-400 to-blue-500 shadow-[0_0_15px_rgba(56,189,248,0.5)]" : "bg-sky-200 dark:bg-sky-800/80"}`}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            times: [0, 0.2, 0.8, 1],
+            delay: i * 0.1,
+            ease: "easeInOut",
+          }}
+          className={`w-8 rounded-t-md sm:w-10 ${i === 5 ? "bg-gradient-to-t from-sky-400 to-blue-500 shadow-[0_0_15px_rgba(56,189,248,0.5)]" : "bg-sky-200 dark:bg-sky-800/80"}`}
         />
       ))}
     </div>
-    
+
     <motion.div
       animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1, 1, 0.8], y: [10, 0, 0, 10] }}
       transition={{ duration: 6, repeat: Infinity, times: [0, 0.1, 0.8, 1], delay: 1 }}
-      className="absolute z-20 top-[15%] right-[15%] sm:right-[20%] px-3 py-1.5 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 rounded-md shadow-xl text-xs font-bold"
+      className="absolute top-[15%] right-[15%] z-20 rounded-md bg-zinc-900 px-3 py-1.5 text-xs font-bold text-white shadow-xl sm:right-[20%] dark:bg-white dark:text-zinc-900"
     >
       +124%
-      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-zinc-900 dark:bg-white rotate-45" />
+      <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-zinc-900 dark:bg-white" />
     </motion.div>
   </div>
 );
@@ -210,7 +244,6 @@ function Example() {
     </FeatureSection>
   )
 }`;
-
 
 const proStyleCode = `import { motion } from "framer-motion";
 
@@ -349,13 +382,13 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
   ];
 
   return (
-    <div className="flex flex-col w-full pb-20">
-      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
-        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+    <div className="flex w-full flex-col pb-20">
+      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
+        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
           {onOpenSidebar && (
-            <button 
+            <button
               onClick={onOpenSidebar}
-              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />
@@ -366,14 +399,15 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
           <span className="text-zinc-900 dark:text-zinc-100">Feature Sections</span>
         </div>
       </div>
-      
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12">
+
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="mb-10">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
             Feature Sections
           </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl text-balance">
-            Highlight the key benefits and capabilities of your product. Use grids for quick overviews or alternating layouts for deep dives.
+          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+            Highlight the key benefits and capabilities of your product. Use grids for quick
+            overviews or alternating layouts for deep dives.
           </p>
         </div>
 
@@ -381,47 +415,78 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
           <InstallationTabs componentName="feature-section" manualCode={featureCode} />
         </div>
 
-        <div className="flex flex-col gap-16 mt-16">
+        <div className="mt-16 flex flex-col gap-16">
           <MarketingPreview title="Grid Layout" skill={skillContent} code={gridCode}>
             <FeatureSection>
               <FeatureHeader>
                 <FeatureBadge>Deploy faster</FeatureBadge>
                 <FeatureTitle>Everything you need to build your app</FeatureTitle>
                 <FeatureDescription>
-                  Our platform provides all the tools you need to create, deploy, and scale your applications with ease and confidence.
+                  Our platform provides all the tools you need to create, deploy, and scale your
+                  applications with ease and confidence.
                 </FeatureDescription>
               </FeatureHeader>
-              
+
               <FeatureGrid>
                 <FeatureCard index={0}>
-                  <FeatureIcon><Zap size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Zap size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Lightning Fast</FeatureCardTitle>
-                  <FeatureCardDescription>Global edge network ensures your application loads instantly for users anywhere in the world.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Global edge network ensures your application loads instantly for users anywhere
+                    in the world.
+                  </FeatureCardDescription>
                 </FeatureCard>
                 <FeatureCard index={1}>
-                  <FeatureIcon><Shield size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Shield size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Enterprise Security</FeatureCardTitle>
-                  <FeatureCardDescription>Advanced DDoS protection and automatic SSL certificates keep your data safe and secure.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Advanced DDoS protection and automatic SSL certificates keep your data safe and
+                    secure.
+                  </FeatureCardDescription>
                 </FeatureCard>
                 <FeatureCard index={2}>
-                  <FeatureIcon><Globe size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Globe size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Global CDN</FeatureCardTitle>
-                  <FeatureCardDescription>Deliver content faster with our strategically placed servers across 100+ global locations.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Deliver content faster with our strategically placed servers across 100+ global
+                    locations.
+                  </FeatureCardDescription>
                 </FeatureCard>
                 <FeatureCard index={3}>
-                  <FeatureIcon><Lock size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Lock size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Identity & Access</FeatureCardTitle>
-                  <FeatureCardDescription>Built-in authentication and role-based access control for your entire organization.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Built-in authentication and role-based access control for your entire
+                    organization.
+                  </FeatureCardDescription>
                 </FeatureCard>
                 <FeatureCard index={4}>
-                  <FeatureIcon><Smartphone size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Smartphone size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Mobile Optimized</FeatureCardTitle>
-                  <FeatureCardDescription>Responsive APIs and SDKs designed specifically for mobile application performance.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Responsive APIs and SDKs designed specifically for mobile application
+                    performance.
+                  </FeatureCardDescription>
                 </FeatureCard>
                 <FeatureCard index={5}>
-                  <FeatureIcon><Cloud size={20} /></FeatureIcon>
+                  <FeatureIcon>
+                    <Cloud size={20} />
+                  </FeatureIcon>
                   <FeatureCardTitle>Auto Scaling</FeatureCardTitle>
-                  <FeatureCardDescription>Never worry about traffic spikes again. Our infrastructure scales automatically with demand.</FeatureCardDescription>
+                  <FeatureCardDescription>
+                    Never worry about traffic spikes again. Our infrastructure scales automatically
+                    with demand.
+                  </FeatureCardDescription>
                 </FeatureCard>
               </FeatureGrid>
             </FeatureSection>
@@ -436,25 +501,32 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
                   Streamline your workflow with tools designed for modern development teams.
                 </FeatureDescription>
               </FeatureHeader>
-              
+
               <FeatureAlternating>
                 <FeatureRow>
                   <FeatureRowContent>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Push to deploy</h3>
+                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                      Push to deploy
+                    </h3>
                     <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-                      Just push your code to GitHub, GitLab, or Bitbucket, and we'll automatically build and deploy your application. Every commit gets a unique preview URL.
+                      Just push your code to GitHub, GitLab, or Bitbucket, and we'll automatically
+                      build and deploy your application. Every commit gets a unique preview URL.
                     </p>
                   </FeatureRowContent>
                   <FeatureRowMedia>
                     <PushToDeployIllustration />
                   </FeatureRowMedia>
                 </FeatureRow>
-                
+
                 <FeatureRow reverse>
                   <FeatureRowContent>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">Real-time analytics</h3>
+                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+                      Real-time analytics
+                    </h3>
                     <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-                      Gain deep insights into your application's performance and user behavior with our built-in analytics dashboard. Monitor traffic, errors, and core web vitals in real-time.
+                      Gain deep insights into your application's performance and user behavior with
+                      our built-in analytics dashboard. Monitor traffic, errors, and core web vitals
+                      in real-time.
                     </p>
                   </FeatureRowContent>
                   <FeatureRowMedia>
@@ -465,16 +537,20 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
             </FeatureSection>
           </MarketingPreview>
 
-          <MarketingPreview title="Pro Style with Visual Editor" skill={skillContent} code={proStyleCode}>
-             <ProStyleVisualEditor />
+          <MarketingPreview
+            title="Pro Style with Visual Editor"
+            skill={skillContent}
+            code={proStyleCode}
+          >
+            <ProStyleVisualEditor />
           </MarketingPreview>
         </div>
 
-        <section id="component-api" className="scroll-mt-24 space-y-4 mt-16">
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
           <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Component API
           </h2>
-          <ApiTable rows={apiRows} />
+          <ApiTable title="FeatureSection Props" rows={apiRows} />
         </section>
       </div>
     </div>

@@ -11,11 +11,7 @@ import {
   InfiniteScroll,
   Button,
 } from "@hudbird/ui";
-import {
-  RefreshCw,
-  Database,
-  Check,
-} from "lucide-react";
+import { RefreshCw, Database, Check } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -54,7 +50,9 @@ export default function PaginationDoc() {
   const [selectedSize, setSelectedSize] = useState<PaginationSize>("md");
 
   // --- Infinite Scroll Simulation State ---
-  const [items, setItems] = useState<Array<{ id: number; title: string; category: string; time: string }>>(() =>
+  const [items, setItems] = useState<
+    Array<{ id: number; title: string; category: string; time: string }>
+  >(() =>
     Array.from({ length: 12 }, (_, i) => ({
       id: i + 1,
       title: `Data Record item #${i + 1}`,
@@ -118,8 +116,14 @@ export default function PaginationDoc() {
       description: (
         <span>
           The total number of available pages (e.g.,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">10</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">100</code>).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            10
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            100
+          </code>
+          ).
         </span>
       ),
     },
@@ -129,7 +133,10 @@ export default function PaginationDoc() {
       description: (
         <span>
           Controlled active page index (1-indexed). Use with{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">onChange</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            onChange
+          </code>
+          .
         </span>
       ),
     },
@@ -139,7 +146,10 @@ export default function PaginationDoc() {
       description: (
         <span>
           Callback triggered when a page or ellipsis jump button is clicked:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">(page: number) =&gt; void</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            (page: number) =&gt; void
+          </code>
+          .
         </span>
       ),
     },
@@ -149,10 +159,22 @@ export default function PaginationDoc() {
       description: (
         <span>
           Visual variant style:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'solid'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'light'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'solid'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'light'
+          </code>
+          .
         </span>
       ),
     },
@@ -162,11 +184,26 @@ export default function PaginationDoc() {
       description: (
         <span>
           Theme color for the active page button:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'primary'</code> (indigo),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'success'</code> (emerald),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code> (rose),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'dark'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'zinc'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'primary'
+          </code>{" "}
+          (indigo),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'success'
+          </code>{" "}
+          (emerald),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>{" "}
+          (rose),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'dark'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'zinc'
+          </code>
+          .
         </span>
       ),
     },
@@ -176,7 +213,10 @@ export default function PaginationDoc() {
       description: (
         <span>
           Border radius token:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+          </code>
+          .
         </span>
       ),
     },
@@ -186,7 +226,10 @@ export default function PaginationDoc() {
       description: (
         <span>
           Button size scale:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm' | 'md' | 'lg'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm' | 'md' | 'lg'
+          </code>
+          .
         </span>
       ),
     },
@@ -219,7 +262,10 @@ export default function PaginationDoc() {
       description: (
         <span>
           Callback executed when the bottom sentinel observer enters the viewport:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">() =&gt; void | Promise&lt;void&gt;</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            () =&gt; void | Promise&lt;void&gt;
+          </code>
+          .
         </span>
       ),
     },
@@ -241,7 +287,8 @@ export default function PaginationDoc() {
     {
       prop: "rootMargin",
       defaultVal: "'100px'",
-      description: "IntersectionObserver root margin threshold to pre-trigger loading before reaching bottom.",
+      description:
+        "IntersectionObserver root margin threshold to pre-trigger loading before reaching bottom.",
     },
   ];
 
@@ -249,36 +296,38 @@ export default function PaginationDoc() {
     <div className="space-y-16 pb-24">
       {/* Header Section */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Pagination & Infinite Scroll
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          High-performance data management components for handling paginated datasets and endless feeds with smooth micro-interactions, smart ellipsis calculation, and native IntersectionObserver integration.
+        <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+          High-performance data management components for handling paginated datasets and endless
+          feeds with smooth micro-interactions, smart ellipsis calculation, and native
+          IntersectionObserver integration.
         </p>
       </div>
 
       {/* Hero Interactive Preview */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="flex flex-col items-center justify-center gap-6 w-full py-4">
+          <div className="flex w-full flex-col items-center justify-center gap-6 py-4">
             {/* Controls customizer */}
-            <div className="flex flex-wrap items-center justify-center gap-3 p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-xs">
+            <div className="flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-100/80 p-3 text-xs dark:border-zinc-800 dark:bg-zinc-900/80">
               {/* Variant selector */}
               <div className="flex items-center gap-1.5">
-                <span className="text-zinc-500 font-medium">Variant:</span>
+                <span className="font-medium text-zinc-500">Variant:</span>
                 {(["solid", "bordered", "flat", "light"] as PaginationVariant[]).map((v) => (
                   <button
                     key={v}
                     onClick={() => setSelectedVariant(v)}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                    className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
                       selectedVariant === v
-                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                     }`}
                   >
                     {v}
@@ -286,19 +335,19 @@ export default function PaginationDoc() {
                 ))}
               </div>
 
-              <div className="h-4 w-[1px] bg-zinc-300 dark:bg-zinc-700 hidden sm:block" />
+              <div className="hidden h-4 w-[1px] bg-zinc-300 sm:block dark:bg-zinc-700" />
 
               {/* Color selector */}
               <div className="flex items-center gap-1.5">
-                <span className="text-zinc-500 font-medium">Color:</span>
+                <span className="font-medium text-zinc-500">Color:</span>
                 {(["primary", "success", "danger", "dark"] as PaginationColor[]).map((c) => (
                   <button
                     key={c}
                     onClick={() => setSelectedColor(c)}
-                    className={`px-2.5 py-1 rounded-lg font-medium capitalize transition-all ${
+                    className={`rounded-lg px-2.5 py-1 font-medium capitalize transition-all ${
                       selectedColor === c
-                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                     }`}
                   >
                     {c}
@@ -319,8 +368,8 @@ export default function PaginationDoc() {
             />
 
             {/* Indicator text */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1.5 text-xs dark:border-zinc-800 dark:bg-zinc-900">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-indigo-500" />
               <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                 Current Page: {currentPage}
               </span>
@@ -357,15 +406,22 @@ export default function Example() {
         <InstallationTabs componentName="pagination" manualCode={paginationCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-6">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Component API
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Complete props documentation for <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;Pagination&gt;</code> and <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;InfiniteScroll&gt;</code>.
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Complete props documentation for{" "}
+            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+              &lt;Pagination&gt;
+            </code>{" "}
+            and{" "}
+            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+              &lt;InfiniteScroll&gt;
+            </code>
+            .
           </p>
         </div>
 
@@ -390,7 +446,7 @@ export default function Example() {
           <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Pagination Examples
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Explore diverse style variants, color themes, and automatic dynamic truncation.
           </p>
         </div>
@@ -419,34 +475,38 @@ export default function Example() {
             Style Variants & Border Radii
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between <code className="font-mono text-xs">solid</code>, <code className="font-mono text-xs">bordered</code>, <code className="font-mono text-xs">flat</code>, and <code className="font-mono text-xs">light</code> with pill (<code className="font-mono text-xs">radius="full"</code>) or rounded box tokens.
+            Choose between <code className="font-mono text-xs">solid</code>,{" "}
+            <code className="font-mono text-xs">bordered</code>,{" "}
+            <code className="font-mono text-xs">flat</code>, and{" "}
+            <code className="font-mono text-xs">light</code> with pill (
+            <code className="font-mono text-xs">radius="full"</code>) or rounded box tokens.
           </p>
 
           <ComponentPreview>
             <div className="flex flex-col items-center gap-5 py-3">
               <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                <span className="text-[11px] font-semibold tracking-wider text-zinc-400 uppercase">
                   Solid Variant (radius="full")
                 </span>
                 <Pagination total={6} defaultPage={2} variant="solid" radius="full" />
               </div>
 
               <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                <span className="text-[11px] font-semibold tracking-wider text-zinc-400 uppercase">
                   Bordered Variant (radius="xl")
                 </span>
                 <Pagination total={6} defaultPage={3} variant="bordered" radius="xl" />
               </div>
 
               <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                <span className="text-[11px] font-semibold tracking-wider text-zinc-400 uppercase">
                   Flat Variant (radius="lg")
                 </span>
                 <Pagination total={6} defaultPage={4} variant="flat" radius="lg" />
               </div>
 
               <div className="flex flex-col items-center gap-1.5">
-                <span className="text-[11px] font-semibold text-zinc-400 uppercase tracking-wider">
+                <span className="text-[11px] font-semibold tracking-wider text-zinc-400 uppercase">
                   Light Variant (radius="md")
                 </span>
                 <Pagination total={6} defaultPage={5} variant="light" radius="md" />
@@ -471,32 +531,39 @@ export default function Example() {
 
         {/* 3. Color Themes */}
         <div id="pagination-colors" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            Color Themes
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Color Themes</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Dedicated semantic color palettes: Indigo Primary, Emerald Success, Rose Danger, and Dark Zinc.
+            Dedicated semantic color palettes: Indigo Primary, Emerald Success, Rose Danger, and
+            Dark Zinc.
           </p>
 
           <ComponentPreview>
             <div className="flex flex-col items-center gap-4 py-3">
               <div className="flex flex-col items-center gap-1">
-                <span className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold">Primary (Indigo)</span>
+                <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+                  Primary (Indigo)
+                </span>
                 <Pagination total={6} defaultPage={1} color="primary" />
               </div>
 
               <div className="flex flex-col items-center gap-1">
-                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Success (Emerald)</span>
+                <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  Success (Emerald)
+                </span>
                 <Pagination total={6} defaultPage={2} color="success" />
               </div>
 
               <div className="flex flex-col items-center gap-1">
-                <span className="text-xs text-rose-600 dark:text-rose-400 font-semibold">Danger (Rose)</span>
+                <span className="text-xs font-semibold text-rose-600 dark:text-rose-400">
+                  Danger (Rose)
+                </span>
                 <Pagination total={6} defaultPage={3} color="danger" />
               </div>
 
               <div className="flex flex-col items-center gap-1">
-                <span className="text-xs text-zinc-700 dark:text-zinc-300 font-semibold">Dark / Zinc</span>
+                <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+                  Dark / Zinc
+                </span>
                 <Pagination total={6} defaultPage={4} color="dark" />
               </div>
             </div>
@@ -516,7 +583,10 @@ export default function Example() {
             Smart Logarithmic Ellipsis Truncation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            When <code className="font-mono text-xs">total</code> is large (e.g. 100 pages), the component mathematically calculates middle and boundary siblings, inserting interactive ellipsis jumps (<code className="font-mono text-xs">•••</code>) that turn into jump buttons on hover.
+            When <code className="font-mono text-xs">total</code> is large (e.g. 100 pages), the
+            component mathematically calculates middle and boundary siblings, inserting interactive
+            ellipsis jumps (<code className="font-mono text-xs">•••</code>) that turn into jump
+            buttons on hover.
           </p>
 
           <ComponentPreview>
@@ -530,7 +600,7 @@ export default function Example() {
                 color="primary"
               />
 
-              <div className="flex items-center gap-2 flex-wrap justify-center">
+              <div className="flex flex-wrap items-center justify-center gap-2">
                 <Button
                   size="sm"
                   variant="outline"
@@ -574,7 +644,9 @@ export default function Example() {
               </div>
 
               <p className="text-xs text-zinc-500">
-                Viewing page <strong className="text-zinc-900 dark:text-zinc-100">{largeDatasetPage}</strong> of 100 total pages
+                Viewing page{" "}
+                <strong className="text-zinc-900 dark:text-zinc-100">{largeDatasetPage}</strong> of
+                100 total pages
               </p>
             </div>
           </ComponentPreview>
@@ -609,7 +681,10 @@ export default function Example() {
             Sizes & Custom Controls
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Available in <code className="font-mono text-xs">sm</code>, <code className="font-mono text-xs">md</code>, and <code className="font-mono text-xs">lg</code> sizes with support for custom previous/next content.
+            Available in <code className="font-mono text-xs">sm</code>,{" "}
+            <code className="font-mono text-xs">md</code>, and{" "}
+            <code className="font-mono text-xs">lg</code> sizes with support for custom
+            previous/next content.
           </p>
 
           <ComponentPreview>
@@ -650,8 +725,13 @@ export default function Example() {
           <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Infinite Scroll Component
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Endless scrolling built on pure React and native <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">IntersectionObserver</code>. Automatically fires the <code className="font-mono text-xs">next()</code> callback as the sentinel detector scrolls into view.
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Endless scrolling built on pure React and native{" "}
+            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+              IntersectionObserver
+            </code>
+            . Automatically fires the <code className="font-mono text-xs">next()</code> callback as
+            the sentinel detector scrolls into view.
           </p>
         </div>
 
@@ -661,18 +741,23 @@ export default function Example() {
             Interactive Scroll Simulation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Scroll down the bounded box below. When the bottom sentinel enters viewport, a 1-second pulse loader appears and appends 5 dynamic records until the 40-item threshold is reached.
+            Scroll down the bounded box below. When the bottom sentinel enters viewport, a 1-second
+            pulse loader appears and appends 5 dynamic records until the 40-item threshold is
+            reached.
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-lg mx-auto space-y-3">
+            <div className="mx-auto w-full max-w-lg space-y-3">
               {/* Header Bar with Counter & Reset */}
               <div className="flex items-center justify-between px-1">
                 <div className="flex items-center gap-2">
-                  <Database className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  <Database className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                   <span className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
-                    Loaded Items: <span className="text-indigo-600 dark:text-indigo-400 font-bold">{items.length}</span>
-                    <span className="text-zinc-400 font-normal"> / {maxItemsLimit} max</span>
+                    Loaded Items:{" "}
+                    <span className="font-bold text-indigo-600 dark:text-indigo-400">
+                      {items.length}
+                    </span>
+                    <span className="font-normal text-zinc-400"> / {maxItemsLimit} max</span>
                   </span>
                 </div>
 
@@ -680,24 +765,24 @@ export default function Example() {
                   size="sm"
                   variant="outline"
                   onClick={resetInfiniteScroll}
-                  className="h-7 text-xs gap-1.5"
+                  className="h-7 gap-1.5 text-xs"
                 >
-                  <RefreshCw className="w-3 h-3" />
+                  <RefreshCw className="h-3 w-3" />
                   Reset Feed
                 </Button>
               </div>
 
               {/* Scrollable Container Box (h-80 overflow-y-auto) */}
-              <div className="h-80 overflow-y-auto border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-2xl p-4 shadow-inner">
+              <div className="h-80 overflow-y-auto rounded-2xl border border-zinc-200 bg-zinc-50/50 p-4 shadow-inner dark:border-zinc-800 dark:bg-zinc-900/30">
                 <InfiniteScroll
                   next={loadMoreItems}
                   hasMore={hasMore}
                   isLoading={isLoadingMore}
                   loader={
-                    <div className="flex flex-col items-center justify-center gap-2 py-4 text-xs text-indigo-600 dark:text-indigo-400 font-medium">
-                      <div className="flex items-center gap-2 animate-pulse bg-indigo-50 dark:bg-indigo-950/60 px-3 py-1.5 rounded-full border border-indigo-200 dark:border-indigo-800/80">
+                    <div className="flex flex-col items-center justify-center gap-2 py-4 text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                      <div className="flex animate-pulse items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1.5 dark:border-indigo-800/80 dark:bg-indigo-950/60">
                         <svg
-                          className="w-4 h-4 animate-spin text-indigo-600 dark:text-indigo-400"
+                          className="h-4 w-4 animate-spin text-indigo-600 dark:text-indigo-400"
                           fill="none"
                           viewBox="0 0 24 24"
                         >
@@ -721,8 +806,8 @@ export default function Example() {
                   }
                   endMessage={
                     <div className="flex flex-col items-center justify-center gap-1.5 py-6 text-center">
-                      <div className="w-8 h-8 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                        <Check className="w-4 h-4" />
+                      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
+                        <Check className="h-4 w-4" />
                       </div>
                       <p className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                         All {maxItemsLimit} records have been loaded!
@@ -737,10 +822,10 @@ export default function Example() {
                     {items.map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center justify-between p-3 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-xs hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+                        className="flex items-center justify-between rounded-xl border border-zinc-200/80 bg-white p-3 shadow-xs transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-700"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="w-7 h-7 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 flex items-center justify-center text-xs font-bold font-mono">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-zinc-100 font-mono text-xs font-bold text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
                             {item.id}
                           </div>
                           <div>
@@ -753,7 +838,7 @@ export default function Example() {
                           </div>
                         </div>
 
-                        <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 border border-indigo-200/60 dark:border-indigo-800/60">
+                        <span className="rounded-full border border-indigo-200/60 bg-indigo-50 px-2 py-0.5 text-[10px] font-medium text-indigo-600 dark:border-indigo-800/60 dark:bg-indigo-950/50 dark:text-indigo-400">
                           {item.category}
                         </span>
                       </div>
@@ -816,7 +901,9 @@ export default function InfiniteFeed() {
             Custom Skeleton Loader & Root Margins
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Customize the loader slot with custom skeleton placeholders or tailored UI spinners, and tune the <code className="font-mono text-xs">rootMargin="150px"</code> to pre-fetch records seamlessly before the user reaches the absolute bottom.
+            Customize the loader slot with custom skeleton placeholders or tailored UI spinners, and
+            tune the <code className="font-mono text-xs">rootMargin="150px"</code> to pre-fetch
+            records seamlessly before the user reaches the absolute bottom.
           </p>
 
           <CodeBlock

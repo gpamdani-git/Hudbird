@@ -18,7 +18,8 @@ const textVariants = cva("text-zinc-600 dark:text-zinc-400", {
 });
 
 export interface TextProps
-  extends React.HTMLAttributes<HTMLParagraphElement | HTMLSpanElement>,
+  extends
+    React.HTMLAttributes<HTMLParagraphElement | HTMLSpanElement>,
     VariantProps<typeof textVariants> {
   as?: React.ElementType;
 }

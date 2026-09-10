@@ -1,24 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import path from 'path'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+import path from "path";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  publicDir: '../../public',
+  publicDir: "../../public",
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@hudbird/ui': path.resolve(__dirname, '../../packages/core/src'),
-      '@hudbird/theme': path.resolve(__dirname, '../../packages/theme/src'),
-      '@hudbird/marketing': path.resolve(__dirname, '../../packages/marketing/src'),
+      "@": path.resolve(__dirname, "./src"),
+      "@hudbird/ui": path.resolve(__dirname, "../../packages/core/src"),
+      "@hudbird/theme": path.resolve(__dirname, "../../packages/theme/src"),
+      "@hudbird/marketing": path.resolve(__dirname, "../../packages/marketing/src"),
     },
   },
   server: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
     port: 3000,
     strictPort: true,
-  }
-})
-
-
+  },
+});

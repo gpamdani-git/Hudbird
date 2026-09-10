@@ -36,11 +36,11 @@ export default function TextareaDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Textarea
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
@@ -54,8 +54,8 @@ export default function TextareaDoc() {
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Overview</h2>
         <ComponentPreview>
           <div className="w-full max-w-sm">
-            <Textarea 
-              placeholder="Tell us about your project..." 
+            <Textarea
+              placeholder="Tell us about your project..."
               value={val}
               onChange={(e) => setVal(e.target.value)}
               rows={4}
@@ -84,7 +84,6 @@ export default function Example() {
         <InstallationTabs componentName="textarea" manualCode={textareaCode} />
       </div>
 
-
       {/* Variants */}
       <section className="space-y-4" id="variants">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Variants</h2>
@@ -107,9 +106,9 @@ export default function Example() {
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Invalid State</h2>
         <ComponentPreview>
           <div className="w-full max-w-sm">
-            <Textarea 
-              isInvalid 
-              placeholder="Enter your message..." 
+            <Textarea
+              isInvalid
+              placeholder="Enter your message..."
               defaultValue="This is a bad message!"
             />
           </div>
@@ -122,7 +121,10 @@ export default function Example() {
       {/* API Reference */}
       <section className="space-y-4" id="api">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">API Reference</h2>
-        <ApiTable note="Textarea supports all native HTML textarea element attributes." rows={apiRows} />
+        <ApiTable
+          note="Textarea supports all native HTML textarea element attributes."
+          rows={apiRows}
+        />
       </section>
     </div>
   );

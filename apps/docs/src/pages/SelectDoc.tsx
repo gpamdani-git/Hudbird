@@ -64,7 +64,10 @@ export default function SelectDoc() {
       description: (
         <span>
           Controlled active selected key/value. Pair with{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">onValueChange</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            onValueChange
+          </code>
+          .
         </span>
       ),
     },
@@ -79,7 +82,10 @@ export default function SelectDoc() {
       description: (
         <span>
           Callback emitted when a user picks an option:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">(value: string) =&gt; void</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            (value: string) =&gt; void
+          </code>
+          .
         </span>
       ),
     },
@@ -109,8 +115,14 @@ export default function SelectDoc() {
       description: (
         <span>
           Visual variant of the trigger:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>
+          .
         </span>
       ),
     },
@@ -120,7 +132,10 @@ export default function SelectDoc() {
       description: (
         <span>
           Control size scale:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm' | 'md' | 'lg'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm' | 'md' | 'lg'
+          </code>
+          .
         </span>
       ),
     },
@@ -130,7 +145,10 @@ export default function SelectDoc() {
       description: (
         <span>
           Corner radius token:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none' | 'md' | 'lg' | 'full'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'none' | 'md' | 'lg' | 'full'
+          </code>
+          .
         </span>
       ),
     },
@@ -173,36 +191,38 @@ export default function SelectDoc() {
     <div className="space-y-16 pb-24">
       {/* Header Section */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Select
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-          Modular dropdown select component featuring pure React state interaction, outside click handling, animated chevron rotation, high-elevation floating menus, and comprehensive dark mode support.
+        <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Modular dropdown select component featuring pure React state interaction, outside click
+          handling, animated chevron rotation, high-elevation floating menus, and comprehensive dark
+          mode support.
         </p>
       </div>
 
       {/* Hero Interactive Playground */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="flex flex-col items-center justify-center gap-6 w-full max-w-md mx-auto py-4">
+          <div className="mx-auto flex w-full max-w-md flex-col items-center justify-center gap-6 py-4">
             {/* Customizer Controls Bar */}
-            <div className="flex flex-wrap items-center justify-center gap-3 p-3 rounded-2xl bg-zinc-100/80 dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 text-xs w-full">
+            <div className="flex w-full flex-wrap items-center justify-center gap-3 rounded-2xl border border-zinc-200/80 bg-zinc-100/80 p-3 text-xs dark:border-zinc-800 dark:bg-zinc-900/80">
               {/* Variant Selector */}
               <div className="flex items-center gap-1.5">
-                <span className="text-zinc-500 font-medium">Variant:</span>
+                <span className="font-medium text-zinc-500">Variant:</span>
                 {(["flat", "bordered"] as SelectVariant[]).map((v) => (
                   <button
                     key={v}
                     onClick={() => setHeroVariant(v)}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-all ${
+                    className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
                       heroVariant === v
-                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                     }`}
                   >
                     {v}
@@ -210,19 +230,19 @@ export default function SelectDoc() {
                 ))}
               </div>
 
-              <div className="h-4 w-[1px] bg-zinc-300 dark:bg-zinc-700 hidden sm:block" />
+              <div className="hidden h-4 w-[1px] bg-zinc-300 sm:block dark:bg-zinc-700" />
 
               {/* Size Selector */}
               <div className="flex items-center gap-1.5">
-                <span className="text-zinc-500 font-medium">Size:</span>
+                <span className="font-medium text-zinc-500">Size:</span>
                 {(["sm", "md", "lg"] as SelectSize[]).map((s) => (
                   <button
                     key={s}
                     onClick={() => setHeroSize(s)}
-                    className={`px-2.5 py-1 rounded-lg font-medium transition-all uppercase ${
+                    className={`rounded-lg px-2.5 py-1 font-medium uppercase transition-all ${
                       heroSize === s
-                        ? "bg-white dark:bg-zinc-800 text-zinc-950 dark:text-white shadow-xs border border-zinc-200 dark:border-zinc-700"
-                        : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-white"
+                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
+                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                     }`}
                   >
                     {s}
@@ -243,25 +263,28 @@ export default function SelectDoc() {
                 radius={heroRadius}
                 description="Governs data authorization levels across the workspace"
               >
-                <SelectItem value="admin" icon={<Shield className="w-4 h-4 text-indigo-500" />}>
+                <SelectItem value="admin" icon={<Shield className="h-4 w-4 text-indigo-500" />}>
                   Administrator (Full Access)
                 </SelectItem>
-                <SelectItem value="editor" icon={<UserCheck className="w-4 h-4 text-emerald-500" />}>
+                <SelectItem
+                  value="editor"
+                  icon={<UserCheck className="h-4 w-4 text-emerald-500" />}
+                >
                   Content Editor
                 </SelectItem>
-                <SelectItem value="viewer" icon={<Eye className="w-4 h-4 text-amber-500" />}>
+                <SelectItem value="viewer" icon={<Eye className="h-4 w-4 text-amber-500" />}>
                   Read-Only Viewer
                 </SelectItem>
-                <SelectItem value="billing" icon={<Settings className="w-4 h-4 text-zinc-500" />}>
+                <SelectItem value="billing" icon={<Settings className="h-4 w-4 text-zinc-500" />}>
                   Billing Manager
                 </SelectItem>
               </Select>
             </div>
 
             {/* Selected feedback pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-zinc-500 font-medium">Active Value:</span>
+            <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1.5 text-xs dark:border-zinc-800 dark:bg-zinc-900">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
+              <span className="font-medium text-zinc-500">Active Value:</span>
               <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
                 "{heroValue}"
               </code>
@@ -309,22 +332,27 @@ export default function SelectHero() {
         <InstallationTabs componentName="select" manualCode={selectCode} />
       </div>
 
-
       {/* Component API Documentation */}
       <section id="component-api" className="scroll-mt-24 space-y-6">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Component API
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Complete props interface specification for <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;Select&gt;</code> and <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">&lt;SelectItem&gt;</code>.
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Complete props interface specification for{" "}
+            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+              &lt;Select&gt;
+            </code>{" "}
+            and{" "}
+            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+              &lt;SelectItem&gt;
+            </code>
+            .
           </p>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Select Props
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Select Props</h3>
           <ApiTable rows={selectApiRows} />
         </div>
 
@@ -342,22 +370,21 @@ export default function SelectHero() {
           <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Select Examples
           </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Explore diverse usage patterns, layout variants, size scales, and validation states.
           </p>
         </div>
 
         {/* 1. Basic Select */}
         <div id="basic-select" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            Basic Select
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Basic Select</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Standard role selector with clean flat styling, chevron toggle indicator, and automatic outside click dismissal.
+            Standard role selector with clean flat styling, chevron toggle indicator, and automatic
+            outside click dismissal.
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-sm mx-auto py-2">
+            <div className="mx-auto w-full max-w-sm py-2">
               <Select
                 label="Select Role"
                 placeholder="Choose account role..."
@@ -391,14 +418,18 @@ export default function SelectHero() {
             Select Variants & Sizes
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Compare <code className="font-mono text-xs">flat</code> and <code className="font-mono text-xs">bordered</code> styling across small (<code className="font-mono text-xs">sm</code>), medium (<code className="font-mono text-xs">md</code>), and large (<code className="font-mono text-xs">lg</code>) dimensions.
+            Compare <code className="font-mono text-xs">flat</code> and{" "}
+            <code className="font-mono text-xs">bordered</code> styling across small (
+            <code className="font-mono text-xs">sm</code>), medium (
+            <code className="font-mono text-xs">md</code>), and large (
+            <code className="font-mono text-xs">lg</code>) dimensions.
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl mx-auto py-2">
+            <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-6 py-2 md:grid-cols-2">
               {/* Flat Column */}
-              <div className="space-y-4 p-4 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/80 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">
+              <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-zinc-800 dark:bg-zinc-900/30">
+                <span className="block text-xs font-bold tracking-wider text-zinc-500 uppercase">
                   Flat Variant (Default)
                 </span>
 
@@ -440,8 +471,8 @@ export default function SelectHero() {
               </div>
 
               {/* Bordered Column */}
-              <div className="space-y-4 p-4 rounded-2xl bg-zinc-50/50 dark:bg-zinc-900/30 border border-zinc-200/80 dark:border-zinc-800">
-                <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider block">
+              <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-zinc-800 dark:bg-zinc-900/30">
+                <span className="block text-xs font-bold tracking-wider text-zinc-500 uppercase">
                   Bordered Variant
                 </span>
 
@@ -507,15 +538,15 @@ export default function SelectHero() {
 
         {/* 3. Corner Radii */}
         <div id="select-radius" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            Corner Radii
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Corner Radii</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Shape tokens ranging from modern rounded (<code className="font-mono text-xs">md</code> / <code className="font-mono text-xs">lg</code>) to full pill (<code className="font-mono text-xs">full</code>).
+            Shape tokens ranging from modern rounded (<code className="font-mono text-xs">md</code>{" "}
+            / <code className="font-mono text-xs">lg</code>) to full pill (
+            <code className="font-mono text-xs">full</code>).
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl mx-auto py-2">
+            <div className="mx-auto grid w-full max-w-2xl grid-cols-1 gap-4 py-2 sm:grid-cols-3">
               <Select label="Radius: md (rounded-xl)" radius="md" defaultValue="standard">
                 <SelectItem value="basic">Basic Tier</SelectItem>
                 <SelectItem value="standard">Standard Tier</SelectItem>
@@ -557,32 +588,27 @@ export default function SelectHero() {
             With Option Icons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enhance visual clarity and recognition by passing custom icons into individual <code className="font-mono text-xs">&lt;SelectItem icon=...&gt;</code> rows.
+            Enhance visual clarity and recognition by passing custom icons into individual{" "}
+            <code className="font-mono text-xs">&lt;SelectItem icon=...&gt;</code> rows.
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-sm mx-auto py-2">
+            <div className="mx-auto w-full max-w-sm py-2">
               <Select
                 label="Repository Visibility"
                 value={iconVal}
                 onValueChange={setIconVal}
                 description="Controls who can fork or clone this repository"
               >
-                <SelectItem
-                  value="public"
-                  icon={<Globe className="w-4 h-4 text-emerald-500" />}
-                >
+                <SelectItem value="public" icon={<Globe className="h-4 w-4 text-emerald-500" />}>
                   Public (Anyone on the internet)
                 </SelectItem>
-                <SelectItem
-                  value="private"
-                  icon={<Lock className="w-4 h-4 text-rose-500" />}
-                >
+                <SelectItem value="private" icon={<Lock className="h-4 w-4 text-rose-500" />}>
                   Private (Restricted to members)
                 </SelectItem>
                 <SelectItem
                   value="internal"
-                  icon={<Sparkles className="w-4 h-4 text-indigo-500" />}
+                  icon={<Sparkles className="h-4 w-4 text-indigo-500" />}
                 >
                   Internal (Organization only)
                 </SelectItem>
@@ -608,11 +634,13 @@ export default function SelectHero() {
             Error & Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Display validation feedback when <code className="font-mono text-xs">isInvalid</code> is triggered, or prevent interactions with <code className="font-mono text-xs">disabled</code>.
+            Display validation feedback when <code className="font-mono text-xs">isInvalid</code> is
+            triggered, or prevent interactions with{" "}
+            <code className="font-mono text-xs">disabled</code>.
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-xl mx-auto py-2">
+            <div className="mx-auto grid w-full max-w-xl grid-cols-1 gap-6 py-2 sm:grid-cols-2">
               {/* Invalid Select */}
               <Select
                 label="Notification Email Channel"
@@ -621,10 +649,10 @@ export default function SelectHero() {
                 errorMessage="Please select a verified notification channel."
                 defaultValue=""
               >
-                <SelectItem value="primary" icon={<Mail className="w-4 h-4 text-zinc-500" />}>
+                <SelectItem value="primary" icon={<Mail className="h-4 w-4 text-zinc-500" />}>
                   Primary Admin Email
                 </SelectItem>
-                <SelectItem value="security" icon={<Shield className="w-4 h-4 text-zinc-500" />}>
+                <SelectItem value="security" icon={<Shield className="h-4 w-4 text-zinc-500" />}>
                   Security Incident Desk
                 </SelectItem>
               </Select>

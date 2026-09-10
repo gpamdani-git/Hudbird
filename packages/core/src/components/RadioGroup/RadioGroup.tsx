@@ -2,11 +2,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "../../utils/cn";
-import {
-  RadioGroupContext,
-  type RadioColor,
-  type RadioSize,
-} from "./Radio";
+import { RadioGroupContext, type RadioColor, type RadioSize } from "./Radio";
 
 export interface RadioGroupProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
   name?: string;
@@ -107,7 +103,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
             <div className="flex items-center gap-1">
               <span
                 className={cn(
-                  "font-medium text-zinc-900 dark:text-zinc-100 select-none",
+                  "font-medium text-zinc-900 select-none dark:text-zinc-100",
                   size === "sm" ? "text-xs" : size === "md" ? "text-sm" : "text-base",
                   isInvalid ? "text-rose-600 dark:text-rose-400" : "",
                   classNames?.label
@@ -115,14 +111,14 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
               >
                 {label}
               </span>
-              {isRequired && <span className="text-rose-500 text-sm">*</span>}
+              {isRequired && <span className="text-sm text-rose-500">*</span>}
             </div>
           )}
 
           {description && !isInvalid && (
             <p
               className={cn(
-                "text-zinc-500 dark:text-zinc-400 text-xs -mt-1",
+                "-mt-1 text-xs text-zinc-500 dark:text-zinc-400",
                 classNames?.description
               )}
             >
@@ -143,7 +139,7 @@ export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
           {isInvalid && errorMessage && (
             <p
               className={cn(
-                "text-xs font-medium text-rose-600 dark:text-rose-400 mt-0.5",
+                "mt-0.5 text-xs font-medium text-rose-600 dark:text-rose-400",
                 classNames?.errorMessage
               )}
             >

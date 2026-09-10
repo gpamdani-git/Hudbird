@@ -29,9 +29,7 @@ export const buttonTocItems: TocItem[] = [
   {
     id: "appendix",
     title: "Appendix",
-    children: [
-      { id: "solid-color-reference", title: "Solid Color Reference" },
-    ],
+    children: [{ id: "solid-color-reference", title: "Solid Color Reference" }],
   },
 ];
 
@@ -166,7 +164,10 @@ export const dropdownTocItems: TocItem[] = [
     title: "Examples",
     children: [
       { id: "basic-dropdown", title: "Basic Dropdown Menu" },
-      { id: "position-placements", title: "Interactive Positions (Center, Left, Right, Top, Bottom)" },
+      {
+        id: "position-placements",
+        title: "Interactive Positions (Center, Left, Right, Top, Bottom)",
+      },
       { id: "with-icons", title: "Dropdown with Icons (startContent)" },
       { id: "sections-and-danger", title: "Advanced Menu (Sections & Danger Variant)" },
     ],
@@ -306,9 +307,7 @@ export const sidebarTocItems: TocItem[] = [
   {
     id: "examples",
     title: "Examples",
-    children: [
-      { id: "flat-variant", title: "Flat variant" },
-    ],
+    children: [{ id: "flat-variant", title: "Flat variant" }],
   },
 ];
 

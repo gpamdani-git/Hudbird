@@ -26,8 +26,7 @@ const dividerVariants = cva("shrink-0", {
 });
 
 export interface DividerProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof dividerVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof dividerVariants> {
   orientation?: DividerOrientation;
   variant?: DividerVariant;
   contentPosition?: DividerContentPosition;
@@ -61,29 +60,19 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
           ref={ref}
           role="separator"
           aria-orientation="horizontal"
-          className={cn("flex items-center w-full my-3 select-none", className)}
+          className={cn("my-3 flex w-full items-center select-none", className)}
           {...props}
         >
           {/* Left line */}
-          <div
-            className={cn(
-              lineStyle,
-              isLeft ? "w-8 shrink-0" : isRight ? "flex-1" : "flex-1"
-            )}
-          />
+          <div className={cn(lineStyle, isLeft ? "w-8 shrink-0" : isRight ? "flex-1" : "flex-1")} />
 
           {/* Content */}
-          <span className="px-3 text-xs font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider shrink-0">
+          <span className="shrink-0 px-3 text-xs font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
             {children}
           </span>
 
           {/* Right line */}
-          <div
-            className={cn(
-              lineStyle,
-              isRight ? "w-8 shrink-0" : isLeft ? "flex-1" : "flex-1"
-            )}
-          />
+          <div className={cn(lineStyle, isRight ? "w-8 shrink-0" : isLeft ? "flex-1" : "flex-1")} />
         </div>
       );
     }
@@ -98,7 +87,7 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
           className={cn(
             dividerVariants({ orientation, variant }),
             variant === "dashed"
-              ? "border-l border-dashed border-zinc-200 dark:border-zinc-800 bg-transparent"
+              ? "border-l border-dashed border-zinc-200 bg-transparent dark:border-zinc-800"
               : "bg-zinc-200/70 dark:bg-zinc-800/70",
             className
           )}
@@ -115,8 +104,8 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
         className={cn(
           dividerVariants({ orientation, variant }),
           variant === "dashed"
-            ? "border-b border-dashed border-zinc-200 dark:border-zinc-800 bg-transparent h-0 my-3"
-            : "h-[1px] bg-zinc-200/70 dark:bg-zinc-800/70 my-3",
+            ? "my-3 h-0 border-b border-dashed border-zinc-200 bg-transparent dark:border-zinc-800"
+            : "my-3 h-[1px] bg-zinc-200/70 dark:bg-zinc-800/70",
           className
         )}
         {...props}

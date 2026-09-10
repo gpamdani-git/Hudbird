@@ -29,23 +29,53 @@ export const logoCloudTocItems = [
 const logos = [
   {
     name: "React",
-    svg: <img src="/assets/marketing-section/logo/react-dev-logo.png" alt="React" className="h-9 w-auto object-contain" />
+    svg: (
+      <img
+        src="/assets/marketing-section/logo/react-dev-logo.png"
+        alt="React"
+        className="h-9 w-auto object-contain"
+      />
+    ),
   },
   {
     name: "OpenAI",
-    svg: <img src="/assets/marketing-section/logo/openai-com-brandmark.svg" alt="OpenAI" className="h-9 w-auto object-contain dark:invert" />
+    svg: (
+      <img
+        src="/assets/marketing-section/logo/openai-com-brandmark.svg"
+        alt="OpenAI"
+        className="h-9 w-auto object-contain dark:invert"
+      />
+    ),
   },
   {
     name: "NPM",
-    svg: <img src="/assets/marketing-section/logo/npmjs-com-logo.png" alt="NPM" className="h-9 w-auto object-contain" />
+    svg: (
+      <img
+        src="/assets/marketing-section/logo/npmjs-com-logo.png"
+        alt="NPM"
+        className="h-9 w-auto object-contain"
+      />
+    ),
   },
   {
     name: "Claude",
-    svg: <img src="/assets/marketing-section/logo/ai-claude-net-logo.png" alt="Claude" className="h-9 w-auto object-contain" />
+    svg: (
+      <img
+        src="/assets/marketing-section/logo/ai-claude-net-logo.png"
+        alt="Claude"
+        className="h-9 w-auto object-contain"
+      />
+    ),
   },
   {
     name: "Nike",
-    svg: <img src="/assets/marketing-section/logo/nike-com-brandmark.svg" alt="Nike" className="h-9 w-auto object-contain dark:invert" />
+    svg: (
+      <img
+        src="/assets/marketing-section/logo/nike-com-brandmark.svg"
+        alt="Nike"
+        className="h-9 w-auto object-contain dark:invert"
+      />
+    ),
   },
 ];
 
@@ -106,13 +136,13 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
   ];
 
   return (
-    <div className="flex flex-col w-full pb-20">
-      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
-        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+    <div className="flex w-full flex-col pb-20">
+      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
+        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
           {onOpenSidebar && (
-            <button 
+            <button
               onClick={onOpenSidebar}
-              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />
@@ -123,14 +153,15 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
           <span className="text-zinc-900 dark:text-zinc-100">Logo Clouds</span>
         </div>
       </div>
-      
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12">
+
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="mb-10">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
             Logo Clouds
           </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl text-balance">
-            Build trust with your visitors by displaying the logos of companies that use your product. Choose between static grids and infinite ticker animations.
+          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+            Build trust with your visitors by displaying the logos of companies that use your
+            product. Choose between static grids and infinite ticker animations.
           </p>
         </div>
 
@@ -138,44 +169,48 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
           <InstallationTabs componentName="logo-cloud" manualCode={logoCloudCode} />
         </div>
 
-        <div className="flex flex-col gap-16 mt-16">
-          <MarketingPreview title="Static Grid" skill={skillContent} code={staticGridCode} minHeight={200}>
+        <div className="mt-16 flex flex-col gap-16">
+          <MarketingPreview
+            title="Static Grid"
+            skill={skillContent}
+            code={staticGridCode}
+            minHeight={200}
+          >
             <LogoCloud>
               <LogoCloudTitle>Trusted by the world's most innovative teams</LogoCloudTitle>
               <LogoCloudGrid>
                 {logos.map((logo, i) => (
-                  <LogoCloudItem key={i}>
-                    {logo.svg}
-                  </LogoCloudItem>
+                  <LogoCloudItem key={i}>{logo.svg}</LogoCloudItem>
                 ))}
               </LogoCloudGrid>
             </LogoCloud>
           </MarketingPreview>
 
-          <MarketingPreview title="Infinite Marquee Ticker" skill={skillContent} code={tickerCode} minHeight={200}>
+          <MarketingPreview
+            title="Infinite Marquee Ticker"
+            skill={skillContent}
+            code={tickerCode}
+            minHeight={200}
+          >
             <LogoCloud>
               <LogoCloudTitle>Join thousands of companies building with us</LogoCloudTitle>
               <LogoCloudTicker speed="normal">
                 {logos.map((logo, i) => (
-                  <LogoCloudItem key={i}>
-                    {logo.svg}
-                  </LogoCloudItem>
+                  <LogoCloudItem key={i}>{logo.svg}</LogoCloudItem>
                 ))}
                 {logos.map((logo, i) => (
-                  <LogoCloudItem key={i + 'clone'}>
-                    {logo.svg}
-                  </LogoCloudItem>
+                  <LogoCloudItem key={i + "clone"}>{logo.svg}</LogoCloudItem>
                 ))}
               </LogoCloudTicker>
             </LogoCloud>
           </MarketingPreview>
         </div>
 
-        <section id="component-api" className="scroll-mt-24 space-y-4 mt-16">
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
           <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Component API
           </h2>
-          <ApiTable rows={apiRows} />
+          <ApiTable title="LogoCloud Props" rows={apiRows} />
         </section>
       </div>
     </div>

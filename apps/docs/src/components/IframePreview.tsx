@@ -46,7 +46,8 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
                 background-color: transparent;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
-                overflow: visible !important;
+                overflow-x: hidden !important;
+                overflow-y: hidden !important;
               }
               body {
                 padding: 0;
@@ -57,8 +58,8 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
               }
             </style>
           </head>
-          <body class="text-zinc-900 dark:text-zinc-50 font-sans p-4 relative overflow-visible min-h-[${minHeight}px] m-0">
-            <div id="frame-root" class="w-full flex flex-col items-center justify-start overflow-visible min-h-full"></div>
+          <body class="text-zinc-900 dark:text-zinc-50 font-sans p-4 relative overflow-hidden min-h-[${minHeight}px] m-0 w-full">
+            <div id="frame-root" class="w-full flex flex-col items-center justify-start overflow-hidden min-h-full"></div>
           </body>
         </html>
       `);
@@ -125,7 +126,7 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
       ref={iframeRef}
       title="Responsive Isolated Canvas"
       style={{ height: `${frameHeight}px` }}
-      className={`w-full border-0 block bg-transparent ${className}`}
+      className={`block w-full border-0 bg-transparent ${className}`}
     >
       {mountNode && ReactDOM.createPortal(children, mountNode)}
     </iframe>

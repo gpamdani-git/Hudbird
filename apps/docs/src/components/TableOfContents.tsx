@@ -73,8 +73,8 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
         <a
           href={`#${item.id}`}
           onClick={(e) => scrollToSection(e, item.id)}
-          className={`block text-xs transition-colors py-0.5 leading-snug ${
-            isChild ? "pl-3 border-l border-zinc-200 dark:border-zinc-800" : ""
+          className={`block py-0.5 text-xs leading-snug transition-colors ${
+            isChild ? "border-l border-zinc-200 pl-3 dark:border-zinc-800" : ""
           } ${
             isActive
               ? `font-medium text-zinc-900 dark:text-zinc-50 ${isChild ? "!border-zinc-900 dark:!border-zinc-100" : ""}`
@@ -94,12 +94,10 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
 
   return (
     <nav aria-label="Table of contents" className="w-full">
-      <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-900 dark:text-zinc-100 mb-3">
+      <h4 className="mb-3 text-xs font-semibold tracking-wider text-zinc-900 uppercase dark:text-zinc-100">
         On this page
       </h4>
-      <ul className="space-y-2 text-xs">
-        {items.map((item) => renderItem(item, false))}
-      </ul>
+      <ul className="space-y-2 text-xs">{items.map((item) => renderItem(item, false))}</ul>
     </nav>
   );
 };

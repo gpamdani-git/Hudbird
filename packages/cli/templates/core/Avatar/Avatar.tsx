@@ -40,8 +40,7 @@ const avatarVariants = cva(
 );
 
 export interface AvatarProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">,
-    VariantProps<typeof avatarVariants> {
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "color">, VariantProps<typeof avatarVariants> {
   src?: string;
   alt?: string;
   name?: string;
@@ -106,12 +105,12 @@ const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
             className="h-full w-full object-cover"
           />
         ) : initials ? (
-          <span className="font-semibold uppercase leading-none">{initials}</span>
+          <span className="leading-none font-semibold uppercase">{initials}</span>
         ) : children ? (
           children
         ) : (
           <svg
-            className="h-3/5 w-3/5 opacity-60 fill-current"
+            className="h-3/5 w-3/5 fill-current opacity-60"
             viewBox="0 0 24 24"
             aria-hidden="true"
           >

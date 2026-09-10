@@ -19,5 +19,6 @@
   },
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "accessibility.replEditor.readLastExecutionOutput": true
 }

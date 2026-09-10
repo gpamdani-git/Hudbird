@@ -22,7 +22,7 @@ export const BentoGrid = React.forwardRef<HTMLElement, BentoGridProps>(
       <Comp
         ref={ref}
         className={cn(
-          "grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 w-full auto-rows-[22rem]",
+          "grid w-full auto-rows-[22rem] grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-4",
           className
         )}
         {...props}
@@ -49,10 +49,7 @@ export const BentoCard = React.forwardRef<HTMLDivElement, BentoCardProps>(
         ref={ref}
         whileHover={{ scale: 0.98 }}
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        className={cn(
-          "group relative overflow-hidden h-full w-full",
-          className
-        )}
+        className={cn("group relative h-full w-full overflow-hidden", className)}
         {...props}
       >
         {children}
@@ -83,7 +80,7 @@ export const BentoCardBackground = React.forwardRef<HTMLDivElement, BentoCardBac
           <motion.img
             src={src}
             alt={alt}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
         {children}
@@ -104,7 +101,7 @@ export const BentoCardContent = React.forwardRef<HTMLDivElement, BentoCardConten
     return (
       <div
         ref={ref}
-        className={cn("relative z-10 flex flex-col justify-between h-full", className)}
+        className={cn("relative z-10 flex h-full flex-col justify-between", className)}
         {...props}
       >
         {children}

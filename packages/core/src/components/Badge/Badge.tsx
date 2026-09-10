@@ -122,7 +122,8 @@ const placementStyles: Record<BadgePlacement, string> = {
 };
 
 export interface BadgeProps
-  extends Omit<React.HTMLAttributes<HTMLSpanElement>, "color" | "content">,
+  extends
+    Omit<React.HTMLAttributes<HTMLSpanElement>, "color" | "content">,
     VariantProps<typeof badgeVariants> {
   /**
    * Content to render inside the floating badge (when wrapping child elements).
@@ -173,7 +174,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
           isFloating && [
             "absolute z-10 box-border ring-2 ring-white dark:ring-zinc-950",
             placementStyles[placement],
-            isDot && "p-0 min-w-0 h-2.5 w-2.5 rounded-full px-0 py-0",
+            isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
           ],
           isInvisible && "hidden",
           className
@@ -199,7 +200,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         ref={ref}
         className={cn(
           badgeVariants({ variant, color, size }),
-          isDot && "p-0 min-w-0 h-2.5 w-2.5 rounded-full px-0 py-0",
+          isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
           isInvisible && "hidden",
           className
         )}

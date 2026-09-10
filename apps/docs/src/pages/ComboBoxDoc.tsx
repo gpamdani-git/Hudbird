@@ -59,7 +59,7 @@ export default function ComboBoxDoc() {
       description: (
         <span>
           Array of selectable item objects:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             {"{ value: string, label: string, disabled?: boolean }[]"}
           </code>
           .
@@ -107,8 +107,14 @@ export default function ComboBoxDoc() {
       description: (
         <span>
           Input styling surface:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code> or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>
+          .
         </span>
       ),
     },
@@ -118,9 +124,18 @@ export default function ComboBoxDoc() {
       description: (
         <span>
           Size proportion:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>
+          .
         </span>
       ),
     },
@@ -150,16 +165,17 @@ export default function ComboBoxDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             ComboBox
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Advanced searchable autocomplete dropdown supporting single selection and multi-select tags/chips with live fuzzy filtering.
+          Advanced searchable autocomplete dropdown supporting single selection and multi-select
+          tags/chips with live fuzzy filtering.
         </p>
       </div>
 
@@ -206,7 +222,6 @@ function Example() {
         <InstallationTabs componentName="combo-box" manualCode={comboBoxCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -215,7 +230,9 @@ function Example() {
         <ApiTable
           note={
             <span>
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">ComboBox</strong> supports both single-value (autocomplete dropdown) and multi-value (interactive chips container) modes.
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">ComboBox</strong>{" "}
+              supports both single-value (autocomplete dropdown) and multi-value (interactive chips
+              container) modes.
             </span>
           }
           rows={apiRows}
@@ -225,7 +242,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -236,7 +253,8 @@ function Example() {
             Single Select (Autocomplete)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Standard single selection autocomplete. Typing in the input filters the items, and choosing an option immediately selects it:
+            Standard single selection autocomplete. Typing in the input filters the items, and
+            choosing an option immediately selects it:
           </p>
 
           <ComponentPreview>
@@ -248,7 +266,7 @@ function Example() {
                 onValueChange={(val) => setSelectedCountry(val)}
                 placeholder="Select country..."
               />
-              <div className="p-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 text-xs flex items-center justify-between">
+              <div className="flex items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/50 p-3 text-xs dark:border-zinc-800 dark:bg-zinc-900/40">
                 <span className="text-zinc-500 dark:text-zinc-400">Selected Value:</span>
                 <span className="font-mono font-semibold text-indigo-600 dark:text-indigo-400">
                   {selectedCountry || "(none)"}
@@ -283,7 +301,12 @@ function Example() {
             Multi-Select (Advanced Chips)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Pass <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isMulti</code> to enable multi-selection tags. Users can dismiss individual chips with the (X) button or click items in the dropdown to toggle them:
+            Pass{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isMulti
+            </code>{" "}
+            to enable multi-selection tags. Users can dismiss individual chips with the (X) button
+            or click items in the dropdown to toggle them:
           </p>
 
           <ComponentPreview>
@@ -298,8 +321,10 @@ function Example() {
                 placeholder="Add more skills..."
               />
 
-              <div className="p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/40 text-xs space-y-1.5">
-                <div className="text-zinc-500 dark:text-zinc-400">Selected Values ({selectedSkills.length}):</div>
+              <div className="space-y-1.5 rounded-xl border border-zinc-200 bg-zinc-50/50 p-3.5 text-xs dark:border-zinc-800 dark:bg-zinc-900/40">
+                <div className="text-zinc-500 dark:text-zinc-400">
+                  Selected Values ({selectedSkills.length}):
+                </div>
                 <div className="font-mono font-semibold text-indigo-600 dark:text-indigo-400">
                   {selectedSkills.length > 0 ? selectedSkills.join(", ") : "(empty)"}
                 </div>
@@ -334,11 +359,19 @@ function Example() {
             Variants & Sizes
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Supports <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'bordered'</code> and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'flat'</code> surface designs across three sizes:
+            Supports{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'bordered'
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'flat'
+            </code>{" "}
+            surface designs across three sizes:
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 md:grid-cols-2">
               <ComboBox
                 label="Bordered Variant (Size MD)"
                 variant="bordered"
@@ -390,11 +423,19 @@ function Example() {
             Disabled & Invalid States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Showcase for <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">disabled</code> state and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isInvalid</code> validation error borders:
+            Showcase for{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              disabled
+            </code>{" "}
+            state and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isInvalid
+            </code>{" "}
+            validation error borders:
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 md:grid-cols-2">
               <ComboBox
                 isMulti
                 label="Disabled ComboBox"

@@ -47,6 +47,8 @@ const LogoCloudDoc = lazy(() => import("./pages/marketing/LogoCloudDoc"));
 const FeatureSectionDoc = lazy(() => import("./pages/marketing/FeatureSectionDoc"));
 const PricingDoc = lazy(() => import("./pages/marketing/PricingDoc"));
 const BentoGridDoc = lazy(() => import("./pages/marketing/BentoGridDoc"));
+const TestimonialsDoc = lazy(() => import("./pages/marketing/TestimonialsDoc"));
+const FaqDoc = lazy(() => import("./pages/marketing/FaqDoc"));
 
 const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
@@ -157,6 +159,14 @@ export default function App() {
                   <Route
                     path="/marketing/bento-grid"
                     element={<BentoGridDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                  />
+                  <Route
+                    path="/marketing/testimonials"
+                    element={<TestimonialsDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                  />
+                  <Route
+                    path="/marketing/faq"
+                    element={<FaqDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
                   />
 
                   <Route path="*" element={<Navigate to="/button" replace />} />

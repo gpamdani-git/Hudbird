@@ -14,7 +14,8 @@ export const tabListVariants = cva(
   {
     variants: {
       variant: {
-        solid: "bg-zinc-100 dark:bg-zinc-900/80 p-1 border border-zinc-200/60 dark:border-zinc-800/80",
+        solid:
+          "bg-zinc-100 dark:bg-zinc-900/80 p-1 border border-zinc-200/60 dark:border-zinc-800/80",
         bordered: "border-2 border-zinc-200 dark:border-zinc-800 p-1 bg-transparent",
         light: "bg-transparent p-0 gap-1.5",
         underlined: "bg-transparent p-0 gap-4 border-b border-zinc-200 dark:border-zinc-800",
@@ -63,8 +64,10 @@ export const tabTriggerVariants = cva(
       variant: {
         solid: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
         bordered: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
-        light: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60",
-        underlined: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 pb-2 border-b-2 border-transparent -mb-px rounded-none",
+        light:
+          "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60",
+        underlined:
+          "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 pb-2 border-b-2 border-transparent -mb-px rounded-none",
       },
       isSelected: {
         true: "",
@@ -79,7 +82,8 @@ export const tabTriggerVariants = cva(
       {
         variant: "solid",
         isSelected: true,
-        className: "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-zinc-50 font-semibold",
+        className:
+          "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-zinc-50 font-semibold",
       },
       {
         variant: "bordered",
@@ -94,7 +98,8 @@ export const tabTriggerVariants = cva(
       {
         variant: "underlined",
         isSelected: true,
-        className: "text-zinc-900 dark:text-zinc-50 border-zinc-900 dark:border-zinc-100 font-semibold",
+        className:
+          "text-zinc-900 dark:text-zinc-50 border-zinc-900 dark:border-zinc-100 font-semibold",
       },
     ],
     defaultVariants: {
@@ -107,7 +112,10 @@ export const tabTriggerVariants = cva(
   }
 );
 
-export const tabColorStyles: Record<TabsColor, { solid: string; light: string; underlined: string; bordered: string }> = {
+export const tabColorStyles: Record<
+  TabsColor,
+  { solid: string; light: string; underlined: string; bordered: string }
+> = {
   default: {
     solid: "bg-white text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50 shadow-xs",
     light: "bg-zinc-200/70 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50",
@@ -118,25 +126,30 @@ export const tabColorStyles: Record<TabsColor, { solid: string; light: string; u
     solid: "!bg-indigo-600 !text-white dark:!bg-indigo-500 dark:!text-white shadow-xs",
     light: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50",
     underlined: "!text-indigo-600 dark:!text-indigo-400 !border-indigo-600 dark:!border-indigo-400",
-    bordered: "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
+    bordered:
+      "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
   },
   success: {
     solid: "!bg-emerald-600 !text-white dark:!bg-emerald-500 dark:!text-white shadow-xs",
     light: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50",
-    underlined: "!text-emerald-600 dark:!text-emerald-400 !border-emerald-600 dark:!border-emerald-400",
-    bordered: "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    underlined:
+      "!text-emerald-600 dark:!text-emerald-400 !border-emerald-600 dark:!border-emerald-400",
+    bordered:
+      "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
   },
   warning: {
     solid: "!bg-amber-500 !text-white dark:!bg-amber-500 dark:!text-white shadow-xs",
     light: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50",
     underlined: "!text-amber-600 dark:!text-amber-400 !border-amber-500 dark:!border-amber-400",
-    bordered: "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    bordered:
+      "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
   },
   danger: {
     solid: "!bg-rose-600 !text-white dark:!bg-rose-500 dark:!text-white shadow-xs",
     light: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50",
     underlined: "!text-rose-600 dark:!text-rose-400 !border-rose-600 dark:!border-rose-400",
-    bordered: "bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800",
+    bordered:
+      "bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800",
   },
 };
 
@@ -233,10 +246,10 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         )}
         {...props}
       >
-        {icon && <span className="shrink-0 flex items-center justify-center">{icon}</span>}
+        {icon && <span className="flex shrink-0 items-center justify-center">{icon}</span>}
         <span className="truncate">{title || children}</span>
         {badge && (
-          <span className="ml-1 inline-flex items-center justify-center text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-zinc-200 dark:bg-zinc-700 text-zinc-700 dark:text-zinc-200">
+          <span className="ml-1 inline-flex items-center justify-center rounded-full bg-zinc-200 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
             {badge}
           </span>
         )}
@@ -329,7 +342,7 @@ export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
         aria-labelledby={`${baseId}-tab-${panelId}`}
         tabIndex={0}
         className={cn(
-          "mt-3 text-zinc-700 dark:text-zinc-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-lg animate-in fade-in-50 duration-150",
+          "animate-in fade-in-50 mt-3 rounded-lg text-zinc-700 duration-150 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none dark:text-zinc-300",
           className
         )}
         {...props}
@@ -345,7 +358,8 @@ TabPanel.displayName = "TabPanel";
 // MAIN TABS COMPONENT
 // ----------------------------------------------------
 export interface TabsProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
     VariantProps<typeof tabListVariants> {
   selectedKey?: string;
   defaultSelectedKey?: string;
@@ -436,7 +450,18 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         orientation: orientation || "horizontal",
         baseId,
       }),
-      [currentKey, handleSelect, variant, color, size, radius, isDisabled, fullWidth, orientation, baseId]
+      [
+        currentKey,
+        handleSelect,
+        variant,
+        color,
+        size,
+        radius,
+        isDisabled,
+        fullWidth,
+        orientation,
+        baseId,
+      ]
     );
 
     return (

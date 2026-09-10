@@ -2,7 +2,14 @@
 import inputCode from "../../../../packages/core/src/components/Input/Input.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { Input, Button, type InputVariant, type InputSize, type InputRadius, type InputLabelPlacement } from "@hudbird/ui";
+import {
+  Input,
+  Button,
+  type InputVariant,
+  type InputSize,
+  type InputRadius,
+  type InputLabelPlacement,
+} from "@hudbird/ui";
 import { Search, Eye, EyeOff, Mail, Lock, DollarSign, Sparkles } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -47,9 +54,18 @@ export default function InputDoc() {
       description: (
         <span>
           Visual container variant:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> (soft filled backdrop),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code> (subtle perimeter outline), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'underlined'</code> (minimalist bottom border line).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>{" "}
+          (soft filled backdrop),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>{" "}
+          (subtle perimeter outline), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'underlined'
+          </code>{" "}
+          (minimalist bottom border line).
         </span>
       ),
     },
@@ -59,9 +75,18 @@ export default function InputDoc() {
       description: (
         <span>
           Input height & typography scale:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code> (h-8 / 32px),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (h-10 / 40px), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (h-12 / 48px).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>{" "}
+          (h-8 / 32px),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (h-10 / 40px), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (h-12 / 48px).
         </span>
       ),
     },
@@ -71,10 +96,22 @@ export default function InputDoc() {
       description: (
         <span>
           Corner curvature:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (12px rounded-xl),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (16px rounded-2xl), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'full'</code> (pill-shaped).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'none'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (12px rounded-xl),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (16px rounded-2xl), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'full'
+          </code>{" "}
+          (pill-shaped).
         </span>
       ),
     },
@@ -84,30 +121,40 @@ export default function InputDoc() {
       description: (
         <span>
           Label position:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'outside'</code> (standard top-aligned title) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'inside'</code> (modern HeroUI-style embedded floating label).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'outside'
+          </code>{" "}
+          (standard top-aligned title) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'inside'
+          </code>{" "}
+          (modern HeroUI-style embedded floating label).
         </span>
       ),
     },
     {
       prop: "isClearable",
       defaultVal: "false",
-      description: "When true and input has text, renders an interactive cross icon (X) that instantly resets the input value.",
+      description:
+        "When true and input has text, renders an interactive cross icon (X) that instantly resets the input value.",
     },
     {
       prop: "isInvalid",
       defaultVal: "false",
-      description: "When true, turns the perimeter border and text highlights into warning rose colors and swaps description for errorMessage.",
+      description:
+        "When true, turns the perimeter border and text highlights into warning rose colors and swaps description for errorMessage.",
     },
     {
       prop: "startContent",
       defaultVal: "-",
-      description: "ReactNode rendered at the start of the input frame (e.g. search icon, prefix currency symbol).",
+      description:
+        "ReactNode rendered at the start of the input frame (e.g. search icon, prefix currency symbol).",
     },
     {
       prop: "endContent",
       defaultVal: "-",
-      description: "ReactNode rendered at the end of the input frame (e.g. password visibility toggle, unit suffix).",
+      description:
+        "ReactNode rendered at the end of the input frame (e.g. password visibility toggle, unit suffix).",
     },
     {
       prop: "description",
@@ -125,23 +172,25 @@ export default function InputDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Input
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          A high-performance form field primitive with rich visual variants, embedded inside/outside labels, interactive clear buttons, custom start/end content slots, and robust validation state handling.
+          A high-performance form field primitive with rich visual variants, embedded inside/outside
+          labels, interactive clear buttons, custom start/end content slots, and robust validation
+          state handling.
         </p>
       </div>
 
       {/* Hero Preview & Code */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="w-full max-w-md py-4 space-y-4">
+          <div className="w-full max-w-md space-y-4 py-4">
             <Input
               label="Email Address"
               placeholder="you@company.com"
@@ -175,19 +224,21 @@ export default function Example() {
         <InstallationTabs componentName="input" manualCode={inputCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
           Component API
         </h2>
-        <ApiTable note="Input extends standard HTML input attributes (e.g., type, placeholder, value, onChange, disabled)." rows={apiRows} />
+        <ApiTable
+          note="Input extends standard HTML input attributes (e.g., type, placeholder, value, onChange, disabled)."
+          rows={apiRows}
+        />
       </section>
 
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -198,11 +249,23 @@ export default function Example() {
             Basic Form Variants (Flat, Bordered, Underlined)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Select among three distinctive visual archetypes: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">flat</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">bordered</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">underlined</code>:
+            Select among three distinctive visual archetypes:{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              flat
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              bordered
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              underlined
+            </code>
+            :
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl py-4">
+            <div className="grid w-full max-w-3xl grid-cols-1 gap-6 py-4 md:grid-cols-3">
               <Input
                 variant="flat"
                 label="Flat (Default)"
@@ -244,11 +307,19 @@ export default function Example() {
             Label Placements (Outside vs Inside)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Position labels conventionally above the control (<code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">labelPlacement="outside"</code>) or embedded directly inside the input container frame (<code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">labelPlacement="inside"</code>):
+            Position labels conventionally above the control (
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              labelPlacement="outside"
+            </code>
+            ) or embedded directly inside the input container frame (
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              labelPlacement="inside"
+            </code>
+            ):
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               <Input
                 label="Full Name"
                 labelPlacement="outside"
@@ -289,11 +360,20 @@ export default function Example() {
             Input with Content Slots (Start & End)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enrich inputs with prefix symbols, interactive action buttons, currency selectors, and password visibility toggles using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">startContent</code> and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">endContent</code>:
+            Enrich inputs with prefix symbols, interactive action buttons, currency selectors, and
+            password visibility toggles using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              startContent
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              endContent
+            </code>
+            :
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               {/* Search Bar */}
               <Input
                 label="Global Search"
@@ -309,7 +389,9 @@ export default function Example() {
                 type="number"
                 defaultValue="250"
                 startContent={<DollarSign size={16} />}
-                endContent={<span className="text-xs text-zinc-400 font-mono font-semibold">USD / mo</span>}
+                endContent={
+                  <span className="font-mono text-xs font-semibold text-zinc-400">USD / mo</span>
+                }
               />
 
               {/* Password Toggle */}
@@ -322,7 +404,7 @@ export default function Example() {
                   <button
                     type="button"
                     onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-                    className="p-1 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 transition-colors cursor-pointer"
+                    className="cursor-pointer p-1 text-zinc-400 transition-colors hover:text-zinc-700 dark:hover:text-zinc-200"
                     aria-label="Toggle password visibility"
                   >
                     {isPasswordVisible ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -335,7 +417,7 @@ export default function Example() {
                 label="Custom Subdomain"
                 defaultValue="my-startup"
                 endContent={
-                  <div className="flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/60 px-2 py-0.5 rounded-md border border-indigo-200/60 dark:border-indigo-800/60">
+                  <div className="flex items-center gap-1 rounded-md border border-indigo-200/60 bg-indigo-50 px-2 py-0.5 text-[11px] font-semibold text-indigo-600 dark:border-indigo-800/60 dark:bg-indigo-950/60 dark:text-indigo-400">
                     <Sparkles size={12} />
                     <span>.brand.io</span>
                   </div>
@@ -390,15 +472,17 @@ export function ContentSlotsExample() {
 
         {/* 4. Clearable Input */}
         <div id="clearable-input" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Clearable Input
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Clearable Input</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enable <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isClearable</code> to automatically show an interactive clear button when text is present:
+            Enable{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isClearable
+            </code>{" "}
+            to automatically show an interactive clear button when text is present:
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-md py-4 space-y-4">
+            <div className="w-full max-w-md space-y-4 py-4">
               <Input
                 label="Username / Handle"
                 value={clearableValue}
@@ -408,7 +492,10 @@ export function ContentSlotsExample() {
                 placeholder="Type something to see clear icon..."
               />
               <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                Current controlled value: <code className="font-mono font-semibold text-zinc-800 dark:text-zinc-200">"{clearableValue}"</code>
+                Current controlled value:{" "}
+                <code className="font-mono font-semibold text-zinc-800 dark:text-zinc-200">
+                  "{clearableValue}"
+                </code>
               </p>
             </div>
           </ComponentPreview>
@@ -440,7 +527,19 @@ export function ClearableExample() {
             Validation & Descriptions
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Provide helpful context with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">description</code> or trigger warning alerts with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isInvalid</code> and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">errorMessage</code>:
+            Provide helpful context with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              description
+            </code>{" "}
+            or trigger warning alerts with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isInvalid
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              errorMessage
+            </code>
+            :
           </p>
 
           <div className="flex items-center gap-3">
@@ -455,7 +554,7 @@ export function ClearableExample() {
           </div>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               <Input
                 label="Email"
                 defaultValue="invalid-email-format"
@@ -493,11 +592,39 @@ export function ClearableExample() {
             Sizes & Corner Radii
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Mix and match size dimensions (<code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">sm</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">md</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">lg</code>) with corner radius tokens (<code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">none</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">md</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">lg</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">full</code>):
+            Mix and match size dimensions (
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              sm
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              md
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              lg
+            </code>
+            ) with corner radius tokens (
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              none
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              md
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              lg
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              full
+            </code>
+            ):
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col gap-5 w-full max-w-md py-4">
+            <div className="flex w-full max-w-md flex-col gap-5 py-4">
               <Input
                 size="sm"
                 radius="md"
@@ -554,20 +681,21 @@ export function ClearableExample() {
             Interactive Customizer
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Experiment with combinations of variants, label placements, sizes, corner radii, and error flags:
+            Experiment with combinations of variants, label placements, sizes, corner radii, and
+            error flags:
           </p>
 
           {/* Controls Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800">
+          <div className="grid grid-cols-2 gap-3 rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:grid-cols-4 dark:border-zinc-800 dark:bg-zinc-900/50">
             {/* Variant */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Variant
               </label>
               <select
                 value={custVariant}
                 onChange={(e) => setCustVariant(e.target.value as InputVariant)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="flat">Flat</option>
                 <option value="bordered">Bordered</option>
@@ -577,13 +705,13 @@ export function ClearableExample() {
 
             {/* Label Placement */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Label Placement
               </label>
               <select
                 value={custPlacement}
                 onChange={(e) => setCustPlacement(e.target.value as InputLabelPlacement)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="outside">Outside</option>
                 <option value="inside">Inside</option>
@@ -592,13 +720,13 @@ export function ClearableExample() {
 
             {/* Size */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Size
               </label>
               <select
                 value={custSize}
                 onChange={(e) => setCustSize(e.target.value as InputSize)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="sm">Small (sm)</option>
                 <option value="md">Medium (md)</option>
@@ -608,13 +736,13 @@ export function ClearableExample() {
 
             {/* Radius */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Radius
               </label>
               <select
                 value={custRadius}
                 onChange={(e) => setCustRadius(e.target.value as InputRadius)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="none">None</option>
                 <option value="md">Medium (md)</option>

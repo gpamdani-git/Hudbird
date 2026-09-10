@@ -45,8 +45,10 @@ const buttonVariants = cva(
         bordered: "border-2 bg-transparent font-semibold",
         flat: "font-semibold",
         light: "bg-transparent font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800",
-        outline: "border border-zinc-950/10 dark:border-white/15 bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
-        plain: "bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
+        outline:
+          "border border-zinc-950/10 dark:border-white/15 bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
+        plain:
+          "bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
       },
       color: {
         primary: "focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-zinc-950",
@@ -115,47 +117,56 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "primary",
-        className: "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
+        className:
+          "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
       },
       {
         variant: "solid",
         color: "success",
-        className: "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
+        className:
+          "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
+        className:
+          "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
       },
       {
         variant: "solid",
         color: "dark/zinc",
-        className: "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600",
+        className:
+          "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-700 dark:hover:bg-zinc-600",
       },
       {
         variant: "solid",
         color: "dark",
-        className: "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700",
+        className:
+          "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700",
       },
       {
         variant: "solid",
         color: "zinc",
-        className: "bg-zinc-600 text-white hover:bg-zinc-700 dark:bg-zinc-600 dark:hover:bg-zinc-500",
+        className:
+          "bg-zinc-600 text-white hover:bg-zinc-700 dark:bg-zinc-600 dark:hover:bg-zinc-500",
       },
       {
         variant: "solid",
         color: "white",
-        className: "bg-white text-zinc-950 border border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white shadow-xs",
+        className:
+          "bg-white text-zinc-950 border border-zinc-200 hover:bg-zinc-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white shadow-xs",
       },
       {
         variant: "solid",
         color: "light",
-        className: "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700",
+        className:
+          "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700",
       },
       {
         variant: "solid",
         color: "dark/white",
-        className: "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
+        className:
+          "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100",
       },
       {
         variant: "solid",
@@ -165,42 +176,50 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "orange",
-        className: "bg-orange-600 text-white hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-400",
+        className:
+          "bg-orange-600 text-white hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-400",
       },
       {
         variant: "solid",
         color: "amber",
-        className: "bg-amber-500 text-zinc-950 font-bold hover:bg-amber-400 dark:bg-amber-400 dark:text-zinc-950",
+        className:
+          "bg-amber-500 text-zinc-950 font-bold hover:bg-amber-400 dark:bg-amber-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
         color: "yellow",
-        className: "bg-yellow-400 text-zinc-950 font-bold hover:bg-yellow-300 dark:bg-yellow-400 dark:text-zinc-950",
+        className:
+          "bg-yellow-400 text-zinc-950 font-bold hover:bg-yellow-300 dark:bg-yellow-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
         color: "lime",
-        className: "bg-lime-500 text-zinc-950 font-bold hover:bg-lime-400 dark:bg-lime-400 dark:text-zinc-950",
+        className:
+          "bg-lime-500 text-zinc-950 font-bold hover:bg-lime-400 dark:bg-lime-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
         color: "green",
-        className: "bg-green-600 text-white hover:bg-green-500 dark:bg-green-500 dark:hover:bg-green-400",
+        className:
+          "bg-green-600 text-white hover:bg-green-500 dark:bg-green-500 dark:hover:bg-green-400",
       },
       {
         variant: "solid",
         color: "emerald",
-        className: "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
+        className:
+          "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
       },
       {
         variant: "solid",
         color: "teal",
-        className: "bg-teal-600 text-white hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400",
+        className:
+          "bg-teal-600 text-white hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400",
       },
       {
         variant: "solid",
         color: "cyan",
-        className: "bg-cyan-500 text-zinc-950 font-bold hover:bg-cyan-400 dark:bg-cyan-400 dark:text-zinc-950",
+        className:
+          "bg-cyan-500 text-zinc-950 font-bold hover:bg-cyan-400 dark:bg-cyan-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
@@ -210,37 +229,44 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "blue",
-        className: "bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400",
+        className:
+          "bg-blue-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-blue-400",
       },
       {
         variant: "solid",
         color: "indigo",
-        className: "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
+        className:
+          "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
       },
       {
         variant: "solid",
         color: "violet",
-        className: "bg-violet-600 text-white hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400",
+        className:
+          "bg-violet-600 text-white hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400",
       },
       {
         variant: "solid",
         color: "purple",
-        className: "bg-purple-600 text-white hover:bg-purple-500 dark:bg-purple-500 dark:hover:bg-purple-400",
+        className:
+          "bg-purple-600 text-white hover:bg-purple-500 dark:bg-purple-500 dark:hover:bg-purple-400",
       },
       {
         variant: "solid",
         color: "fuchsia",
-        className: "bg-fuchsia-600 text-white hover:bg-fuchsia-500 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400",
+        className:
+          "bg-fuchsia-600 text-white hover:bg-fuchsia-500 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400",
       },
       {
         variant: "solid",
         color: "pink",
-        className: "bg-pink-600 text-white hover:bg-pink-500 dark:bg-pink-500 dark:hover:bg-pink-400",
+        className:
+          "bg-pink-600 text-white hover:bg-pink-500 dark:bg-pink-500 dark:hover:bg-pink-400",
       },
       {
         variant: "solid",
         color: "rose",
-        className: "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
+        className:
+          "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
       },
 
       // ==========================================
@@ -249,27 +275,32 @@ const buttonVariants = cva(
       {
         variant: "bordered",
         color: "primary",
-        className: "border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/40",
+        className:
+          "border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/40",
       },
       {
         variant: "bordered",
         color: "success",
-        className: "border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-950/40",
+        className:
+          "border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-950/40",
       },
       {
         variant: "bordered",
         color: "danger",
-        className: "border-rose-600 text-rose-600 hover:bg-rose-50 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-950/40",
+        className:
+          "border-rose-600 text-rose-600 hover:bg-rose-50 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-950/40",
       },
       {
         variant: "bordered",
         color: "dark/zinc",
-        className: "border-zinc-900 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800/60",
+        className:
+          "border-zinc-900 text-zinc-900 hover:bg-zinc-100 dark:border-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800/60",
       },
       {
         variant: "bordered",
         color: "blue",
-        className: "border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/40",
+        className:
+          "border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/40",
       },
 
       // ==========================================
@@ -278,22 +309,26 @@ const buttonVariants = cva(
       {
         variant: "flat",
         color: "primary",
-        className: "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-300 dark:hover:bg-indigo-900/60",
+        className:
+          "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-300 dark:hover:bg-indigo-900/60",
       },
       {
         variant: "flat",
         color: "success",
-        className: "bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:hover:bg-emerald-900/60",
+        className:
+          "bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:hover:bg-emerald-900/60",
       },
       {
         variant: "flat",
         color: "danger",
-        className: "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:hover:bg-rose-900/60",
+        className:
+          "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:hover:bg-rose-900/60",
       },
       {
         variant: "flat",
         color: "dark/zinc",
-        className: "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700",
+        className:
+          "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700",
       },
 
       // ==========================================
@@ -302,12 +337,14 @@ const buttonVariants = cva(
       {
         variant: "light",
         color: "primary",
-        className: "text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-950/50",
+        className:
+          "text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-950/50",
       },
       {
         variant: "light",
         color: "success",
-        className: "text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/50",
+        className:
+          "text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/50",
       },
       {
         variant: "light",
@@ -331,7 +368,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color">,
+  extends
+    Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "color">,
     VariantProps<typeof buttonVariants> {
   /**
    * Element or icon placed at the start of the button.
@@ -402,7 +440,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     // Spinner indicator
     const spinner = (
       <svg
-        className="h-4 w-4 animate-spin text-current shrink-0"
+        className="h-4 w-4 shrink-0 animate-spin text-current"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -425,7 +463,11 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     );
 
     const buttonBody = isIconOnly ? (
-      isLoading ? spinner : children
+      isLoading ? (
+        spinner
+      ) : (
+        children
+      )
     ) : (
       <>
         {isLoading ? spinner : startContent}
@@ -436,12 +478,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
 
     if (href) {
       return (
-        <a
-          ref={ref as any}
-          href={href}
-          className={computedClass}
-          {...(props as any)}
-        >
+        <a ref={ref as any} href={href} className={computedClass} {...(props as any)}>
           {buttonBody}
         </a>
       );

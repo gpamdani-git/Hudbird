@@ -129,55 +129,57 @@ export default function AccordionDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Accordion
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             New
           </span>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Accordions allow users to toggle the display of complex sections of content in an
-          organized, collapsible view with smooth grid transitions and WAI-ARIA disclosure accessibility.
+          organized, collapsible view with smooth grid transitions and WAI-ARIA disclosure
+          accessibility.
         </p>
       </div>
 
       {/* Main Preview */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="w-full max-w-lg mx-auto">
+          <div className="mx-auto w-full max-w-lg">
             <Accordion variant="shadow" defaultSelectedKeys={["1"]}>
               <AccordionItem
                 itemKey="1"
-                startContent={<Zap className="w-4 h-4 text-indigo-500" />}
+                startContent={<Zap className="h-4 w-4 text-indigo-500" />}
                 title="What makes our Design System unique?"
                 subtitle="Engineered with Tailwind CSS and CVA"
               >
                 Our component library is compiled directly from source without bloated runtimes,
-                leveraging pure Tailwind utilities, Class Variance Authority for deterministic styling,
-                and seamless dark mode tokens.
+                leveraging pure Tailwind utilities, Class Variance Authority for deterministic
+                styling, and seamless dark mode tokens.
               </AccordionItem>
               <AccordionItem
                 itemKey="2"
-                startContent={<Shield className="w-4 h-4 text-emerald-500" />}
+                startContent={<Shield className="h-4 w-4 text-emerald-500" />}
                 title="Is it accessible out-of-the-box?"
                 subtitle="WAI-ARIA compliant keyboard navigation"
               >
-                Yes! Every interactive element includes explicit focus rings, keyboard arrow controls,
-                ARIA attributes (e.g. aria-expanded, aria-controls), and semantic button elements.
+                Yes! Every interactive element includes explicit focus rings, keyboard arrow
+                controls, ARIA attributes (e.g. aria-expanded, aria-controls), and semantic button
+                elements.
               </AccordionItem>
               <AccordionItem
                 itemKey="3"
-                startContent={<Sparkles className="w-4 h-4 text-amber-500" />}
+                startContent={<Sparkles className="h-4 w-4 text-amber-500" />}
                 title="How does SSR hydration work?"
                 subtitle="Zero layout shifts with CSS transitions"
               >
-                Accordions render collapsible panel heights smoothly using modern CSS grid transitions
-                without requiring JavaScript window resize observers or DOM mutations.
+                Accordions render collapsible panel heights smoothly using modern CSS grid
+                transitions without requiring JavaScript window resize observers or DOM mutations.
               </AccordionItem>
             </Accordion>
           </div>
@@ -214,27 +216,32 @@ export default function Example() {
         <InstallationTabs componentName="accordion" manualCode={accordionCode} />
       </div>
 
-
       {/* Component API */}
       <section className="space-y-6" id="component-api">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Properties for <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">Accordion</code> root container and <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">AccordionItem</code> disclosures.
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Properties for{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              Accordion
+            </code>{" "}
+            root container and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              AccordionItem
+            </code>{" "}
+            disclosures.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Accordion Props
           </h3>
           <ApiTable rows={accordionApiRows} />
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             AccordionItem Props
           </h3>
           <ApiTable rows={accordionItemApiRows} />
@@ -243,7 +250,7 @@ export default function Example() {
 
       {/* Examples & Variants */}
       <div className="space-y-12" id="examples">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             Examples & Variants
           </h2>
@@ -251,9 +258,7 @@ export default function Example() {
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-accordion">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Basic Usage
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Standard single-selection accordion with clean underline dividers.
           </p>
@@ -265,12 +270,12 @@ export default function Example() {
                   incididunt ut labore et dolore magna aliqua.
                 </AccordionItem>
                 <AccordionItem itemKey="2" title="Accordion Item 2">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                  fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
                 </AccordionItem>
                 <AccordionItem itemKey="3" title="Accordion Item 3">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium, totam rem aperiam.
+                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+                  doloremque laudantium, totam rem aperiam.
                 </AccordionItem>
               </Accordion>
             </div>
@@ -295,7 +300,7 @@ export default function Example() {
           <ComponentPreview>
             <div className="w-full max-w-lg space-y-8">
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Bordered
                 </span>
                 <Accordion variant="bordered" defaultSelectedKeys={["b1"]}>
@@ -309,7 +314,7 @@ export default function Example() {
               </div>
 
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Splitted
                 </span>
                 <Accordion variant="splitted" defaultSelectedKeys={["s1"]}>
@@ -337,7 +342,11 @@ export default function Example() {
             Multiple Selection Mode
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enable <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">selectionMode="multiple"</code> to allow multiple accordion panels to remain expanded at the same time.
+            Enable{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              selectionMode="multiple"
+            </code>{" "}
+            to allow multiple accordion panels to remain expanded at the same time.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-lg">
@@ -379,15 +388,16 @@ export default function Example() {
               <Accordion variant="bordered" defaultSelectedKeys={["auth"]}>
                 <AccordionItem
                   itemKey="auth"
-                  startContent={<Lock className="w-4 h-4 text-zinc-500" />}
+                  startContent={<Lock className="h-4 w-4 text-zinc-500" />}
                   title="Two-Factor Authentication"
                   subtitle="Secure your account with authenticator apps"
                 >
-                  Configure Time-based One-Time Passwords (TOTP) using Google Authenticator or 1Password.
+                  Configure Time-based One-Time Passwords (TOTP) using Google Authenticator or
+                  1Password.
                 </AccordionItem>
                 <AccordionItem
                   itemKey="docs"
-                  startContent={<FileText className="w-4 h-4 text-zinc-500" />}
+                  startContent={<FileText className="h-4 w-4 text-zinc-500" />}
                   title="Legal Documentation"
                   subtitle="Review updated master service agreement and privacy policy"
                 >
@@ -411,11 +421,13 @@ export default function Example() {
 
         {/* Compact Mode */}
         <section className="space-y-4" id="compact-mode">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Compact Mode
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Compact Mode</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isCompact</code> for dense spaces like sidebars, drawers, or data tables.
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              isCompact
+            </code>{" "}
+            for dense spaces like sidebars, drawers, or data tables.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">
@@ -462,7 +474,7 @@ export default function Example() {
                 <AccordionItem
                   itemKey="custom-2"
                   title="Item with horizontal arrow"
-                  indicator={<ChevronRight className="w-4 h-4" />}
+                  indicator={<ChevronRight className="h-4 w-4" />}
                 >
                   Indicator rotates automatically when opened.
                 </AccordionItem>
@@ -487,7 +499,11 @@ export default function Example() {
             Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Disable specific accordion items using <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isDisabled</code>.
+            Disable specific accordion items using{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              isDisabled
+            </code>
+            .
           </p>
           <ComponentPreview>
             <div className="w-full max-w-lg">

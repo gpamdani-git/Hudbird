@@ -20,8 +20,7 @@ const pricingSectionVariants = cva("py-24 sm:py-32 overflow-hidden", {
 });
 
 export interface PricingSectionProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof pricingSectionVariants> {}
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof pricingSectionVariants> {}
 
 const PricingSection = React.forwardRef<HTMLDivElement, PricingSectionProps>(
   ({ className, variant, ...props }, ref) => {
@@ -35,7 +34,11 @@ PricingSection.displayName = "PricingSection";
 const PricingHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("mx-auto max-w-7xl px-6 lg:px-8 mb-16 sm:mb-20", className)} {...props}>
+      <div
+        ref={ref}
+        className={cn("mx-auto mb-16 max-w-7xl px-6 sm:mb-20 lg:px-8", className)}
+        {...props}
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +59,10 @@ const PricingBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
     return (
       <h2
         ref={ref}
-        className={cn("text-base font-semibold leading-7 text-indigo-600 dark:text-indigo-400", className)}
+        className={cn(
+          "text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
+          className
+        )}
         {...props}
       />
     );
@@ -69,7 +75,10 @@ const PricingTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
     return (
       <p
         ref={ref}
-        className={cn("mt-2 text-4xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-5xl text-balance", className)}
+        className={cn(
+          "mt-2 text-4xl font-bold tracking-tight text-balance text-zinc-900 sm:text-5xl dark:text-white",
+          className
+        )}
         {...props}
       />
     );
@@ -77,17 +86,21 @@ const PricingTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
 );
 PricingTitle.displayName = "Pricing.Title";
 
-const PricingDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, ...props }, ref) => {
-    return (
-      <p
-        ref={ref}
-        className={cn("mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400 max-w-xl mx-auto", className)}
-        {...props}
-      />
-    );
-  }
-);
+const PricingDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => {
+  return (
+    <p
+      ref={ref}
+      className={cn(
+        "mx-auto mt-6 max-w-xl text-lg leading-8 text-zinc-600 dark:text-zinc-400",
+        className
+      )}
+      {...props}
+    />
+  );
+});
 PricingDescription.displayName = "Pricing.Description";
 
 // --- Toggle ---
@@ -101,17 +114,37 @@ export interface PricingToggleProps extends Omit<React.HTMLAttributes<HTMLDivEle
 }
 
 const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
-  ({ className, monthlyLabel = "Monthly", annualLabel = "Annually", isAnnual = false, onChange, discountLabel = "Save 20%", ...props }, ref) => {
+  (
+    {
+      className,
+      monthlyLabel = "Monthly",
+      annualLabel = "Annually",
+      isAnnual = false,
+      onChange,
+      discountLabel = "Save 20%",
+      ...props
+    },
+    ref
+  ) => {
     return (
-      <div ref={ref} className={cn("mt-8 flex justify-center items-center gap-4", className)} {...props}>
-        <span className={cn("text-sm font-semibold", !isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-500 dark:text-zinc-400")}>
+      <div
+        ref={ref}
+        className={cn("mt-8 flex items-center justify-center gap-4", className)}
+        {...props}
+      >
+        <span
+          className={cn(
+            "text-sm font-semibold",
+            !isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-500 dark:text-zinc-400"
+          )}
+        >
           {monthlyLabel}
         </span>
         <button
           type="button"
           onClick={() => onChange?.(!isAnnual)}
           className={cn(
-            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2",
+            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:outline-none",
             isAnnual ? "bg-indigo-600" : "bg-zinc-200 dark:bg-zinc-700"
           )}
           role="switch"
@@ -127,11 +160,16 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
           />
         </button>
         <div className="flex items-center gap-2">
-          <span className={cn("text-sm font-semibold", isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-500 dark:text-zinc-400")}>
+          <span
+            className={cn(
+              "text-sm font-semibold",
+              isAnnual ? "text-zinc-900 dark:text-white" : "text-zinc-500 dark:text-zinc-400"
+            )}
+          >
             {annualLabel}
           </span>
           {discountLabel && (
-            <span className="inline-flex items-center rounded-full bg-indigo-50 dark:bg-indigo-500/10 px-2 py-0.5 text-xs font-medium text-indigo-600 dark:text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
+            <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600 ring-1 ring-indigo-500/20 ring-inset dark:bg-indigo-500/10 dark:text-indigo-400">
               {discountLabel}
             </span>
           )}
@@ -147,9 +185,9 @@ PricingToggle.displayName = "Pricing.Toggle";
 const PricingGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("mx-auto max-w-7xl px-6 lg:px-8 relative z-10", className)}>
+      <div ref={ref} className={cn("relative z-10 mx-auto max-w-7xl px-6 lg:px-8", className)}>
         <div
-          className="mx-auto grid max-w-md grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-2 xl:max-w-5xl xl:grid-cols-3 items-center"
+          className="mx-auto grid max-w-md grid-cols-1 items-center gap-8 lg:max-w-4xl lg:grid-cols-2 xl:max-w-5xl xl:grid-cols-3"
           {...props}
         />
       </div>
@@ -174,16 +212,16 @@ const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
         ref={ref}
         className={cn(
           "relative rounded-3xl p-8 ring-1",
-          popular 
-            ? "bg-zinc-900 dark:bg-white/5 ring-zinc-900 dark:ring-white/20 shadow-2xl xl:scale-105" 
-            : "bg-white dark:bg-zinc-900 ring-zinc-200 dark:ring-zinc-800",
+          popular
+            ? "bg-zinc-900 shadow-2xl ring-zinc-900 xl:scale-105 dark:bg-white/5 dark:ring-white/20"
+            : "bg-white ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800",
           className
         )}
         {...props}
       >
         {popular && (
-          <div className="absolute -top-4 inset-x-0 flex justify-center">
-            <span className="rounded-full bg-indigo-600 px-4 py-1 text-sm font-semibold leading-6 text-white shadow-sm ring-1 ring-inset ring-indigo-500/20">
+          <div className="absolute inset-x-0 -top-4 flex justify-center">
+            <span className="rounded-full bg-indigo-600 px-4 py-1 text-sm leading-6 font-semibold text-white shadow-sm ring-1 ring-indigo-500/20 ring-inset">
               Most popular
             </span>
           </div>
@@ -197,107 +235,124 @@ PricingTier.displayName = "Pricing.Tier";
 
 const PricingTierHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cn("mb-6", className)} {...props} />
-    );
+    return <div ref={ref} className={cn("mb-6", className)} {...props} />;
   }
 );
 PricingTierHeader.displayName = "Pricing.TierHeader";
 
-const PricingTierName = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement> & { popular?: boolean }>(
-  ({ className, popular, ...props }, ref) => {
-    return (
-      <h3
-        ref={ref}
-        className={cn(
-          "text-lg font-semibold leading-8",
-          popular ? "text-white dark:text-indigo-400" : "text-indigo-600 dark:text-indigo-400",
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+const PricingTierName = React.forwardRef<
+  HTMLHeadingElement,
+  React.HTMLAttributes<HTMLHeadingElement> & { popular?: boolean }
+>(({ className, popular, ...props }, ref) => {
+  return (
+    <h3
+      ref={ref}
+      className={cn(
+        "text-lg leading-8 font-semibold",
+        popular ? "text-white dark:text-indigo-400" : "text-indigo-600 dark:text-indigo-400",
+        className
+      )}
+      {...props}
+    />
+  );
+});
 PricingTierName.displayName = "Pricing.TierName";
 
-const PricingTierDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement> & { popular?: boolean }>(
-  ({ className, popular, ...props }, ref) => {
-    return (
-      <p
-        ref={ref}
-        className={cn(
-          "mt-4 text-sm leading-6",
-          popular ? "text-zinc-300 dark:text-zinc-400" : "text-zinc-600 dark:text-zinc-400",
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+const PricingTierDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement> & { popular?: boolean }
+>(({ className, popular, ...props }, ref) => {
+  return (
+    <p
+      ref={ref}
+      className={cn(
+        "mt-4 text-sm leading-6",
+        popular ? "text-zinc-300 dark:text-zinc-400" : "text-zinc-600 dark:text-zinc-400",
+        className
+      )}
+      {...props}
+    />
+  );
+});
 PricingTierDescription.displayName = "Pricing.TierDescription";
 
-const PricingTierPrice = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & { popular?: boolean, price: React.ReactNode, period?: React.ReactNode }>(
-  ({ className, popular, price, period, ...props }, ref) => {
-    return (
-      <div ref={ref} className={cn("mt-6 flex items-baseline gap-x-1", className)} {...props}>
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={price?.toString()}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className={cn("text-4xl font-bold tracking-tight", popular ? "text-white" : "text-zinc-900 dark:text-white")}
-          >
-            {price}
-          </motion.span>
-        </AnimatePresence>
-        {period && (
-          <span className={cn("text-sm font-semibold leading-6", popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400")}>
-            {period}
-          </span>
-        )}
-      </div>
-    );
+const PricingTierPrice = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    popular?: boolean;
+    price: React.ReactNode;
+    period?: React.ReactNode;
   }
-);
+>(({ className, popular, price, period, ...props }, ref) => {
+  return (
+    <div ref={ref} className={cn("mt-6 flex items-baseline gap-x-1", className)} {...props}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={price?.toString()}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          transition={{ duration: 0.2 }}
+          className={cn(
+            "text-4xl font-bold tracking-tight",
+            popular ? "text-white" : "text-zinc-900 dark:text-white"
+          )}
+        >
+          {price}
+        </motion.span>
+      </AnimatePresence>
+      {period && (
+        <span
+          className={cn(
+            "text-sm leading-6 font-semibold",
+            popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400"
+          )}
+        >
+          {period}
+        </span>
+      )}
+    </div>
+  );
+});
 PricingTierPrice.displayName = "Pricing.TierPrice";
 
-const PricingTierFeatures = React.forwardRef<HTMLUListElement, React.HTMLAttributes<HTMLUListElement> & { popular?: boolean }>(
-  ({ className, popular, ...props }, ref) => {
-    return (
-      <ul
-        ref={ref}
-        role="list"
-        className={cn(
-          "mt-8 space-y-3 text-sm leading-6",
-          popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400",
-          className
-        )}
-        {...props}
-      />
-    );
-  }
-);
+const PricingTierFeatures = React.forwardRef<
+  HTMLUListElement,
+  React.HTMLAttributes<HTMLUListElement> & { popular?: boolean }
+>(({ className, popular, ...props }, ref) => {
+  return (
+    <ul
+      ref={ref}
+      role="list"
+      className={cn(
+        "mt-8 space-y-3 text-sm leading-6",
+        popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400",
+        className
+      )}
+      {...props}
+    />
+  );
+});
 PricingTierFeatures.displayName = "Pricing.TierFeatures";
 
-const PricingTierFeature = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement> & { popular?: boolean }>(
-  ({ className, popular, children, ...props }, ref) => {
-    return (
-      <li ref={ref} className={cn("flex gap-x-3", className)} {...props}>
-        <Check
-          className={cn("h-6 w-5 flex-none", popular ? "text-indigo-400" : "text-indigo-600 dark:text-indigo-400")}
-          aria-hidden="true"
-        />
-        {children}
-      </li>
-    );
-  }
-);
+const PricingTierFeature = React.forwardRef<
+  HTMLLIElement,
+  React.HTMLAttributes<HTMLLIElement> & { popular?: boolean }
+>(({ className, popular, children, ...props }, ref) => {
+  return (
+    <li ref={ref} className={cn("flex gap-x-3", className)} {...props}>
+      <Check
+        className={cn(
+          "h-6 w-5 flex-none",
+          popular ? "text-indigo-400" : "text-indigo-600 dark:text-indigo-400"
+        )}
+        aria-hidden="true"
+      />
+      {children}
+    </li>
+  );
+});
 PricingTierFeature.displayName = "Pricing.TierFeature";
-
 
 export {
   PricingSection,

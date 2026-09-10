@@ -114,14 +114,14 @@ export default function TooltipDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Tooltip
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             New
           </span>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
@@ -136,19 +136,19 @@ export default function TooltipDoc() {
         <ComponentPreview>
           <div className="flex flex-wrap items-center justify-center gap-6 py-8">
             <Tooltip content="Quickly share this link with colleagues" color="primary">
-              <Button variant="solid" startContent={<Share2 className="w-4 h-4" />}>
+              <Button variant="solid" startContent={<Share2 className="h-4 w-4" />}>
                 Hover me
               </Button>
             </Tooltip>
 
             <Tooltip content="Add item to saved favorites" color="danger">
-              <Button variant="outline" startContent={<Heart className="w-4 h-4 text-rose-500" />}>
+              <Button variant="outline" startContent={<Heart className="h-4 w-4 text-rose-500" />}>
                 Like project
               </Button>
             </Tooltip>
 
             <Tooltip content="All systems operational and synced" color="success">
-              <Button variant="flat" startContent={<Check className="w-4 h-4 text-emerald-500" />}>
+              <Button variant="flat" startContent={<Check className="h-4 w-4 text-emerald-500" />}>
                 System status
               </Button>
             </Tooltip>
@@ -174,15 +174,16 @@ export default function Example() {
         <InstallationTabs componentName="tooltip" manualCode={tooltipCode} />
       </div>
 
-
       {/* Component API */}
       <section className="space-y-6" id="component-api">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Complete prop specification for the <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">Tooltip</code> component.
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Complete prop specification for the{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              Tooltip
+            </code>{" "}
+            component.
           </p>
         </div>
 
@@ -191,7 +192,7 @@ export default function Example() {
 
       {/* Examples & Variants */}
       <div className="space-y-12" id="examples">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             Examples & Variants
           </h2>
@@ -199,16 +200,18 @@ export default function Example() {
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-tooltip">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Basic Usage
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Wrap any button, link, or icon with Tooltip to attach accessible helper text.
           </p>
           <ComponentPreview>
             <div className="flex items-center justify-center gap-4 py-4">
               <Tooltip content="Need help? Read our documentation">
-                <Button variant="bordered" size="sm" startContent={<HelpCircle className="w-4 h-4" />}>
+                <Button
+                  variant="bordered"
+                  size="sm"
+                  startContent={<HelpCircle className="h-4 w-4" />}
+                >
                   Help
                 </Button>
               </Tooltip>
@@ -216,10 +219,10 @@ export default function Example() {
               <Tooltip content="You have 3 unread notifications">
                 <button
                   type="button"
-                  className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors text-zinc-600 dark:text-zinc-300"
+                  className="rounded-full p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   aria-label="Notifications"
                 >
-                  <Bell className="w-5 h-5" />
+                  <Bell className="h-5 w-5" />
                 </button>
               </Tooltip>
             </div>
@@ -239,7 +242,11 @@ export default function Example() {
             Placements (Top, Bottom, Left, Right)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Set <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">placement</code> to position the popup on any of the 4 cardinal directions.
+            Set{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              placement
+            </code>{" "}
+            to position the popup on any of the 4 cardinal directions.
           </p>
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-6 py-6">
@@ -279,22 +286,34 @@ export default function Example() {
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4 py-4">
               <Tooltip content="Default theme" color="default">
-                <Button size="sm" variant="bordered">Default</Button>
+                <Button size="sm" variant="bordered">
+                  Default
+                </Button>
               </Tooltip>
               <Tooltip content="Primary indigo theme" color="primary">
-                <Button size="sm" variant="bordered">Primary</Button>
+                <Button size="sm" variant="bordered">
+                  Primary
+                </Button>
               </Tooltip>
               <Tooltip content="Secondary purple theme" color="secondary">
-                <Button size="sm" variant="bordered">Secondary</Button>
+                <Button size="sm" variant="bordered">
+                  Secondary
+                </Button>
               </Tooltip>
               <Tooltip content="Success emerald theme" color="success">
-                <Button size="sm" variant="bordered">Success</Button>
+                <Button size="sm" variant="bordered">
+                  Success
+                </Button>
               </Tooltip>
               <Tooltip content="Warning amber theme" color="warning">
-                <Button size="sm" variant="bordered">Warning</Button>
+                <Button size="sm" variant="bordered">
+                  Warning
+                </Button>
               </Tooltip>
               <Tooltip content="Danger rose theme" color="danger">
-                <Button size="sm" variant="bordered">Danger</Button>
+                <Button size="sm" variant="bordered">
+                  Danger
+                </Button>
               </Tooltip>
             </div>
           </ComponentPreview>
@@ -308,20 +327,28 @@ export default function Example() {
 
         {/* Delay Timers */}
         <section className="space-y-4" id="delay-timing">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Delay Timers
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Delay Timers</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Customize <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">delay</code> (entry time) and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">closeDelay</code> (dismissal time) in milliseconds.
+            Customize{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">delay</code>{" "}
+            (entry time) and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              closeDelay
+            </code>{" "}
+            (dismissal time) in milliseconds.
           </p>
           <ComponentPreview>
             <div className="flex items-center justify-center gap-6 py-4">
               <Tooltip content="Instant tooltip (0ms delay)" delay={0}>
-                <Button variant="solid" size="sm">Instant (0ms)</Button>
+                <Button variant="solid" size="sm">
+                  Instant (0ms)
+                </Button>
               </Tooltip>
 
               <Tooltip content="Slow reveal (500ms delay)" delay={500}>
-                <Button variant="bordered" size="sm">Slow (500ms)</Button>
+                <Button variant="bordered" size="sm">
+                  Slow (500ms)
+                </Button>
               </Tooltip>
             </div>
           </ComponentPreview>
@@ -341,7 +368,11 @@ export default function Example() {
             Rich Custom Content
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            The <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">content</code> prop accepts any React node, including avatars, badges, and formatted cards.
+            The{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              content
+            </code>{" "}
+            prop accepts any React node, including avatars, badges, and formatted cards.
           </p>
           <ComponentPreview>
             <div className="flex items-center justify-center py-4">
@@ -399,19 +430,29 @@ export default function Example() {
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4 py-4">
               <Tooltip content="Square edges" radius="none">
-                <Button size="sm" variant="bordered">None</Button>
+                <Button size="sm" variant="bordered">
+                  None
+                </Button>
               </Tooltip>
               <Tooltip content="Small radius" radius="sm">
-                <Button size="sm" variant="bordered">Small</Button>
+                <Button size="sm" variant="bordered">
+                  Small
+                </Button>
               </Tooltip>
               <Tooltip content="Medium radius" radius="md">
-                <Button size="sm" variant="bordered">Medium (md)</Button>
+                <Button size="sm" variant="bordered">
+                  Medium (md)
+                </Button>
               </Tooltip>
               <Tooltip content="Large radius" radius="lg">
-                <Button size="sm" variant="bordered">Large (lg)</Button>
+                <Button size="sm" variant="bordered">
+                  Large (lg)
+                </Button>
               </Tooltip>
               <Tooltip content="Pill full radius" radius="full">
-                <Button size="sm" variant="bordered">Full Pill</Button>
+                <Button size="sm" variant="bordered">
+                  Full Pill
+                </Button>
               </Tooltip>
             </div>
           </ComponentPreview>
@@ -427,7 +468,13 @@ export default function Example() {
             Controlled State
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Control the tooltip's open state programmatically with <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isOpen</code> and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">onOpenChange</code>.
+            Control the tooltip's open state programmatically with{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">isOpen</code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              onOpenChange
+            </code>
+            .
           </p>
           <ComponentPreview>
             <div className="flex flex-col items-center gap-4 py-4">
@@ -447,7 +494,7 @@ export default function Example() {
                 isOpen={isControlledOpen}
                 onOpenChange={setIsControlledOpen}
               >
-                <div className="px-4 py-2 rounded-lg border border-zinc-200 dark:border-zinc-800 text-sm font-medium">
+                <div className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium dark:border-zinc-800">
                   Target Anchor Element
                 </div>
               </Tooltip>

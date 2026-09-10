@@ -1,12 +1,5 @@
 // packages/core/src/components/Select/Select.tsx
-import React, {
-  useState,
-  useRef,
-  useEffect,
-  createContext,
-  useContext,
-  useId,
-} from "react";
+import React, { useState, useRef, useEffect, createContext, useContext, useId } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { ChevronDown, Check } from "lucide-react";
 import { cn } from "../../utils/cn";
@@ -68,7 +61,8 @@ export type SelectSize = "sm" | "md" | "lg";
 export type SelectRadius = "none" | "md" | "lg" | "full";
 
 export interface SelectProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">,
     VariantProps<typeof selectTriggerVariants> {
   value?: string;
   defaultValue?: string;
@@ -123,9 +117,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       let foundLabel: React.ReactNode = null;
       React.Children.forEach(children, (child) => {
         if (
-          React.isValidElement<{ value?: string; children?: React.ReactNode }>(
-            child
-          ) &&
+          React.isValidElement<{ value?: string; children?: React.ReactNode }>(child) &&
           child.props.value === activeValue
         ) {
           foundLabel = child.props.children;
@@ -141,10 +133,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     // Handle Click Outside to close dropdown
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
-        if (
-          containerRef.current &&
-          !containerRef.current.contains(event.target as Node)
-        ) {
+        if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
           setIsOpen(false);
         }
       };
@@ -194,27 +183,20 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
         <div
           ref={containerRef}
           className={cn(
-            "w-full relative flex flex-col gap-1.5",
+            "relative flex w-full flex-col gap-1.5",
             isOpen ? "z-40" : "z-0",
             className
           )}
           {...props}
         >
           {/* Hidden Form Input for Native Form Integration */}
-          {name && (
-            <input
-              type="hidden"
-              name={name}
-              value={activeValue}
-              disabled={disabled}
-            />
-          )}
+          {name && <input type="hidden" name={name} value={activeValue} disabled={disabled} />}
 
           {/* Optional Form Label */}
           {label && (
             <label
               htmlFor={selectId}
-              className="text-xs font-semibold text-zinc-800 dark:text-zinc-200 select-none flex items-center justify-between"
+              className="flex items-center justify-between text-xs font-semibold text-zinc-800 select-none dark:text-zinc-200"
             >
               <span>{label}</span>
             </label>
@@ -244,8 +226,8 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
             >
               <span
                 className={cn(
-                  "truncate block flex-1",
-                  !selectedLabel && "text-zinc-400 dark:text-zinc-500 font-normal"
+                  "block flex-1 truncate",
+                  !selectedLabel && "font-normal text-zinc-400 dark:text-zinc-500"
                 )}
               >
                 {selectedLabel || placeholder}
@@ -253,8 +235,8 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
               <ChevronDown
                 className={cn(
-                  "shrink-0 text-zinc-400 dark:text-zinc-500 transition-transform duration-200",
-                  size === "sm" ? "w-3.5 h-3.5" : size === "lg" ? "w-5 h-5" : "w-4 h-4",
+                  "shrink-0 text-zinc-400 transition-transform duration-200 dark:text-zinc-500",
+                  size === "sm" ? "h-3.5 w-3.5" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
                   isOpen && "rotate-180 text-zinc-700 dark:text-zinc-200"
                 )}
                 aria-hidden="true"
@@ -266,7 +248,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               <div
                 role="listbox"
                 tabIndex={-1}
-                className="bg-white dark:bg-zinc-900 border border-zinc-200/60 dark:border-zinc-800 rounded-2xl shadow-xl p-1.5 absolute left-0 right-0 z-50 w-full mt-2 max-h-60 overflow-y-auto outline-none animate-in fade-in-0 zoom-in-95 duration-100"
+                className="animate-in fade-in-0 zoom-in-95 absolute right-0 left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-zinc-200/60 bg-white p-1.5 shadow-xl duration-100 outline-none dark:border-zinc-800 dark:bg-zinc-900"
               >
                 {children}
               </div>
@@ -275,13 +257,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
           {/* Description or Error Message */}
           {isInvalid && errorMessage ? (
-            <p className="text-xs font-medium text-rose-500 dark:text-rose-400">
-              {errorMessage}
-            </p>
+            <p className="text-xs font-medium text-rose-500 dark:text-rose-400">{errorMessage}</p>
           ) : description ? (
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              {description}
-            </p>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
           ) : null}
         </div>
       </SelectContext.Provider>
@@ -327,18 +305,18 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         className={cn(
-          "flex items-center justify-between cursor-pointer rounded-xl transition-all outline-none select-none",
+          "flex cursor-pointer items-center justify-between rounded-xl transition-all outline-none select-none",
           size === "sm"
             ? "px-2.5 py-1.5 text-xs"
             : size === "lg"
-            ? "px-3.5 py-2.5 text-base"
-            : "px-3 py-2 text-sm",
-          "hover:bg-zinc-100 dark:hover:bg-zinc-800/80 focus-visible:bg-zinc-100 dark:focus-visible:bg-zinc-800/80",
+              ? "px-3.5 py-2.5 text-base"
+              : "px-3 py-2 text-sm",
+          "hover:bg-zinc-100 focus-visible:bg-zinc-100 dark:hover:bg-zinc-800/80 dark:focus-visible:bg-zinc-800/80",
           isSelected
-            ? "font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50/70 dark:bg-indigo-950/40"
-            : "text-zinc-700 dark:text-zinc-200 font-normal",
+            ? "bg-indigo-50/70 font-semibold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400"
+            : "font-normal text-zinc-700 dark:text-zinc-200",
           disabled &&
-            "opacity-40 cursor-not-allowed hover:bg-transparent dark:hover:bg-transparent text-zinc-400",
+            "cursor-not-allowed text-zinc-400 opacity-40 hover:bg-transparent dark:hover:bg-transparent",
           className
         )}
         {...props}
@@ -349,7 +327,7 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         </div>
 
         {isSelected && (
-          <Check className="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0 ml-2" />
+          <Check className="ml-2 h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
         )}
       </div>
     );

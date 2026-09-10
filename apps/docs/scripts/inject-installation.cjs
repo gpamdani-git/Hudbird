@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 const examples = {
-  "accordion": `import { Accordion, AccordionItem } from "@hudbird/ui";
+  accordion: `import { Accordion, AccordionItem } from "@hudbird/ui";
 import { Zap, Shield, Sparkles } from "lucide-react";
 
 export default function Example() {
@@ -26,7 +26,7 @@ export default function Example() {
     </Accordion>
   );
 }`,
-  "alert": `import { Alert } from "@hudbird/ui";
+  alert: `import { Alert } from "@hudbird/ui";
 import { Info } from "lucide-react";
 
 export default function Example() {
@@ -36,7 +36,7 @@ export default function Example() {
     </Alert>
   );
 }`,
-  "avatar": `import { Avatar } from "@hudbird/ui";
+  avatar: `import { Avatar } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -46,14 +46,14 @@ export default function Example() {
     </div>
   );
 }`,
-  "badge": `import { Badge } from "@hudbird/ui";
+  badge: `import { Badge } from "@hudbird/ui";
 
 export default function Example() {
   return (
     <Badge color="emerald">Success</Badge>
   );
 }`,
-  "button": `import { Button } from "@hudbird/ui";
+  button: `import { Button } from "@hudbird/ui";
 import { ArrowRight } from "lucide-react";
 
 export default function Example() {
@@ -63,7 +63,7 @@ export default function Example() {
     </Button>
   );
 }`,
-  "card": `import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "@hudbird/ui";
+  card: `import { Card, CardHeader, CardBody, CardFooter, Button, Text } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -81,7 +81,7 @@ export default function Example() {
     </Card>
   );
 }`,
-  "checkbox": `import { Checkbox, CheckboxField } from "@hudbird/ui";
+  checkbox: `import { Checkbox, CheckboxField } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -90,7 +90,7 @@ export default function Example() {
     </CheckboxField>
   );
 }`,
-  "combobox": `import { ComboBox, ComboBoxItem } from "@hudbird/ui";
+  combobox: `import { ComboBox, ComboBoxItem } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -114,7 +114,7 @@ export default function Example() {
     </DescriptionList>
   );
 }`,
-  "dialog": `import { Dialog, DialogContent, DialogHeader, DialogFooter, Button } from "@hudbird/ui";
+  dialog: `import { Dialog, DialogContent, DialogHeader, DialogFooter, Button } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -129,7 +129,7 @@ export default function Example() {
     </Dialog>
   );
 }`,
-  "divider": `import { Divider } from "@hudbird/ui";
+  divider: `import { Divider } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -138,7 +138,7 @@ export default function Example() {
     </div>
   );
 }`,
-  "dropdown": `import { Dropdown, DropdownButton, DropdownMenu, DropdownItem } from "@hudbird/ui";
+  dropdown: `import { Dropdown, DropdownButton, DropdownMenu, DropdownItem } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -152,7 +152,7 @@ export default function Example() {
     </Dropdown>
   );
 }`,
-  "fieldset": `import { Fieldset, Legend, FieldGroup } from "@hudbird/ui";
+  fieldset: `import { Fieldset, Legend, FieldGroup } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -164,7 +164,7 @@ export default function Example() {
     </Fieldset>
   );
 }`,
-  "heading": `import { Heading, Subheading } from "@hudbird/ui";
+  heading: `import { Heading, Subheading } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -174,7 +174,7 @@ export default function Example() {
     </div>
   );
 }`,
-  "input": `import { Input, Field, Label } from "@hudbird/ui";
+  input: `import { Input, Field, Label } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -184,7 +184,7 @@ export default function Example() {
     </Field>
   );
 }`,
-  "navbar": `import { Navbar, NavbarItem, NavbarSection, NavbarBrand } from "@hudbird/ui";
+  navbar: `import { Navbar, NavbarItem, NavbarSection, NavbarBrand } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -197,7 +197,7 @@ export default function Example() {
     </Navbar>
   );
 }`,
-  "pagination": `import { Pagination, PaginationPrevious, PaginationNext, PaginationList, PaginationPage } from "@hudbird/ui";
+  pagination: `import { Pagination, PaginationPrevious, PaginationNext, PaginationList, PaginationPage } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -228,7 +228,7 @@ export default function Example() {
     </RadioGroup>
   );
 }`,
-  "select": `import { Select, Field, Label } from "@hudbird/ui";
+  select: `import { Select, Field, Label } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -283,7 +283,7 @@ export default function Example() {
     </div>
   );
 }`,
-  "skeleton": `import { Skeleton } from "@hudbird/ui";
+  skeleton: `import { Skeleton } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -296,7 +296,7 @@ export default function Example() {
     </div>
   );
 }`,
-  "switch": `import { Switch, Field, Label } from "@hudbird/ui";
+  switch: `import { Switch, Field, Label } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -306,7 +306,7 @@ export default function Example() {
     </Field>
   );
 }`,
-  "table": `import { Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from "@hudbird/ui";
+  table: `import { Table, TableHead, TableRow, TableHeader, TableBody, TableCell } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -326,7 +326,7 @@ export default function Example() {
     </Table>
   );
 }`,
-  "tabs": `import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@hudbird/ui";
+  tabs: `import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -342,7 +342,7 @@ export default function Example() {
     </Tabs>
   );
 }`,
-  "text": `import { Text, Strong } from "@hudbird/ui";
+  text: `import { Text, Strong } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -351,7 +351,7 @@ export default function Example() {
     </Text>
   );
 }`,
-  "textarea": `import { Textarea, Field, Label } from "@hudbird/ui";
+  textarea: `import { Textarea, Field, Label } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -361,7 +361,7 @@ export default function Example() {
     </Field>
   );
 }`,
-  "tooltip": `import { Tooltip, Button } from "@hudbird/ui";
+  tooltip: `import { Tooltip, Button } from "@hudbird/ui";
 
 export default function Example() {
   return (
@@ -396,12 +396,12 @@ export default function Example() {
       </HeroBody>
     </Hero>
   );
-}`
+}`,
 };
 
 function processFile(filePath) {
-  let content = fs.readFileSync(filePath, 'utf8');
-  
+  let content = fs.readFileSync(filePath, "utf8");
+
   // Find <InstallationTabs componentName="..." />
   const regex = /<InstallationTabs\s+componentName="([^"]+)"(.*?)>/g;
   let modified = false;
@@ -409,30 +409,35 @@ function processFile(filePath) {
   const newContent = content.replace(regex, (match, componentName, rest) => {
     // If it already has manualCode="..." or manualCode={...}
     // We want to replace it.
-    let codeStr = examples[componentName] || `import { ${componentName.replace(/-/g, '')} } from "@hudbird/ui";
+    let codeStr =
+      examples[componentName] ||
+      `import { ${componentName.replace(/-/g, "")} } from "@hudbird/ui";
 
 export default function Example() {
   return <div />;
 }`;
-    
+
     // We need to properly escape the code string for a template literal if we put it in manualCode={\`...\`}
-    const escapedCodeStr = codeStr.replace(/\\/g, '\\\\').replace(/\`/g, '\\\`').replace(/\\$/g, '\\$');
-    
+    const escapedCodeStr = codeStr
+      .replace(/\\/g, "\\\\")
+      .replace(/`/g, "\\`")
+      .replace(/\$/g, "\\$");
+
     // Remove existing manualCode prop if any
-    const cleanRest = rest.replace(/\smanualCode=\{.*?\}/s, '').replace(/\smanualCode=".*?"/s, '');
-    
+    const cleanRest = rest.replace(/\smanualCode=\{.*?\}/s, "").replace(/\smanualCode=".*?"/s, "");
+
     modified = true;
-    
+
     // Self closing logic
     if (match.endsWith("/>")) {
-      return `<InstallationTabs componentName="${componentName}"${cleanRest.replace(/\/$/, '')} manualCode={\`${escapedCodeStr}\`} />`;
+      return `<InstallationTabs componentName="${componentName}"${cleanRest.replace(/\/$/, "")} manualCode={\`${escapedCodeStr}\`} />`;
     } else {
       return `<InstallationTabs componentName="${componentName}"${cleanRest} manualCode={\`${escapedCodeStr}\`}>`;
     }
   });
 
   if (modified && newContent !== content) {
-    fs.writeFileSync(filePath, newContent, 'utf8');
+    fs.writeFileSync(filePath, newContent, "utf8");
     console.log(`Updated ${filePath}`);
   }
 }
@@ -443,10 +448,10 @@ function scanDir(dir) {
     const fullPath = path.join(dir, file);
     if (fs.statSync(fullPath).isDirectory()) {
       scanDir(fullPath);
-    } else if (fullPath.endsWith('Doc.tsx')) {
+    } else if (fullPath.endsWith("Doc.tsx")) {
       processFile(fullPath);
     }
   }
 }
 
-scanDir(path.join(__dirname, '../src/pages'));
+scanDir(path.join(__dirname, "../src/pages"));

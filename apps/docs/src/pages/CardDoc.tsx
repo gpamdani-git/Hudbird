@@ -64,9 +64,18 @@ export default function CardDoc() {
       description: (
         <span>
           Visual surface treatment:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'shadow'</code> (clean white/zinc-900 surface with subtle elevation),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code> (translucent container with delicate stroke), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> (soft solid filled backdrop).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'shadow'
+          </code>{" "}
+          (clean white/zinc-900 surface with subtle elevation),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>{" "}
+          (translucent container with delicate stroke), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>{" "}
+          (soft solid filled backdrop).
         </span>
       ),
     },
@@ -76,10 +85,22 @@ export default function CardDoc() {
       description: (
         <span>
           Corner curvature radius:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (12px / rounded-xl),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (16px / rounded-2xl), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'full'</code> (24px / rounded-3xl).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'none'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (12px / rounded-xl),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (16px / rounded-2xl), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'full'
+          </code>{" "}
+          (24px / rounded-3xl).
         </span>
       ),
     },
@@ -91,12 +112,14 @@ export default function CardDoc() {
     {
       prop: "isPressable",
       defaultVal: "false",
-      description: "Enables interactive button semantics, cursor pointers, focus rings, and active press scale feedback.",
+      description:
+        "Enables interactive button semantics, cursor pointers, focus rings, and active press scale feedback.",
     },
     {
       prop: "isFooterBlurred",
       defaultVal: "false",
-      description: "Adds backdrop-blur glassmorphic styling to absolute bottom-aligned CardFooter components.",
+      description:
+        "Adds backdrop-blur glassmorphic styling to absolute bottom-aligned CardFooter components.",
     },
   ];
 
@@ -104,16 +127,32 @@ export default function CardDoc() {
     <div className="space-y-16 pb-24">
       {/* Header */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Card
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          A modular, versatile surface container composed of <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">Card</code>, <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardHeader</code>, <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardBody</code>, and <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">CardFooter</code> with interactive hover, press feedback, and glassmorphic overlay support.
+          A modular, versatile surface container composed of{" "}
+          <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            Card
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            CardHeader
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            CardBody
+          </code>
+          , and{" "}
+          <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            CardFooter
+          </code>{" "}
+          with interactive hover, press feedback, and glassmorphic overlay support.
         </p>
       </div>
 
@@ -131,12 +170,10 @@ export default function CardDoc() {
                     radius="full"
                   />
                   <div className="flex flex-col">
-                    <span className="text-sm font-semibold leading-tight text-zinc-900 dark:text-zinc-50">
+                    <span className="text-sm leading-tight font-semibold text-zinc-900 dark:text-zinc-50">
                       Sophia Chen
                     </span>
-                    <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                      @sophiachen
-                    </span>
+                    <span className="text-xs text-zinc-500 dark:text-zinc-400">@sophiachen</span>
                   </div>
                 </div>
                 <Button
@@ -150,16 +187,21 @@ export default function CardDoc() {
               </CardHeader>
               <CardBody>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                  Staff Frontend Architect building open-source design systems with TypeScript, Tailwind CSS, and Class Variance Authority. 🚀
+                  Staff Frontend Architect building open-source design systems with TypeScript,
+                  Tailwind CSS, and Class Variance Authority. 🚀
                 </p>
               </CardBody>
               <CardFooter className="justify-between pt-2">
                 <div className="flex items-center gap-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
                   <span>
-                    <strong className="text-zinc-900 dark:text-zinc-100 font-semibold">1.4k</strong> Following
+                    <strong className="font-semibold text-zinc-900 dark:text-zinc-100">1.4k</strong>{" "}
+                    Following
                   </span>
                   <span>
-                    <strong className="text-zinc-900 dark:text-zinc-100 font-semibold">48.2k</strong> Followers
+                    <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                      48.2k
+                    </strong>{" "}
+                    Followers
                   </span>
                 </div>
               </CardFooter>
@@ -218,19 +260,21 @@ export default function Example() {
         <InstallationTabs componentName="card" manualCode={cardCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
           Component API
         </h2>
-        <ApiTable note="Card and its sub-components extend standard HTML div attributes (e.g. onClick, id, role, className, tabIndex)." rows={apiRows} />
+        <ApiTable
+          note="Card and its sub-components extend standard HTML div attributes (e.g. onClick, id, role, className, tabIndex)."
+          rows={apiRows}
+        />
       </section>
 
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -241,26 +285,39 @@ export default function Example() {
             Basic Cards (Shadow, Bordered, Flat)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Select between three built-in visual styles: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">shadow</code> (elevated), <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">bordered</code> (clean outline), and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">flat</code> (soft fill):
+            Select between three built-in visual styles:{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              shadow
+            </code>{" "}
+            (elevated),{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              bordered
+            </code>{" "}
+            (clean outline), and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              flat
+            </code>{" "}
+            (soft fill):
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl py-4">
+            <div className="grid w-full max-w-4xl grid-cols-1 gap-6 py-4 md:grid-cols-3">
               {/* Shadow */}
               <Card variant="shadow">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                     <span className="text-sm font-semibold">Shadow (Default)</span>
                   </div>
                 </CardHeader>
                 <CardBody>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Crisp background with subtle elevation shadow suitable for main dashboard widgets and data containers.
+                    Crisp background with subtle elevation shadow suitable for main dashboard
+                    widgets and data containers.
                   </p>
                 </CardBody>
                 <CardFooter>
-                  <span className="text-xs text-zinc-400 font-medium">Updated 2m ago</span>
+                  <span className="text-xs font-medium text-zinc-400">Updated 2m ago</span>
                 </CardFooter>
               </Card>
 
@@ -268,17 +325,18 @@ export default function Example() {
               <Card variant="bordered">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
                     <span className="text-sm font-semibold">Bordered</span>
                   </div>
                 </CardHeader>
                 <CardBody>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Transparent surface framed by an adaptive 1px border. Perfect for nested items or dense information matrices.
+                    Transparent surface framed by an adaptive 1px border. Perfect for nested items
+                    or dense information matrices.
                   </p>
                 </CardBody>
                 <CardFooter>
-                  <span className="text-xs text-zinc-400 font-medium">Outline style</span>
+                  <span className="text-xs font-medium text-zinc-400">Outline style</span>
                 </CardFooter>
               </Card>
 
@@ -286,17 +344,18 @@ export default function Example() {
               <Card variant="flat">
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-amber-500" />
                     <span className="text-sm font-semibold">Flat</span>
                   </div>
                 </CardHeader>
                 <CardBody>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Muted background fill without harsh borders or shadows. Ideal for secondary callouts and helper blocks.
+                    Muted background fill without harsh borders or shadows. Ideal for secondary
+                    callouts and helper blocks.
                   </p>
                 </CardBody>
                 <CardFooter>
-                  <span className="text-xs text-zinc-400 font-medium">Soft backdrop</span>
+                  <span className="text-xs font-medium text-zinc-400">Soft backdrop</span>
                 </CardFooter>
               </Card>
             </div>
@@ -334,25 +393,37 @@ export default function Example() {
             Interactive Cards (Hoverable & Pressable)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enable <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isHoverable</code> for floating depth lift and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isPressable</code> for tactile scale click feedback:
+            Enable{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isHoverable
+            </code>{" "}
+            for floating depth lift and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isPressable
+            </code>{" "}
+            for tactile scale click feedback:
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               {/* Hoverable Card */}
               <Card variant="shadow" isHoverable className="group">
                 <CardHeader className="justify-between">
-                  <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400">
+                  <div className="rounded-xl bg-indigo-50 p-2.5 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
                     <Sparkles size={18} />
                   </div>
-                  <ArrowUpRight size={16} className="text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors" />
+                  <ArrowUpRight
+                    size={16}
+                    className="text-zinc-400 transition-colors group-hover:text-zinc-900 dark:group-hover:text-white"
+                  />
                 </CardHeader>
                 <CardBody>
-                  <h4 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-1">
+                  <h4 className="mb-1 text-base font-semibold text-zinc-900 dark:text-zinc-50">
                     Hoverable Card
                   </h4>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Hover your cursor over this card to witness a subtle vertical micro-lift and deepened shadow elevation.
+                    Hover your cursor over this card to witness a subtle vertical micro-lift and
+                    deepened shadow elevation.
                   </p>
                 </CardBody>
                 <CardFooter>
@@ -371,7 +442,7 @@ export default function Example() {
                 className="group"
               >
                 <CardHeader className="justify-between">
-                  <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400">
+                  <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
                     <TrendingUp size={18} />
                   </div>
                   <Badge color="success" size="sm" variant="soft">
@@ -379,11 +450,12 @@ export default function Example() {
                   </Badge>
                 </CardHeader>
                 <CardBody>
-                  <h4 className="text-base font-semibold text-zinc-900 dark:text-zinc-50 mb-1">
+                  <h4 className="mb-1 text-base font-semibold text-zinc-900 dark:text-zinc-50">
                     Pressable Card
                   </h4>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    Click anywhere inside to experience button-like active depression with full keyboard accessibility.
+                    Click anywhere inside to experience button-like active depression with full
+                    keyboard accessibility.
                   </p>
                 </CardBody>
                 <CardFooter className="justify-between">
@@ -437,7 +509,8 @@ export function InteractiveCardsExample() {
             Rich Content Card (Social & Media)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Combine sub-components with Avatar, Badges, Heading, and Button actions for rich dashboards and social streams:
+            Combine sub-components with Avatar, Badges, Heading, and Button actions for rich
+            dashboards and social streams:
           </p>
 
           <ComponentPreview>
@@ -468,7 +541,7 @@ export function InteractiveCardsExample() {
                   </div>
                   <button
                     type="button"
-                    className="p-1.5 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                    className="cursor-pointer rounded-lg p-1.5 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
                     aria-label="Options"
                   >
                     <MoreVertical size={16} />
@@ -478,28 +551,29 @@ export function InteractiveCardsExample() {
                 {/* Body */}
                 <CardBody className="space-y-3 pb-4">
                   <p className="text-sm text-zinc-700 dark:text-zinc-300">
-                    Just wrapped up the newly engineered component system with native dark mode support and micro-interactions! Take a look at the preview layout below:
+                    Just wrapped up the newly engineered component system with native dark mode
+                    support and micro-interactions! Take a look at the preview layout below:
                   </p>
-                  <div className="relative rounded-xl overflow-hidden aspect-video bg-zinc-100 dark:bg-zinc-800">
+                  <div className="relative aspect-video overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
                     <img
                       src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
                       alt="Modern Abstract Wave"
-                      className="w-full h-full object-cover"
+                      className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                   </div>
                 </CardBody>
 
                 {/* Footer */}
-                <CardFooter className="justify-between border-t border-zinc-100 dark:border-zinc-800/80 pt-3">
+                <CardFooter className="justify-between border-t border-zinc-100 pt-3 dark:border-zinc-800/80">
                   <div className="flex items-center gap-1">
                     <button
                       type="button"
                       onClick={() => setIsLiked(!isLiked)}
-                      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                      className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
                         isLiked
-                          ? "text-rose-600 bg-rose-50 dark:bg-rose-950/40"
-                          : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                          ? "bg-rose-50 text-rose-600 dark:bg-rose-950/40"
+                          : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                       }`}
                     >
                       <Heart size={14} className={isLiked ? "fill-current" : ""} />
@@ -507,7 +581,7 @@ export function InteractiveCardsExample() {
                     </button>
                     <button
                       type="button"
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                      className="flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                     >
                       <Share2 size={14} />
                       <span>Share</span>
@@ -517,10 +591,10 @@ export function InteractiveCardsExample() {
                   <button
                     type="button"
                     onClick={() => setIsBookmarked(!isBookmarked)}
-                    className={`p-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer ${
+                    className={`cursor-pointer rounded-lg p-1.5 text-xs font-semibold transition-colors ${
                       isBookmarked
-                        ? "text-indigo-600 bg-indigo-50 dark:bg-indigo-950/40"
-                        : "text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                        ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40"
+                        : "text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                     }`}
                     aria-label="Bookmark"
                   >
@@ -573,28 +647,32 @@ export function RichContentCard() {
             Image Cover Card (Blurred Footer Overlay)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use full-bleed background imagery combined with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">&lt;CardFooter isBlurred&gt;</code> to render a premium glassmorphic frosted overlay over visual media:
+            Use full-bleed background imagery combined with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              &lt;CardFooter isBlurred&gt;
+            </code>{" "}
+            to render a premium glassmorphic frosted overlay over visual media:
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl py-4">
+            <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               {/* Music Album Card */}
-              <Card variant="shadow" isHoverable className="h-80 w-full relative group">
+              <Card variant="shadow" isHoverable className="group relative h-80 w-full">
                 <img
                   src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80"
                   alt="Soundtrack Cover"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-3 right-3 z-20">
-                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/50 text-white backdrop-blur-md flex items-center gap-1 border border-white/10">
+                  <span className="flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
                     <Music2 size={12} />
                     <span>Now Playing</span>
                   </span>
                 </div>
                 <CardFooter isBlurred className="justify-between px-4 py-3">
                   <div className="flex flex-col text-left">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-300">
+                    <span className="text-xs font-semibold tracking-wider text-zinc-600 uppercase dark:text-zinc-300">
                       Midnight Symphony
                     </span>
                     <span className="text-sm font-bold text-zinc-900 dark:text-zinc-50">
@@ -608,22 +686,22 @@ export function RichContentCard() {
               </Card>
 
               {/* Gallery Highlight Card */}
-              <Card variant="shadow" isHoverable className="h-80 w-full relative group">
+              <Card variant="shadow" isHoverable className="group relative h-80 w-full">
                 <img
                   src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
                   alt="Yosemite Valley"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute top-3 left-3 z-20">
-                  <span className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-black/50 text-white backdrop-blur-md flex items-center gap-1 border border-white/10">
+                  <span className="flex items-center gap-1 rounded-full border border-white/10 bg-black/50 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur-md">
                     <Volume2 size={12} />
                     <span>Nature Ambient</span>
                   </span>
                 </div>
                 <CardFooter isBlurred className="justify-between px-4 py-3">
                   <div className="flex flex-col text-left">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-300">
+                    <span className="text-xs font-semibold tracking-wider text-zinc-600 uppercase dark:text-zinc-300">
                       Yosemite Valley
                     </span>
                     <span className="text-sm font-bold text-zinc-900 dark:text-zinc-50">
@@ -677,16 +755,16 @@ export function ImageCoverCard() {
           </p>
 
           {/* Controls Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800">
+          <div className="grid grid-cols-1 gap-4 rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:grid-cols-2 dark:border-zinc-800 dark:bg-zinc-900/50">
             {/* Variant */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Variant
               </label>
               <select
                 value={custVariant}
                 onChange={(e) => setCustVariant(e.target.value as CardVariant)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="shadow">Shadow (Elevated)</option>
                 <option value="bordered">Bordered (Outline)</option>
@@ -696,13 +774,13 @@ export function ImageCoverCard() {
 
             {/* Radius */}
             <div>
-              <label className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider block mb-1.5">
+              <label className="mb-1.5 block text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Corner Radius
               </label>
               <select
                 value={custRadius}
                 onChange={(e) => setCustRadius(e.target.value as CardRadius)}
-                className="w-full h-9 px-2.5 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 text-xs font-medium text-zinc-900 dark:text-zinc-100 outline-none focus:ring-2 focus:ring-indigo-500"
+                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
               >
                 <option value="none">None (rounded-none)</option>
                 <option value="md">Medium (rounded-xl / 12px)</option>
@@ -741,11 +819,11 @@ export function ImageCoverCard() {
               >
                 <CardHeader className="justify-between">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-xs">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-xs font-bold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
                       UI
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold leading-tight">Configured Card</h4>
+                      <h4 className="text-sm leading-tight font-semibold">Configured Card</h4>
                       <span className="text-[11px] text-zinc-400">Live preview container</span>
                     </div>
                   </div>
@@ -755,7 +833,23 @@ export function ImageCoverCard() {
                 </CardHeader>
                 <CardBody>
                   <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    This card dynamically mirrors all currently selected props: variant <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">"{custVariant}"</code>, radius <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">"{custRadius}"</code>, hoverable <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">{String(custIsHoverable)}</code>, and pressable <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">{String(custIsPressable)}</code>.
+                    This card dynamically mirrors all currently selected props: variant{" "}
+                    <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                      "{custVariant}"
+                    </code>
+                    , radius{" "}
+                    <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                      "{custRadius}"
+                    </code>
+                    , hoverable{" "}
+                    <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                      {String(custIsHoverable)}
+                    </code>
+                    , and pressable{" "}
+                    <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+                      {String(custIsPressable)}
+                    </code>
+                    .
                   </p>
                 </CardBody>
                 <CardFooter className="justify-between">

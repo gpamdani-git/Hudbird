@@ -28,8 +28,7 @@ const descriptionListVariants = cva("w-full divide-y divide-zinc-200/60 dark:div
 });
 
 export interface DescriptionListProps
-  extends React.HTMLAttributes<HTMLDListElement>,
-    VariantProps<typeof descriptionListVariants> {
+  extends React.HTMLAttributes<HTMLDListElement>, VariantProps<typeof descriptionListVariants> {
   orientation?: DescriptionListOrientation;
 }
 
@@ -37,11 +36,7 @@ const DescriptionList = React.forwardRef<HTMLDListElement, DescriptionListProps>
   ({ className, variant = "flat", orientation = "horizontal", children, ...props }, ref) => {
     return (
       <DescriptionListContext.Provider value={{ orientation }}>
-        <dl
-          ref={ref}
-          className={cn(descriptionListVariants({ variant }), className)}
-          {...props}
-        >
+        <dl ref={ref} className={cn(descriptionListVariants({ variant }), className)} {...props}>
           {children}
         </dl>
       </DescriptionListContext.Provider>
@@ -65,7 +60,7 @@ const DescriptionListItem = React.forwardRef<HTMLDivElement, DescriptionListItem
         className={cn(
           "py-3.5 first:pt-0 last:pb-0",
           resolvedOrientation === "horizontal"
-            ? "grid grid-cols-1 sm:grid-cols-3 sm:gap-4 items-baseline"
+            ? "grid grid-cols-1 items-baseline sm:grid-cols-3 sm:gap-4"
             : "flex flex-col gap-1.5",
           className
         )}
@@ -86,7 +81,7 @@ const DescriptionListLabel = React.forwardRef<HTMLElement, DescriptionListLabelP
       <dt
         ref={ref}
         className={cn(
-          "text-sm font-medium text-zinc-500 dark:text-zinc-400 select-none",
+          "text-sm font-medium text-zinc-500 select-none dark:text-zinc-400",
           className
         )}
         {...props}
@@ -106,7 +101,7 @@ const DescriptionListValue = React.forwardRef<HTMLElement, DescriptionListValueP
       <dd
         ref={ref}
         className={cn(
-          "text-sm font-normal text-zinc-900 dark:text-zinc-50 sm:col-span-2 mt-1 sm:mt-0",
+          "mt-1 text-sm font-normal text-zinc-900 sm:col-span-2 sm:mt-0 dark:text-zinc-50",
           className
         )}
         {...props}

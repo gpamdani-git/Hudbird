@@ -18,7 +18,8 @@ const textVariants = cva("text-zinc-600 dark:text-zinc-400", {
 });
 
 export interface TextProps
-  extends React.HTMLAttributes<HTMLParagraphElement | HTMLSpanElement>,
+  extends
+    React.HTMLAttributes<HTMLParagraphElement | HTMLSpanElement>,
     VariantProps<typeof textVariants> {
   as?: React.ElementType;
 }
@@ -27,9 +28,9 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ className, variant, as: Component = "p", ...props }, ref) => {
     return (
       <Component
-        // @ts-ignore - Polymorphic component ref assignment
+        // @ts-expect-error - Polymorphic component ref assignment
         ref={ref as any}
-        // @ts-ignore
+        // @ts-expect-error - Typescript complains about polymorphic component className
         className={cn(textVariants({ variant }), className)}
         {...(props as any)}
       />

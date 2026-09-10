@@ -29,9 +29,7 @@ export const pricingTocItems = [
   {
     id: "examples",
     title: "Examples",
-    children: [
-      { id: "standard-three-tier", title: "Standard Three Tier" },
-    ],
+    children: [{ id: "standard-three-tier", title: "Standard Three Tier" }],
   },
 ];
 
@@ -143,13 +141,13 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
   ];
 
   return (
-    <div className="flex flex-col w-full pb-20">
-      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
-        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+    <div className="flex w-full flex-col pb-20">
+      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
+        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
           {onOpenSidebar && (
-            <button 
+            <button
               onClick={onOpenSidebar}
-              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />
@@ -160,14 +158,15 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           <span className="text-zinc-900 dark:text-zinc-100">Pricing Section</span>
         </div>
       </div>
-      
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12">
+
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
         <div className="mb-10">
-          <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-zinc-900 dark:text-white mb-6">
+          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
             Pricing Sections
           </h1>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl text-balance">
-            Beautifully designed pricing tables that convert visitors into customers. Built with accessibility and flexibility in mind.
+          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+            Beautifully designed pricing tables that convert visitors into customers. Built with
+            accessibility and flexibility in mind.
           </p>
         </div>
 
@@ -175,27 +174,35 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           <InstallationTabs componentName="pricing" manualCode={pricingCode} />
         </div>
 
-        <div className="flex flex-col gap-16 mt-16">
+        <div className="mt-16 flex flex-col gap-16">
           <MarketingPreview title="Standard Three Tier" skill={skillContent} code={threeTierCode}>
             <PricingSection variant="subtle">
               <PricingHeader>
                 <PricingBadge>Pricing</PricingBadge>
                 <PricingTitle>Pricing that grows with you</PricingTitle>
                 <PricingDescription>
-                  Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
+                  Choose an affordable plan that's packed with the best features for engaging your
+                  audience, creating customer loyalty, and driving sales.
                 </PricingDescription>
                 <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
               </PricingHeader>
-              
+
               <PricingGrid>
                 {/* Tier 1 */}
                 <PricingTier index={0}>
                   <PricingTierHeader>
                     <PricingTierName>Freelancer</PricingTierName>
-                    <PricingTierDescription>The essentials to provide your best work for clients.</PricingTierDescription>
-                    <PricingTierPrice price={isAnnual ? "$190" : "$19"} period={isAnnual ? "/year" : "/month"} />
+                    <PricingTierDescription>
+                      The essentials to provide your best work for clients.
+                    </PricingTierDescription>
+                    <PricingTierPrice
+                      price={isAnnual ? "$190" : "$19"}
+                      period={isAnnual ? "/year" : "/month"}
+                    />
                   </PricingTierHeader>
-                  <Button variant="outline" className="w-full mt-2">Buy plan</Button>
+                  <Button variant="outline" className="mt-2 w-full">
+                    Buy plan
+                  </Button>
                   <PricingTierFeatures>
                     <PricingTierFeature>5 products</PricingTierFeature>
                     <PricingTierFeature>Up to 1,000 subscribers</PricingTierFeature>
@@ -208,10 +215,21 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                 <PricingTier index={1} popular>
                   <PricingTierHeader>
                     <PricingTierName popular>Startup</PricingTierName>
-                    <PricingTierDescription popular>A plan that scales with your rapidly growing business.</PricingTierDescription>
-                    <PricingTierPrice popular price={isAnnual ? "$490" : "$49"} period={isAnnual ? "/year" : "/month"} />
+                    <PricingTierDescription popular>
+                      A plan that scales with your rapidly growing business.
+                    </PricingTierDescription>
+                    <PricingTierPrice
+                      popular
+                      price={isAnnual ? "$490" : "$49"}
+                      period={isAnnual ? "/year" : "/month"}
+                    />
                   </PricingTierHeader>
-                  <Button color="primary" className="w-full mt-2 ring-1 ring-white/20 hover:ring-white/40">Buy plan</Button>
+                  <Button
+                    color="primary"
+                    className="mt-2 w-full ring-1 ring-white/20 hover:ring-white/40"
+                  >
+                    Buy plan
+                  </Button>
                   <PricingTierFeatures popular>
                     <PricingTierFeature popular>25 products</PricingTierFeature>
                     <PricingTierFeature popular>Up to 10,000 subscribers</PricingTierFeature>
@@ -225,10 +243,17 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                 <PricingTier index={2}>
                   <PricingTierHeader>
                     <PricingTierName>Enterprise</PricingTierName>
-                    <PricingTierDescription>Dedicated support and infrastructure for your company.</PricingTierDescription>
-                    <PricingTierPrice price={isAnnual ? "$990" : "$99"} period={isAnnual ? "/year" : "/month"} />
+                    <PricingTierDescription>
+                      Dedicated support and infrastructure for your company.
+                    </PricingTierDescription>
+                    <PricingTierPrice
+                      price={isAnnual ? "$990" : "$99"}
+                      period={isAnnual ? "/year" : "/month"}
+                    />
                   </PricingTierHeader>
-                  <Button variant="outline" className="w-full mt-2">Buy plan</Button>
+                  <Button variant="outline" className="mt-2 w-full">
+                    Buy plan
+                  </Button>
                   <PricingTierFeatures>
                     <PricingTierFeature>Unlimited products</PricingTierFeature>
                     <PricingTierFeature>Unlimited subscribers</PricingTierFeature>
@@ -243,11 +268,11 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           </MarketingPreview>
         </div>
 
-        <section id="component-api" className="scroll-mt-24 space-y-4 mt-16">
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
           <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Component API
           </h2>
-          <ApiTable rows={apiRows} />
+          <ApiTable title="Pricing Props" rows={apiRows} />
         </section>
       </div>
     </div>

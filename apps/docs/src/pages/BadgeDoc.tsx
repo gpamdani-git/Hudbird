@@ -34,9 +34,18 @@ export default function BadgeDoc() {
       description: (
         <span>
           Visual styling of the badge:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'solid'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'soft'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'outline'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'solid'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'soft'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'outline'
+          </code>
+          .
         </span>
       ),
     },
@@ -46,10 +55,22 @@ export default function BadgeDoc() {
       description: (
         <span>
           Color theme palette:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'primary'</code> (Indigo),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'success'</code> (Emerald),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'warning'</code> (Amber), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code> (Rose).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'primary'
+          </code>{" "}
+          (Indigo),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'success'
+          </code>{" "}
+          (Emerald),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'warning'
+          </code>{" "}
+          (Amber), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>{" "}
+          (Rose).
         </span>
       ),
     },
@@ -59,16 +80,26 @@ export default function BadgeDoc() {
       description: (
         <span>
           Size scale:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code> (text-[10px]),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (text-xs), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (text-sm).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>{" "}
+          (text-[10px]),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (text-xs), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (text-sm).
         </span>
       ),
     },
     {
       prop: "content",
       defaultVal: "-",
-      description: "Content (text, number, or icon) displayed in the floating badge over a wrapped child.",
+      description:
+        "Content (text, number, or icon) displayed in the floating badge over a wrapped child.",
     },
     {
       prop: "placement",
@@ -76,10 +107,22 @@ export default function BadgeDoc() {
       description: (
         <span>
           Corner positioning when wrapping an element:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'top-right'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'top-left'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bottom-right'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bottom-left'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'top-right'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'top-left'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bottom-right'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bottom-left'
+          </code>
+          .
         </span>
       ),
     },
@@ -99,16 +142,17 @@ export default function BadgeDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Badge
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Small status descriptors, labels, and notification counters used for highlighting metadata or activity.
+          Small status descriptors, labels, and notification counters used for highlighting metadata
+          or activity.
         </p>
       </div>
 
@@ -118,10 +162,18 @@ export default function BadgeDoc() {
           <div className="flex flex-wrap items-center justify-center gap-6">
             {/* Standalone Badges */}
             <div className="flex items-center gap-2">
-              <Badge variant="solid" color="primary">New</Badge>
-              <Badge variant="soft" color="success">Active</Badge>
-              <Badge variant="outline" color="warning">Pending</Badge>
-              <Badge variant="solid" color="danger">Failed</Badge>
+              <Badge variant="solid" color="primary">
+                New
+              </Badge>
+              <Badge variant="soft" color="success">
+                Active
+              </Badge>
+              <Badge variant="outline" color="warning">
+                Pending
+              </Badge>
+              <Badge variant="solid" color="danger">
+                Failed
+              </Badge>
             </div>
 
             <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800" />
@@ -137,7 +189,7 @@ export default function BadgeDoc() {
 
               <Badge content="99+" color="primary" size="sm">
                 <Button variant="outline" size="sm" className="px-3">
-                  <Mail className="w-4 h-4 mr-1.5" />
+                  <Mail className="mr-1.5 h-4 w-4" />
                   Inbox
                 </Button>
               </Badge>
@@ -172,7 +224,6 @@ function Example() {
         <InstallationTabs componentName="badge" manualCode={badgeCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -181,7 +232,9 @@ function Example() {
         <ApiTable
           note={
             <span>
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Badge</strong> automatically handles relative positioning, corner placement offsets, and full dark-mode palette balance.
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Badge</strong>{" "}
+              automatically handles relative positioning, corner placement offsets, and full
+              dark-mode palette balance.
             </span>
           }
           rows={apiRows}
@@ -191,7 +244,7 @@ function Example() {
       {/* Examples */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -202,41 +255,77 @@ function Example() {
             Variants & Colors
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'solid'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'soft'</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'outline'</code> across all semantic color states:
+            Choose between{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'solid'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'soft'
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'outline'
+            </code>{" "}
+            across all semantic color states:
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col gap-5 w-full max-w-lg">
+            <div className="flex w-full max-w-lg flex-col gap-5">
               {/* Solid Row */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-400 w-16">solid:</span>
+                <span className="w-16 font-mono text-xs text-zinc-400">solid:</span>
                 <div className="flex items-center gap-2.5">
-                  <Badge variant="solid" color="primary">Primary</Badge>
-                  <Badge variant="solid" color="success">Success</Badge>
-                  <Badge variant="solid" color="warning">Warning</Badge>
-                  <Badge variant="solid" color="danger">Danger</Badge>
+                  <Badge variant="solid" color="primary">
+                    Primary
+                  </Badge>
+                  <Badge variant="solid" color="success">
+                    Success
+                  </Badge>
+                  <Badge variant="solid" color="warning">
+                    Warning
+                  </Badge>
+                  <Badge variant="solid" color="danger">
+                    Danger
+                  </Badge>
                 </div>
               </div>
 
               {/* Soft Row */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-400 w-16">soft:</span>
+                <span className="w-16 font-mono text-xs text-zinc-400">soft:</span>
                 <div className="flex items-center gap-2.5">
-                  <Badge variant="soft" color="primary">Primary</Badge>
-                  <Badge variant="soft" color="success">Success</Badge>
-                  <Badge variant="soft" color="warning">Warning</Badge>
-                  <Badge variant="soft" color="danger">Danger</Badge>
+                  <Badge variant="soft" color="primary">
+                    Primary
+                  </Badge>
+                  <Badge variant="soft" color="success">
+                    Success
+                  </Badge>
+                  <Badge variant="soft" color="warning">
+                    Warning
+                  </Badge>
+                  <Badge variant="soft" color="danger">
+                    Danger
+                  </Badge>
                 </div>
               </div>
 
               {/* Outline Row */}
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono text-zinc-400 w-16">outline:</span>
+                <span className="w-16 font-mono text-xs text-zinc-400">outline:</span>
                 <div className="flex items-center gap-2.5">
-                  <Badge variant="outline" color="primary">Primary</Badge>
-                  <Badge variant="outline" color="success">Success</Badge>
-                  <Badge variant="outline" color="warning">Warning</Badge>
-                  <Badge variant="outline" color="danger">Danger</Badge>
+                  <Badge variant="outline" color="primary">
+                    Primary
+                  </Badge>
+                  <Badge variant="outline" color="success">
+                    Success
+                  </Badge>
+                  <Badge variant="outline" color="warning">
+                    Warning
+                  </Badge>
+                  <Badge variant="outline" color="danger">
+                    Danger
+                  </Badge>
                 </div>
               </div>
             </div>
@@ -273,18 +362,34 @@ function Example() {
 
         {/* 2. Badge Sizes */}
         <div id="badge-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Badge sizes
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Badge sizes</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Badges are available in three proportions: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'sm'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'md'</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'lg'</code>:
+            Badges are available in three proportions:{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'sm'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'md'
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'lg'
+            </code>
+            :
           </p>
 
           <ComponentPreview>
             <div className="flex items-center gap-4">
-              <Badge size="sm" variant="soft" color="primary">Small (sm)</Badge>
-              <Badge size="md" variant="soft" color="primary">Medium (md)</Badge>
-              <Badge size="lg" variant="soft" color="primary">Large (lg)</Badge>
+              <Badge size="sm" variant="soft" color="primary">
+                Small (sm)
+              </Badge>
+              <Badge size="md" variant="soft" color="primary">
+                Medium (md)
+              </Badge>
+              <Badge size="lg" variant="soft" color="primary">
+                Large (lg)
+              </Badge>
             </div>
           </ComponentPreview>
 
@@ -317,17 +422,17 @@ function Example() {
               >
                 -1
               </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setCounter((c) => c + 1)}
-              >
+              <Button size="sm" variant="outline" onClick={() => setCounter((c) => c + 1)}>
                 +1
               </Button>
             </div>
           </div>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Wrap any target element with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">&lt;Badge content=&#123;...&#125;&gt;</code> to render a floating notification counter:
+            Wrap any target element with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              &lt;Badge content=&#123;...&#125;&gt;
+            </code>{" "}
+            to render a floating notification counter:
           </p>
 
           <ComponentPreview>
@@ -348,30 +453,26 @@ function Example() {
               {/* Shopping Cart Button */}
               <Badge content={counter > 0 ? counter : undefined} color="primary" size="sm">
                 <Button variant="outline" className="gap-2">
-                  <ShoppingCart className="w-4 h-4" />
+                  <ShoppingCart className="h-4 w-4" />
                   Cart
                 </Button>
               </Badge>
 
               {/* Icon-Only Button */}
               <Badge content="12" color="danger" size="sm">
-                <Button variant="outline" className="w-10 h-10 p-0">
-                  <Bell className="w-4 h-4" />
+                <Button variant="outline" className="h-10 w-10 p-0">
+                  <Bell className="h-4 w-4" />
                 </Button>
               </Badge>
 
               {/* Verified Status on Avatar */}
               <Badge
-                content={<Check className="w-2.5 h-2.5 stroke-[3]" />}
+                content={<Check className="h-2.5 w-2.5 stroke-[3]" />}
                 color="success"
                 size="sm"
                 placement="bottom-right"
               >
-                <Avatar
-                  name="Alex Rivera"
-                  color="primary"
-                  size="lg"
-                />
+                <Avatar name="Alex Rivera" color="primary" size="lg" />
               </Badge>
             </div>
           </ComponentPreview>
@@ -416,7 +517,11 @@ function Example() {
             Dot status indicators
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isDot</code> to display a minimal presence dot (e.g. online, busy, away) on avatars or buttons:
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isDot
+            </code>{" "}
+            to display a minimal presence dot (e.g. online, busy, away) on avatars or buttons:
           </p>
 
           <ComponentPreview>
@@ -457,8 +562,8 @@ function Example() {
               {/* Notifications Indicator on Icon */}
               <div className="flex flex-col items-center gap-2">
                 <Badge isDot color="primary" placement="top-right">
-                  <Button variant="plain" size="sm" className="w-9 h-9 p-0">
-                    <Bell className="w-5 h-5 text-zinc-600 dark:text-zinc-300" />
+                  <Button variant="plain" size="sm" className="h-9 w-9 p-0">
+                    <Bell className="h-5 w-5 text-zinc-600 dark:text-zinc-300" />
                   </Button>
                 </Badge>
                 <span className="text-xs text-zinc-500">Unread</span>
@@ -491,45 +596,49 @@ function Example() {
             Badge placements
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Attach badges to all four corners using the <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'placement'</code> property:
+            Attach badges to all four corners using the{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'placement'
+            </code>{" "}
+            property:
           </p>
 
           <ComponentPreview>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 py-2">
+            <div className="grid grid-cols-2 gap-8 py-2 sm:grid-cols-4">
               <div className="flex flex-col items-center gap-2">
                 <Badge content="1" color="primary" size="sm" placement="top-left">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-zinc-500" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
+                    <MessageSquare className="h-5 w-5 text-zinc-500" />
                   </div>
                 </Badge>
-                <span className="text-xs font-mono text-zinc-500">top-left</span>
+                <span className="font-mono text-xs text-zinc-500">top-left</span>
               </div>
 
               <div className="flex flex-col items-center gap-2">
                 <Badge content="2" color="primary" size="sm" placement="top-right">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-zinc-500" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
+                    <MessageSquare className="h-5 w-5 text-zinc-500" />
                   </div>
                 </Badge>
-                <span className="text-xs font-mono text-zinc-500">top-right</span>
+                <span className="font-mono text-xs text-zinc-500">top-right</span>
               </div>
 
               <div className="flex flex-col items-center gap-2">
                 <Badge content="3" color="primary" size="sm" placement="bottom-left">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-zinc-500" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
+                    <MessageSquare className="h-5 w-5 text-zinc-500" />
                   </div>
                 </Badge>
-                <span className="text-xs font-mono text-zinc-500">bottom-left</span>
+                <span className="font-mono text-xs text-zinc-500">bottom-left</span>
               </div>
 
               <div className="flex flex-col items-center gap-2">
                 <Badge content="4" color="primary" size="sm" placement="bottom-right">
-                  <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center">
-                    <MessageSquare className="w-5 h-5 text-zinc-500" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800">
+                    <MessageSquare className="h-5 w-5 text-zinc-500" />
                   </div>
                 </Badge>
-                <span className="text-xs font-mono text-zinc-500">bottom-right</span>
+                <span className="font-mono text-xs text-zinc-500">bottom-right</span>
               </div>
             </div>
           </ComponentPreview>

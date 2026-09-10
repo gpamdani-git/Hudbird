@@ -101,7 +101,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
         ref={ref}
         className={cn(
           accordionItemVariants({ variant }),
-          isDisabled ? "opacity-50 pointer-events-none" : "",
+          isDisabled ? "pointer-events-none opacity-50" : "",
           classNames?.base,
           className
         )}
@@ -117,21 +117,21 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
             disabled={isDisabled}
             onClick={handleToggle}
             className={cn(
-              "flex w-full items-center justify-between gap-3 text-left transition-all duration-150 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950 rounded-lg",
-              isCompact ? "py-2.5 px-3" : "py-4 px-4",
+              "flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg text-left transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-offset-zinc-950",
+              isCompact ? "px-3 py-2.5" : "px-4 py-4",
               classNames?.trigger
             )}
           >
             {startContent && (
-              <span className="shrink-0 flex items-center justify-center text-zinc-500 dark:text-zinc-400">
+              <span className="flex shrink-0 items-center justify-center text-zinc-500 dark:text-zinc-400">
                 {startContent}
               </span>
             )}
 
-            <div className={cn("flex flex-1 flex-col text-left min-w-0", classNames?.titleWrapper)}>
+            <div className={cn("flex min-w-0 flex-1 flex-col text-left", classNames?.titleWrapper)}>
               <span
                 className={cn(
-                  "font-medium text-zinc-900 dark:text-zinc-100 truncate",
+                  "truncate font-medium text-zinc-900 dark:text-zinc-100",
                   isCompact ? "text-sm" : "text-base",
                   classNames?.title
                 )}
@@ -141,7 +141,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
               {subtitle && (
                 <span
                   className={cn(
-                    "text-xs text-zinc-500 dark:text-zinc-400 mt-0.5",
+                    "mt-0.5 text-xs text-zinc-500 dark:text-zinc-400",
                     classNames?.subtitle
                   )}
                 >
@@ -154,7 +154,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
               <span
                 aria-hidden="true"
                 className={cn(
-                  "shrink-0 text-zinc-400 dark:text-zinc-500 transition-transform duration-200 ease-out",
+                  "shrink-0 text-zinc-400 transition-transform duration-200 ease-out dark:text-zinc-500",
                   isOpen ? "rotate-180 text-zinc-700 dark:text-zinc-200" : "",
                   classNames?.indicator
                 )}
@@ -164,7 +164,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
                 ) : indicator ? (
                   indicator
                 ) : (
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="h-4 w-4" />
                 )}
               </span>
             )}
@@ -177,7 +177,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
           role="region"
           aria-labelledby={triggerId}
           className={cn(
-            "grid transition-all duration-200 ease-in-out overflow-hidden text-zinc-600 dark:text-zinc-300",
+            "grid overflow-hidden text-zinc-600 transition-all duration-200 ease-in-out dark:text-zinc-300",
             isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
           )}
         >

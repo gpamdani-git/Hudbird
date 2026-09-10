@@ -17,12 +17,37 @@ export const switchTocItems = [
 
 export default function SwitchDoc() {
   const apiRows: ApiPropRow[] = [
-    { prop: "size", type: '"sm" | "md" | "lg"', defaultVal: '"md"', description: "The size of the switch." },
-    { prop: "color", type: '"primary" | "success" | "danger" | "warning"', defaultVal: '"primary"', description: "The color variant when checked." },
-    { prop: "label", type: "ReactNode", defaultVal: "-", description: "Label text displayed next to the switch." },
-    { prop: "description", type: "ReactNode", defaultVal: "-", description: "Additional text rendered under the label." },
+    {
+      prop: "size",
+      type: '"sm" | "md" | "lg"',
+      defaultVal: '"md"',
+      description: "The size of the switch.",
+    },
+    {
+      prop: "color",
+      type: '"primary" | "success" | "danger" | "warning"',
+      defaultVal: '"primary"',
+      description: "The color variant when checked.",
+    },
+    {
+      prop: "label",
+      type: "ReactNode",
+      defaultVal: "-",
+      description: "Label text displayed next to the switch.",
+    },
+    {
+      prop: "description",
+      type: "ReactNode",
+      defaultVal: "-",
+      description: "Additional text rendered under the label.",
+    },
     { prop: "checked", type: "boolean", defaultVal: "-", description: "Controlled checked state." },
-    { prop: "defaultChecked", type: "boolean", defaultVal: "false", description: "Uncontrolled default checked state." },
+    {
+      prop: "defaultChecked",
+      type: "boolean",
+      defaultVal: "false",
+      description: "Uncontrolled default checked state.",
+    },
   ];
 
   const [isChecked1, setIsChecked1] = useState(false);
@@ -33,11 +58,11 @@ export default function SwitchDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Switch
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
@@ -79,12 +104,15 @@ export default function Example() {
         <InstallationTabs componentName="switch" manualCode={switchCode} />
       </div>
 
-
       {/* Sizes */}
       <section className="space-y-4" id="sizes">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Sizes</h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Switches come in three sizes: <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">sm</code>, <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">md</code>, and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">lg</code>.
+          Switches come in three sizes:{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">sm</code>,{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">md</code>,
+          and <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">lg</code>
+          .
         </p>
         <ComponentPreview>
           <div className="flex items-end gap-8">
@@ -126,18 +154,22 @@ export default function Example() {
       <section className="space-y-4" id="with-labels">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">With Description</h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Provide additional context by passing a <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded">description</code> prop.
+          Provide additional context by passing a{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+            description
+          </code>{" "}
+          prop.
         </p>
         <ComponentPreview>
           <div className="flex flex-col gap-6">
-            <Switch 
-              defaultChecked 
-              label="Email notifications" 
+            <Switch
+              defaultChecked
+              label="Email notifications"
               description="Receive weekly digest emails about your account activity."
             />
-            <Switch 
-              disabled 
-              label="Marketing emails" 
+            <Switch
+              disabled
+              label="Marketing emails"
               description="Receive offers and product updates. (Disabled)"
             />
           </div>

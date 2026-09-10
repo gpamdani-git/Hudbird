@@ -26,7 +26,7 @@ import {
   LifeBuoy,
   FileText,
   Menu,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -39,9 +39,7 @@ export const sidebarTocItems = [
   {
     id: "examples",
     title: "Examples",
-    children: [
-      { id: "flat-variant", title: "Flat variant" },
-    ],
+    children: [{ id: "flat-variant", title: "Flat variant" }],
   },
 ];
 
@@ -69,7 +67,8 @@ const sidebarApiProps: ApiPropRow[] = [
   {
     prop: "isCollapsed",
     defaultVal: "undefined",
-    description: "Controlled collapsed state. If provided, the component operates in controlled mode.",
+    description:
+      "Controlled collapsed state. If provided, the component operates in controlled mode.",
   },
   {
     prop: "onCollapseChange",
@@ -241,21 +240,54 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
 
   const renderContent = () => {
     switch (activeItem1) {
-      case "Home": return <div className="p-8 md:p-12"><h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Home</h2><div className="grid grid-cols-1 md:grid-cols-3 gap-6"><div className="h-40 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div><div className="h-40 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div><div className="h-40 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div></div><div className="mt-6 h-64 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div></div>;
-      case "Inbox": return <div className="p-8 md:p-12"><h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Inbox</h2><div className="space-y-4"><div className="h-20 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div><div className="h-20 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div><div className="h-20 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div></div></div>;
-      case "Events": return <div className="p-8 md:p-12"><h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6">Events</h2><div className="h-96 bg-zinc-100 dark:bg-zinc-900/80 rounded-xl border border-zinc-200/50 dark:border-zinc-800/50"></div></div>;
-      default: return <div className="p-8 md:p-12"><h2 className="text-2xl font-bold text-zinc-900 dark:text-white mb-6">{activeItem1}</h2><p className="text-zinc-500">This is a simulated page transition.</p></div>;
+      case "Home":
+        return (
+          <div className="p-8 md:p-12">
+            <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-white">Home</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+            </div>
+            <div className="mt-6 h-64 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+          </div>
+        );
+      case "Inbox":
+        return (
+          <div className="p-8 md:p-12">
+            <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-white">Inbox</h2>
+            <div className="space-y-4">
+              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+            </div>
+          </div>
+        );
+      case "Events":
+        return (
+          <div className="p-8 md:p-12">
+            <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-white">Events</h2>
+            <div className="h-96 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+          </div>
+        );
+      default:
+        return (
+          <div className="p-8 md:p-12">
+            <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-white">{activeItem1}</h2>
+            <p className="text-zinc-500">This is a simulated page transition.</p>
+          </div>
+        );
     }
   };
 
   return (
-    <div className="pb-24  w-full flex flex-col items-center">
-      <div className="sticky top-14 z-30 w-full bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md py-4 px-4 sm:px-6 lg:px-8 transition-all border-b border-zinc-200/50 dark:border-zinc-800/50 mb-8">
-        <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 font-medium">
+    <div className="flex w-full flex-col items-center pb-24">
+      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
+        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
           {onOpenSidebar && (
             <button
               onClick={onOpenSidebar}
-              className="p-1.5 -ml-1.5 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 transition-colors"
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
               aria-label="Open Navigation"
             >
               <Menu size={18} />
@@ -267,45 +299,58 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 lg:px-12 space-y-16">
+      <div className="mx-auto w-full max-w-7xl space-y-16 px-4 sm:px-8 lg:px-12">
         {/* Title & Subtitle */}
         <div className="mt-4">
-          <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+          <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
               Sidebar Layout
             </h1>
-            <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
               Updated
             </span>
           </div>
           <p className="text-base text-zinc-600 dark:text-zinc-400">
-            A production-ready application layout simulating page transitions. Inspired by Catalyst UI.
+            A production-ready application layout simulating page transitions. Inspired by Catalyst
+            UI.
           </p>
         </div>
-
-
 
         {/* Main Preview & Code */}
         <section className="space-y-4">
           <ComponentPreview demoUrl="/demos/sidebar">
-            <div className="w-full flex items-center justify-center py-8 px-4 sm:px-8">
-              <div className="h-[700px] w-full max-w-5xl bg-zinc-50 dark:bg-zinc-900/50 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden flex relative">
+            <div className="flex w-full items-center justify-center px-4 py-8 sm:px-8">
+              <div className="relative flex h-[700px] w-full max-w-5xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                 <Sidebar variant="bordered" radius="md" size="md">
                   <SidebarHeader className="relative h-14">
                     <div className="flex items-center gap-3 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                      <div className="w-8 h-8 rounded-full bg-black dark:bg-white flex items-center justify-center shrink-0">
-                        <svg className="w-5 h-5 text-white dark:text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black dark:bg-white">
+                        <svg
+                          className="h-5 w-5 text-white dark:text-black"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"
+                          />
+                        </svg>
                       </div>
-                      <span className="font-bold text-[15px] text-zinc-900 dark:text-zinc-50 truncate">
+                      <span className="truncate text-[15px] font-bold text-zinc-900 dark:text-zinc-50">
                         Bird Studio
                       </span>
                     </div>
-                    <SidebarToggle className="absolute right-4 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 transition-all duration-300 bg-white dark:bg-zinc-950 shadow-sm border border-zinc-200 dark:border-zinc-800" />
+                    <SidebarToggle className="absolute right-4 border border-zinc-200 bg-white shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:border-zinc-800 dark:bg-zinc-950" />
                   </SidebarHeader>
 
                   <SidebarContent>
-                    <div className="px-3 mb-4 space-y-1 pt-2">
-                      <SidebarItem icon={<Search size={18} />} label="Search">Search</SidebarItem>
+                    <div className="mb-4 space-y-1 px-3 pt-2">
+                      <SidebarItem icon={<Search size={18} />} label="Search">
+                        Search
+                      </SidebarItem>
                       <SidebarItem
                         icon={<Inbox size={18} />}
                         isActive={activeItem1 === "Inbox"}
@@ -406,13 +451,19 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                   </SidebarContent>
 
                   <SidebarFooter className="border-t border-zinc-200 dark:border-zinc-800/50">
-                    <div className="flex items-center gap-3 px-1 overflow-hidden cursor-pointer group-aria-[expanded=false]:justify-center py-1">
-                      <div className="w-8 h-8 rounded-lg bg-zinc-200 dark:bg-zinc-800 shrink-0 border border-zinc-300 dark:border-zinc-700 overflow-hidden">
-                        <img src="https://i.pravatar.cc/150?img=47" alt="Avatar" className="w-full h-full object-cover" />
+                    <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 py-1 group-aria-[expanded=false]:justify-center">
+                      <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-zinc-300 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800">
+                        <img
+                          src="https://i.pravatar.cc/150?img=47"
+                          alt="Avatar"
+                          className="h-full w-full object-cover"
+                        />
                       </div>
-                      <div className="flex flex-col truncate group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0 transition-all duration-300">
-                        <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 truncate">Erica</span>
-                        <span className="text-xs text-zinc-500 truncate">erica@example.com</span>
+                      <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                        <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                          Erica
+                        </span>
+                        <span className="truncate text-xs text-zinc-500">erica@example.com</span>
                       </div>
                     </div>
                   </SidebarFooter>
@@ -437,52 +488,71 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
             Component API
           </h2>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Props for the <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">{"<Sidebar />"}</code> and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">{"<SidebarItem />"}</code> components.
+            Props for the{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              {"<Sidebar />"}
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              {"<SidebarItem />"}
+            </code>{" "}
+            components.
           </p>
 
           <div className="mt-6 mb-8">
-            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-4">&lt;Sidebar /&gt;</h4>
+            <h4 className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              &lt;Sidebar /&gt;
+            </h4>
             <ApiTable rows={sidebarApiProps} />
           </div>
 
           <div className="mt-6">
-            <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-4">&lt;SidebarItem /&gt;</h4>
+            <h4 className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              &lt;SidebarItem /&gt;
+            </h4>
             <ApiTable rows={sidebarItemApiProps} />
           </div>
         </section>
 
         {/* Examples */}
         <section id="examples" className="scroll-mt-24 space-y-10 pt-4">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-6">
-            Examples
-          </h2>
+          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-50">Examples</h2>
 
           <div id="flat-variant" className="scroll-mt-24 space-y-4">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-              Flat variant
-            </h3>
+            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Flat variant</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Using <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">variant="flat"</code> and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">size="sm"</code> to create a smaller, softer sidebar without an outer border. Perfect for inner layouts or modals.
+              Using{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+                variant="flat"
+              </code>{" "}
+              and{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+                size="sm"
+              </code>{" "}
+              to create a smaller, softer sidebar without an outer border. Perfect for inner layouts
+              or modals.
             </p>
 
             <ComponentPreview demoUrl="/demos/sidebar-flat">
-              <div className="w-full flex items-center justify-center p-4 bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-900 dark:to-zinc-950 rounded-2xl">
-                <div className="h-[480px] w-full max-w-3xl rounded-xl overflow-hidden flex relative shadow-xl border border-zinc-200/50 dark:border-zinc-800/50">
+              <div className="flex w-full items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-100 to-zinc-200 p-4 dark:from-zinc-900 dark:to-zinc-950">
+                <div className="relative flex h-[480px] w-full max-w-3xl overflow-hidden rounded-xl border border-zinc-200/50 shadow-xl dark:border-zinc-800/50">
                   <Sidebar variant="flat" size="sm" radius="full">
                     <SidebarHeader className="relative h-14">
                       <div className="flex items-center gap-2 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                        <span className="font-bold text-sm text-zinc-900 dark:text-zinc-50 tracking-wider">
+                        <span className="text-sm font-bold tracking-wider text-zinc-900 dark:text-zinc-50">
                           WORKSPACE
                         </span>
                       </div>
-                      <SidebarToggle className="absolute right-4 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 transition-all duration-300 bg-white/50 dark:bg-zinc-800/50 shadow-sm" />
+                      <SidebarToggle className="absolute right-4 bg-white/50 shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:bg-zinc-800/50" />
                     </SidebarHeader>
 
                     <SidebarContent>
-                      <div className="px-3 mb-2 pt-2">
-                        <div className="flex items-center gap-2 px-2.5 py-1.5 bg-zinc-200/50 dark:bg-zinc-800/50 rounded-full text-zinc-500 group-aria-[expanded=false]:justify-center transition-all">
+                      <div className="mb-2 px-3 pt-2">
+                        <div className="flex items-center gap-2 rounded-full bg-zinc-200/50 px-2.5 py-1.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
                           <Search size={14} className="shrink-0" />
-                          <span className="text-xs group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0 overflow-hidden transition-all whitespace-nowrap">Search...</span>
+                          <span className="overflow-hidden text-xs whitespace-nowrap transition-all group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                            Search...
+                          </span>
                         </div>
                       </div>
                       <SidebarNav>
@@ -514,21 +584,25 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                     </SidebarContent>
 
                     <SidebarFooter>
-                      <div className="flex items-center gap-3 px-1 overflow-hidden cursor-pointer group-aria-[expanded=false]:justify-center">
-                        <div className="w-8 h-8 rounded-full bg-indigo-500 shrink-0 border-2 border-white dark:border-zinc-900" />
-                        <div className="flex flex-col truncate group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0 transition-all duration-300">
-                          <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-50 truncate">Jane Doe</span>
-                          <span className="text-[10px] text-zinc-500 truncate">jane@example.com</span>
+                      <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 group-aria-[expanded=false]:justify-center">
+                        <div className="h-8 w-8 shrink-0 rounded-full border-2 border-white bg-indigo-500 dark:border-zinc-900" />
+                        <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                          <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                            Jane Doe
+                          </span>
+                          <span className="truncate text-[10px] text-zinc-500">
+                            jane@example.com
+                          </span>
                         </div>
                       </div>
                     </SidebarFooter>
                   </Sidebar>
 
-                  <div className="flex-1 bg-white dark:bg-zinc-950 p-6 flex flex-col items-center justify-center border-l border-zinc-200/50 dark:border-zinc-800/50">
-                    <div className="animate-pulse flex flex-col items-center gap-4 w-full max-w-sm">
-                      <div className="w-3/4 h-6 bg-zinc-200 dark:bg-zinc-800 rounded-md"></div>
-                      <div className="w-full h-24 bg-zinc-200 dark:bg-zinc-800 rounded-md"></div>
-                      <div className="w-5/6 h-4 bg-zinc-200 dark:bg-zinc-800 rounded-md"></div>
+                  <div className="flex flex-1 flex-col items-center justify-center border-l border-zinc-200/50 bg-white p-6 dark:border-zinc-800/50 dark:bg-zinc-950">
+                    <div className="flex w-full max-w-sm animate-pulse flex-col items-center gap-4">
+                      <div className="h-6 w-3/4 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
+                      <div className="h-24 w-full rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
+                      <div className="h-4 w-5/6 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
                     </div>
                   </div>
                 </div>

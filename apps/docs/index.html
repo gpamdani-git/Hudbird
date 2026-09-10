@@ -1,29 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <title>Hudbird UI - Fly through your development</title>
-    <meta name="description" content="A premium, featherweight UI Component Library built with React, TypeScript, and Tailwind CSS." />
-  
+    <meta
+      name="description"
+      content="A premium, featherweight UI Component Library built with React, TypeScript, and Tailwind CSS."
+    />
+
     <script id="theme-script">
       try {
-        var theme = localStorage.getItem('theme') || 'system';
-        if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
+        var theme = localStorage.getItem("theme") || "system";
+        if (
+          theme === "dark" ||
+          (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
         } else {
-          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.remove("dark");
         }
       } catch (_) {}
 
-      window.addEventListener('error', function(e) {
-        if (e.message && (e.message.indexOf('ResizeObserver loop') !== -1 || e.message.indexOf('undelivered notifications') !== -1)) {
+      window.addEventListener("error", function (e) {
+        if (
+          e.message &&
+          (e.message.indexOf("ResizeObserver loop") !== -1 ||
+            e.message.indexOf("undelivered notifications") !== -1)
+        ) {
           e.stopImmediatePropagation();
         }
       });
     </script>
   </head>
-  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-50 antialiased selection:bg-indigo-500 selection:text-white">
+  <body
+    class="bg-zinc-50 text-zinc-900 antialiased selection:bg-indigo-500 selection:text-white dark:bg-zinc-950 dark:text-zinc-50"
+  >
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

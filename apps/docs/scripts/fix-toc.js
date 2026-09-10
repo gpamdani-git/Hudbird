@@ -1,14 +1,14 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
-const PAGES_DIR = path.resolve(process.cwd(), 'apps/docs/src/pages');
+const PAGES_DIR = path.resolve(process.cwd(), "apps/docs/src/pages");
 
 function processFile(filePath) {
-  let content = fs.readFileSync(filePath, 'utf-8');
+  let content = fs.readFileSync(filePath, "utf-8");
 
   // Regex to find TOC array definition
   const tocRegex = /export const [a-zA-Z]+TocItems = \[\s*([\s\S]*?)\];/g;
-  
+
   let modified = false;
 
   const newContent = content.replace(tocRegex, (match, arrayContent) => {
@@ -23,7 +23,10 @@ function processFile(filePath) {
     if (arrayContent.includes('id: "component-api"')) {
       // Insert right before component-api
       // We can do a string replacement on the first occurrence of component-api
-      return match.replace(/\{\s*id:\s*"component-api"/, `{ id: "installation", title: "Installation" },\n  { id: "component-api"`);
+      return match.replace(
+        /\{\s*id:\s*"component-api"/,
+        `{ id: "installation", title: "Installation" },\n  { id: "component-api"`
+      );
     } else {
       // If no component-api, insert at the top of the array
       // Find the opening bracket and insert
@@ -32,7 +35,7 @@ function processFile(filePath) {
   });
 
   if (modified) {
-    fs.writeFileSync(filePath, newContent, 'utf-8');
+    fs.writeFileSync(filePath, newContent, "utf-8");
     console.log(`Updated TOC in ${path.basename(filePath)}`);
   }
 }
@@ -43,7 +46,7 @@ function scanDir(dir) {
     const fullPath = path.join(dir, file);
     if (fs.statSync(fullPath).isDirectory()) {
       scanDir(fullPath);
-    } else if (fullPath.endsWith('Doc.tsx')) {
+    } else if (fullPath.endsWith("Doc.tsx")) {
       processFile(fullPath);
     }
   }

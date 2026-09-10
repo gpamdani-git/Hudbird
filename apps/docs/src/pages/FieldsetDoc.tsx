@@ -47,9 +47,18 @@ export default function FieldsetDoc() {
       description: (
         <span>
           Visual container styling:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> (frameless grouping),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code> (subtle refined frame), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'card'</code> (solid elevated card with subtle tinted backdrop).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>{" "}
+          (frameless grouping),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>{" "}
+          (subtle refined frame), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'card'
+          </code>{" "}
+          (solid elevated card with subtle tinted backdrop).
         </span>
       ),
     },
@@ -59,26 +68,39 @@ export default function FieldsetDoc() {
       description: (
         <span>
           Layout structure:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'stacked'</code> (legend above form inputs),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'side-by-side'</code> (split 2-column section layout with left header), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'horizontal-labels'</code> (left-aligned input labels via <code className="font-mono text-[11px]">&lt;FieldsetRow&gt;</code>).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'stacked'
+          </code>{" "}
+          (legend above form inputs),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'side-by-side'
+          </code>{" "}
+          (split 2-column section layout with left header), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'horizontal-labels'
+          </code>{" "}
+          (left-aligned input labels via{" "}
+          <code className="font-mono text-[11px]">&lt;FieldsetRow&gt;</code>).
         </span>
       ),
     },
     {
       prop: "disabled",
       defaultVal: "false",
-      description: "When true, disables and applies macro opacity to the entire group of input controls.",
+      description:
+        "When true, disables and applies macro opacity to the entire group of input controls.",
     },
     {
       prop: "isInvalid",
       defaultVal: "false",
-      description: "When true, highlights invalid container styling and renders child <FieldsetErrorText> alerts.",
+      description:
+        "When true, highlights invalid container styling and renders child <FieldsetErrorText> alerts.",
     },
     {
       prop: "children",
       defaultVal: "-",
-      description: "Composable components: <FieldsetHeader>, <FieldsetContent>, <FieldsetRow>, <FieldsetLegend>, <FieldsetHelperText>, <FieldsetErrorText>, and nested form inputs.",
+      description:
+        "Composable components: <FieldsetHeader>, <FieldsetContent>, <FieldsetRow>, <FieldsetLegend>, <FieldsetHelperText>, <FieldsetErrorText>, and nested form inputs.",
     },
   ];
 
@@ -86,16 +108,18 @@ export default function FieldsetDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Fieldset
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Structural container used to group related form controls, provide legends, render descriptive helper guidance, support left-aligned labels or split section layouts, and broadcast collective error states.
+          Structural container used to group related form controls, provide legends, render
+          descriptive helper guidance, support left-aligned labels or split section layouts, and
+          broadcast collective error states.
         </p>
       </div>
 
@@ -124,7 +148,7 @@ export default function FieldsetDoc() {
                   <div className="relative">
                     <select
                       defaultValue="Canada"
-                      className="w-full h-10 px-3.5 pr-9 bg-zinc-100 dark:bg-zinc-800 border-none dark:border-zinc-700 rounded-xl text-sm text-zinc-100 outline-none appearance-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors cursor-pointer"
+                      className="h-10 w-full cursor-pointer appearance-none rounded-xl border-none bg-zinc-100 px-3.5 pr-9 text-sm text-zinc-100 transition-colors outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-700 dark:bg-zinc-800"
                     >
                       <option value="United States">United States</option>
                       <option value="Canada">Canada</option>
@@ -132,9 +156,19 @@ export default function FieldsetDoc() {
                       <option value="Indonesia">Indonesia</option>
                       <option value="Australia">Australia</option>
                     </select>
-                    <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
-                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+                      <svg
+                        className="h-4 w-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -198,7 +232,6 @@ function ShippingDetailsExample() {
         <InstallationTabs componentName="fieldset" manualCode={fieldsetCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -207,7 +240,35 @@ function ShippingDetailsExample() {
         <ApiTable
           note={
             <span>
-              Composable using <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;Fieldset&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetHeader&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetContent&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetRow&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetLegend&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetHelperText&gt;</strong>, and <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;FieldsetErrorText&gt;</strong>.
+              Composable using{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;Fieldset&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetHeader&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetContent&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetRow&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetLegend&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetHelperText&gt;
+              </strong>
+              , and{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;FieldsetErrorText&gt;
+              </strong>
+              .
             </span>
           }
           rows={apiRows}
@@ -217,7 +278,7 @@ function ShippingDetailsExample() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -228,7 +289,11 @@ function ShippingDetailsExample() {
             Left-Aligned Labels (Horizontal Style)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Place field labels horizontally on the left side of the input controls using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">&lt;FieldsetRow label="..."&gt;</code> for clean, high-density form layouts:
+            Place field labels horizontally on the left side of the input controls using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              &lt;FieldsetRow label="..."&gt;
+            </code>{" "}
+            for clean, high-density form layouts:
           </p>
 
           <ComponentPreview>
@@ -254,7 +319,7 @@ function ShippingDetailsExample() {
                     <div className="relative">
                       <select
                         defaultValue="Canada"
-                        className="w-full h-10 px-3.5 pr-9 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm text-zinc-900 dark:text-zinc-100 outline-none appearance-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors cursor-pointer"
+                        className="h-10 w-full cursor-pointer appearance-none rounded-xl border border-zinc-200 bg-zinc-100 px-3.5 pr-9 text-sm text-zinc-900 transition-colors outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                       >
                         <option value="United States">United States</option>
                         <option value="Canada">Canada</option>
@@ -262,9 +327,19 @@ function ShippingDetailsExample() {
                         <option value="Indonesia">Indonesia</option>
                         <option value="Australia">Australia</option>
                       </select>
-                      <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none text-zinc-400">
-                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+                      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-zinc-400">
+                        <svg
+                          className="h-4 w-4"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                          />
                         </svg>
                       </div>
                     </div>
@@ -274,7 +349,7 @@ function ShippingDetailsExample() {
                     <textarea
                       rows={3}
                       placeholder=""
-                      className="w-full p-3 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-colors resize-y min-h-[80px]"
+                      className="min-h-[80px] w-full resize-y rounded-xl border border-zinc-200 bg-zinc-100 p-3 text-sm text-zinc-900 transition-colors outline-none placeholder:text-zinc-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                     />
                   </FieldsetRow>
                 </FieldsetContent>
@@ -331,7 +406,11 @@ function Example() {
             Basic Stacked Fieldset
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Clean frameless section grouping using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="flat"</code> with proper vertical spacing:
+            Clean frameless section grouping using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="flat"
+            </code>{" "}
+            with proper vertical spacing:
           </p>
 
           <ComponentPreview>
@@ -345,15 +424,8 @@ function Example() {
                 </FieldsetHeader>
 
                 <FieldsetContent>
-                  <Input
-                    label="Full Name"
-                    placeholder="Jane Doe"
-                  />
-                  <Input
-                    label="Billing Email"
-                    type="email"
-                    placeholder="billing@acme.org"
-                  />
+                  <Input label="Full Name" placeholder="Jane Doe" />
+                  <Input label="Billing Email" type="email" placeholder="billing@acme.org" />
                 </FieldsetContent>
               </Fieldset>
             </div>
@@ -395,21 +467,26 @@ function Example() {
             Side-by-Side (Split Section Style)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Render the legend and helper descriptions on the left column using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">layout="side-by-side"</code>, ideal for modern settings dashboards and multi-section account pages:
+            Render the legend and helper descriptions on the left column using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              layout="side-by-side"
+            </code>
+            , ideal for modern settings dashboards and multi-section account pages:
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-3xl py-4 space-y-8">
+            <div className="w-full max-w-3xl space-y-8 py-4">
               <Fieldset layout="side-by-side">
                 <FieldsetHeader>
                   <FieldsetLegend>Company & Organization</FieldsetLegend>
                   <FieldsetHelperText>
-                    This information appears on team invoices, tax summaries, and customer-facing reports.
+                    This information appears on team invoices, tax summaries, and customer-facing
+                    reports.
                   </FieldsetHelperText>
                 </FieldsetHeader>
 
                 <FieldsetContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <Input label="Organization Name" defaultValue="Acme Global Inc." />
                     <Input label="Tax ID / VAT" placeholder="US987654321" />
                   </div>
@@ -423,7 +500,8 @@ function Example() {
                 <FieldsetHeader>
                   <FieldsetLegend>Billing Preferences</FieldsetLegend>
                   <FieldsetHelperText>
-                    Configure notification recipients and automatic recurring top-ups for bandwidth credits.
+                    Configure notification recipients and automatic recurring top-ups for bandwidth
+                    credits.
                   </FieldsetHelperText>
                 </FieldsetHeader>
 
@@ -431,10 +509,7 @@ function Example() {
                   <Input label="Invoice Notification Email" placeholder="finance@acme.com" />
                   {/* Fixed Spacing Between Checkboxes */}
                   <div className="flex flex-col gap-3 pt-2">
-                    <Checkbox
-                      label="Auto-renew active subscription cycle"
-                      defaultChecked
-                    />
+                    <Checkbox label="Auto-renew active subscription cycle" defaultChecked />
                     <Checkbox
                       label="Send carbon copy of receipt to accounting team"
                       defaultChecked
@@ -507,7 +582,15 @@ function SideBySideExample() {
             Bordered & Card Variants
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Encase related controls inside an aesthetic frame using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="bordered"</code> or <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="card"</code>:
+            Encase related controls inside an aesthetic frame using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="bordered"
+            </code>{" "}
+            or{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="card"
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -522,18 +605,10 @@ function SideBySideExample() {
                 </FieldsetHeader>
 
                 <FieldsetContent>
-                  <Input
-                    label="API Key Label"
-                    placeholder="e.g. Production Cluster v2"
-                  />
+                  <Input label="API Key Label" placeholder="e.g. Production Cluster v2" />
                   <div className="flex flex-col gap-3 pt-2">
-                    <Checkbox
-                      label="Grant Read & Write Storage Permissions"
-                      defaultChecked
-                    />
-                    <Checkbox
-                      label="Restrict requests to specified IP whitelist"
-                    />
+                    <Checkbox label="Grant Read & Write Storage Permissions" defaultChecked />
+                    <Checkbox label="Restrict requests to specified IP whitelist" />
                   </div>
                 </FieldsetContent>
               </Fieldset>
@@ -548,10 +623,7 @@ function SideBySideExample() {
                 </FieldsetHeader>
 
                 <FieldsetContent>
-                  <Input
-                    label="Log Retention (Days)"
-                    defaultValue="90"
-                  />
+                  <Input label="Log Retention (Days)" defaultValue="90" />
                 </FieldsetContent>
               </Fieldset>
             </div>
@@ -627,11 +699,7 @@ function SideBySideExample() {
 
           <ComponentPreview>
             <div className="w-full max-w-lg py-2">
-              <Fieldset
-                variant="bordered"
-                isInvalid={isFormInvalid}
-                disabled={isFormDisabled}
-              >
+              <Fieldset variant="bordered" isInvalid={isFormInvalid} disabled={isFormDisabled}>
                 <FieldsetHeader>
                   <FieldsetLegend>Payment Method</FieldsetLegend>
                   <FieldsetHelperText>
@@ -646,16 +714,8 @@ function SideBySideExample() {
                     isInvalid={isFormInvalid}
                   />
                   <div className="grid grid-cols-2 gap-4">
-                    <Input
-                      label="Expiry Date"
-                      placeholder="MM/YY"
-                      isInvalid={isFormInvalid}
-                    />
-                    <Input
-                      label="CVC / CVV"
-                      placeholder="123"
-                      isInvalid={isFormInvalid}
-                    />
+                    <Input label="Expiry Date" placeholder="MM/YY" isInvalid={isFormInvalid} />
+                    <Input label="CVC / CVV" placeholder="123" isInvalid={isFormInvalid} />
                   </div>
 
                   <FieldsetErrorText>

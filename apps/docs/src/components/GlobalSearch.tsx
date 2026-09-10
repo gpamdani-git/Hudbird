@@ -196,14 +196,14 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
   const renderItemIcon = (item: SearchItem) => {
     switch (item.category) {
       case "Getting Started":
-        return <BookOpen className="w-4 h-4 text-indigo-500 dark:text-indigo-400 shrink-0" />;
+        return <BookOpen className="h-4 w-4 shrink-0 text-indigo-500 dark:text-indigo-400" />;
       case "Layouts":
-        return <Layout className="w-4 h-4 text-purple-500 dark:text-purple-400 shrink-0" />;
+        return <Layout className="h-4 w-4 shrink-0 text-purple-500 dark:text-purple-400" />;
       case "Sections":
-        return <Hash className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />;
+        return <Hash className="h-4 w-4 shrink-0 text-emerald-500 dark:text-emerald-400" />;
       case "Components":
       default:
-        return <Layers className="w-4 h-4 text-zinc-500 dark:text-zinc-400 shrink-0" />;
+        return <Layers className="h-4 w-4 shrink-0 text-zinc-500 dark:text-zinc-400" />;
     }
   };
 
@@ -217,15 +217,15 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
           id="global-search-bar"
           onClick={() => setIsOpen(true)}
           aria-label="Search documentation"
-          className="hidden sm:flex items-center justify-between w-48 md:w-64 lg:w-72 xl:w-80 h-9 px-3 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-900/60 hover:bg-zinc-100/80 dark:hover:bg-zinc-900 text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all text-xs select-none group cursor-pointer shadow-2xs"
+          className="group hidden h-9 w-48 cursor-pointer items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-3 text-xs text-zinc-400 shadow-2xs transition-all select-none hover:border-zinc-300 hover:bg-zinc-100/80 hover:text-zinc-600 sm:flex md:w-64 lg:w-72 xl:w-80 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:text-zinc-300"
         >
           <div className="flex items-center gap-2.5 truncate">
-            <Search className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors shrink-0" />
+            <Search className="h-3.5 w-3.5 shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-300" />
             <span className="truncate">Search documentation...</span>
           </div>
 
           <div className="flex items-center gap-1">
-            <kbd className="inline-flex items-center px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-[10px] font-medium font-mono text-zinc-500 dark:text-zinc-400 shadow-2xs group-hover:border-zinc-300 dark:group-hover:border-zinc-600 transition-colors">
+            <kbd className="inline-flex items-center rounded border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 shadow-2xs transition-colors group-hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:border-zinc-600">
               {isMac ? "⌘" : "Ctrl+"}K
             </kbd>
           </div>
@@ -237,16 +237,16 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
           id="mobile-global-search-trigger"
           onClick={() => setIsOpen(true)}
           aria-label="Search documentation"
-          className="sm:hidden p-2 rounded-lg text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+          className="rounded-lg p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 sm:hidden dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
         >
-          <Search className="w-4 h-4" />
+          <Search className="h-4 w-4" />
         </button>
       </div>
 
       {/* 2. Global Search Command Palette Modal */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-6 md:pt-20 bg-zinc-950/40 dark:bg-zinc-950/70 backdrop-blur-xs animate-in fade-in duration-150"
+          className="animate-in fade-in fixed inset-0 z-50 flex items-start justify-center bg-zinc-950/40 p-3 backdrop-blur-xs duration-150 sm:p-6 md:pt-20 dark:bg-zinc-950/70"
           onClick={() => setIsOpen(false)}
           role="presentation"
         >
@@ -256,11 +256,11 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
             aria-label="Search documentation"
             id="global-search-dialog"
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-xl rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[75vh] animate-in zoom-in-95 duration-150"
+            className="animate-in zoom-in-95 flex max-h-[85vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl duration-150 sm:max-h-[75vh] dark:border-zinc-800 dark:bg-zinc-900"
           >
             {/* Search Input Box */}
-            <div className="relative flex items-center px-4 py-3.5 border-b border-zinc-200 dark:border-zinc-800 gap-3">
-              <Search className="w-5 h-5 text-zinc-400 dark:text-zinc-500 shrink-0" />
+            <div className="relative flex items-center gap-3 border-b border-zinc-200 px-4 py-3.5 dark:border-zinc-800">
+              <Search className="h-5 w-5 shrink-0 text-zinc-400 dark:text-zinc-500" />
               <input
                 ref={inputRef}
                 type="text"
@@ -268,7 +268,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleInputKeyDown}
                 placeholder="Search components, layouts, guides, props..."
-                className="w-full bg-transparent text-sm sm:text-base text-zinc-900 dark:text-white placeholder:text-zinc-400 dark:placeholder:text-zinc-500 outline-none border-none p-0 focus:ring-0"
+                className="w-full border-none bg-transparent p-0 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-0 sm:text-base dark:text-white dark:placeholder:text-zinc-500"
                 aria-autocomplete="list"
                 aria-controls="search-results-list"
               />
@@ -277,17 +277,17 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                 <button
                   type="button"
                   onClick={() => setQuery("")}
-                  className="p-1 rounded-md text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                  className="rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
                   aria-label="Clear query"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="h-4 w-4" />
                 </button>
               )}
 
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="hidden sm:inline-flex px-1.5 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-[10px] font-medium font-mono text-zinc-500 dark:text-zinc-400"
+                className="hidden rounded border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 sm:inline-flex dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
               >
                 ESC
               </button>
@@ -297,11 +297,11 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
             <div
               ref={resultsContainerRef}
               id="search-results-list"
-              className="flex-1 overflow-y-auto p-2 sm:p-3 space-y-1"
+              className="flex-1 space-y-1 overflow-y-auto p-2 sm:p-3"
             >
               {filteredResults.length > 0 ? (
                 <>
-                  <div className="px-3 py-1.5 text-[11px] font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                  <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
                     {query.trim() ? "Search Results" : "Quick Links & Suggestions"}
                   </div>
 
@@ -315,17 +315,17 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                         aria-selected={isSelected}
                         onClick={() => handleSelect(item)}
                         onMouseEnter={() => setSelectedIndex(index)}
-                        className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer transition-colors ${
+                        className={`group flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 transition-colors ${
                           isSelected
-                            ? "bg-zinc-100 dark:bg-zinc-800/90 text-zinc-950 dark:text-white shadow-2xs"
-                            : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/50"
+                            ? "bg-zinc-100 text-zinc-950 shadow-2xs dark:bg-zinc-800/90 dark:text-white"
+                            : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/50"
                         }`}
                       >
-                        <div className="flex items-center gap-3 min-w-0">
+                        <div className="flex min-w-0 items-center gap-3">
                           <div
-                            className={`p-1.5 rounded-lg transition-colors ${
+                            className={`rounded-lg p-1.5 transition-colors ${
                               isSelected
-                                ? "bg-white dark:bg-zinc-700 shadow-2xs"
+                                ? "bg-white shadow-2xs dark:bg-zinc-700"
                                 : "bg-zinc-100 dark:bg-zinc-800/80"
                             }`}
                           >
@@ -335,12 +335,12 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                           <div className="min-w-0">
                             <div className="flex items-center gap-2">
                               {item.parent && (
-                                <span className="text-xs text-zinc-400 dark:text-zinc-500 font-normal truncate">
+                                <span className="truncate text-xs font-normal text-zinc-400 dark:text-zinc-500">
                                   {item.parent} &gt;
                                 </span>
                               )}
                               <span
-                                className={`text-sm font-medium truncate ${
+                                className={`truncate text-sm font-medium ${
                                   isSelected ? "text-zinc-950 dark:text-white" : ""
                                 }`}
                               >
@@ -348,30 +348,30 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                               </span>
 
                               {item.isNew && (
-                                <span className="text-[10px] font-semibold px-1.5 py-0.2 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-md border border-emerald-500/20 leading-none">
+                                <span className="py-0.2 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] leading-none font-semibold text-emerald-600 dark:text-emerald-400">
                                   New
                                 </span>
                               )}
 
-                              <span className="text-[10px] text-zinc-400 dark:text-zinc-500 uppercase tracking-wider font-semibold">
+                              <span className="text-[10px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
                                 • {item.category}
                               </span>
                             </div>
 
-                            <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-1 mt-0.5">
+                            <p className="mt-0.5 line-clamp-1 text-xs text-zinc-500 dark:text-zinc-400">
                               {item.description}
                             </p>
                           </div>
                         </div>
 
-                        <div className="flex items-center pl-3 shrink-0">
+                        <div className="flex shrink-0 items-center pl-3">
                           {isSelected ? (
-                            <span className="flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400 font-medium">
+                            <span className="flex items-center gap-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
                               <span className="hidden sm:inline">Jump to</span>
-                              <CornerDownLeft className="w-3.5 h-3.5 text-zinc-500 dark:text-zinc-400" />
+                              <CornerDownLeft className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
                             </span>
                           ) : (
-                            <ArrowRight className="w-3.5 h-3.5 text-transparent group-hover:text-zinc-400 dark:group-hover:text-zinc-500 transition-colors" />
+                            <ArrowRight className="h-3.5 w-3.5 text-transparent transition-colors group-hover:text-zinc-400 dark:group-hover:text-zinc-500" />
                           )}
                         </div>
                       </div>
@@ -380,25 +380,25 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
                 </>
               ) : (
                 /* Empty state when no matches found */
-                <div className="py-12 px-6 text-center">
-                  <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-                    <FileQuestion className="w-6 h-6" />
+                <div className="px-6 py-12 text-center">
+                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">
+                    <FileQuestion className="h-6 w-6" />
                   </div>
-                  <h4 className="text-sm font-semibold text-zinc-900 dark:text-white mb-1">
+                  <h4 className="mb-1 text-sm font-semibold text-zinc-900 dark:text-white">
                     No results found for &ldquo;{query}&rdquo;
                   </h4>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 max-w-xs mx-auto mb-4">
+                  <p className="mx-auto mb-4 max-w-xs text-xs text-zinc-500 dark:text-zinc-400">
                     We couldn&apos;t find any documentation or components matching your search term.
                   </p>
                   <div className="flex flex-wrap justify-center gap-1.5">
-                    <span className="text-xs text-zinc-400 py-1">Try:</span>
+                    <span className="py-1 text-xs text-zinc-400">Try:</span>
                     {["Button", "Tabs", "Navbar", "Accordion", "Input", "Layouts"].map(
                       (suggest) => (
                         <button
                           key={suggest}
                           type="button"
                           onClick={() => setQuery(suggest)}
-                          className="px-2 py-0.5 text-xs rounded-md bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 transition-colors"
+                          className="rounded-md bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
                         >
                           {suggest}
                         </button>
@@ -410,32 +410,32 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
             </div>
 
             {/* Modal Bottom Keyboard Navigation Helper Footer */}
-            <div className="px-4 py-2.5 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center justify-between text-[11px] text-zinc-500 dark:text-zinc-400">
-              <div className="hidden sm:flex items-center gap-3">
+            <div className="flex items-center justify-between border-t border-zinc-200 bg-zinc-50/50 px-4 py-2.5 text-[11px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
+              <div className="hidden items-center gap-3 sm:flex">
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 font-mono text-[10px]">
+                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
                     ↑
                   </kbd>
-                  <kbd className="px-1 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 font-mono text-[10px]">
+                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
                     ↓
                   </kbd>{" "}
                   navigate
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 font-mono text-[10px]">
+                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
                     ↵
                   </kbd>{" "}
                   select
                 </span>
                 <span className="flex items-center gap-1">
-                  <kbd className="px-1 py-0.5 rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 font-mono text-[10px]">
+                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
                     esc
                   </kbd>{" "}
                   close
                 </span>
               </div>
 
-              <div className="w-full sm:w-auto flex items-center justify-between sm:justify-end gap-2 text-zinc-400 dark:text-zinc-500">
+              <div className="flex w-full items-center justify-between gap-2 text-zinc-400 sm:w-auto sm:justify-end dark:text-zinc-500">
                 <span>
                   {query.trim()
                     ? `${filteredResults.length} result${filteredResults.length === 1 ? "" : "s"}`

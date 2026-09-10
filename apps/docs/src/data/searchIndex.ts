@@ -16,8 +16,18 @@ export const searchIndex: SearchItem[] = [
     title: "Getting started",
     category: "Getting Started",
     path: "/",
-    description: "Overview, quick installation, dependencies, Tailwind CSS integration, and client router setup.",
-    keywords: ["install", "setup", "quickstart", "tailwind", "react", "guide", "overview", "introduction"],
+    description:
+      "Overview, quick installation, dependencies, Tailwind CSS integration, and client router setup.",
+    keywords: [
+      "install",
+      "setup",
+      "quickstart",
+      "tailwind",
+      "react",
+      "guide",
+      "overview",
+      "introduction",
+    ],
   },
 
   // Layouts
@@ -26,8 +36,18 @@ export const searchIndex: SearchItem[] = [
     title: "Sidebar Layout",
     category: "Layouts",
     path: "/layouts/sidebar",
-    description: "Responsive multi-column application layout with collapsible sidebar and mobile drawer.",
-    keywords: ["layout", "sidebar", "navigation", "drawer", "admin", "dashboard", "collapsible", "shell"],
+    description:
+      "Responsive multi-column application layout with collapsible sidebar and mobile drawer.",
+    keywords: [
+      "layout",
+      "sidebar",
+      "navigation",
+      "drawer",
+      "admin",
+      "dashboard",
+      "collapsible",
+      "shell",
+    ],
     isNew: true,
   },
   {
@@ -35,7 +55,8 @@ export const searchIndex: SearchItem[] = [
     title: "Stacked Layout",
     category: "Layouts",
     path: "/layouts/stacked",
-    description: "Top navbar application shell designed for consumer apps, dashboards, and portals.",
+    description:
+      "Top navbar application shell designed for consumer apps, dashboards, and portals.",
     keywords: ["layout", "stacked", "topbar", "navbar", "header", "consumer", "container", "shell"],
     isNew: true,
   },
@@ -44,7 +65,8 @@ export const searchIndex: SearchItem[] = [
     title: "Auth Layout",
     category: "Layouts",
     path: "/layouts/auth",
-    description: "Split-screen and centered authentication screens for sign in, sign up, and password recovery.",
+    description:
+      "Split-screen and centered authentication screens for sign in, sign up, and password recovery.",
     keywords: ["layout", "auth", "login", "register", "signin", "signup", "authentication", "form"],
     isNew: true,
   },
@@ -55,7 +77,8 @@ export const searchIndex: SearchItem[] = [
     title: "Accordion",
     category: "Components",
     path: "/accordion",
-    description: "Vertically collapsing disclosure panels with single or multiple expansion, light, bordered, and splitted variants.",
+    description:
+      "Vertically collapsing disclosure panels with single or multiple expansion, light, bordered, and splitted variants.",
     keywords: ["collapse", "expand", "disclosure", "faq", "drawer", "toggle", "panels"],
     isNew: true,
   },
@@ -64,15 +87,26 @@ export const searchIndex: SearchItem[] = [
     title: "Alert",
     category: "Components",
     path: "/alert",
-    description: "Contextual feedback banners with primary, success, warning, and danger status colors and dismissible controls.",
-    keywords: ["banner", "notification", "callout", "message", "warning", "error", "success", "info"],
+    description:
+      "Contextual feedback banners with primary, success, warning, and danger status colors and dismissible controls.",
+    keywords: [
+      "banner",
+      "notification",
+      "callout",
+      "message",
+      "warning",
+      "error",
+      "success",
+      "info",
+    ],
   },
   {
     id: "comp-avatar",
     title: "Avatar",
     category: "Components",
     path: "/avatar",
-    description: "User profile representations with image fallback, custom initials, grouped stacks, and border radii.",
+    description:
+      "User profile representations with image fallback, custom initials, grouped stacks, and border radii.",
     keywords: ["profile", "user", "picture", "image", "initials", "avatar group", "photo"],
   },
   {
@@ -80,7 +114,8 @@ export const searchIndex: SearchItem[] = [
     title: "Badge",
     category: "Components",
     path: "/badge",
-    description: "Compact status indicators, numerical counters, and floating notification badges for avatars and buttons.",
+    description:
+      "Compact status indicators, numerical counters, and floating notification badges for avatars and buttons.",
     keywords: ["counter", "indicator", "pill", "tag", "notification", "chip", "status"],
   },
   {
@@ -88,15 +123,26 @@ export const searchIndex: SearchItem[] = [
     title: "Button",
     category: "Components",
     path: "/button",
-    description: "Interactive button elements with 7 variants (solid, bordered, light, flat, faded, shadow, ghost), loading spinners, and icon slots.",
-    keywords: ["action", "click", "cta", "icon button", "link button", "solid", "outline", "loading"],
+    description:
+      "Interactive button elements with 7 variants (solid, bordered, light, flat, faded, shadow, ghost), loading spinners, and icon slots.",
+    keywords: [
+      "action",
+      "click",
+      "cta",
+      "icon button",
+      "link button",
+      "solid",
+      "outline",
+      "loading",
+    ],
   },
   {
     id: "comp-card",
     title: "Card",
     category: "Components",
     path: "/card",
-    description: "Versatile content surface with header, body, footer partitions, pressable/hoverable interactions, and blurred image overlays.",
+    description:
+      "Versatile content surface with header, body, footer partitions, pressable/hoverable interactions, and blurred image overlays.",
     keywords: ["container", "panel", "surface", "box", "tile", "image card", "media"],
   },
   {
@@ -104,7 +150,8 @@ export const searchIndex: SearchItem[] = [
     title: "Checkbox",
     category: "Components",
     path: "/checkbox",
-    description: "Multi-option selection control supporting colored checks, helper descriptions, validation states, and checkbox groups.",
+    description:
+      "Multi-option selection control supporting colored checks, helper descriptions, validation states, and checkbox groups.",
     keywords: ["check", "toggle", "form", "option", "selection", "checkbox group", "multiselect"],
   },
   {
@@ -112,7 +159,8 @@ export const searchIndex: SearchItem[] = [
     title: "Combobox",
     category: "Components",
     path: "/combobox",
-    description: "Autocomplete search inputs with searchable dropdown popups, single select, and multi-select chip tags.",
+    description:
+      "Autocomplete search inputs with searchable dropdown popups, single select, and multi-select chip tags.",
     keywords: ["autocomplete", "search", "filter", "chips", "tags", "typeahead", "suggest"],
     isNew: true,
   },
@@ -121,7 +169,8 @@ export const searchIndex: SearchItem[] = [
     title: "Description list",
     category: "Components",
     path: "/description-list",
-    description: "Key-value pair layout for user profiles, order summaries, specifications, and invoice details.",
+    description:
+      "Key-value pair layout for user profiles, order summaries, specifications, and invoice details.",
     keywords: ["definition", "metadata", "key value", "details", "summary", "profile", "invoice"],
   },
   {
@@ -129,7 +178,8 @@ export const searchIndex: SearchItem[] = [
     title: "Dialog",
     category: "Components",
     path: "/dialog",
-    description: "Modal windows and alert dialogs for critical confirmations, destructive warnings, and contextual workflows.",
+    description:
+      "Modal windows and alert dialogs for critical confirmations, destructive warnings, and contextual workflows.",
     keywords: ["modal", "popup", "confirm", "alert", "prompt", "window", "overlay"],
   },
   {
@@ -137,7 +187,8 @@ export const searchIndex: SearchItem[] = [
     title: "Divider",
     category: "Components",
     path: "/divider",
-    description: "Horizontal and vertical content separators with middle text labels and dashed receipt styles.",
+    description:
+      "Horizontal and vertical content separators with middle text labels and dashed receipt styles.",
     keywords: ["separator", "line", "split", "rule", "border", "horizontal", "vertical"],
   },
   {
@@ -145,7 +196,8 @@ export const searchIndex: SearchItem[] = [
     title: "Dropdown",
     category: "Components",
     path: "/dropdown",
-    description: "Flyout action menu with icons, shortcut key labels, section dividers, and destructive action styling.",
+    description:
+      "Flyout action menu with icons, shortcut key labels, section dividers, and destructive action styling.",
     keywords: ["menu", "actions", "popover", "context menu", "options", "overflow"],
   },
   {
@@ -153,7 +205,8 @@ export const searchIndex: SearchItem[] = [
     title: "Fieldset",
     category: "Components",
     path: "/fieldset",
-    description: "Grouped form inputs with legends, horizontal left-aligned labels, side-by-side splits, and card containers.",
+    description:
+      "Grouped form inputs with legends, horizontal left-aligned labels, side-by-side splits, and card containers.",
     keywords: ["form group", "legend", "form layout", "inputs", "label placement"],
   },
   {
@@ -161,7 +214,8 @@ export const searchIndex: SearchItem[] = [
     title: "Heading",
     category: "Components",
     path: "/heading",
-    description: "Semantic typographic hierarchy from H1 to H6 with decorative accent lines, muted subtitles, and custom colors.",
+    description:
+      "Semantic typographic hierarchy from H1 to H6 with decorative accent lines, muted subtitles, and custom colors.",
     keywords: ["typography", "h1", "h2", "h3", "title", "header", "font"],
   },
   {
@@ -169,7 +223,8 @@ export const searchIndex: SearchItem[] = [
     title: "Input",
     category: "Components",
     path: "/input",
-    description: "Text inputs with flat, bordered, and underlined styles, start/end content icons, clear buttons, and validation messages.",
+    description:
+      "Text inputs with flat, bordered, and underlined styles, start/end content icons, clear buttons, and validation messages.",
     keywords: ["textfield", "form", "text", "search input", "password", "validation", "label"],
   },
   {
@@ -177,8 +232,17 @@ export const searchIndex: SearchItem[] = [
     title: "Navbar",
     category: "Components",
     path: "/navbar",
-    description: "Top navigation header with responsive mobile drawer variations (slide-down, left, right, fullscreen), glassmorphism, and mega menus.",
-    keywords: ["header", "navigation", "menu", "mobile drawer", "mega menu", "glassmorphism", "app bar"],
+    description:
+      "Top navigation header with responsive mobile drawer variations (slide-down, left, right, fullscreen), glassmorphism, and mega menus.",
+    keywords: [
+      "header",
+      "navigation",
+      "menu",
+      "mobile drawer",
+      "mega menu",
+      "glassmorphism",
+      "app bar",
+    ],
     isNew: true,
   },
   {
@@ -186,7 +250,8 @@ export const searchIndex: SearchItem[] = [
     title: "Pagination",
     category: "Components",
     path: "/pagination",
-    description: "Page switching controls with smart ellipsis range calculation, shapes, colors, and infinite scroll simulations.",
+    description:
+      "Page switching controls with smart ellipsis range calculation, shapes, colors, and infinite scroll simulations.",
     keywords: ["pager", "infinite scroll", "pages", "navigation", "next", "previous", "ellipsis"],
     isNew: true,
   },
@@ -195,7 +260,8 @@ export const searchIndex: SearchItem[] = [
     title: "Radio group",
     category: "Components",
     path: "/radio-group",
-    description: "Mutually exclusive options with vertical/horizontal layouts, custom card tiles, descriptions, and error states.",
+    description:
+      "Mutually exclusive options with vertical/horizontal layouts, custom card tiles, descriptions, and error states.",
     keywords: ["radio", "choices", "single select", "card tile", "plan picker", "options"],
     isNew: true,
   },
@@ -204,7 +270,8 @@ export const searchIndex: SearchItem[] = [
     title: "Select",
     category: "Components",
     path: "/select",
-    description: "Dropdown picker component supporting option icons, custom corner radii, helper descriptions, and error validation.",
+    description:
+      "Dropdown picker component supporting option icons, custom corner radii, helper descriptions, and error validation.",
     keywords: ["dropdown", "picker", "options", "native select", "choice"],
     isNew: true,
   },
@@ -213,7 +280,8 @@ export const searchIndex: SearchItem[] = [
     title: "Skeleton",
     category: "Components",
     path: "/skeleton",
-    description: "Placeholder loading states with pulse and wave animations in circular, rectangular, and composable layout presets.",
+    description:
+      "Placeholder loading states with pulse and wave animations in circular, rectangular, and composable layout presets.",
     keywords: ["loading", "placeholder", "shimmer", "wave", "pulse", "fallback", "ghost"],
     isNew: true,
   },
@@ -222,7 +290,8 @@ export const searchIndex: SearchItem[] = [
     title: "Switch",
     category: "Components",
     path: "/switch",
-    description: "Binary toggle control for enabling or disabling settings with sizes, accent colors, and inline labels.",
+    description:
+      "Binary toggle control for enabling or disabling settings with sizes, accent colors, and inline labels.",
     keywords: ["toggle", "checkbox", "boolean", "enable", "disable", "setting"],
     isNew: true,
   },
@@ -231,7 +300,8 @@ export const searchIndex: SearchItem[] = [
     title: "Table",
     category: "Components",
     path: "/table",
-    description: "Structured data tables with hoverable rows, striped patterns, bordered grids, and alignment utilities.",
+    description:
+      "Structured data tables with hoverable rows, striped patterns, bordered grids, and alignment utilities.",
     keywords: ["grid", "data", "rows", "columns", "tabular", "dataset", "list"],
     isNew: true,
   },
@@ -240,7 +310,8 @@ export const searchIndex: SearchItem[] = [
     title: "Tabs",
     category: "Components",
     path: "/tabs",
-    description: "Segmented navigation panels with solid, bordered, light, and underlined styles, badge chips, and vertical orientation.",
+    description:
+      "Segmented navigation panels with solid, bordered, light, and underlined styles, badge chips, and vertical orientation.",
     keywords: ["segmented", "panels", "navigation", "switcher", "tablist", "pills"],
     isNew: true,
   },
@@ -249,7 +320,8 @@ export const searchIndex: SearchItem[] = [
     title: "Text",
     category: "Components",
     path: "/text",
-    description: "Typography body components for paragraphs, lead sentences, muted secondary labels, inline code, and strong emphasis.",
+    description:
+      "Typography body components for paragraphs, lead sentences, muted secondary labels, inline code, and strong emphasis.",
     keywords: ["typography", "paragraph", "body", "lead", "muted", "code", "font"],
     isNew: true,
   },
@@ -258,7 +330,8 @@ export const searchIndex: SearchItem[] = [
     title: "Textarea",
     category: "Components",
     path: "/textarea",
-    description: "Multi-line text input fields supporting auto-resize, custom row counts, helper text, and invalid feedback states.",
+    description:
+      "Multi-line text input fields supporting auto-resize, custom row counts, helper text, and invalid feedback states.",
     keywords: ["multiline", "input", "notes", "description", "comment", "form"],
     isNew: true,
   },
@@ -267,7 +340,8 @@ export const searchIndex: SearchItem[] = [
     title: "Tooltip",
     category: "Components",
     path: "/tooltip",
-    description: "Informational hover and focus popovers with top, bottom, left, and right placements, delay timers, and rich content.",
+    description:
+      "Informational hover and focus popovers with top, bottom, left, and right placements, delay timers, and rich content.",
     keywords: ["popover", "hover", "hint", "info", "placement", "delay", "flyout"],
     isNew: true,
   },
@@ -279,7 +353,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/pagination#infinite-scroll-examples",
     parent: "Pagination",
-    description: "Simulation of continuous data loading with custom loader and end-of-feed indicator.",
+    description:
+      "Simulation of continuous data loading with custom loader and end-of-feed indicator.",
     keywords: ["infinite", "scroll", "feed", "load more", "stream", "loader"],
   },
   {
@@ -288,7 +363,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/navbar#mobile-drawer-variants",
     parent: "Navbar",
-    description: "Top slide-down, left drawer (De Vorm), right drawer (Avenoria), and dramatic fullscreen overlay.",
+    description:
+      "Top slide-down, left drawer (De Vorm), right drawer (Avenoria), and dramatic fullscreen overlay.",
     keywords: ["drawer", "mobile menu", "hamburger", "slide", "overlay", "responsive"],
   },
   {
@@ -297,7 +373,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/radio-group#radio-cards",
     parent: "Radio group",
-    description: "Interactive card-based choice tiles with icons, pricing badges, and selection borders.",
+    description:
+      "Interactive card-based choice tiles with icons, pricing badges, and selection borders.",
     keywords: ["card", "tile", "pricing plan", "radio card", "selection"],
   },
   {
@@ -315,7 +392,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/marketing/hero",
     parent: "Marketing",
-    description: "High-impact hero sections to introduce your product, with gradient text, background videos, and split layouts.",
+    description:
+      "High-impact hero sections to introduce your product, with gradient text, background videos, and split layouts.",
     keywords: ["hero", "marketing", "landing page", "header", "intro", "banner"],
     isNew: true,
   },
@@ -325,7 +403,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/marketing/logo-clouds",
     parent: "Marketing",
-    description: "Build trust by displaying logos of companies using your product with static grids or infinite tickers.",
+    description:
+      "Build trust by displaying logos of companies using your product with static grids or infinite tickers.",
     keywords: ["logo", "cloud", "trusted by", "clients", "customers", "marquee", "ticker"],
     isNew: true,
   },
@@ -335,7 +414,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/marketing/features",
     parent: "Marketing",
-    description: "Showcase product capabilities with varied layouts, alternating content, and interactive bento grids.",
+    description:
+      "Showcase product capabilities with varied layouts, alternating content, and interactive bento grids.",
     keywords: ["features", "benefits", "capabilities", "product", "showcase", "grid", "visual"],
     isNew: true,
   },
@@ -345,7 +425,8 @@ export const searchIndex: SearchItem[] = [
     category: "Sections",
     path: "/marketing/bento-grid",
     parent: "Marketing",
-    description: "Modern, dynamic bento grids for high-density feature showcases and product marketing.",
+    description:
+      "Modern, dynamic bento grids for high-density feature showcases and product marketing.",
     keywords: ["bento", "grid", "layout", "cards", "features", "marketing", "mosaic"],
     isNew: true,
   },

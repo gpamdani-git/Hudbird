@@ -63,9 +63,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     const handleSetIsOpen = React.useCallback(
       (valueOrUpdater: boolean | ((prevState: boolean) => boolean)) => {
         const nextValue =
-          typeof valueOrUpdater === "function"
-            ? valueOrUpdater(isOpen)
-            : valueOrUpdater;
+          typeof valueOrUpdater === "function" ? valueOrUpdater(isOpen) : valueOrUpdater;
 
         if (!isControlled) {
           setUncontrolledOpen(nextValue);
@@ -82,10 +80,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
     // Handle outside click
     React.useEffect(() => {
       const handleOutsideClick = (event: MouseEvent) => {
-        if (
-          containerRef.current &&
-          !containerRef.current.contains(event.target as Node)
-        ) {
+        if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
           close();
         }
       };
@@ -151,7 +146,7 @@ const DropdownTrigger = React.forwardRef<HTMLDivElement, DropdownTriggerProps>(
     return (
       <div
         ref={ref}
-        className={cn("inline-flex items-center cursor-pointer select-none", className)}
+        className={cn("inline-flex cursor-pointer items-center select-none", className)}
         onClick={(e) => {
           onClick?.(e);
           setIsOpen((prev) => !prev);
@@ -208,7 +203,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         role="menu"
         tabIndex={-1}
         className={cn(
-          "absolute z-50 min-w-[210px] p-1.5 bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 rounded-2xl shadow-xl backdrop-blur-md",
+          "absolute z-50 min-w-[210px] rounded-2xl border border-zinc-200/80 bg-white p-1.5 shadow-xl backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900",
           "animate-in fade-in-0 zoom-in-95 duration-150 focus:outline-none",
           placementClasses[placement] || placementClasses["bottom-start"],
           className
@@ -240,8 +235,7 @@ const dropdownItemVariants = cva(
 );
 
 export interface DropdownItemProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof dropdownItemVariants> {
+  extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof dropdownItemVariants> {
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
   disabled?: boolean;
@@ -276,23 +270,21 @@ const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
         aria-disabled={disabled}
         className={cn(
           dropdownItemVariants({ variant }),
-          disabled && "opacity-40 pointer-events-none cursor-not-allowed",
+          disabled && "pointer-events-none cursor-not-allowed opacity-40",
           className
         )}
         onClick={handleClick}
         {...props}
       >
-        <div className="flex items-center gap-2.5 min-w-0 truncate">
+        <div className="flex min-w-0 items-center gap-2.5 truncate">
           {startContent && (
-            <span className="shrink-0 text-zinc-400 dark:text-zinc-500">
-              {startContent}
-            </span>
+            <span className="shrink-0 text-zinc-400 dark:text-zinc-500">{startContent}</span>
           )}
           <span className="truncate">{children}</span>
         </div>
 
         {endContent && (
-          <span className="ml-auto pl-2 text-xs font-mono text-zinc-400 dark:text-zinc-500 shrink-0">
+          <span className="ml-auto shrink-0 pl-2 font-mono text-xs text-zinc-400 dark:text-zinc-500">
             {endContent}
           </span>
         )}
@@ -315,13 +307,13 @@ const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
         role="group"
         className={cn(
           "flex flex-col gap-0.5 py-1",
-          showDivider && "border-t border-zinc-200/60 dark:border-zinc-800/60 mt-1 pt-1.5",
+          showDivider && "mt-1 border-t border-zinc-200/60 pt-1.5 dark:border-zinc-800/60",
           className
         )}
         {...props}
       >
         {title && (
-          <div className="px-3 py-1 text-[10px] font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider select-none">
+          <div className="px-3 py-1 text-[10px] font-bold tracking-wider text-zinc-400 uppercase select-none dark:text-zinc-500">
             {title}
           </div>
         )}

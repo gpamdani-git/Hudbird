@@ -30,7 +30,7 @@ const switchTrackVariants = cva(
       disabled: {
         true: "cursor-not-allowed opacity-50 hover:bg-zinc-200 dark:hover:bg-zinc-700",
         false: "",
-      }
+      },
     },
     compoundVariants: [
       {
@@ -41,7 +41,8 @@ const switchTrackVariants = cva(
       {
         isChecked: true,
         color: "success",
-        className: "bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-400",
+        className:
+          "bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-400",
       },
       {
         isChecked: true,
@@ -111,7 +112,8 @@ const switchLabelVariants = cva(
 );
 
 export interface SwitchProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
     Omit<VariantProps<typeof switchTrackVariants>, "disabled"> {
   /**
    * Label text rendered next to the switch.
@@ -146,9 +148,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     const id = customId || generatedId;
 
     // Internal state for uncontrolled mode
-    const [internalChecked, setInternalChecked] = React.useState<boolean>(
-      defaultChecked ?? false
-    );
+    const [internalChecked, setInternalChecked] = React.useState<boolean>(defaultChecked ?? false);
     const isControlled = checked !== undefined;
     const isCurrentChecked = isControlled ? checked : internalChecked;
 
@@ -182,7 +182,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           checked={isCurrentChecked}
           disabled={disabled}
           onChange={handleChange}
-          className="sr-only peer"
+          className="peer sr-only"
           {...props}
         />
 
@@ -205,11 +205,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           aria-hidden="true"
         >
           {/* Thumb */}
-          <span
-            className={cn(
-              switchThumbVariants({ size, isChecked: isCurrentChecked })
-            )}
-          />
+          <span className={cn(switchThumbVariants({ size, isChecked: isCurrentChecked }))} />
         </div>
 
         {/* Label & Description Text */}
@@ -224,7 +220,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               {labelContent}
             </span>
             {description && (
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal mt-0.5">
+              <span className="mt-0.5 text-xs leading-normal text-zinc-500 dark:text-zinc-400">
                 {description}
               </span>
             )}

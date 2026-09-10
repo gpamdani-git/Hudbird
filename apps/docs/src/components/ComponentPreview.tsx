@@ -80,17 +80,17 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
   };
 
   const renderToolbar = (inModal = false) => (
-    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/90 dark:bg-zinc-900/90 px-3 py-2 text-xs backdrop-blur-md">
+    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-200 bg-zinc-50/90 px-3 py-2 text-xs backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/90">
       {/* Left: Viewport Mode Switcher */}
       <div className="flex items-center gap-1">
-        <div className="flex rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-0.5 shadow-xs">
+        <div className="flex rounded-lg border border-zinc-200 bg-white p-0.5 shadow-xs dark:border-zinc-800 dark:bg-zinc-950">
           <button
             type="button"
             onClick={() => setViewport("desktop")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "desktop"
-                ? "bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-xs"
-                : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                ? "bg-zinc-900 text-white shadow-xs dark:bg-zinc-100 dark:text-zinc-900"
+                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Desktop View (Full Width)"
           >
@@ -102,8 +102,8 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             onClick={() => setViewport("tablet")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "tablet"
-                ? "bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-xs"
-                : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                ? "bg-zinc-900 text-white shadow-xs dark:bg-zinc-100 dark:text-zinc-900"
+                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Tablet View (768px)"
           >
@@ -115,8 +115,8 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             onClick={() => setViewport("mobile")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "mobile"
-                ? "bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 shadow-xs"
-                : "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+                ? "bg-zinc-900 text-white shadow-xs dark:bg-zinc-100 dark:text-zinc-900"
+                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Mobile View (390px)"
           >
@@ -125,7 +125,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           </button>
         </div>
 
-        <span className="hidden md:inline-block text-[11px] font-mono text-zinc-400 dark:text-zinc-500 ml-2">
+        <span className="ml-2 hidden font-mono text-[11px] text-zinc-400 md:inline-block dark:text-zinc-500">
           {viewportLabels[viewport]}
         </span>
       </div>
@@ -135,7 +135,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
         <button
           type="button"
           onClick={() => setKey((prev) => prev + 1)}
-          className="flex h-7 w-7 items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors shadow-xs"
+          className="flex h-7 w-7 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-600 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
           title="Reset / Remount Component Preview"
         >
           <RotateCcw size={12} />
@@ -146,7 +146,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 h-7 px-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-colors shadow-xs font-medium text-xs ml-2"
+            className="ml-2 flex h-7 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
             title="Open demo in new tab"
           >
             <span>Open in new tab</span>
@@ -157,7 +157,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           <button
             type="button"
             onClick={() => setIsFullscreen(true)}
-            className="flex items-center gap-1.5 h-7 px-2.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-950 dark:hover:text-white transition-colors shadow-xs font-medium text-xs"
+            className="flex h-7 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
             title="Open in Fullscreen Preview Canvas"
           >
             <Maximize2 size={12} />
@@ -169,7 +169,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           <button
             type="button"
             onClick={() => setIsFullscreen(false)}
-            className="flex items-center gap-1 h-7 px-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-medium hover:opacity-90 transition-opacity shadow-xs text-xs"
+            className="flex h-7 items-center gap-1 rounded-lg bg-zinc-900 px-2.5 text-xs font-medium text-white shadow-xs transition-opacity hover:opacity-90 dark:bg-zinc-100 dark:text-zinc-900"
             title="Exit Fullscreen Preview"
           >
             <Minimize2 size={12} />
@@ -184,23 +184,21 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
     <>
       {/* Standard Inline Preview Container */}
       <div
-        className={`my-4 flex flex-col w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/40 dark:bg-zinc-950/40 shadow-xs transition-all relative ${className}`}
+        className={`relative my-4 flex w-full flex-col rounded-2xl border border-zinc-200 bg-zinc-50/40 shadow-xs transition-all dark:border-zinc-800 dark:bg-zinc-950/40 ${className}`}
       >
         {showControls && (
-          <div className="rounded-t-2xl overflow-hidden">
-            {renderToolbar(false)}
-          </div>
+          <div className="overflow-hidden rounded-t-2xl">{renderToolbar(false)}</div>
         )}
 
         {/* Component Display Canvas */}
-        <div className="relative flex min-h-[220px] w-full items-center justify-center p-4 sm:p-6 md:p-8 bg-gradient-to-b from-zinc-50/60 to-white dark:from-zinc-950/40 dark:to-zinc-900/30 rounded-b-2xl">
+        <div className="relative flex min-h-[220px] w-full items-center justify-center rounded-b-2xl bg-gradient-to-b from-zinc-50/60 to-white p-4 sm:p-6 md:p-8 dark:from-zinc-950/40 dark:to-zinc-900/30">
           <div
             key={key}
-            className={`transition-all duration-300 ease-out mx-auto ${viewportWidthClasses[viewport]} w-full`}
+            className={`mx-auto transition-all duration-300 ease-out ${viewportWidthClasses[viewport]} w-full`}
           >
             {viewport !== "desktop" && (
               <div className="mb-2 text-center">
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-zinc-200/80 dark:bg-zinc-800/80 text-[10px] font-mono font-medium text-zinc-600 dark:text-zinc-400">
+                <span className="inline-flex items-center gap-1 rounded-full bg-zinc-200/80 px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-600 dark:bg-zinc-800/80 dark:text-zinc-400">
                   {viewport === "mobile" ? "📱 390px Viewport" : "📱 768px Viewport"}
                 </span>
               </div>
@@ -218,9 +216,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                   {children}
                 </IframePreview>
               ) : (
-                <div className="w-full flex items-center justify-center">
-                  {children}
-                </div>
+                <div className="flex w-full items-center justify-center">{children}</div>
               )}
             </div>
           </div>
@@ -235,19 +231,19 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-50 flex flex-col bg-zinc-900/80 dark:bg-black/90 backdrop-blur-xl p-2 sm:p-6 md:p-10"
+            className="fixed inset-0 z-50 flex flex-col bg-zinc-900/80 p-2 backdrop-blur-xl sm:p-6 md:p-10 dark:bg-black/90"
           >
             <motion.div
               initial={{ scale: 0.96, y: 16 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.96, y: 16 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex flex-1 flex-col w-full h-full rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-2xl overflow-hidden"
+              className="relative flex h-full w-full flex-1 flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950"
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 px-5 py-3.5 bg-zinc-50 dark:bg-zinc-900">
+              <div className="flex items-center justify-between border-b border-zinc-200 bg-zinc-50 px-5 py-3.5 dark:border-zinc-800 dark:bg-zinc-900">
                 <div className="flex items-center gap-2.5">
-                  <div className="p-1.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                  <div className="rounded-lg bg-indigo-500/10 p-1.5 text-indigo-600 dark:text-indigo-400">
                     <Layers size={16} />
                   </div>
                   <div>
@@ -264,7 +260,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                   <button
                     type="button"
                     onClick={() => setIsFullscreen(false)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                     aria-label="Close fullscreen modal"
                   >
                     <X size={16} />
@@ -276,14 +272,14 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
               {renderToolbar(true)}
 
               {/* Fullscreen Canvas Content */}
-              <div className="flex-1 overflow-y-auto p-4 sm:p-8 md:p-12 flex items-center justify-center bg-zinc-100/60 dark:bg-zinc-900/40">
+              <div className="flex flex-1 items-center justify-center overflow-y-auto bg-zinc-100/60 p-4 sm:p-8 md:p-12 dark:bg-zinc-900/40">
                 <div
                   key={`modal-${key}`}
-                  className={`transition-all duration-300 ease-out mx-auto ${viewportWidthClasses[viewport]}`}
+                  className={`mx-auto transition-all duration-300 ease-out ${viewportWidthClasses[viewport]}`}
                 >
                   {viewport !== "desktop" && (
                     <div className="mb-3 text-center">
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 shadow-xs">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-200 px-3 py-1 font-mono text-xs font-medium text-zinc-700 shadow-xs dark:bg-zinc-800 dark:text-zinc-300">
                         {viewport === "mobile" ? "📱 Mobile 390px Frame" : "📱 Tablet 768px Frame"}
                       </span>
                     </div>
@@ -295,7 +291,8 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                         : ""
                     }`}
                   >
-                    {(iframeMode === "auto" && viewport !== "desktop") || iframeMode === "always" ? (
+                    {(iframeMode === "auto" && viewport !== "desktop") ||
+                    iframeMode === "always" ? (
                       <IframePreview minHeight={600} key={`modal-frame-${key}-${viewport}`}>
                         {children}
                       </IframePreview>

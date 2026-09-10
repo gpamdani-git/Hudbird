@@ -125,36 +125,37 @@ export default function TabsDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Tabs
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full border border-emerald-500/20">
+          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
             New
           </span>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
           Tabs organize related content across multiple panels, allowing users to switch between
-          different views within the same context with full keyboard navigation and WAI-ARIA compliance.
+          different views within the same context with full keyboard navigation and WAI-ARIA
+          compliance.
         </p>
       </div>
 
       {/* Main Preview */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="w-full max-w-md mx-auto">
+          <div className="mx-auto w-full max-w-md">
             <Tabs
               selectedKey={selectedKey}
               onSelectionChange={setSelectedKey}
               aria-label="Media options"
               color="primary"
             >
-              <Tab key="photos" title="Photos" icon={<Image className="w-4 h-4" />}>
-                <Card className="border border-zinc-200 dark:border-zinc-800 shadow-2xs">
-                  <CardBody className="p-4 space-y-2">
+              <Tab key="photos" title="Photos" icon={<Image className="h-4 w-4" />}>
+                <Card className="border border-zinc-200 shadow-2xs dark:border-zinc-800">
+                  <CardBody className="space-y-2 p-4">
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       Photo Gallery
                     </h4>
@@ -163,14 +164,16 @@ export default function TabsDoc() {
                       memories.
                     </p>
                     <div className="pt-2">
-                      <Button size="sm" variant="flat">Upload photos</Button>
+                      <Button size="sm" variant="flat">
+                        Upload photos
+                      </Button>
                     </div>
                   </CardBody>
                 </Card>
               </Tab>
-              <Tab key="music" title="Music" icon={<Music className="w-4 h-4" />} badge="12">
-                <Card className="border border-zinc-200 dark:border-zinc-800 shadow-2xs">
-                  <CardBody className="p-4 space-y-2">
+              <Tab key="music" title="Music" icon={<Music className="h-4 w-4" />} badge="12">
+                <Card className="border border-zinc-200 shadow-2xs dark:border-zinc-800">
+                  <CardBody className="space-y-2 p-4">
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       Audio Library
                     </h4>
@@ -178,14 +181,16 @@ export default function TabsDoc() {
                       Curated playlists, recent podcast episodes, and offline audio downloads.
                     </p>
                     <div className="pt-2">
-                      <Button size="sm" variant="solid">Play recent</Button>
+                      <Button size="sm" variant="solid">
+                        Play recent
+                      </Button>
                     </div>
                   </CardBody>
                 </Card>
               </Tab>
-              <Tab key="videos" title="Videos" icon={<Video className="w-4 h-4" />}>
-                <Card className="border border-zinc-200 dark:border-zinc-800 shadow-2xs">
-                  <CardBody className="p-4 space-y-2">
+              <Tab key="videos" title="Videos" icon={<Video className="h-4 w-4" />}>
+                <Card className="border border-zinc-200 shadow-2xs dark:border-zinc-800">
+                  <CardBody className="space-y-2 p-4">
                     <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                       Video Stream
                     </h4>
@@ -193,7 +198,9 @@ export default function TabsDoc() {
                       4K HDR video captures, live recording logs, and shared reels.
                     </p>
                     <div className="pt-2">
-                      <Button size="sm" variant="outline">Browse library</Button>
+                      <Button size="sm" variant="outline">
+                        Browse library
+                      </Button>
                     </div>
                   </CardBody>
                 </Card>
@@ -233,27 +240,32 @@ export default function Example() {
         <InstallationTabs componentName="tabs" manualCode={tabsCode} />
       </div>
 
-
       {/* Component API */}
       <section className="space-y-6" id="component-api">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
-            Properties and handlers for the root <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">Tabs</code> and <code className="text-xs font-mono bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">Tab</code> subcomponent.
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
+          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Properties and handlers for the root{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              Tabs
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              Tab
+            </code>{" "}
+            subcomponent.
           </p>
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Tabs Props
           </h3>
           <ApiTable rows={tabsApiRows} />
         </div>
 
         <div>
-          <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-3">
+          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
             Tab Item Props
           </h3>
           <ApiTable rows={tabItemApiRows} />
@@ -262,7 +274,7 @@ export default function Example() {
 
       {/* Examples & Variants */}
       <div className="space-y-12" id="examples">
-        <div className="border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
             Examples & Variants
           </h2>
@@ -270,9 +282,7 @@ export default function Example() {
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-tabs">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Basic Usage
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             A standard tab bar with declarative panels rendered inside.
           </p>
@@ -280,17 +290,17 @@ export default function Example() {
             <div className="w-full max-w-md">
               <Tabs aria-label="Simple tabs">
                 <Tab key="overview" title="Overview">
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-sm">
+                  <div className="rounded-lg border border-zinc-200/80 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Overview panel with project analytics summary.
                   </div>
                 </Tab>
                 <Tab key="activity" title="Activity">
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-sm">
+                  <div className="rounded-lg border border-zinc-200/80 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Recent deployment events and team changes.
                   </div>
                 </Tab>
                 <Tab key="settings" title="Settings">
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 text-sm">
+                  <div className="rounded-lg border border-zinc-200/80 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Workspace and notification preferences.
                   </div>
                 </Tab>
@@ -308,16 +318,25 @@ export default function Example() {
 
         {/* Variants */}
         <section className="space-y-4" id="tab-variants">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Variants
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Variants</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Tabs support 4 distinct visual variants: <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">solid</code>, <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">bordered</code>, <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">light</code>, and <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">underlined</code>.
+            Tabs support 4 distinct visual variants:{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">solid</code>,{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              bordered
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">light</code>,
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              underlined
+            </code>
+            .
           </p>
           <ComponentPreview>
             <div className="w-full max-w-lg space-y-6">
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Solid (Default)
                 </span>
                 <Tabs variant="solid" defaultSelectedKey="dashboard">
@@ -328,7 +347,7 @@ export default function Example() {
               </div>
 
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Bordered
                 </span>
                 <Tabs variant="bordered" defaultSelectedKey="dashboard">
@@ -339,7 +358,7 @@ export default function Example() {
               </div>
 
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Light
                 </span>
                 <Tabs variant="light" defaultSelectedKey="dashboard">
@@ -350,7 +369,7 @@ export default function Example() {
               </div>
 
               <div>
-                <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider block mb-2">
+                <span className="mb-2 block text-xs font-semibold tracking-wider text-zinc-400 uppercase">
                   Underlined
                 </span>
                 <Tabs variant="underlined" defaultSelectedKey="dashboard">
@@ -371,14 +390,12 @@ export default function Example() {
 
         {/* Colors */}
         <section className="space-y-4" id="tab-colors">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Colors
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Colors</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Choose from 5 dynamic semantic color variations.
           </p>
           <ComponentPreview>
-            <div className="w-full max-w-lg flex flex-col gap-4">
+            <div className="flex w-full max-w-lg flex-col gap-4">
               <Tabs color="primary" defaultSelectedKey="1">
                 <Tab key="1" title="Primary" />
                 <Tab key="2" title="Selected" />
@@ -452,22 +469,14 @@ export default function Example() {
           <ComponentPreview>
             <div className="w-full max-w-md">
               <Tabs variant="underlined" color="primary" defaultSelectedKey="notifications">
-                <Tab
-                  key="account"
-                  title="Account"
-                  icon={<User className="w-4 h-4" />}
-                />
+                <Tab key="account" title="Account" icon={<User className="h-4 w-4" />} />
                 <Tab
                   key="notifications"
                   title="Notifications"
-                  icon={<Bell className="w-4 h-4" />}
+                  icon={<Bell className="h-4 w-4" />}
                   badge="3"
                 />
-                <Tab
-                  key="security"
-                  title="Security"
-                  icon={<Shield className="w-4 h-4" />}
-                />
+                <Tab key="security" title="Security" icon={<Shield className="h-4 w-4" />} />
               </Tabs>
             </div>
           </ComponentPreview>
@@ -486,23 +495,32 @@ export default function Example() {
             Vertical Orientation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Switch <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">orientation="vertical"</code> to layout tabs along the left side with vertical Arrow navigation.
+            Switch{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              orientation="vertical"
+            </code>{" "}
+            to layout tabs along the left side with vertical Arrow navigation.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">
-              <Tabs orientation="vertical" variant="light" color="primary" defaultSelectedKey="profile">
-                <Tab key="profile" title="Profile" icon={<User className="w-4 h-4" />}>
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-sm">
+              <Tabs
+                orientation="vertical"
+                variant="light"
+                color="primary"
+                defaultSelectedKey="profile"
+              >
+                <Tab key="profile" title="Profile" icon={<User className="h-4 w-4" />}>
+                  <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Manage your public profile information and avatar photo.
                   </div>
                 </Tab>
-                <Tab key="billing" title="Billing" icon={<Heart className="w-4 h-4" />}>
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-sm">
+                <Tab key="billing" title="Billing" icon={<Heart className="h-4 w-4" />}>
+                  <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Payment methods, credit cards, and invoice history.
                   </div>
                 </Tab>
-                <Tab key="settings" title="Settings" icon={<Settings className="w-4 h-4" />}>
-                  <div className="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 text-sm">
+                <Tab key="settings" title="Settings" icon={<Settings className="h-4 w-4" />}>
+                  <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-900/50">
                     Application settings, language, and dark mode toggles.
                   </div>
                 </Tab>
@@ -527,7 +545,11 @@ export default function Example() {
             Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Tabs can be disabled individually using <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">isDisabled</code> on a tab or globally on the root.
+            Tabs can be disabled individually using{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              isDisabled
+            </code>{" "}
+            on a tab or globally on the root.
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">
@@ -549,11 +571,13 @@ export default function Example() {
 
         {/* Full Width */}
         <section className="space-y-4" id="full-width-tabs">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-            Full Width
-          </h3>
+          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Full Width</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Tabs can expand to equally distribute space across the parent container using <code className="text-xs bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 rounded">fullWidth</code>.
+            Tabs can expand to equally distribute space across the parent container using{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              fullWidth
+            </code>
+            .
           </p>
           <ComponentPreview>
             <div className="w-full max-w-md">

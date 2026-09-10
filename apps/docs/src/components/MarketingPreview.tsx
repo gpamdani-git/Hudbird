@@ -37,7 +37,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
       else if (framework === "HTML") textToCopy = codeHtml || "";
       else if (framework === "Vue") textToCopy = codeVue || "";
     }
-    
+
     if (textToCopy) {
       navigator.clipboard.writeText(textToCopy);
       setIsCopied(true);
@@ -52,21 +52,19 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 my-8 w-full">
+    <div className="my-8 flex w-full flex-col gap-4">
       {/* Header Controls */}
-      <div className="flex items-center justify-between w-full">
-        <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-          {title}
-        </div>
+      <div className="flex w-full items-center justify-between">
+        <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{title}</div>
 
         <div className="flex items-center gap-4">
           {/* Preview / Code Toggle */}
-          <div className="flex bg-zinc-100 dark:bg-zinc-800/50 rounded-full p-0.5">
+          <div className="flex rounded-full bg-zinc-100 p-0.5 dark:bg-zinc-800/50">
             <button
               onClick={() => setActiveTab("preview")}
-              className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 activeTab === "preview"
-                  ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm"
+                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white"
                   : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
               }`}
             >
@@ -74,9 +72,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             </button>
             <button
               onClick={() => setActiveTab("code")}
-              className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 activeTab === "code"
-                  ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm"
+                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white"
                   : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
               }`}
             >
@@ -84,9 +82,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             </button>
             <button
               onClick={() => setActiveTab("skill")}
-              className={`px-3 py-1.5 text-xs font-medium rounded-full transition-all ${
+              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 activeTab === "skill"
-                  ? "bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm"
+                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white"
                   : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
               }`}
             >
@@ -94,7 +92,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             </button>
           </div>
 
-          <div className="w-px h-4 bg-zinc-200 dark:bg-zinc-800" />
+          <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
 
           {/* Viewport Toggles */}
           <div className="flex items-center gap-1">
@@ -103,9 +101,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
                 setActiveTab("preview");
                 setViewport("desktop");
               }}
-              className={`p-1.5 rounded-md transition-colors ${
+              className={`rounded-md p-1.5 transition-colors ${
                 viewport === "desktop" && activeTab === "preview"
-                  ? "text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800"
+                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
                   : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
               }`}
             >
@@ -116,9 +114,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
                 setActiveTab("preview");
                 setViewport("tablet");
               }}
-              className={`p-1.5 rounded-md transition-colors ${
+              className={`rounded-md p-1.5 transition-colors ${
                 viewport === "tablet" && activeTab === "preview"
-                  ? "text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800"
+                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
                   : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
               }`}
             >
@@ -129,9 +127,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
                 setActiveTab("preview");
                 setViewport("mobile");
               }}
-              className={`p-1.5 rounded-md transition-colors ${
+              className={`rounded-md p-1.5 transition-colors ${
                 viewport === "mobile" && activeTab === "preview"
-                  ? "text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800"
+                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
                   : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
               }`}
             >
@@ -139,18 +137,33 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             </button>
           </div>
 
-          <div className="w-px h-4 bg-zinc-200 dark:bg-zinc-800" />
+          <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
 
           {/* Dropdown Placeholder */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors">
+          <div className="group relative">
+            <button className="flex items-center gap-1 text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white">
               {framework} <ChevronDown size={14} />
             </button>
-            <div className="absolute right-0 top-full pt-1 hidden group-hover:block z-10 w-24">
-              <div className="bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md shadow-lg py-1">
-                <button onClick={() => setFramework('React')} className="block w-full text-left px-3 py-1.5 text-xs text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700">React</button>
-                <button onClick={() => setFramework('HTML')} className="block w-full text-left px-3 py-1.5 text-xs text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700">HTML</button>
-                <button onClick={() => setFramework('Vue')} className="block w-full text-left px-3 py-1.5 text-xs text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-700">Vue</button>
+            <div className="absolute top-full right-0 z-10 hidden w-24 pt-1 group-hover:block">
+              <div className="rounded-md border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
+                <button
+                  onClick={() => setFramework("React")}
+                  className="block w-full px-3 py-1.5 text-left text-xs text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                >
+                  React
+                </button>
+                <button
+                  onClick={() => setFramework("HTML")}
+                  className="block w-full px-3 py-1.5 text-left text-xs text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                >
+                  HTML
+                </button>
+                <button
+                  onClick={() => setFramework("Vue")}
+                  className="block w-full px-3 py-1.5 text-left text-xs text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                >
+                  Vue
+                </button>
               </div>
             </div>
           </div>
@@ -158,7 +171,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
           {/* Copy Button */}
           <button
             onClick={handleCopy}
-            className="p-1.5 text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300 transition-colors"
+            className="p-1.5 text-zinc-400 transition-colors hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
           >
             {isCopied ? <Check size={16} /> : <Copy size={16} />}
           </button>
@@ -166,38 +179,60 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
       </div>
 
       {/* Main Container */}
-      <div className="w-full relative rounded-2xl border border-zinc-200 dark:border-zinc-800/80 bg-zinc-50 dark:bg-[#0a0a0a] overflow-hidden shadow-xs">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-xs dark:border-zinc-800/80 dark:bg-[#0a0a0a]">
         {activeTab === "preview" ? (
-          <div className="w-full flex items-center justify-center bg-zinc-100 dark:bg-[#050505]" style={{ minHeight: `${minHeight}px` }}>
+          <div
+            className="flex w-full items-center justify-center bg-zinc-100 dark:bg-[#050505]"
+            style={{ minHeight: `${minHeight}px` }}
+          >
             <div
-              className="transition-all duration-300 ease-in-out w-full h-full"
+              className="h-full w-full transition-all duration-300 ease-in-out"
               style={{ maxWidth: viewportWidths[viewport] }}
             >
               {viewport === "desktop" ? (
-                <div className="w-full h-full relative isolate bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-800/50">
+                <div className="relative isolate h-full w-full overflow-hidden rounded-2xl bg-white ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800/50">
                   {children}
                 </div>
               ) : (
-                <div className="w-full h-full relative bg-white dark:bg-zinc-950 rounded-2xl overflow-hidden ring-1 ring-zinc-200 dark:ring-zinc-800/50 shadow-xl my-8">
+                <div className="relative my-8 h-full w-full overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800/50">
                   <IframePreview minHeight={800}>{children}</IframePreview>
                 </div>
               )}
             </div>
           </div>
         ) : (
-          <div className="w-full p-4 sm:p-6 bg-zinc-50 dark:bg-[#0d1117] overflow-x-auto text-sm" style={{ minHeight: `${minHeight}px` }}>
+          <div
+            className="w-full overflow-x-auto bg-zinc-50 p-4 text-sm sm:p-6 dark:bg-[#0d1117]"
+            style={{ minHeight: `${minHeight}px` }}
+          >
             {activeTab === "code" ? (
               framework === "React" ? (
-                code ? <CodeBlock code={code} /> : <div className="flex items-center justify-center h-full min-h-[400px] text-zinc-500"><p>React code export coming soon.</p></div>
+                code ? (
+                  <CodeBlock code={code} />
+                ) : (
+                  <div className="flex h-full min-h-[400px] items-center justify-center text-zinc-500">
+                    <p>React code export coming soon.</p>
+                  </div>
+                )
               ) : framework === "HTML" ? (
-                codeHtml ? <CodeBlock code={codeHtml} language="html" /> : <div className="flex items-center justify-center h-full min-h-[400px] text-zinc-500"><p>HTML code export coming soon.</p></div>
+                codeHtml ? (
+                  <CodeBlock code={codeHtml} language="html" />
+                ) : (
+                  <div className="flex h-full min-h-[400px] items-center justify-center text-zinc-500">
+                    <p>HTML code export coming soon.</p>
+                  </div>
+                )
+              ) : codeVue ? (
+                <CodeBlock code={codeVue} language="vue" />
               ) : (
-                codeVue ? <CodeBlock code={codeVue} language="vue" /> : <div className="flex items-center justify-center h-full min-h-[400px] text-zinc-500"><p>Vue code export coming soon.</p></div>
+                <div className="flex h-full min-h-[400px] items-center justify-center text-zinc-500">
+                  <p>Vue code export coming soon.</p>
+                </div>
               )
             ) : activeTab === "skill" && skill ? (
               <CodeBlock code={skill} language="markdown" />
             ) : (
-              <p className="text-zinc-500 text-sm">No content provided.</p>
+              <p className="text-sm text-zinc-500">No content provided.</p>
             )}
           </div>
         )}

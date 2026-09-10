@@ -43,7 +43,8 @@ export default function DialogDoc() {
     {
       prop: "onClose",
       defaultVal: "undefined",
-      description: "Callback triggered when clicking the backdrop, pressing ESC, or dismissing the dialog.",
+      description:
+        "Callback triggered when clicking the backdrop, pressing ESC, or dismissing the dialog.",
     },
     {
       prop: "size",
@@ -51,8 +52,14 @@ export default function DialogDoc() {
       description: (
         <span>
           Max-width container preset:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code> (~400px) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (~540px).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>{" "}
+          (~400px) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (~540px).
         </span>
       ),
     },
@@ -62,8 +69,14 @@ export default function DialogDoc() {
       description: (
         <span>
           Visual urgency motif:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'default'</code> or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code> (adds rose top-border accent and title highlight).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'default'
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>{" "}
+          (adds rose top-border accent and title highlight).
         </span>
       ),
     },
@@ -75,7 +88,8 @@ export default function DialogDoc() {
     {
       prop: "children",
       defaultVal: "-",
-      description: "Structured subcomponents: <DialogContent>, <DialogHeader>, <DialogTitle>, <DialogDescription>, <DialogFooter>.",
+      description:
+        "Structured subcomponents: <DialogContent>, <DialogHeader>, <DialogTitle>, <DialogDescription>, <DialogFooter>.",
     },
   ];
 
@@ -83,16 +97,17 @@ export default function DialogDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Dialog
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          High-elevation modal overlays for critical confirmations, destructive alerts, and user action decisions with backdrop blur and fluid micro-transitions.
+          High-elevation modal overlays for critical confirmations, destructive alerts, and user
+          action decisions with backdrop blur and fluid micro-transitions.
         </p>
       </div>
 
@@ -100,16 +115,15 @@ export default function DialogDoc() {
       <section className="space-y-4">
         <ComponentPreview>
           <div className="flex flex-col items-center justify-center py-6">
-            <Button onClick={() => setBasicOpen(true)}>
-              Open Confirmation Dialog
-            </Button>
+            <Button onClick={() => setBasicOpen(true)}>Open Confirmation Dialog</Button>
 
             <Dialog isOpen={basicOpen} onClose={() => setBasicOpen(false)}>
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Save Document Changes?</DialogTitle>
                   <DialogDescription>
-                    Your unsaved draft edits will be synced across all team members and published to production immediately.
+                    Your unsaved draft edits will be synced across all team members and published to
+                    production immediately.
                   </DialogDescription>
                 </DialogHeader>
                 <DialogFooter>
@@ -172,7 +186,6 @@ function Example() {
         <InstallationTabs componentName="dialog" manualCode={dialogCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -181,7 +194,31 @@ function Example() {
         <ApiTable
           note={
             <span>
-              The modal structure is built from composable subcomponents: <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;Dialog&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DialogContent&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DialogHeader&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DialogTitle&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DialogDescription&gt;</strong>, and <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DialogFooter&gt;</strong>.
+              The modal structure is built from composable subcomponents:{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;Dialog&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DialogContent&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DialogHeader&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DialogTitle&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DialogDescription&gt;
+              </strong>
+              , and{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DialogFooter&gt;
+              </strong>
+              .
             </span>
           }
           rows={apiRows}
@@ -191,7 +228,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -202,7 +239,8 @@ function Example() {
             Standard Confirmation Dialog
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            A neutral confirmation prompt for approving state transitions, applying configuration changes, or initiating background jobs:
+            A neutral confirmation prompt for approving state transitions, applying configuration
+            changes, or initiating background jobs:
           </p>
 
           <ComponentPreview>
@@ -253,7 +291,12 @@ function Example() {
             Destructive Alert Dialog (Danger)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">severity="danger"</code> along with a danger action button for permanent deletions and irreversible system modifications:
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              severity="danger"
+            </code>{" "}
+            along with a danger action button for permanent deletions and irreversible system
+            modifications:
           </p>
 
           <ComponentPreview>
@@ -269,9 +312,9 @@ function Example() {
               >
                 <DialogContent>
                   <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400 border border-rose-200 dark:border-rose-900/50">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-rose-200 bg-rose-50 text-rose-600 dark:border-rose-900/50 dark:bg-rose-950/60 dark:text-rose-400">
                       <svg
-                        className="w-5 h-5"
+                        className="h-5 w-5"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
@@ -287,11 +330,13 @@ function Example() {
                       </svg>
                     </div>
 
-                    <div className="flex-1 min-w-0">
+                    <div className="min-w-0 flex-1">
                       <DialogHeader className="mb-2">
                         <DialogTitle>Delete Production Cluster?</DialogTitle>
                         <DialogDescription>
-                          Are you absolutely sure? This will immediately terminate all active pods, release attached storage volumes, and purge telemetry indices. This action cannot be undone.
+                          Are you absolutely sure? This will immediately terminate all active pods,
+                          release attached storage volumes, and purge telemetry indices. This action
+                          cannot be undone.
                         </DialogDescription>
                       </DialogHeader>
                     </div>
@@ -355,11 +400,19 @@ function Example() {
             Dialog Sizes (sm & md)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between compact <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">size="sm"</code> and comfortable standard <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">size="md"</code> dialog widths:
+            Choose between compact{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              size="sm"
+            </code>{" "}
+            and comfortable standard{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              size="md"
+            </code>{" "}
+            dialog widths:
           </p>
 
           <ComponentPreview>
-            <div className="flex gap-4 justify-center py-4">
+            <div className="flex justify-center gap-4 py-4">
               <Button variant="outline" size="sm" onClick={() => setSmallOpen(true)}>
                 Small Dialog (sm)
               </Button>

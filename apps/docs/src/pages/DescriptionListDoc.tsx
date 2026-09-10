@@ -37,8 +37,14 @@ export default function DescriptionListDoc() {
       description: (
         <span>
           Surface presentation container:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code> (border dividers only) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'card'</code> (enclosed in a rounded panel with subtle background).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>{" "}
+          (border dividers only) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'card'
+          </code>{" "}
+          (enclosed in a rounded panel with subtle background).
         </span>
       ),
     },
@@ -48,8 +54,14 @@ export default function DescriptionListDoc() {
       description: (
         <span>
           Layout direction:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'horizontal'</code> (responsive side-by-side grid) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'vertical'</code> (stacked label and value).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'horizontal'
+          </code>{" "}
+          (responsive side-by-side grid) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'vertical'
+          </code>{" "}
+          (stacked label and value).
         </span>
       ),
     },
@@ -69,16 +81,17 @@ export default function DescriptionListDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Description List
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Clean, structured key-value display components for presenting metadata, user profile specifications, transaction breakdowns, and configuration records.
+          Clean, structured key-value display components for presenting metadata, user profile
+          specifications, transaction breakdowns, and configuration records.
         </p>
       </div>
 
@@ -155,7 +168,6 @@ function Example() {
         <InstallationTabs componentName="description-list" manualCode={descriptionListCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -164,7 +176,23 @@ function Example() {
         <ApiTable
           note={
             <span>
-              Composed of <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DescriptionList&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DescriptionListItem&gt;</strong>, <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DescriptionListLabel&gt;</strong>, and <strong className="font-semibold text-zinc-900 dark:text-zinc-100">&lt;DescriptionListValue&gt;</strong> semantic tags.
+              Composed of{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DescriptionList&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DescriptionListItem&gt;
+              </strong>
+              ,{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DescriptionListLabel&gt;
+              </strong>
+              , and{" "}
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">
+                &lt;DescriptionListValue&gt;
+              </strong>{" "}
+              semantic tags.
             </span>
           }
           rows={apiRows}
@@ -174,7 +202,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -250,7 +278,11 @@ function Example() {
             Card-Styled Invoice Details
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Enclose metadata inside an elevated container with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="card"</code> for invoices and receipt summaries:
+            Enclose metadata inside an elevated container with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="card"
+            </code>{" "}
+            for invoices and receipt summaries:
           </p>
 
           <ComponentPreview>
@@ -269,7 +301,7 @@ function Example() {
                 <DescriptionListItem>
                   <DescriptionListLabel>Payment Method</DescriptionListLabel>
                   <DescriptionListValue className="flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-500" />
+                    <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
                     Mastercard ending in •••• 4242
                   </DescriptionListValue>
                 </DescriptionListItem>
@@ -324,7 +356,11 @@ function Example() {
             Vertical Orientation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Stack labels above values on all screen sizes with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">orientation="vertical"</code>:
+            Stack labels above values on all screen sizes with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              orientation="vertical"
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -332,8 +368,9 @@ function Example() {
               <DescriptionList variant="card" orientation="vertical">
                 <DescriptionListItem>
                   <DescriptionListLabel>Project Scope & Objectives</DescriptionListLabel>
-                  <DescriptionListValue className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    Build a comprehensive, accessible design system with atomic tokens, flexible components, and full dark-mode compliance.
+                  <DescriptionListValue className="leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    Build a comprehensive, accessible design system with atomic tokens, flexible
+                    components, and full dark-mode compliance.
                   </DescriptionListValue>
                 </DescriptionListItem>
                 <DescriptionListItem>
@@ -382,7 +419,12 @@ function Example() {
             Advanced Content & Actions
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Embed rich interactive components such as Badges, action buttons, and secondary links directly within <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">&lt;DescriptionListValue&gt;</code>:
+            Embed rich interactive components such as Badges, action buttons, and secondary links
+            directly within{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              &lt;DescriptionListValue&gt;
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -391,10 +433,10 @@ function Example() {
                 <DescriptionListItem>
                   <DescriptionListLabel>Deployment URL</DescriptionListLabel>
                   <DescriptionListValue className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400 truncate">
+                    <span className="truncate font-mono text-xs text-indigo-600 dark:text-indigo-400">
                       https://app.design-system.io/v2
                     </span>
-                    <Button size="sm" variant="outline" className="h-7 text-xs px-2.5 shrink-0">
+                    <Button size="sm" variant="outline" className="h-7 shrink-0 px-2.5 text-xs">
                       Visit Link
                     </Button>
                   </DescriptionListValue>
@@ -418,7 +460,7 @@ function Example() {
                     <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
                       sk_live_••••••••••••9821
                     </span>
-                    <Button size="sm" variant="outline" className="h-7 text-xs px-2.5 shrink-0">
+                    <Button size="sm" variant="outline" className="h-7 shrink-0 px-2.5 text-xs">
                       Reveal Key
                     </Button>
                   </DescriptionListValue>

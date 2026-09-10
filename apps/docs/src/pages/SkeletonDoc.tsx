@@ -31,7 +31,9 @@ export default function SkeletonDoc() {
         <>
           The visual shape of the skeleton.
           <br />
-          <code className="text-xs text-indigo-600 dark:text-indigo-400">"rect" | "circle" | "text"</code>
+          <code className="text-xs text-indigo-600 dark:text-indigo-400">
+            "rect" | "circle" | "text"
+          </code>
         </>
       ),
     },
@@ -42,7 +44,9 @@ export default function SkeletonDoc() {
         <>
           The animation style to indicate loading state.
           <br />
-          <code className="text-xs text-indigo-600 dark:text-indigo-400">"pulse" | "wave" | "none"</code>
+          <code className="text-xs text-indigo-600 dark:text-indigo-400">
+            "pulse" | "wave" | "none"
+          </code>
         </>
       ),
     },
@@ -57,25 +61,26 @@ export default function SkeletonDoc() {
     <div className="max-w-4xl pb-24">
       {/* Header */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Skeleton
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          A placeholder component to show content is loading. Features customizable shapes and smooth pulse/wave animations matching the design system.
+          A placeholder component to show content is loading. Features customizable shapes and
+          smooth pulse/wave animations matching the design system.
         </p>
       </div>
 
       {/* Hero Preview */}
       <section className="mt-8 space-y-4">
         <ComponentPreview>
-          <div className="flex w-full items-center gap-4 py-8 max-w-sm">
-            <Skeleton variant="circle" className="w-16 h-16 shrink-0" />
-            <div className="flex flex-col gap-2 w-full">
+          <div className="flex w-full max-w-sm items-center gap-4 py-8">
+            <Skeleton variant="circle" className="h-16 w-16 shrink-0" />
+            <div className="flex w-full flex-col gap-2">
               <Skeleton variant="text" className="w-3/4" />
               <Skeleton variant="text" className="w-1/2" />
               <Skeleton variant="text" className="w-full" />
@@ -103,10 +108,9 @@ export function App() {
         <InstallationTabs componentName="skeleton" manualCode={skeletonCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="mt-16 scroll-mt-24">
-        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <h2 className="mb-6 border-b border-zinc-200 pb-2 text-xl font-bold text-zinc-900 dark:border-zinc-800 dark:text-zinc-50">
           Component API
         </h2>
         <ApiTable rows={apiRows} />
@@ -114,27 +118,24 @@ export function App() {
 
       {/* Examples */}
       <section id="examples" className="mt-16 space-y-12">
-        <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-6 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+        <h2 className="mb-6 border-b border-zinc-200 pb-2 text-xl font-bold text-zinc-900 dark:border-zinc-800 dark:text-zinc-50">
           Examples
         </h2>
 
         {/* 1. Basic Usage */}
         <div id="basic-usage" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Basic Usage
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Basic Usage</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            By default, the Skeleton renders as a <code>rect</code> with a <code>pulse</code> animation. Use <code>className</code> to set explicit width and height.
+            By default, the Skeleton renders as a <code>rect</code> with a <code>pulse</code>{" "}
+            animation. Use <code>className</code> to set explicit width and height.
           </p>
 
           <ComponentPreview>
             <div className="w-full max-w-xs">
-              <Skeleton className="w-full h-32" />
+              <Skeleton className="h-32 w-full" />
             </div>
           </ComponentPreview>
-          <CodeBlock
-            code={`<Skeleton className="w-full h-32" />`}
-          />
+          <CodeBlock code={`<Skeleton className="w-full h-32" />`} />
         </div>
 
         {/* 2. Shapes */}
@@ -143,24 +144,25 @@ export function App() {
             Shapes & Variants
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Skeletons come in three variants: <code>rect</code> (default), <code>circle</code>, and <code>text</code>.
+            Skeletons come in three variants: <code>rect</code> (default), <code>circle</code>, and{" "}
+            <code>text</code>.
           </p>
 
           <ComponentPreview>
-            <div className="w-full flex flex-col gap-6 max-w-sm">
-              <div className="flex gap-4 items-center">
-                <Skeleton variant="circle" className="w-12 h-12" />
-                <span className="text-sm text-zinc-500 font-medium">circle</span>
+            <div className="flex w-full max-w-sm flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <Skeleton variant="circle" className="h-12 w-12" />
+                <span className="text-sm font-medium text-zinc-500">circle</span>
               </div>
-              <div className="flex gap-4 items-center">
-                <Skeleton variant="rect" className="w-16 h-12" />
-                <span className="text-sm text-zinc-500 font-medium">rect</span>
+              <div className="flex items-center gap-4">
+                <Skeleton variant="rect" className="h-12 w-16" />
+                <span className="text-sm font-medium text-zinc-500">rect</span>
               </div>
-              <div className="flex gap-4 items-center flex-1 w-full">
+              <div className="flex w-full flex-1 items-center gap-4">
                 <div className="w-full">
                   <Skeleton variant="text" />
                 </div>
-                <span className="text-sm text-zinc-500 font-medium shrink-0">text</span>
+                <span className="shrink-0 text-sm font-medium text-zinc-500">text</span>
               </div>
             </div>
           </ComponentPreview>
@@ -173,26 +175,31 @@ export function App() {
 
         {/* 3. Animations */}
         <div id="animations" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Animations
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Animations</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between <code>pulse</code> (default), <code>wave</code> (shimmer effect), or <code>none</code>.
+            Choose between <code>pulse</code> (default), <code>wave</code> (shimmer effect), or{" "}
+            <code>none</code>.
           </p>
 
           <ComponentPreview>
-            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl">
+            <div className="grid w-full max-w-3xl grid-cols-1 gap-6 md:grid-cols-3">
               <div className="space-y-2">
-                <Skeleton animation="pulse" className="w-full h-24" />
-                <div className="text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider">Pulse</div>
+                <Skeleton animation="pulse" className="h-24 w-full" />
+                <div className="text-center text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+                  Pulse
+                </div>
               </div>
               <div className="space-y-2">
-                <Skeleton animation="wave" className="w-full h-24" />
-                <div className="text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider">Wave</div>
+                <Skeleton animation="wave" className="h-24 w-full" />
+                <div className="text-center text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+                  Wave
+                </div>
               </div>
               <div className="space-y-2">
-                <Skeleton animation="none" className="w-full h-24" />
-                <div className="text-center text-xs font-semibold text-zinc-500 uppercase tracking-wider">None</div>
+                <Skeleton animation="none" className="h-24 w-full" />
+                <div className="text-center text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+                  None
+                </div>
               </div>
             </div>
           </ComponentPreview>
@@ -209,16 +216,17 @@ export function App() {
             Layout Composition
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Combine Skeleton components inside your actual layout wrappers (like Cards) to perfectly match the loaded state structure.
+            Combine Skeleton components inside your actual layout wrappers (like Cards) to perfectly
+            match the loaded state structure.
           </p>
 
           <ComponentPreview>
             <div className="w-full max-w-sm">
               <Card>
                 <CardHeader>
-                  <div className="flex gap-4 items-center">
-                    <Skeleton variant="circle" className="w-10 h-10 shrink-0" />
-                    <div className="space-y-2 w-full">
+                  <div className="flex items-center gap-4">
+                    <Skeleton variant="circle" className="h-10 w-10 shrink-0" />
+                    <div className="w-full space-y-2">
                       <Skeleton variant="text" className="w-1/2" />
                       <Skeleton variant="text" className="w-1/3" />
                     </div>
@@ -228,7 +236,7 @@ export function App() {
                   <Skeleton variant="text" className="w-full" />
                   <Skeleton variant="text" className="w-[90%]" />
                   <Skeleton variant="text" className="w-[95%]" />
-                  <Skeleton variant="rect" className="w-full h-32 mt-4" />
+                  <Skeleton variant="rect" className="mt-4 h-32 w-full" />
                 </CardBody>
               </Card>
             </div>

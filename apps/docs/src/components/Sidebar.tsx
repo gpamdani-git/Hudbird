@@ -216,6 +216,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
             </li>
             <li>
               <NavLink
+                to="/marketing/faq"
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
+                    isActive
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
+                    )}
+                    <span className="pl-1">FAQ</span>
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
+                      New
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/marketing/feature-sections"
                 onClick={onClose}
                 className={({ isActive }) =>
@@ -257,6 +282,31 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
                       <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
                     )}
                     <span className="pl-1">Pricing</span>
+                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
+                      New
+                    </span>
+                  </>
+                )}
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/marketing/testimonials"
+                onClick={onClose}
+                className={({ isActive }) =>
+                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
+                    isActive
+                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
+                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {isActive && (
+                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
+                    )}
+                    <span className="pl-1">Testimonials</span>
                     <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
                       New
                     </span>

@@ -30,8 +30,15 @@ export default function DividerDoc() {
       description: (
         <span>
           Layout direction of the separator:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'horizontal'</code> (spans full width <code className="font-mono text-[11px]">w-full</code>) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'vertical'</code> (stretches along vertical axes <code className="font-mono text-[11px]">h-full self-stretch</code>).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'horizontal'
+          </code>{" "}
+          (spans full width <code className="font-mono text-[11px]">w-full</code>) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'vertical'
+          </code>{" "}
+          (stretches along vertical axes{" "}
+          <code className="font-mono text-[11px]">h-full self-stretch</code>).
         </span>
       ),
     },
@@ -41,8 +48,14 @@ export default function DividerDoc() {
       description: (
         <span>
           Stroke style:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'solid'</code> (continuous thin stroke) or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'dashed'</code> (minimalist dashed pattern).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'solid'
+          </code>{" "}
+          (continuous thin stroke) or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'dashed'
+          </code>{" "}
+          (minimalist dashed pattern).
         </span>
       ),
     },
@@ -52,16 +65,26 @@ export default function DividerDoc() {
       description: (
         <span>
           Horizontal placement of embedded children labels:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'left'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'center'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'right'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'left'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'center'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'right'
+          </code>
+          .
         </span>
       ),
     },
     {
       prop: "children",
       defaultVal: "undefined",
-      description: "Optional content or badge to embed directly inside the center or offset position of the divider.",
+      description:
+        "Optional content or badge to embed directly inside the center or offset position of the divider.",
     },
     {
       prop: "className",
@@ -74,23 +97,24 @@ export default function DividerDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Divider
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Clean visual separators used to partition sections, group navigation elements, and render intermediate labeled break points.
+          Clean visual separators used to partition sections, group navigation elements, and render
+          intermediate labeled break points.
         </p>
       </div>
 
       {/* Hero Preview & Code */}
       <section className="space-y-4">
         <ComponentPreview>
-          <div className="w-full max-w-md py-4 space-y-4">
+          <div className="w-full max-w-md space-y-4 py-4">
             <div className="space-y-1">
               <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                 Design System Core
@@ -143,7 +167,6 @@ function Example() {
         <InstallationTabs componentName="divider" manualCode={dividerCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -152,7 +175,15 @@ function Example() {
         <ApiTable
           note={
             <span>
-              Implements WAI-ARIA <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">role="separator"</code> with dynamic <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">aria-orientation</code> attributes.
+              Implements WAI-ARIA{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                role="separator"
+              </code>{" "}
+              with dynamic{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                aria-orientation
+              </code>{" "}
+              attributes.
             </span>
           }
           rows={apiRows}
@@ -162,7 +193,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -182,8 +213,9 @@ function Example() {
                 <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                   Typography Principles
                 </h4>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-                  Hierarchy and rhythmic line height balance readability while anchoring user attention on crucial action vectors.
+                <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  Hierarchy and rhythmic line height balance readability while anchoring user
+                  attention on crucial action vectors.
                 </p>
               </div>
 
@@ -193,8 +225,9 @@ function Example() {
                 <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                   Elevation & Contrast
                 </h4>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1 leading-relaxed">
-                  Surface borders with subtle opacity ensure accessible visual separation in both high-key light and deep dark palettes.
+                <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                  Surface borders with subtle opacity ensure accessible visual separation in both
+                  high-key light and deep dark palettes.
                 </p>
               </div>
             </div>
@@ -229,18 +262,24 @@ function Example() {
             Vertical Divider in Navigation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Divide inline actions, header bar toolbars, or metadata breadcrumbs with <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">orientation="vertical"</code>:
+            Divide inline actions, header bar toolbars, or metadata breadcrumbs with{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              orientation="vertical"
+            </code>
+            :
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-wrap items-center justify-center gap-4 py-4 rounded-2xl bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 px-6 max-w-lg w-full">
+            <div className="flex w-full max-w-lg flex-wrap items-center justify-center gap-4 rounded-2xl border border-zinc-200/80 bg-zinc-50 px-6 py-4 dark:border-zinc-800 dark:bg-zinc-900/50">
               <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Home</span>
               <Divider orientation="vertical" className="h-4" />
               <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Profile</span>
               <Divider orientation="vertical" className="h-4" />
               <span className="text-xs font-medium text-zinc-700 dark:text-zinc-300">Settings</span>
               <Divider orientation="vertical" className="h-4" />
-              <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">Billing</span>
+              <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                Billing
+              </span>
             </div>
           </ComponentPreview>
 
@@ -269,7 +308,12 @@ function Example() {
             Divider with Content (OR / Sign-in)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Place customizable badges, icons, or text labels directly inside the divider line with support for <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">contentPosition="left" | "center" | "right"</code>:
+            Place customizable badges, icons, or text labels directly inside the divider line with
+            support for{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              contentPosition="left" | "center" | "right"
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -280,8 +324,8 @@ function Example() {
 
               <Divider>OR</Divider>
 
-              <Button variant="outline" className="w-full flex items-center justify-center gap-2">
-                <svg className="w-4 h-4" viewBox="0 0 24 24">
+              <Button variant="outline" className="flex w-full items-center justify-center gap-2">
+                <svg className="h-4 w-4" viewBox="0 0 24 24">
                   <path
                     fill="currentColor"
                     d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -302,7 +346,7 @@ function Example() {
                 Continue with Google
               </Button>
 
-              <div className="pt-4 space-y-3">
+              <div className="space-y-3 pt-4">
                 <Divider contentPosition="left">Left Aligned</Divider>
                 <Divider contentPosition="right">Right Aligned</Divider>
               </div>
@@ -337,27 +381,37 @@ function Example() {
             Dashed Variant in Receipt / Invoice
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="dashed"</code> for ticket vouchers, receipts, and order cost breakdowns:
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="dashed"
+            </code>{" "}
+            for ticket vouchers, receipts, and order cost breakdowns:
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-sm rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 p-5 space-y-3">
+            <div className="w-full max-w-sm space-y-3 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/30">
               <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400">
                 <span>Core Library Subscription (Annual)</span>
-                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">$240.00</span>
+                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">
+                  $240.00
+                </span>
               </div>
               <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400">
                 <span>Priority Cloud Support Tier</span>
-                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">$60.00</span>
+                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">
+                  $60.00
+                </span>
               </div>
               <div className="flex justify-between text-xs text-zinc-600 dark:text-zinc-400">
                 <span>Tax Estimate</span>
-                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">$24.00</span>
+                <span className="font-mono font-medium text-zinc-900 dark:text-zinc-100">
+                  $24.00
+                </span>
               </div>
 
               <Divider variant="dashed" />
 
-              <div className="flex justify-between text-sm font-semibold text-zinc-900 dark:text-zinc-50 pt-1">
+              <div className="flex justify-between pt-1 text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                 <span>Total Due</span>
                 <span className="font-mono text-indigo-600 dark:text-indigo-400">$324.00 USD</span>
               </div>

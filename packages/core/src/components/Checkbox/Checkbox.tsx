@@ -36,19 +36,22 @@ const checkboxControlVariants = cva(
       {
         isChecked: true,
         color: "primary",
-        className: "bg-indigo-600 border-indigo-600 text-white dark:bg-indigo-500 dark:border-indigo-500 shadow-xs",
+        className:
+          "bg-indigo-600 border-indigo-600 text-white dark:bg-indigo-500 dark:border-indigo-500 shadow-xs",
       },
       // Success checked state
       {
         isChecked: true,
         color: "success",
-        className: "bg-emerald-600 border-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-500 shadow-xs",
+        className:
+          "bg-emerald-600 border-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-500 shadow-xs",
       },
       // Danger checked state
       {
         isChecked: true,
         color: "danger",
-        className: "bg-rose-600 border-rose-600 text-white dark:bg-rose-500 dark:border-rose-500 shadow-xs",
+        className:
+          "bg-rose-600 border-rose-600 text-white dark:bg-rose-500 dark:border-rose-500 shadow-xs",
       },
     ],
     defaultVariants: {
@@ -82,7 +85,8 @@ const labelTextVariants = cva(
 );
 
 export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
+  extends
+    Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
     VariantProps<typeof checkboxControlVariants> {
   /**
    * Label text or custom element beside the checkbox.
@@ -123,9 +127,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const id = customId || generatedId;
 
     // Internal state for uncontrolled mode
-    const [internalChecked, setInternalChecked] = React.useState<boolean>(
-      defaultChecked ?? false
-    );
+    const [internalChecked, setInternalChecked] = React.useState<boolean>(defaultChecked ?? false);
 
     const isControlled = checked !== undefined;
     const isCurrentChecked = isControlled ? checked : internalChecked;
@@ -159,7 +161,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           disabled={disabled}
           onChange={handleChange}
           aria-invalid={isInvalid}
-          className="sr-only peer"
+          className="peer sr-only"
           {...props}
         />
 
@@ -183,22 +185,16 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {/* Animated SVG Checkmark */}
           <svg
             className={cn(
-              "stroke-current fill-none stroke-[3] transition-all duration-200 ease-in-out transform",
-              size === "sm" && "w-2.5 h-2.5",
-              size === "md" && "w-3 h-3",
-              size === "lg" && "w-3.5 h-3.5",
-              isCurrentChecked
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-50"
+              "transform fill-none stroke-current stroke-[3] transition-all duration-200 ease-in-out",
+              size === "sm" && "h-2.5 w-2.5",
+              size === "md" && "h-3 w-3",
+              size === "lg" && "h-3.5 w-3.5",
+              isCurrentChecked ? "scale-100 opacity-100" : "scale-50 opacity-0"
             )}
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.5 12.75l6 6 9-13.5"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
 
@@ -214,7 +210,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
               {labelContent}
             </span>
             {description && (
-              <span className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal mt-0.5">
+              <span className="mt-0.5 text-xs leading-normal text-zinc-500 dark:text-zinc-400">
                 {description}
               </span>
             )}

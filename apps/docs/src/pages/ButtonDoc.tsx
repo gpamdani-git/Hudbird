@@ -39,9 +39,7 @@ export const buttonTocItems = [
   {
     id: "appendix",
     title: "Appendix",
-    children: [
-      { id: "solid-color-reference", title: "Solid Color Reference" },
-    ],
+    children: [{ id: "solid-color-reference", title: "Solid Color Reference" }],
   },
 ];
 
@@ -55,10 +53,22 @@ export default function ButtonDoc() {
       description: (
         <span>
           Visual variant style:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'solid'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bordered'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'flat'</code>, or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'light'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'solid'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bordered'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'flat'
+          </code>
+          , or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'light'
+          </code>
+          .
         </span>
       ),
     },
@@ -68,9 +78,18 @@ export default function ButtonDoc() {
       description: (
         <span>
           The semantic color palette:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'primary'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'success'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code>, or solid tokens.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'primary'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'success'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>
+          , or solid tokens.
         </span>
       ),
     },
@@ -80,9 +99,18 @@ export default function ButtonDoc() {
       description: (
         <span>
           Button size dimensions:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code> (h-8),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (h-9), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (h-11).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>{" "}
+          (h-8),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (h-9), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (h-11).
         </span>
       ),
     },
@@ -92,10 +120,22 @@ export default function ButtonDoc() {
       description: (
         <span>
           Border radius curvature:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'none'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (rounded-xl),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (rounded-2xl), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'full'</code> (rounded-full).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'none'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (rounded-xl),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (rounded-2xl), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'full'
+          </code>{" "}
+          (rounded-full).
         </span>
       ),
     },
@@ -165,16 +205,17 @@ export default function ButtonDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Button
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Interactive trigger component with rich slot support for icons, loaders, compound variants, and corner radiuses.
+          Interactive trigger component with rich slot support for icons, loaders, compound
+          variants, and corner radiuses.
         </p>
       </div>
 
@@ -182,17 +223,21 @@ export default function ButtonDoc() {
       <section className="space-y-4">
         <ComponentPreview>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button color="primary" startContent={<Sparkles className="w-4 h-4" />}>
+            <Button color="primary" startContent={<Sparkles className="h-4 w-4" />}>
               Get Started
             </Button>
             <Button variant="bordered" color="primary">
               Learn More
             </Button>
-            <Button variant="flat" color="success" startContent={<CheckCircle2 className="w-4 h-4" />}>
+            <Button
+              variant="flat"
+              color="success"
+              startContent={<CheckCircle2 className="h-4 w-4" />}
+            >
               Completed
             </Button>
             <Button isIconOnly color="danger" variant="light" aria-label="Like">
-              <Heart className="w-5 h-5" />
+              <Heart className="h-5 w-5" />
             </Button>
           </div>
         </ComponentPreview>
@@ -225,7 +270,6 @@ function Example() {
         <InstallationTabs componentName="button" manualCode={buttonCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -234,7 +278,9 @@ function Example() {
         <ApiTable
           note={
             <span>
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Button</strong> supports standard HTML button and anchor attributes, accessible focus rings, and seamless slot management for icons.
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Button</strong>{" "}
+              supports standard HTML button and anchor attributes, accessible focus rings, and
+              seamless slot management for icons.
             </span>
           }
           rows={apiRows}
@@ -244,7 +290,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -255,11 +301,23 @@ function Example() {
             Basic Buttons & Colors
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Render buttons in primary brand colors and three standard sizes (<code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'sm'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'md'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'lg'</code>):
+            Render buttons in primary brand colors and three standard sizes (
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'sm'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'md'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'lg'
+            </code>
+            ):
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col gap-5 w-full items-center">
+            <div className="flex w-full flex-col items-center gap-5">
               <div className="flex flex-wrap items-center justify-center gap-3">
                 <Button color="primary">Primary</Button>
                 <Button color="success">Success</Button>
@@ -268,9 +326,15 @@ function Example() {
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-                <Button size="sm" color="primary">Small (sm)</Button>
-                <Button size="md" color="primary">Medium (md)</Button>
-                <Button size="lg" color="primary">Large (lg)</Button>
+                <Button size="sm" color="primary">
+                  Small (sm)
+                </Button>
+                <Button size="md" color="primary">
+                  Medium (md)
+                </Button>
+                <Button size="lg" color="primary">
+                  Large (lg)
+                </Button>
               </div>
             </div>
           </ComponentPreview>
@@ -297,19 +361,41 @@ function Example() {
 
         {/* 2. Button Variants */}
         <div id="button-variants" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Button Variants
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Button Variants</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Choose between <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'solid'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'bordered'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'flat'</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'light'</code>:
+            Choose between{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'solid'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'bordered'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'flat'
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'light'
+            </code>
+            :
           </p>
 
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button variant="solid" color="primary">Solid</Button>
-              <Button variant="bordered" color="primary">Bordered</Button>
-              <Button variant="flat" color="primary">Flat</Button>
-              <Button variant="light" color="primary">Light</Button>
+              <Button variant="solid" color="primary">
+                Solid
+              </Button>
+              <Button variant="bordered" color="primary">
+                Bordered
+              </Button>
+              <Button variant="flat" color="primary">
+                Flat
+              </Button>
+              <Button variant="light" color="primary">
+                Light
+              </Button>
             </div>
           </ComponentPreview>
 
@@ -335,21 +421,33 @@ function Example() {
             Buttons with Icons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">startContent</code> to place an icon on the left, or <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">endContent</code> to place it on the right with automatic gap alignment:
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              startContent
+            </code>{" "}
+            to place an icon on the left, or{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              endContent
+            </code>{" "}
+            to place it on the right with automatic gap alignment:
           </p>
 
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button color="primary" startContent={<Plus className="w-4 h-4" />}>
+              <Button color="primary" startContent={<Plus className="h-4 w-4" />}>
                 Create Project
               </Button>
-              <Button color="success" variant="flat" startContent={<Mail className="w-4 h-4" />}>
+              <Button color="success" variant="flat" startContent={<Mail className="h-4 w-4" />}>
                 Send Email
               </Button>
-              <Button color="primary" variant="bordered" endContent={<ArrowRight className="w-4 h-4" />}>
+              <Button
+                color="primary"
+                variant="bordered"
+                endContent={<ArrowRight className="h-4 w-4" />}
+              >
                 Continue
               </Button>
-              <Button color="danger" variant="light" startContent={<Trash2 className="w-4 h-4" />}>
+              <Button color="danger" variant="light" startContent={<Trash2 className="h-4 w-4" />}>
                 Delete Item
               </Button>
             </div>
@@ -393,28 +491,32 @@ function Example() {
             Icon Only Buttons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Set <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isIconOnly</code> to create square or circular action triggers without text:
+            Set{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isIconOnly
+            </code>{" "}
+            to create square or circular action triggers without text:
           </p>
 
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Button isIconOnly color="primary" aria-label="Search">
-                <Search className="w-4 h-4" />
+                <Search className="h-4 w-4" />
               </Button>
               <Button isIconOnly variant="bordered" color="primary" aria-label="Edit">
-                <Edit className="w-4 h-4" />
+                <Edit className="h-4 w-4" />
               </Button>
               <Button isIconOnly variant="flat" color="success" radius="full" aria-label="Download">
-                <Download className="w-4 h-4" />
+                <Download className="h-4 w-4" />
               </Button>
               <Button isIconOnly variant="light" color="danger" radius="full" aria-label="Delete">
-                <Trash2 className="w-4 h-4" />
+                <Trash2 className="h-4 w-4" />
               </Button>
               <Button isIconOnly size="sm" color="dark/zinc" radius="md" aria-label="Plus">
-                <Plus className="w-3.5 h-3.5" />
+                <Plus className="h-3.5 w-3.5" />
               </Button>
               <Button isIconOnly size="lg" color="primary" radius="full" aria-label="Send">
-                <Send className="w-5 h-5" />
+                <Send className="h-5 w-5" />
               </Button>
             </div>
           </ComponentPreview>
@@ -453,19 +555,29 @@ function Example() {
 
         {/* 5. Custom Radius */}
         <div id="custom-radius" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Custom Radius
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Custom Radius</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Customize corner rounding from sharp edges to full pills using the <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'radius'</code> prop:
+            Customize corner rounding from sharp edges to full pills using the{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'radius'
+            </code>{" "}
+            prop:
           </p>
 
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button radius="none" color="primary">radius="none"</Button>
-              <Button radius="md" color="primary">radius="md" (default)</Button>
-              <Button radius="lg" color="primary">radius="lg"</Button>
-              <Button radius="full" color="primary">radius="full"</Button>
+              <Button radius="none" color="primary">
+                radius="none"
+              </Button>
+              <Button radius="md" color="primary">
+                radius="md" (default)
+              </Button>
+              <Button radius="lg" color="primary">
+                radius="lg"
+              </Button>
+              <Button radius="full" color="primary">
+                radius="full"
+              </Button>
             </div>
           </ComponentPreview>
 
@@ -491,16 +603,20 @@ function Example() {
             <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
               Loading & Disabled States
             </h3>
-            <Button
-              size="sm"
-              variant="bordered"
-              onClick={() => setIsLoadingActive((v) => !v)}
-            >
+            <Button size="sm" variant="bordered" onClick={() => setIsLoadingActive((v) => !v)}>
               Toggle Loading: {isLoadingActive ? "ON" : "OFF"}
             </Button>
           </div>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Toggle <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isLoading</code> to display a spinner and prevent clicks, or use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">disabled</code> to lock interactions:
+            Toggle{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isLoading
+            </code>{" "}
+            to display a spinner and prevent clicks, or use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              disabled
+            </code>{" "}
+            to lock interactions:
           </p>
 
           <ComponentPreview>
@@ -508,8 +624,14 @@ function Example() {
               <Button isLoading={isLoadingActive} color="primary">
                 {isLoadingActive ? "Processing..." : "Submit Order"}
               </Button>
-              <Button isLoading={isLoadingActive} isIconOnly color="primary" radius="full" aria-label="Loading">
-                <Send className="w-4 h-4" />
+              <Button
+                isLoading={isLoadingActive}
+                isIconOnly
+                color="primary"
+                radius="full"
+                aria-label="Loading"
+              >
+                <Send className="h-4 w-4" />
               </Button>
               <Button disabled color="primary">
                 Disabled Solid
@@ -546,15 +668,21 @@ function Example() {
 
         {/* 7. Using as a link */}
         <div id="using-as-a-link" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Using as a link
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Using as a link</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Pass the <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'href'</code> prop to render an accessible HTML anchor tag with identical button styling:
+            Pass the{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'href'
+            </code>{" "}
+            prop to render an accessible HTML anchor tag with identical button styling:
           </p>
 
           <ComponentPreview>
-            <Button href="#get-started" color="primary" endContent={<ArrowRight className="w-4 h-4" />}>
+            <Button
+              href="#get-started"
+              color="primary"
+              endContent={<ArrowRight className="h-4 w-4" />}
+            >
               Get started
             </Button>
           </ComponentPreview>
@@ -590,19 +718,19 @@ function Example() {
           </p>
 
           {/* Adaptive color table */}
-          <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/40">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/40 dark:bg-zinc-900/80 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
+              <thead className="border-b border-zinc-200 bg-zinc-50/40 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200">
                 <tr>
-                  <th className="px-4 py-3 w-1/2">Color</th>
-                  <th className="px-4 py-3 w-1/2">Example</th>
+                  <th className="w-1/2 px-4 py-3">Color</th>
+                  <th className="w-1/2 px-4 py-3">Example</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/70">
                 {adaptiveColors.map((item) => (
                   <tr key={item.name} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                     <td className="px-4 py-3 font-mono text-xs font-semibold text-zinc-900 dark:text-zinc-100">
-                      <span className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-zinc-800 dark:text-zinc-200">
+                      <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
                         '{item.name}'
                       </span>
                     </td>
@@ -615,24 +743,24 @@ function Example() {
             </table>
           </div>
 
-          <p className="text-sm text-zinc-600 dark:text-zinc-400 pt-4">
+          <p className="pt-4 text-sm text-zinc-600 dark:text-zinc-400">
             Solid color tokens for consistent accents:
           </p>
 
           {/* 20 Solid Colors table */}
-          <div className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/40">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/40">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/40 dark:bg-zinc-900/80 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
+              <thead className="border-b border-zinc-200 bg-zinc-50/40 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200">
                 <tr>
-                  <th className="px-4 py-3 w-1/2">Color</th>
-                  <th className="px-4 py-3 w-1/2">Example</th>
+                  <th className="w-1/2 px-4 py-3">Color</th>
+                  <th className="w-1/2 px-4 py-3">Example</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/70">
                 {solidColors.map((item) => (
                   <tr key={item.name} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                     <td className="px-4 py-3 font-mono text-xs font-semibold text-zinc-900 dark:text-zinc-100">
-                      <span className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 text-zinc-800 dark:text-zinc-200">
+                      <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
                         '{item.name}'
                       </span>
                     </td>

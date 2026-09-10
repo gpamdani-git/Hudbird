@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
-// @ts-ignore - maath types are not always perfectly resolved in some TS configs
+// @ts-expect-error - maath types are not always perfectly resolved in some TS configs
 import * as random from "maath/random/dist/maath-random.esm";
 
 function ParticleCloud(props: any) {
@@ -35,12 +35,12 @@ function ParticleCloud(props: any) {
 
 export default function HeroThreeBackground() {
   return (
-    <div className="absolute inset-0 z-0 bg-zinc-950 overflow-hidden">
+    <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-950">
       <Canvas camera={{ position: [0, 0, 1] }}>
         <ParticleCloud />
       </Canvas>
       {/* Overlay to ensure text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/20 via-zinc-950/40 to-zinc-950/80 pointer-events-none" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-zinc-950/20 via-zinc-950/40 to-zinc-950/80" />
     </div>
   );
 }

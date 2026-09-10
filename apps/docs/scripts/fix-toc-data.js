@@ -1,9 +1,9 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
-const TOC_FILE = path.resolve(process.cwd(), 'apps/docs/src/tocData.ts');
+const TOC_FILE = path.resolve(process.cwd(), "apps/docs/src/tocData.ts");
 
-let content = fs.readFileSync(TOC_FILE, 'utf-8');
+let content = fs.readFileSync(TOC_FILE, "utf-8");
 
 // Regex to find TOC array definition in tocData.ts
 const tocRegex = /export const [a-zA-Z]+TocItems: TocItem\[\] = \[\s*([\s\S]*?)\];/g;
@@ -15,9 +15,9 @@ const newContent = content.replace(tocRegex, (match, arrayContent) => {
   if (arrayContent.includes('id: "installation"')) {
     return match;
   }
-  
+
   // Exclude getting started and changelog
-  if (match.includes('gettingStartedTocItems') || match.includes('changelogTocItems')) {
+  if (match.includes("gettingStartedTocItems") || match.includes("changelogTocItems")) {
     return match;
   }
 
@@ -25,9 +25,15 @@ const newContent = content.replace(tocRegex, (match, arrayContent) => {
 
   // Check if it has component-api or overview
   if (arrayContent.includes('id: "component-api"')) {
-    return match.replace(/\{\s*id:\s*"component-api"/, `{ id: "installation", title: "Installation" },\n  { id: "component-api"`);
+    return match.replace(
+      /\{\s*id:\s*"component-api"/,
+      `{ id: "installation", title: "Installation" },\n  { id: "component-api"`
+    );
   } else if (arrayContent.includes('id: "overview"')) {
-    return match.replace(/\{\s*id:\s*"overview"/, `{ id: "installation", title: "Installation" },\n  { id: "overview"`);
+    return match.replace(
+      /\{\s*id:\s*"overview"/,
+      `{ id: "installation", title: "Installation" },\n  { id: "overview"`
+    );
   } else {
     // If neither, insert at the top of the array
     return match.replace(/=\s*\[/, `= [\n  { id: "installation", title: "Installation" },`);
@@ -35,8 +41,8 @@ const newContent = content.replace(tocRegex, (match, arrayContent) => {
 });
 
 if (modified) {
-  fs.writeFileSync(TOC_FILE, newContent, 'utf-8');
+  fs.writeFileSync(TOC_FILE, newContent, "utf-8");
   console.log(`Updated TOC in tocData.ts`);
 } else {
-  console.log('No changes needed in tocData.ts');
+  console.log("No changes needed in tocData.ts");
 }

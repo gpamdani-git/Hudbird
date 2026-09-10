@@ -82,7 +82,8 @@ const alertVariants = cva(
       {
         variant: "bordered",
         color: "success",
-        className: "border-emerald-600 text-emerald-700 dark:border-emerald-400 dark:text-emerald-300",
+        className:
+          "border-emerald-600 text-emerald-700 dark:border-emerald-400 dark:text-emerald-300",
       },
       {
         variant: "bordered",
@@ -103,7 +104,8 @@ const alertVariants = cva(
 );
 
 export interface AlertProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "title" | "color">,
+  extends
+    Omit<React.HTMLAttributes<HTMLDivElement>, "title" | "color">,
     VariantProps<typeof alertVariants> {
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -163,19 +165,15 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         )}
 
         {/* Center Content Area */}
-        <div className="flex-1 min-w-0 space-y-1">
-          {title && (
-            <h5 className="font-semibold leading-tight tracking-tight">
-              {title}
-            </h5>
-          )}
+        <div className="min-w-0 flex-1 space-y-1">
+          {title && <h5 className="leading-tight font-semibold tracking-tight">{title}</h5>}
           {description && (
-            <div className="text-xs sm:text-sm opacity-90 leading-relaxed font-normal">
+            <div className="text-xs leading-relaxed font-normal opacity-90 sm:text-sm">
               {description}
             </div>
           )}
           {children && (
-            <div className="text-xs sm:text-sm opacity-90 leading-relaxed font-normal">
+            <div className="text-xs leading-relaxed font-normal opacity-90 sm:text-sm">
               {children}
             </div>
           )}
@@ -188,11 +186,11 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
             onClick={handleClose}
             aria-label="Close alert"
             className={cn(
-              "shrink-0 p-1 -mr-1.5 -mt-1.5 rounded-xl active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 dark:focus-visible:ring-zinc-300",
+              "-mt-1.5 -mr-1.5 shrink-0 rounded-xl p-1 transition-all focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:outline-none active:scale-95 dark:focus-visible:ring-zinc-300",
               getCloseButtonClass()
             )}
           >
-            <X className="w-4 h-4" />
+            <X className="h-4 w-4" />
           </button>
         )}
       </div>

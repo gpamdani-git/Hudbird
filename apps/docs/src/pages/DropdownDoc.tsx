@@ -43,7 +43,10 @@ export const dropdownTocItems = [
     title: "Examples",
     children: [
       { id: "basic-dropdown", title: "Basic Dropdown Menu" },
-      { id: "position-placements", title: "Interactive Positions (Center, Left, Right, Top, Bottom)" },
+      {
+        id: "position-placements",
+        title: "Interactive Positions (Center, Left, Right, Top, Bottom)",
+      },
       { id: "with-icons", title: "Dropdown with Icons (startContent)" },
       { id: "sections-and-danger", title: "Advanced Menu (Sections & Danger Variant)" },
     ],
@@ -55,15 +58,19 @@ export default function DropdownDoc() {
   const [selectedPlacement, setSelectedPlacement] = useState<DropdownPlacement>("bottom-start");
 
   const placements: { id: DropdownPlacement; label: string; icon: React.ReactNode }[] = [
-    { id: "bottom-start", label: "Bottom Start (Default)", icon: <ArrowDown className="w-3.5 h-3.5" /> },
-    { id: "bottom", label: "Bottom Center", icon: <ArrowDown className="w-3.5 h-3.5" /> },
-    { id: "bottom-end", label: "Bottom End", icon: <ArrowDown className="w-3.5 h-3.5" /> },
-    { id: "top-start", label: "Top Start", icon: <ArrowUp className="w-3.5 h-3.5" /> },
-    { id: "top", label: "Top Center", icon: <ArrowUp className="w-3.5 h-3.5" /> },
-    { id: "top-end", label: "Top End", icon: <ArrowUp className="w-3.5 h-3.5" /> },
-    { id: "left", label: "Left", icon: <ArrowLeft className="w-3.5 h-3.5" /> },
-    { id: "right", label: "Right", icon: <ArrowRight className="w-3.5 h-3.5" /> },
-    { id: "center", label: "Center", icon: <Focus className="w-3.5 h-3.5" /> },
+    {
+      id: "bottom-start",
+      label: "Bottom Start (Default)",
+      icon: <ArrowDown className="h-3.5 w-3.5" />,
+    },
+    { id: "bottom", label: "Bottom Center", icon: <ArrowDown className="h-3.5 w-3.5" /> },
+    { id: "bottom-end", label: "Bottom End", icon: <ArrowDown className="h-3.5 w-3.5" /> },
+    { id: "top-start", label: "Top Start", icon: <ArrowUp className="h-3.5 w-3.5" /> },
+    { id: "top", label: "Top Center", icon: <ArrowUp className="h-3.5 w-3.5" /> },
+    { id: "top-end", label: "Top End", icon: <ArrowUp className="h-3.5 w-3.5" /> },
+    { id: "left", label: "Left", icon: <ArrowLeft className="h-3.5 w-3.5" /> },
+    { id: "right", label: "Right", icon: <ArrowRight className="h-3.5 w-3.5" /> },
+    { id: "center", label: "Center", icon: <Focus className="h-3.5 w-3.5" /> },
   ];
 
   const apiRows: ApiPropRow[] = [
@@ -73,15 +80,42 @@ export default function DropdownDoc() {
       description: (
         <span>
           Anchored popover position:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bottom-start'</code> (default snug under trigger),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bottom'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'bottom-end'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'top-start'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'top'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'top-end'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'left'</code>,{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'right'</code>, and{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'center'</code>.
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bottom-start'
+          </code>{" "}
+          (default snug under trigger),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bottom'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'bottom-end'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'top-start'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'top'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'top-end'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'left'
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'right'
+          </code>
+          , and{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'center'
+          </code>
+          .
         </span>
       ),
     },
@@ -106,8 +140,14 @@ export default function DropdownDoc() {
       description: (
         <span>
           Visual intent on <code className="font-mono text-[11px]">&lt;DropdownItem&gt;</code>:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'default'</code> or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code> (rose accent for destructive commands).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'default'
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>{" "}
+          (rose accent for destructive commands).
         </span>
       ),
     },
@@ -124,7 +164,8 @@ export default function DropdownDoc() {
     {
       prop: "children",
       defaultVal: "-",
-      description: "Declarative subcomponents: <DropdownTrigger>, <DropdownMenu>, <DropdownItem>, and <DropdownSection>.",
+      description:
+        "Declarative subcomponents: <DropdownTrigger>, <DropdownMenu>, <DropdownItem>, and <DropdownSection>.",
     },
   ];
 
@@ -132,16 +173,17 @@ export default function DropdownDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Dropdown
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Versatile popover menus for triggering contextual actions with customizable placement positions (Center, Top, Bottom, Left, Right), high elevation, and automatic dismiss.
+          Versatile popover menus for triggering contextual actions with customizable placement
+          positions (Center, Top, Bottom, Left, Right), high elevation, and automatic dismiss.
         </p>
       </div>
 
@@ -153,34 +195,34 @@ export default function DropdownDoc() {
               <DropdownTrigger>
                 <Button color="indigo" className="gap-2">
                   <span>Workspace Actions</span>
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownTrigger>
 
               <DropdownMenu>
                 <DropdownItem
-                  startContent={<Edit className="w-4 h-4" />}
+                  startContent={<Edit className="h-4 w-4" />}
                   endContent="⌘E"
                   onClick={() => setLastAction("Edit Page")}
                 >
                   Edit Page
                 </DropdownItem>
                 <DropdownItem
-                  startContent={<Copy className="w-4 h-4" />}
+                  startContent={<Copy className="h-4 w-4" />}
                   endContent="⌘C"
                   onClick={() => setLastAction("Duplicate")}
                 >
                   Duplicate
                 </DropdownItem>
                 <DropdownItem
-                  startContent={<Share2 className="w-4 h-4" />}
+                  startContent={<Share2 className="h-4 w-4" />}
                   onClick={() => setLastAction("Share Link")}
                 >
                   Share Link
                 </DropdownItem>
                 <DropdownItem
                   variant="danger"
-                  startContent={<Trash2 className="w-4 h-4" />}
+                  startContent={<Trash2 className="h-4 w-4" />}
                   endContent="⌫"
                   onClick={() => setLastAction("Delete")}
                 >
@@ -191,7 +233,8 @@ export default function DropdownDoc() {
 
             {lastAction && (
               <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
-                Triggered action: <span className="font-semibold text-zinc-900 dark:text-zinc-100">{lastAction}</span>
+                Triggered action:{" "}
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100">{lastAction}</span>
               </p>
             )}
           </div>
@@ -240,7 +283,6 @@ function Example() {
         <InstallationTabs componentName="dropdown" manualCode={dropdownCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -249,7 +291,27 @@ function Example() {
         <ApiTable
           note={
             <span>
-              Supports all cardinal & centered placements: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">center</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">top</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">bottom</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">left</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">right</code>.
+              Supports all cardinal & centered placements:{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                center
+              </code>
+              ,{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                top
+              </code>
+              ,{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                bottom
+              </code>
+              ,{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                left
+              </code>
+              , and{" "}
+              <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+                right
+              </code>
+              .
             </span>
           }
           rows={apiRows}
@@ -259,7 +321,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -270,7 +332,8 @@ function Example() {
             Basic Dropdown Menu
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            A simple action menu triggered from a standard outline button (placed snuggly directly underneath):
+            A simple action menu triggered from a standard outline button (placed snuggly directly
+            underneath):
           </p>
 
           <ComponentPreview>
@@ -279,13 +342,11 @@ function Example() {
                 <DropdownTrigger>
                   <Button variant="outline" className="gap-2">
                     <span>Options</span>
-                    <ChevronDown className="w-4 h-4 text-zinc-400" />
+                    <ChevronDown className="h-4 w-4 text-zinc-400" />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu>
-                  <DropdownItem onClick={() => alert("Edit selected")}>
-                    Edit Details
-                  </DropdownItem>
+                  <DropdownItem onClick={() => alert("Edit selected")}>Edit Details</DropdownItem>
                   <DropdownItem onClick={() => alert("Clone selected")}>
                     Clone Configuration
                   </DropdownItem>
@@ -339,10 +400,10 @@ function Example() {
                 key={pos.id}
                 type="button"
                 onClick={() => setSelectedPlacement(pos.id)}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 border ${
+                className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all duration-150 ${
                   selectedPlacement === pos.id
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                    : "bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                    ? "border-indigo-600 bg-indigo-600 text-white shadow-sm"
+                    : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 }`}
               >
                 {pos.icon}
@@ -352,40 +413,29 @@ function Example() {
           </div>
 
           <ComponentPreview>
-            <div className="flex items-center justify-center py-20 w-full">
+            <div className="flex w-full items-center justify-center py-20">
               <Dropdown placement={selectedPlacement}>
                 <DropdownTrigger>
                   <Button color="indigo" variant="outline" className="gap-2">
                     <span className="capitalize">Position: {selectedPlacement}</span>
-                    <ChevronDown className="w-4 h-4" />
+                    <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownTrigger>
 
                 <DropdownMenu className="min-w-[220px]">
                   <DropdownSection title={`Placement: ${selectedPlacement}`}>
-                    <DropdownItem
-                      startContent={<Edit className="w-4 h-4" />}
-                      endContent="⌘E"
-                    >
+                    <DropdownItem startContent={<Edit className="h-4 w-4" />} endContent="⌘E">
                       Quick Edit
                     </DropdownItem>
-                    <DropdownItem
-                      startContent={<Copy className="w-4 h-4" />}
-                      endContent="⌘D"
-                    >
+                    <DropdownItem startContent={<Copy className="h-4 w-4" />} endContent="⌘D">
                       Duplicate Item
                     </DropdownItem>
-                    <DropdownItem
-                      startContent={<Share2 className="w-4 h-4" />}
-                    >
+                    <DropdownItem startContent={<Share2 className="h-4 w-4" />}>
                       Export Data
                     </DropdownItem>
                   </DropdownSection>
                   <DropdownSection showDivider>
-                    <DropdownItem
-                      variant="danger"
-                      startContent={<Trash2 className="w-4 h-4" />}
-                    >
+                    <DropdownItem variant="danger" startContent={<Trash2 className="h-4 w-4" />}>
                       Remove Item
                     </DropdownItem>
                   </DropdownSection>
@@ -417,7 +467,15 @@ function Example() {
             Dropdown with Icons (startContent)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Improve visual recognition by passing icon elements into <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">startContent</code> and keyboard shortcuts to <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">endContent</code>:
+            Improve visual recognition by passing icon elements into{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              startContent
+            </code>{" "}
+            and keyboard shortcuts to{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              endContent
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -425,27 +483,25 @@ function Example() {
               <Dropdown>
                 <DropdownTrigger>
                   <Button variant="outline" className="gap-2">
-                    <Layers className="w-4 h-4 text-indigo-500" />
+                    <Layers className="h-4 w-4 text-indigo-500" />
                     <span>Create New...</span>
-                    <ChevronDown className="w-4 h-4 text-zinc-400" />
+                    <ChevronDown className="h-4 w-4 text-zinc-400" />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu>
                   <DropdownItem
-                    startContent={<FilePlus className="w-4 h-4 text-zinc-400" />}
+                    startContent={<FilePlus className="h-4 w-4 text-zinc-400" />}
                     endContent="⌘N"
                   >
                     New Document
                   </DropdownItem>
                   <DropdownItem
-                    startContent={<FolderPlus className="w-4 h-4 text-zinc-400" />}
+                    startContent={<FolderPlus className="h-4 w-4 text-zinc-400" />}
                     endContent="⇧⌘N"
                   >
                     New Folder
                   </DropdownItem>
-                  <DropdownItem
-                    startContent={<ExternalLink className="w-4 h-4 text-zinc-400" />}
-                  >
+                  <DropdownItem startContent={<ExternalLink className="h-4 w-4 text-zinc-400" />}>
                     Import External Project
                   </DropdownItem>
                 </DropdownMenu>
@@ -492,7 +548,12 @@ function Example() {
             Advanced Menu (Sections & Danger Variant)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Organize complex menus into categorized sections with headers and distinctive destructive actions using <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">variant="danger"</code>:
+            Organize complex menus into categorized sections with headers and distinctive
+            destructive actions using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="danger"
+            </code>
+            :
           </p>
 
           <ComponentPreview>
@@ -500,26 +561,26 @@ function Example() {
               <Dropdown placement="bottom-start">
                 <DropdownTrigger>
                   <Button variant="outline" className="gap-2.5">
-                    <User className="w-4 h-4 text-zinc-500" />
+                    <User className="h-4 w-4 text-zinc-500" />
                     <span>My Account</span>
-                    <ChevronDown className="w-4 h-4 text-zinc-400" />
+                    <ChevronDown className="h-4 w-4 text-zinc-400" />
                   </Button>
                 </DropdownTrigger>
                 <DropdownMenu className="min-w-[240px]">
                   <DropdownSection title="Signed in as">
-                    <div className="px-3 py-1 text-xs font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+                    <div className="truncate px-3 py-1 text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                       alex.morgan@company.io
                     </div>
                   </DropdownSection>
 
                   <DropdownSection title="Account Settings" showDivider>
-                    <DropdownItem startContent={<User className="w-4 h-4" />}>
+                    <DropdownItem startContent={<User className="h-4 w-4" />}>
                       Profile Overview
                     </DropdownItem>
-                    <DropdownItem startContent={<Settings className="w-4 h-4" />}>
+                    <DropdownItem startContent={<Settings className="h-4 w-4" />}>
                       Preferences
                     </DropdownItem>
-                    <DropdownItem startContent={<Shield className="w-4 h-4" />}>
+                    <DropdownItem startContent={<Shield className="h-4 w-4" />}>
                       Security & 2FA
                     </DropdownItem>
                   </DropdownSection>
@@ -527,7 +588,7 @@ function Example() {
                   <DropdownSection showDivider>
                     <DropdownItem
                       variant="danger"
-                      startContent={<LogOut className="w-4 h-4" />}
+                      startContent={<LogOut className="h-4 w-4" />}
                       endContent="⌥Q"
                     >
                       Sign Out

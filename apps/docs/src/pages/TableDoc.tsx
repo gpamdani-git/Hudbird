@@ -1,14 +1,14 @@
 import React from "react";
 import tableCode from "../../../../packages/core/src/components/Table/Table.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
-import { 
-  Table, 
-  TableHeader, 
-  TableBody, 
-  TableRow, 
-  TableHead, 
+import {
+  Table,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
   TableCell,
-  TableCaption
+  TableCaption,
 } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -27,7 +27,7 @@ export default function TableDoc() {
       type: "ReactNode",
       defaultVal: "-",
       description: "The content of the table component.",
-    }
+    },
   ];
 
   const invoices = [
@@ -61,11 +61,11 @@ export default function TableDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Table
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
@@ -142,11 +142,13 @@ export default function Example() {
         <InstallationTabs componentName="table" manualCode={tableCode} />
       </div>
 
-
       {/* API Reference */}
       <section className="space-y-4" id="api">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">API Reference</h2>
-        <ApiTable note="Table components (Table, TableHeader, TableBody, TableRow, TableHead, TableCell) support all standard HTML attributes for their respective elements." rows={apiRows} />
+        <ApiTable
+          note="Table components (Table, TableHeader, TableBody, TableRow, TableHead, TableCell) support all standard HTML attributes for their respective elements."
+          rows={apiRows}
+        />
       </section>
     </div>
   );

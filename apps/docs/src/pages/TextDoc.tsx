@@ -34,11 +34,11 @@ export default function TextDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Text
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
@@ -53,7 +53,8 @@ export default function TextDoc() {
         <ComponentPreview>
           <div className="w-full max-w-xl text-left">
             <Text>
-              The quick brown fox jumps over the lazy dog. This is standard paragraph text used across the application.
+              The quick brown fox jumps over the lazy dog. This is standard paragraph text used
+              across the application.
             </Text>
           </div>
         </ComponentPreview>
@@ -73,12 +74,11 @@ export default function Example() {
         <InstallationTabs componentName="text" manualCode={textCode} />
       </div>
 
-
       {/* Variants */}
       <section className="space-y-4" id="variants">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Variants</h2>
         <ComponentPreview>
-          <div className="w-full max-w-xl space-y-4 text-left flex flex-col items-start justify-center">
+          <div className="flex w-full max-w-xl flex-col items-start justify-center space-y-4 text-left">
             <Text variant="default">Default: Regular body text.</Text>
             <Text variant="muted">Muted: Subtle helper or secondary text.</Text>
             <Text variant="small">Small: Compact text for dense UI.</Text>
@@ -95,11 +95,15 @@ export default function Example() {
 
       {/* Strong & Code Components */}
       <section className="space-y-4" id="strong-and-code">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Strong & Code Helpers</h2>
+        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          Strong & Code Helpers
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-xl text-left">
             <Text>
-              You can use the <Strong>Strong</Strong> component to emphasize inline text, or use the <Code>Code</Code> component to render monospaced identifiers like <Code>npm install</Code>.
+              You can use the <Strong>Strong</Strong> component to emphasize inline text, or use the{" "}
+              <Code>Code</Code> component to render monospaced identifiers like{" "}
+              <Code>npm install</Code>.
             </Text>
           </div>
         </ComponentPreview>
@@ -119,7 +123,10 @@ export default function Example() {
       {/* API Reference */}
       <section className="space-y-4" id="api">
         <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">API Reference</h2>
-        <ApiTable note="Text components support all standard HTML attributes for their respective elements." rows={apiRows} />
+        <ApiTable
+          note="Text components support all standard HTML attributes for their respective elements."
+          rows={apiRows}
+        />
       </section>
     </div>
   );

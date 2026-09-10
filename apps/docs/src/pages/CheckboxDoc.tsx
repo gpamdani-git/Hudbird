@@ -25,9 +25,7 @@ export const checkboxTocItems = [
 
 export default function CheckboxDoc() {
   // State for interactive group
-  const [selectedServices, setSelectedServices] = useState<string[]>([
-    "notifications",
-  ]);
+  const [selectedServices, setSelectedServices] = useState<string[]>(["notifications"]);
 
   const toggleService = (val: string) => {
     setSelectedServices((prev) =>
@@ -42,9 +40,18 @@ export default function CheckboxDoc() {
       description: (
         <span>
           Checked accent color theme:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'primary'</code> (Indigo),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'success'</code> (Emerald), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'danger'</code> (Rose).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'primary'
+          </code>{" "}
+          (Indigo),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'success'
+          </code>{" "}
+          (Emerald), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'danger'
+          </code>{" "}
+          (Rose).
         </span>
       ),
     },
@@ -54,9 +61,18 @@ export default function CheckboxDoc() {
       description: (
         <span>
           Visual scale:{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'sm'</code> (h-4 w-4),{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'md'</code> (h-5 w-5), or{" "}
-          <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1 py-0.5 font-mono text-[11px]">'lg'</code> (h-6 w-6).
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'sm'
+          </code>{" "}
+          (h-4 w-4),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'md'
+          </code>{" "}
+          (h-5 w-5), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'lg'
+          </code>{" "}
+          (h-6 w-6).
         </span>
       ),
     },
@@ -96,16 +112,17 @@ export default function CheckboxDoc() {
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
       <div>
-        <div className="flex items-center gap-3 mb-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+        <div className="mb-3 flex items-center gap-3">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Checkbox
           </h1>
-          <span className="text-xs font-semibold px-2 py-0.5 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20">
+          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
             Component
           </span>
         </div>
         <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Interactive control allowing users to select one or multiple items from a set, complete with animated checkmarks and accessible focus rings.
+          Interactive control allowing users to select one or multiple items from a set, complete
+          with animated checkmarks and accessible focus rings.
         </p>
       </div>
 
@@ -137,7 +154,6 @@ function Example() {
         <InstallationTabs componentName="checkbox" manualCode={checkboxCode} />
       </div>
 
-
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
         <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -146,7 +162,9 @@ function Example() {
         <ApiTable
           note={
             <span>
-              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Checkbox</strong> supports all native input HTML attributes and works interchangeably in controlled or uncontrolled modes.
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Checkbox</strong>{" "}
+              supports all native input HTML attributes and works interchangeably in controlled or
+              uncontrolled modes.
             </span>
           }
           rows={apiRows}
@@ -156,7 +174,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 mb-2">
+          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
             Examples
           </h2>
         </div>
@@ -167,11 +185,23 @@ function Example() {
             Basic Checkboxes & Colors
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Checkboxes support three semantic color themes: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'primary'</code>, <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'success'</code>, and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'danger'</code>:
+            Checkboxes support three semantic color themes:{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'primary'
+            </code>
+            ,{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'success'
+            </code>
+            , and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'danger'
+            </code>
+            :
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
               <Checkbox defaultChecked color="primary" label="Primary (Indigo)" />
               <Checkbox defaultChecked color="success" label="Success (Emerald)" />
               <Checkbox defaultChecked color="danger" label="Danger (Rose)" />
@@ -197,15 +227,25 @@ function Example() {
 
         {/* 2. Checkbox Sizes */}
         <div id="checkbox-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Sizes
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Sizes</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Available in three responsive proportions: <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'sm'</code> (h-4), <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'md'</code> (h-5), and <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'lg'</code> (h-6):
+            Available in three responsive proportions:{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'sm'
+            </code>{" "}
+            (h-4),{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'md'
+            </code>{" "}
+            (h-5), and{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'lg'
+            </code>{" "}
+            (h-6):
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
               <Checkbox size="sm" defaultChecked label="Small (sm)" />
               <Checkbox size="md" defaultChecked label="Medium (md)" />
               <Checkbox size="lg" defaultChecked label="Large (lg)" />
@@ -233,11 +273,15 @@ function Example() {
             With Description
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Provide additional context using the <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">'description'</code> prop:
+            Provide additional context using the{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              'description'
+            </code>{" "}
+            prop:
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col gap-4 max-w-md">
+            <div className="flex max-w-md flex-col gap-4">
               <Checkbox
                 defaultChecked
                 color="primary"
@@ -282,11 +326,19 @@ function Example() {
             Disabled & Invalid States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Use <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">disabled</code> to lock interactions or <code className="rounded bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:text-zinc-200">isInvalid</code> to indicate an error state:
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              disabled
+            </code>{" "}
+            to lock interactions or{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              isInvalid
+            </code>{" "}
+            to indicate an error state:
           </p>
 
           <ComponentPreview>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
               <Checkbox disabled defaultChecked label="Disabled Checked" />
               <Checkbox disabled label="Disabled Unchecked" />
               <Checkbox isInvalid label="Invalid / Required" />
@@ -313,16 +365,14 @@ function Example() {
 
         {/* 5. Checkbox Group */}
         <div id="checkbox-group" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Checkbox Group
-          </h3>
+          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Checkbox Group</h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Easily manage multi-selection states in forms:
           </p>
 
           <ComponentPreview>
-            <div className="w-full max-w-sm space-y-3 rounded-xl border border-zinc-200 dark:border-zinc-800 p-5 bg-zinc-50/50 dark:bg-zinc-900/30">
-              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+            <div className="w-full max-w-sm space-y-3 rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/30">
+              <h4 className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                 Notification Channels
               </h4>
               <div className="flex flex-col gap-3">
@@ -346,9 +396,9 @@ function Example() {
                 />
               </div>
 
-              <div className="pt-2 text-xs text-zinc-500 dark:text-zinc-400 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="border-t border-zinc-200 pt-2 text-xs text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
                 Selected:{" "}
-                <span className="font-mono text-zinc-900 dark:text-zinc-200 font-semibold">
+                <span className="font-mono font-semibold text-zinc-900 dark:text-zinc-200">
                   {selectedServices.join(", ") || "none"}
                 </span>
               </div>

@@ -132,10 +132,7 @@ function usePaginationRange({
     const shouldShowRightDots = rightSiblingIndex < total - (boundaries + 1);
 
     const startPages = Array.from({ length: boundaries }, (_, i) => i + 1);
-    const endPages = Array.from(
-      { length: boundaries },
-      (_, i) => total - boundaries + 1 + i
-    );
+    const endPages = Array.from({ length: boundaries }, (_, i) => total - boundaries + 1 + i);
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
       const leftItemCount = siblings * 2 + boundaries + 2;
@@ -290,8 +287,8 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
         role="navigation"
         aria-label="Pagination Navigation"
         className={cn(
-          "inline-flex items-center gap-1.5 p-1 rounded-2xl",
-          isDisabled && "opacity-50 pointer-events-none",
+          "inline-flex items-center gap-1.5 rounded-2xl p-1",
+          isDisabled && "pointer-events-none opacity-50",
           className
         )}
         {...props}
@@ -305,17 +302,12 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage - 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:text-zinc-950 dark:hover:text-white shadow-xs focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-zinc-950"
+              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
             )}
           >
             {prevContent ?? (
               <span className="flex items-center gap-1">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -347,11 +339,11 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
                 onClick={() => handlePageChange(jumpTarget)}
                 className={cn(
                   paginationItemVariants({ size, radius }),
-                  "text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/60 group"
+                  "group text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-500 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-300"
                 )}
               >
-                <span className="group-hover:hidden tracking-widest text-xs">•••</span>
-                <span className="hidden group-hover:inline text-xs font-semibold">
+                <span className="text-xs tracking-widest group-hover:hidden">•••</span>
+                <span className="hidden text-xs font-semibold group-hover:inline">
                   {item === "dots-left" ? "«" : "»"}
                 </span>
               </button>
@@ -387,18 +379,13 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage + 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800/80 hover:text-zinc-950 dark:hover:text-white shadow-xs focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-zinc-950"
+              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
             )}
           >
             {nextContent ?? (
               <span className="flex items-center gap-1">
                 <span className="hidden sm:inline">Next</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
