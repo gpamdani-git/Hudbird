@@ -1,4 +1,5 @@
 import React from "react";
+import cliPkg from "../../../../packages/cli/package.json";
 
 export default function ChangelogDoc() {
   return (
@@ -14,14 +15,14 @@ export default function ChangelogDoc() {
       </div>
 
       <section className="space-y-12">
-        {/* v1.2.0 */}
+        {/* Latest Release */}
         <div
-          id="v1-2-0"
+          id={`v${cliPkg.version.replace(/\./g, "-")}`}
           className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
         >
           <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
           <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
-            v1.2.0 — FAQ Components & Major Dependency Upgrades
+            v{cliPkg.version} — FAQ Components & Major Dependency Upgrades
           </h2>
           <p className="mb-6 text-sm text-zinc-500">September 2026</p>
 
