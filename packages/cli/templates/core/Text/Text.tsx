@@ -28,9 +28,7 @@ const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ className, variant, as: Component = "p", ...props }, ref) => {
     return (
       <Component
-        // @ts-ignore - Polymorphic component ref assignment
-        ref={ref as any}
-        // @ts-ignore
+        ref={ref as React.Ref<HTMLElement>}
         className={cn(textVariants({ variant }), className)}
         {...(props as any)}
       />

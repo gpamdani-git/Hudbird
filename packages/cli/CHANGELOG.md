@@ -1,5 +1,15 @@
 # hudbird-ui
 
+## 1.2.1
+
+### Patch Changes
+
+- - **Navigation & Layout Fixes**: Resolved duplicate hamburger menu issues across all documentation pages and unified the mobile layout.
+  - **Global Search Optimization**: Fixed horizontal scroll overflow bugs in the search modal for small screens by enforcing flexible text wrapping.
+  - **Nested Mobile Menus**: Upgraded the mobile header dropdown to support nested sub-menus, specifically bringing full GitHub tracking links to mobile users.
+  - **Automated Changelog System**: Implemented a zero-runtime build script (`sync-changelog`) that automatically parses Changesets to keep the Docs version badges and Changelog page perfectly in sync.
+  - **Monorepo Publish Configs**: Enforced `fixed` versioning across all packages and added `publishConfig` to resolve NPM unscoped access errors.
+
 ## 1.2.0
 
 ### Minor Changes

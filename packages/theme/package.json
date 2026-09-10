@@ -1,6 +1,6 @@
 {
   "name": "@hudbird/theme",
-  "version": "0.2.0",
+  "version": "1.2.1",
   "main": "src/index.js",
   "dependencies": {
     "tailwindcss": "^4.3.3"

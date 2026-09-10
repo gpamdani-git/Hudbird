@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.2.1",
+    "date": "September 2026",
+    "content": "- - **Navigation & Layout Fixes**: Resolved duplicate hamburger menu issues across all documentation pages and unified the mobile layout.\n  - **Global Search Optimization**: Fixed horizontal scroll overflow bugs in the search modal for small screens by enforcing flexible text wrapping.\n  - **Nested Mobile Menus**: Upgraded the mobile header dropdown to support nested sub-menus, specifically bringing full GitHub tracking links to mobile users.\n  - **Automated Changelog System**: Implemented a zero-runtime build script (`sync-changelog`) that automatically parses Changesets to keep the Docs version badges and Changelog page perfectly in sync.\n  - **Monorepo Publish Configs**: Enforced `fixed` versioning across all packages and added `publishConfig` to resolve NPM unscoped access errors."
+  },
+  {
     "version": "1.2.0",
     "date": "September 2026",
     "content": "- Major dependency upgrades and new FAQ marketing components.\n\n  - Upgraded React to 19.3, TypeScript to 6.x, Vite to 8, Motion/Framer Motion to 13\n  - Added three new FAQ variants: `Faq`, `FaqCategorized`, `FaqWithIllustration`\n  - `FaqWithIllustration`: includes a procedurally animated SVG illustration using Framer Motion looping animations (no external assets)\n  - Added Testimonials section with Marquee, Flat, and SideBySide variants\n  - ESLint fixes: replaced all `@ts-ignore` with `@ts-expect-error` per new typescript-eslint strict rules\n  - Fixed missing `Github` icon export in lucide-react by using an inline SVG component\n  - Replaced `__dirname` with `import.meta.dirname` in vite.config.ts for Vite 8 native config loader compatibility\n  - Added `title` prop to `ApiTable` component for improved developer experience\n  - Updated all marketing documentation pages with full API tables"
