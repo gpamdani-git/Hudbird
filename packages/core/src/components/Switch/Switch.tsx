@@ -36,23 +36,22 @@ const switchTrackVariants = cva(
       {
         isChecked: true,
         color: "primary",
-        className: "bg-indigo-600 dark:bg-indigo-500 hover:bg-indigo-700 dark:hover:bg-indigo-400",
+        className: "bg-primary hover:bg-primary-hover",
       },
       {
         isChecked: true,
         color: "success",
-        className:
-          "bg-emerald-600 dark:bg-emerald-500 hover:bg-emerald-700 dark:hover:bg-emerald-400",
+        className: "bg-success hover:bg-success-hover",
       },
       {
         isChecked: true,
         color: "danger",
-        className: "bg-rose-600 dark:bg-rose-500 hover:bg-rose-700 dark:hover:bg-rose-400",
+        className: "bg-destructive hover:bg-destructive-hover",
       },
       {
         isChecked: true,
         color: "warning",
-        className: "bg-amber-500 dark:bg-amber-400 hover:bg-amber-600 dark:hover:bg-amber-500",
+        className: "bg-warning hover:bg-warning-hover",
       },
     ],
     defaultVariants: {
@@ -196,11 +195,11 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               disabled,
             }),
             description ? "mt-0.5" : "",
-            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 dark:peer-focus-visible:ring-offset-zinc-950",
-            color === "primary" && "peer-focus-visible:ring-indigo-500",
-            color === "success" && "peer-focus-visible:ring-emerald-500",
-            color === "danger" && "peer-focus-visible:ring-rose-500",
-            color === "warning" && "peer-focus-visible:ring-amber-500"
+            "dark:peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
+            color === "primary" && "peer-focus-visible:ring-primary",
+            color === "success" && "peer-focus-visible:ring-success",
+            color === "danger" && "peer-focus-visible:ring-destructive",
+            color === "warning" && "peer-focus-visible:ring-warning"
           )}
           aria-hidden="true"
         >

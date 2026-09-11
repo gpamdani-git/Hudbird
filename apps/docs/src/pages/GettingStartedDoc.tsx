@@ -13,6 +13,7 @@ import {
   TableBody,
   TableCell,
 } from "@hudbird/ui";
+import { PageToolbar } from "../components/PageToolbar";
 
 export const gettingStartedTocItems = [
   { id: "getting-started", title: "Getting started" },
@@ -28,12 +29,17 @@ export default function GettingStartedDoc() {
     <div className="space-y-16 pb-24">
       {/* 1. Getting started */}
       <div id="getting-started" className="scroll-mt-24">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-          Getting started
-        </h1>
-        <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
-          Fly through your development. Minimize the noise, keep the essence.
-        </p>
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Getting started
+            </h1>
+            <p className="mb-8 pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+              Fly through your development. Minimize the noise, keep the essence.
+            </p>
+          </div>
+          <PageToolbar />
+        </div>
 
         <div className="space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50 p-6 md:p-8 dark:border-indigo-900/50 dark:bg-indigo-950/30">
           <h2 className="text-xl font-bold text-indigo-900 dark:text-indigo-300">

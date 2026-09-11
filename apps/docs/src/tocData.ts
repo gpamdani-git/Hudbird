@@ -445,9 +445,15 @@ export const changelogTocItems: TocItem[] = [
   { id: "v1-0-0", title: "v1.0.0 - Initial Release" },
 ];
 
+export const supportTocItems: TocItem[] = [
+  { id: "community", title: "Community" },
+  { id: "contact", title: "Get Help & Report Bugs" },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
   "/changelog": changelogTocItems,
+  "/support": supportTocItems,
   "/button": buttonTocItems,
   "/alert": alertTocItems,
   "/avatar": avatarTocItems,

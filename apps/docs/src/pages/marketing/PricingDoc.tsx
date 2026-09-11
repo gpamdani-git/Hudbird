@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { PageToolbar } from "../../components/PageToolbar";
 import pricingCode from "../../../../../packages/marketing/src/components/Pricing/Pricing.tsx?raw";
+import pricingGlassCode from "../../../../../packages/marketing/src/components/Pricing/PricingGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
 import {
   PricingSection,
@@ -16,6 +18,7 @@ import {
   PricingTierPrice,
   PricingTierFeatures,
   PricingTierFeature,
+  PricingGlass,
 } from "@hudbird/marketing";
 import { Button } from "@hudbird/ui";
 import { MarketingPreview } from "../../components/MarketingPreview";
@@ -29,7 +32,10 @@ export const pricingTocItems = [
   {
     id: "examples",
     title: "Examples",
-    children: [{ id: "standard-three-tier", title: "Standard Three Tier" }],
+    children: [
+      { id: "standard-three-tier", title: "Standard Three Tier" },
+      { id: "glass", title: "Glassmorphic Pricing" },
+    ],
   },
 ];
 
@@ -141,33 +147,24 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
   ];
 
   return (
-    <div className="flex w-full flex-col pb-20">
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Marketing section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Pricing Section</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
-        <div className="mb-10">
-          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-            Pricing Sections
-          </h1>
-          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-            Beautifully designed pricing tables that convert visitors into customers. Built with
-            accessibility and flexibility in mind.
-          </p>
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <div className="mb-3 flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                Pricing Sections
+              </h1>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                New
+              </span>
+            </div>
+            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+              Beautifully designed pricing tables that convert visitors into customers. Built with
+              accessibility and flexibility in mind.
+            </p>
+          </div>
+          <PageToolbar />
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
@@ -268,11 +265,105 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           </MarketingPreview>
         </div>
 
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <ApiTable title="Pricing Props" rows={apiRows} />
+        {/* Glassmorphic Pricing */}
+        <div id="glass" className="mt-16 scroll-mt-24">
+          <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+            Glassmorphic Pricing
+          </h3>
+          <MarketingPreview>
+            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
+              <div className="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
+              <div className="absolute right-1/4 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
+
+              <PricingGlass
+                isAnnual={isAnnual}
+                onToggleAnnual={setIsAnnual}
+                tiers={[
+                  {
+                    name: "Freelancer",
+                    description: "The essentials to provide your best work for clients.",
+                    price: isAnnual ? "$190" : "$19",
+                    period: isAnnual ? "/year" : "/month",
+                    buttonLabel: "Buy plan",
+                    features: [
+                      "5 products",
+                      "Up to 1,000 subscribers",
+                      "Basic analytics",
+                      "48-hour support response time",
+                    ],
+                  },
+                  {
+                    name: "Startup",
+                    description: "A plan that scales with your rapidly growing business.",
+                    price: isAnnual ? "$490" : "$49",
+                    period: isAnnual ? "/year" : "/month",
+                    popular: true,
+                    buttonLabel: "Buy plan",
+                    features: [
+                      "25 products",
+                      "Up to 10,000 subscribers",
+                      "Advanced analytics",
+                      "24-hour support response time",
+                      "Marketing automations",
+                    ],
+                  },
+                  {
+                    name: "Enterprise",
+                    description: "Dedicated support and infrastructure for your company.",
+                    price: isAnnual ? "$990" : "$99",
+                    period: isAnnual ? "/year" : "/month",
+                    buttonLabel: "Buy plan",
+                    features: [
+                      "Unlimited products",
+                      "Unlimited subscribers",
+                      "Advanced analytics",
+                      "1-hour, dedicated support response time",
+                      "Marketing automations",
+                      "Custom reporting tools",
+                    ],
+                  },
+                ]}
+              />
+            </div>
+          </MarketingPreview>
+        </div>
+
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-8">
+          <div>
+            <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Component API
+            </h2>
+            <ApiTable title="Pricing Props" rows={apiRows} />
+          </div>
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              PricingGlass Props
+            </h3>
+            <ApiTable
+              title="PricingGlass"
+              rows={[
+                {
+                  prop: "tiers",
+                  type: "PricingGlassTier[]",
+                  defaultVal: "-",
+                  description: "Array of pricing tiers to display.",
+                },
+                {
+                  prop: "isAnnual",
+                  type: "boolean",
+                  defaultVal: "false",
+                  description: "State controlling the toggle switch position.",
+                },
+                {
+                  prop: "onToggleAnnual",
+                  type: "(isAnnual: boolean) => void",
+                  defaultVal: "-",
+                  description:
+                    "Callback fired when the toggle is clicked. If not provided, toggle is hidden.",
+                },
+              ]}
+            />
+          </div>
         </section>
       </div>
     </div>

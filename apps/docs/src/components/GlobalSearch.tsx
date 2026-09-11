@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Search,
@@ -244,208 +245,212 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
       </div>
 
       {/* 2. Global Search Command Palette Modal */}
-      {isOpen && (
-        <div
-          className="animate-in fade-in fixed inset-0 z-50 flex items-start justify-center bg-zinc-950/40 p-3 backdrop-blur-xs duration-150 sm:p-6 md:pt-20 dark:bg-zinc-950/70"
-          onClick={() => setIsOpen(false)}
-          role="presentation"
-        >
+      {isOpen &&
+        typeof document !== "undefined" &&
+        createPortal(
           <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Search documentation"
-            id="global-search-dialog"
-            onClick={(e) => e.stopPropagation()}
-            className="animate-in zoom-in-95 flex max-h-[85vh] w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl duration-150 sm:max-h-[75vh] dark:border-zinc-800 dark:bg-zinc-900"
+            className="animate-in fade-in fixed inset-0 z-[100] flex items-start justify-center bg-zinc-950/40 p-3 backdrop-blur-sm duration-150 sm:p-6 md:pt-20 dark:bg-zinc-950/70"
+            onClick={() => setIsOpen(false)}
+            role="presentation"
           >
-            {/* Search Input Box */}
-            <div className="relative flex items-center gap-3 border-b border-zinc-200 px-4 py-3.5 dark:border-zinc-800">
-              <Search className="h-5 w-5 shrink-0 text-zinc-400 dark:text-zinc-500" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleInputKeyDown}
-                placeholder="Search components, layouts, guides, props..."
-                className="w-full min-w-0 border-none bg-transparent p-0 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-0 sm:text-base dark:text-white dark:placeholder:text-zinc-500"
-                aria-autocomplete="list"
-                aria-controls="search-results-list"
-              />
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Search documentation"
+              id="global-search-dialog"
+              onClick={(e) => e.stopPropagation()}
+              className="animate-in zoom-in-95 flex max-h-[85vh] w-full max-w-xl flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl duration-150 sm:max-h-[75vh] dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              {/* Search Input Box */}
+              <div className="relative flex items-center gap-3 border-b border-zinc-200 px-4 py-3.5 dark:border-zinc-800">
+                <Search className="h-5 w-5 shrink-0 text-zinc-400 dark:text-zinc-500" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleInputKeyDown}
+                  placeholder="Search components, layouts, guides, props..."
+                  className="w-full min-w-0 border-none bg-transparent p-0 text-sm text-zinc-900 outline-none placeholder:text-zinc-400 focus:ring-0 sm:text-base dark:text-white dark:placeholder:text-zinc-500"
+                  aria-autocomplete="list"
+                  aria-controls="search-results-list"
+                />
 
-              {query && (
+                {query && (
+                  <button
+                    type="button"
+                    onClick={() => setQuery("")}
+                    className="rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+                    aria-label="Clear query"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
+
                 <button
                   type="button"
-                  onClick={() => setQuery("")}
-                  className="rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
-                  aria-label="Clear query"
+                  onClick={() => setIsOpen(false)}
+                  className="hidden rounded border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 sm:inline-flex dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
                 >
-                  <X className="h-4 w-4" />
+                  ESC
                 </button>
-              )}
+              </div>
 
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="hidden rounded border border-zinc-200 bg-zinc-100 px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 sm:inline-flex dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
+              {/* Results Container */}
+              <div
+                ref={resultsContainerRef}
+                id="search-results-list"
+                className="flex-1 space-y-1 overflow-y-auto p-2 sm:p-3"
               >
-                ESC
-              </button>
-            </div>
+                {filteredResults.length > 0 ? (
+                  <>
+                    <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+                      {query.trim() ? "Search Results" : "Quick Links & Suggestions"}
+                    </div>
 
-            {/* Results Container */}
-            <div
-              ref={resultsContainerRef}
-              id="search-results-list"
-              className="flex-1 space-y-1 overflow-y-auto p-2 sm:p-3"
-            >
-              {filteredResults.length > 0 ? (
-                <>
-                  <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                    {query.trim() ? "Search Results" : "Quick Links & Suggestions"}
-                  </div>
-
-                  {filteredResults.map((item, index) => {
-                    const isSelected = index === selectedIndex;
-                    return (
-                      <div
-                        key={item.id}
-                        data-index={index}
-                        role="option"
-                        aria-selected={isSelected}
-                        onClick={() => handleSelect(item)}
-                        onMouseEnter={() => setSelectedIndex(index)}
-                        className={`group flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 transition-colors ${
-                          isSelected
-                            ? "bg-zinc-100 text-zinc-950 shadow-2xs dark:bg-zinc-800/90 dark:text-white"
-                            : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/50"
-                        }`}
-                      >
-                        <div className="flex min-w-0 items-center gap-3">
-                          <div
-                            className={`rounded-lg p-1.5 transition-colors ${
-                              isSelected
-                                ? "bg-white shadow-2xs dark:bg-zinc-700"
-                                : "bg-zinc-100 dark:bg-zinc-800/80"
-                            }`}
-                          >
-                            {renderItemIcon(item)}
-                          </div>
-
-                          <div className="min-w-0">
-                            <div className="flex flex-wrap items-center gap-2">
-                              {item.parent && (
-                                <span className="truncate text-xs font-normal text-zinc-400 dark:text-zinc-500">
-                                  {item.parent} &gt;
-                                </span>
-                              )}
-                              <span
-                                className={`truncate text-sm font-medium ${
-                                  isSelected ? "text-zinc-950 dark:text-white" : ""
-                                }`}
-                              >
-                                {item.title}
-                              </span>
-
-                              {item.isNew && (
-                                <span className="py-0.2 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] leading-none font-semibold text-emerald-600 dark:text-emerald-400">
-                                  New
-                                </span>
-                              )}
-
-                              <span className="text-[10px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                                • {item.category}
-                              </span>
+                    {filteredResults.map((item, index) => {
+                      const isSelected = index === selectedIndex;
+                      return (
+                        <div
+                          key={item.id}
+                          data-index={index}
+                          role="option"
+                          aria-selected={isSelected}
+                          onClick={() => handleSelect(item)}
+                          onMouseEnter={() => setSelectedIndex(index)}
+                          className={`group flex cursor-pointer items-center justify-between rounded-xl px-3 py-2.5 transition-colors ${
+                            isSelected
+                              ? "bg-zinc-100 text-zinc-950 shadow-2xs dark:bg-zinc-800/90 dark:text-white"
+                              : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/50"
+                          }`}
+                        >
+                          <div className="flex min-w-0 items-center gap-3">
+                            <div
+                              className={`rounded-lg p-1.5 transition-colors ${
+                                isSelected
+                                  ? "bg-white shadow-2xs dark:bg-zinc-700"
+                                  : "bg-zinc-100 dark:bg-zinc-800/80"
+                              }`}
+                            >
+                              {renderItemIcon(item)}
                             </div>
 
-                            <p className="mt-0.5 line-clamp-1 text-xs text-zinc-500 dark:text-zinc-400">
-                              {item.description}
-                            </p>
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-2">
+                                {item.parent && (
+                                  <span className="truncate text-xs font-normal text-zinc-400 dark:text-zinc-500">
+                                    {item.parent} &gt;
+                                  </span>
+                                )}
+                                <span
+                                  className={`truncate text-sm font-medium ${
+                                    isSelected ? "text-zinc-950 dark:text-white" : ""
+                                  }`}
+                                >
+                                  {item.title}
+                                </span>
+
+                                {item.isNew && (
+                                  <span className="py-0.2 rounded-md border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] leading-none font-semibold text-emerald-600 dark:text-emerald-400">
+                                    New
+                                  </span>
+                                )}
+
+                                <span className="text-[10px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+                                  • {item.category}
+                                </span>
+                              </div>
+
+                              <p className="mt-0.5 line-clamp-1 text-xs text-zinc-500 dark:text-zinc-400">
+                                {item.description}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex shrink-0 items-center pl-3">
+                            {isSelected ? (
+                              <span className="flex items-center gap-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                <span className="hidden sm:inline">Jump to</span>
+                                <CornerDownLeft className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
+                              </span>
+                            ) : (
+                              <ArrowRight className="h-3.5 w-3.5 text-transparent transition-colors group-hover:text-zinc-400 dark:group-hover:text-zinc-500" />
+                            )}
                           </div>
                         </div>
+                      );
+                    })}
+                  </>
+                ) : (
+                  /* Empty state when no matches found */
+                  <div className="px-6 py-12 text-center">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">
+                      <FileQuestion className="h-6 w-6" />
+                    </div>
+                    <h4 className="mb-1 text-sm font-semibold text-zinc-900 dark:text-white">
+                      No results found for &ldquo;{query}&rdquo;
+                    </h4>
+                    <p className="mx-auto mb-4 max-w-xs text-xs text-zinc-500 dark:text-zinc-400">
+                      We couldn&apos;t find any documentation or components matching your search
+                      term.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-1.5">
+                      <span className="py-1 text-xs text-zinc-400">Try:</span>
+                      {["Button", "Tabs", "Navbar", "Accordion", "Input", "Layouts"].map(
+                        (suggest) => (
+                          <button
+                            key={suggest}
+                            type="button"
+                            onClick={() => setQuery(suggest)}
+                            className="rounded-md bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+                          >
+                            {suggest}
+                          </button>
+                        )
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
 
-                        <div className="flex shrink-0 items-center pl-3">
-                          {isSelected ? (
-                            <span className="flex items-center gap-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                              <span className="hidden sm:inline">Jump to</span>
-                              <CornerDownLeft className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
-                            </span>
-                          ) : (
-                            <ArrowRight className="h-3.5 w-3.5 text-transparent transition-colors group-hover:text-zinc-400 dark:group-hover:text-zinc-500" />
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </>
-              ) : (
-                /* Empty state when no matches found */
-                <div className="px-6 py-12 text-center">
-                  <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-100 text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">
-                    <FileQuestion className="h-6 w-6" />
-                  </div>
-                  <h4 className="mb-1 text-sm font-semibold text-zinc-900 dark:text-white">
-                    No results found for &ldquo;{query}&rdquo;
-                  </h4>
-                  <p className="mx-auto mb-4 max-w-xs text-xs text-zinc-500 dark:text-zinc-400">
-                    We couldn&apos;t find any documentation or components matching your search term.
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-1.5">
-                    <span className="py-1 text-xs text-zinc-400">Try:</span>
-                    {["Button", "Tabs", "Navbar", "Accordion", "Input", "Layouts"].map(
-                      (suggest) => (
-                        <button
-                          key={suggest}
-                          type="button"
-                          onClick={() => setQuery(suggest)}
-                          className="rounded-md bg-zinc-100 px-2 py-0.5 text-xs text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-                        >
-                          {suggest}
-                        </button>
-                      )
-                    )}
-                  </div>
+              {/* Modal Bottom Keyboard Navigation Helper Footer */}
+              <div className="flex items-center justify-between border-t border-zinc-200 bg-zinc-50/50 px-4 py-2.5 text-[11px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
+                <div className="hidden items-center gap-3 sm:flex">
+                  <span className="flex items-center gap-1">
+                    <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
+                      ↑
+                    </kbd>
+                    <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
+                      ↓
+                    </kbd>{" "}
+                    navigate
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
+                      ↵
+                    </kbd>{" "}
+                    select
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
+                      esc
+                    </kbd>{" "}
+                    close
+                  </span>
                 </div>
-              )}
-            </div>
 
-            {/* Modal Bottom Keyboard Navigation Helper Footer */}
-            <div className="flex items-center justify-between border-t border-zinc-200 bg-zinc-50/50 px-4 py-2.5 text-[11px] text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:text-zinc-400">
-              <div className="hidden items-center gap-3 sm:flex">
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
-                    ↑
-                  </kbd>
-                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
-                    ↓
-                  </kbd>{" "}
-                  navigate
-                </span>
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
-                    ↵
-                  </kbd>{" "}
-                  select
-                </span>
-                <span className="flex items-center gap-1">
-                  <kbd className="rounded border border-zinc-200 bg-white px-1 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">
-                    esc
-                  </kbd>{" "}
-                  close
-                </span>
-              </div>
-
-              <div className="flex w-full items-center justify-between gap-2 text-zinc-400 sm:w-auto sm:justify-end dark:text-zinc-500">
-                <span>
-                  {query.trim()
-                    ? `${filteredResults.length} result${filteredResults.length === 1 ? "" : "s"}`
-                    : "Hudbird UI Docs"}
-                </span>
+                <div className="flex w-full items-center justify-between gap-2 text-zinc-400 sm:w-auto sm:justify-end dark:text-zinc-500">
+                  <span>
+                    {query.trim()
+                      ? `${filteredResults.length} result${filteredResults.length === 1 ? "" : "s"}`
+                      : "Hudbird UI Docs"}
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 };

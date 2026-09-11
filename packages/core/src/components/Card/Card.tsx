@@ -9,14 +9,13 @@ export type CardVariant = "shadow" | "bordered" | "flat";
 export type CardRadius = "none" | "md" | "lg" | "full";
 
 const cardVariants = cva(
-  "relative flex flex-col justify-between overflow-hidden text-zinc-950 dark:text-zinc-50 transition-all box-border",
+  "relative flex flex-col justify-between overflow-hidden text-card-foreground transition-all box-border",
   {
     variants: {
       variant: {
-        shadow:
-          "bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800/80 shadow-sm",
-        bordered: "bg-transparent border border-zinc-200 dark:border-zinc-800 shadow-none",
-        flat: "bg-zinc-50 dark:bg-zinc-900/50 border border-transparent shadow-none",
+        shadow: "bg-card border border-border shadow-sm",
+        bordered: "bg-transparent border border-border shadow-none",
+        flat: "bg-muted/50 border border-transparent shadow-none",
       },
       radius: {
         none: "rounded-none",
@@ -29,7 +28,7 @@ const cardVariants = cva(
         false: "",
       },
       isPressable: {
-        true: "cursor-pointer active:scale-[0.98] transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
+        true: "cursor-pointer active:scale-[0.98] transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         false: "",
       },
     },
@@ -99,7 +98,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       <div
         ref={ref}
         className={cn(
-          "z-10 flex w-full shrink-0 items-center justify-start gap-3 p-5 font-semibold text-zinc-900 dark:text-zinc-50",
+          "text-card-foreground z-10 flex w-full shrink-0 items-center justify-start gap-3 p-5 font-semibold",
           className
         )}
         {...props}
@@ -119,7 +118,7 @@ const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
       <div
         ref={ref}
         className={cn(
-          "relative h-auto w-full flex-1 overflow-visible p-5 pt-0 text-left text-sm leading-relaxed font-normal break-words text-zinc-600 dark:text-zinc-400",
+          "text-muted-foreground relative h-auto w-full flex-1 overflow-visible p-5 pt-0 text-left text-sm leading-relaxed font-normal break-words",
           className
         )}
         {...props}
@@ -141,7 +140,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       <div
         ref={ref}
         className={cn(
-          "z-10 flex w-full shrink-0 items-center justify-between border-zinc-200/50 p-5 pt-0 dark:border-zinc-800/50",
+          "border-border/50 z-10 flex w-full shrink-0 items-center justify-between p-5 pt-0",
           isBlurred &&
             "absolute inset-x-0 bottom-0 rounded-b-2xl border-t border-white/20 bg-white/70 pt-3.5 pb-3.5 backdrop-blur-md dark:border-zinc-700/30 dark:bg-zinc-900/70",
           className

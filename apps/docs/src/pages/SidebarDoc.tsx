@@ -1,5 +1,6 @@
 import sidebarCode from "../../../../packages/core/src/components/Sidebar/Sidebar.tsx?raw";
 import React, { useState } from "react";
+import { PageToolbar } from "../components/PageToolbar";
 import {
   Sidebar,
   SidebarHeader,
@@ -281,39 +282,25 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
   };
 
   return (
-    <div className="flex w-full flex-col items-center pb-24">
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Layouts section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Sidebar Layout</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl space-y-16 px-4 sm:px-8 lg:px-12">
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
         {/* Title & Subtitle */}
-        <div className="mt-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Sidebar Layout
-            </h1>
-            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              Updated
-            </span>
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <div className="mb-3 flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                Sidebar Layout
+              </h1>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                Updated
+              </span>
+            </div>
+            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+              A production-ready application layout simulating page transitions. Inspired by
+              Catalyst UI.
+            </p>
           </div>
-          <p className="text-base text-zinc-600 dark:text-zinc-400">
-            A production-ready application layout simulating page transitions. Inspired by Catalyst
-            UI.
-          </p>
+          <PageToolbar />
         </div>
 
         {/* Main Preview & Code */}

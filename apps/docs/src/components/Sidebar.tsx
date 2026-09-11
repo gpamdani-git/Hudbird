@@ -1,48 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Home, X, LifeBuoy } from "lucide-react";
+import {
+  Home,
+  X,
+  LifeBuoy,
+  Component,
+  Layout,
+  Box,
+  CircleDot,
+  PanelLeftClose,
+  PanelLeft,
+} from "lucide-react";
+import { navigationData } from "../navData";
+import { motion, AnimatePresence } from "framer-motion";
+import { GlobalSearch } from "./GlobalSearch";
+import changelogData from "../data/changelog.json";
 
 interface SidebarProps {
-  isOpen?: boolean;
-  onClose?: () => void;
-  forceMobileBehavior?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+  isMini?: boolean;
+  onToggleMini?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBehavior }) => {
-  const layouts = [
-    { name: "Sidebar Layout", path: "/layouts/sidebar", isNew: true },
-    { name: "Stacked Layout", path: "/layouts/stacked", isNew: true },
-    { name: "Auth Layout", path: "/layouts/auth", isNew: true },
-  ];
+// Icon mapping helper
+const getIconForName = (name: string, isGroupTitle: boolean = false) => {
+  if (name === "Getting started") return <Home className="h-4 w-4 shrink-0" />;
+  if (name === "Changelog")
+    return <span className="flex h-4 w-4 shrink-0 items-center justify-center">✨</span>;
+  if (name === "Support & FAQ") return <LifeBuoy className="h-4 w-4 shrink-0" />;
 
-  const components = [
-    { name: "Accordion", path: "/accordion", isNew: true },
-    { name: "Alert", path: "/alert" },
-    { name: "Avatar", path: "/avatar" },
-    { name: "Badge", path: "/badge" },
-    { name: "Button", path: "/button" },
-    { name: "Card", path: "/card" },
-    { name: "Checkbox", path: "/checkbox" },
-    { name: "Combobox", path: "/combobox", isNew: true },
-    { name: "Description list", path: "/description-list" },
-    { name: "Dialog", path: "/dialog" },
-    { name: "Divider", path: "/divider" },
-    { name: "Dropdown", path: "/dropdown" },
-    { name: "Fieldset", path: "/fieldset" },
-    { name: "Heading", path: "/heading" },
-    { name: "Input", path: "/input" },
-    { name: "Navbar", path: "/navbar", isNew: true },
-    { name: "Pagination", path: "/pagination", isNew: true },
-    { name: "Radio group", path: "/radio-group", isNew: true },
-    { name: "Select", path: "/select", isNew: true },
-    { name: "Skeleton", path: "/skeleton", isNew: true },
-    { name: "Switch", path: "/switch", isNew: true },
-    { name: "Table", path: "/table", isNew: true },
-    { name: "Tabs", path: "/tabs", isNew: true },
-    { name: "Text", path: "/text", isNew: true },
-    { name: "Textarea", path: "/textarea", isNew: true },
-    { name: "Tooltip", path: "/tooltip", isNew: true },
-  ];
+  if (isGroupTitle) {
+    if (name === "Layouts") return <Layout className="h-4 w-4 shrink-0" />;
+    if (name === "Marketing Sections") return <Component className="h-4 w-4 shrink-0" />;
+    if (name === "Components") return <Box className="h-4 w-4 shrink-0" />;
+  }
+
+  return <CircleDot className="h-4 w-4 shrink-0 opacity-50" />;
+};
+
+export const Sidebar: React.FC<SidebarProps> = ({
+  isOpen,
+  onClose,
+  isMini = false,
+  onToggleMini,
+}) => {
+  const isMobileVisible = isOpen ? "translate-x-0" : "-translate-x-[120%]";
+  const isDesktopVisible = !isMini ? "lg:translate-x-0" : "lg:-translate-x-[120%]";
+  const transformClasses = `${isMobileVisible} ${isDesktopVisible}`;
 
   return (
     <>
@@ -50,353 +55,132 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, forceMobileBe
       {isOpen && (
         <div
           onClick={onClose}
-          className={`fixed inset-0 z-50 bg-zinc-950/50 backdrop-blur-xs ${forceMobileBehavior ? "" : "lg:hidden"}`}
+          className={`fixed inset-0 z-50 bg-zinc-950/40 backdrop-blur-sm lg:hidden`}
         />
       )}
 
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-50 w-64 overflow-y-auto border-r border-zinc-200 bg-white px-4 py-6 transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-950 ${forceMobileBehavior ? "" : "lg:top-14"} ${
-          forceMobileBehavior ? "" : "lg:translate-x-0"
-        } ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-3 bottom-3 left-3 z-50 flex w-64 flex-col overflow-hidden rounded-xl border border-white/50 bg-white/50 px-3 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-3xl dark:border-white/10 dark:bg-[#1a1a1c]/60 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] ${transformClasses} transition-transform duration-300 ease-in-out`}
       >
-        <div
-          className={`mb-4 flex items-center justify-between border-b border-zinc-200 pb-2 dark:border-zinc-800 ${forceMobileBehavior ? "" : "lg:hidden"}`}
-        >
-          <span className="text-xs font-semibold tracking-wider text-zinc-400 uppercase">
-            Navigation
-          </span>
-          <button
-            onClick={onClose}
-            className="p-1 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100"
-          >
-            <X className="h-4 w-4" />
-          </button>
+        {/* Subtle glass gradients to enhance blur beautifulness */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
+
+        {/* Header / Logo */}
+        <div className="relative z-10 mb-4 flex items-center justify-between px-1.5">
+          <div className="flex items-center gap-3 overflow-hidden">
+            <img
+              src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+              alt="Hudbird UI"
+              className="h-7 w-7 shrink-0 object-contain dark:hidden"
+            />
+            <img
+              src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+              alt="Hudbird UI"
+              className="hidden h-7 w-7 shrink-0 object-contain dark:block"
+            />
+
+            <div className="flex flex-col whitespace-nowrap">
+              <span className="text-[13px] font-bold tracking-tight text-zinc-900 dark:text-white">
+                Hudbird UI
+              </span>
+              <span className="text-[10px] font-medium text-zinc-500">
+                v{changelogData[0]?.version || "1.2.0"}
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Getting started & Changelog */}
-        <div className="mb-6 space-y-1">
-          <NavLink
-            to="/"
-            onClick={onClose}
-            className={({ isActive }) =>
-              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                isActive
-                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-              }`
-            }
-          >
-            <Home className="h-4 w-4 text-zinc-400" />
-            <span>Getting started</span>
-          </NavLink>
-          <NavLink
-            to="/changelog"
-            onClick={onClose}
-            className={({ isActive }) =>
-              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                isActive
-                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-              }`
-            }
-          >
-            <div className="flex h-4 w-4 items-center justify-center text-zinc-400">✨</div>
-            <span>Changelog</span>
-          </NavLink>
-          <NavLink
-            to="/support"
-            onClick={onClose}
-            className={({ isActive }) =>
-              `flex items-center gap-2.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors ${
-                isActive
-                  ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                  : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-              }`
-            }
-          >
-            <LifeBuoy className="h-4 w-4 text-zinc-400" />
-            <span>Support & FAQ</span>
-          </NavLink>
+        {/* Global Search */}
+        <div className="relative z-10 mb-5 px-1">
+          <GlobalSearch isMini={isMini} className="w-full justify-center" />
         </div>
 
-        {/* Layouts Section */}
-        <div className="mb-6">
-          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
-            Layouts
-          </h5>
-          <ul className="space-y-0.5">
-            {layouts.map((item) => (
-              <li key={item.name}>
-                <NavLink
-                  to={item.path}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                      isActive
-                        ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                    }`
-                  }
-                >
-                  <span>{item.name}</span>
-                  {item.isNew && (
-                    <span className="py-0.2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                      New
-                    </span>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Navigation Groups */}
+        <div className="scrollbar-hide relative z-10 flex-1 overflow-x-hidden overflow-y-auto">
+          {navigationData.map((group, groupIdx) => (
+            <div key={groupIdx} className="mb-6">
+              {/* Divider if not the first group */}
+              {groupIdx > 0 && (
+                <div className="mr-2 mb-3 ml-2 border-t border-black/5 dark:border-white/5" />
+              )}
 
-        {/* Marketing Sections */}
-        <div className="mb-6">
-          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
-            Marketing Sections
-          </h5>
-          <ul className="relative space-y-0.5">
-            <li>
-              <NavLink
-                to="/marketing/hero"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Hero Section</span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/bento-grid"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Bento Grid</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/logo-clouds"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Logo Clouds</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/faq"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">FAQ</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/feature-sections"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Feature Sections</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/pricing"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Pricing</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/marketing/testimonials"
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                    isActive
-                      ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                      : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
-                    )}
-                    <span className="pl-1">Testimonials</span>
-                    <span className="py-0.2 rounded-full border border-fuchsia-500/20 bg-fuchsia-500/10 px-1.5 text-[10px] font-medium text-fuchsia-600 dark:text-fuchsia-400">
-                      New
-                    </span>
-                  </>
-                )}
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+              {/* Group Title */}
+              {group.title && (
+                <h5 className="mb-2 px-2.5 text-[11px] font-bold tracking-wider whitespace-nowrap text-zinc-400 dark:text-zinc-500">
+                  {group.title}
+                </h5>
+              )}
 
-        {/* Components Section */}
-        <div className="mb-8">
-          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
-            Components
-          </h5>
-          <ul className="relative space-y-0.5">
-            {components.map((item) => (
-              <li key={item.name}>
-                <NavLink
-                  to={item.path}
-                  onClick={onClose}
-                  className={({ isActive }) =>
-                    `group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs transition-colors ${
-                      isActive
-                        ? "bg-zinc-100 font-semibold text-zinc-950 dark:bg-zinc-900 dark:text-white"
-                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      {/* Left vertical active bar */}
-                      {isActive && (
-                        <span className="absolute top-1.5 bottom-1.5 left-0 w-1 rounded-r-full bg-zinc-950 dark:bg-white" />
+              <ul className="relative space-y-0.5">
+                {group.items.map((item) => (
+                  <li key={item.path}>
+                    <NavLink
+                      to={item.path}
+                      onClick={() => {
+                        if (window.innerWidth < 1024) onClose?.();
+                      }}
+                      className={({ isActive }) =>
+                        `group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-200 ease-in-out outline-none ${
+                          isActive
+                            ? "bg-black/10 font-medium text-zinc-900 shadow-xs dark:bg-white/15 dark:text-white"
+                            : "text-zinc-600 hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-200"
+                        }`
+                      }
+                      title={isMini ? item.name : undefined}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <div className="flex items-center gap-2.5 overflow-hidden">
+                            {getIconForName(item.name)}
+                            <span className="whitespace-nowrap">{item.name}</span>
+                          </div>
+
+                          {!isMini && item.variants !== undefined && (
+                            <span
+                              className={`rounded px-1.5 py-0.5 text-[9px] leading-none font-bold transition-opacity duration-200 ${
+                                isActive
+                                  ? "bg-white/60 text-zinc-800 opacity-100 dark:bg-black/30 dark:text-zinc-300"
+                                  : "bg-black/5 text-zinc-500 opacity-0 group-hover:opacity-100 dark:bg-white/10 dark:text-zinc-400"
+                              }`}
+                            >
+                              {item.variants}
+                            </span>
+                          )}
+                        </>
                       )}
-                      <span className="pl-1">{item.name}</span>
-                      {item.isNew && (
-                        <span className="py-0.2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-1.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                          New
-                        </span>
-                      )}
-                    </>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </div>
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
 
-        {/* Community Section */}
-        <div className="mb-8">
-          <h5 className="mb-2 px-3 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
-            Community
-          </h5>
-          <ul className="relative space-y-0.5">
-            <li>
-              <a
-                href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
-                target="_blank"
-                rel="noreferrer"
-                className="group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-              >
-                <span className="pl-1">GitHub Discussions</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new/choose"
-                target="_blank"
-                rel="noreferrer"
-                className="group relative flex items-center justify-between rounded-lg px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-              >
-                <span className="pl-1">Report an Issue</span>
-              </a>
-            </li>
-          </ul>
+          {/* Divider */}
+          <div className="mr-2 mb-3 ml-2 border-t border-black/5 dark:border-white/5" />
+
+          {/* Community Section */}
+          <div className="mb-2">
+            <h5 className="mb-2 px-2.5 text-[11px] font-bold tracking-wider whitespace-nowrap text-zinc-400 dark:text-zinc-500">
+              Community
+            </h5>
+            <ul className="relative space-y-0.5">
+              <li>
+                <a
+                  href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] text-zinc-600 transition-all duration-200 ease-in-out outline-none hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-200"
+                  title={isMini ? "GitHub Discussions" : undefined}
+                >
+                  <div className="flex items-center gap-2.5 overflow-hidden">
+                    <LifeBuoy className="h-4 w-4 shrink-0" />
+                    <span className="whitespace-nowrap">GitHub Discussions</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </aside>
     </>

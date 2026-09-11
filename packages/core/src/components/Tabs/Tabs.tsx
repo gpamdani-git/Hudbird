@@ -10,15 +10,14 @@ export type TabsSize = "sm" | "md" | "lg";
 export type TabsRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const tabListVariants = cva(
-  "inline-flex items-center gap-1 text-zinc-600 dark:text-zinc-400 select-none",
+  "inline-flex items-center gap-1 text-muted-foreground select-none",
   {
     variants: {
       variant: {
-        solid:
-          "bg-zinc-100 dark:bg-zinc-900/80 p-1 border border-zinc-200/60 dark:border-zinc-800/80",
-        bordered: "border-2 border-zinc-200 dark:border-zinc-800 p-1 bg-transparent",
+        solid: "bg-muted p-1 border border-border/60",
+        bordered: "border-2 border-border p-1 bg-transparent",
         light: "bg-transparent p-0 gap-1.5",
-        underlined: "bg-transparent p-0 gap-4 border-b border-zinc-200 dark:border-zinc-800",
+        underlined: "bg-transparent p-0 gap-4 border-b border-border",
       },
       radius: {
         none: "rounded-none",
@@ -46,7 +45,7 @@ export const tabListVariants = cva(
 );
 
 export const tabTriggerVariants = cva(
-  "relative inline-flex items-center justify-center font-medium whitespace-nowrap transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950 disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none",
+  "relative inline-flex items-center justify-center font-medium whitespace-nowrap transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none",
   {
     variants: {
       size: {
@@ -62,12 +61,12 @@ export const tabTriggerVariants = cva(
         full: "rounded-full",
       },
       variant: {
-        solid: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
-        bordered: "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100",
+        solid: "text-muted-foreground hover:text-foreground",
+        bordered: "text-muted-foreground hover:text-foreground",
         light:
-          "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60",
+          "text-muted-foreground hover:text-foreground hover:bg-accent hover:text-accent-foreground",
         underlined:
-          "text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 pb-2 border-b-2 border-transparent -mb-px rounded-none",
+          "text-muted-foreground hover:text-foreground pb-2 border-b-2 border-transparent -mb-px rounded-none",
       },
       isSelected: {
         true: "",
@@ -82,24 +81,22 @@ export const tabTriggerVariants = cva(
       {
         variant: "solid",
         isSelected: true,
-        className:
-          "bg-white text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-zinc-50 font-semibold",
+        className: "bg-background text-foreground shadow-xs font-semibold",
       },
       {
         variant: "bordered",
         isSelected: true,
-        className: "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50 font-semibold",
+        className: "bg-accent text-accent-foreground font-semibold",
       },
       {
         variant: "light",
         isSelected: true,
-        className: "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50 font-semibold",
+        className: "bg-accent text-accent-foreground font-semibold",
       },
       {
         variant: "underlined",
         isSelected: true,
-        className:
-          "text-zinc-900 dark:text-zinc-50 border-zinc-900 dark:border-zinc-100 font-semibold",
+        className: "text-foreground border-foreground font-semibold",
       },
     ],
     defaultVariants: {
@@ -117,39 +114,34 @@ export const tabColorStyles: Record<
   { solid: string; light: string; underlined: string; bordered: string }
 > = {
   default: {
-    solid: "bg-white text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50 shadow-xs",
-    light: "bg-zinc-200/70 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-50",
-    underlined: "!text-zinc-900 dark:!text-zinc-100 !border-zinc-900 dark:!border-zinc-100",
-    bordered: "bg-zinc-200/60 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100",
+    solid: "bg-background text-foreground shadow-xs",
+    light: "bg-accent text-accent-foreground",
+    underlined: "!text-foreground !border-foreground",
+    bordered: "bg-accent text-accent-foreground",
   },
   primary: {
-    solid: "!bg-indigo-600 !text-white dark:!bg-indigo-500 dark:!text-white shadow-xs",
-    light: "text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50",
-    underlined: "!text-indigo-600 dark:!text-indigo-400 !border-indigo-600 dark:!border-indigo-400",
-    bordered:
-      "bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800",
+    solid: "!bg-primary !text-primary-foreground shadow-xs",
+    light: "text-primary-text bg-primary-soft",
+    underlined: "!text-primary-text !border-primary",
+    bordered: "bg-primary-soft text-primary-text border-primary-border-soft",
   },
   success: {
-    solid: "!bg-emerald-600 !text-white dark:!bg-emerald-500 dark:!text-white shadow-xs",
-    light: "text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50",
-    underlined:
-      "!text-emerald-600 dark:!text-emerald-400 !border-emerald-600 dark:!border-emerald-400",
-    bordered:
-      "bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    solid: "!bg-success !text-success-foreground shadow-xs",
+    light: "text-success-text bg-success-soft",
+    underlined: "!text-success-text !border-success",
+    bordered: "bg-success-soft text-success-text border-success-border-soft",
   },
   warning: {
-    solid: "!bg-amber-500 !text-white dark:!bg-amber-500 dark:!text-white shadow-xs",
-    light: "text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/50",
-    underlined: "!text-amber-600 dark:!text-amber-400 !border-amber-500 dark:!border-amber-400",
-    bordered:
-      "bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    solid: "!bg-warning !text-warning-foreground shadow-xs",
+    light: "text-warning-text bg-warning-soft",
+    underlined: "!text-warning-text !border-warning",
+    bordered: "bg-warning-soft text-warning-text border-warning-border-soft",
   },
   danger: {
-    solid: "!bg-rose-600 !text-white dark:!bg-rose-500 dark:!text-white shadow-xs",
-    light: "text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/50",
-    underlined: "!text-rose-600 dark:!text-rose-400 !border-rose-600 dark:!border-rose-400",
-    bordered:
-      "bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800",
+    solid: "!bg-destructive !text-destructive-foreground shadow-xs",
+    light: "text-destructive-text bg-destructive-soft",
+    underlined: "!text-destructive-text !border-destructive",
+    bordered: "bg-destructive-soft text-destructive-text border-destructive-border-soft",
   },
 };
 
@@ -249,7 +241,7 @@ export const Tab = React.forwardRef<HTMLButtonElement, TabProps>(
         {icon && <span className="flex shrink-0 items-center justify-center">{icon}</span>}
         <span className="truncate">{title || children}</span>
         {badge && (
-          <span className="ml-1 inline-flex items-center justify-center rounded-full bg-zinc-200 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200">
+          <span className="bg-muted text-muted-foreground ml-1 inline-flex items-center justify-center rounded-full px-1.5 py-0.5 text-[10px] font-semibold">
             {badge}
           </span>
         )}
@@ -342,7 +334,7 @@ export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
         aria-labelledby={`${baseId}-tab-${panelId}`}
         tabIndex={0}
         className={cn(
-          "animate-in fade-in-50 mt-3 rounded-lg text-zinc-700 duration-150 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none dark:text-zinc-300",
+          "animate-in fade-in-50 text-foreground focus-visible:ring-ring focus-visible:ring-offset-background mt-3 rounded-lg duration-150 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
           className
         )}
         {...props}

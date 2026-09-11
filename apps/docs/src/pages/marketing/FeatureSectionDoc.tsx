@@ -1,5 +1,7 @@
 import React from "react";
+import { PageToolbar } from "../../components/PageToolbar";
 import featureCode from "../../../../../packages/marketing/src/components/FeatureSection/Feature.tsx?raw";
+import featureGlassCode from "../../../../../packages/marketing/src/components/FeatureSection/FeatureGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
 import {
   FeatureSection,
@@ -16,6 +18,7 @@ import {
   FeatureRow,
   FeatureRowContent,
   FeatureRowMedia,
+  FeatureGlass,
 } from "@hudbird/marketing";
 import { MarketingPreview } from "../../components/MarketingPreview";
 import { ApiTable, type ApiPropRow } from "../../components/ApiTable";
@@ -140,6 +143,7 @@ export const featureSectionTocItems = [
     children: [
       { id: "grid-layout", title: "Grid Layout" },
       { id: "alternating-layout", title: "Alternating Layout" },
+      { id: "glass", title: "Glassmorphic Features" },
     ],
   },
 ];
@@ -253,7 +257,7 @@ export const ProStyleVisualEditor = () => (
     <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-violet-900/20 blur-3xl" />
     <div className="absolute -right-40 -bottom-40 h-96 w-96 rounded-full bg-indigo-900/20 blur-3xl" />
 
-    <div className="relative mx-auto max-w-7xl px-6 lg:px-8 flex flex-col lg:flex-row gap-16 items-center">
+    <div className="mx-auto w-full max-w-7xl flex flex-col lg:flex-row items-center gap-16 px-4 sm:px-8 lg:px-12">
       <div className="w-full lg:w-1/3 text-left">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-2 text-indigo-400 font-medium mb-4">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -382,33 +386,24 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
   ];
 
   return (
-    <div className="flex w-full flex-col pb-20">
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Marketing section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Feature Sections</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
-        <div className="mb-10">
-          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-            Feature Sections
-          </h1>
-          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-            Highlight the key benefits and capabilities of your product. Use grids for quick
-            overviews or alternating layouts for deep dives.
-          </p>
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <div className="mb-3 flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                Feature Sections
+              </h1>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                New
+              </span>
+            </div>
+            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+              Highlight the key benefits and capabilities of your product. Use grids for quick
+              overviews or alternating layouts for deep dives.
+            </p>
+          </div>
+          <PageToolbar />
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
@@ -508,7 +503,7 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
                     <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
                       Push to deploy
                     </h3>
-                    <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                    <p className="text-base text-zinc-600 dark:text-zinc-400">
                       Just push your code to GitHub, GitLab, or Bitbucket, and we'll automatically
                       build and deploy your application. Every commit gets a unique preview URL.
                     </p>
@@ -544,13 +539,93 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
           >
             <ProStyleVisualEditor />
           </MarketingPreview>
+
+          {/* Glassmorphic Features */}
+          <div id="glass" className="scroll-mt-24">
+            <MarketingPreview title="Glassmorphic Features" code={featureGlassCode}>
+              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
+                <div className="absolute top-1/2 left-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 blur-[120px]" />
+                <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/30 blur-[120px]" />
+
+                <FeatureGlass
+                  badge={
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-indigo-900 ring-1 ring-indigo-500/20 backdrop-blur-md ring-inset dark:bg-indigo-500/10 dark:text-indigo-200 dark:ring-indigo-500/30">
+                      Features
+                    </span>
+                  }
+                  features={[
+                    {
+                      title: "Lightning Fast",
+                      description:
+                        "Global edge network ensures your application loads instantly for users anywhere in the world.",
+                      icon: <Zap size={20} />,
+                    },
+                    {
+                      title: "Enterprise Security",
+                      description:
+                        "Advanced DDoS protection and automatic SSL certificates keep your data safe and secure.",
+                      icon: <Shield size={20} />,
+                    },
+                    {
+                      title: "Global CDN",
+                      description:
+                        "Deliver content faster with our strategically placed servers across 100+ global locations.",
+                      icon: <Globe size={20} />,
+                    },
+                    {
+                      title: "Built-in Auth",
+                      description:
+                        "Secure, ready-to-use authentication with social logins and 2FA support.",
+                      icon: <Lock size={20} />,
+                    },
+                    {
+                      title: "Mobile Optimized",
+                      description:
+                        "Responsive layouts and touch-friendly components built right into the core.",
+                      icon: <Smartphone size={20} />,
+                    },
+                    {
+                      title: "Cloud Native",
+                      description:
+                        "Seamlessly deploy and scale with native support for major cloud providers.",
+                      icon: <Cloud size={20} />,
+                    },
+                  ]}
+                />
+              </div>
+            </MarketingPreview>
+          </div>
         </div>
 
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <ApiTable title="FeatureSection Props" rows={apiRows} />
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-8">
+          <div>
+            <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Component API
+            </h2>
+            <ApiTable title="FeatureSection Props" rows={apiRows} />
+          </div>
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              FeatureGlass Props
+            </h3>
+            <ApiTable
+              title="FeatureGlass"
+              rows={[
+                {
+                  prop: "features",
+                  type: "FeatureGlassItem[]",
+                  defaultVal: "-",
+                  description: "Array of feature objects with icon, title, and description.",
+                },
+                {
+                  prop: "badge",
+                  type: "ReactNode",
+                  defaultVal: "undefined",
+                  description: "Optional badge element shown above the title.",
+                },
+              ]}
+            />
+          </div>
         </section>
       </div>
     </div>

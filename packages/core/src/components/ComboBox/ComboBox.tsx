@@ -14,13 +14,13 @@ export type ComboBoxVariant = "bordered" | "flat";
 export type ComboBoxSize = "sm" | "md" | "lg";
 
 const comboBoxInputVariants = cva(
-  "w-full rounded-xl transition-all duration-150 font-normal outline-none text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 disabled:pointer-events-none disabled:opacity-50",
+  "w-full rounded-xl transition-all duration-150 font-normal outline-none text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         bordered:
-          "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 focus-within:border-indigo-600 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 shadow-2xs",
-        flat: "bg-zinc-100 dark:bg-zinc-800/80 border border-transparent hover:bg-zinc-200/70 dark:hover:bg-zinc-800 focus-within:bg-white dark:focus-within:bg-zinc-900 focus-within:border-indigo-600 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20",
+          "bg-background border border-border hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
+        flat: "bg-muted border border-transparent hover:bg-muted/80 focus-within:bg-background focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20",
       },
       size: {
         sm: "min-h-8 text-xs py-1 px-2.5",
@@ -28,7 +28,7 @@ const comboBoxInputVariants = cva(
         lg: "min-h-12 text-base py-2 px-3.5",
       },
       isInvalid: {
-        true: "!border-rose-500 !ring-rose-500/20 dark:!border-rose-400",
+        true: "!border-destructive !ring-destructive/20",
         false: "",
       },
     },
@@ -227,9 +227,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
       >
         {/* Label */}
         {label && (
-          <label className="text-sm font-medium text-zinc-800 select-none dark:text-zinc-200">
-            {label}
-          </label>
+          <label className="text-foreground text-sm font-medium select-none">{label}</label>
         )}
 
         {/* Input Wrapper Box */}
@@ -237,7 +235,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           className={cn(
             "relative flex w-full cursor-text flex-wrap items-center gap-1.5 pr-16",
             comboBoxInputVariants({ variant, size, isInvalid }),
-            disabled && "cursor-not-allowed bg-zinc-50 opacity-50 dark:bg-zinc-900"
+            disabled && "cursor-not-allowed opacity-50"
           )}
           onClick={() => {
             if (!disabled) {
@@ -254,7 +252,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
               return (
                 <span
                   key={val}
-                  className="inline-flex items-center gap-1 rounded-lg border border-zinc-200/80 bg-zinc-100 px-2.5 py-0.5 text-xs font-medium text-zinc-800 transition-colors select-none dark:border-zinc-700/80 dark:bg-zinc-800 dark:text-zinc-200"
+                  className="border-border/80 bg-accent text-accent-foreground inline-flex items-center gap-1 rounded-lg border px-2.5 py-0.5 text-xs font-medium transition-colors select-none"
                 >
                   <span className="max-w-[120px] truncate">{label}</span>
                   {!disabled && (
@@ -262,7 +260,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
                       type="button"
                       tabIndex={-1}
                       onClick={(e) => handleRemoveTag(val, e)}
-                      className="rounded-sm p-0.5 text-zinc-400 transition-colors hover:bg-zinc-200 hover:text-zinc-600 dark:hover:bg-zinc-700 dark:hover:text-zinc-200"
+                      className="text-muted-foreground hover:bg-muted hover:text-foreground rounded-sm p-0.5 transition-colors"
                       aria-label={`Remove ${label}`}
                     >
                       <svg
@@ -295,16 +293,16 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
               if (!isOpen) setIsOpen(true);
             }}
             onFocus={() => setIsOpen(true)}
-            className="min-w-[80px] flex-1 bg-transparent py-0.5 text-inherit outline-none placeholder:text-zinc-400 dark:placeholder:text-zinc-500"
+            className="placeholder:text-muted-foreground min-w-[80px] flex-1 bg-transparent py-0.5 text-inherit outline-none"
           />
 
           {/* Action Buttons (Clear & Chevron) */}
-          <div className="absolute top-1/2 right-2.5 flex -translate-y-1/2 items-center gap-1 text-zinc-400 dark:text-zinc-500">
+          <div className="text-muted-foreground absolute top-1/2 right-2.5 flex -translate-y-1/2 items-center gap-1">
             {isClearable && hasSelection && !disabled && (
               <button
                 type="button"
                 onClick={handleClear}
-                className="rounded-md p-1 text-zinc-400 transition-colors hover:bg-zinc-200 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+                className="text-muted-foreground hover:bg-accent hover:text-foreground rounded-md p-1 transition-colors"
                 aria-label="Clear selection"
               >
                 <svg
@@ -333,7 +331,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
                   if (!isOpen) inputRef.current?.focus();
                 }
               }}
-              className="rounded-md p-1 text-zinc-400 transition-transform duration-200 hover:text-zinc-600 dark:hover:text-zinc-200"
+              className="text-muted-foreground hover:text-foreground rounded-md p-1 transition-transform duration-200"
               aria-label="Toggle dropdown"
             >
               <svg
@@ -353,7 +351,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
 
         {/* Floating Dropdown Overlay */}
         {isOpen && !disabled && (
-          <div className="animate-in fade-in-0 zoom-in-95 absolute top-full left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-zinc-200/80 bg-white p-1.5 shadow-xl backdrop-blur-md duration-150 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="animate-in fade-in-0 zoom-in-95 border-border/80 bg-popover text-popover-foreground absolute top-full left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border p-1.5 shadow-xl backdrop-blur-md duration-150">
             {filteredOptions.length > 0 ? (
               <ul className="space-y-0.5" role="listbox">
                 {filteredOptions.map((opt) => {
@@ -370,15 +368,15 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
                       className={cn(
                         "flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm transition-all duration-150 select-none",
                         isSelected
-                          ? "bg-indigo-50 font-medium text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300"
-                          : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800/80",
+                          ? "bg-accent text-accent-foreground font-medium"
+                          : "text-popover-foreground hover:bg-accent hover:text-accent-foreground",
                         opt.disabled && "pointer-events-none cursor-not-allowed opacity-40"
                       )}
                     >
                       <span className="truncate">{opt.label}</span>
                       {isSelected && (
                         <svg
-                          className="ml-2 h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400"
+                          className="text-foreground ml-2 h-4 w-4 shrink-0"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -394,7 +392,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
                 })}
               </ul>
             ) : (
-              <div className="px-3 py-4 text-center text-xs text-zinc-500 select-none dark:text-zinc-400">
+              <div className="text-muted-foreground px-3 py-4 text-center text-xs select-none">
                 {emptyMessage}
               </div>
             )}
@@ -403,12 +401,10 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
 
         {/* Description & Error Message */}
         {description && !errorMessage && (
-          <span className="text-xs text-zinc-500 dark:text-zinc-400">{description}</span>
+          <span className="text-muted-foreground text-xs">{description}</span>
         )}
         {errorMessage && (
-          <span className="text-xs font-medium text-rose-500 dark:text-rose-400">
-            {errorMessage}
-          </span>
+          <span className="text-destructive text-xs font-medium">{errorMessage}</span>
         )}
       </div>
     );

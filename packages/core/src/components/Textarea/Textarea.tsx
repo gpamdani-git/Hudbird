@@ -7,11 +7,11 @@ const textareaVariants = cva(
   {
     variants: {
       variant: {
-        flat: "bg-zinc-100 hover:bg-zinc-200/70 focus-within:bg-white dark:bg-zinc-900/40 dark:hover:bg-zinc-800/80 dark:focus-within:bg-zinc-900 border border-transparent focus-within:border-indigo-500 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-500 dark:placeholder:text-zinc-400",
+        flat: "bg-muted hover:bg-muted/80 focus-within:bg-background border border-transparent focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 text-foreground placeholder:text-muted-foreground",
         bordered:
-          "bg-transparent border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 focus-within:border-indigo-500 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-500 dark:placeholder:text-zinc-400",
+          "bg-transparent border border-border hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 text-foreground placeholder:text-muted-foreground",
         underlined:
-          "bg-transparent rounded-none border-0 border-b-2 border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 focus-within:border-indigo-500 dark:focus-within:border-indigo-500 px-0.5 shadow-none text-zinc-900 dark:text-zinc-50 placeholder:text-zinc-500 dark:placeholder:text-zinc-400",
+          "bg-transparent rounded-none border-0 border-b-2 border-border hover:border-foreground/30 focus-within:border-ring px-0.5 shadow-none text-foreground placeholder:text-muted-foreground",
       },
     },
     defaultVariants: {
@@ -32,7 +32,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={cn(
           textareaVariants({ variant }),
           isInvalid &&
-            "border-rose-500 focus-within:border-rose-500 focus-within:ring-rose-500/20 dark:border-rose-500 dark:focus-within:border-rose-500",
+            "!border-destructive focus-within:!border-destructive focus-within:!ring-destructive/20",
           "min-h-[80px] p-3",
           className
         )}

@@ -2,6 +2,7 @@
 import tabsCode from "../../../../packages/core/src/components/Tabs/Tabs.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
+import { PageToolbar } from "../components/PageToolbar";
 import { Tabs, Tab, TabList, TabPanel, Card, CardBody, Button, Badge } from "@hudbird/ui";
 import { Music, Image, Video, Settings, User, Bell, Shield, Heart } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -124,23 +125,26 @@ export default function TabsDoc() {
   return (
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
-      <div>
-        <div className="mb-3 flex items-center gap-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-            Tabs
-          </h1>
-          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-            New
-          </span>
-          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-            Component
-          </span>
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <div className="w-full min-w-0 flex-1 pr-4">
+          <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Tabs
+            </h1>
+            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              New
+            </span>
+            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+              Component
+            </span>
+          </div>
+          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+            Tabs organize related content across multiple panels, allowing users to switch between
+            different views within the same context with full keyboard navigation and WAI-ARIA
+            compliance.
+          </p>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Tabs organize related content across multiple panels, allowing users to switch between
-          different views within the same context with full keyboard navigation and WAI-ARIA
-          compliance.
-        </p>
+        <PageToolbar />
       </div>
 
       {/* Main Preview */}

@@ -19,7 +19,7 @@ const DialogContext = React.createContext<DialogContextValue>({
 });
 
 const dialogPanelVariants = cva(
-  "relative w-full overflow-hidden bg-white dark:bg-zinc-900 border border-zinc-200/80 dark:border-zinc-800 shadow-2xl rounded-3xl p-6 sm:p-7 transition-all animate-in fade-in-0 zoom-in-95 duration-200 focus-visible:outline-none",
+  "relative w-full overflow-hidden bg-background border border-border/80 shadow-2xl rounded-3xl p-6 sm:p-7 transition-all animate-in fade-in-0 zoom-in-95 duration-200 focus-visible:outline-none",
   {
     variants: {
       size: {
@@ -28,7 +28,7 @@ const dialogPanelVariants = cva(
       },
       severity: {
         default: "",
-        danger: "border-t-4 border-t-rose-500 dark:border-t-rose-500",
+        danger: "border-t-4 border-t-destructive",
       },
     },
     defaultVariants: {
@@ -90,7 +90,7 @@ const Dialog: React.FC<DialogProps> = ({
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
         {/* Backdrop */}
         <div
-          className="animate-in fade-in-0 fixed inset-0 bg-zinc-950/40 backdrop-blur-md transition-opacity duration-200"
+          className="animate-in fade-in-0 bg-background/80 fixed inset-0 backdrop-blur-md transition-opacity duration-200"
           aria-hidden="true"
           onClick={() => {
             if (isDismissable) onClose?.();
@@ -154,8 +154,8 @@ const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
       <h2
         ref={ref}
         className={cn(
-          "flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900 dark:text-zinc-50",
-          context.severity === "danger" && "text-rose-600 dark:text-rose-400",
+          "text-foreground flex items-center gap-2 text-lg font-bold tracking-tight",
+          context.severity === "danger" && "text-destructive",
           className
         )}
         {...props}
@@ -174,7 +174,7 @@ const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescripti
     return (
       <p
         ref={ref}
-        className={cn("text-sm leading-normal text-zinc-500 dark:text-zinc-400", className)}
+        className={cn("text-muted-foreground text-sm leading-normal", className)}
         {...props}
       >
         {children}

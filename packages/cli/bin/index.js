@@ -286,7 +286,16 @@ async function runInit() {
       console.log(pc.green(`✔ Dependencies installed successfully.\n`));
     } catch (err) {
       console.log(pc.red(`✖ Failed to install dependencies. You can install them manually:`));
-      console.log(pc.white(`  ${installCmd} ${baseDeps.join(" ")}\n`));
+      console.log(pc.white(`  ${installCmd} ${baseDeps.join(" ")}`));
+      console.log();
+      console.log(
+        pc.dim(`💡 Need help? Visit: ${pc.cyan("https://hudbird.vercel.app/#/support")}`)
+      );
+      console.log(
+        pc.dim(
+          `🐛 Report a bug:  ${pc.cyan("https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new?assignees=&labels=bug%2C+triage&template=bug_report.yml&title=%5BBUG%5D+")}`
+        )
+      );
     }
   }
 
@@ -494,11 +503,44 @@ async function runAdd(componentName) {
       execSync(`${installCmd} ${missingDeps.join(" ")}`, { stdio: "inherit", cwd });
       console.log(pc.green(`✔ NPM Dependencies installed successfully.\n`));
     } catch (err) {
+      const errOut = err && err.stderr ? err.stderr.toString() : err?.message?.toString() || "";
+      const hasReactConflict =
+        errOut.includes("ERESOLVE") ||
+        errOut.includes("peer react") ||
+        errOut.includes("@react-three/fiber");
+
       console.log(pc.red(`\n✖ Failed to install NPM dependencies.`));
-      if (pm === "npm") {
+
+      if (pm === "npm" && hasReactConflict) {
         console.log(
-          pc.yellow(`If you see an ERESOLVE or peer dependency error (common with React 19), try:`)
+          pc.yellow(`\n⚠ Detected a React version conflict with one or more dependencies.`)
         );
+        console.log(
+          pc.white(`   This usually happens because a library (e.g. @react-three/fiber) has strict`)
+        );
+        console.log(
+          pc.white(`   peer dependency requirements for a specific React version range.`)
+        );
+        console.log();
+        console.log(pc.bold(`   Recommended fixes (try in order):`));
+        console.log();
+        console.log(
+          pc.white(`   1. 🔒 Lock React to a compatible version (${pc.bold("Recommended")}):`)
+        );
+        console.log(pc.cyan(`      npm install react@19.2.0 react-dom@19.2.0 --save-exact`));
+        console.log(
+          pc.dim(`      Then re-run: npx hudbird-ui@latest add ${args[1] || "<component>"}`)
+        );
+        console.log();
+        console.log(
+          pc.white(`   2. 📦 Use a modern package manager (pnpm resolves conflicts automatically):`)
+        );
+        console.log(pc.cyan(`      pnpm add ${missingDeps.join(" ")}`));
+        console.log();
+        console.log(pc.white(`   3. 🔧 Force install (may cause instability):`));
+        console.log(pc.cyan(`      npm install ${missingDeps.join(" ")} --legacy-peer-deps\n`));
+      } else if (pm === "npm") {
+        console.log(pc.yellow(`If you see a peer dependency error, try:`));
         console.log(
           pc.white(`  1. Use overrides in package.json or force install: `) +
             pc.cyan(`npm install ${missingDeps.join(" ")} --legacy-peer-deps`)
@@ -507,13 +549,20 @@ async function runAdd(componentName) {
           pc.white(`  2. Use a modern package manager: `) +
             pc.cyan(`pnpm add ${missingDeps.join(" ")}`)
         );
-        console.log(
-          pc.white(`  3. Downgrade to React 18: `) + pc.cyan(`npm install react@18 react-dom@18\n`)
-        );
       } else {
         console.log(pc.white(`You can install them manually:`));
-        console.log(pc.white(`  ${installCmd} ${missingDeps.join(" ")}\n`));
+        console.log(pc.white(`  ${installCmd} ${missingDeps.join(" ")}`));
       }
+
+      console.log();
+      console.log(
+        pc.dim(`💡 Need help? Visit: ${pc.cyan("https://hudbird.vercel.app/#/support")}`)
+      );
+      console.log(
+        pc.dim(
+          `🐛 Report a bug:  ${pc.cyan("https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new?assignees=&labels=bug%2C+triage&template=bug_report.yml&title=%5BBUG%5D+")}`
+        )
+      );
     }
   }
 }

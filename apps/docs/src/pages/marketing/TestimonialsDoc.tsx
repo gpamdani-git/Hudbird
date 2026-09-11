@@ -1,14 +1,18 @@
 import React from "react";
+import { PageToolbar } from "../../components/PageToolbar";
 import testimonialsCode from "../../../../../packages/marketing/src/components/Testimonials/Testimonials.tsx?raw";
 import testimonialsFlatCode from "../../../../../packages/marketing/src/components/Testimonials/TestimonialsFlat.tsx?raw";
 import testimonialsMarqueeCode from "../../../../../packages/marketing/src/components/Testimonials/TestimonialsMarquee.tsx?raw";
 import testimonialsSideBySideCode from "../../../../../packages/marketing/src/components/Testimonials/TestimonialsSideBySide.tsx?raw";
+import testimonialGlassCode from "../../../../../packages/marketing/src/components/Testimonials/TestimonialGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
 import {
   Testimonials,
   TestimonialsFlat,
   TestimonialsMarquee,
   TestimonialsSideBySide,
+  TestimonialGlass,
+  DEFAULT_TESTIMONIALS,
 } from "@hudbird/marketing";
 import { MarketingPreview } from "../../components/MarketingPreview";
 import { ApiTable, type ApiPropRow } from "../../components/ApiTable";
@@ -95,35 +99,25 @@ export default function TestimonialsDoc({ onOpenSidebar }: { onOpenSidebar?: () 
   ];
 
   return (
-    <div className="flex w-full flex-col pb-20">
-      {/* Header section with breadcrumbs and description */}
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Marketing section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Testimonials</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
-        <div className="mb-10">
-          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-            Testimonials
-          </h1>
-          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-            Build trust with your audience using this beautiful masonry-style testimonial grid.
-            Fully responsive, supports native dark mode, and features smooth Framer Motion reveal
-            animations.
-          </p>
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
+        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <div className="mb-3 flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                Testimonials
+              </h1>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                New
+              </span>
+            </div>
+            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+              Build trust with your audience using this beautiful masonry-style testimonial grid.
+              Fully responsive, supports native dark mode, and features smooth Framer Motion reveal
+              animations.
+            </p>
+          </div>
+          <PageToolbar />
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
@@ -145,6 +139,14 @@ export default function TestimonialsDoc({ onOpenSidebar }: { onOpenSidebar?: () 
 
           <MarketingPreview title="Side by Side" code={testimonialsSideBySideCode}>
             <TestimonialsSideBySide />
+          </MarketingPreview>
+
+          <MarketingPreview title="Glassmorphic Testimonials" code={testimonialGlassCode}>
+            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
+              <div className="absolute top-0 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
+              <div className="absolute right-1/4 bottom-0 h-[500px] w-[500px] translate-x-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
+              <TestimonialGlass testimonials={DEFAULT_TESTIMONIALS} />
+            </div>
           </MarketingPreview>
         </div>
 

@@ -17,9 +17,9 @@ const checkboxControlVariants = cva(
         lg: "h-6 w-6 rounded-lg",
       },
       color: {
-        primary: "focus-within:ring-indigo-500 dark:focus-within:ring-offset-zinc-950",
-        success: "focus-within:ring-emerald-500 dark:focus-within:ring-offset-zinc-950",
-        danger: "focus-within:ring-rose-500 dark:focus-within:ring-offset-zinc-950",
+        primary: "focus-within:ring-primary focus-within:ring-offset-background",
+        success: "focus-within:ring-success focus-within:ring-offset-background",
+        danger: "focus-within:ring-destructive focus-within:ring-offset-background",
       },
       isChecked: {
         true: "",
@@ -36,22 +36,19 @@ const checkboxControlVariants = cva(
       {
         isChecked: true,
         color: "primary",
-        className:
-          "bg-indigo-600 border-indigo-600 text-white dark:bg-indigo-500 dark:border-indigo-500 shadow-xs",
+        className: "bg-primary border-primary text-primary-foreground shadow-xs",
       },
       // Success checked state
       {
         isChecked: true,
         color: "success",
-        className:
-          "bg-emerald-600 border-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-500 shadow-xs",
+        className: "bg-success border-success text-success-foreground shadow-xs",
       },
       // Danger checked state
       {
         isChecked: true,
         color: "danger",
-        className:
-          "bg-rose-600 border-rose-600 text-white dark:bg-rose-500 dark:border-rose-500 shadow-xs",
+        className: "bg-destructive border-destructive text-destructive-foreground shadow-xs",
       },
     ],
     defaultVariants: {
@@ -176,9 +173,9 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             }),
             description ? "mt-0.5" : "",
             "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
-            color === "primary" && "peer-focus-visible:ring-indigo-500",
-            color === "success" && "peer-focus-visible:ring-emerald-500",
-            color === "danger" && "peer-focus-visible:ring-rose-500"
+            color === "primary" && "peer-focus-visible:ring-primary",
+            color === "success" && "peer-focus-visible:ring-success",
+            color === "danger" && "peer-focus-visible:ring-destructive"
           )}
           aria-hidden="true"
         >

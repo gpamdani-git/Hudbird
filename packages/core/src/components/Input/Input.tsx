@@ -11,15 +11,15 @@ export type InputRadius = "none" | "md" | "lg" | "full";
 export type InputLabelPlacement = "outside" | "inside";
 
 const inputWrapperVariants = cva(
-  "group relative flex items-center w-full transition-all duration-150 text-zinc-900 dark:text-zinc-50 outline-none select-none",
+  "group relative flex items-center w-full transition-all duration-150 text-foreground outline-none select-none",
   {
     variants: {
       variant: {
-        flat: "bg-zinc-100 hover:bg-zinc-200/70 focus-within:bg-white dark:bg-zinc-900 dark:hover:bg-zinc-800/80 dark:focus-within:bg-zinc-900 border border-transparent focus-within:border-indigo-500 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 shadow-2xs",
+        flat: "bg-muted hover:bg-muted/80 focus-within:bg-background border border-transparent focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
         bordered:
-          "bg-transparent border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 focus-within:border-indigo-500 dark:focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 shadow-2xs",
+          "bg-transparent border border-border hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
         underlined:
-          "bg-transparent rounded-none border-0 border-b-2 border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 focus-within:border-indigo-500 dark:focus-within:border-indigo-500 px-0.5",
+          "bg-transparent rounded-none border-0 border-b-2 border-border hover:border-foreground/30 focus-within:border-ring px-0.5",
       },
       size: {
         sm: "min-h-8 text-xs px-2.5 gap-1.5",
@@ -33,7 +33,7 @@ const inputWrapperVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "!border-rose-500 dark:!border-rose-500 focus-within:!border-rose-500 focus-within:!ring-rose-500/20",
+        true: "!border-destructive focus-within:!border-destructive focus-within:!ring-destructive/20",
         false: "",
       },
       isDisabled: {
@@ -175,7 +175,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <label
             className={cn(
               "mb-1.5 text-xs font-semibold transition-colors select-none",
-              isInvalid ? "text-rose-600 dark:text-rose-400" : "text-zinc-700 dark:text-zinc-300",
+              isInvalid ? "text-destructive" : "text-foreground",
               disabled && "cursor-not-allowed opacity-50"
             )}
           >
@@ -199,7 +199,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         >
           {/* Start Content Slot */}
           {startContent && (
-            <div className="flex shrink-0 items-center justify-center text-zinc-400 select-none dark:text-zinc-500">
+            <div className="text-muted-foreground flex shrink-0 items-center justify-center select-none">
               {startContent}
             </div>
           )}
@@ -210,9 +210,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               <span
                 className={cn(
                   "text-[10px] leading-tight font-semibold tracking-wide uppercase transition-colors select-none",
-                  isInvalid
-                    ? "text-rose-600 dark:text-rose-400"
-                    : "text-zinc-500 dark:text-zinc-400"
+                  isInvalid ? "text-destructive" : "text-muted-foreground"
                 )}
               >
                 {label}
@@ -224,7 +222,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 onChange={handleInputChange}
                 disabled={disabled}
                 aria-invalid={isInvalid ? "true" : undefined}
-                className="w-full border-none bg-transparent p-0 leading-tight font-normal text-zinc-900 outline-none placeholder:text-zinc-400 disabled:cursor-not-allowed dark:text-zinc-50 dark:placeholder:text-zinc-500"
+                className="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent p-0 leading-tight font-normal outline-none disabled:cursor-not-allowed"
                 {...props}
               />
             </div>
@@ -236,7 +234,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               onChange={handleInputChange}
               disabled={disabled}
               aria-invalid={isInvalid ? "true" : undefined}
-              className="h-full w-full border-none bg-transparent font-normal text-zinc-900 outline-none placeholder:text-zinc-400 disabled:cursor-not-allowed dark:text-zinc-50 dark:placeholder:text-zinc-500"
+              className="text-foreground placeholder:text-muted-foreground h-full w-full border-none bg-transparent font-normal outline-none disabled:cursor-not-allowed"
               {...props}
             />
           )}
@@ -248,7 +246,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               aria-label="Clear input value"
               tabIndex={-1}
               onClick={handleClearClick}
-              className="shrink-0 cursor-pointer rounded-lg p-1 text-zinc-400 transition-all hover:bg-zinc-200/80 hover:text-zinc-600 active:scale-90 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+              className="text-muted-foreground hover:bg-muted-foreground/10 hover:text-foreground shrink-0 cursor-pointer rounded-lg p-1 transition-all active:scale-90"
             >
               <svg
                 className="h-3.5 w-3.5"
@@ -267,7 +265,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           {/* End Content Slot */}
           {endContent && (
-            <div className="flex shrink-0 items-center justify-center text-zinc-400 select-none dark:text-zinc-500">
+            <div className="text-muted-foreground flex shrink-0 items-center justify-center select-none">
               {endContent}
             </div>
           )}
@@ -277,12 +275,12 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {isInvalid && errorMessage ? (
           <p
             role="alert"
-            className="animate-in fade-in-0 slide-in-from-top-0.5 mt-1.5 flex items-center gap-1 text-xs font-medium text-rose-600 duration-150 dark:text-rose-400"
+            className="animate-in fade-in-0 slide-in-from-top-0.5 text-destructive mt-1.5 flex items-center gap-1 text-xs font-medium duration-150"
           >
             {errorMessage}
           </p>
         ) : description ? (
-          <p className="mt-1.5 text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
+          <p className="text-muted-foreground mt-1.5 text-xs">{description}</p>
         ) : null}
       </div>
     );

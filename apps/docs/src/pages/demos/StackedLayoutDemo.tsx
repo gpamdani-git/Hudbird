@@ -68,7 +68,7 @@ export default function StackedLayoutDemo() {
       {/* Page Header */}
       <header className="border-b border-zinc-200 bg-white py-8 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <h1 className="text-2xl font-bold text-zinc-900 sm:text-3xl dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             {activeTab}
           </h1>
           <div className="flex items-center gap-3">

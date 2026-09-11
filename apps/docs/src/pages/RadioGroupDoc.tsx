@@ -2,6 +2,7 @@
 import radioGroupCode from "../../../../packages/core/src/components/RadioGroup/RadioGroup.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
+import { PageToolbar } from "../components/PageToolbar";
 import { RadioGroup, Radio } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -135,22 +136,25 @@ export default function RadioGroupDoc() {
   return (
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
-      <div>
-        <div className="mb-3 flex items-center gap-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-            RadioGroup
-          </h1>
-          <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-            New
-          </span>
-          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-            Component
-          </span>
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <div className="w-full min-w-0 flex-1 pr-4">
+          <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              RadioGroup
+            </h1>
+            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              New
+            </span>
+            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+              Component
+            </span>
+          </div>
+          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+            Radio groups let users select a single choice from a set of mutually exclusive options
+            with accessible keyboard arrow navigation and clear visual indicators.
+          </p>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Radio groups let users select a single choice from a set of mutually exclusive options
-          with accessible keyboard arrow navigation and clear visual indicators.
-        </p>
+        <PageToolbar />
       </div>
 
       {/* Main Preview */}

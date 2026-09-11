@@ -122,7 +122,7 @@ export const InfiniteScroll = React.forwardRef<HTMLDivElement, InfiniteScrollPro
             ? (loader ?? (
                 <div className="flex items-center gap-2 py-2 text-xs font-medium text-zinc-500 dark:text-zinc-400">
                   <svg
-                    className="h-4 w-4 animate-spin text-indigo-600 dark:text-indigo-400"
+                    className="text-primary h-4 w-4 animate-spin"
                     fill="none"
                     viewBox="0 0 24 24"
                   >

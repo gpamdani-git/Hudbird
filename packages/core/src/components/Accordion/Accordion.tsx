@@ -8,9 +8,8 @@ import { AccordionContext, type AccordionVariant, AccordionItem } from "./Accord
 export const accordionVariants = cva("w-full transition-all duration-200", {
   variants: {
     variant: {
-      light: "border-t border-zinc-200 dark:border-zinc-800",
-      bordered:
-        "border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden bg-white dark:bg-zinc-900/50",
+      light: "border-t border-border",
+      bordered: "border border-border rounded-xl overflow-hidden bg-card text-card-foreground",
       shadow: "space-y-2",
       splitted: "space-y-3",
     },

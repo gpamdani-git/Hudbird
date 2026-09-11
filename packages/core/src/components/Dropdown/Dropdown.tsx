@@ -203,7 +203,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         role="menu"
         tabIndex={-1}
         className={cn(
-          "absolute z-50 min-w-[210px] rounded-2xl border border-zinc-200/80 bg-white p-1.5 shadow-xl backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900",
+          "border-border/80 bg-popover text-popover-foreground absolute z-50 min-w-[210px] rounded-2xl border p-1.5 shadow-xl backdrop-blur-md",
           "animate-in fade-in-0 zoom-in-95 duration-150 focus:outline-none",
           placementClasses[placement] || placementClasses["bottom-start"],
           className
@@ -222,10 +222,8 @@ const dropdownItemVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/80 focus:bg-zinc-100 dark:focus:bg-zinc-800/80",
-        danger:
-          "text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 focus:bg-rose-50 dark:focus:bg-rose-950/40 font-medium",
+        default: "text-popover-foreground hover:bg-accent focus:bg-accent",
+        danger: "text-destructive hover:bg-destructive/10 focus:bg-destructive/10 font-medium",
       },
     },
     defaultVariants: {
@@ -277,14 +275,12 @@ const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
         {...props}
       >
         <div className="flex min-w-0 items-center gap-2.5 truncate">
-          {startContent && (
-            <span className="shrink-0 text-zinc-400 dark:text-zinc-500">{startContent}</span>
-          )}
+          {startContent && <span className="text-muted-foreground shrink-0">{startContent}</span>}
           <span className="truncate">{children}</span>
         </div>
 
         {endContent && (
-          <span className="ml-auto shrink-0 pl-2 font-mono text-xs text-zinc-400 dark:text-zinc-500">
+          <span className="text-muted-foreground ml-auto shrink-0 pl-2 font-mono text-xs">
             {endContent}
           </span>
         )}
@@ -307,13 +303,13 @@ const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
         role="group"
         className={cn(
           "flex flex-col gap-0.5 py-1",
-          showDivider && "mt-1 border-t border-zinc-200/60 pt-1.5 dark:border-zinc-800/60",
+          showDivider && "border-border/60 mt-1 border-t pt-1.5",
           className
         )}
         {...props}
       >
         {title && (
-          <div className="px-3 py-1 text-[10px] font-bold tracking-wider text-zinc-400 uppercase select-none dark:text-zinc-500">
+          <div className="text-muted-foreground px-3 py-1 text-[10px] font-bold tracking-wider uppercase select-none">
             {title}
           </div>
         )}

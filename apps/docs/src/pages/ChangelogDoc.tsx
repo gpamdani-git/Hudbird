@@ -1,4 +1,5 @@
 import React from "react";
+import { PageToolbar } from "../components/PageToolbar";
 import changelogData from "../data/changelog.json";
 
 function renderChangelogContent(content: string) {
@@ -59,13 +60,16 @@ export default function ChangelogDoc() {
   return (
     <div className="space-y-16 pb-24">
       {/* Title & Subtitle */}
-      <div>
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-          Changelog
-        </h1>
-        <p className="text-base text-zinc-600 dark:text-zinc-400">
-          Latest updates, improvements, and new features in Hudbird UI.
-        </p>
+      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <div className="w-full min-w-0 flex-1 pr-4">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+            Changelog
+          </h1>
+          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+            Latest updates, improvements, and new features in Hudbird UI.
+          </p>
+        </div>
+        <PageToolbar />
       </div>
 
       <section className="space-y-12">

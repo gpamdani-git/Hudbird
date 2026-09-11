@@ -35,74 +35,67 @@ const badgeVariants = cva(
       {
         variant: "solid",
         color: "primary",
-        className: "bg-indigo-600 text-white dark:bg-indigo-500",
+        className: "bg-primary text-primary-foreground",
       },
       {
         variant: "solid",
         color: "success",
-        className: "bg-emerald-600 text-white dark:bg-emerald-500",
+        className: "bg-success text-success-foreground",
       },
       {
         variant: "solid",
         color: "warning",
-        className: "bg-amber-500 text-zinc-950 font-bold dark:bg-amber-400 dark:text-zinc-950",
+        className: "bg-warning text-warning-foreground font-bold",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-rose-600 text-white dark:bg-rose-500",
+        className: "bg-destructive text-destructive-foreground",
       },
 
       // Soft (Pastel) Variants
       {
         variant: "soft",
         color: "primary",
-        className:
-          "bg-indigo-50 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 ring-1 ring-inset ring-indigo-700/10 dark:ring-indigo-400/20",
+        className: "bg-primary-soft text-primary-text ring-1 ring-inset ring-primary-border-soft",
       },
       {
         variant: "soft",
         color: "success",
-        className:
-          "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 ring-1 ring-inset ring-emerald-700/10 dark:ring-emerald-400/20",
+        className: "bg-success-soft text-success-text ring-1 ring-inset ring-success-border-soft",
       },
       {
         variant: "soft",
         color: "warning",
-        className:
-          "bg-amber-50 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300 ring-1 ring-inset ring-amber-700/10 dark:ring-amber-400/20",
+        className: "bg-warning-soft text-warning-text ring-1 ring-inset ring-warning-border-soft",
       },
       {
         variant: "soft",
         color: "danger",
         className:
-          "bg-rose-50 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 ring-1 ring-inset ring-rose-700/10 dark:ring-rose-400/20",
+          "bg-destructive-soft text-destructive-text ring-1 ring-inset ring-destructive-border-soft",
       },
 
       // Outline Variants
       {
         variant: "outline",
         color: "primary",
-        className:
-          "border-indigo-600/30 text-indigo-700 dark:border-indigo-400/40 dark:text-indigo-300 hover:bg-indigo-50/50 dark:hover:bg-indigo-950/30",
+        className: "border-primary-border text-primary-text hover:bg-primary-soft",
       },
       {
         variant: "outline",
         color: "success",
-        className:
-          "border-emerald-600/30 text-emerald-700 dark:border-emerald-400/40 dark:text-emerald-300 hover:bg-emerald-50/50 dark:hover:bg-emerald-950/30",
+        className: "border-success-border text-success-text hover:bg-success-soft",
       },
       {
         variant: "outline",
         color: "warning",
-        className:
-          "border-amber-600/30 text-amber-800 dark:border-amber-400/40 dark:text-amber-300 hover:bg-amber-50/50 dark:hover:bg-amber-950/30",
+        className: "border-warning-border text-warning-text hover:bg-warning-soft",
       },
       {
         variant: "outline",
         color: "danger",
-        className:
-          "border-rose-600/30 text-rose-700 dark:border-rose-400/40 dark:text-rose-300 hover:bg-rose-50/50 dark:hover:bg-rose-950/30",
+        className: "border-destructive-border text-destructive-text hover:bg-destructive-soft",
       },
     ],
     defaultVariants: {
@@ -172,7 +165,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         className={cn(
           badgeVariants({ variant, color, size }),
           isFloating && [
-            "absolute z-10 box-border ring-2 ring-white dark:ring-zinc-950",
+            "ring-background absolute z-10 box-border ring-2",
             placementStyles[placement],
             isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
           ],

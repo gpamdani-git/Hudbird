@@ -1,0 +1,29 @@
+:root {
+  --primary: var(--primary-600);
+  --primary-soft: hsl(var(--primary-50));
+
+  --success: var(--success-600);
+  --success-soft: hsl(var(--success-50));
+
+  --warning: var(--warning-500);
+  --warning-soft: hsl(var(--warning-50));
+
+  --destructive: var(--destructive-600);
+  --destructive-soft: hsl(var(--destructive-50));
+
+  --info: var(--info-600);
+  --info-soft: hsl(var(--info-50));
+}
+:root {
+  --success-50: 158 64% 97%;
+  --success-100: 158 64% 93%;
+  --success-200: 158 64% 85%;
+  --success-300: 158 64% 75%;
+  --success-400: 158 64% 65%;
+  --success-500: 158 64% 50%;
+  --success-600: 158 64% 40%;
+  --success-700: 158 64% 30%;
+  --success-800: 158 64% 20%;
+  --success-900: 158 64% 15%;
+  --success-950: 158 64% 10%;
+}

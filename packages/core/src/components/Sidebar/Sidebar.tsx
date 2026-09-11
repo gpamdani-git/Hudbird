@@ -30,7 +30,7 @@ export function useSidebar() {
  * -----------------------------------------------------------------------------------------------*/
 
 const sidebarVariants = cva(
-  "relative flex flex-col h-full transition-all duration-300 ease-in-out shrink-0",
+  "group relative flex flex-col h-full transition-all duration-300 ease-in-out shrink-0",
   {
     variants: {
       variant: {
@@ -241,7 +241,7 @@ const sidebarItemVariants = cva(
         full: "rounded-full",
       },
       isActive: {
-        true: "bg-indigo-50/80 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-semibold",
+        true: "bg-primary/10 text-primary font-semibold",
         false:
           "text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-850 hover:text-zinc-900 dark:hover:text-zinc-50 cursor-pointer",
       },
@@ -306,7 +306,7 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>
             className={cn(
               "flex shrink-0 items-center justify-center",
               isActive
-                ? "text-indigo-600 dark:text-indigo-400"
+                ? "text-primary"
                 : "text-zinc-500 group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-zinc-50"
             )}
           >
@@ -321,7 +321,14 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>
         )}
 
         {!isCollapsed && badge && (
-          <span className="shrink-0 transition-opacity duration-300">{badge}</span>
+          <span
+            className={cn(
+              "shrink-0 transition-opacity duration-300",
+              isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+            )}
+          >
+            {badge}
+          </span>
         )}
 
         {/* Floating Tooltip (Visible only when collapsed and hovered/focused) */}

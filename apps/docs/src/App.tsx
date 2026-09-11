@@ -1,10 +1,13 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
+import { ThemeBuilderSidebar } from "./components/ThemeBuilderSidebar";
 import { TableOfContents } from "./components/TableOfContents";
 import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { PageToolbar } from "./components/PageToolbar";
+import { DocsFooter } from "./components/DocsFooter";
 import { getTocForPath } from "./tocData";
 
 // Lazy-load all documentation pages for lightning-fast initial load & low memory footprint
@@ -37,6 +40,8 @@ const TooltipDoc = lazy(() => import("./pages/TooltipDoc"));
 const AccordionDoc = lazy(() => import("./pages/AccordionDoc"));
 
 const ChangelogDoc = lazy(() => import("./pages/ChangelogDoc"));
+const ThemesDoc = lazy(() => import("./pages/ThemesDoc"));
+const InstallationDoc = lazy(() => import("./pages/InstallationDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
@@ -50,6 +55,8 @@ const BentoGridDoc = lazy(() => import("./pages/marketing/BentoGridDoc"));
 const TestimonialsDoc = lazy(() => import("./pages/marketing/TestimonialsDoc"));
 const FaqDoc = lazy(() => import("./pages/marketing/FaqDoc"));
 const SupportDoc = lazy(() => import("./pages/SupportDoc"));
+const FooterDoc = lazy(() => import("./pages/marketing/FooterDoc"));
+const CtaDoc = lazy(() => import("./pages/marketing/CtaDoc"));
 
 const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
@@ -58,9 +65,18 @@ const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
 
 export default function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [isMiniSidebar, setIsMiniSidebar] = useState(false);
   const location = useLocation();
+  const isThemesPage = location.pathname.startsWith("/themes");
   const isWideLayoutPage =
-    location.pathname.startsWith("/marketing") || location.pathname.startsWith("/layouts");
+    location.pathname.startsWith("/marketing") ||
+    location.pathname.startsWith("/layouts") ||
+    isThemesPage;
+
+  // Automatically scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   if (location.pathname.startsWith("/demos/")) {
     return (
@@ -77,33 +93,54 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-50 dark:selection:bg-white dark:selection:text-zinc-950">
-      {/* Global Top Navbar */}
-      <Header onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)} />
+      {/* Gemini Style Subtle Blue Glow Gradient */}
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent dark:from-blue-600/10" />
+
+      {/* Focus Gradients (Top & Bottom) */}
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-24 bg-gradient-to-b from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-24 bg-gradient-to-t from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
 
       <div className="flex w-full">
         {/* Left Sticky Sidebar */}
-        <Sidebar
-          isOpen={mobileSidebarOpen}
-          onClose={() => setMobileSidebarOpen(false)}
-          forceMobileBehavior={isWideLayoutPage}
-        />
+        {isThemesPage ? (
+          <ThemeBuilderSidebar
+            isOpen={mobileSidebarOpen}
+            onClose={() => setMobileSidebarOpen(false)}
+            isMini={isMiniSidebar}
+          />
+        ) : (
+          <Sidebar
+            isOpen={mobileSidebarOpen}
+            onClose={() => setMobileSidebarOpen(false)}
+            isMini={isMiniSidebar}
+            onToggleMini={() => setIsMiniSidebar(!isMiniSidebar)}
+          />
+        )}
 
         {/* Main Content & Right Table of Contents Layout */}
         <main
-          className={`flex-1 ${!isWideLayoutPage ? "lg:pl-64" : ""} flex min-w-0 justify-center`}
+          className={`flex-1 ${
+            isMiniSidebar ? "lg:pl-0" : isThemesPage ? "lg:pl-[19rem]" : "lg:pl-[17.5rem]"
+          } flex min-w-0 flex-col transition-all duration-300 ease-in-out`}
         >
+          {/* Global Top Navbar */}
+          <Header
+            onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+            onToggleDesktopSidebar={() => setIsMiniSidebar(!isMiniSidebar)}
+          />
+
           <div
-            className={`flex w-full justify-between ${!isWideLayoutPage ? "max-w-7xl gap-12 px-4 py-8 sm:px-8 lg:px-12" : ""}`}
+            className={`flex w-full justify-center ${!isWideLayoutPage ? "mx-auto max-w-7xl gap-12 px-4 py-8 sm:px-8 lg:px-12" : ""}`}
           >
             {/* Center Main Content Container */}
-            <div
-              className={`min-w-0 flex-1 ${!isWideLayoutPage ? "max-w-3xl" : "w-full max-w-full"}`}
-            >
+            <div className={`relative w-full max-w-full min-w-0 flex-1`}>
               <Suspense fallback={<DocLoadingSkeleton />}>
                 <Routes>
                   <Route path="/" element={<GettingStartedDoc />} />
                   <Route path="/support" element={<SupportDoc />} />
                   <Route path="/changelog" element={<ChangelogDoc />} />
+                  <Route path="/themes" element={<ThemesDoc />} />
+                  <Route path="/installation" element={<InstallationDoc />} />
                   <Route path="/button" element={<ButtonDoc />} />
                   <Route path="/input" element={<InputDoc />} />
                   <Route path="/card" element={<CardDoc />} />
@@ -170,10 +207,13 @@ export default function App() {
                     path="/marketing/faq"
                     element={<FaqDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
                   />
+                  <Route path="/marketing/footer" element={<FooterDoc />} />
+                  <Route path="/marketing/cta" element={<CtaDoc />} />
 
                   <Route path="*" element={<Navigate to="/button" replace />} />
                 </Routes>
               </Suspense>
+              <DocsFooter isWide={isWideLayoutPage} />
             </div>
 
             {/* Right Sticky Table of Contents Sidebar */}

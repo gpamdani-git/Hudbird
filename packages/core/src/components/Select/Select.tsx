@@ -27,9 +27,9 @@ export const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
-        flat: "bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-200/70 dark:hover:bg-zinc-800/80 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
+        flat: "bg-muted text-foreground hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         bordered:
-          "bg-transparent border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-950",
+          "bg-transparent border border-border text-foreground hover:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       },
       size: {
         sm: "h-9 px-3 text-xs gap-2",
@@ -43,7 +43,7 @@ export const selectTriggerVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "border-rose-500! dark:border-rose-500! focus-visible:ring-rose-500!",
+        true: "border-destructive! focus-visible:ring-destructive!",
         false: "",
       },
     },
@@ -196,7 +196,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
           {label && (
             <label
               htmlFor={selectId}
-              className="flex items-center justify-between text-xs font-semibold text-zinc-800 select-none dark:text-zinc-200"
+              className="text-foreground flex items-center justify-between text-xs font-semibold select-none"
             >
               <span>{label}</span>
             </label>
@@ -227,7 +227,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               <span
                 className={cn(
                   "block flex-1 truncate",
-                  !selectedLabel && "font-normal text-zinc-400 dark:text-zinc-500"
+                  !selectedLabel && "text-muted-foreground font-normal"
                 )}
               >
                 {selectedLabel || placeholder}
@@ -235,9 +235,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
               <ChevronDown
                 className={cn(
-                  "shrink-0 text-zinc-400 transition-transform duration-200 dark:text-zinc-500",
+                  "text-muted-foreground shrink-0 transition-transform duration-200",
                   size === "sm" ? "h-3.5 w-3.5" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
-                  isOpen && "rotate-180 text-zinc-700 dark:text-zinc-200"
+                  isOpen && "text-foreground rotate-180"
                 )}
                 aria-hidden="true"
               />
@@ -248,7 +248,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               <div
                 role="listbox"
                 tabIndex={-1}
-                className="animate-in fade-in-0 zoom-in-95 absolute right-0 left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-zinc-200/60 bg-white p-1.5 shadow-xl duration-100 outline-none dark:border-zinc-800 dark:bg-zinc-900"
+                className="animate-in fade-in-0 zoom-in-95 border-border/60 bg-popover text-popover-foreground absolute right-0 left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border p-1.5 shadow-xl duration-100 outline-none"
               >
                 {children}
               </div>
@@ -257,9 +257,9 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
           {/* Description or Error Message */}
           {isInvalid && errorMessage ? (
-            <p className="text-xs font-medium text-rose-500 dark:text-rose-400">{errorMessage}</p>
+            <p className="text-destructive text-xs font-medium">{errorMessage}</p>
           ) : description ? (
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
+            <p className="text-muted-foreground text-xs">{description}</p>
           ) : null}
         </div>
       </SelectContext.Provider>
@@ -311,24 +311,22 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
             : size === "lg"
               ? "px-3.5 py-2.5 text-base"
               : "px-3 py-2 text-sm",
-          "hover:bg-zinc-100 focus-visible:bg-zinc-100 dark:hover:bg-zinc-800/80 dark:focus-visible:bg-zinc-800/80",
+          "hover:bg-accent focus-visible:bg-accent hover:text-accent-foreground focus-visible:text-accent-foreground",
           isSelected
-            ? "bg-indigo-50/70 font-semibold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400"
-            : "font-normal text-zinc-700 dark:text-zinc-200",
+            ? "bg-accent text-accent-foreground font-semibold"
+            : "text-popover-foreground font-normal",
           disabled &&
-            "cursor-not-allowed text-zinc-400 opacity-40 hover:bg-transparent dark:hover:bg-transparent",
+            "text-muted-foreground cursor-not-allowed opacity-40 hover:bg-transparent dark:hover:bg-transparent",
           className
         )}
         {...props}
       >
         <div className="flex items-center gap-2.5 truncate">
-          {icon && <span className="shrink-0 text-zinc-500">{icon}</span>}
+          {icon && <span className="text-muted-foreground shrink-0">{icon}</span>}
           <span className="truncate">{children}</span>
         </div>
 
-        {isSelected && (
-          <Check className="ml-2 h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
-        )}
+        {isSelected && <Check className="text-foreground ml-2 h-4 w-4 shrink-0" />}
       </div>
     );
   }

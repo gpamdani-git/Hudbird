@@ -118,19 +118,19 @@ const buttonVariants = cva(
         variant: "solid",
         color: "primary",
         className:
-          "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
+          "bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active",
       },
       {
         variant: "solid",
         color: "success",
         className:
-          "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
+          "bg-success text-success-foreground hover:bg-success-hover active:bg-success-active",
       },
       {
         variant: "solid",
         color: "danger",
         className:
-          "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
+          "bg-destructive text-destructive-foreground hover:bg-destructive-hover active:bg-destructive-active",
       },
       {
         variant: "solid",
@@ -141,8 +141,7 @@ const buttonVariants = cva(
       {
         variant: "solid",
         color: "dark",
-        className:
-          "bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700",
+        className: "bg-foreground text-background hover:opacity-90",
       },
       {
         variant: "solid",
@@ -276,19 +275,19 @@ const buttonVariants = cva(
         variant: "bordered",
         color: "primary",
         className:
-          "border-indigo-600 text-indigo-600 hover:bg-indigo-50 dark:border-indigo-400 dark:text-indigo-400 dark:hover:bg-indigo-950/40",
+          "border-primary text-primary-text hover:bg-primary-soft active:bg-primary-soft-hover",
       },
       {
         variant: "bordered",
         color: "success",
         className:
-          "border-emerald-600 text-emerald-600 hover:bg-emerald-50 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-950/40",
+          "border-success text-success-text hover:bg-success-soft active:bg-success-soft-hover",
       },
       {
         variant: "bordered",
         color: "danger",
         className:
-          "border-rose-600 text-rose-600 hover:bg-rose-50 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-950/40",
+          "border-destructive text-destructive-text hover:bg-destructive-soft active:bg-destructive-soft-hover",
       },
       {
         variant: "bordered",
@@ -310,19 +309,19 @@ const buttonVariants = cva(
         variant: "flat",
         color: "primary",
         className:
-          "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-950/60 dark:text-indigo-300 dark:hover:bg-indigo-900/60",
+          "bg-primary-soft text-primary-text hover:bg-primary-soft-hover active:bg-primary-soft-active",
       },
       {
         variant: "flat",
         color: "success",
         className:
-          "bg-emerald-100 text-emerald-700 hover:bg-emerald-200 dark:bg-emerald-950/60 dark:text-emerald-300 dark:hover:bg-emerald-900/60",
+          "bg-success-soft text-success-text hover:bg-success-soft-hover active:bg-success-soft-active",
       },
       {
         variant: "flat",
         color: "danger",
         className:
-          "bg-rose-100 text-rose-700 hover:bg-rose-200 dark:bg-rose-950/60 dark:text-rose-300 dark:hover:bg-rose-900/60",
+          "bg-destructive-soft text-destructive-text hover:bg-destructive-soft-hover active:bg-destructive-soft-active",
       },
       {
         variant: "flat",
@@ -337,19 +336,18 @@ const buttonVariants = cva(
       {
         variant: "light",
         color: "primary",
-        className:
-          "text-indigo-600 hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-950/50",
+        className: "text-primary-text hover:bg-primary-soft active:bg-primary-soft-hover",
       },
       {
         variant: "light",
         color: "success",
-        className:
-          "text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-950/50",
+        className: "text-success-text hover:bg-success-soft active:bg-success-soft-hover",
       },
       {
         variant: "light",
         color: "danger",
-        className: "text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/50",
+        className:
+          "text-destructive-text hover:bg-destructive-soft active:bg-destructive-soft-hover",
       },
       {
         variant: "light",

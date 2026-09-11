@@ -19,11 +19,11 @@ export const tooltipVariants = cva(
           "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 border border-zinc-800 dark:border-zinc-200",
         foreground:
           "bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-900 dark:border-zinc-100",
-        primary: "bg-indigo-600 text-white dark:bg-indigo-500",
+        primary: "bg-primary text-primary-foreground",
         secondary: "bg-purple-600 text-white dark:bg-purple-500",
-        success: "bg-emerald-600 text-white dark:bg-emerald-500",
-        warning: "bg-amber-500 text-white dark:bg-amber-500",
-        danger: "bg-rose-600 text-white dark:bg-rose-500",
+        success: "bg-success text-success-foreground",
+        warning: "bg-warning text-warning-foreground",
+        danger: "bg-destructive text-destructive-foreground",
       },
       size: {
         sm: "text-[11px] px-2 py-0.5 min-h-6",
@@ -50,11 +50,11 @@ export const tooltipVariants = cva(
 const arrowColorStyles: Record<TooltipColor, string> = {
   default: "bg-zinc-900 dark:bg-zinc-100 border-zinc-800 dark:border-zinc-200",
   foreground: "bg-zinc-950 dark:bg-white border-zinc-900 dark:border-zinc-100",
-  primary: "bg-indigo-600 dark:bg-indigo-500",
+  primary: "bg-primary",
   secondary: "bg-purple-600 dark:bg-purple-500",
-  success: "bg-emerald-600 dark:bg-emerald-500",
-  warning: "bg-amber-500 dark:bg-amber-500",
-  danger: "bg-rose-600 dark:bg-rose-500",
+  success: "bg-success",
+  warning: "bg-warning",
+  danger: "bg-destructive",
 };
 
 export interface TooltipProps extends VariantProps<typeof tooltipVariants> {

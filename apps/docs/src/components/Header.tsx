@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Moon, Sun, ArrowUpRight, Menu, Monitor, Coffee, Sparkles } from "lucide-react";
+import { Moon, Sun, Menu, Monitor, ChevronRight, PanelLeft } from "lucide-react";
+import { useLocation, Link } from "react-router-dom";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@hudbird/ui";
+import { navigationData } from "../navData";
 import changelogData from "../data/changelog.json";
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -19,17 +22,18 @@ const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
-import { Badge, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
-import { Link } from "react-router-dom";
-import { GlobalSearch } from "./GlobalSearch";
 
 interface HeaderProps {
   onToggleMobileSidebar?: () => void;
+  onToggleDesktopSidebar?: () => void;
 }
 
 type Theme = "light" | "dark" | "system";
 
-export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
+export const Header: React.FC<HeaderProps> = ({
+  onToggleMobileSidebar,
+  onToggleDesktopSidebar,
+}) => {
   const [theme, setTheme] = useState<Theme>(() => {
     try {
       if (typeof window !== "undefined") {
@@ -43,6 +47,21 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
     }
     return "system";
   });
+
+  const location = useLocation();
+  const isThemesPage = location.pathname.startsWith("/themes");
+
+  // Find breadcrumb
+  let parentGroup = "";
+  let currentItem = "";
+  for (const group of navigationData) {
+    const item = group.items.find((i) => i.path === location.pathname);
+    if (item) {
+      parentGroup = group.title || "";
+      currentItem = item.name;
+      break;
+    }
+  }
 
   useEffect(() => {
     try {
@@ -84,244 +103,206 @@ export const Header: React.FC<HeaderProps> = ({ onToggleMobileSidebar }) => {
   }, [theme]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-zinc-200 bg-white/95 backdrop-blur-md transition-colors duration-300 dark:border-zinc-800 dark:bg-zinc-950/95">
-      <div className="flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8">
-        {/* Left: Brand / Logo */}
-        <div className="flex shrink-0 items-center gap-3">
-          <button
-            onClick={onToggleMobileSidebar}
-            className="p-2 text-zinc-600 hover:text-zinc-900 lg:hidden dark:text-zinc-400 dark:hover:text-zinc-100"
-            aria-label="Open sidebar"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
-          <Link to="/" className="group flex items-center gap-2.5">
-            {/* Logo Icon (Light Mode) */}
-            <img
-              src="/assets/marketing-section/logo-hudbird/logo-ico-blue.svg"
-              alt="Hudbird UI"
-              className="h-8 w-8 object-contain dark:hidden"
-            />
-            {/* Logo Icon (Dark Mode) */}
-            <img
-              src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
-              alt="Hudbird UI"
-              className="hidden h-8 w-8 object-contain dark:block"
-            />
+    <div className="pointer-events-none sticky top-3 z-40 mx-auto mt-3 w-[calc(100%-24px)] transition-all duration-300">
+      <header className="pointer-events-auto w-full rounded-xl border border-white/50 bg-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] backdrop-blur-3xl transition-colors duration-300 dark:border-white/10 dark:bg-[#1a1a1c]/60 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+        {/* Subtle inner gradients */}
+        <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-b from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
 
-            {/* Logo Text */}
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">
-                Hudbird UI
-              </span>
-              <Badge variant="solid" color="primary">
-                {changelogData[0]?.version || "1.2.0"}
-              </Badge>
-            </div>
-          </Link>
-        </div>
+        <div className="relative z-10 flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6">
+          {/* Left: Toggles & Breadcrumbs */}
+          <div className="flex shrink-0 items-center gap-3">
+            {/* Mobile Hamburger Toggle */}
+            <button
+              onClick={onToggleMobileSidebar}
+              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:hidden dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
+              aria-label="Open sidebar"
+            >
+              <Menu className="h-5 w-5" />
+            </button>
 
-        {/* Center: Global Search Bar */}
-        <div className="mx-auto flex max-w-md flex-1 justify-end sm:justify-center">
-          <GlobalSearch />
-        </div>
+            {/* Desktop Sidebar Toggle */}
+            <button
+              onClick={onToggleDesktopSidebar}
+              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:flex dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
+              aria-label="Toggle sidebar"
+            >
+              <PanelLeft className="h-4 w-4" />
+            </button>
 
-        {/* Right: Navigation items & Theme Segmented Switch UI */}
-        <div className="flex shrink-0 items-center gap-3 text-sm font-medium sm:gap-6">
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-6 sm:flex">
-            <Link to="/" className="font-semibold text-zinc-900 transition-colors dark:text-white">
-              Docs
+            {/* Mobile Logo Fallback */}
+            <Link to="/" className="group flex items-center gap-2.5 lg:hidden">
+              <img
+                src="/assets/marketing-section/logo-hudbird/logo-ico-blue.svg"
+                alt="Hudbird UI"
+                className="h-7 w-7 object-contain dark:hidden"
+              />
+              <img
+                src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                alt="Hudbird UI"
+                className="hidden h-7 w-7 object-contain dark:block"
+              />
             </Link>
-            <a
-              href="https://hudbird-editor.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-              title="Hudbird AI Editor"
-            >
-              <Sparkles className="h-4 w-4 fill-indigo-500/20 text-indigo-500" />
-              <span className="font-medium">AI Editor</span>
-              <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-1.5 py-0.5 text-[9px] font-bold tracking-wider text-indigo-600 uppercase dark:text-indigo-400">
-                Alpha
-              </span>
-            </a>
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger
-                className="flex items-center text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-                title="GitHub"
-              >
-                <GithubIcon className="h-5 w-5" />
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem
-                  onClick={() =>
-                    window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
-                  }
-                  endContent={<ArrowUpRight className="h-3 w-3" />}
-                >
-                  Public Tracker & Discussions
-                </DropdownItem>
-                <DropdownItem disabled>Source Code (Private)</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-            <a
-              href="https://www.buymeacoffee.com/daniakbar"
-              target="_blank"
-              rel="noreferrer"
-              className="flex items-center text-zinc-600 transition-colors hover:text-amber-600 dark:text-zinc-400 dark:hover:text-amber-500"
-              title="Buy me a coffee"
-            >
-              <Coffee className="h-5 w-5" />
-            </a>
 
-            {/* Segmented Switch UI: Light | Dark | System */}
-            <div
-              role="radiogroup"
-              aria-label="Theme mode switcher"
-              className="flex items-center rounded-xl border border-zinc-200 bg-zinc-100 p-0.5 dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "light"}
-                onClick={() => setTheme("light")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                  theme === "light"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="Light mode"
-              >
-                <Sun className={`h-3.5 w-3.5 ${theme === "light" ? "text-amber-500" : ""}`} />
-                <span>Light</span>
-              </button>
-
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "dark"}
-                onClick={() => setTheme("dark")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                  theme === "dark"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="Dark mode"
-              >
-                <Moon
-                  className={`h-3.5 w-3.5 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                />
-                <span>Dark</span>
-              </button>
-
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "system"}
-                onClick={() => setTheme("system")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
-                  theme === "system"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="System preference"
-              >
-                <Monitor
-                  className={`h-3.5 w-3.5 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                />
-                <span>System</span>
-              </button>
+            {/* Desktop Breadcrumbs */}
+            <div className="ml-1 hidden items-center gap-2 text-[13px] font-medium lg:flex">
+              {parentGroup && (
+                <>
+                  <span className="text-zinc-500 dark:text-zinc-400">{parentGroup}</span>
+                  <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
+                </>
+              )}
+              {currentItem ? (
+                <span className="text-zinc-900 dark:text-zinc-100">{currentItem}</span>
+              ) : (
+                <span className="text-zinc-900 dark:text-zinc-100">Docs</span>
+              )}
             </div>
           </div>
 
-          {/* Mobile Navigation Dropdown */}
-          <div className="flex sm:hidden">
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger
-                className="flex items-center justify-center rounded-lg p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
-                title="Menu"
+          {/* Right: Navigation items & Theme Segmented Switch UI */}
+          <div className="flex shrink-0 items-center gap-3 text-sm font-medium xl:gap-6">
+            {/* Desktop Navigation */}
+            <div className="hidden items-center gap-6 xl:flex">
+              <Link to={isThemesPage ? "/" : "/themes"}>
+                <Button
+                  variant={isThemesPage ? "outline" : "solid"}
+                  color="primary"
+                  size="sm"
+                  className="h-7 px-3 py-0 text-[11px] font-semibold tracking-wide"
+                >
+                  {isThemesPage ? "Back to Docs" : "Create Theme"}
+                </Button>
+              </Link>
+              <a
+                href="https://hudbird-editor.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                title="Hudbird Builder"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <span className="font-semibold text-zinc-900 dark:text-white">Builder</span>
+              </a>
+
+              {/* Segmented Switch UI: Light | Dark | System */}
+              <div
+                role="radiogroup"
+                aria-label="Theme mode switcher"
+                className="flex items-center rounded-xl border border-zinc-200/50 bg-white/50 p-0.5 dark:border-zinc-800/50 dark:bg-zinc-900/50"
+              >
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === "light"}
+                  onClick={() => setTheme("light")}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                    theme === "light"
+                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                  }`}
+                  title="Light mode"
                 >
-                  <circle cx="12" cy="12" r="1" />
-                  <circle cx="12" cy="5" r="1" />
-                  <circle cx="12" cy="19" r="1" />
-                </svg>
-              </DropdownTrigger>
-              <DropdownMenu>
-                <DropdownItem
-                  onClick={() => window.open("https://hudbird-editor.vercel.app/", "_blank")}
-                  startContent={<Sparkles className="h-4 w-4 text-indigo-500" />}
+                  <Sun className={`h-3 w-3 ${theme === "light" ? "text-amber-500" : ""}`} />
+                  <span>Light</span>
+                </button>
+
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === "dark"}
+                  onClick={() => setTheme("dark")}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                    theme === "dark"
+                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                  }`}
+                  title="Dark mode"
                 >
-                  AI Editor
-                </DropdownItem>
-                <Dropdown placement="left-start">
-                  <DropdownTrigger className="w-full">
-                    <div className="relative flex w-full cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm text-zinc-700 transition-all duration-150 outline-none select-none hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800/80">
-                      <div className="flex min-w-0 items-center gap-2.5 truncate">
-                        <span className="shrink-0 text-zinc-400 dark:text-zinc-500">
-                          <GithubIcon className="h-4 w-4" />
-                        </span>
-                        <span className="truncate">GitHub</span>
-                      </div>
-                      <span className="ml-auto shrink-0 pl-2 text-zinc-400 dark:text-zinc-500">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d="m9 18 6-6-6-6" />
-                        </svg>
-                      </span>
-                    </div>
-                  </DropdownTrigger>
-                  <DropdownMenu>
-                    <DropdownItem
-                      onClick={() =>
-                        window.open("https://github.com/gpamdani-git/Hudbird-UI-Discus", "_blank")
-                      }
-                      endContent={<ArrowUpRight className="h-3 w-3" />}
+                  <Moon
+                    className={`h-3 w-3 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                  />
+                  <span>Dark</span>
+                </button>
+
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked={theme === "system"}
+                  onClick={() => setTheme("system")}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                    theme === "system"
+                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                  }`}
+                  title="System preference"
+                >
+                  <Monitor
+                    className={`h-3 w-3 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                  />
+                  <span>System</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Navigation Dropdown */}
+            <div className="flex xl:hidden">
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger
+                  className="flex items-center justify-center rounded-lg p-2 text-zinc-600 transition-colors hover:bg-black/5 dark:text-zinc-400 dark:hover:bg-white/5"
+                  title="Menu"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="5" r="1" />
+                    <circle cx="12" cy="19" r="1" />
+                  </svg>
+                </DropdownTrigger>
+                <DropdownMenu className="min-w-[180px]">
+                  <DropdownItem>
+                    <a
+                      href="https://hudbird-editor.vercel.app/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex w-full items-center font-medium"
                     >
-                      Public Tracker & Discussions
-                    </DropdownItem>
-                    <DropdownItem disabled>Source Code (Private)</DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-                <DropdownItem
-                  onClick={() => window.open("https://www.buymeacoffee.com/daniakbar", "_blank")}
-                  startContent={<Coffee className="h-4 w-4" />}
-                >
-                  Sponsor
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  startContent={
-                    theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />
-                  }
-                >
-                  {theme === "dark" ? "Light Mode" : "Dark Mode"}
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+                      Builder
+                    </a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link
+                      to={isThemesPage ? "/" : "/themes"}
+                      className="flex w-full items-center font-medium"
+                    >
+                      {isThemesPage ? "Back to Docs" : "Create Theme"}
+                    </Link>
+                  </DropdownItem>
+                  <DropdownItem className="my-1 border-t border-zinc-200 dark:border-zinc-800" />
+                  <DropdownItem>
+                    <a
+                      href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex w-full items-center font-medium"
+                    >
+                      <GithubIcon className="mr-2 h-4 w-4" />
+                      GitHub
+                    </a>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 };

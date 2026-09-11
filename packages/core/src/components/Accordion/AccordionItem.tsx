@@ -25,12 +25,12 @@ export function useAccordionContext() {
 export const accordionItemVariants = cva("transition-colors duration-150", {
   variants: {
     variant: {
-      light: "border-b border-zinc-200 dark:border-zinc-800 last:border-b-0",
-      bordered: "border-b border-zinc-200 dark:border-zinc-800 last:border-b-0",
+      light: "border-b border-border last:border-b-0",
+      bordered: "border-b border-border last:border-b-0",
       shadow:
-        "bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200/80 dark:border-zinc-800/80 rounded-xl mb-2 last:mb-0",
+        "bg-card text-card-foreground shadow-sm border border-border/80 rounded-xl mb-2 last:mb-0",
       splitted:
-        "bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl mb-3 shadow-xs last:mb-0",
+        "bg-card text-card-foreground border border-border rounded-xl mb-3 shadow-xs last:mb-0",
     },
   },
   defaultVariants: {
@@ -117,13 +117,13 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
             disabled={isDisabled}
             onClick={handleToggle}
             className={cn(
-              "flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg text-left transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none dark:focus-visible:ring-offset-zinc-950",
+              "focus-visible:ring-ring focus-visible:ring-offset-background flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg text-left transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
               isCompact ? "px-3 py-2.5" : "px-4 py-4",
               classNames?.trigger
             )}
           >
             {startContent && (
-              <span className="flex shrink-0 items-center justify-center text-zinc-500 dark:text-zinc-400">
+              <span className="text-muted-foreground flex shrink-0 items-center justify-center">
                 {startContent}
               </span>
             )}
@@ -131,7 +131,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
             <div className={cn("flex min-w-0 flex-1 flex-col text-left", classNames?.titleWrapper)}>
               <span
                 className={cn(
-                  "truncate font-medium text-zinc-900 dark:text-zinc-100",
+                  "text-foreground truncate font-medium",
                   isCompact ? "text-sm" : "text-base",
                   classNames?.title
                 )}
@@ -139,12 +139,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
                 {title}
               </span>
               {subtitle && (
-                <span
-                  className={cn(
-                    "mt-0.5 text-xs text-zinc-500 dark:text-zinc-400",
-                    classNames?.subtitle
-                  )}
-                >
+                <span className={cn("text-muted-foreground mt-0.5 text-xs", classNames?.subtitle)}>
                   {subtitle}
                 </span>
               )}
@@ -154,8 +149,8 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
               <span
                 aria-hidden="true"
                 className={cn(
-                  "shrink-0 text-zinc-400 transition-transform duration-200 ease-out dark:text-zinc-500",
-                  isOpen ? "rotate-180 text-zinc-700 dark:text-zinc-200" : "",
+                  "text-muted-foreground shrink-0 transition-transform duration-200 ease-out",
+                  isOpen ? "text-foreground rotate-180" : "",
                   classNames?.indicator
                 )}
               >
@@ -177,7 +172,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
           role="region"
           aria-labelledby={triggerId}
           className={cn(
-            "grid overflow-hidden text-zinc-600 transition-all duration-200 ease-in-out dark:text-zinc-300",
+            "text-muted-foreground grid overflow-hidden transition-all duration-200 ease-in-out",
             isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
           )}
         >

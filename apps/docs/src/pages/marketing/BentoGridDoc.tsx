@@ -1,5 +1,7 @@
 import React from "react";
+import { PageToolbar } from "../../components/PageToolbar";
 import bentoGridCode from "../../../../../packages/marketing/src/components/BentoGrid/BentoGrid.tsx?raw";
+import bentoGridGlassCode from "../../../../../packages/marketing/src/components/BentoGrid/BentoGridGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
 import {
   BentoGrid,
@@ -9,6 +11,7 @@ import {
   BentoCardHeader,
   BentoCardBody,
   BentoCardFooter,
+  BentoGridGlass,
 } from "@hudbird/marketing";
 import { Badge, Button, Text } from "@hudbird/ui";
 import { MarketingPreview } from "../../components/MarketingPreview";
@@ -65,6 +68,27 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
     },
   ];
 
+  const glassApiRows: ApiPropRow[] = [
+    {
+      prop: "items",
+      type: "BentoGlassItem[]",
+      defaultVal: "-",
+      description: "Array of bento card items.",
+    },
+    {
+      prop: "title",
+      type: "string",
+      defaultVal: "undefined",
+      description: "Main section title.",
+    },
+    {
+      prop: "badge",
+      type: "ReactNode",
+      defaultVal: "undefined",
+      description: "Optional badge element.",
+    },
+  ];
+
   const codeCssIllusReact = `
 <BentoGrid className="md:grid-cols-3 auto-rows-[24rem]">
   {/* Card 1 */}
@@ -83,34 +107,24 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
   `.trim();
 
   return (
-    <div className="flex w-full flex-col pb-20">
-      {/* Header section with breadcrumbs and description */}
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Marketing section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Bento Grid</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl space-y-12 px-4 sm:px-6 lg:px-8">
-        <div className="space-y-4">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Bento Grid
-          </h1>
-          <p className="max-w-3xl text-lg text-zinc-600 dark:text-zinc-400">
-            A premium, highly composable grid layout optimized for modern marketing pages. Features
-            snappy spring entrance animations and zero layout thrashing.
-          </p>
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <div className="mb-3 flex items-center gap-3">
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                Bento Grid
+              </h1>
+              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                New
+              </span>
+            </div>
+            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+              A premium, highly composable grid layout optimized for modern marketing pages.
+              Features snappy spring entrance animations and zero layout thrashing.
+            </p>
+          </div>
+          <PageToolbar />
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
@@ -604,13 +618,73 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
               </div>
             </div>
           </MarketingPreview>
+
+          {/* Glassmorphic Bento Grid */}
+          <div id="glass" className="scroll-mt-24">
+            <MarketingPreview title="Glassmorphic Bento Grid" code={bentoGridGlassCode}>
+              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
+                <div className="absolute top-1/2 left-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
+                <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
+
+                <BentoGridGlass
+                  badge={
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-indigo-900 ring-1 ring-indigo-500/20 backdrop-blur-md ring-inset dark:bg-indigo-500/10 dark:text-indigo-200 dark:ring-indigo-500/30">
+                      Features
+                    </span>
+                  }
+                  items={[
+                    {
+                      className: "md:col-span-2",
+                      title: "Predictive Modeling",
+                      description:
+                        "Our proprietary models analyze thousands of behavioral signals to identify visitors who are ready to buy.",
+                      icon: <Zap size={20} />,
+                    },
+                    {
+                      className: "md:col-span-1",
+                      title: "Real-time sync",
+                      description: "Instant bi-directional sync with Salesforce and HubSpot.",
+                      icon: <Globe size={20} />,
+                    },
+                    {
+                      className: "md:col-span-1",
+                      title: "Enterprise Grade",
+                      description: "SOC2 Type II, GDPR, and CCPA compliant infrastructure.",
+                      icon: <Shield size={20} />,
+                    },
+                    {
+                      className: "md:col-span-1",
+                      title: "Developer First",
+                      description: "Extensive API and webhooks for custom workflows.",
+                      icon: <Code size={20} />,
+                    },
+                    {
+                      className: "md:col-span-2 md:col-start-2",
+                      title: "Universal search",
+                      description:
+                        "Find exactly what you need across all your integrated tools in milliseconds.",
+                      icon: <LayoutDashboard size={20} />,
+                    },
+                  ]}
+                />
+              </div>
+            </MarketingPreview>
+          </div>
         </div>
 
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <ApiTable title="BentoGrid Props" rows={apiRows} />
+        <section id="component-api" className="mt-16 scroll-mt-24 space-y-8">
+          <div>
+            <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+              Component API
+            </h2>
+            <ApiTable title="BentoGrid Props" rows={apiRows} />
+          </div>
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              BentoGridGlass Props
+            </h3>
+            <ApiTable title="BentoGridGlass" rows={glassApiRows} />
+          </div>
         </section>
       </div>
     </div>

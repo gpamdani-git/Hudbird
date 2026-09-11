@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { cn } from "../../utils/cn";
 
 export type AlertVariant = "solid" | "flat" | "bordered";
-export type AlertColor = "primary" | "success" | "danger" | "warning";
+export type AlertColor = "primary" | "success" | "danger" | "warning" | "info";
 
 const alertVariants = cva(
   "relative flex w-full items-start gap-3.5 p-4 rounded-2xl text-sm transition-all duration-200",
@@ -22,6 +22,7 @@ const alertVariants = cva(
         success: "",
         danger: "",
         warning: "",
+        info: "",
       },
     },
     compoundVariants: [
@@ -29,71 +30,82 @@ const alertVariants = cva(
       {
         variant: "solid",
         color: "primary",
-        className: "bg-indigo-600 text-white shadow-indigo-500/20",
+        className: "bg-primary text-primary-foreground shadow-primary/20",
       },
       {
         variant: "solid",
         color: "success",
-        className: "bg-emerald-600 text-white shadow-emerald-500/20",
+        className: "bg-success text-success-foreground shadow-success/20",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-rose-600 text-white shadow-rose-500/20",
+        className: "bg-destructive text-destructive-foreground shadow-destructive/20",
       },
       {
         variant: "solid",
         color: "warning",
-        className: "bg-amber-500 text-zinc-950 font-medium shadow-amber-500/20",
+        className: "bg-warning text-warning-foreground font-medium shadow-warning/20",
+      },
+      {
+        variant: "solid",
+        color: "info",
+        className: "bg-info text-info-foreground shadow-info/20",
       },
 
       // Flat Variants
       {
         variant: "flat",
         color: "primary",
-        className:
-          "bg-indigo-500/10 text-indigo-950 border border-indigo-500/20 dark:bg-indigo-950/40 dark:text-indigo-200 dark:border-indigo-800/40",
+        className: "bg-primary-soft text-primary-text border border-primary-border-soft",
       },
       {
         variant: "flat",
         color: "success",
-        className:
-          "bg-emerald-500/10 text-emerald-950 border border-emerald-500/20 dark:bg-emerald-950/40 dark:text-emerald-200 dark:border-emerald-800/40",
+        className: "bg-success-soft text-success-text border border-success-border-soft",
       },
       {
         variant: "flat",
         color: "danger",
         className:
-          "bg-rose-500/10 text-rose-950 border border-rose-500/20 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-800/40",
+          "bg-destructive-soft text-destructive-text border border-destructive-border-soft",
       },
       {
         variant: "flat",
         color: "warning",
-        className:
-          "bg-amber-500/10 text-amber-950 border border-amber-500/20 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-800/40",
+        className: "bg-warning-soft text-warning-text border border-warning-border-soft",
+      },
+      {
+        variant: "flat",
+        color: "info",
+        className: "bg-info-soft text-info-text border border-info-border-soft",
       },
 
       // Bordered Variants
       {
         variant: "bordered",
         color: "primary",
-        className: "border-indigo-600 text-indigo-700 dark:border-indigo-400 dark:text-indigo-300",
+        className: "border-primary text-primary",
       },
       {
         variant: "bordered",
         color: "success",
-        className:
-          "border-emerald-600 text-emerald-700 dark:border-emerald-400 dark:text-emerald-300",
+        className: "border-success text-success",
       },
       {
         variant: "bordered",
         color: "danger",
-        className: "border-rose-600 text-rose-700 dark:border-rose-400 dark:text-rose-300",
+        className: "border-destructive text-destructive",
       },
       {
         variant: "bordered",
         color: "warning",
-        className: "border-amber-500 text-amber-700 dark:border-amber-400 dark:text-amber-300",
+        className: "border-warning text-warning",
+      },
+      {
+        variant: "bordered",
+        color: "info",
+        className: "border-info text-info",
       },
     ],
     defaultVariants: {

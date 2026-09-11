@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
+import { PageToolbar } from "../../components/PageToolbar";
 import { motion } from "framer-motion";
 import heroCode from "../../../../../packages/marketing/src/components/Hero/Hero.tsx?raw";
+import heroGlassCode from "../../../../../packages/marketing/src/components/Hero/HeroGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
 import { Button } from "@hudbird/ui";
 import {
@@ -14,6 +16,7 @@ import {
   HeroTitle,
   HeroDescription,
   HeroActions,
+  HeroGlass,
 } from "@hudbird/marketing";
 import { MarketingPreview } from "../../components/MarketingPreview";
 import { ApiTable, type ApiPropRow } from "../../components/ApiTable";
@@ -31,7 +34,10 @@ export const heroTocItems = [
   {
     id: "examples",
     title: "Examples",
-    children: [{ id: "basic-hero", title: "Basic Hero" }],
+    children: [
+      { id: "basic-hero", title: "Basic Hero" },
+      { id: "glass", title: "Glassmorphic Hero" },
+    ],
   },
 ];
 
@@ -216,8 +222,13 @@ function Example() {
             <div className="inline-flex items-center rounded-full border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-800/50 px-3 py-1 text-sm text-zinc-600 dark:text-zinc-300 backdrop-blur-md mb-6">
               New Feature Release
             </div>
-            <h1 className="text-left text-5xl sm:text-6xl text-zinc-900 dark:text-white font-bold tracking-tight mb-6">Redefining digital experiences.</h1>
-            <p className="text-left text-lg text-zinc-500 dark:text-zinc-400 mb-8">
+            <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">Redefining digital experiences.</h1>
+            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+              New
+            </span>
+          </div>
+            <p className="text-base text-zinc-600 dark:text-zinc-400 pr-32 sm:pr-40">
               Create breathtaking web experiences that engage users and drive conversions with our expertly crafted UI toolkit.
             </p>
             <div className="flex items-center gap-4">
@@ -455,35 +466,20 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
   ];
 
   return (
-    <div className="flex w-full flex-col pb-20">
-      {/* Header section with breadcrumbs and description */}
-      <div className="sticky top-14 z-30 mb-8 w-full border-b border-zinc-200/50 bg-white/80 px-4 py-4 backdrop-blur-md transition-all sm:px-6 lg:px-8 dark:border-zinc-800/50 dark:bg-zinc-950/80">
-        <div className="flex items-center gap-3 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-          {onOpenSidebar && (
-            <button
-              onClick={onOpenSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-zinc-100 lg:flex dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="Open Navigation"
-            >
-              <Menu size={18} />
-            </button>
-          )}
-          <span>Marketing section</span>
-          <ChevronRight size={14} className="text-zinc-400" />
-          <span className="text-zinc-900 dark:text-zinc-100">Hero Section</span>
-        </div>
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-8 lg:px-12">
-        <div className="mb-10">
-          <h1 className="mb-6 text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-            Hero Sections
-          </h1>
-          <p className="max-w-3xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-            Use these Tailwind CSS hero section examples to add important messaging, product photos,
-            and call-to-actions to the top of your website. These hero examples are fully responsive
-            and support native dark mode.
-          </p>
+    <div className="flex w-full flex-col items-center pt-24 pb-24">
+      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Hero Sections
+            </h1>
+            <p className="pt-4 text-base text-zinc-600 lg:max-w-4xl dark:text-zinc-400">
+              Use these Tailwind CSS hero section examples to add important messaging, product
+              photos, and call-to-actions to the top of your website. These hero examples are fully
+              responsive and support native dark mode.
+            </p>
+          </div>
+          <PageToolbar />
         </div>
 
         <div id="installation" className="scroll-mt-24 space-y-4">
@@ -1083,6 +1079,41 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               </HeroBody>
             </Hero>
           </MarketingPreview>
+
+          {/* Glassmorphic Hero */}
+          <div id="glass" className="scroll-mt-24">
+            <MarketingPreview title="Glassmorphic Hero" code={heroGlassCode}>
+              <HeroGlass
+                badge={
+                  <span>
+                    Announcing our next round of funding.{" "}
+                    <a href="#" className="ml-1 font-semibold text-indigo-600 dark:text-indigo-400">
+                      Read more &rarr;
+                    </a>
+                  </span>
+                }
+                title="Data to enrich your online business"
+                description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat."
+                actions={
+                  <>
+                    <Button color="primary">
+                      Get started <ArrowRight size={16} className="ml-1" />
+                    </Button>
+                    <Button variant="light">
+                      Learn more <ArrowRight size={16} className="ml-1" />
+                    </Button>
+                  </>
+                }
+                illustration={
+                  <img
+                    src="/assets/marketing-section/split-screen-light.webp"
+                    alt="App screenshot"
+                    className="h-auto w-full object-cover dark:hidden"
+                  />
+                }
+              />
+            </MarketingPreview>
+          </div>
         </div>
 
         {/* Component API */}
@@ -1109,6 +1140,46 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               },
             ]}
           />
+          <div>
+            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+              HeroGlass Props
+            </h3>
+            <ApiTable
+              title="HeroGlass"
+              rows={[
+                {
+                  prop: "title",
+                  type: "ReactNode",
+                  defaultVal: "required",
+                  description: "Main hero title.",
+                },
+                {
+                  prop: "description",
+                  type: "ReactNode",
+                  defaultVal: "required",
+                  description: "Main hero description.",
+                },
+                {
+                  prop: "badge",
+                  type: "ReactNode",
+                  defaultVal: "undefined",
+                  description: "Optional badge element above the title.",
+                },
+                {
+                  prop: "actions",
+                  type: "ReactNode",
+                  defaultVal: "undefined",
+                  description: "Buttons or action links below the description.",
+                },
+                {
+                  prop: "illustration",
+                  type: "ReactNode",
+                  defaultVal: "undefined",
+                  description: "Optional illustration/image element.",
+                },
+              ]}
+            />
+          </div>
         </section>
       </div>
     </div>

@@ -2,6 +2,7 @@
 import navbarCode from "../../../../packages/core/src/components/Navbar/Navbar.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
+import { PageToolbar } from "../components/PageToolbar";
 import {
   Navbar,
   NavbarBrand,
@@ -263,21 +264,24 @@ export default function NavbarDoc() {
   return (
     <div className="space-y-16 pb-24">
       {/* Header */}
-      <div>
-        <div className="mb-3 flex items-center gap-3">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-            Navbar
-          </h1>
-          <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-            Component
-          </span>
+      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+        <div className="w-full min-w-0 flex-1 pr-4">
+          <div className="mb-3 flex items-center gap-3">
+            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Navbar
+            </h1>
+            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+              Component
+            </span>
+          </div>
+          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+            A production-grade, highly responsive navigation bar engineered with TypeScript,
+            Tailwind CSS, and Class Variance Authority (CVA). Features mechanical Framer Motion
+            hamburger transitions, 4 mobile drawer variants, multi-column E-commerce Mega Menus,
+            floating pills, and flexible logo placements.
+          </p>
         </div>
-        <p className="text-base text-zinc-600 dark:text-zinc-400">
-          A production-grade, highly responsive navigation bar engineered with TypeScript, Tailwind
-          CSS, and Class Variance Authority (CVA). Features mechanical Framer Motion hamburger
-          transitions, 4 mobile drawer variants, multi-column E-commerce Mega Menus, floating pills,
-          and flexible logo placements.
-        </p>
+        <PageToolbar />
       </div>
 
       {/* Hero Preview */}
@@ -1145,10 +1149,10 @@ export default function StandardNavbarExample() {
     footer={<p>DUBAI DIGITAL PARK • ©2026 UNIKO</p>}
   >
     <div className="flex flex-col gap-3">
-      <h1 className="text-3xl font-extrabold">Home</h1>
-      <h1 className="text-3xl font-extrabold">Portfolio</h1>
-      <h1 className="text-3xl font-extrabold">About Studio</h1>
-      <h1 className="text-3xl font-extrabold">Contact Agency</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">Home</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">Portfolio</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">About Studio</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">Contact Agency</h1>
     </div>
   </NavbarMenu>
 </Navbar>`}

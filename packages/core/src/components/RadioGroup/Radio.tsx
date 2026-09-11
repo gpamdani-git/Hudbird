@@ -59,22 +59,22 @@ export const radioCircleVariants = cva(
       {
         isChecked: true,
         color: "primary",
-        className: "bg-indigo-600 dark:bg-indigo-500 border-indigo-600 dark:border-indigo-500",
+        className: "bg-primary border-primary text-primary-foreground",
       },
       {
         isChecked: true,
         color: "success",
-        className: "bg-emerald-600 dark:bg-emerald-500 border-emerald-600 dark:border-emerald-500",
+        className: "bg-success border-success text-success-foreground",
       },
       {
         isChecked: true,
         color: "warning",
-        className: "bg-amber-500 dark:bg-amber-500 border-amber-500 dark:border-amber-500",
+        className: "bg-warning border-warning text-warning-foreground",
       },
       {
         isChecked: true,
         color: "danger",
-        className: "bg-rose-600 dark:bg-rose-500 border-rose-600 dark:border-rose-500",
+        className: "bg-destructive border-destructive text-destructive-foreground",
       },
     ],
     defaultVariants: {
@@ -177,7 +177,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
             ? cn(
                 "rounded-xl border p-4 transition-all duration-200",
                 isChecked
-                  ? "border-indigo-600 bg-indigo-50/40 ring-1 ring-indigo-600/30 dark:border-indigo-500 dark:bg-indigo-950/20 dark:ring-indigo-500/30"
+                  ? "border-primary bg-primary/10 ring-primary/30 ring-1"
                   : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
               )
             : "gap-3",
@@ -202,7 +202,11 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
         {/* Custom Visual Radio Indicator */}
         <div
           className={cn(
-            "relative flex items-center justify-center rounded-full group-focus-within:ring-2 group-focus-within:ring-indigo-500 group-focus-within:ring-offset-2 dark:group-focus-within:ring-offset-zinc-950",
+            "dark:group-focus-within:ring-offset-background relative flex items-center justify-center rounded-full group-focus-within:ring-2 group-focus-within:ring-offset-2",
+            color === "primary" && "group-focus-within:ring-primary",
+            color === "success" && "group-focus-within:ring-success",
+            color === "warning" && "group-focus-within:ring-warning",
+            color === "danger" && "group-focus-within:ring-destructive",
             size === "sm" ? "mt-0.5" : size === "md" ? "mt-0.5" : "mt-1",
             classNames?.wrapper
           )}

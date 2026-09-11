@@ -2,10 +2,13 @@ import React from "react";
 import { CodeBlock } from "../components/CodeBlock";
 import { Text, Strong, Code } from "@hudbird/ui";
 
+import { PageToolbar } from "../components/PageToolbar";
+
 export const supportTocItems = [
   { id: "requirements", title: "System Requirements" },
   { id: "frameworks", title: "Supported Frameworks" },
   { id: "faq", title: "Frequently Asked Questions (FAQ)" },
+  { id: "contact", title: "Get Help & Report Bugs" },
 ];
 
 export default function SupportDoc() {
@@ -13,13 +16,18 @@ export default function SupportDoc() {
     <div className="space-y-16 pb-24">
       {/* 1. Requirements */}
       <div id="requirements" className="scroll-mt-24">
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-          Support & FAQ
-        </h1>
-        <p className="mb-8 text-lg text-zinc-600 dark:text-zinc-400">
-          Information about supported library versions, framework compatibility, and troubleshooting
-          for common issues.
-        </p>
+        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="w-full min-w-0 flex-1 pr-4">
+            <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+              Support & FAQ
+            </h1>
+            <p className="mb-8 pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+              Information about supported library versions, framework compatibility, and
+              troubleshooting for common issues.
+            </p>
+          </div>
+          <PageToolbar />
+        </div>
 
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">System Requirements</h2>
         <div className="mt-6 space-y-6">
@@ -110,30 +118,65 @@ export default function SupportDoc() {
             <Text>
               If you are using NPM and React 19, you might see an error like:{" "}
               <Code>npm ERR! ERESOLVE unable to resolve dependency tree</Code>. This happens because
-              some packages (like Three.js wrappers or Framer Motion) have strict peer dependencies
-              explicitly requiring React 18, and NPM v7+ strictly enforces this by blocking the
-              installation.
+              some packages (like <Code>@react-three/fiber</Code>) have strict{" "}
+              <Code>peerDependencies</Code> requiring a specific React version range (e.g.{" "}
+              <Code>&#62;=19 &lt;19.3</Code>), and NPM v7+ strictly enforces this.
             </Text>
-            <div className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              <Strong>Solutions:</Strong>
-              <ul className="mt-2 list-disc space-y-1 pl-5">
-                <li>
-                  <Strong>Use pnpm or yarn:</Strong> Modern package managers handle these mismatches
-                  gracefully without breaking.
-                </li>
-                <li>
-                  <Strong>Downgrade to React 18:</Strong> If you don't need React 19 features,
-                  downgrade your React version.
-                </li>
-                <li>
-                  <Strong>Use overrides:</Strong> Add an overrides block in your{" "}
-                  <Code>package.json</Code> to force React 19 resolution.
-                </li>
-                <li>
-                  <Strong>Force install:</Strong> Run the installation manually with the{" "}
-                  <Code>--legacy-peer-deps</Code> flag.
-                </li>
-              </ul>
+            <div className="mt-4 space-y-4">
+              <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+                Solutions (try in order):
+              </p>
+
+              {/* Solution 1 - Recommended */}
+              <div className="rounded-lg border border-green-200 bg-green-50 p-4 dark:border-green-900/50 dark:bg-green-950/30">
+                <p className="mb-2 text-sm font-bold text-green-900 dark:text-green-200">
+                  ✅ 1. Lock React to a compatible version (Recommended)
+                </p>
+                <p className="mb-2 text-xs text-green-800 dark:text-green-300">
+                  Using <Code>--save-exact</Code> prevents NPM from auto-upgrading React (e.g. from
+                  19.2.0 → 19.3.0), which breaks peer dependency checks. This is the safest fix.
+                </p>
+                <CodeBlock code="npm install react@19.2.0 react-dom@19.2.0 --save-exact" />
+                <p className="mt-2 text-xs text-green-700 dark:text-green-400">
+                  After this, re-run your component installation command.
+                </p>
+              </div>
+
+              {/* Solution 2 - pnpm */}
+              <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                <p className="mb-2 text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  📦 2. Switch to pnpm (handles conflicts automatically)
+                </p>
+                <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
+                  <Code>pnpm</Code> uses a smarter algorithm that resolves peer dependency
+                  mismatches without blocking the installation.
+                </p>
+                <CodeBlock code="pnpm add @react-three/fiber @react-three/drei maath" />
+              </div>
+
+              {/* Solution 3 - legacy-peer-deps */}
+              <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                <p className="mb-2 text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  🔧 3. Force install with <Code>--legacy-peer-deps</Code>
+                </p>
+                <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
+                  This tells NPM to ignore peer dependency conflicts. It may cause instability in
+                  large projects but is often safe for smaller ones.
+                </p>
+                <CodeBlock code="npm install @react-three/fiber @react-three/drei maath --legacy-peer-deps" />
+              </div>
+
+              {/* Solution 4 - React 18 */}
+              <div className="rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                <p className="mb-2 text-sm font-bold text-zinc-800 dark:text-zinc-200">
+                  ⬇️ 4. Downgrade to React 18
+                </p>
+                <p className="mb-2 text-xs text-zinc-600 dark:text-zinc-400">
+                  If you don't need React 19 features, downgrading to React 18 is the most
+                  universally compatible option.
+                </p>
+                <CodeBlock code="npm install react@18 react-dom@18" />
+              </div>
             </div>
           </div>
 
@@ -162,6 +205,51 @@ export default function SupportDoc() {
               development.
             </Text>
           </div>
+        </div>
+      </section>
+
+      {/* 4. Get Help & Report Bugs */}
+      <section id="contact" className="scroll-mt-24 space-y-4">
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+          Get Help &amp; Report Bugs
+        </h2>
+        <Text>
+          Still stuck? We're here to help. Visit our official support page for more guides and FAQs,
+          or open a GitHub issue to report a bug directly.
+        </Text>
+        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+          <a
+            href="https://hudbird.vercel.app/#/support"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-2 rounded-xl border border-indigo-200 bg-indigo-50 p-5 transition hover:border-indigo-400 hover:bg-indigo-100 dark:border-indigo-900/60 dark:bg-indigo-950/30 dark:hover:border-indigo-700 dark:hover:bg-indigo-900/40"
+          >
+            <span className="text-xl">💡</span>
+            <span className="font-bold text-indigo-900 dark:text-indigo-200">
+              Support &amp; FAQ
+            </span>
+            <span className="text-sm text-indigo-700 dark:text-indigo-300">
+              Browse the full documentation, troubleshooting guides, and frequently asked questions.
+            </span>
+            <span className="mt-1 font-mono text-xs text-indigo-500 dark:text-indigo-400">
+              hudbird.vercel.app/#/support
+            </span>
+          </a>
+          <a
+            href="https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new?assignees=&labels=bug%2C+triage&template=bug_report.yml&title=%5BBUG%5D+"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-2 rounded-xl border border-rose-200 bg-rose-50 p-5 transition hover:border-rose-400 hover:bg-rose-100 dark:border-rose-900/60 dark:bg-rose-950/30 dark:hover:border-rose-700 dark:hover:bg-rose-900/40"
+          >
+            <span className="text-xl">🐛</span>
+            <span className="font-bold text-rose-900 dark:text-rose-200">Report a Bug</span>
+            <span className="text-sm text-rose-700 dark:text-rose-300">
+              Found something broken? Open an issue on GitHub with a pre-filled bug report template.
+            </span>
+            <span className="mt-1 font-mono text-xs text-rose-500 dark:text-rose-400">
+              github.com/gpamdani-git/Hudbird-UI-Discus
+            </span>
+          </a>
         </div>
       </section>
     </div>

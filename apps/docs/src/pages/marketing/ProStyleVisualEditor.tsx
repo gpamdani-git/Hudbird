@@ -6,7 +6,7 @@ export const ProStyleVisualEditor = () => (
     <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-violet-900/20 blur-3xl" />
     <div className="absolute -right-40 -bottom-40 h-96 w-96 rounded-full bg-indigo-900/20 blur-3xl" />
 
-    <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:px-8">
+    <div className="mx-auto w-full max-w-7xl space-y-16 px-4 sm:px-8 lg:px-12">
       <div className="w-full text-left lg:w-1/3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
