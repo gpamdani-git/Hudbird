@@ -1,5 +1,14 @@
 # docs
 
+## 0.1.6
+
+### Patch Changes
+
+- 66f18cb: Refactor the root landing page by extracting the monolithic AiStartupTemplate into modular components within app/landingpage. Decoupled the landing page from the docs layout, restored missing UI/marketing helper components, and resolved all runtime ReferenceErrors to ensure a stable production build.
+- Updated dependencies [66f18cb]
+  - @hudbird/marketing@1.2.5
+  - @hudbird/ui@1.2.5
+
 ## 0.1.5
 
 ### Patch Changes

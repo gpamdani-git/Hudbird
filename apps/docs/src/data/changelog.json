@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.2.5",
+    "date": "September 2026",
+    "content": "- 66f18cb: Refactor the root landing page by extracting the monolithic AiStartupTemplate into modular components within app/landingpage. Decoupled the landing page from the docs layout, restored missing UI/marketing helper components, and resolved all runtime ReferenceErrors to ensure a stable production build."
+  },
+  {
     "version": "1.2.4",
     "date": "September 2026",
     "content": "- **Smart CLI v2**: Introduced automatic resolution of nested components and on-the-fly installation of required NPM dependencies. Overhauled the Getting Started documentation with a robust new setup guide, implemented auto-generation of index exports, and resolved critical bugs."
