@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { Button } from "@hudbird/ui";
 
-export interface CtaGlassProps extends React.HTMLAttributes<HTMLElement> {
+export interface CtaGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
   title: React.ReactNode;
   description?: React.ReactNode;
@@ -86,7 +86,6 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
                       variant="solid"
                       color="zinc"
                       onClick={primaryAction.onClick}
-                      as={primaryAction.href ? "a" : "button"}
                       {...(primaryAction.href ? { href: primaryAction.href } : {})}
                       className="w-full sm:w-auto"
                     >
@@ -99,7 +98,6 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
                       variant="outline"
                       color="zinc"
                       onClick={secondaryAction.onClick}
-                      as={secondaryAction.href ? "a" : "button"}
                       {...(secondaryAction.href ? { href: secondaryAction.href } : {})}
                       className="w-full bg-white/50 backdrop-blur-md sm:w-auto dark:bg-black/50"
                     >

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { Button } from "@hudbird/ui";
 
-export interface CtaSplitProps extends React.HTMLAttributes<HTMLElement> {
+export interface CtaSplitProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
   title: React.ReactNode;
   description?: React.ReactNode;

@@ -60,7 +60,6 @@ export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
                         <Avatar
                           src={testimonial.avatar}
                           alt={testimonial.author}
-                          fallback={testimonial.author[0]}
                           className="h-10 w-10 bg-zinc-100 dark:bg-zinc-800"
                         />
                       ) : (

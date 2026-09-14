@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 
-export interface HeroGlassProps extends React.HTMLAttributes<HTMLElement> {
+export interface HeroGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
   title: React.ReactNode;
   description: React.ReactNode;
