@@ -274,7 +274,7 @@ export default function NavbarDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             A production-grade, highly responsive navigation bar engineered with TypeScript,
             Tailwind CSS, and Class Variance Authority (CVA). Features mechanical Framer Motion
             hamburger transitions, 4 mobile drawer variants, multi-column E-commerce Mega Menus,

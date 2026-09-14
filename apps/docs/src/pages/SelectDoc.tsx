@@ -201,7 +201,7 @@ export default function SelectDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Modular dropdown select component featuring pure React state interaction, outside click
             handling, animated chevron rotation, high-elevation floating menus, and comprehensive
             dark mode support.

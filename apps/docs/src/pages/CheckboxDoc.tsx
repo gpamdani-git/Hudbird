@@ -122,7 +122,7 @@ export default function CheckboxDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Interactive control allowing users to select one or multiple items from a set, complete
             with animated checkmarks and accessible focus rings.
           </p>

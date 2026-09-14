@@ -219,9 +219,9 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             case "primary":
               return "bg-primary text-primary-foreground shadow-xs hover:bg-primary-hover focus-visible:ring-primary";
             case "success":
-              return "bg-success text-success-foreground shadow-xs hover:bg-success-hover focus-visible:ring-success";
+              return "bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 focus-visible:ring-emerald-600 dark:bg-emerald-500 dark:hover:bg-emerald-600";
             case "danger":
-              return "bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive-hover focus-visible:ring-destructive";
+              return "bg-rose-600 text-white shadow-xs hover:bg-rose-700 focus-visible:ring-rose-600 dark:bg-rose-500 dark:hover:bg-rose-600";
             case "dark":
               return "bg-zinc-900 text-white shadow-xs hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100";
             case "zinc":
@@ -231,11 +231,11 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
         case "bordered":
           switch (color) {
             case "primary":
-              return "border-2 border-primary text-primary-text bg-primary-soft focus-visible:ring-primary";
+              return "border-2 border-primary-600 text-primary-700 bg-primary-50 focus-visible:ring-primary dark:border-primary-500 dark:text-primary-400 dark:bg-primary-500/15";
             case "success":
-              return "border-2 border-success text-success-text bg-success-soft focus-visible:ring-success";
+              return "border-2 border-emerald-600 text-emerald-700 bg-emerald-50 focus-visible:ring-emerald-600 dark:border-emerald-400 dark:text-emerald-400 dark:bg-emerald-500/15";
             case "danger":
-              return "border-2 border-destructive text-destructive-text bg-destructive-soft focus-visible:ring-destructive";
+              return "border-2 border-rose-600 text-rose-700 bg-rose-50 focus-visible:ring-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-500/15";
             case "dark":
               return "border-2 border-zinc-900 text-zinc-900 bg-zinc-100/60 dark:border-zinc-100 dark:text-zinc-100 dark:bg-zinc-800/60 focus-visible:ring-zinc-900";
             case "zinc":
@@ -245,11 +245,11 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
         case "flat":
           switch (color) {
             case "primary":
-              return "bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-300 hover:bg-indigo-200 dark:hover:bg-indigo-900/60 focus-visible:ring-indigo-500";
+              return "bg-primary-50 text-primary-700 hover:bg-primary-100 focus-visible:ring-primary-600 dark:bg-primary-500/15 dark:text-primary-400 dark:hover:bg-primary-500/25";
             case "success":
-              return "bg-success-soft text-success-text hover:bg-success-soft-hover focus-visible:ring-success";
+              return "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 focus-visible:ring-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400 dark:hover:bg-emerald-500/25";
             case "danger":
-              return "bg-destructive-soft text-destructive-text hover:bg-destructive-soft-hover focus-visible:ring-destructive";
+              return "bg-rose-50 text-rose-700 hover:bg-rose-100 focus-visible:ring-rose-600 dark:bg-rose-500/15 dark:text-rose-400 dark:hover:bg-rose-500/25";
             case "dark":
               return "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-700 focus-visible:ring-zinc-900";
             case "zinc":
@@ -260,11 +260,11 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
         default:
           switch (color) {
             case "primary":
-              return "text-primary-text font-bold bg-primary-soft hover:bg-primary-soft-hover focus-visible:ring-primary";
+              return "text-primary-700 font-bold bg-primary-50 hover:bg-primary-100 focus-visible:ring-primary-600 dark:text-primary-400 dark:bg-primary-500/15 dark:hover:bg-primary-500/25";
             case "success":
-              return "text-success-text font-bold bg-success-soft hover:bg-success-soft-hover focus-visible:ring-success";
+              return "text-emerald-700 font-bold bg-emerald-50 hover:bg-emerald-100 focus-visible:ring-emerald-600 dark:text-emerald-400 dark:bg-emerald-500/15 dark:hover:bg-emerald-500/25";
             case "danger":
-              return "text-destructive-text font-bold bg-destructive-soft hover:bg-destructive-soft-hover focus-visible:ring-destructive";
+              return "text-rose-700 font-bold bg-rose-50 hover:bg-rose-100 focus-visible:ring-rose-600 dark:text-rose-400 dark:bg-rose-500/15 dark:hover:bg-rose-500/25";
             case "dark":
               return "text-zinc-950 font-bold bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-visible:ring-zinc-900";
             case "zinc":

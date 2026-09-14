@@ -10,7 +10,7 @@ export interface FeatureGlassItem {
   description: string;
 }
 
-export interface FeatureGlassProps extends React.HTMLAttributes<HTMLElement> {
+export interface FeatureGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;

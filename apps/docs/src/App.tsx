@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
-import { ThemeBuilderSidebar } from "./components/ThemeBuilderSidebar";
+import { ThemeEditor } from "./components/theme-editor/ThemeEditor";
 import { TableOfContents } from "./components/TableOfContents";
 import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -39,8 +39,10 @@ const RadioGroupDoc = lazy(() => import("./pages/RadioGroupDoc"));
 const TooltipDoc = lazy(() => import("./pages/TooltipDoc"));
 const AccordionDoc = lazy(() => import("./pages/AccordionDoc"));
 
+const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 const ChangelogDoc = lazy(() => import("./pages/ChangelogDoc"));
 const ThemesDoc = lazy(() => import("./pages/ThemesDoc"));
+const TemplatesDoc = lazy(() => import("./pages/TemplatesDoc"));
 const InstallationDoc = lazy(() => import("./pages/InstallationDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
@@ -54,7 +56,6 @@ const PricingDoc = lazy(() => import("./pages/marketing/PricingDoc"));
 const BentoGridDoc = lazy(() => import("./pages/marketing/BentoGridDoc"));
 const TestimonialsDoc = lazy(() => import("./pages/marketing/TestimonialsDoc"));
 const FaqDoc = lazy(() => import("./pages/marketing/FaqDoc"));
-const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 const FooterDoc = lazy(() => import("./pages/marketing/FooterDoc"));
 const CtaDoc = lazy(() => import("./pages/marketing/CtaDoc"));
 
@@ -62,6 +63,13 @@ const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
 const StackedLayoutDemo = lazy(() => import("./pages/demos/StackedLayoutDemo"));
 const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
+
+import { SaaSLaunchpad } from "./components/templates/SaaSTemplate";
+import { ModernAppTemplate } from "./components/templates/ModernAppTemplate";
+import { DigitalAgencyTemplate } from "./components/templates/DigitalAgencyTemplate";
+import AiStartupTemplate from "./app/landingpage";
+import { FintechTemplate } from "./components/templates/FintechTemplate";
+import { EcommerceTemplate } from "./components/templates/EcommerceTemplate";
 
 export default function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -71,12 +79,21 @@ export default function App() {
   const isWideLayoutPage =
     location.pathname.startsWith("/marketing") ||
     location.pathname.startsWith("/layouts") ||
+    location.pathname === "/templates" ||
     isThemesPage;
 
   // Automatically scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  if (location.pathname === "/") {
+    return (
+      <Suspense fallback={<DocLoadingSkeleton />}>
+        <AiStartupTemplate />
+      </Suspense>
+    );
+  }
 
   if (location.pathname.startsWith("/demos/")) {
     return (
@@ -86,6 +103,21 @@ export default function App() {
           <Route path="/demos/sidebar-flat" element={<SidebarFlatDemo />} />
           <Route path="/demos/stacked" element={<StackedLayoutDemo />} />
           <Route path="/demos/auth" element={<AuthLayoutDemo />} />
+        </Routes>
+      </Suspense>
+    );
+  }
+
+  if (location.pathname.startsWith("/templates/")) {
+    return (
+      <Suspense fallback={<DocLoadingSkeleton />}>
+        <Routes>
+          <Route path="/templates/saas-launchpad" element={<SaaSLaunchpad />} />
+          <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
+          <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
+          <Route path="/templates/ai-startup" element={<AiStartupTemplate />} />
+          <Route path="/templates/fintech" element={<FintechTemplate />} />
+          <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
         </Routes>
       </Suspense>
     );
@@ -102,25 +134,22 @@ export default function App() {
 
       <div className="flex w-full">
         {/* Left Sticky Sidebar */}
-        {isThemesPage ? (
-          <ThemeBuilderSidebar
-            isOpen={mobileSidebarOpen}
-            onClose={() => setMobileSidebarOpen(false)}
-            isMini={isMiniSidebar}
-          />
-        ) : (
-          <Sidebar
-            isOpen={mobileSidebarOpen}
-            onClose={() => setMobileSidebarOpen(false)}
-            isMini={isMiniSidebar}
-            onToggleMini={() => setIsMiniSidebar(!isMiniSidebar)}
-          />
+        <Sidebar
+          isOpen={mobileSidebarOpen}
+          onClose={() => setMobileSidebarOpen(false)}
+          isMini={isMiniSidebar}
+          onToggleMini={() => setIsMiniSidebar(!isMiniSidebar)}
+        />
+
+        {/* Floating Theme Editor Panel */}
+        {isThemesPage && (
+          <ThemeEditor isOpen={mobileSidebarOpen} onClose={() => setMobileSidebarOpen(false)} />
         )}
 
         {/* Main Content & Right Table of Contents Layout */}
         <main
           className={`flex-1 ${
-            isMiniSidebar ? "lg:pl-0" : isThemesPage ? "lg:pl-[19rem]" : "lg:pl-[17.5rem]"
+            isMiniSidebar ? "lg:pl-0" : "lg:pl-[17.5rem]"
           } flex min-w-0 flex-col transition-all duration-300 ease-in-out`}
         >
           {/* Global Top Navbar */}
@@ -136,10 +165,10 @@ export default function App() {
             <div className={`relative w-full max-w-full min-w-0 flex-1`}>
               <Suspense fallback={<DocLoadingSkeleton />}>
                 <Routes>
-                  <Route path="/" element={<GettingStartedDoc />} />
                   <Route path="/support" element={<SupportDoc />} />
                   <Route path="/changelog" element={<ChangelogDoc />} />
                   <Route path="/themes" element={<ThemesDoc />} />
+                  <Route path="/templates" element={<TemplatesDoc />} />
                   <Route path="/installation" element={<InstallationDoc />} />
                   <Route path="/button" element={<ButtonDoc />} />
                   <Route path="/input" element={<InputDoc />} />

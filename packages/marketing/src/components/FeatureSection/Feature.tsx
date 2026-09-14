@@ -59,7 +59,7 @@ const FeatureBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
       <h2
         ref={ref}
         className={cn(
-          "text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
+          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
           className
         )}
         {...props}
@@ -265,9 +265,7 @@ const FeatureRowMedia = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HT
         {...(props as any)}
       >
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-indigo-500/10 via-transparent to-purple-500/10" />
-        <div className="relative overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950">
-          {children}
-        </div>
+        {children}
       </motion.div>
     );
   }

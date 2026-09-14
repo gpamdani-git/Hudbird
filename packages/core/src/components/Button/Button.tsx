@@ -4,11 +4,15 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-export type ButtonVariant = "solid" | "bordered" | "flat" | "light" | "outline" | "plain";
+export type ButtonVariant =
+  "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain";
 export type ButtonColor =
   | "primary"
+  | "secondary"
   | "success"
+  | "warning"
   | "danger"
+  | "info"
   | "dark"
   | "zinc"
   | "white"
@@ -41,19 +45,23 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        solid: "shadow-xs font-semibold text-white",
+        solid: "shadow-xs font-semibold",
         bordered: "border-2 bg-transparent font-semibold",
-        flat: "font-semibold",
-        light: "bg-transparent font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800",
+        flat: "font-semibold border-0",
+        soft: "font-semibold border-0",
+        light: "bg-transparent border-0 font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800",
+        ghost: "bg-transparent border-0 font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800",
         outline:
-          "border border-zinc-950/10 dark:border-white/15 bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
-        plain:
-          "bg-transparent text-zinc-950 dark:text-white hover:bg-zinc-950/5 dark:hover:bg-white/5",
+          "border border-zinc-950/10 dark:border-white/15 bg-transparent hover:bg-zinc-950/5 dark:hover:bg-white/5",
+        plain: "bg-transparent hover:bg-zinc-950/5 dark:hover:bg-white/5",
       },
       color: {
-        primary: "focus-visible:ring-indigo-500 dark:focus-visible:ring-offset-zinc-950",
-        success: "focus-visible:ring-emerald-500 dark:focus-visible:ring-offset-zinc-950",
-        danger: "focus-visible:ring-rose-500 dark:focus-visible:ring-offset-zinc-950",
+        primary: "focus-visible:ring-primary dark:focus-visible:ring-offset-zinc-950",
+        secondary: "focus-visible:ring-secondary dark:focus-visible:ring-offset-zinc-950",
+        success: "focus-visible:ring-success dark:focus-visible:ring-offset-zinc-950",
+        warning: "focus-visible:ring-warning dark:focus-visible:ring-offset-zinc-950",
+        danger: "focus-visible:ring-destructive dark:focus-visible:ring-offset-zinc-950",
+        info: "focus-visible:ring-info dark:focus-visible:ring-offset-zinc-950",
         dark: "focus-visible:ring-zinc-950 dark:focus-visible:ring-offset-zinc-950",
         zinc: "focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-950",
         white: "focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-zinc-950",
@@ -122,15 +130,33 @@ const buttonVariants = cva(
       },
       {
         variant: "solid",
+        color: "secondary",
+        className:
+          "bg-secondary text-secondary-foreground hover:bg-secondary-hover active:bg-secondary-active",
+      },
+      {
+        variant: "solid",
         color: "success",
         className:
-          "bg-success text-success-foreground hover:bg-success-hover active:bg-success-active",
+          "bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 dark:bg-emerald-500 dark:hover:bg-emerald-600",
+      },
+      {
+        variant: "solid",
+        color: "warning",
+        className:
+          "bg-amber-500 text-zinc-950 font-bold hover:bg-amber-600 active:bg-amber-700 dark:bg-amber-400 dark:hover:bg-amber-500",
       },
       {
         variant: "solid",
         color: "danger",
         className:
-          "bg-destructive text-destructive-foreground hover:bg-destructive-hover active:bg-destructive-active",
+          "bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 dark:bg-rose-500 dark:hover:bg-rose-600",
+      },
+      {
+        variant: "solid",
+        color: "info",
+        className:
+          "bg-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 dark:bg-sky-500 dark:hover:bg-sky-600",
       },
       {
         variant: "solid",
@@ -272,22 +298,40 @@ const buttonVariants = cva(
       // --- BORDERED VARIANTS ---
       // ==========================================
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
         color: "primary",
         className:
-          "border-primary text-primary-text hover:bg-primary-soft active:bg-primary-soft-hover",
+          "border-primary-600 text-primary-700 hover:bg-primary-50 active:bg-primary-100 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-500/15",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
+        color: "secondary",
+        className:
+          "border-secondary-600 text-secondary-700 hover:bg-secondary-50 active:bg-secondary-100 dark:border-secondary-400 dark:text-secondary-400 dark:hover:bg-secondary-500/15",
+      },
+      {
+        variant: ["bordered", "outline"],
         color: "success",
         className:
-          "border-success text-success-text hover:bg-success-soft active:bg-success-soft-hover",
+          "border-emerald-600 text-emerald-700 hover:bg-emerald-50 active:bg-emerald-100 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
+        color: "warning",
+        className:
+          "border-amber-500 text-amber-600 hover:bg-amber-50 active:bg-amber-100 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-500/15",
+      },
+      {
+        variant: ["bordered", "outline"],
         color: "danger",
         className:
-          "border-destructive text-destructive-text hover:bg-destructive-soft active:bg-destructive-soft-hover",
+          "border-rose-600 text-rose-700 hover:bg-rose-50 active:bg-rose-100 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-500/15",
+      },
+      {
+        variant: ["bordered", "outline"],
+        color: "info",
+        className:
+          "border-sky-600 text-sky-700 hover:bg-sky-50 active:bg-sky-100 dark:border-sky-400 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
       {
         variant: "bordered",
@@ -306,22 +350,40 @@ const buttonVariants = cva(
       // --- FLAT (PASTEL/SOFT) VARIANTS ---
       // ==========================================
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
         color: "primary",
         className:
-          "bg-primary-soft text-primary-text hover:bg-primary-soft-hover active:bg-primary-soft-active",
+          "bg-primary-50 text-primary-700 hover:bg-primary-100 active:bg-primary-200 dark:bg-primary-500/20 dark:text-primary-300 dark:hover:bg-primary-500/30",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
+        color: "secondary",
+        className:
+          "bg-secondary-50 text-secondary-700 hover:bg-secondary-100 active:bg-secondary-200 dark:bg-secondary-500/15 dark:text-secondary-400 dark:hover:bg-secondary-500/25",
+      },
+      {
+        variant: ["flat", "soft"],
         color: "success",
         className:
-          "bg-success-soft text-success-text hover:bg-success-soft-hover active:bg-success-soft-active",
+          "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 active:bg-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:hover:bg-emerald-500/25",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
+        color: "warning",
+        className:
+          "bg-amber-50 text-amber-600 hover:bg-amber-100 active:bg-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:hover:bg-amber-500/25",
+      },
+      {
+        variant: ["flat", "soft"],
         color: "danger",
         className:
-          "bg-destructive-soft text-destructive-text hover:bg-destructive-soft-hover active:bg-destructive-soft-active",
+          "bg-rose-50 text-rose-700 hover:bg-rose-100 active:bg-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:hover:bg-rose-500/25",
+      },
+      {
+        variant: ["flat", "soft"],
+        color: "info",
+        className:
+          "bg-sky-50 text-sky-700 hover:bg-sky-100 active:bg-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:hover:bg-sky-500/25",
       },
       {
         variant: "flat",
@@ -334,20 +396,40 @@ const buttonVariants = cva(
       // --- LIGHT (GHOST) VARIANTS ---
       // ==========================================
       {
-        variant: "light",
+        variant: ["light", "ghost"],
         color: "primary",
-        className: "text-primary-text hover:bg-primary-soft active:bg-primary-soft-hover",
+        className:
+          "text-primary-700 hover:bg-primary-50 active:bg-primary-100 dark:text-primary-400 dark:hover:bg-primary-500/15",
       },
       {
-        variant: "light",
+        variant: ["light", "ghost"],
+        color: "secondary",
+        className:
+          "text-secondary-700 hover:bg-secondary-50 active:bg-secondary-100 dark:text-secondary-400 dark:hover:bg-secondary-500/15",
+      },
+      {
+        variant: ["light", "ghost"],
         color: "success",
-        className: "text-success-text hover:bg-success-soft active:bg-success-soft-hover",
+        className:
+          "text-emerald-700 hover:bg-emerald-50 active:bg-emerald-100 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
-        variant: "light",
+        variant: ["light", "ghost"],
+        color: "warning",
+        className:
+          "text-amber-600 hover:bg-amber-50 active:bg-amber-100 dark:text-amber-400 dark:hover:bg-amber-500/15",
+      },
+      {
+        variant: ["light", "ghost"],
         color: "danger",
         className:
-          "text-destructive-text hover:bg-destructive-soft active:bg-destructive-soft-hover",
+          "text-rose-700 hover:bg-rose-50 active:bg-rose-100 dark:text-rose-400 dark:hover:bg-rose-500/15",
+      },
+      {
+        variant: ["light", "ghost"],
+        color: "info",
+        className:
+          "text-sky-700 hover:bg-sky-50 active:bg-sky-100 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
       {
         variant: "light",

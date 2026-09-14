@@ -7,6 +7,7 @@ import { PageToolbar } from "../components/PageToolbar";
 export const supportTocItems = [
   { id: "requirements", title: "System Requirements" },
   { id: "frameworks", title: "Supported Frameworks" },
+  { id: "cli-guide", title: "CLI & Theme Setup Guide" },
   { id: "faq", title: "Frequently Asked Questions (FAQ)" },
   { id: "contact", title: "Get Help & Report Bugs" },
 ];
@@ -104,7 +105,188 @@ export default function SupportDoc() {
         </ul>
       </section>
 
-      {/* 3. FAQ */}
+      {/* 3. CLI & Theme Setup Guide */}
+      <section id="cli-guide" className="scroll-mt-24 space-y-6">
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+          CLI &amp; Theme Setup Guide
+        </h2>
+        <p className="text-zinc-600 dark:text-zinc-400">
+          Hudbird UI menyediakan CLI (<Code>hudbird-ui</Code>) untuk menginstall komponen dan
+          menginisialisasi konfigurasi Tailwind CSS secara otomatis. Panduan ini mencakup cara
+          penggunaan CLI serta cara mengekspor tema dari <Strong>Theme Editor</Strong>.
+        </p>
+
+        {/* Step 1: Install */}
+        <div className="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+              1
+            </span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Inisialisasi Project
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Jalankan perintah berikut di root project Anda. CLI akan otomatis mendeteksi package
+            manager (<Code>npm</Code>, <Code>pnpm</Code>, <Code>yarn</Code>, atau <Code>bun</Code>),
+            versi Tailwind CSS (v3 atau v4), dan menginstall dependensi yang diperlukan.
+          </p>
+          <CodeBlock code="npx hudbird-ui@latest init" />
+          <div className="space-y-2 rounded-lg border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-700 dark:bg-zinc-900">
+            <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-300">
+              ✅ Yang dilakukan CLI secara otomatis:
+            </p>
+            <ul className="list-disc space-y-1 pl-5 text-xs text-zinc-600 dark:text-zinc-400">
+              <li>
+                Mendeteksi apakah project menggunakan <Strong>Tailwind v4</Strong> (via{" "}
+                <Code>@tailwindcss/vite</Code> atau <Code>@tailwindcss/postcss</Code>) atau{" "}
+                <Strong>Tailwind v3</Strong>
+              </li>
+              <li>
+                Untuk <Strong>Tailwind v4</Strong>: menawarkan injeksi variabel <Code>@theme</Code>{" "}
+                ke file CSS global
+              </li>
+              <li>
+                Untuk <Strong>Tailwind v3</Strong>: membuat <Code>hudbirdPreset.js</Code> dan
+                menginjeksikannya ke <Code>tailwind.config.js</Code>
+              </li>
+              <li>
+                Menginstall dependensi UI: <Code>framer-motion</Code>, <Code>lucide-react</Code>,{" "}
+                <Code>clsx</Code>, <Code>tailwind-merge</Code>,{" "}
+                <Code>class-variance-authority</Code>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Step 2: Add Components */}
+        <div className="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+              2
+            </span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Tambahkan Komponen
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Gunakan perintah <Code>add</Code> untuk menginstall komponen satu per satu atau beberapa
+            sekaligus. Komponen akan disalin ke folder <Code>src/components/hudbird-ui/</Code> di
+            project Anda.
+          </p>
+          <CodeBlock
+            code={`# Satu komponen\nnpx hudbird-ui@latest add Button\n\n# Beberapa komponen sekaligus\nnpx hudbird-ui@latest add Button Input Select Badge Alert Pagination`}
+          />
+          <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-900/50 dark:bg-amber-950/30">
+            <p className="text-xs font-semibold text-amber-800 dark:text-amber-200">
+              ⚠️ Smart Overwrite Protection
+            </p>
+            <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
+              Jika komponen sudah ada, CLI akan menanyakan konfirmasi sebelum menimpa file. Jawab{" "}
+              <Code>N</Code> untuk melewati dan menjaga kustomisasi Anda.
+            </p>
+          </div>
+        </div>
+
+        {/* Step 3: Theme Editor */}
+        <div className="space-y-4 rounded-xl border border-indigo-200 bg-indigo-50/50 p-6 dark:border-indigo-900/50 dark:bg-indigo-950/20">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white dark:bg-indigo-500">
+              3
+            </span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Kustomisasi Tema via Theme Editor
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Buka halaman <Strong>Theme Builder</Strong> di navigasi sidebar. Di sana Anda akan
+            menemukan panel <Strong>Theme Editor</Strong> (ikon kuas 🎨) di pojok kanan atas. Anda
+            dapat mengubah:
+          </p>
+          <ul className="list-disc space-y-1 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
+            <li>
+              <Strong>Base Color</Strong> — Warna dasar netral (zinc, slate, gray) untuk background
+              &amp; teks
+            </li>
+            <li>
+              <Strong>Primary Color</Strong> — Warna aksen utama komponen (menggunakan color picker
+              OKLCH)
+            </li>
+            <li>
+              <Strong>Border Radius</Strong> — Ukuran radius sudut komponen (0 = sharp, 1.5 = pill)
+            </li>
+            <li>
+              <Strong>Typography</Strong> — Font Sans dan Font Heading dari Google Fonts
+            </li>
+          </ul>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+            Setelah selesai, klik tombol <Strong>Copy CSS</Strong> di bagian bawah panel untuk
+            menyalin konfigurasi CSS yang dihasilkan, lalu tempelkan ke file CSS global project Anda
+            (biasanya <Code>src/index.css</Code>):
+          </p>
+          <CodeBlock
+            code={`/* Tempel hasil copy dari Theme Editor ke src/index.css Anda */\n@theme {\n  --color-primary-50: oklch(...);\n  --color-primary-100: oklch(...);\n  /* ... semua skala warna primary */\n  --radius: 0.5rem;\n  --font-sans: 'Inter', sans-serif;\n}`}
+          />
+        </div>
+
+        {/* Step 4: Dependency resolution */}
+        <div className="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+              4
+            </span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Dependency Resolution (Manual)
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Untuk komponen yang memerlukan dependensi tambahan seperti Radix UI, CLI akan
+            menginstallnya otomatis. Namun jika ingin menginstall manual:
+          </p>
+          <CodeBlock
+            code={`# Dependensi inti (diinstall otomatis oleh init)\nnpm install framer-motion lucide-react clsx tailwind-merge class-variance-authority\n\n# Untuk komponen dengan Radix (misal: Dialog, Select, Tooltip)\nnpm install @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tooltip`}
+          />
+        </div>
+
+        {/* Available components list */}
+        <div className="rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+            Daftar Komponen Tersedia
+          </h3>
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+            {[
+              "Button",
+              "Badge",
+              "Alert",
+              "Input",
+              "Textarea",
+              "Select",
+              "Checkbox",
+              "Switch",
+              "Radio",
+              "Tabs",
+              "Dialog",
+              "Tooltip",
+              "Avatar",
+              "Card",
+              "Pagination",
+              "Accordion",
+              "Dropdown",
+              "Skeleton",
+            ].map((comp) => (
+              <div
+                key={comp}
+                className="flex items-center gap-2 rounded-lg border border-zinc-100 bg-zinc-50 px-3 py-2 text-sm dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                <Code>{comp}</Code>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FAQ */}
       <section id="faq" className="scroll-mt-24 space-y-6">
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
           Frequently Asked Questions (FAQ)

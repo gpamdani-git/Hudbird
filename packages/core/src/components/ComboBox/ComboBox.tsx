@@ -28,7 +28,7 @@ const comboBoxInputVariants = cva(
         lg: "min-h-12 text-base py-2 px-3.5",
       },
       isInvalid: {
-        true: "!border-destructive !ring-destructive/20",
+        true: "!border-rose-600 !ring-rose-600/20",
         false: "",
       },
     },
@@ -403,9 +403,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
         {description && !errorMessage && (
           <span className="text-muted-foreground text-xs">{description}</span>
         )}
-        {errorMessage && (
-          <span className="text-destructive text-xs font-medium">{errorMessage}</span>
-        )}
+        {errorMessage && <span className="text-xs font-medium text-rose-600">{errorMessage}</span>}
       </div>
     );
   }

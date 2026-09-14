@@ -60,7 +60,7 @@ const PricingBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
       <h2
         ref={ref}
         className={cn(
-          "text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
+          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
           className
         )}
         {...props}
@@ -282,8 +282,10 @@ const PricingTierPrice = React.forwardRef<
     popular?: boolean;
     price: React.ReactNode;
     period?: React.ReactNode;
+    priceClassName?: string;
+    periodClassName?: string;
   }
->(({ className, popular, price, period, ...props }, ref) => {
+>(({ className, popular, price, period, priceClassName, periodClassName, ...props }, ref) => {
   return (
     <div ref={ref} className={cn("mt-6 flex items-baseline gap-x-1", className)} {...props}>
       <AnimatePresence mode="wait">
@@ -295,7 +297,8 @@ const PricingTierPrice = React.forwardRef<
           transition={{ duration: 0.2 }}
           className={cn(
             "text-4xl font-bold tracking-tight",
-            popular ? "text-white" : "text-zinc-900 dark:text-white"
+            popular ? "text-white" : "text-zinc-900 dark:text-white",
+            priceClassName
           )}
         >
           {price}
@@ -305,7 +308,8 @@ const PricingTierPrice = React.forwardRef<
         <span
           className={cn(
             "text-sm leading-6 font-semibold",
-            popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400"
+            popular ? "text-zinc-300" : "text-zinc-600 dark:text-zinc-400",
+            periodClassName
           )}
         >
           {period}

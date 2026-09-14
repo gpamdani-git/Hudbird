@@ -173,6 +173,12 @@ export const Header: React.FC<HeaderProps> = ({
                   {isThemesPage ? "Back to Docs" : "Create Theme"}
                 </Button>
               </Link>
+              <Link
+                to="/templates"
+                className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              >
+                <span className="font-semibold text-zinc-900 dark:text-white">Templates</span>
+              </Link>
               <a
                 href="https://hudbird-editor.vercel.app/"
                 target="_blank"
@@ -276,6 +282,11 @@ export const Header: React.FC<HeaderProps> = ({
                     >
                       Builder
                     </a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to="/templates" className="flex w-full items-center font-medium">
+                      Templates
+                    </Link>
                   </DropdownItem>
                   <DropdownItem>
                     <Link

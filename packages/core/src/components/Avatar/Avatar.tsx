@@ -27,8 +27,8 @@ const avatarVariants = cva(
       color: {
         default: "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400",
         primary: "bg-primary text-primary-foreground",
-        success: "bg-success text-success-foreground",
-        danger: "bg-destructive text-destructive-foreground",
+        success: "bg-emerald-600 text-white dark:bg-emerald-500",
+        danger: "bg-rose-600 text-white dark:bg-rose-500",
       },
     },
     defaultVariants: {

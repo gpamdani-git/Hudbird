@@ -155,7 +155,7 @@ const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
         ref={ref}
         className={cn(
           "text-foreground flex items-center gap-2 text-lg font-bold tracking-tight",
-          context.severity === "danger" && "text-destructive",
+          context.severity === "danger" && "text-rose-600",
           className
         )}
         {...props}

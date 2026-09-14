@@ -75,11 +75,11 @@ export function Faq({
         >
           <div className="mx-auto mb-16 max-w-4xl text-center">
             {label && (
-              <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
+              <div className="mb-6 inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
                 {label}
               </div>
             )}
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+            <h2 className="font-outfit text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
               {title}
             </h2>
             {description && (
@@ -95,10 +95,10 @@ export function Faq({
                   title={faq.question}
                   classNames={{
                     trigger:
-                      "group hover:bg-zinc-50 dark:hover:bg-zinc-800/50 rounded-lg transition-colors",
+                      "group hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200",
                     title:
-                      "font-semibold text-lg transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
-                    content: "text-zinc-600 dark:text-zinc-400 text-base",
+                      "font-outfit font-semibold text-base transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[&[aria-expanded=true]]:text-blue-600 dark:group-[&[aria-expanded=true]]:text-blue-400",
+                    content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed",
                   }}
                 >
                   {faq.answer}
@@ -128,7 +128,7 @@ export function Faq({
                 {label}
               </div>
             )}
-            <h2 className="mb-6 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+            <h2 className="font-outfit mb-6 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
               {title}
             </h2>
             {description && (
@@ -143,10 +143,10 @@ export function Faq({
                   title={faq.question}
                   classNames={{
                     trigger:
-                      "group py-5 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 rounded-lg transition-colors px-3 -mx-3",
+                      "group py-5 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200 px-3 -mx-3",
                     title:
-                      "font-semibold text-lg transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
-                    content: "text-zinc-600 dark:text-zinc-400 text-base px-3 -mx-3",
+                      "font-outfit font-semibold text-base transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[&[aria-expanded=true]]:text-blue-600 dark:group-[&[aria-expanded=true]]:text-blue-400",
+                    content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
                   }}
                 >
                   {faq.answer}

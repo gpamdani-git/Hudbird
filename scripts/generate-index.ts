@@ -1,19 +1,19 @@
 import fs from "fs";
-import { parseHsl, generateColorScale } from "../apps/docs/src/lib/colorUtils";
+import { parseOklch, generateOklchScale } from "../apps/docs/src/lib/colorUtils";
 
 const colors = {
-  primary: "243 75% 59%",
-  secondary: "240 4.8% 95.9%",
-  success: "142 76% 45%",
-  info: "199 89% 48%",
-  warning: "38 92% 50%",
-  destructive: "347 77% 55%",
+  primary: "0.511 0.262 276.966", // Indigo
+  secondary: "0.96 0.01 240", // Zinc 100 approx
+  success: "0.696 0.17 162.48", // Emerald
+  info: "0.685 0.169 237.323", // Sky
+  warning: "0.769 0.188 70.08", // Amber
+  destructive: "0.546 0.245 26.284", // Rose
 };
 
 let scalesCss = "";
-for (const [name, hsl] of Object.entries(colors)) {
-  const { h, s } = parseHsl(`${hsl} 50%`);
-  const scale = generateColorScale(h, s);
+for (const [name, oklchStr] of Object.entries(colors)) {
+  const { c, h } = parseOklch(oklchStr);
+  const scale = generateOklchScale(c, h);
   for (const [k, v] of Object.entries(scale)) {
     scalesCss += `    --${name}-${k}: ${v};\n`;
   }
@@ -32,13 +32,13 @@ for (const name of Object.keys(colors)) {
     --${name}-hover: var(--${name}-${hoverLvl});
     --${name}-active: var(--${name}-${activeLvl});
     --${name}-foreground: 0 0% 100%;
-    --${name}-soft: hsl(var(--${name}-50));
-    --${name}-soft-hover: hsl(var(--${name}-100));
-    --${name}-soft-active: hsl(var(--${name}-200));
-    --${name}-border: hsl(var(--${name}-${baseLvl}));
-    --${name}-border-soft: hsl(var(--${name}-200));
-    --${name}-text: hsl(var(--${name}-700));
-    --${name}-text-soft: hsl(var(--${name}-${baseLvl}));
+    --${name}-soft: oklch(var(--${name}-50));
+    --${name}-soft-hover: oklch(var(--${name}-100));
+    --${name}-soft-active: oklch(var(--${name}-200));
+    --${name}-border: oklch(var(--${name}-${baseLvl}));
+    --${name}-border-soft: oklch(var(--${name}-200));
+    --${name}-text: oklch(var(--${name}-700));
+    --${name}-text-soft: oklch(var(--${name}-${baseLvl}));
 `;
 
   functionalDark += `
@@ -46,11 +46,11 @@ for (const name of Object.keys(colors)) {
     --${name}-hover: var(--${name}-${hoverLvl});
     --${name}-active: var(--${name}-${activeLvl});
     --${name}-foreground: 0 0% 100%;
-    --${name}-soft: color-mix(in oklab, hsl(var(--${name}-${baseLvl})) 15%, transparent);
-    --${name}-soft-hover: color-mix(in oklab, hsl(var(--${name}-${baseLvl})) 25%, transparent);
-    --${name}-soft-active: color-mix(in oklab, hsl(var(--${name}-${baseLvl})) 35%, transparent);
+    --${name}-soft: color-mix(in oklab, oklch(var(--${name}-${baseLvl})) 15%, transparent);
+    --${name}-soft-hover: color-mix(in oklab, oklch(var(--${name}-${baseLvl})) 25%, transparent);
+    --${name}-soft-active: color-mix(in oklab, oklch(var(--${name}-${baseLvl})) 35%, transparent);
     --${name}-border: var(--${name}-${baseLvl});
-    --${name}-border-soft: color-mix(in oklab, hsl(var(--${name}-${baseLvl})) 30%, transparent);
+    --${name}-border-soft: color-mix(in oklab, oklch(var(--${name}-${baseLvl})) 30%, transparent);
     --${name}-text: var(--${name}-300);
     --${name}-text-soft: var(--${name}-400);
 `;
@@ -92,15 +92,15 @@ const themeBlock = `
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
-  --color-ring: hsl(var(--ring));
+  --color-ring: oklch(var(--ring));
 
 ${Object.keys(colors)
   .map(
     (name) => `
-  --color-${name}: hsl(var(--${name}));
-  --color-${name}-hover: hsl(var(--${name}-hover));
-  --color-${name}-active: hsl(var(--${name}-active));
-  --color-${name}-foreground: hsl(var(--${name}-foreground));
+  --color-${name}: oklch(var(--${name}));
+  --color-${name}-hover: oklch(var(--${name}-hover));
+  --color-${name}-active: oklch(var(--${name}-active));
+  --color-${name}-foreground: ${name === "secondary" || name === "warning" ? "hsl(var(--" + name + "-foreground))" : "hsl(var(--" + name + "-foreground))"};
   --color-${name}-soft: var(--${name}-soft);
   --color-${name}-soft-hover: var(--${name}-soft-hover);
   --color-${name}-soft-active: var(--${name}-soft-active);
@@ -109,7 +109,7 @@ ${Object.keys(colors)
   --color-${name}-text: var(--${name}-text);
   --color-${name}-text-soft: var(--${name}-text-soft);
   
-${[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((k) => `  --color-${name}-${k}: hsl(var(--${name}-${k}));`).join("\n")}
+${[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map((k) => `  --color-${name}-${k}: oklch(var(--${name}-${k}));`).join("\n")}
 `
   )
   .join("")}

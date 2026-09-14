@@ -26,8 +26,8 @@ interface SidebarProps {
 // Icon mapping helper
 const getIconForName = (name: string, isGroupTitle: boolean = false) => {
   if (name === "Getting started") return <Home className="h-4 w-4 shrink-0" />;
-  if (name === "Changelog")
-    return <span className="flex h-4 w-4 shrink-0 items-center justify-center">✨</span>;
+  if (name === "Templates") return <Layout className="h-4 w-4 shrink-0" />;
+  if (name === "Changelog") return <Layout className="h-4 w-4 shrink-0" />;
   if (name === "Support & FAQ") return <LifeBuoy className="h-4 w-4 shrink-0" />;
 
   if (isGroupTitle) {

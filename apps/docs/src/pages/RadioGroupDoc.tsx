@@ -149,7 +149,7 @@ export default function RadioGroupDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Radio groups let users select a single choice from a set of mutually exclusive options
             with accessible keyboard arrow navigation and clear visual indicators.
           </p>

@@ -302,78 +302,12 @@ async function runInit() {
   console.log(pc.green(pc.bold("✨ All done! Hudbird UI is ready to use.")));
 }
 
-const collectedNpmDeps = new Set();
-const CORE_DEPS = ["react", "react-dom"];
-
-function extractNpmDependencies(content) {
-  const deps = new Set();
-  const importRegex = /import\s+(?:[^"']+\s+from\s+)?["']([^"']+)["']/g;
-  let match;
-  while ((match = importRegex.exec(content)) !== null) {
-    const pkg = match[1];
-    // Exclude relative, absolute, aliases, and hudbird specific paths
-    if (
-      !pkg.startsWith(".") &&
-      !pkg.startsWith("/") &&
-      !pkg.startsWith("@/") &&
-      !pkg.startsWith("@hudbird/")
-    ) {
-      let basePkg = pkg;
-      if (pkg.startsWith("@")) {
-        const parts = pkg.split("/");
-        if (parts.length >= 2) basePkg = `${parts[0]}/${parts[1]}`;
-      } else {
-        basePkg = pkg.split("/")[0];
-      }
-      if (!CORE_DEPS.includes(basePkg)) deps.add(basePkg);
-    }
-  }
-  return deps;
+let collectedNpmDeps = new Set();
+const registryPath = path.join(TEMPLATES_DIR, "registry.json");
+let registry = {};
+if (fs.existsSync(registryPath)) {
+  registry = JSON.parse(fs.readFileSync(registryPath, "utf-8"));
 }
-
-function copyDirWithTransformSync(src, dest) {
-  if (!fs.existsSync(src)) return;
-  if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
-
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-
-  for (const entry of entries) {
-    const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
-
-    if (entry.isDirectory()) {
-      copyDirWithTransformSync(srcPath, destPath);
-    } else {
-      let content = fs.readFileSync(srcPath, "utf-8");
-
-      // Extract external NPM dependencies
-      if (
-        entry.name.endsWith(".tsx") ||
-        entry.name.endsWith(".ts") ||
-        entry.name.endsWith(".jsx") ||
-        entry.name.endsWith(".js")
-      ) {
-        const deps = extractNpmDependencies(content);
-        for (const dep of deps) collectedNpmDeps.add(dep);
-      }
-
-      // Transform imports from internal relative paths to user project relative paths
-      // 1. Fix utils import (e.g. "../../utils/cn" -> "../utils/cn")
-      content = content.replace(/(\.\.\/)+utils\//g, "../utils/");
-      // 2. Fix core imports in marketing (e.g. "@hudbird/ui" -> "..")
-      content = content.replace(/@hudbird\/ui/g, "..");
-
-      fs.writeFileSync(destPath, content, "utf-8");
-    }
-  }
-}
-
-const DEPENDENCY_MAP = {
-  Testimonials: ["Card", "Avatar"],
-  Faq: ["Accordion"],
-  BentoGrid: ["Card"],
-  Hero: ["Button", "Dropdown"],
-};
 
 function generateIndexTs(baseDir) {
   const indexPath = path.join(baseDir, "index.ts");
@@ -391,23 +325,16 @@ function generateIndexTs(baseDir) {
 async function installComponent(componentName, installedSet = new Set()) {
   if (installedSet.has(componentName)) return;
 
-  let sourceDir = path.join(TEMPLATES_DIR, "core", componentName);
-  let isMarketing = false;
+  const compData = registry[componentName];
 
-  // Check if it's a marketing component
-  if (!fs.existsSync(sourceDir)) {
-    sourceDir = path.join(TEMPLATES_DIR, "marketing", componentName);
-    if (fs.existsSync(sourceDir)) isMarketing = true;
-  }
-
-  if (!fs.existsSync(sourceDir)) {
+  if (!compData) {
     console.log(pc.red(`✖ Component "${componentName}" not found in Hudbird UI registry.`));
     if (installedSet.size === 0) process.exit(1);
     return;
   }
 
   // Check dependencies first
-  const deps = DEPENDENCY_MAP[componentName] || [];
+  const deps = compData.registryDependencies || [];
   for (const dep of deps) {
     if (!installedSet.has(dep)) {
       console.log(pc.blue(`ℹ "${componentName}" requires "${dep}". Installing...`));
@@ -415,12 +342,19 @@ async function installComponent(componentName, installedSet = new Set()) {
     }
   }
 
+  // Add NPM dependencies to our global collection
+  (compData.dependencies || []).forEach((d) => collectedNpmDeps.add(d));
+
   const componentsBaseDir = fs.existsSync(path.join(cwd, "src"))
     ? "src/components/hudbird-ui"
     : "components/hudbird-ui";
-  const targetDir = path.join(cwd, componentsBaseDir, componentName);
 
-  if (fs.existsSync(targetDir)) {
+  let targetDir = path.join(cwd, componentsBaseDir, componentName);
+  if (componentName === "utils") {
+    targetDir = path.join(cwd, componentsBaseDir, "utils");
+  }
+
+  if (fs.existsSync(targetDir) && componentName !== "utils") {
     const response = await prompts({
       type: "confirm",
       name: "overwrite",
@@ -434,12 +368,19 @@ async function installComponent(componentName, installedSet = new Set()) {
   }
 
   console.log(pc.cyan(`📦 Installing ${componentName}...`));
-  copyDirWithTransformSync(sourceDir, targetDir);
+  if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
+
+  for (const file of compData.files) {
+    fs.writeFileSync(path.join(targetDir, file.name), file.content, "utf-8");
+  }
+
   installedSet.add(componentName);
 
-  console.log(
-    pc.green(`✔ Successfully added ${componentName} to ${componentsBaseDir}/${componentName}`)
-  );
+  if (componentName !== "utils") {
+    console.log(
+      pc.green(`✔ Successfully added ${componentName} to ${componentsBaseDir}/${componentName}`)
+    );
+  }
 }
 
 async function runAdd(componentName) {
@@ -452,12 +393,14 @@ async function runAdd(componentName) {
     ? "src/components/hudbird-ui"
     : "components/hudbird-ui";
 
-  // Ensure utils are copied first
-  const targetUtilsDir = path.join(cwd, componentsBaseDir, "utils");
-  const sourceUtilsDir = path.join(TEMPLATES_DIR, "utils");
-  if (fs.existsSync(sourceUtilsDir) && !fs.existsSync(targetUtilsDir)) {
-    console.log(pc.blue(`ℹ Copying utility files to ${componentsBaseDir}/utils...`));
-    copyDirWithTransformSync(sourceUtilsDir, targetUtilsDir);
+  if (!registry[componentName]) {
+    // try to find case-insensitive matching
+    const matchingKey = Object.keys(registry).find(
+      (k) => k.toLowerCase() === componentName.toLowerCase()
+    );
+    if (matchingKey) {
+      componentName = matchingKey;
+    }
   }
 
   await installComponent(componentName);

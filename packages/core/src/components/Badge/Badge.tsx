@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 export type BadgeVariant = "solid" | "soft" | "outline";
-export type BadgeColor = "primary" | "success" | "warning" | "danger";
+export type BadgeColor = "primary" | "secondary" | "success" | "warning" | "danger" | "info";
 export type BadgeSize = "sm" | "md" | "lg";
 export type BadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
@@ -20,9 +20,11 @@ const badgeVariants = cva(
       },
       color: {
         primary: "",
+        secondary: "",
         success: "",
         warning: "",
         danger: "",
+        info: "",
       },
       size: {
         sm: "px-1.5 py-0.5 text-[10px] font-bold min-w-4.5 h-4.5",
@@ -39,63 +41,104 @@ const badgeVariants = cva(
       },
       {
         variant: "solid",
+        color: "secondary",
+        className: "bg-secondary text-secondary-foreground",
+      },
+      {
+        variant: "solid",
         color: "success",
-        className: "bg-success text-success-foreground",
+        className: "bg-emerald-600 text-white dark:bg-emerald-500",
       },
       {
         variant: "solid",
         color: "warning",
-        className: "bg-warning text-warning-foreground font-bold",
+        className: "bg-amber-500 text-zinc-950 font-bold dark:bg-amber-400",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-destructive text-destructive-foreground",
+        className: "bg-rose-600 text-white dark:bg-rose-500",
+      },
+      {
+        variant: "solid",
+        color: "info",
+        className: "bg-sky-600 text-white dark:bg-sky-500",
       },
 
       // Soft (Pastel) Variants
       {
         variant: "soft",
         color: "primary",
-        className: "bg-primary-soft text-primary-text ring-1 ring-inset ring-primary-border-soft",
+        className:
+          "bg-primary-50 text-primary-700 ring-1 ring-inset ring-primary-200 dark:bg-primary-500/15 dark:text-primary-400 dark:ring-primary-500/20",
+      },
+      {
+        variant: "soft",
+        color: "secondary",
+        className:
+          "bg-secondary-50 text-secondary-700 ring-1 ring-inset ring-secondary-200 dark:bg-secondary-500/15 dark:text-secondary-400 dark:ring-secondary-500/20",
       },
       {
         variant: "soft",
         color: "success",
-        className: "bg-success-soft text-success-text ring-1 ring-inset ring-success-border-soft",
+        className:
+          "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:ring-emerald-500/20",
       },
       {
         variant: "soft",
         color: "warning",
-        className: "bg-warning-soft text-warning-text ring-1 ring-inset ring-warning-border-soft",
+        className:
+          "bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:ring-amber-500/20",
       },
       {
         variant: "soft",
         color: "danger",
         className:
-          "bg-destructive-soft text-destructive-text ring-1 ring-inset ring-destructive-border-soft",
+          "bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:ring-rose-500/20",
+      },
+      {
+        variant: "soft",
+        color: "info",
+        className:
+          "bg-sky-50 text-sky-700 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:ring-sky-500/20",
       },
 
       // Outline Variants
       {
         variant: "outline",
         color: "primary",
-        className: "border-primary-border text-primary-text hover:bg-primary-soft",
+        className:
+          "border-primary-600 text-primary-700 hover:bg-primary-50 dark:border-primary-500 dark:text-primary-400 dark:hover:bg-primary-500/15",
+      },
+      {
+        variant: "outline",
+        color: "secondary",
+        className:
+          "border-secondary-600 text-secondary-700 hover:bg-secondary-50 dark:border-secondary-500 dark:text-secondary-400 dark:hover:bg-secondary-500/15",
       },
       {
         variant: "outline",
         color: "success",
-        className: "border-success-border text-success-text hover:bg-success-soft",
+        className:
+          "border-emerald-600 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-500 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
         variant: "outline",
         color: "warning",
-        className: "border-warning-border text-warning-text hover:bg-warning-soft",
+        className:
+          "border-amber-500 text-amber-700 hover:bg-amber-50 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-500/15",
       },
       {
         variant: "outline",
         color: "danger",
-        className: "border-destructive-border text-destructive-text hover:bg-destructive-soft",
+        className:
+          "border-rose-600 text-rose-700 hover:bg-rose-50 dark:border-rose-500 dark:text-rose-400 dark:hover:bg-rose-500/15",
+      },
+      {
+        variant: "outline",
+        color: "info",
+        className:
+          "border-sky-600 text-sky-700 hover:bg-sky-50 dark:border-sky-500 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
     ],
     defaultVariants: {

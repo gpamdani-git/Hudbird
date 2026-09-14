@@ -27,37 +27,12 @@ import {
   Alert,
 } from "@hudbird/ui";
 
-const ColorScaleCard = ({ name, colorBase }: { name: string; colorBase: string }) => {
-  const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-  return (
-    <Card className="bg-card text-card-foreground border-border/60 space-y-3 p-4">
-      <h3 className="text-sm font-semibold capitalize">{name}</h3>
-      <div className="border-border/50 flex h-8 w-full overflow-hidden rounded-md border">
-        {steps.map((step) => (
-          <div
-            key={step}
-            className="h-full flex-1"
-            style={{ backgroundColor: `hsl(var(--${colorBase}-${step}))` }}
-            title={`${name}-${step}`}
-          />
-        ))}
-      </div>
-      <div className="text-muted-foreground flex justify-between px-1 font-mono text-[10px]">
-        <span>50</span>
-        <span>500</span>
-        <span>950</span>
-      </div>
-    </Card>
-  );
-};
-
 export default function ThemesDoc() {
-  const [activeTab, setActiveTab] = useState("account");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <div className="mx-auto w-full">
-      <div className="mb-8 max-w-4xl px-4 sm:px-6">
+      <div className="mt-16 mb-8 max-w-4xl px-4 sm:px-6">
         <h1 className="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
           Theme Builder
         </h1>
@@ -67,26 +42,20 @@ export default function ThemesDoc() {
         </p>
       </div>
 
-      <div className="custom-scrollbar w-full overflow-x-auto px-4 pb-16 sm:px-6">
-        {/* Horizontal scroll container */}
-        <div className="flex min-w-[1500px] items-start gap-8 xl:min-w-full">
-          {/* Column 0: Color Scales (New) */}
-          <div className="max-w-[350px] min-w-[300px] flex-1 space-y-4">
-            <h3 className="mb-2 text-lg font-semibold">Color Scales</h3>
-            <ColorScaleCard name="Primary" colorBase="primary" />
-            <ColorScaleCard name="Secondary" colorBase="secondary" />
-            <ColorScaleCard name="Success" colorBase="success" />
-            <ColorScaleCard name="Info" colorBase="info" />
-            <ColorScaleCard name="Warning" colorBase="warning" />
-            <ColorScaleCard name="Danger" colorBase="destructive" />
-          </div>
+      <div className="w-full px-4 pb-16 sm:px-6">
+        {/* BentoGrid Container - scoped for Theme Editor CSS injection */}
+        <div
+          data-theme-preview
+          className="grid auto-rows-min grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          {/* Card 1: Buttons */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Buttons
+            </h3>
 
-          {/* Column 1: Buttons & Badges Comprehensive Preview */}
-          <div className="max-w-[450px] min-w-[350px] flex-1 space-y-6">
-            <Card className="bg-card text-card-foreground border-border/60 space-y-6 p-6">
-              <h3 className="border-border/50 border-b pb-2 text-lg font-semibold">Buttons</h3>
-
-              <div className="space-y-4">
+            <div className="space-y-6">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Solid</h4>
                 <div className="flex flex-wrap gap-2">
                   <Button variant="solid" color="primary">
@@ -101,13 +70,10 @@ export default function ThemesDoc() {
                   <Button variant="solid" color="danger">
                     Danger
                   </Button>
-                  <Button variant="solid" color="default">
-                    Default
-                  </Button>
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Soft</h4>
                 <div className="flex flex-wrap gap-2">
                   <Button variant="soft" color="primary">
@@ -122,13 +88,10 @@ export default function ThemesDoc() {
                   <Button variant="soft" color="danger">
                     Danger
                   </Button>
-                  <Button variant="soft" color="default">
-                    Default
-                  </Button>
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Outline</h4>
                 <div className="flex flex-wrap gap-2">
                   <Button variant="outline" color="primary">
@@ -143,13 +106,10 @@ export default function ThemesDoc() {
                   <Button variant="outline" color="danger">
                     Danger
                   </Button>
-                  <Button variant="outline" color="default">
-                    Default
-                  </Button>
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Ghost</h4>
                 <div className="flex flex-wrap gap-2">
                   <Button variant="light" color="primary">
@@ -164,19 +124,20 @@ export default function ThemesDoc() {
                   <Button variant="light" color="danger">
                     Danger
                   </Button>
-                  <Button variant="light" color="default">
-                    Default
-                  </Button>
                 </div>
               </div>
-            </Card>
+            </div>
+          </Card>
 
-            <Card className="bg-card text-card-foreground border-border/60 space-y-6 p-6">
-              <h3 className="border-border/50 border-b pb-2 text-lg font-semibold">Badges</h3>
-
-              <div className="space-y-4">
+          {/* Card 2: Badges */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Badges
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Solid</h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-col items-start gap-2">
                   <Badge variant="solid" color="primary">
                     Primary
                   </Badge>
@@ -189,15 +150,11 @@ export default function ThemesDoc() {
                   <Badge variant="solid" color="danger">
                     Danger
                   </Badge>
-                  <Badge variant="solid" color="default">
-                    Default
-                  </Badge>
                 </div>
               </div>
-
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <h4 className="text-muted-foreground text-sm font-medium">Soft</h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-col items-start gap-2">
                   <Badge variant="soft" color="primary">
                     Primary
                   </Badge>
@@ -210,174 +167,147 @@ export default function ThemesDoc() {
                   <Badge variant="soft" color="danger">
                     Danger
                   </Badge>
-                  <Badge variant="soft" color="default">
-                    Default
-                  </Badge>
                 </div>
               </div>
+            </div>
+          </Card>
 
-              <div className="space-y-4">
-                <h4 className="text-muted-foreground text-sm font-medium">Outline</h4>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline" color="primary">
-                    Primary
-                  </Badge>
-                  <Badge variant="outline" color="success">
-                    Success
-                  </Badge>
-                  <Badge variant="outline" color="warning">
-                    Warning
-                  </Badge>
-                  <Badge variant="outline" color="danger">
-                    Danger
-                  </Badge>
-                  <Badge variant="outline" color="default">
-                    Default
-                  </Badge>
-                </div>
-              </div>
-            </Card>
+          {/* Card 3: Inputs & Selects */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs md:col-span-2 lg:col-span-1">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Inputs & Controls
+            </h3>
+            <div className="space-y-4">
+              <Input label="Email address" placeholder="Enter your email" />
+              <Select label="Role" placeholder="Select role">
+                <SelectItem value="admin">Administrator</SelectItem>
+                <SelectItem value="editor">Editor</SelectItem>
+                <SelectItem value="viewer">Viewer</SelectItem>
+              </Select>
+              <Textarea label="Biography" placeholder="Tell us about yourself" rows={3} />
+            </div>
+          </Card>
 
-            <Card className="bg-card text-card-foreground border-border/60 space-y-6 p-6">
-              <h3 className="border-border/50 border-b pb-2 text-lg font-semibold">Alerts</h3>
-              <div className="space-y-4">
-                <Alert
-                  color="info"
-                  title="Information (Soft)"
-                  description="This is an info alert to show semantic info colors."
-                />
-                <Alert
-                  color="success"
-                  title="Success (Flat)"
-                  variant="flat"
-                  description="This is a success alert."
-                />
-                <Alert
-                  color="danger"
-                  title="Danger (Bordered)"
-                  variant="bordered"
-                  description="This is a danger alert."
-                />
-                <Alert
-                  color="warning"
-                  title="Warning (Solid)"
-                  variant="solid"
-                  description="This is a warning alert."
-                />
-              </div>
-            </Card>
-          </div>
+          {/* Card 4: Alerts */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Alerts
+            </h3>
+            <div className="space-y-4">
+              <Alert
+                color="info"
+                title="Information (Soft)"
+                description="This is an info alert to show semantic info colors."
+              />
+              <Alert
+                color="success"
+                title="Success (Flat)"
+                variant="flat"
+                description="Task completed successfully."
+              />
+              <Alert
+                color="warning"
+                title="Warning (Solid)"
+                variant="solid"
+                description="Please verify your email address."
+              />
+              <Alert
+                color="danger"
+                title="Error (Bordered)"
+                variant="bordered"
+                description="An unexpected error occurred during processing."
+              />
+            </div>
+          </Card>
 
-          {/* Column 2: Inputs, Textareas, and Accordions */}
-          <div className="max-w-[400px] min-w-[350px] flex-1 space-y-6">
-            <Card className="bg-card text-card-foreground border-border/60 space-y-6 p-6">
-              <h3 className="text-lg font-semibold">Inputs</h3>
-              <div className="space-y-4">
-                <Input label="Email address" placeholder="Enter your email" />
-                <div className="grid grid-cols-2 gap-4">
-                  <Select label="Country" placeholder="Select">
-                    <SelectItem value="us">United States</SelectItem>
-                    <SelectItem value="uk">United Kingdom</SelectItem>
-                  </Select>
-                  <Select label="Role" placeholder="Role" variant="bordered">
-                    <SelectItem value="admin">Admin</SelectItem>
-                    <SelectItem value="user">User</SelectItem>
-                  </Select>
-                </div>
-                <Textarea label="Bio" placeholder="Tell us about yourself" rows={3} />
-              </div>
-            </Card>
-
-            <Card className="bg-card text-card-foreground border-border/60 p-6">
-              <h3 className="mb-4 text-lg font-semibold">Accordion</h3>
-              <div className="border-border/40 space-y-2 border-t pt-2">
-                <AccordionItem title="Is it accessible?">
-                  Yes. It adheres to the WAI-ARIA design pattern.
-                </AccordionItem>
-                <AccordionItem title="Is it styled?">
-                  Yes. It comes with default styles that matches the other components&apos;
-                  aesthetic.
-                </AccordionItem>
-              </div>
-            </Card>
-
-            <Card className="bg-card text-card-foreground border-border/60 p-6">
-              <h3 className="mb-4 text-lg font-semibold">Pagination</h3>
-              <div className="flex justify-center">
-                <Pagination total={10} initialPage={1} />
-              </div>
-            </Card>
-          </div>
-
-          {/* Column 3: Complex Views, Cards, Dialogs */}
-          <div className="max-w-[400px] min-w-[350px] flex-1 space-y-6">
-            <Card className="bg-card text-card-foreground border-border/60 overflow-hidden">
-              <div className="p-6">
-                <div className="mb-6 flex items-center justify-between">
-                  <div>
-                    <h3 className="mb-1 text-xl font-bold">Payment Details</h3>
-                    <p className="text-muted-foreground text-sm">Enter your payment information.</p>
-                  </div>
-                  <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" name="JD" />
-                </div>
-
-                <div className="space-y-4">
-                  <Input label="Cardholder Name" placeholder="John Doe" />
-                  <Input label="Card Number" placeholder="0000 0000 0000 0000" />
-                </div>
-              </div>
-              <div className="bg-muted border-border/50 flex justify-end gap-3 border-t px-6 py-4">
-                <Button variant="ghost">Cancel</Button>
-                <Button variant="solid" color="primary">
-                  Complete Purchase
-                </Button>
-              </div>
-            </Card>
-
-            <Card className="bg-card text-card-foreground border-border/60 p-6">
-              <h3 className="mb-4 text-lg font-semibold">Tabs & Dialog</h3>
-              <div className="space-y-6">
+          {/* Card 5: Tabs & Pagination */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Navigation
+            </h3>
+            <div className="space-y-8">
+              <div className="space-y-3">
+                <h4 className="text-muted-foreground text-sm font-medium">Tabs</h4>
                 <Tabs variant="solid" fullWidth>
                   <Tab title="Account" />
                   <Tab title="Password" />
                   <Tab title="Settings" />
                 </Tabs>
-
-                <div className="border-border/50 border-t pt-4">
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => setIsDialogOpen(true)}
-                  >
-                    Open Dialog Example
-                  </Button>
-                  <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Edit profile</DialogTitle>
-                        <DialogDescription>
-                          Make changes to your profile here. Click save when you're done.
-                        </DialogDescription>
-                      </DialogHeader>
-                      <div className="grid gap-4 py-4">
-                        <Input label="Name" defaultValue="Pedro Duarte" />
-                        <Input label="Username" defaultValue="@peduarte" />
-                      </div>
-                      <DialogFooter>
-                        <Button
-                          variant="solid"
-                          color="primary"
-                          onClick={() => setIsDialogOpen(false)}
-                        >
-                          Save changes
-                        </Button>
-                      </DialogFooter>
-                    </DialogContent>
-                  </Dialog>
+              </div>
+              <div className="space-y-3">
+                <h4 className="text-muted-foreground text-sm font-medium">Pagination</h4>
+                <div className="flex w-full justify-center">
+                  <Pagination total={5} initialPage={1} />
                 </div>
               </div>
-            </Card>
-          </div>
+            </div>
+          </Card>
+
+          {/* Card 6: Complex View (Dialogs, Avatars) */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto shadow-xs md:col-span-2">
+            <div className="p-6">
+              <div className="mb-6 flex items-center justify-between">
+                <div>
+                  <h3 className="mb-1 text-xl font-bold tracking-tight">Payment Details</h3>
+                  <p className="text-muted-foreground text-sm">Enter your payment information.</p>
+                </div>
+                <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" name="JD" />
+              </div>
+
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                <Input label="Cardholder Name" placeholder="John Doe" />
+                <Input label="Card Number" placeholder="0000 0000 0000 0000" />
+              </div>
+            </div>
+
+            <div className="bg-muted/50 border-border/50 flex items-center justify-end gap-3 border-t px-6 py-4">
+              <Button variant="outline" className="mr-auto" onClick={() => setIsDialogOpen(true)}>
+                Open Settings Dialog
+              </Button>
+              <Button variant="ghost">Cancel</Button>
+              <Button variant="solid" color="primary">
+                Complete Purchase
+              </Button>
+            </div>
+
+            <Dialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Edit profile</DialogTitle>
+                  <DialogDescription>
+                    Make changes to your profile here. Click save when you're done.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <Input label="Name" defaultValue="Pedro Duarte" />
+                  <Input label="Username" defaultValue="@peduarte" />
+                </div>
+                <DialogFooter>
+                  <Button variant="solid" color="primary" onClick={() => setIsDialogOpen(false)}>
+                    Save changes
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+          </Card>
+
+          {/* Card 7: Accordion */}
+          <Card className="bg-card text-card-foreground border-border/60 overflow-x-auto p-6 shadow-xs">
+            <h3 className="border-border/50 mb-6 border-b pb-3 text-xl font-semibold tracking-tight">
+              Accordion
+            </h3>
+            <div className="space-y-1">
+              <AccordionItem title="Is it accessible?">
+                Yes. It adheres to the WAI-ARIA design pattern.
+              </AccordionItem>
+              <AccordionItem title="Is it styled?">
+                Yes. It comes with default styles that matches the other components' aesthetic.
+              </AccordionItem>
+              <AccordionItem title="Is it animated?">
+                Yes. It's animated with Framer Motion natively.
+              </AccordionItem>
+            </div>
+          </Card>
         </div>
       </div>
     </div>

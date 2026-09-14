@@ -11,7 +11,6 @@ export interface NavGroup {
   title?: string; // Optional for root level like Getting Started
   items: NavItem[];
 }
-
 export const navigationData: NavGroup[] = [
   {
     items: [

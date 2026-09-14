@@ -43,7 +43,7 @@ export const selectTriggerVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "border-destructive! focus-visible:ring-destructive!",
+        true: "border-rose-600! focus-visible:ring-rose-600!",
         false: "",
       },
     },
@@ -257,7 +257,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
           {/* Description or Error Message */}
           {isInvalid && errorMessage ? (
-            <p className="text-destructive text-xs font-medium">{errorMessage}</p>
+            <p className="text-xs font-medium text-rose-600">{errorMessage}</p>
           ) : description ? (
             <p className="text-muted-foreground text-xs">{description}</p>
           ) : null}

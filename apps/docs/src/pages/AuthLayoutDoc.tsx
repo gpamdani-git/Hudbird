@@ -35,7 +35,7 @@ export default function App() {
                 New
               </span>
             </div>
-            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+            <p className="pr-8 text-base text-zinc-600 lg:max-w-4xl dark:text-zinc-400">
               A clean, distraction-free layout optimized for authentication and onboarding flows.
             </p>
           </div>

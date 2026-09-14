@@ -64,17 +64,19 @@ export const radioCircleVariants = cva(
       {
         isChecked: true,
         color: "success",
-        className: "bg-success border-success text-success-foreground",
+        className:
+          "bg-emerald-600 border-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-500",
       },
       {
         isChecked: true,
         color: "warning",
-        className: "bg-warning border-warning text-warning-foreground",
+        className:
+          "bg-amber-500 border-amber-500 text-zinc-950 dark:bg-amber-400 dark:border-amber-400",
       },
       {
         isChecked: true,
         color: "danger",
-        className: "bg-destructive border-destructive text-destructive-foreground",
+        className: "bg-rose-600 border-rose-600 text-white dark:bg-rose-500 dark:border-rose-500",
       },
     ],
     defaultVariants: {

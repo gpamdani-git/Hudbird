@@ -295,7 +295,7 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                 Updated
               </span>
             </div>
-            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
+            <p className="pr-8 text-base text-zinc-600 lg:max-w-4xl dark:text-zinc-400">
               A production-ready application layout simulating page transitions. Inspired by
               Catalyst UI.
             </p>

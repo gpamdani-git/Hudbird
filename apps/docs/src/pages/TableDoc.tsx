@@ -71,7 +71,7 @@ export default function TableDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             A responsive table component for displaying tabular data.
           </p>
         </div>

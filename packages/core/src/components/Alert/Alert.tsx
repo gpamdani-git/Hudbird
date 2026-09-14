@@ -5,8 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 import { cn } from "../../utils/cn";
 
-export type AlertVariant = "solid" | "flat" | "bordered";
-export type AlertColor = "primary" | "success" | "danger" | "warning" | "info";
+export type AlertVariant = "solid" | "flat" | "soft" | "bordered" | "outline";
+export type AlertColor = "primary" | "secondary" | "success" | "danger" | "warning" | "info";
 
 const alertVariants = cva(
   "relative flex w-full items-start gap-3.5 p-4 rounded-2xl text-sm transition-all duration-200",
@@ -15,10 +15,13 @@ const alertVariants = cva(
       variant: {
         solid: "shadow-xs text-white",
         flat: "shadow-none",
+        soft: "shadow-none",
         bordered: "border-2 bg-transparent",
+        outline: "border-2 bg-transparent",
       },
       color: {
         primary: "",
+        secondary: "",
         success: "",
         danger: "",
         warning: "",
@@ -34,78 +37,101 @@ const alertVariants = cva(
       },
       {
         variant: "solid",
+        color: "secondary",
+        className: "bg-secondary text-secondary-foreground shadow-secondary/20",
+      },
+      {
+        variant: "solid",
         color: "success",
-        className: "bg-success text-success-foreground shadow-success/20",
+        className: "bg-emerald-600 text-white shadow-emerald-600/20 dark:bg-emerald-500",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-destructive text-destructive-foreground shadow-destructive/20",
+        className: "bg-rose-600 text-white shadow-rose-600/20 dark:bg-rose-500",
       },
       {
         variant: "solid",
         color: "warning",
-        className: "bg-warning text-warning-foreground font-medium shadow-warning/20",
+        className: "bg-amber-500 text-zinc-950 font-bold shadow-amber-500/20 dark:bg-amber-400",
       },
       {
         variant: "solid",
         color: "info",
-        className: "bg-info text-info-foreground shadow-info/20",
+        className: "bg-sky-600 text-white shadow-sky-600/20 dark:bg-sky-500",
       },
 
       // Flat Variants
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
         color: "primary",
-        className: "bg-primary-soft text-primary-text border border-primary-border-soft",
+        className:
+          "bg-primary-50 text-primary-700 border border-primary-200 dark:bg-primary-500/15 dark:text-primary-400 dark:border-primary-500/20",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
+        color: "secondary",
+        className:
+          "bg-secondary-50 text-secondary-700 border border-secondary-200 dark:bg-secondary-500/15 dark:text-secondary-400 dark:border-secondary-500/20",
+      },
+      {
+        variant: ["flat", "soft"],
         color: "success",
-        className: "bg-success-soft text-success-text border border-success-border-soft",
+        className:
+          "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/20",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
         color: "danger",
         className:
-          "bg-destructive-soft text-destructive-text border border-destructive-border-soft",
+          "bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:border-rose-500/20",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
         color: "warning",
-        className: "bg-warning-soft text-warning-text border border-warning-border-soft",
+        className:
+          "bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/20",
       },
       {
-        variant: "flat",
+        variant: ["flat", "soft"],
         color: "info",
-        className: "bg-info-soft text-info-text border border-info-border-soft",
+        className:
+          "bg-sky-50 text-sky-700 border border-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:border-sky-500/20",
       },
 
       // Bordered Variants
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
         color: "primary",
-        className: "border-primary text-primary",
+        className:
+          "border-primary-600 text-primary-700 dark:border-primary-500 dark:text-primary-400",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
+        color: "secondary",
+        className:
+          "border-secondary-600 text-secondary-700 dark:border-secondary-500 dark:text-secondary-400",
+      },
+      {
+        variant: ["bordered", "outline"],
         color: "success",
-        className: "border-success text-success",
+        className:
+          "border-emerald-600 text-emerald-700 dark:border-emerald-500 dark:text-emerald-400",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
         color: "danger",
-        className: "border-destructive text-destructive",
+        className: "border-rose-600 text-rose-700 dark:border-rose-500 dark:text-rose-400",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
         color: "warning",
-        className: "border-warning text-warning",
+        className: "border-amber-500 text-amber-700 dark:border-amber-400 dark:text-amber-400",
       },
       {
-        variant: "bordered",
+        variant: ["bordered", "outline"],
         color: "info",
-        className: "border-info text-info",
+        className: "border-sky-600 text-sky-700 dark:border-sky-500 dark:text-sky-400",
       },
     ],
     defaultVariants: {

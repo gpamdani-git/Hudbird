@@ -34,34 +34,32 @@ export default function GettingStartedDoc() {
             <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
               Getting started
             </h1>
-            <p className="mb-8 pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+            <Text className="mb-8 pr-12 text-base text-zinc-600 dark:text-zinc-400">
               Fly through your development. Minimize the noise, keep the essence.
-            </p>
+            </Text>
           </div>
           <PageToolbar />
         </div>
 
-        <div className="space-y-4 rounded-2xl border border-indigo-100 bg-indigo-50 p-6 md:p-8 dark:border-indigo-900/50 dark:bg-indigo-950/30">
-          <h2 className="text-xl font-bold text-indigo-900 dark:text-indigo-300">
-            The Hudbird DNA
-          </h2>
-          <div className="space-y-4 text-indigo-800/80 dark:text-indigo-200/80">
-            <p>
-              <Strong className="text-indigo-900 dark:text-indigo-200">Precise Navigation</Strong> —
+        <div className="border-black-100 bg-black-50 dark:border-black-900/50 dark:bg-black-950/30 space-y-4 rounded-2xl border p-6 md:p-8">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">The Hudbird DNA</h2>
+          <div className="space-y-4 text-zinc-900 dark:text-zinc-50">
+            <Text>
+              <Strong className="text-zinc-900 dark:text-zinc-50">Precise Navigation</Strong> —
               Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library
               ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang
               sangat presisi.
-            </p>
-            <p>
-              <Strong className="text-indigo-900 dark:text-indigo-200">Aesthetic Crown</Strong> —
+            </Text>
+            <Text>
+              <Strong className="text-zinc-900 dark:text-zinc-50">Aesthetic Crown</Strong> —
               Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
               elegan dan premium meskipun mengusung tema minimalis.
-            </p>
-            <p>
-              <Strong className="text-indigo-900 dark:text-indigo-200">Featherweight Core</Strong> —
+            </Text>
+            <Text>
+              <Strong className="text-zinc-900 dark:text-zinc-50">Featherweight Core</Strong> —
               Sangat ringan, cepat, dan berfokus menghilangkan visual noise yang tidak perlu pada
               performa web modern.
-            </p>
+            </Text>
           </div>
         </div>
       </div>
@@ -124,7 +122,7 @@ npm run dev"
         <div className="mt-6 space-y-4">
           <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
             <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
-              🧠 Auto Dependency Resolution
+              Auto Dependency Resolution
             </h4>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
               When you install a component (e.g. <Code>Hero</Code>), the CLI will automatically
@@ -135,7 +133,7 @@ npm run dev"
             </p>
           </div>
           <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">📁 Smart Pathing</h4>
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">Smart Pathing</h4>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
               The CLI detects your folder structure. If you have a <Code>src/</Code> directory,
               components are placed in <Code>src/components/hudbird-ui</Code>. If not, they are
@@ -143,9 +141,7 @@ npm run dev"
             </p>
           </div>
           <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
-              🛡️ Overwrite Protection
-            </h4>
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">Overwrite Protection</h4>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
               Accidentally ran the install command twice? The CLI checks if a component already
               exists and prompts you before overwriting, protecting your customized code.
@@ -185,9 +181,7 @@ export function App() {
 
       {/* 6. Setup font family */}
       <section id="setup-font" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-          Optional: Setup Plus Jakarta Sans
-        </h2>
+        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Optional: Setup Font</h2>
         <Text>
           To achieve the exact typography aesthetic seen in our documentation, we recommend using{" "}
           <Strong>Plus Jakarta Sans</Strong>. First, import the font in your main CSS or HTML file:

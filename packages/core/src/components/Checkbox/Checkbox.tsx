@@ -42,13 +42,15 @@ const checkboxControlVariants = cva(
       {
         isChecked: true,
         color: "success",
-        className: "bg-success border-success text-success-foreground shadow-xs",
+        className:
+          "bg-emerald-600 border-emerald-600 text-white shadow-xs dark:bg-emerald-500 dark:border-emerald-500",
       },
       // Danger checked state
       {
         isChecked: true,
         color: "danger",
-        className: "bg-destructive border-destructive text-destructive-foreground shadow-xs",
+        className:
+          "bg-rose-600 border-rose-600 text-white shadow-xs dark:bg-rose-500 dark:border-rose-500",
       },
     ],
     defaultVariants: {

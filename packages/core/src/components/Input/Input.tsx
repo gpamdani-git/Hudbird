@@ -33,7 +33,7 @@ const inputWrapperVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "!border-destructive focus-within:!border-destructive focus-within:!ring-destructive/20",
+        true: "!border-rose-600 focus-within:!border-rose-600 focus-within:!ring-rose-600/20",
         false: "",
       },
       isDisabled: {
@@ -175,7 +175,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <label
             className={cn(
               "mb-1.5 text-xs font-semibold transition-colors select-none",
-              isInvalid ? "text-destructive" : "text-foreground",
+              isInvalid ? "text-rose-600" : "text-foreground",
               disabled && "cursor-not-allowed opacity-50"
             )}
           >
@@ -210,7 +210,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               <span
                 className={cn(
                   "text-[10px] leading-tight font-semibold tracking-wide uppercase transition-colors select-none",
-                  isInvalid ? "text-destructive" : "text-muted-foreground"
+                  isInvalid ? "text-rose-600" : "text-muted-foreground"
                 )}
               >
                 {label}
@@ -275,7 +275,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {isInvalid && errorMessage ? (
           <p
             role="alert"
-            className="animate-in fade-in-0 slide-in-from-top-0.5 text-destructive mt-1.5 flex items-center gap-1 text-xs font-medium duration-150"
+            className="animate-in fade-in-0 slide-in-from-top-0.5 mt-1.5 flex items-center gap-1 text-xs font-medium text-rose-600 duration-150"
           >
             {errorMessage}
           </p>

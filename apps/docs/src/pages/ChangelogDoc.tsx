@@ -65,7 +65,7 @@ export default function ChangelogDoc() {
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
             Changelog
           </h1>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Latest updates, improvements, and new features in Hudbird UI.
           </p>
         </div>

@@ -152,7 +152,7 @@ export default function AvatarDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Visual representation of a user or entity using photos, initials, or status icons.
           </p>
         </div>

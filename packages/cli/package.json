@@ -11,7 +11,7 @@
     "templates"
   ],
   "scripts": {
-    "prepack": "node scripts/build-templates.js"
+    "prepack": "node scripts/build-registry.js"
   },
   "dependencies": {
     "picocolors": "^1.1.1",

@@ -121,27 +121,33 @@ export const tabColorStyles: Record<
   },
   primary: {
     solid: "!bg-primary !text-primary-foreground shadow-xs",
-    light: "text-primary-text bg-primary-soft",
-    underlined: "!text-primary-text !border-primary",
-    bordered: "bg-primary-soft text-primary-text border-primary-border-soft",
+    light: "text-primary-700 bg-primary-50 dark:text-primary-400 dark:bg-primary-500/15",
+    underlined:
+      "!text-primary-700 !border-primary-600 dark:!text-primary-400 dark:!border-primary-400",
+    bordered:
+      "bg-primary-50 text-primary-700 border-primary-200 dark:bg-primary-500/15 dark:text-primary-400 dark:border-primary-500/20",
   },
   success: {
-    solid: "!bg-success !text-success-foreground shadow-xs",
-    light: "text-success-text bg-success-soft",
-    underlined: "!text-success-text !border-success",
-    bordered: "bg-success-soft text-success-text border-success-border-soft",
+    solid: "!bg-emerald-600 !text-white shadow-xs dark:!bg-emerald-500",
+    light: "text-emerald-700 bg-emerald-50 dark:text-emerald-400 dark:bg-emerald-500/15",
+    underlined:
+      "!text-emerald-700 !border-emerald-600 dark:!text-emerald-400 dark:!border-emerald-400",
+    bordered:
+      "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/20",
   },
   warning: {
-    solid: "!bg-warning !text-warning-foreground shadow-xs",
-    light: "text-warning-text bg-warning-soft",
-    underlined: "!text-warning-text !border-warning",
-    bordered: "bg-warning-soft text-warning-text border-warning-border-soft",
+    solid: "!bg-amber-500 !text-zinc-950 shadow-xs dark:!bg-amber-400",
+    light: "text-amber-700 bg-amber-50 dark:text-amber-400 dark:bg-amber-500/15",
+    underlined: "!text-amber-700 !border-amber-500 dark:!text-amber-400 dark:!border-amber-400",
+    bordered:
+      "bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/20",
   },
   danger: {
-    solid: "!bg-destructive !text-destructive-foreground shadow-xs",
-    light: "text-destructive-text bg-destructive-soft",
-    underlined: "!text-destructive-text !border-destructive",
-    bordered: "bg-destructive-soft text-destructive-text border-destructive-border-soft",
+    solid: "!bg-rose-600 !text-white shadow-xs dark:!bg-rose-500",
+    light: "text-rose-700 bg-rose-50 dark:text-rose-400 dark:bg-rose-500/15",
+    underlined: "!text-rose-700 !border-rose-600 dark:!text-rose-400 dark:!border-rose-400",
+    bordered:
+      "bg-rose-50 text-rose-700 border-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:border-rose-500/20",
   },
 };
 

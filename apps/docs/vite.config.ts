@@ -8,10 +8,10 @@ export default defineConfig({
   publicDir: "../../public",
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-      "@hudbird/ui": path.resolve(__dirname, "../../packages/core/src"),
-      "@hudbird/theme": path.resolve(__dirname, "../../packages/theme/src"),
-      "@hudbird/marketing": path.resolve(__dirname, "../../packages/marketing/src"),
+      "@": path.resolve(import.meta.dirname, "./src"),
+      "@hudbird/ui": path.resolve(import.meta.dirname, "../../packages/core/src"),
+      "@hudbird/theme": path.resolve(import.meta.dirname, "../../packages/theme/src"),
+      "@hudbird/marketing": path.resolve(import.meta.dirname, "../../packages/marketing/src"),
     },
   },
   server: {

@@ -223,7 +223,7 @@ const dropdownItemVariants = cva(
     variants: {
       variant: {
         default: "text-popover-foreground hover:bg-accent focus:bg-accent",
-        danger: "text-destructive hover:bg-destructive/10 focus:bg-destructive/10 font-medium",
+        danger: "text-rose-600 hover:bg-rose-600/10 focus:bg-rose-600/10 font-medium",
       },
     },
     defaultVariants: {

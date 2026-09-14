@@ -175,7 +175,7 @@ export default function ComboBoxDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Advanced searchable autocomplete dropdown supporting single selection and multi-select
             tags/chips with live fuzzy filtering.
           </p>

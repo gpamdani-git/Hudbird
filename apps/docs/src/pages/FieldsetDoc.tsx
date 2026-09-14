@@ -118,7 +118,7 @@ export default function FieldsetDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Structural container used to group related form controls, provide legends, render
             descriptive helper guidance, support left-aligned labels or split section layouts, and
             broadcast collective error states.

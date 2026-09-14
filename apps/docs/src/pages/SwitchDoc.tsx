@@ -68,7 +68,7 @@ export default function SwitchDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             A control that allows the user to toggle between checked and not checked.
           </p>
         </div>

@@ -44,7 +44,7 @@ export default function TextDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Typographic components for rendering paragraphs, strong text, and inline code.
           </p>
         </div>

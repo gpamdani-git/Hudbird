@@ -1,12 +1,61 @@
-export const adjustLightness = (hslStr: string, delta: number) => {
-  const parts = hslStr.replace(/%/g, "").split(" ");
-  if (parts.length === 3) {
-    const l = parseFloat(parts[2]);
-    return `${parts[0]} ${parts[1]}% ${Math.max(0, Math.min(100, l + delta))}%`;
-  }
-  return hslStr;
+import { oklch, parseHex, formatHex } from "culori";
+
+export const hexToOklch = (hexStr: string) => {
+  const color = oklch(hexStr);
+  if (!color) return "0.5 0.1 0"; // fallback
+  const l = Number(color.l.toFixed(3));
+  const c = Number(color.c.toFixed(3));
+  const h = Number((color.h || 0).toFixed(3));
+  return `${l} ${c} ${h}`;
 };
 
+export const parseOklch = (oklchStr: string) => {
+  const parts = oklchStr.trim().split(" ");
+  return {
+    l: parseFloat(parts[0]),
+    c: parseFloat(parts[1]),
+    h: parseFloat(parts[2] || "0"),
+  };
+};
+
+// Fungsi kalkulasi pintar untuk Primary Base Color menggunakan Non-Linear Anchor Curve
+export const generateThemeColorScales = (c_base: number, h: number) => {
+  return {
+    light: {
+      50: `0.96 ${Number((c_base * 0.35).toFixed(3))} ${h}`,
+      100: `0.92 ${Number((c_base * 0.5).toFixed(3))} ${h}`,
+      200: `0.88 ${Number((c_base * 0.65).toFixed(3))} ${h}`,
+      300: `0.80 ${Number((c_base * 0.8).toFixed(3))} ${h}`,
+      400: `0.70 ${Number((c_base * 0.9).toFixed(3))} ${h}`,
+      500: `0.60 ${Number((c_base * 0.95).toFixed(3))} ${h}`,
+      600: `0.53 ${Number((c_base * 1.0).toFixed(3))} ${h}`,
+      700: `0.44 ${Number((c_base * 0.85).toFixed(3))} ${h}`,
+      800: `0.35 ${Number((c_base * 0.65).toFixed(3))} ${h}`,
+      900: `0.26 ${Number((c_base * 0.5).toFixed(3))} ${h}`,
+      950: `0.18 ${Number((c_base * 0.35).toFixed(3))} ${h}`,
+    },
+    dark: {
+      50: `0.14 ${Number((c_base * 0.25).toFixed(3))} ${h}`,
+      100: `0.18 ${Number((c_base * 0.3).toFixed(3))} ${h}`,
+      200: `0.24 ${Number((c_base * 0.45).toFixed(3))} ${h}`,
+      300: `0.33 ${Number((c_base * 0.6).toFixed(3))} ${h}`,
+      400: `0.43 ${Number((c_base * 0.75).toFixed(3))} ${h}`,
+      500: `0.53 ${Number((c_base * 0.85).toFixed(3))} ${h}`,
+      600: `0.62 ${Number((c_base * 0.95).toFixed(3))} ${h}`,
+      700: `0.72 ${Number((c_base * 0.7).toFixed(3))} ${h}`,
+      800: `0.82 ${Number((c_base * 0.45).toFixed(3))} ${h}`,
+      900: `0.93 ${Number((c_base * 0.2).toFixed(3))} ${h}`,
+      950: `0.96 ${Number((c_base * 0.1).toFixed(3))} ${h}`,
+    },
+  };
+};
+
+export const oklchToHex = (l: number, c: number, h: number) => {
+  const hex = formatHex({ mode: "oklch", l, c, h });
+  return hex || "#000000";
+};
+
+// Deprecated: Kept for backwards compatibility if needed elsewhere temporarily
 export const generateColorScale = (h: number, s: number) => {
   return {
     50: `${h} ${s}% 97%`,
@@ -21,29 +70,6 @@ export const generateColorScale = (h: number, s: number) => {
     900: `${h} ${s}% 15%`,
     950: `${h} ${s}% 10%`,
   };
-};
-
-export const hslToRgb = (h: number, s: number, l: number) => {
-  s /= 100;
-  l /= 100;
-  const k = (n: number) => (n + h / 30) % 12;
-  const a = s * Math.min(l, 1 - l);
-  const f = (n: number) => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
-  return [Math.round(255 * f(0)), Math.round(255 * f(8)), Math.round(255 * f(4))];
-};
-
-export const getLuminance = (r: number, g: number, b: number) => {
-  const [rs, gs, bs] = [r, g, b].map((c) => {
-    c = c / 255;
-    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-  });
-  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
-};
-
-export const getContrastRatio = (l1: number, l2: number) => {
-  const lighter = Math.max(l1, l2);
-  const darker = Math.min(l1, l2);
-  return (lighter + 0.05) / (darker + 0.05);
 };
 
 export const parseHsl = (hslStr: string) => {

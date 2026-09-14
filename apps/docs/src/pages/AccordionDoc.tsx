@@ -142,7 +142,7 @@ export default function AccordionDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Accordions allow users to toggle the display of complex sections of content in an
             organized, collapsible view with smooth grid transitions and WAI-ARIA disclosure
             accessibility.

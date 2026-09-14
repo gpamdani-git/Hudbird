@@ -127,7 +127,7 @@ export default function TooltipDoc() {
               Component
             </span>
           </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
+          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
             Tooltips display contextual informational labels when users hover over or focus an
             interactive element, with automatic directional arrows and full keyboard support.
           </p>
