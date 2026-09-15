@@ -394,7 +394,7 @@ export default function NavbarDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Button } from '@hudbird/ui'
+          code={`import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@/components/hudbird-ui/Navbar";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 export default function StandardNavbarExample() {
   const [activeTab, setActiveTab] = useState('features')

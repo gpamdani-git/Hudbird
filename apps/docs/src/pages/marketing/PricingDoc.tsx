@@ -40,11 +40,8 @@ export const pricingTocItems = [
 ];
 
 const threeTierCode = `import { useState } from 'react'
-import { Button } from '@hudbird/ui'
-import { 
-  PricingSection, PricingHeader, PricingBadge, PricingTitle, PricingDescription, PricingToggle,
-  PricingGrid, PricingTier, PricingTierHeader, PricingTierName, PricingTierDescription, PricingTierPrice, PricingTierFeatures, PricingTierFeature
-} from '@hudbird/marketing'
+import { Button } from "@/components/hudbird-ui/Button";
+import { PricingSection, PricingHeader, PricingBadge, PricingTitle, PricingDescription, PricingToggle, PricingGrid, PricingTier, PricingTierHeader, PricingTierName, PricingTierDescription, PricingTierPrice, PricingTierFeatures, PricingTierFeature } from "@/components/hudbird-ui/Pricing";
 
 function Example() {
   const [isAnnual, setIsAnnual] = useState(false)

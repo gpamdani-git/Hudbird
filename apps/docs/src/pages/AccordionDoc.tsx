@@ -190,7 +190,7 @@ export default function AccordionDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Accordion, AccordionItem } from "@hudbird/ui";
+          code={`import { Accordion, AccordionItem } from "@/components/hudbird-ui/Accordion";
 import { Zap, Shield, Sparkles } from "lucide-react";
 
 export default function Example() {

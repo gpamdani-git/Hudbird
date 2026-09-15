@@ -1,5 +1,13 @@
 # docs
 
+## 0.1.7
+
+### Patch Changes
+
+- Updated dependencies
+  - @hudbird/ui@1.3.0
+  - @hudbird/marketing@1.3.0
+
 ## 0.1.6
 
 ### Patch Changes

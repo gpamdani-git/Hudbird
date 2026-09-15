@@ -214,7 +214,7 @@ export default function TabsDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Tabs, Tab, Card, CardBody } from "@hudbird/ui";
+          code={`import { Tabs } from "@/components/hudbird-ui/Tabs";\nimport { Tab } from "@/components/hudbird-ui/Tab";\nimport { Card, CardBody } from "@/components/hudbird-ui/Card";
 import { Image, Music, Video } from "lucide-react";
 
 export default function Example() {

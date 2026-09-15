@@ -199,7 +199,7 @@ export default function ComboBoxDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { ComboBox } from '@hudbird/ui'
+          code={`import { ComboBox } from "@/components/hudbird-ui/ComboBox";
 
 const frameworks = [
   { value: 'react', label: 'React' },
@@ -281,7 +281,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { ComboBox } from '@hudbird/ui'
+import { ComboBox } from "@/components/hudbird-ui/ComboBox";
 
 function Example() {
   const [selectedCountry, setSelectedCountry] = useState('id')
@@ -338,7 +338,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { ComboBox } from '@hudbird/ui'
+import { ComboBox } from "@/components/hudbird-ui/ComboBox";
 
 function Example() {
   const [skills, setSkills] = useState(['react', 'typescript', 'tailwind'])
@@ -406,7 +406,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { ComboBox } from '@hudbird/ui'
+            code={`import { ComboBox } from "@/components/hudbird-ui/ComboBox";
 
 function Example() {
   return (
@@ -459,7 +459,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { ComboBox } from '@hudbird/ui'
+            code={`import { ComboBox } from "@/components/hudbird-ui/ComboBox";
 
 function Example() {
   return (

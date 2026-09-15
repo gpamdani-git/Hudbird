@@ -1,5 +1,16 @@
 # @hudbird/ui
 
+## 1.3.0
+
+### Minor Changes
+
+- Refactored component import architecture to CLI-based local ownership. Removed barrel files to solve circular dependencies and improve tree-shaking.
+
+### Patch Changes
+
+- Updated dependencies
+  - @hudbird/theme@1.3.0
+
 ## 1.2.5
 
 ### Patch Changes

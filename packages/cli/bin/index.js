@@ -309,19 +309,6 @@ if (fs.existsSync(registryPath)) {
   registry = JSON.parse(fs.readFileSync(registryPath, "utf-8"));
 }
 
-function generateIndexTs(baseDir) {
-  const indexPath = path.join(baseDir, "index.ts");
-  if (!fs.existsSync(baseDir)) return;
-  const entries = fs.readdirSync(baseDir, { withFileTypes: true });
-  let exportsContent = "";
-  for (const entry of entries) {
-    if (entry.isDirectory() && entry.name !== "utils") {
-      exportsContent += `export * from "./${entry.name}";\n`;
-    }
-  }
-  fs.writeFileSync(indexPath, exportsContent, "utf-8");
-}
-
 async function installComponent(componentName, installedSet = new Set()) {
   if (installedSet.has(componentName)) return;
 
@@ -404,11 +391,6 @@ async function runAdd(componentName) {
   }
 
   await installComponent(componentName);
-
-  // Generate index.ts to export all installed components
-  const baseDir = path.join(cwd, componentsBaseDir);
-  generateIndexTs(baseDir);
-  console.log(pc.green(`✔ Updated ${componentsBaseDir}/index.ts`));
 
   // Install collected missing NPM dependencies
   const pkgJsonPath = path.join(cwd, "package.json");

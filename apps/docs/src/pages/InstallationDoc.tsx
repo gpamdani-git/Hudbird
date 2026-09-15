@@ -71,7 +71,7 @@ export default defineConfig({
         <p>Now you can import and use any BlankUI components directly in your application.</p>
         <CodeBlock
           language="tsx"
-          code={`import { Button, Alert } from "@hudbird/ui";
+          code={`import { Button } from "@/components/hudbird-ui/Button";\nimport { Alert } from "@/components/hudbird-ui/Alert";
 
 function App() {
   return (

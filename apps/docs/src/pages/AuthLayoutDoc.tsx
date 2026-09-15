@@ -59,7 +59,7 @@ export default function App() {
         <div id="installation" className="scroll-mt-24">
           <InstallationTabs
             componentName="auth-layout"
-            manualCode={`import { Card, CardBody, Heading } from "@hudbird/ui";
+            manualCode={`import { Card, CardBody } from "@/components/hudbird-ui/Card";\nimport { Heading } from "@/components/hudbird-ui/Heading";
 
 export default function Example() {
   return (

@@ -202,7 +202,7 @@ export default function HeadingDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Heading } from '@hudbird/ui'
+          code={`import { Heading } from "@/components/hudbird-ui/Heading";
 
 export default function Example() {
   return (
@@ -296,7 +296,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@hudbird/ui'
+            code={`import { Heading } from "@/components/hudbird-ui/Heading";
 
 export default function HierarchyExample() {
   return (
@@ -373,7 +373,7 @@ export default function HierarchyExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@hudbird/ui'
+            code={`import { Heading } from "@/components/hudbird-ui/Heading";
 
 {/* 1. Default high-contrast */}
 <Heading as="h2" color="default">
@@ -438,7 +438,7 @@ export default function HierarchyExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Heading } from '@hudbird/ui'
+            code={`import { Heading } from "@/components/hudbird-ui/Heading";
 
 export default function ArticleSections() {
   return (

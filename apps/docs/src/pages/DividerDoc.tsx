@@ -143,7 +143,7 @@ export default function DividerDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Divider } from '@hudbird/ui'
+          code={`import { Divider } from "@/components/hudbird-ui/Divider";
 
 function Example() {
   return (
@@ -238,7 +238,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Divider } from '@hudbird/ui'
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
 
 function Example() {
   return (
@@ -288,7 +288,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Divider } from '@hudbird/ui'
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
 
 function Example() {
   return (
@@ -358,7 +358,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Divider, Button } from '@hudbird/ui'
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -423,7 +423,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Divider } from '@hudbird/ui'
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
 
 function Example() {
   return (

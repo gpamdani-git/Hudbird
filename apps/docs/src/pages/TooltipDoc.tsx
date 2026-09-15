@@ -160,7 +160,7 @@ export default function TooltipDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Tooltip, Button } from "@hudbird/ui";
+          code={`import { Tooltip } from "@/components/hudbird-ui/Tooltip";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { Share2 } from "lucide-react";
 
 export default function Example() {

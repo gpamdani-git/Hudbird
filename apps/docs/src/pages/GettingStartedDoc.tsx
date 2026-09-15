@@ -164,7 +164,7 @@ npm run dev"
         <div className="mt-4">
           <CodeBlock
             code={`import { useNavigate } from "react-router-dom";
-import { HudbirdProvider } from "@hudbird/ui";
+import { HudbirdProvider } from "@/components/hudbird-ui/HudbirdProvider";
 
 export function App() {
   const navigate = useNavigate();

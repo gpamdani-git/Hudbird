@@ -214,7 +214,7 @@ export default function CardDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Button } from '@hudbird/ui'
+          code={`import { Card, CardHeader, CardBody, CardFooter } from "@/components/hudbird-ui/Card";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 export default function Example() {
   const [isFollowing, setIsFollowing] = useState(false)
@@ -366,7 +366,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardHeader, CardBody, CardFooter } from '@hudbird/ui'
+            code={`import { Card, CardHeader, CardBody, CardFooter } from "@/components/hudbird-ui/Card";
 
 {/* 1. Shadow Variant (Default) */}
 <Card variant="shadow">
@@ -474,7 +474,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Card, CardHeader, CardBody, CardFooter, Badge } from '@hudbird/ui'
+import { Card, CardHeader, CardBody, CardFooter } from "@/components/hudbird-ui/Card";\nimport { Badge } from "@/components/hudbird-ui/Badge";
 
 export function InteractiveCardsExample() {
   const [clicks, setClicks] = useState(0)
@@ -610,7 +610,7 @@ export function InteractiveCardsExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardHeader, CardBody, CardFooter, Avatar, Badge } from '@hudbird/ui'
+            code={`import { Card, CardHeader, CardBody, CardFooter } from "@/components/hudbird-ui/Card";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Badge } from "@/components/hudbird-ui/Badge";
 import { Heart, Share2, Bookmark, MoreVertical } from 'lucide-react'
 
 export function RichContentCard() {
@@ -721,7 +721,7 @@ export function RichContentCard() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Card, CardFooter, Button } from '@hudbird/ui'
+            code={`import { Card, CardFooter } from "@/components/hudbird-ui/Card";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { Play, Music2 } from 'lucide-react'
 
 export function ImageCoverCard() {

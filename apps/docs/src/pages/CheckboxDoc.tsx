@@ -141,7 +141,7 @@ export default function CheckboxDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Checkbox } from '@hudbird/ui'
+          code={`import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   return (
@@ -214,7 +214,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@hudbird/ui'
+            code={`import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   return (
@@ -257,7 +257,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@hudbird/ui'
+            code={`import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   return (
@@ -302,7 +302,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@hudbird/ui'
+            code={`import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   return (
@@ -350,7 +350,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Checkbox } from '@hudbird/ui'
+            code={`import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   return (
@@ -411,7 +411,7 @@ function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Checkbox } from '@hudbird/ui'
+import { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 function Example() {
   const [selected, setSelected] = useState(['notifications'])

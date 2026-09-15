@@ -165,6 +165,7 @@ export default function App() {
             <div className={`relative w-full max-w-full min-w-0 flex-1`}>
               <Suspense fallback={<DocLoadingSkeleton />}>
                 <Routes>
+                  <Route path="/docs" element={<GettingStartedDoc />} />
                   <Route path="/support" element={<SupportDoc />} />
                   <Route path="/changelog" element={<ChangelogDoc />} />
                   <Route path="/themes" element={<ThemesDoc />} />

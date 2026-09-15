@@ -298,7 +298,7 @@ export default function SelectDoc() {
 
         <CodeBlock
           code={`import { useState } from "react";
-import { Select, SelectItem } from "@hudbird/ui";
+import { Select, SelectItem } from "@/components/hudbird-ui/Select";
 import { Shield, UserCheck, Eye, Settings } from "lucide-react";
 
 export default function SelectHero() {

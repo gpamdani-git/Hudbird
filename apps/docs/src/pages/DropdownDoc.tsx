@@ -245,13 +245,7 @@ export default function DropdownDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from '@hudbird/ui'
+          code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { Edit, Copy, Share2, Trash2, ChevronDown } from 'lucide-react'
 
 function Example() {
@@ -363,13 +357,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -449,7 +437,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from '@hudbird/ui'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 {/* Configured for: "${selectedPlacement}" */}
 <Dropdown placement="${selectedPlacement}">
@@ -514,13 +502,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { FilePlus, FolderPlus, ExternalLink } from 'lucide-react'
 
 function Example() {
@@ -604,14 +586,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  DropdownSection,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { User, Settings, Shield, LogOut } from 'lucide-react'
 
 function Example() {

@@ -41,8 +41,8 @@ export const heroTocItems = [
   },
 ];
 
-const minimalistCode = `import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroBody, HeroBadge, HeroTitle, HeroDescription, HeroActions } from '@hudbird/marketing'
+const minimalistCode = `import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroBody, HeroBadge, HeroTitle, HeroDescription, HeroActions } from "@/components/hudbird-ui/Hero";
 import { ArrowRight } from 'lucide-react'
 
 function Example() {
@@ -84,8 +84,8 @@ function Example() {
   )
 }`;
 
-const splitCode = `import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroBody, HeroContent, HeroMedia, HeroBadge, HeroTitle, HeroDescription, HeroActions } from '@hudbird/marketing'
+const splitCode = `import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroBody, HeroContent, HeroMedia, HeroBadge, HeroTitle, HeroDescription, HeroActions } from "@/components/hudbird-ui/Hero";
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
@@ -134,8 +134,8 @@ function Example() {
   )
 }`;
 
-const overlayCode = `import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroBody, HeroBackground, HeroBadge, HeroTitle, HeroDescription, HeroActions } from '@hudbird/marketing'
+const overlayCode = `import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroBody, HeroBackground, HeroBadge, HeroTitle, HeroDescription, HeroActions } from "@/components/hudbird-ui/Hero";
 import { Play } from 'lucide-react'
 
 function Example() {
@@ -168,8 +168,8 @@ function Example() {
 }`;
 
 const threeCode = `import React, { Suspense } from 'react'
-import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroBody, HeroBadge, HeroTitle, HeroDescription, HeroActions } from '@hudbird/marketing'
+import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroBody, HeroBadge, HeroTitle, HeroDescription, HeroActions } from "@/components/hudbird-ui/Hero";
 import { ArrowRight } from 'lucide-react'
 
 // Lazy load to prevent blocking the main thread
@@ -203,8 +203,8 @@ function Example() {
   )
 }`;
 
-const fullImageSplitCode = `import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroContent } from '@hudbird/marketing'
+const fullImageSplitCode = `import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroContent } from "@/components/hudbird-ui/Hero";
 import { ArrowRight } from 'lucide-react'
 
 function Example() {
@@ -250,8 +250,8 @@ function Example() {
   )
 }`;
 
-const bentoGridCode = `import { Button } from '@hudbird/ui'
-import { Hero, HeroHeader, HeroBody } from '@hudbird/marketing'
+const bentoGridCode = `import { Button } from "@/components/hudbird-ui/Button";
+import { Hero, HeroHeader, HeroBody } from "@/components/hudbird-ui/Hero";
 import { ArrowUpRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 

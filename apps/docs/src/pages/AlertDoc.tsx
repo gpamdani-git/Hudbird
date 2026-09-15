@@ -135,7 +135,7 @@ export default function AlertDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Alert } from '@hudbird/ui'
+          code={`import { Alert } from "@/components/hudbird-ui/Alert";
 import { Info } from 'lucide-react'
 
 function Example() {
@@ -220,7 +220,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@hudbird/ui'
+            code={`import { Alert } from "@/components/hudbird-ui/Alert";
 
 function Example() {
   return (
@@ -267,7 +267,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@hudbird/ui'
+            code={`import { Alert } from "@/components/hudbird-ui/Alert";
 
 function Example() {
   return (
@@ -313,7 +313,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@hudbird/ui'
+            code={`import { Alert } from "@/components/hudbird-ui/Alert";
 import { CheckCircle2, AlertTriangle, AlertCircle } from 'lucide-react'
 
 function Example() {
@@ -396,7 +396,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Alert } from '@hudbird/ui'
+            code={`import { Alert } from "@/components/hudbird-ui/Alert";
 
 function Example() {
   return (

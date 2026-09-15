@@ -207,7 +207,7 @@ export default function InputDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Input } from '@hudbird/ui'
+          code={`import { Input } from "@/components/hudbird-ui/Input";
 import { Mail } from 'lucide-react'
 
 export default function Example() {
@@ -292,7 +292,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@hudbird/ui'
+            code={`import { Input } from "@/components/hudbird-ui/Input";
 
 {/* 1. Flat Variant (Default) */}
 <Input variant="flat" label="Flat (Default)" placeholder="Enter workspace name" />
@@ -340,7 +340,7 @@ export default function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@hudbird/ui'
+            code={`import { Input } from "@/components/hudbird-ui/Input";
 
 {/* Standard Outside Placement */}
 <Input
@@ -432,7 +432,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Input } from '@hudbird/ui'
+import { Input } from "@/components/hudbird-ui/Input";
 import { Search, DollarSign, Lock, Eye, EyeOff } from 'lucide-react'
 
 export function ContentSlotsExample() {
@@ -506,7 +506,7 @@ export function ContentSlotsExample() {
 
           <CodeBlock
             code={`import { useState } from 'react'
-import { Input } from '@hudbird/ui'
+import { Input } from "@/components/hudbird-ui/Input";
 
 export function ClearableExample() {
   const [value, setValue] = useState('john.doe@company.org')
@@ -578,7 +578,7 @@ export function ClearableExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@hudbird/ui'
+            code={`import { Input } from "@/components/hudbird-ui/Input";
 
 <Input
   label="Email"
@@ -663,7 +663,7 @@ export function ClearableExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Input } from '@hudbird/ui'
+            code={`import { Input } from "@/components/hudbird-ui/Input";
 
 {/* Small */}
 <Input size="sm" radius="md" label="Small (h-8)" />

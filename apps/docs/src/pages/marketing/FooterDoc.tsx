@@ -320,7 +320,7 @@ export default function FooterDoc() {
   );
 }
 
-const simpleCode = `import { FooterSimple } from '@hudbird/marketing'
+const simpleCode = `import { FooterSimple } from "@/components/hudbird-ui/Footer";
 import { Github, Twitter } from 'lucide-react'
 
 export default function Example() {
@@ -341,7 +341,7 @@ export default function Example() {
   )
 }`;
 
-const megaCode = `import { FooterMega } from '@hudbird/marketing'
+const megaCode = `import { FooterMega } from "@/components/hudbird-ui/Footer";
 import { Github, Twitter } from 'lucide-react'
 
 export default function Example() {

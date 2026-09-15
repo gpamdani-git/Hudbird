@@ -187,15 +187,7 @@ export default function FieldsetDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetRow,
-  FieldsetLegend,
-  FieldsetHelperText,
-  Input,
-} from '@hudbird/ui'
+          code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetRow, FieldsetLegend, FieldsetHelperText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";
 
 function ShippingDetailsExample() {
   return (
@@ -362,15 +354,7 @@ function ShippingDetailsExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetRow,
-  FieldsetLegend,
-  FieldsetHelperText,
-  Input,
-} from '@hudbird/ui'
+            code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetRow, FieldsetLegend, FieldsetHelperText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";
 
 function Example() {
   return (
@@ -436,14 +420,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetLegend,
-  FieldsetHelperText,
-  Input,
-} from '@hudbird/ui'
+            code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetLegend, FieldsetHelperText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";
 
 function Example() {
   return (
@@ -525,16 +502,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetLegend,
-  FieldsetHelperText,
-  Input,
-  Checkbox,
-  Divider,
-} from '@hudbird/ui'
+            code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetLegend, FieldsetHelperText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";\nimport { Checkbox } from "@/components/hudbird-ui/Checkbox";\nimport { Divider } from "@/components/hudbird-ui/Divider";
 
 function SideBySideExample() {
   return (
@@ -634,15 +602,7 @@ function SideBySideExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetLegend,
-  FieldsetHelperText,
-  Input,
-  Checkbox,
-} from '@hudbird/ui'
+            code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetLegend, FieldsetHelperText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";\nimport { Checkbox } from "@/components/hudbird-ui/Checkbox";
 
 {/* 1. Bordered Style */}
 <Fieldset variant="bordered">
@@ -731,15 +691,7 @@ function SideBySideExample() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Fieldset,
-  FieldsetHeader,
-  FieldsetContent,
-  FieldsetLegend,
-  FieldsetHelperText,
-  FieldsetErrorText,
-  Input,
-} from '@hudbird/ui'
+            code={`import { Fieldset, FieldsetHeader, FieldsetContent, FieldsetLegend, FieldsetHelperText, FieldsetErrorText } from "@/components/hudbird-ui/Fieldset";\nimport { Input } from "@/components/hudbird-ui/Input";
 
 function Example() {
   return (

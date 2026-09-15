@@ -83,7 +83,7 @@ const logos = [
   },
 ];
 
-const staticGridCode = `import { LogoCloud, LogoCloudTitle, LogoCloudGrid, LogoCloudItem } from '@hudbird/marketing'
+const staticGridCode = `import { LogoCloud, LogoCloudTitle, LogoCloudGrid, LogoCloudItem } from "@/components/hudbird-ui/LogoCloud";
 
 function Example() {
   return (
@@ -100,7 +100,7 @@ function Example() {
   )
 }`;
 
-const tickerCode = `import { LogoCloud, LogoCloudTitle, LogoCloudTicker, LogoCloudItem } from '@hudbird/marketing'
+const tickerCode = `import { LogoCloud, LogoCloudTitle, LogoCloudTicker, LogoCloudItem } from "@/components/hudbird-ui/LogoCloud";
 
 function Example() {
   return (

@@ -222,7 +222,7 @@ export default function CtaDoc() {
   );
 }
 
-const centeredCode = `import { CtaCentered } from '@hudbird/marketing'
+const centeredCode = `import { CtaCentered } from "@/components/hudbird-ui/Cta";
 
 export default function Example() {
   return (
@@ -242,7 +242,7 @@ export default function Example() {
   )
 }`;
 
-const splitCode = `import { CtaSplit } from '@hudbird/marketing'
+const splitCode = `import { CtaSplit } from "@/components/hudbird-ui/Cta";
 
 export default function Example() {
   return (

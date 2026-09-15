@@ -107,9 +107,7 @@ const sidebarItemApiProps: ApiPropRow[] = [
 ];
 
 const codeBordered = `import { useState } from "react";
-import {
-  Sidebar, SidebarHeader, SidebarToggle, SidebarContent, SidebarNav, SidebarItem, SidebarFooter
-} from "@hudbird/ui";
+import { Sidebar, SidebarHeader, SidebarToggle, SidebarContent, SidebarNav, SidebarItem, SidebarFooter } from "@/components/hudbird-ui/Sidebar";
 import { Home, Inbox, Search, Ticket, ShoppingBag, Radio, Settings, LifeBuoy, FileText } from "lucide-react";
 
 export default function ApplicationLayout() {
@@ -188,9 +186,7 @@ export default function ApplicationLayout() {
 }`;
 
 const codeFlat = `import { useState } from "react";
-import {
-  Sidebar, SidebarHeader, SidebarToggle, SidebarContent, SidebarNav, SidebarItem, SidebarFooter
-} from "@hudbird/ui";
+import { Sidebar, SidebarHeader, SidebarToggle, SidebarContent, SidebarNav, SidebarItem, SidebarFooter } from "@/components/hudbird-ui/Sidebar";
 import { Search, Home, Users, Settings } from "lucide-react";
 
 export default function FlatSidebar() {

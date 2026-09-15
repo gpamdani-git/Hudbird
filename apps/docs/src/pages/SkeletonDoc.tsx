@@ -92,7 +92,7 @@ export default function SkeletonDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Skeleton } from "@hudbird/ui";
+          code={`import { Skeleton } from "@/components/hudbird-ui/Skeleton";
 
 export function App() {
   return (

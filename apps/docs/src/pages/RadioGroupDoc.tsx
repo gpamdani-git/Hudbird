@@ -188,7 +188,7 @@ export default function RadioGroupDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { RadioGroup, Radio } from "@hudbird/ui";
+          code={`import { RadioGroup } from "@/components/hudbird-ui/RadioGroup";\nimport { Radio } from "@/components/hudbird-ui/Radio";
 import { useState } from "react";
 
 export default function Example() {

@@ -148,10 +148,7 @@ export const featureSectionTocItems = [
   },
 ];
 
-const gridCode = `import { 
-  FeatureSection, FeatureHeader, FeatureBadge, FeatureTitle, FeatureDescription, 
-  FeatureGrid, FeatureCard, FeatureIcon, FeatureCardTitle, FeatureCardDescription 
-} from '@hudbird/marketing'
+const gridCode = `import { FeatureSection } from "@/components/hudbird-ui/FeatureSection";\nimport { FeatureHeader } from "@/components/hudbird-ui/FeatureHeader";\nimport { FeatureBadge } from "@/components/hudbird-ui/FeatureBadge";\nimport { FeatureTitle } from "@/components/hudbird-ui/FeatureTitle";\nimport { FeatureDescription } from "@/components/hudbird-ui/FeatureDescription";\nimport { FeatureGrid } from "@/components/hudbird-ui/FeatureGrid";\nimport { FeatureCard } from "@/components/hudbird-ui/FeatureCard";\nimport { FeatureIcon } from "@/components/hudbird-ui/FeatureIcon";\nimport { FeatureCardTitle } from "@/components/hudbird-ui/FeatureCardTitle";\nimport { FeatureCardDescription } from "@/components/hudbird-ui/FeatureCardDescription";
 import { Zap, Shield, Globe, Lock, Smartphone, Cloud } from 'lucide-react'
 
 function Example() {
@@ -201,10 +198,7 @@ function Example() {
   )
 }`;
 
-const alternatingCode = `import { 
-  FeatureSection, FeatureHeader, FeatureBadge, FeatureTitle, FeatureDescription, 
-  FeatureAlternating, FeatureRow, FeatureRowContent, FeatureRowMedia
-} from '@hudbird/marketing'
+const alternatingCode = `import { FeatureSection } from "@/components/hudbird-ui/FeatureSection";\nimport { FeatureHeader } from "@/components/hudbird-ui/FeatureHeader";\nimport { FeatureBadge } from "@/components/hudbird-ui/FeatureBadge";\nimport { FeatureTitle } from "@/components/hudbird-ui/FeatureTitle";\nimport { FeatureDescription } from "@/components/hudbird-ui/FeatureDescription";\nimport { FeatureAlternating } from "@/components/hudbird-ui/FeatureAlternating";\nimport { FeatureRow } from "@/components/hudbird-ui/FeatureRow";\nimport { FeatureRowContent } from "@/components/hudbird-ui/FeatureRowContent";\nimport { FeatureRowMedia } from "@/components/hudbird-ui/FeatureRowMedia";
 import { motion } from 'framer-motion'
 
 // Add the illustrations components here as defined above

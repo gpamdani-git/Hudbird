@@ -63,7 +63,7 @@ export default function TextDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Text } from "@hudbird/ui";
+          code={`import { Text } from "@/components/hudbird-ui/Text";
 
 export default function Example() {
   return (
@@ -112,7 +112,7 @@ export default function Example() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Text, Strong, Code } from "@hudbird/ui";
+          code={`import { Text } from "@/components/hudbird-ui/Text";\nimport { Strong } from "@/components/hudbird-ui/Strong";\nimport { Code } from "@/components/hudbird-ui/Code";
 
 export default function Example() {
   return (

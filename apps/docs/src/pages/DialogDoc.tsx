@@ -145,15 +145,7 @@ export default function DialogDoc() {
 
         <CodeBlock
           code={`import { useState } from 'react'
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  Button,
-} from '@hudbird/ui'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/hudbird-ui/Dialog";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   const [isOpen, setIsOpen] = useState(false)
@@ -256,15 +248,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/hudbird-ui/Dialog";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   const [open, setOpen] = useState(false)
@@ -360,15 +344,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/hudbird-ui/Dialog";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   const [open, setOpen] = useState(false)
@@ -446,15 +422,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-  Button,
-} from '@hudbird/ui'
+            code={`import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/hudbird-ui/Dialog";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   const [open, setOpen] = useState(false)

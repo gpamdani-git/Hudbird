@@ -129,13 +129,7 @@ export default function DescriptionListDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import {
-  DescriptionList,
-  DescriptionListItem,
-  DescriptionListLabel,
-  DescriptionListValue,
-  Badge,
-} from '@hudbird/ui'
+          code={`import { DescriptionList, DescriptionListItem, DescriptionListLabel, DescriptionListValue } from "@/components/hudbird-ui/DescriptionList";\nimport { Badge } from "@/components/hudbird-ui/Badge";
 
 function Example() {
   return (
@@ -246,12 +240,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  DescriptionList,
-  DescriptionListItem,
-  DescriptionListLabel,
-  DescriptionListValue,
-} from '@hudbird/ui'
+            code={`import { DescriptionList, DescriptionListItem, DescriptionListLabel, DescriptionListValue } from "@/components/hudbird-ui/DescriptionList";
 
 function Example() {
   return (
@@ -320,12 +309,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  DescriptionList,
-  DescriptionListItem,
-  DescriptionListLabel,
-  DescriptionListValue,
-} from '@hudbird/ui'
+            code={`import { DescriptionList, DescriptionListItem, DescriptionListLabel, DescriptionListValue } from "@/components/hudbird-ui/DescriptionList";
 
 function Example() {
   return (
@@ -388,12 +372,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  DescriptionList,
-  DescriptionListItem,
-  DescriptionListLabel,
-  DescriptionListValue,
-} from '@hudbird/ui'
+            code={`import { DescriptionList, DescriptionListItem, DescriptionListLabel, DescriptionListValue } from "@/components/hudbird-ui/DescriptionList";
 
 function Example() {
   return (
@@ -474,14 +453,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import {
-  DescriptionList,
-  DescriptionListItem,
-  DescriptionListLabel,
-  DescriptionListValue,
-  Badge,
-  Button,
-} from '@hudbird/ui'
+            code={`import { DescriptionList, DescriptionListItem, DescriptionListLabel, DescriptionListValue } from "@/components/hudbird-ui/DescriptionList";\nimport { Badge } from "@/components/hudbird-ui/Badge";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (

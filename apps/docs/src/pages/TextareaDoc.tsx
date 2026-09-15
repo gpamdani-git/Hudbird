@@ -67,7 +67,7 @@ export default function TextareaDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Textarea } from "@hudbird/ui";
+          code={`import { Textarea } from "@/components/hudbird-ui/Textarea";
 import { useState } from "react";
 
 export default function Example() {

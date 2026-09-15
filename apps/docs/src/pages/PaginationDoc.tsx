@@ -384,7 +384,7 @@ export default function PaginationDoc() {
 
         <CodeBlock
           code={`import { useState } from "react";
-import { Pagination } from "@hudbird/ui";
+import { Pagination } from "@/components/hudbird-ui/Pagination";
 
 export default function Example() {
   const [page, setPage] = useState(1);
@@ -855,7 +855,7 @@ export default function Example() {
 
           <CodeBlock
             code={`import { useState } from "react";
-import { InfiniteScroll } from "@hudbird/ui";
+import { InfiniteScroll } from "@/components/hudbird-ui/InfiniteScroll";
 
 export default function InfiniteFeed() {
   const [items, setItems] = useState(initialItems);

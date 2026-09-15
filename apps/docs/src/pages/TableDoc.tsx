@@ -107,15 +107,7 @@ export default function TableDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@hudbird/ui"
+          code={`import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/hudbird-ui/Table";
 
 export default function Example() {
   return (

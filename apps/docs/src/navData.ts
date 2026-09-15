@@ -14,7 +14,7 @@ export interface NavGroup {
 export const navigationData: NavGroup[] = [
   {
     items: [
-      { name: "Getting started", path: "/" },
+      { name: "Getting started", path: "/docs" },
       { name: "Tutorial Install Guide", path: "/installation" },
       { name: "Create Theme", path: "/themes" },
       { name: "Changelog", path: "/changelog" },

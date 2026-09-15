@@ -175,7 +175,7 @@ export default function AvatarDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Avatar } from '@hudbird/ui'
+          code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -255,7 +255,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -295,7 +295,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -367,7 +367,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -431,7 +431,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -474,7 +474,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function AvatarGroup() {
   return (
@@ -527,7 +527,7 @@ function AvatarGroup() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Avatar } from '@hudbird/ui'
+            code={`import { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (

@@ -202,7 +202,7 @@ export default function BadgeDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Badge, Avatar, Button } from '@hudbird/ui'
+          code={`import { Badge } from "@/components/hudbird-ui/Badge";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -336,7 +336,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@hudbird/ui'
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";
 
 function Example() {
   return (
@@ -398,7 +398,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@hudbird/ui'
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";
 
 function Example() {
   return (
@@ -482,7 +482,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge, Avatar, Button } from '@hudbird/ui'
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Button } from "@/components/hudbird-ui/Button";
 import { ShoppingCart, Bell, Check } from 'lucide-react'
 
 function Example() {
@@ -576,7 +576,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge, Avatar } from '@hudbird/ui'
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";
 
 function Example() {
   return (
@@ -648,7 +648,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from '@hudbird/ui'
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";
 
 function Example() {
   return (

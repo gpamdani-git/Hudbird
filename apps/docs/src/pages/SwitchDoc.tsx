@@ -88,7 +88,7 @@ export default function SwitchDoc() {
           </div>
         </ComponentPreview>
         <CodeBlock
-          code={`import { Switch } from "@hudbird/ui";
+          code={`import { Switch } from "@/components/hudbird-ui/Switch";
 import { useState } from "react";
 
 export default function Example() {

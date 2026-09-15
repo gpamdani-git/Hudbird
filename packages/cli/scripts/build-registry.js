@@ -72,8 +72,64 @@ function processDirectory(srcDir, type) {
         if (content.includes("../utils/")) {
           regDeps.add("utils");
         }
-        // For marketing components depending on core
-        content = content.replace(/@hudbird\/ui/g, "..");
+        // Map of known core components to match prefixes against
+        const CORE_COMPONENTS = [
+          "Accordion",
+          "Alert",
+          "Avatar",
+          "Badge",
+          "Button",
+          "Card",
+          "Checkbox",
+          "ComboBox",
+          "DescriptionList",
+          "Dialog",
+          "Divider",
+          "Dropdown",
+          "Fieldset",
+          "Heading",
+          "InfiniteScroll",
+          "Input",
+          "Navbar",
+          "Pagination",
+          "Provider",
+          "RadioGroup",
+          "Select",
+          "Sidebar",
+          "Skeleton",
+          "Switch",
+          "Table",
+          "Tabs",
+          "Text",
+          "Textarea",
+          "Tooltip",
+        ].sort((a, b) => b.length - a.length);
+
+        // For marketing components depending on core, rewrite internal imports to direct sibling imports
+        content = content.replace(
+          /import\s+\{([^}]+)\}\s+from\s+["']@hudbird\/ui["'];?/g,
+          (match, importsStr) => {
+            const imports = importsStr
+              .split(",")
+              .map((s) => s.trim())
+              .filter(Boolean);
+            const groups = {};
+
+            imports.forEach((imp) => {
+              const parts = imp.split(/\s+as\s+/);
+              const compName = parts[0];
+              const parent = CORE_COMPONENTS.find((core) => compName.startsWith(core)) || compName;
+              if (!groups[parent]) groups[parent] = [];
+              groups[parent].push(imp);
+            });
+
+            return Object.entries(groups)
+              .map(([parent, imps]) => {
+                return `import { ${imps.join(", ")} } from "../${parent}";`;
+              })
+              .join("\n");
+          }
+        );
 
         // Extract NPM deps
         const fileDeps = extractNpmDependencies(content);

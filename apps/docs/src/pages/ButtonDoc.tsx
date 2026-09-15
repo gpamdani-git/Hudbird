@@ -247,7 +247,7 @@ export default function ButtonDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Button } from '@hudbird/ui'
+          code={`import { Button } from "@/components/hudbird-ui/Button";
 import { Sparkles, CheckCircle2, Heart } from 'lucide-react'
 
 function Example() {
@@ -344,7 +344,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -404,7 +404,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -458,7 +458,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 import { Plus, Mail, ArrowRight, Trash2 } from 'lucide-react'
 
 function Example() {
@@ -526,7 +526,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 import { Search, Edit, Download, Trash2, Send } from 'lucide-react'
 
 function Example() {
@@ -586,7 +586,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -647,7 +647,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -692,7 +692,7 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Button } from '@hudbird/ui'
+            code={`import { Button } from "@/components/hudbird-ui/Button";
 import { ArrowRight } from 'lucide-react'
 
 function Example() {
