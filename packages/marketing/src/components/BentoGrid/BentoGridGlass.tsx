@@ -17,6 +17,16 @@ export interface BentoGridGlassProps extends React.HTMLAttributes<HTMLElement> {
   title?: string;
   description?: string;
   items: BentoGlassItem[];
+  /**
+   * Override the decorative glow orb inside each card.
+   * e.g. "bg-violet-500/10 dark:bg-violet-500/20"
+   */
+  glowClassName?: string;
+  /**
+   * Override the icon container colors.
+   * e.g. "bg-violet-600/10 text-violet-600 dark:bg-violet-500/20 dark:text-violet-300"
+   */
+  iconClassName?: string;
 }
 
 export const BentoGridGlass = React.forwardRef<HTMLElement, BentoGridGlassProps>(
@@ -27,6 +37,8 @@ export const BentoGridGlass = React.forwardRef<HTMLElement, BentoGridGlassProps>
       title = "Powerful features in a beautiful package",
       description = "Everything you need to build your next project, organized exactly how you need it.",
       items,
+      glowClassName = "bg-blue-500/10 dark:bg-blue-500/20",
+      iconClassName = "bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300",
       ...props
     },
     ref
@@ -70,7 +82,12 @@ export const BentoGridGlass = React.forwardRef<HTMLElement, BentoGridGlassProps>
                 )}
               >
                 {/* Decorative glowing orb inside the card */}
-                <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-indigo-500/10 blur-2xl transition-transform group-hover:scale-150 dark:bg-indigo-500/20" />
+                <div
+                  className={cn(
+                    "absolute -top-12 -right-12 h-32 w-32 rounded-full blur-2xl transition-transform group-hover:scale-150",
+                    glowClassName
+                  )}
+                />
 
                 <div className="relative z-10 flex h-full flex-col">
                   {item.content && (
@@ -78,7 +95,12 @@ export const BentoGridGlass = React.forwardRef<HTMLElement, BentoGridGlassProps>
                   )}
                   <div className={cn("mt-auto", !item.content && "flex-1")}>
                     {item.icon && (
-                      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300">
+                      <div
+                        className={cn(
+                          "mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg",
+                          iconClassName
+                        )}
+                      >
                         {item.icon}
                       </div>
                     )}

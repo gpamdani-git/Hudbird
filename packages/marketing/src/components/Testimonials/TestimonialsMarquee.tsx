@@ -128,6 +128,8 @@ export function TestimonialsMarquee({
   description = "",
   testimonials = DEFAULT_TESTIMONIALS,
   className,
+  glowClassName = "bg-blue-500/30",
+  dotClassName = "bg-blue-500",
 }: TestimonialsProps) {
   // Split into two rows for the marquee effect
   const middleIndex = Math.ceil(testimonials.length / 2);
@@ -177,14 +179,19 @@ export function TestimonialsMarquee({
 
       {/* Aesthetic Background Blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-30 dark:opacity-20">
-        <div className="absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
+        <div
+          className={cn(
+            "absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply blur-3xl dark:mix-blend-screen",
+            glowClassName
+          )}
+        />
         <div className="absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full bg-purple-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
       </div>
 
       <div className="mx-auto mb-16 max-w-7xl px-4 sm:mb-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
-            <span className="mr-2 flex h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+            <span className={cn("mr-2 flex h-1.5 w-1.5 rounded-full", dotClassName)}></span>
             007 TESTIMONIAL
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">

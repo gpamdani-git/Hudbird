@@ -450,6 +450,138 @@ export const supportTocItems: TocItem[] = [
   { id: "contact", title: "Get Help & Report Bugs" },
 ];
 
+export const lineChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "basic", title: "Basic" },
+  { id: "step", title: "Step" },
+  { id: "multi-line", title: "Multi Line" },
+  { id: "dashed-comparison", title: "Dashed Comparison" },
+  { id: "kpi-with-chart", title: "KPI With Chart" },
+  { id: "multi-line-chart-colors", title: "Multi Line Chart Colors" },
+  { id: "portfolio", title: "Portfolio" },
+  { id: "sparkline", title: "Sparkline" },
+  { id: "stats-with-chart", title: "Stats With Chart" },
+  { id: "with-custom-tooltip", title: "With Custom Tooltip" },
+  { id: "traffic-source", title: "Traffic Source" },
+  { id: "connecting-nulls", title: "Connecting Nulls" },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "component-api", title: "API Reference" },
+];
+
+export const pieChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "usage", title: "Usage" },
+  { id: "custom-tooltip", title: "Custom Tooltip" },
+  { id: "donut", title: "Donut" },
+  { id: "donut-with-content", title: "Donut With Content" },
+  { id: "donut-with-label", title: "Donut With Label" },
+  { id: "nested-donut", title: "Nested Donut" },
+  { id: "donut-with-breakdown", title: "Donut With Breakdown" },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "component-api", title: "API Reference" },
+];
+
+export const composedChartTocItems: TocItem[] = [
+  { id: "anatomy", title: "Anatomy" },
+  { id: "stacked-bar-with-line", title: "Stacked Bar With Line" },
+  { id: "area-with-line", title: "Area with Line" },
+  { id: "bar-with-area", title: "Bar With Area" },
+  { id: "multi-type", title: "Multi-type" },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "component-api", title: "API Reference" },
+];
+
+export const areaChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-usage", title: "Basic Area Chart" },
+      { id: "custom-tooltip", title: "Custom Tooltip" },
+      { id: "time-aggregation", title: "Time Aggregation (Day/Week/Month/Year)" },
+      { id: "kpi-area-chart", title: "KPI With Area Chart" },
+      { id: "stacked", title: "Stacked Area Chart" },
+      { id: "sparkline", title: "Sparkline Variant" },
+    ],
+  },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "element-classes", title: "Element Classes" },
+  { id: "recharts-theming", title: "Recharts Theming" },
+];
+
+export const barChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "horizontal-stacked", title: "Horizontal Stacked" },
+      { id: "stacked", title: "Stacked" },
+      { id: "grouped", title: "Grouped" },
+      { id: "custom-tooltip", title: "Custom Tooltip" },
+      { id: "time-aggregation", title: "Time Aggregation (Day/Week/Month/Year)" },
+    ],
+  },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "element-classes", title: "Element Classes" },
+  { id: "recharts-theming", title: "Recharts Theming" },
+];
+
+export const chartTooltipTocItems: TocItem[] = [
+  { id: "usage", title: "Usage" },
+  { id: "indicators", title: "Indicators" },
+  { id: "hide-label", title: "Hide Label" },
+  { id: "hide-indicator", title: "Hide Indicator" },
+  { id: "value-formatter", title: "Value Formatter" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "component-api", title: "Component API" },
+];
+
+export const radarChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic", title: "Basic Radar Chart" },
+      { id: "multiple", title: "Multiple Categories" },
+      { id: "custom-tooltip", title: "Custom Tooltip" },
+      { id: "advanced-customization", title: "Advanced Customization" },
+    ],
+  },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "element-classes", title: "Element Classes" },
+  { id: "recharts-theming", title: "Recharts Theming" },
+];
+
+export const radialChartTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "anatomy", title: "Anatomy" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic", title: "Basic Radial Chart" },
+      { id: "semi-circle", title: "Semi-Circle / Gauge" },
+      { id: "custom-tooltip", title: "Custom Tooltip" },
+      { id: "advanced-customization", title: "Advanced Customization" },
+    ],
+  },
+  { id: "css-classes", title: "CSS Classes" },
+  { id: "element-classes", title: "Element Classes" },
+  { id: "recharts-theming", title: "Recharts Theming" },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
   "/changelog": changelogTocItems,
@@ -483,6 +615,14 @@ const tocMap: Record<string, TocItem[]> = {
   "/radio-group": radioGroupTocItems,
   "/tabs": tabsTocItems,
   "/tooltip": tooltipTocItems,
+  "/area-chart": areaChartTocItems,
+  "/bar-chart": barChartTocItems,
+  "/line-chart": lineChartTocItems,
+  "/pie-chart": pieChartTocItems,
+  "/composed-chart": composedChartTocItems,
+  "/radar-chart": radarChartTocItems,
+  "/radial-chart": radialChartTocItems,
+  "/chart-tooltip": chartTooltipTocItems,
 };
 
 const defaultToc: TocItem[] = [

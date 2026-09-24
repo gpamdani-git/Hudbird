@@ -44,6 +44,19 @@ export const navigationData: NavGroup[] = [
     ],
   },
   {
+    title: "Charts",
+    items: [
+      { name: "Area Chart", path: "/area-chart", variants: 3 },
+      { name: "Bar Chart", path: "/bar-chart", variants: 4 },
+      { name: "Line Chart", path: "/line-chart", variants: 4 },
+      { name: "Pie Chart", path: "/pie-chart", variants: 7 },
+      { name: "Composed Chart", path: "/composed-chart", variants: 4 },
+      { name: "Radar Chart", path: "/radar-chart", variants: 4, isNew: true },
+      { name: "Radial Chart", path: "/radial-chart", variants: 4, isNew: true },
+      { name: "Chart Tooltip", path: "/chart-tooltip", variants: 1 },
+    ],
+  },
+  {
     title: "Components",
     items: [
       { name: "Accordion", path: "/accordion", variants: 7 },

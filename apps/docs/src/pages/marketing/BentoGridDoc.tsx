@@ -87,6 +87,18 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
       defaultVal: "undefined",
       description: "Optional badge element.",
     },
+    {
+      prop: "glowClassName",
+      type: "string",
+      defaultVal: '"bg-blue-500/10 dark:bg-blue-500/20"',
+      description: "Override the decorative glow orb color inside each glass card.",
+    },
+    {
+      prop: "iconClassName",
+      type: "string",
+      defaultVal: '"bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300"',
+      description: "Override the icon container background and text color inside each glass card.",
+    },
   ];
 
   const codeCssIllusReact = `

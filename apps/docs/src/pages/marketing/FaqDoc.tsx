@@ -48,6 +48,18 @@ export default function FaqDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }
       defaultVal: "undefined",
       description: "Additional CSS classes to apply to the root section element.",
     },
+    {
+      prop: "badgeClassName",
+      type: "string",
+      defaultVal: '"border-blue-200/50 bg-blue-50/50 text-blue-700 ..."',
+      description: "Override the label badge border, background, and text color classes.",
+    },
+    {
+      prop: "accentClassName",
+      type: "string",
+      defaultVal: '"text-blue-600 dark:text-blue-400"',
+      description: "Override the accordion item accent color on hover and expanded state.",
+    },
   ];
 
   const faqItemTypeRows: ApiPropRow[] = [
@@ -95,6 +107,12 @@ export default function FaqDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }
       type: "string",
       defaultVal: "undefined",
       description: "Additional CSS classes to apply to the root section element.",
+    },
+    {
+      prop: "accentClassName",
+      type: "string",
+      defaultVal: '"text-blue-600 dark:text-blue-400"',
+      description: "Override the active category tab highlight and accordion item accent color.",
     },
   ];
 
@@ -149,6 +167,12 @@ export default function FaqDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }
       type: "string",
       defaultVal: "undefined",
       description: "Additional CSS classes to apply to the root section element.",
+    },
+    {
+      prop: "accentClassName",
+      type: "string",
+      defaultVal: '"text-blue-600 dark:text-blue-400"',
+      description: "Override the accordion item accent color on hover and expanded state.",
     },
   ];
 

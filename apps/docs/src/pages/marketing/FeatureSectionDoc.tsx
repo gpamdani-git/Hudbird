@@ -377,6 +377,18 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
       defaultVal: "false",
       description: "If true, reverses the layout order (e.g. Image on left, text on right).",
     },
+    {
+      prop: "iconClassName (Feature.Icon)",
+      type: "string",
+      defaultVal: '"bg-blue-600 text-white ring-blue-500/30 ..."',
+      description: "Override the Feature.Icon container colors (background, text, and ring).",
+    },
+    {
+      prop: "glowClassName / iconClassName (FeatureGlass)",
+      type: "string",
+      defaultVal: '"bg-blue-500/10 dark:bg-blue-500/20" / "bg-blue-600/10 ..."',
+      description: "Override the glow orb color and icon container colors in the glass variant.",
+    },
   ];
 
   return (

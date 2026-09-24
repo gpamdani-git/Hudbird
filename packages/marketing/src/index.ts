@@ -8,3 +8,5 @@ export * from "./components/Testimonials";
 export * from "./components/Faq";
 export * from "./components/Footer";
 export * from "./components/Cta";
+export * from "./components/Globe/Globe";
+export * from "./components/ParticleSphere";

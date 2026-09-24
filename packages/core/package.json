@@ -1,6 +1,6 @@
 {
   "name": "@hudbird/ui",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -22,6 +22,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^13.2.0",
     "lucide-react": "^1.43.0",
+    "recharts": "^3.10.1",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {

@@ -24,6 +24,26 @@ export interface PricingGlassProps extends React.HTMLAttributes<HTMLElement> {
   onToggleAnnual?: (isAnnual: boolean) => void;
   annualLabel?: string;
   monthlyLabel?: string;
+  /**
+   * Override the popular tier card border & background.
+   * e.g. "border-violet-500/30 bg-violet-50/40 dark:border-violet-500/30 dark:bg-violet-500/10"
+   */
+  popularCardClassName?: string;
+  /**
+   * Override the popular tier badge (top-right pill) colors.
+   * e.g. "bg-violet-500/10 text-violet-600 ring-violet-500/20 dark:bg-violet-500/20 dark:text-violet-300"
+   */
+  popularBadgeClassName?: string;
+  /**
+   * Override the popular tier check icon color.
+   * e.g. "text-violet-600 dark:text-violet-400"
+   */
+  popularCheckClassName?: string;
+  /**
+   * Override the popular tier CTA button.
+   * e.g. "bg-violet-600 hover:bg-violet-500 focus-visible:outline-violet-600"
+   */
+  popularCtaClassName?: string;
 }
 
 export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
@@ -37,6 +57,10 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
       onToggleAnnual,
       annualLabel = "Annually",
       monthlyLabel = "Monthly",
+      popularCardClassName = "border-blue-500/30 bg-blue-50/40 dark:border-blue-500/30 dark:bg-blue-500/10 dark:shadow-[0_8px_30px_rgba(59,130,246,0.2)]",
+      popularBadgeClassName = "bg-blue-500/10 text-blue-600 ring-blue-500/20 dark:bg-blue-500/20 dark:text-blue-300",
+      popularCheckClassName = "text-blue-600 dark:text-blue-400",
+      popularCtaClassName = "bg-blue-600 text-white hover:bg-blue-500 focus-visible:outline-blue-600",
       ...props
     },
     ref
@@ -123,13 +147,18 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
                 className={cn(
                   "relative flex flex-col justify-between overflow-hidden rounded-[2rem] border p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-2xl transition-transform hover:-translate-y-1 sm:p-10",
                   tier.popular
-                    ? "border-indigo-500/30 bg-indigo-50/40 dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:shadow-[0_8px_30px_rgba(99,102,241,0.2)]"
+                    ? popularCardClassName
                     : "border-white/50 bg-white/40 dark:border-white/10 dark:bg-black/20 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
                 )}
               >
                 {/* Popular Badge */}
                 {tier.popular && (
-                  <div className="absolute top-6 right-6 rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 ring-1 ring-indigo-500/20 ring-inset dark:bg-indigo-500/20 dark:text-indigo-300">
+                  <div
+                    className={cn(
+                      "absolute top-6 right-6 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset",
+                      popularBadgeClassName
+                    )}
+                  >
                     Most Popular
                   </div>
                 )}
@@ -154,9 +183,7 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
                         <Check
                           className={cn(
                             "h-6 w-5 flex-none",
-                            tier.popular
-                              ? "text-indigo-600 dark:text-indigo-400"
-                              : "text-zinc-900 dark:text-white"
+                            tier.popular ? popularCheckClassName : "text-zinc-900 dark:text-white"
                           )}
                           aria-hidden="true"
                         />
@@ -171,7 +198,7 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
                   className={cn(
                     "mt-10 block rounded-full px-4 py-2.5 text-center text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
                     tier.popular
-                      ? "bg-indigo-600 text-white hover:bg-indigo-500 focus-visible:outline-indigo-600"
+                      ? popularCtaClassName
                       : "bg-white/50 text-zinc-900 ring-1 ring-zinc-200/50 ring-inset hover:bg-white/80 hover:ring-zinc-300/50 dark:bg-white/10 dark:text-white dark:ring-white/10 dark:hover:bg-white/20 dark:hover:ring-white/20"
                   )}
                 >

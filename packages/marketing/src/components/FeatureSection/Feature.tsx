@@ -59,7 +59,7 @@ const FeatureBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
       <h2
         ref={ref}
         className={cn(
-          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
+          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-blue-600 dark:text-blue-400",
           className
         )}
         {...props}
@@ -135,13 +135,23 @@ const FeatureCard = React.forwardRef<
 });
 FeatureCard.displayName = "Feature.Card";
 
-const FeatureIcon = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
+export interface FeatureIconProps extends React.HTMLAttributes<HTMLDivElement> {
+  /**
+   * Override the icon container colors.
+   * e.g. "bg-violet-600 text-white ring-violet-500/30 dark:bg-violet-500/20 dark:text-violet-400"
+   */
+  iconClassName?: string;
+}
+
+const FeatureIcon = React.forwardRef<HTMLDivElement, FeatureIconProps>(
+  ({ className, iconClassName, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "mb-6 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600 text-white ring-1 ring-indigo-500/30 dark:bg-indigo-500/20 dark:text-indigo-400",
+          "mb-6 flex h-10 w-10 items-center justify-center rounded-lg",
+          iconClassName ??
+            "bg-blue-600 text-white ring-1 ring-blue-500/30 dark:bg-blue-500/20 dark:text-blue-400",
           className
         )}
         {...props}

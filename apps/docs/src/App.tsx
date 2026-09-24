@@ -38,6 +38,14 @@ const TabsDoc = lazy(() => import("./pages/TabsDoc"));
 const RadioGroupDoc = lazy(() => import("./pages/RadioGroupDoc"));
 const TooltipDoc = lazy(() => import("./pages/TooltipDoc"));
 const AccordionDoc = lazy(() => import("./pages/AccordionDoc"));
+const AreaChartDoc = lazy(() => import("./pages/AreaChartDoc"));
+const BarChartDoc = lazy(() => import("./pages/BarChartDoc"));
+const LineChartDoc = lazy(() => import("./pages/LineChartDoc"));
+const PieChartDoc = lazy(() => import("./pages/PieChartDoc"));
+const ComposedChartDoc = lazy(() => import("./pages/ComposedChartDoc"));
+const ChartTooltipDoc = lazy(() => import("./pages/ChartTooltipDoc"));
+const RadarChartDoc = lazy(() => import("./pages/RadarChartDoc"));
+const RadialChartDoc = lazy(() => import("./pages/RadialChartDoc"));
 
 const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 const ChangelogDoc = lazy(() => import("./pages/ChangelogDoc"));
@@ -209,6 +217,14 @@ export default function App() {
                   <Route path="/radio-group" element={<RadioGroupDoc />} />
                   <Route path="/tabs" element={<TabsDoc />} />
                   <Route path="/tooltip" element={<TooltipDoc />} />
+                  <Route path="/area-chart" element={<AreaChartDoc />} />
+                  <Route path="/bar-chart" element={<BarChartDoc />} />
+                  <Route path="/line-chart" element={<LineChartDoc />} />
+                  <Route path="/pie-chart" element={<PieChartDoc />} />
+                  <Route path="/composed-chart" element={<ComposedChartDoc />} />
+                  <Route path="/radar-chart" element={<RadarChartDoc />} />
+                  <Route path="/radial-chart" element={<RadialChartDoc />} />
+                  <Route path="/chart-tooltip" element={<ChartTooltipDoc />} />
                   <Route
                     path="/marketing/hero"
                     element={<HeroDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}

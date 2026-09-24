@@ -157,7 +157,7 @@ export const SidebarToggle = React.forwardRef<HTMLButtonElement, SidebarTogglePr
         onClick={toggleCollapse}
         aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
         className={cn(
-          "flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-200/50 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none dark:hover:bg-zinc-800 dark:hover:text-zinc-100",
+          "flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-zinc-500 transition-colors hover:bg-zinc-200/50 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:outline-none dark:hover:bg-zinc-800 dark:hover:text-zinc-100",
           className
         )}
         {...props}
@@ -290,7 +290,7 @@ export const SidebarItem = React.forwardRef<HTMLAnchorElement, SidebarItemProps>
         tabIndex={isDisabled ? -1 : 0}
         className={cn(
           sidebarItemVariants({ size, radius, isActive, isDisabled, isCollapsed }),
-          "focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950",
+          "focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950",
           className
         )}
         onKeyDown={(e) => {

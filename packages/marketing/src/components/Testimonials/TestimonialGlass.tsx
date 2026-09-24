@@ -11,6 +11,11 @@ export interface TestimonialGlassProps {
   description?: string;
   testimonials: Testimonial[];
   className?: string;
+  /**
+   * Override the fallback avatar icon container colors.
+   * e.g. "bg-violet-100 text-violet-600 dark:bg-violet-900/50 dark:text-violet-400"
+   */
+  iconClassName?: string;
 }
 
 export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
@@ -18,6 +23,7 @@ export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
   description = "See what our customers are saying about us.",
   testimonials,
   className,
+  iconClassName = "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
 }) => {
   return (
     <section className={cn("relative overflow-hidden py-24 sm:py-32", className)}>
@@ -63,7 +69,12 @@ export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
                           className="h-10 w-10 bg-zinc-100 dark:bg-zinc-800"
                         />
                       ) : (
-                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100 text-indigo-600 dark:bg-indigo-900/50 dark:text-indigo-400">
+                        <div
+                          className={cn(
+                            "flex h-10 w-10 items-center justify-center rounded-full",
+                            iconClassName
+                          )}
+                        >
                           {testimonial.author?.[0]}
                         </div>
                       )}

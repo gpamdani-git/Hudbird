@@ -6,6 +6,10 @@ import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
 
+// ---------------------------------------------------------------------------
+// PricingSection
+// ---------------------------------------------------------------------------
+
 const pricingSectionVariants = cva("py-24 sm:py-32 overflow-hidden", {
   variants: {
     variant: {
@@ -31,6 +35,10 @@ const PricingSection = React.forwardRef<HTMLDivElement, PricingSectionProps>(
 );
 PricingSection.displayName = "PricingSection";
 
+// ---------------------------------------------------------------------------
+// PricingHeader
+// ---------------------------------------------------------------------------
+
 const PricingHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => {
     return (
@@ -54,13 +62,17 @@ const PricingHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 );
 PricingHeader.displayName = "Pricing.Header";
 
+// ---------------------------------------------------------------------------
+// PricingBadge
+// ---------------------------------------------------------------------------
+
 const PricingBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
     return (
       <h2
         ref={ref}
         className={cn(
-          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-indigo-600 dark:text-indigo-400",
+          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-blue-600 dark:text-blue-400",
           className
         )}
         {...props}
@@ -69,6 +81,10 @@ const PricingBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
   }
 );
 PricingBadge.displayName = "Pricing.Badge";
+
+// ---------------------------------------------------------------------------
+// PricingTitle
+// ---------------------------------------------------------------------------
 
 const PricingTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
   ({ className, ...props }, ref) => {
@@ -85,6 +101,10 @@ const PricingTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
   }
 );
 PricingTitle.displayName = "Pricing.Title";
+
+// ---------------------------------------------------------------------------
+// PricingDescription
+// ---------------------------------------------------------------------------
 
 const PricingDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -103,7 +123,9 @@ const PricingDescription = React.forwardRef<
 });
 PricingDescription.displayName = "Pricing.Description";
 
-// --- Toggle ---
+// ---------------------------------------------------------------------------
+// PricingToggle
+// ---------------------------------------------------------------------------
 
 export interface PricingToggleProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
   monthlyLabel?: string;
@@ -111,6 +133,10 @@ export interface PricingToggleProps extends Omit<React.HTMLAttributes<HTMLDivEle
   isAnnual?: boolean;
   onChange?: (isAnnual: boolean) => void;
   discountLabel?: string;
+  /** Override the active-state color of the toggle switch (e.g. "bg-violet-600") */
+  toggleActiveClassName?: string;
+  /** Override the discount badge colors (e.g. "bg-violet-50 text-violet-600 ring-violet-500/20 dark:bg-violet-500/10 dark:text-violet-400") */
+  discountClassName?: string;
 }
 
 const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
@@ -122,6 +148,8 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
       isAnnual = false,
       onChange,
       discountLabel = "Save 20%",
+      toggleActiveClassName = "bg-blue-600",
+      discountClassName = "bg-blue-50 text-blue-600 ring-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400",
       ...props
     },
     ref
@@ -144,8 +172,8 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
           type="button"
           onClick={() => onChange?.(!isAnnual)}
           className={cn(
-            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 focus:outline-none",
-            isAnnual ? "bg-indigo-600" : "bg-zinc-200 dark:bg-zinc-700"
+            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-none",
+            isAnnual ? toggleActiveClassName : "bg-zinc-200 dark:bg-zinc-700"
           )}
           role="switch"
           aria-checked={isAnnual}
@@ -169,7 +197,12 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
             {annualLabel}
           </span>
           {discountLabel && (
-            <span className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600 ring-1 ring-indigo-500/20 ring-inset dark:bg-indigo-500/10 dark:text-indigo-400">
+            <span
+              className={cn(
+                "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset",
+                discountClassName
+              )}
+            >
               {discountLabel}
             </span>
           )}
@@ -180,7 +213,9 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
 );
 PricingToggle.displayName = "Pricing.Toggle";
 
-// --- Grid ---
+// ---------------------------------------------------------------------------
+// PricingGrid
+// ---------------------------------------------------------------------------
 
 const PricingGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
@@ -196,13 +231,32 @@ const PricingGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
 );
 PricingGrid.displayName = "Pricing.Grid";
 
+// ---------------------------------------------------------------------------
+// PricingTier
+// ---------------------------------------------------------------------------
+
 export interface PricingTierProps extends React.HTMLAttributes<HTMLDivElement> {
   popular?: boolean;
   index?: number;
+  /** Label shown in the "popular" pill badge. Default: "Most popular" */
+  popularLabel?: string;
+  /** Override the popular badge background/text classes (e.g. "bg-violet-600 text-white") */
+  popularBadgeClassName?: string;
 }
 
 const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
-  ({ className, popular, index = 0, children, ...props }, ref) => {
+  (
+    {
+      className,
+      popular,
+      index = 0,
+      children,
+      popularLabel = "Most popular",
+      popularBadgeClassName = "bg-blue-600 text-white ring-blue-500/20",
+      ...props
+    },
+    ref
+  ) => {
     return (
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -221,8 +275,13 @@ const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
       >
         {popular && (
           <div className="absolute inset-x-0 -top-4 flex justify-center">
-            <span className="rounded-full bg-indigo-600 px-4 py-1 text-sm leading-6 font-semibold text-white shadow-sm ring-1 ring-indigo-500/20 ring-inset">
-              Most popular
+            <span
+              className={cn(
+                "rounded-full px-4 py-1 text-sm leading-6 font-semibold shadow-sm ring-1 ring-inset",
+                popularBadgeClassName
+              )}
+            >
+              {popularLabel}
             </span>
           </div>
         )}
@@ -233,12 +292,20 @@ const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
 );
 PricingTier.displayName = "Pricing.Tier";
 
+// ---------------------------------------------------------------------------
+// PricingTierHeader
+// ---------------------------------------------------------------------------
+
 const PricingTierHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return <div ref={ref} className={cn("mb-6", className)} {...props} />;
   }
 );
 PricingTierHeader.displayName = "Pricing.TierHeader";
+
+// ---------------------------------------------------------------------------
+// PricingTierName
+// ---------------------------------------------------------------------------
 
 const PricingTierName = React.forwardRef<
   HTMLHeadingElement,
@@ -249,7 +316,7 @@ const PricingTierName = React.forwardRef<
       ref={ref}
       className={cn(
         "text-lg leading-8 font-semibold",
-        popular ? "text-white dark:text-indigo-400" : "text-indigo-600 dark:text-indigo-400",
+        popular ? "text-white dark:text-blue-400" : "text-blue-600 dark:text-blue-400",
         className
       )}
       {...props}
@@ -257,6 +324,10 @@ const PricingTierName = React.forwardRef<
   );
 });
 PricingTierName.displayName = "Pricing.TierName";
+
+// ---------------------------------------------------------------------------
+// PricingTierDescription
+// ---------------------------------------------------------------------------
 
 const PricingTierDescription = React.forwardRef<
   HTMLParagraphElement,
@@ -275,6 +346,10 @@ const PricingTierDescription = React.forwardRef<
   );
 });
 PricingTierDescription.displayName = "Pricing.TierDescription";
+
+// ---------------------------------------------------------------------------
+// PricingTierPrice
+// ---------------------------------------------------------------------------
 
 const PricingTierPrice = React.forwardRef<
   HTMLDivElement,
@@ -320,6 +395,10 @@ const PricingTierPrice = React.forwardRef<
 });
 PricingTierPrice.displayName = "Pricing.TierPrice";
 
+// ---------------------------------------------------------------------------
+// PricingTierFeatures
+// ---------------------------------------------------------------------------
+
 const PricingTierFeatures = React.forwardRef<
   HTMLUListElement,
   React.HTMLAttributes<HTMLUListElement> & { popular?: boolean }
@@ -339,24 +418,39 @@ const PricingTierFeatures = React.forwardRef<
 });
 PricingTierFeatures.displayName = "Pricing.TierFeatures";
 
-const PricingTierFeature = React.forwardRef<
-  HTMLLIElement,
-  React.HTMLAttributes<HTMLLIElement> & { popular?: boolean }
->(({ className, popular, children, ...props }, ref) => {
-  return (
-    <li ref={ref} className={cn("flex gap-x-3", className)} {...props}>
-      <Check
-        className={cn(
-          "h-6 w-5 flex-none",
-          popular ? "text-indigo-400" : "text-indigo-600 dark:text-indigo-400"
-        )}
-        aria-hidden="true"
-      />
-      {children}
-    </li>
-  );
-});
+// ---------------------------------------------------------------------------
+// PricingTierFeature
+// ---------------------------------------------------------------------------
+
+export interface PricingTierFeatureProps extends React.HTMLAttributes<HTMLLIElement> {
+  popular?: boolean;
+  /** Override the check icon color (e.g. "text-violet-500") */
+  checkClassName?: string;
+}
+
+const PricingTierFeature = React.forwardRef<HTMLLIElement, PricingTierFeatureProps>(
+  ({ className, popular, children, checkClassName, ...props }, ref) => {
+    return (
+      <li ref={ref} className={cn("flex gap-x-3", className)} {...props}>
+        <Check
+          className={cn(
+            "h-6 w-5 flex-none",
+            // If checkClassName is explicitly provided, it wins.
+            // Otherwise fall back to popular vs. default colours.
+            checkClassName ?? (popular ? "text-blue-400" : "text-blue-600 dark:text-blue-400")
+          )}
+          aria-hidden="true"
+        />
+        {children}
+      </li>
+    );
+  }
+);
 PricingTierFeature.displayName = "Pricing.TierFeature";
+
+// ---------------------------------------------------------------------------
+// Exports
+// ---------------------------------------------------------------------------
 
 export {
   PricingSection,

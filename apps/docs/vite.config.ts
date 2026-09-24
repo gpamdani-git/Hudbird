@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   publicDir: "../../public",
   resolve: {
+    dedupe: ["three"],
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
       "@hudbird/ui": path.resolve(import.meta.dirname, "../../packages/core/src"),

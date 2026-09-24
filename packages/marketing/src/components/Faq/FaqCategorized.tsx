@@ -18,6 +18,13 @@ export interface FaqCategorizedProps {
   title?: string;
   categories: FaqCategory[];
   className?: string;
+  /**
+   * Override the active category tab & accordion accent color.
+   * Provide two space-separated classes for light/dark:
+   * e.g. "text-violet-600 dark:text-violet-400"
+   * The active tab bg is derived automatically.
+   */
+  accentClassName?: string;
 }
 
 export function FaqCategorized({
@@ -25,6 +32,7 @@ export function FaqCategorized({
   title = "Frequently asked questions",
   categories,
   className,
+  accentClassName = "text-blue-600 dark:text-blue-400",
 }: FaqCategorizedProps) {
   const [activeCategoryId, setActiveCategoryId] = useState<string>(
     categories.length > 0 ? categories[0].id : ""
@@ -46,7 +54,9 @@ export function FaqCategorized({
         <div className="rounded-3xl border border-zinc-200/50 bg-white p-8 shadow-sm sm:p-12 lg:p-16 dark:border-zinc-800/50 dark:bg-zinc-950">
           <div className="mb-12 lg:mb-16">
             {label && (
-              <div className="mb-4 text-xs font-bold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+              <div
+                className={cn("mb-4 text-xs font-bold tracking-widest uppercase", accentClassName)}
+              >
                 {label}
               </div>
             )}
@@ -67,7 +77,7 @@ export function FaqCategorized({
                     className={cn(
                       "flex w-auto shrink-0 items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-medium whitespace-nowrap transition-all lg:w-full",
                       isActive
-                        ? "bg-indigo-50/50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                        ? cn("bg-blue-50/50 dark:bg-blue-500/10", accentClassName)
                         : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
                     )}
                   >
@@ -75,7 +85,7 @@ export function FaqCategorized({
                       <span
                         className={cn(
                           "shrink-0 transition-colors",
-                          isActive ? "text-indigo-600 dark:text-indigo-400" : "text-zinc-400"
+                          isActive ? accentClassName : "text-zinc-400"
                         )}
                       >
                         {category.icon}
@@ -105,14 +115,18 @@ export function FaqCategorized({
                           title={faq.question}
                           classNames={{
                             base: "border-b border-zinc-100 dark:border-zinc-800/60 last:border-0",
-                            title:
-                              "font-medium text-[15px] transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
+                            title: cn(
+                              "font-medium text-[15px] transition-colors",
+                              `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                            ),
                             content:
                               "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed px-2",
                             trigger:
                               "group py-5 px-2 hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20 rounded-md transition-colors",
-                            indicator:
-                              "text-zinc-400 transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
+                            indicator: cn(
+                              "text-zinc-400 transition-colors",
+                              `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                            ),
                           }}
                         >
                           {faq.answer}

@@ -12,6 +12,11 @@ export interface FaqGlassProps {
   description?: string;
   faqs: FaqItem[];
   className?: string;
+  /**
+   * Override the label text color.
+   * e.g. "text-violet-600 dark:text-violet-400"
+   */
+  labelClassName?: string;
 }
 
 export const FaqGlass: React.FC<FaqGlassProps> = ({
@@ -20,6 +25,7 @@ export const FaqGlass: React.FC<FaqGlassProps> = ({
   description,
   faqs,
   className,
+  labelClassName = "text-blue-600 dark:text-blue-400",
 }) => {
   const [openId, setOpenId] = useState<string | number | null>(null);
 
@@ -38,9 +44,7 @@ export const FaqGlass: React.FC<FaqGlassProps> = ({
           className="mx-auto mb-16 max-w-2xl text-center"
         >
           {label && (
-            <p className="text-sm leading-7 font-semibold text-indigo-600 dark:text-indigo-400">
-              {label}
-            </p>
+            <p className={cn("text-sm leading-7 font-semibold", labelClassName)}>{label}</p>
           )}
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
             {title}

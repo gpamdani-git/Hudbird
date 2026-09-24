@@ -11,6 +11,11 @@ export interface FaqWithIllustrationProps {
   description?: string;
   faqs: FaqItem[];
   className?: string;
+  /**
+   * Override the accordion accent color on hover & expanded state.
+   * e.g. "text-violet-600 dark:text-violet-400"
+   */
+  accentClassName?: string;
 }
 
 const AnimatedIllustration = () => {
@@ -138,6 +143,7 @@ export function FaqWithIllustration({
   description = "Explore answers to the most common questions from our trusted partners and clients.",
   faqs,
   className,
+  accentClassName = "text-blue-600 dark:text-blue-400",
 }: FaqWithIllustrationProps) {
   return (
     <section className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}>
@@ -174,14 +180,18 @@ export function FaqWithIllustration({
                   title={faq.question}
                   classNames={{
                     base: "border border-zinc-200 dark:border-zinc-800 shadow-sm bg-white dark:bg-zinc-900 rounded-xl overflow-hidden mb-3 last:mb-0",
-                    title:
-                      "font-medium text-[15px] sm:text-base transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
+                    title: cn(
+                      "font-medium text-[15px] sm:text-base transition-colors",
+                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                    ),
                     content:
                       "text-zinc-500 dark:text-zinc-400 text-sm sm:text-base leading-relaxed px-5 pb-5",
                     trigger:
                       "group py-5 px-5 hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors",
-                    indicator:
-                      "text-zinc-400 transition-colors group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-[&[aria-expanded=true]]:text-indigo-600 dark:group-[&[aria-expanded=true]]:text-indigo-400",
+                    indicator: cn(
+                      "text-zinc-400 transition-colors",
+                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                    ),
                   }}
                 >
                   {faq.answer}

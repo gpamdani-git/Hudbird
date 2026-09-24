@@ -302,7 +302,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage - 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
+              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
             )}
           >
             {prevContent ?? (
@@ -379,7 +379,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage + 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
+              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
             )}
           >
             {nextContent ?? (

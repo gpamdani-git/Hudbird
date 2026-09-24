@@ -13,11 +13,15 @@ export interface CtaCenteredProps extends Omit<React.HTMLAttributes<HTMLElement>
     label: string;
     href?: string;
     onClick?: () => void;
+    color?: any;
+    className?: string;
   };
   secondaryAction?: {
     label: string;
     href?: string;
     onClick?: () => void;
+    color?: any;
+    className?: string;
   };
 }
 
@@ -91,8 +95,8 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
                 {primaryAction && (
                   <Button
                     variant="solid"
-                    color="indigo"
-                    className="w-full sm:w-auto"
+                    color={primaryAction.color || "indigo"}
+                    className={cn("w-full sm:w-auto", primaryAction.className)}
                     onClick={primaryAction.onClick}
                     {...(primaryAction.href ? { href: primaryAction.href, as: "a" } : {})}
                   >
@@ -102,8 +106,8 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
                 {secondaryAction && (
                   <Button
                     variant="outline"
-                    color="zinc"
-                    className="w-full sm:w-auto"
+                    color={secondaryAction.color || "zinc"}
+                    className={cn("w-full sm:w-auto", secondaryAction.className)}
                     onClick={secondaryAction.onClick}
                     {...(secondaryAction.href ? { href: secondaryAction.href, as: "a" } : {})}
                   >

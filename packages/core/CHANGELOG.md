@@ -1,5 +1,19 @@
 # @hudbird/ui
 
+## 1.4.0
+
+### Minor Changes
+
+- - Added futuristic minimalist Matrix hover effects for navigation elements
+  - Optimized Framer Motion animations with `whileInView` for 60fps scrolling performance
+  - Improved light mode beam effect visibility with subtle organic colors
+  - Added continuous Cyber Light glowing borders for seamless section transitions
+
+### Patch Changes
+
+- Updated dependencies
+  - @hudbird/theme@1.4.0
+
 ## 1.3.0
 
 ### Minor Changes

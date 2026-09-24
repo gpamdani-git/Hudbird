@@ -15,6 +15,16 @@ export interface FeatureGlassProps extends Omit<React.HTMLAttributes<HTMLElement
   title?: React.ReactNode;
   description?: React.ReactNode;
   features: FeatureGlassItem[];
+  /**
+   * Override the decorative glow orb color inside each card.
+   * e.g. "bg-violet-500/10 dark:bg-violet-500/20"
+   */
+  glowClassName?: string;
+  /**
+   * Override the icon container colors.
+   * e.g. "bg-violet-600/10 text-violet-600 ring-violet-600/20 dark:bg-violet-500/20 dark:text-violet-300 dark:ring-violet-500/30"
+   */
+  iconClassName?: string;
 }
 
 export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
@@ -25,6 +35,8 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
       title = "Everything you need.",
       description = "A complete toolkit to build better, faster, and more beautifully.",
       features,
+      glowClassName = "bg-blue-500/10 dark:bg-blue-500/20",
+      iconClassName = "bg-blue-600/10 text-blue-600 ring-blue-600/20 dark:bg-blue-500/20 dark:text-blue-300 dark:ring-blue-500/30",
       ...props
     },
     ref
@@ -67,9 +79,19 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
                 className="group relative overflow-hidden rounded-3xl border border-white/50 bg-white/40 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl transition-all hover:bg-white/60 dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] dark:hover:bg-zinc-900/60"
               >
                 {/* Decorative glowing orb inside the card */}
-                <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-indigo-500/10 blur-2xl transition-transform group-hover:scale-150 dark:bg-indigo-500/20" />
+                <div
+                  className={cn(
+                    "absolute -top-12 -right-12 h-32 w-32 rounded-full blur-2xl transition-transform group-hover:scale-150",
+                    glowClassName
+                  )}
+                />
 
-                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 shadow-sm ring-1 ring-indigo-600/20 ring-inset dark:bg-indigo-500/20 dark:text-indigo-300 dark:ring-indigo-500/30">
+                <div
+                  className={cn(
+                    "relative z-10 flex h-12 w-12 items-center justify-center rounded-xl shadow-sm ring-1 ring-inset",
+                    iconClassName
+                  )}
+                >
                   {feature.icon}
                 </div>
                 <div className="relative z-10 mt-6">

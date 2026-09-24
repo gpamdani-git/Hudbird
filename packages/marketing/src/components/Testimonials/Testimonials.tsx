@@ -23,6 +23,16 @@ export interface TestimonialsProps {
   description?: string;
   testimonials?: Testimonial[];
   className?: string;
+  /**
+   * Override the background glow blob color.
+   * e.g. "bg-violet-500/30"
+   */
+  glowClassName?: string;
+  /**
+   * Override the live dot color in the badge.
+   * e.g. "bg-violet-500"
+   */
+  dotClassName?: string;
 }
 
 export const DEFAULT_TESTIMONIALS: Testimonial[] = [
@@ -197,6 +207,8 @@ export function Testimonials({
   description = "",
   testimonials = DEFAULT_TESTIMONIALS,
   className,
+  glowClassName = "bg-blue-500/30",
+  dotClassName = "bg-blue-500",
 }: TestimonialsProps) {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -228,14 +240,19 @@ export function Testimonials({
     >
       {/* Aesthetic Background Blobs */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-30 dark:opacity-20">
-        <div className="absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
+        <div
+          className={cn(
+            "absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply blur-3xl dark:mix-blend-screen",
+            glowClassName
+          )}
+        />
         <div className="absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full bg-purple-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-16 max-w-2xl text-center sm:mb-20">
           <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
-            <span className="mr-2 flex h-1.5 w-1.5 rounded-full bg-indigo-500"></span>
+            <span className={cn("mr-2 flex h-1.5 w-1.5 rounded-full", dotClassName)}></span>
             007 TESTIMONIAL
           </div>
           <h2 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">

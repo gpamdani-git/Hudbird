@@ -141,6 +141,31 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
       defaultVal: "-",
       description: "Callback fired when the toggle is clicked.",
     },
+    {
+      prop: "popularCardClassName (PricingGlass)",
+      type: "string",
+      defaultVal: '"border-blue-500/30 bg-blue-50/40 ..."',
+      description: "Override the popular tier card border and background in the glass variant.",
+    },
+    {
+      prop: "popularBadgeClassName (PricingGlass)",
+      type: "string",
+      defaultVal: '"bg-blue-500/10 text-blue-600 ring-blue-500/20 ..."',
+      description: "Override the 'Most Popular' badge pill colors in the glass variant.",
+    },
+    {
+      prop: "popularCheckClassName (PricingGlass)",
+      type: "string",
+      defaultVal: '"text-blue-600 dark:text-blue-400"',
+      description:
+        "Override the feature check icon color on the popular tier in the glass variant.",
+    },
+    {
+      prop: "popularCtaClassName (PricingGlass)",
+      type: "string",
+      defaultVal: '"bg-blue-600 text-white hover:bg-blue-500 ..."',
+      description: "Override the popular tier CTA button colors in the glass variant.",
+    },
   ];
 
   return (

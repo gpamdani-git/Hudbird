@@ -70,12 +70,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="relative z-10 mb-4 flex items-center justify-between px-1.5">
           <div className="flex items-center gap-3 overflow-hidden">
             <img
-              src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+              src="/assets/new-logo/hudbirdui-icon-black.svg"
               alt="Hudbird UI"
               className="h-7 w-7 shrink-0 object-contain dark:hidden"
             />
             <img
-              src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+              src="/assets/new-logo/hudbirdui-icon-white.svg"
               alt="Hudbird UI"
               className="hidden h-7 w-7 shrink-0 object-contain dark:block"
             />

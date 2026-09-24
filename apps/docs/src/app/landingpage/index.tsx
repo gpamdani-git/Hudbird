@@ -404,17 +404,17 @@ export const AiStartupTemplate = () => {
             </motion.div>
 
             {/* Grid Layout */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_360px] lg:items-start">
               {/* Left Main Feature Cards Stack */}
-              <div className="flex flex-col gap-12">
+              <div className="flex w-full snap-x snap-mandatory gap-6 overflow-x-auto pb-4 lg:flex-col lg:gap-12 lg:overflow-visible lg:pb-0">
                 {/* Card 0: CMS */}
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(0)}
-                  viewport={{ margin: "-40% 0px -40% 0px" }}
-                  className="group relative flex min-h-[600px] flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl lg:h-[700px] dark:border-white/10 dark:bg-[#0a0f1c]"
+                  viewport={{ amount: 0.5 }}
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
                 >
                   {/* Illustration Area — glass like Designed */}
-                  <div className="relative flex min-h-[500px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8">
+                  <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
 
                     <Suspense
@@ -451,11 +451,11 @@ export const AiStartupTemplate = () => {
                 {/* Card 1: Terminal */}
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(1)}
-                  viewport={{ margin: "-40% 0px -40% 0px" }}
-                  className="group relative flex min-h-[600px] flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl lg:h-[700px] dark:border-white/10 dark:bg-[#0a0f1c]"
+                  viewport={{ amount: 0.5 }}
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
                 >
                   {/* Terminal Illustration Area — glass like Designed */}
-                  <div className="relative flex min-h-[500px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8">
+                  <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
 
                     <Suspense
@@ -491,11 +491,11 @@ export const AiStartupTemplate = () => {
                 {/* Card 2: Accelerate */}
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(2)}
-                  viewport={{ margin: "-40% 0px -40% 0px" }}
-                  className="group relative flex min-h-[600px] flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl lg:h-[700px] dark:border-white/10 dark:bg-[#0a0f1c]"
+                  viewport={{ amount: 0.5 }}
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
                 >
                   {/* Code Illustration Area — glass like Designed */}
-                  <div className="relative flex min-h-[500px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8">
+                  <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
 
                     {/* VSCode autocomplete typing illustration */}
@@ -531,7 +531,7 @@ export const AiStartupTemplate = () => {
               </div>
 
               {/* Right Agent Chat Card — sticky on desktop, full-width on mobile */}
-              <div className="sticky top-24 flex h-[500px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[600px] lg:h-[700px] dark:border-white/10 dark:bg-[#0f0f1a]">
+              <div className="sticky top-24 flex h-[450px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[550px] lg:h-[700px] dark:border-white/10 dark:bg-[#0f0f1a]">
                 {/* Chat Area — scrollable on mobile */}
                 <div className="relative flex flex-1 flex-col overflow-y-auto overscroll-contain scroll-smooth p-6">
                   <AnimatePresence mode="wait">

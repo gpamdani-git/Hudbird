@@ -13,6 +13,11 @@ export interface TestimonialsSideBySideProps {
   stats?: { value: string; label: string }[];
   testimonials?: Testimonial[];
   className?: string;
+  /**
+   * Override the label and tag accent color.
+   * e.g. "text-violet-600 dark:text-violet-400"
+   */
+  accentClassName?: string;
 }
 
 export function TestimonialsSideBySide({
@@ -25,6 +30,7 @@ export function TestimonialsSideBySide({
   ],
   testimonials = DEFAULT_TESTIMONIALS.filter((t) => !t.featured).slice(0, 6),
   className,
+  accentClassName = "text-blue-600 dark:text-blue-400",
 }: TestimonialsSideBySideProps) {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -57,7 +63,12 @@ export function TestimonialsSideBySide({
           <div className="flex h-full flex-col justify-between lg:sticky lg:top-24 lg:col-span-5 lg:pb-16">
             <div>
               {label && (
-                <div className="mb-6 text-sm font-bold tracking-widest text-indigo-600 uppercase dark:text-indigo-400">
+                <div
+                  className={cn(
+                    "mb-6 text-sm font-bold tracking-widest uppercase",
+                    accentClassName
+                  )}
+                >
                   {label}
                 </div>
               )}

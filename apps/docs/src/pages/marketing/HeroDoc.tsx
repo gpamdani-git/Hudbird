@@ -51,7 +51,7 @@ function Example() {
       <HeroBackground src="/assets/marketing-section/hero-bg.webp" overlayClassName="bg-white/40 dark:bg-zinc-950/80 backdrop-blur-md" />
       <HeroHeader
         logo={
-          <><img src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" /><img src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" /></>
+          <><img src="/assets/new-logo/hudbirdui-icon-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" /><img src="/assets/new-logo/hudbirdui-icon-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" /></>
         }
         links={[
           { label: "Product", href: "#" },
@@ -95,8 +95,8 @@ function Example() {
       <HeroHeader
         logo={
           <>
-            <img src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />
-            <img src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" />
+            <img src="/assets/new-logo/hudbirdui-icon-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />
+            <img src="/assets/new-logo/hudbirdui-icon-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" />
           </>
         }
         links={[{ label: "Product", href: "#" }, { label: "Features", href: "#" }]}
@@ -143,7 +143,7 @@ function Example() {
     <Hero size="full" withBlobs={false}>
       <HeroBackground src="/assets/marketing-section/hero-bg.webp" overlayClassName="bg-zinc-900/80 dark:bg-zinc-950/90 backdrop-blur-sm" />
       <HeroHeader
-        logo={<img src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg" alt="Logo" className="h-8 w-auto" />}
+        logo={<img src="/assets/new-logo/hudbirdui-icon-white.svg" alt="Logo" className="h-8 w-auto" />}
         links={[{ label: "Product", href: "#" }, { label: "Features", href: "#" }]}
         action={<a href="#" className="text-sm font-semibold text-white">Log in &rarr;</a>}
         className="[&_a]:text-white [&_button]:text-white"
@@ -182,7 +182,7 @@ function Example() {
         <HeroThreeBackground />
       </Suspense>
       <HeroHeader
-        logo={<img src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg" alt="Logo" className="h-8 w-auto" />}
+        logo={<img src="/assets/new-logo/hudbirdui-icon-white.svg" alt="Logo" className="h-8 w-auto" />}
         links={[{ label: "Product", href: "#" }, { label: "Features", href: "#" }]}
         action={<a href="#" className="text-sm font-semibold text-white">Log in &rarr;</a>}
         className="[&_a]:text-white [&_button]:text-white"
@@ -213,7 +213,7 @@ function Example() {
       <div className="grid lg:grid-cols-2 min-h-screen">
         <div className="flex flex-col px-6 sm:px-12 xl:px-24 pt-8 pb-16 justify-center relative z-10 min-h-[50vh]">
           <HeroHeader
-            logo={<img src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />}
+            logo={<img src="/assets/new-logo/hudbirdui-icon-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />}
             links={[{ label: "Product", href: "#" }, { label: "Features", href: "#" }]}
             action={<a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white">Log in &rarr;</a>}
             className="mb-auto pb-12 w-full max-w-xl mx-auto"
@@ -261,8 +261,8 @@ function Example() {
       <HeroHeader
         logo={
           <>
-            <img src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />
-            <img src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" />
+            <img src="/assets/new-logo/hudbirdui-icon-black.svg" alt="Logo" className="h-8 w-auto dark:hidden" />
+            <img src="/assets/new-logo/hudbirdui-icon-white.svg" alt="Logo" className="h-8 w-auto hidden dark:block" />
           </>
         }
         links={[{ label: "Products", href: "#" }, { label: "App", href: "#" }, { label: "About", href: "#" }, { label: "FAQ", href: "#" }]}
@@ -497,12 +497,12 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                 logo={
                   <>
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+                      src="/assets/new-logo/hudbirdui-icon-black.svg"
                       alt="Logo"
                       className="h-8 w-auto dark:hidden"
                     />
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                      src="/assets/new-logo/hudbirdui-icon-white.svg"
                       alt="Logo"
                       className="hidden h-8 w-auto dark:block"
                     />
@@ -566,12 +566,12 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                 logo={
                   <>
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+                      src="/assets/new-logo/hudbirdui-icon-black.svg"
                       alt="Logo"
                       className="h-8 w-auto dark:hidden"
                     />
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                      src="/assets/new-logo/hudbirdui-icon-white.svg"
                       alt="Logo"
                       className="hidden h-8 w-auto dark:block"
                     />
@@ -650,7 +650,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               <HeroHeader
                 logo={
                   <img
-                    src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                    src="/assets/new-logo/hudbirdui-icon-white.svg"
                     alt="Logo"
                     className="h-8 w-auto"
                   />
@@ -712,7 +712,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               <HeroHeader
                 logo={
                   <img
-                    src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                    src="/assets/new-logo/hudbirdui-icon-white.svg"
                     alt="Logo"
                     className="h-8 w-auto"
                   />
@@ -767,7 +767,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                   <HeroHeader
                     logo={
                       <img
-                        src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+                        src="/assets/new-logo/hudbirdui-icon-black.svg"
                         alt="Logo"
                         className="h-8 w-auto dark:hidden"
                       />
@@ -832,12 +832,12 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                 logo={
                   <>
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-black.svg"
+                      src="/assets/new-logo/hudbirdui-icon-black.svg"
                       alt="Logo"
                       className="h-8 w-auto dark:hidden"
                     />
                     <img
-                      src="/assets/marketing-section/logo-hudbird/logo-ico-white.svg"
+                      src="/assets/new-logo/hudbirdui-icon-white.svg"
                       alt="Logo"
                       className="hidden h-8 w-auto dark:block"
                     />

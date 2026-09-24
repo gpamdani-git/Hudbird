@@ -4,7 +4,7 @@
   "commit": false,
   "fixed": [["hudbird-ui", "@hudbird/ui", "@hudbird/marketing", "@hudbird/theme"]],
   "linked": [],
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": []

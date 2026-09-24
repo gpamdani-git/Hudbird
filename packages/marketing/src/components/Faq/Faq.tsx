@@ -18,6 +18,16 @@ export interface FaqProps {
   faqs?: FaqItem[];
   className?: string;
   variant?: "centered" | "side-by-side";
+  /**
+   * Override the label badge colors.
+   * e.g. "border-violet-200/50 bg-violet-50/50 text-violet-700 dark:border-violet-800/30 dark:bg-violet-900/20 dark:text-violet-400"
+   */
+  badgeClassName?: string;
+  /**
+   * Override the accordion item accent color (hover & expanded state).
+   * e.g. "text-violet-600 dark:text-violet-400"
+   */
+  accentClassName?: string;
 }
 
 const DEFAULT_FAQS: FaqItem[] = [
@@ -60,12 +70,12 @@ export function Faq({
   faqs = DEFAULT_FAQS,
   className,
   variant = "side-by-side",
+  badgeClassName = "border-blue-200/50 bg-blue-50/50 text-blue-700 dark:border-blue-800/30 dark:bg-blue-900/20 dark:text-blue-400",
+  accentClassName = "text-blue-600 dark:text-blue-400",
 }: FaqProps) {
   if (variant === "centered") {
     return (
-      <section
-        className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
-      >
+      <section className={cn("overflow-hidden bg-transparent py-24 sm:py-32", className)}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,15 +85,22 @@ export function Faq({
         >
           <div className="mx-auto mb-16 max-w-4xl text-center">
             {label && (
-              <div className="mb-6 inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
+              <div
+                className={cn(
+                  "mx-auto mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
+                  badgeClassName
+                )}
+              >
                 {label}
               </div>
             )}
-            <h2 className="font-outfit text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+            <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
               {title}
             </h2>
             {description && (
-              <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">{description}</p>
+              <p className="mx-auto max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+                {description}
+              </p>
             )}
           </div>
 
@@ -94,10 +111,13 @@ export function Faq({
                   key={faq.id}
                   title={faq.question}
                   classNames={{
-                    trigger:
-                      "group hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200",
-                    title:
-                      "font-outfit font-semibold text-base transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[&[aria-expanded=true]]:text-blue-600 dark:group-[&[aria-expanded=true]]:text-blue-400",
+                    trigger: cn(
+                      "group hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200"
+                    ),
+                    title: cn(
+                      "font-outfit font-semibold text-base transition-colors",
+                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                    ),
                     content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed",
                   }}
                 >
@@ -113,7 +133,7 @@ export function Faq({
 
   // Side by Side variant
   return (
-    <section className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}>
+    <section className={cn("overflow-hidden bg-transparent py-24 sm:py-32", className)}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -124,15 +144,22 @@ export function Faq({
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:sticky lg:top-24 lg:col-span-5">
             {label && (
-              <div className="mb-4 text-sm font-semibold tracking-wide text-indigo-600 uppercase dark:text-indigo-400">
+              <div
+                className={cn(
+                  "mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
+                  badgeClassName
+                )}
+              >
                 {label}
               </div>
             )}
-            <h2 className="font-outfit mb-6 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+            <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
               {title}
             </h2>
             {description && (
-              <p className="text-lg text-zinc-600 dark:text-zinc-400">{description}</p>
+              <p className="max-w-xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+                {description}
+              </p>
             )}
           </div>
           <div className="lg:col-span-7">
@@ -142,10 +169,13 @@ export function Faq({
                   key={faq.id}
                   title={faq.question}
                   classNames={{
-                    trigger:
-                      "group py-5 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200 px-3 -mx-3",
-                    title:
-                      "font-outfit font-semibold text-base transition-colors group-hover:text-blue-600 dark:group-hover:text-blue-400 group-[&[aria-expanded=true]]:text-blue-600 dark:group-[&[aria-expanded=true]]:text-blue-400",
+                    trigger: cn(
+                      "group py-5 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200 px-3 -mx-3"
+                    ),
+                    title: cn(
+                      "font-outfit font-semibold text-base transition-colors",
+                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                    ),
                     content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
                   }}
                 >

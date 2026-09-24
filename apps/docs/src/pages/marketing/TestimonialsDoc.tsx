@@ -45,6 +45,18 @@ export default function TestimonialsDoc({ onOpenSidebar }: { onOpenSidebar?: () 
       defaultVal: "undefined",
       description: "Additional CSS classes to apply to the root section element.",
     },
+    {
+      prop: "glowClassName",
+      type: "string",
+      defaultVal: '"bg-blue-500/30"',
+      description: "Override the background ambient glow blob color.",
+    },
+    {
+      prop: "dotClassName",
+      type: "string",
+      defaultVal: '"bg-blue-500"',
+      description: "Override the live indicator dot color in the section badge.",
+    },
   ];
 
   const testimonialTypeRows: ApiPropRow[] = [

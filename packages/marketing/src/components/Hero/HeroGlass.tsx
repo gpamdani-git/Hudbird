@@ -10,10 +10,27 @@ export interface HeroGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, 
   description: React.ReactNode;
   actions?: React.ReactNode;
   illustration?: React.ReactNode;
+  /**
+   * Override the background ambient glow orb color.
+   * e.g. "bg-violet-500/20"
+   */
+  glowClassName?: string;
 }
 
 export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
-  ({ className, badge, title, description, actions, illustration, ...props }, ref) => {
+  (
+    {
+      className,
+      badge,
+      title,
+      description,
+      actions,
+      illustration,
+      glowClassName = "bg-blue-500/20",
+      ...props
+    },
+    ref
+  ) => {
     return (
       <section
         ref={ref}
@@ -24,7 +41,12 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
         {...props}
       >
         {/* Background ambient orbs */}
-        <div className="pointer-events-none absolute top-1/4 left-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 opacity-70 blur-[150px]" />
+        <div
+          className={cn(
+            "pointer-events-none absolute top-1/4 left-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-[150px]",
+            glowClassName
+          )}
+        />
         <div className="pointer-events-none absolute right-1/4 bottom-1/4 h-[600px] w-[600px] translate-x-1/2 translate-y-1/2 rounded-full bg-cyan-500/20 opacity-70 blur-[150px]" />
 
         <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:px-8">
