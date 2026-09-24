@@ -13,9 +13,9 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "ignoreDeprecations": "6.0",
-    "baseUrl": ".",
+
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["./src/*"],
       "@hudbird/ui": ["../../packages/core/src/index.ts"],
       "@hudbird/theme": ["../../packages/theme/src/index.ts"],
       "@hudbird/marketing": ["../../packages/marketing/src/index.ts"]

@@ -352,7 +352,7 @@ export function StackedExample() {
         categories={["Enterprise", "Pro", "Starter"]}
         type="stacked"
         colors={["#42a5f5", "#0066f5", "#0032a8"]}
-        valueFormatter={(v) => \`$\${v / 1000}k\`}
+        valueFormatter={(v) => \`$\\${v / 1000}k\`}
         className="h-[300px]"
       />
     </Card>
@@ -398,7 +398,7 @@ export function GroupedExample() {
         index="month"
         categories={["Online", "Retail", "Direct"]}
         colors={["#42a5f5", "#0066f5", "#0032a8"]}
-        valueFormatter={(v) => \`$\${v / 1000}k\`}
+        valueFormatter={(v) => \`$\\${v / 1000}k\`}
         className="h-[300px]"
       />
     </Card>
@@ -485,7 +485,7 @@ export function CustomTooltipExample() {
         index="month"
         categories={["Online", "Retail", "Direct"]}
         colors={["#42a5f5", "#0066f5", "#0032a8"]}
-        valueFormatter={(v) => \`$\${v / 1000}k\`}
+        valueFormatter={(v) => \`$\\${v / 1000}k\`}
         className="h-[300px]"
         customTooltip={({ active, payload, label }: any) => {
           if (active && payload && payload.length) {
@@ -500,13 +500,13 @@ export function CustomTooltipExample() {
                         <div className="h-2 w-2 rounded-full" style={{ backgroundColor: item.color }} />
                         <span className="text-sm text-zinc-600">{item.name}</span>
                       </div>
-                      <span className="text-sm font-medium">${item.value.toLocaleString()}</span>
+                      <span className="text-sm font-medium">\${item.value.toLocaleString()}</span>
                     </div>
                   ))}
                 </div>
                 <div className="mt-3 border-t border-zinc-200 pt-3 dark:border-zinc-800 flex items-center justify-between">
                   <span className="text-sm text-zinc-600 dark:text-zinc-400">Total</span>
-                  <span className="text-sm font-bold">${total.toLocaleString()}</span>
+                  <span className="text-sm font-bold">\${total.toLocaleString()}</span>
                 </div>
               </div>
             );
@@ -602,7 +602,7 @@ export function TimeAggregationExample() {
         index="time"
         categories={["value"]}
         colors={["#a855f7"]}
-        valueFormatter={(value) => \`\${value} views\`}
+        valueFormatter={(value) => \`\\\${value} views\`}
       />
     </Card>
   );
@@ -698,7 +698,7 @@ export function TimeAggregationExample() {
         <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Avatar" className="h-10 w-10 rounded-full" />
         <div>
           <p className="text-sm font-medium text-zinc-300">Revenue</p>
-          <p className="text-lg font-bold text-emerald-400">$\${value}</p>
+          <p className="text-lg font-bold text-emerald-400">$\\\${value}</p>
         </div>
       </div>
     );
