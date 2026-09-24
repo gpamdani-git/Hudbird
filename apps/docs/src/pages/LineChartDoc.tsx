@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import lineChartCode from "../../../../packages/core/src/components/LineChart/LineChart.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
@@ -636,7 +635,7 @@ export default function App() {
         <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Avatar" className="h-10 w-10 rounded-full" />
         <div>
           <p className="text-sm font-medium text-zinc-300">Revenue</p>
-          <p className="text-lg font-bold text-purple-400">\$${value}</p>
+          <p className="text-lg font-bold text-purple-400">$\${value}</p>
         </div>
       </div>
     );

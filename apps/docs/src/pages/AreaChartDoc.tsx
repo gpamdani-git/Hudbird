@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 // apps/docs/src/pages/AreaChartDoc.tsx
 import areaChartCode from "../../../../packages/core/src/components/AreaChart/AreaChart.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
@@ -234,7 +233,7 @@ export default function App() {
                 data={chartData}
                 index="month"
                 categories={["revenue"]}
-                valueFormatter={(v) => `\$${v}`}
+                valueFormatter={(v) => `$${v}`}
               />
             </Card>
           </ComponentPreview>
@@ -248,7 +247,7 @@ export default function App() {
     data={chartData}
     index="month"
     categories={["revenue"]}
-    valueFormatter={(v) => \`\$${v}\`}
+    valueFormatter={(v) => \`$\${v}\`}
   />
 </Card>`}
           />
@@ -389,7 +388,7 @@ export default function App() {
           data={dataDay}
           index="time"
           categories={["value"]}
-          valueFormatter={(v) => \`\$${v}\`}
+          valueFormatter={(v) => \`$\${v}\`}
         />
       </div>
     </Tab>
@@ -548,7 +547,7 @@ export default function App() {
                 index="month"
                 categories={["revenue", "expenses"]}
                 type="stacked"
-                valueFormatter={(v) => `\$${v}`}
+                valueFormatter={(v) => `$${v}`}
               />
             </Card>
           </ComponentPreview>
@@ -559,7 +558,7 @@ export default function App() {
     index="month"
     categories={["revenue", "expenses"]}
     type="stacked"
-    valueFormatter={(v) => \`\$${v}\`}
+    valueFormatter={(v) => \`$\${v}\`}
   />
 </Card>`}
           />
@@ -727,7 +726,7 @@ export default function App() {
         <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Avatar" className="h-10 w-10 rounded-full" />
         <div>
           <p className="text-sm font-medium text-zinc-300">Revenue</p>
-          <p className="text-lg font-bold text-white">\$${value}</p>
+          <p className="text-lg font-bold text-white">$\${value}</p>
         </div>
       </div>
     );
