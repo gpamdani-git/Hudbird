@@ -107,6 +107,9 @@ import {
   Lock,
   TriangleAlert,
   Settings,
+  Mic,
+  ListChecks,
+  PenTool,
 } from "lucide-react";
 import {
   ThemeToggleButton,
@@ -114,6 +117,9 @@ import {
 } from "../../components/templates/TemplateThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 
+const MorphingUIHero = lazy(() =>
+  import("./components/MorphingUIHero").then((m) => ({ default: m.MorphingUIHero }))
+);
 const AiOrbIllustration = lazy(() =>
   import("./components/AiOrbIllustration").then((m) => ({ default: m.AiOrbIllustration }))
 );
@@ -1232,6 +1238,195 @@ export const AiStartupTemplate = () => {
                 </div>
               </BentoCard>
             </BentoGrid>
+          </div>
+        </section>
+
+        {/* Reflect AI-style AI Feature Section */}
+        <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-32 pb-40 font-sans transition-colors duration-500 dark:bg-[#05050A]">
+          {/* Starry Background (subtle) */}
+          <div
+            className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-30"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at center, var(--tw-gradient-stops) 1px, transparent 1px)",
+              backgroundSize: "64px 64px",
+              maskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
+              WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
+            }}
+          >
+            <div
+              className="absolute inset-0 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,1)]"
+              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", opacity: 0.1 }}
+            />
+          </div>
+
+          {/* Top Header */}
+          <div className="relative z-10 flex flex-col items-center px-4 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-6 rounded-full border border-zinc-200 bg-white/50 px-3 py-1 text-xs font-medium text-zinc-600 backdrop-blur-md dark:border-white/10 dark:bg-white/5 dark:text-white/80"
+            >
+              Fluid Interactions
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
+              className="mb-6 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl lg:text-6xl dark:text-white"
+            >
+              State-driven Morphing UI
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              viewport={{ once: true }}
+              className="max-w-2xl text-lg text-zinc-500 dark:text-white/60"
+            >
+              Hudbird uses advanced spring physics and motion logic to create seamless,
+              <br className="hidden md:block" />
+              continuous micro-interactions for a premium user experience.
+            </motion.p>
+          </div>
+
+          {/* 3D Grid & Beam Illustration */}
+          <div className="relative mt-24 flex h-[500px] w-full max-w-5xl flex-col items-center justify-start pt-16">
+            {/* Glowing Beam Source (Portal) */}
+            <div className="absolute top-[250px] z-0 h-[2px] w-[300px] rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-blue-500 shadow-[0_0_20px_10px_rgba(59,130,246,0.3),0_0_40px_5px_rgba(14,165,233,0.2)] dark:shadow-[0_0_40px_20px_rgba(59,130,246,0.5),0_0_60px_10px_rgba(14,165,233,0.3)]" />
+
+            {/* Vertical Upward Beam with blue edge */}
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              whileInView={{ opacity: 1, height: "400px" }}
+              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+              viewport={{ once: true }}
+              className="absolute bottom-[calc(100%-250px)] left-1/2 z-0 w-[200px] -translate-x-1/2 bg-gradient-to-t from-blue-500/40 via-sky-500/10 to-transparent blur-[20px] dark:from-blue-500/80 dark:via-sky-500/20 dark:blur-[30px]"
+            />
+
+            {/* Perspective Grid Floor */}
+            <div
+              className="absolute top-[250px] left-1/2 z-0 h-[600px] w-[200vw] -translate-x-1/2 dark:hidden"
+              style={{
+                transform: "perspective(1000px) rotateX(70deg)",
+                transformOrigin: "top center",
+                backgroundSize: "60px 60px",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
+                maskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
+                WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
+              }}
+            />
+            <div
+              className="absolute top-[250px] left-1/2 z-0 hidden h-[600px] w-[200vw] -translate-x-1/2 dark:block"
+              style={{
+                transform: "perspective(1000px) rotateX(70deg)",
+                transformOrigin: "top center",
+                backgroundSize: "60px 60px",
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)",
+                maskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
+                WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
+              }}
+            />
+
+            {/* Glowing floor reflection (blue) */}
+            <div
+              className="absolute top-[250px] left-1/2 z-0 h-[400px] w-[600px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15)_0%,rgba(14,165,233,0.1)_40%,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.3)_0%,rgba(14,165,233,0.2)_40%,transparent_70%)]"
+              style={{
+                transform: "perspective(1000px) rotateX(70deg)",
+                transformOrigin: "top center",
+              }}
+            />
+
+            {/* Morphing UI Glass Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="relative z-10 -mt-8 flex w-full max-w-xl scale-110 justify-center sm:scale-125 md:-mt-16"
+            >
+              <Suspense
+                fallback={
+                  <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
+                }
+              >
+                <MorphingUIHero />
+              </Suspense>
+            </motion.div>
+          </div>
+
+          {/* Bottom Feature Grid */}
+          <div className="relative z-10 mt-32 flex flex-col items-center">
+            <motion.h3
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="mb-16 text-2xl font-medium tracking-tight text-zinc-900 md:text-3xl dark:text-white"
+            >
+              A library of interactive primitives.
+            </motion.h3>
+
+            <div
+              className="flex flex-col items-center"
+              style={{
+                maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+                WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
+              }}
+            >
+              {/* Top Row (3 columns) */}
+              <div className="flex flex-col border-b border-zinc-200 md:flex-row dark:border-white/10">
+                <div className="flex w-[280px] flex-col items-center border-zinc-200 p-8 text-center md:border-r dark:border-white/10">
+                  <Activity className="mb-4 h-6 w-6 text-zinc-400 dark:text-white/50" />
+                  <h4 className="mb-2 text-sm font-medium text-zinc-800 dark:text-white/90">
+                    Continuous motion
+                  </h4>
+                  <p className="text-xs text-zinc-500 dark:text-white/50">
+                    one shape morphs seamlessly
+                  </p>
+                </div>
+                <div className="flex w-[280px] flex-col items-center border-zinc-200 p-8 text-center md:border-r dark:border-white/10">
+                  <Code2 className="mb-4 h-6 w-6 text-zinc-400 dark:text-white/50" />
+                  <h4 className="mb-2 text-sm font-medium text-zinc-800 dark:text-white/90">
+                    Framer Motion
+                  </h4>
+                  <p className="text-xs text-zinc-500 dark:text-white/50">
+                    powered by fluid springs
+                  </p>
+                </div>
+                <div className="flex w-[280px] flex-col items-center p-8 text-center">
+                  <PlayIcon className="mb-4 h-6 w-6 text-zinc-400 dark:text-white/50" />
+                  <h4 className="mb-2 text-sm font-medium text-zinc-800 dark:text-white/90">
+                    Interactive states
+                  </h4>
+                  <p className="text-xs text-zinc-500 dark:text-white/50">cursor-driven feedback</p>
+                </div>
+              </div>
+              {/* Bottom Row (2 columns) */}
+              <div className="flex flex-col md:flex-row">
+                <div className="flex w-[280px] flex-col items-center border-zinc-200 p-8 text-center md:border-r dark:border-white/10">
+                  <Command className="mb-4 h-6 w-6 text-zinc-400 dark:text-white/50" />
+                  <h4 className="mb-2 text-sm font-medium text-zinc-800 dark:text-white/90">
+                    Command palette,
+                  </h4>
+                  <p className="text-xs text-zinc-500 dark:text-white/50">
+                    search and filter smoothly
+                  </p>
+                </div>
+                <div className="flex w-[280px] flex-col items-center p-8 text-center">
+                  <Palette className="mb-4 h-6 w-6 text-zinc-400 dark:text-white/50" />
+                  <h4 className="mb-2 text-sm font-medium text-zinc-800 dark:text-white/90">
+                    Theme support
+                  </h4>
+                  <p className="text-xs text-zinc-500 dark:text-white/50">
+                    perfect light and dark mode
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
