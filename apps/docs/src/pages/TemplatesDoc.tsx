@@ -10,7 +10,8 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "SaaS",
     price: "Free",
-    image: "/assets/templates/saas-launchpad.png",
+    imageDark: "/assets/templates/saas-launchpad.png",
+    imageLight: "/assets/templates/saas-launchpad-light.png",
     date: "2026-09-01",
     trendingScore: 95,
   },
@@ -21,7 +22,8 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "Fintech",
     price: "$49",
-    image: "/assets/templates/fintech.png",
+    imageDark: "/assets/templates/fintech.png",
+    imageLight: "/assets/templates/fintech-light.png",
     date: "2026-09-02",
     trendingScore: 88,
   },
@@ -32,7 +34,8 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "AI",
     price: "$99",
-    image: "/assets/templates/ai-startup.png",
+    imageDark: "/assets/templates/ai-startup.png",
+    imageLight: "/assets/templates/ai-startup-light.png",
     date: "2026-09-05",
     trendingScore: 98,
   },
@@ -43,7 +46,8 @@ const TEMPLATES = [
     category: "Ecommerce",
     subCategory: "Digital",
     price: "$79",
-    image: "/assets/templates/ecommerce.png",
+    imageDark: "/assets/templates/ecommerce.png",
+    imageLight: "/assets/templates/ecommerce-light.png",
     date: "2026-09-06",
     trendingScore: 82,
   },
@@ -54,7 +58,8 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "Apps",
     price: "$59",
-    image: "/assets/templates/modern-app.png",
+    imageDark: "/assets/templates/modern-app.png",
+    imageLight: "/assets/templates/modern-app-light.png",
     date: "2026-09-08",
     trendingScore: 91,
   },
@@ -65,7 +70,8 @@ const TEMPLATES = [
     category: "Agency",
     subCategory: "Design",
     price: "$129",
-    image: "/assets/templates/digital-agency.png",
+    imageDark: "/assets/templates/digital-agency.png",
+    imageLight: "/assets/templates/digital-agency-light.png",
     date: "2026-09-10",
     trendingScore: 85,
   },
@@ -271,9 +277,14 @@ export default function TemplatesDoc() {
                   onClick={() => window.open(`/#/templates/${template.id}`, "_blank")}
                 >
                   <img
-                    src={template.image}
+                    src={template.imageLight}
                     alt={template.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 dark:hidden"
+                  />
+                  <img
+                    src={template.imageDark}
+                    alt={template.name}
+                    className="hidden h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 dark:block"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-white/40 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100 dark:bg-black/40">
                     <Button

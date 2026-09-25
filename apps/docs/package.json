@@ -11,12 +11,17 @@
   "dependencies": {
     "@hudbird/marketing": "workspace:*",
     "@hudbird/ui": "workspace:*",
+    "clsx": "^2.1.1",
     "culori": "^4.0.2",
+    "framer-motion": "^13.2.0",
+    "hls.js": "^1.7.3",
     "lucide-react": "^1.43.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.3",
-    "recharts": "^3.10.1"
+    "recharts": "^3.10.1",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@hudbird/theme": "workspace:*",

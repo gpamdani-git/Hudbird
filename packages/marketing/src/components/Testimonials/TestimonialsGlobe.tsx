@@ -53,7 +53,12 @@ export function TestimonialsGlobe({
       {/* Background Globe Wrapper */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         {/* Glow behind section */}
-        <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/10 blur-[120px] dark:bg-blue-500/20" />
+        <div
+          className={cn(
+            "absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px]",
+            glowClassName
+          )}
+        />
 
         {/* Vignette/Mask to blend background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,white_70%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#09090b_70%)]" />
