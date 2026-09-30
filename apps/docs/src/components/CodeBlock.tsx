@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { trackEvent } from "../lib/analytics";
 
 interface CodeBlockProps {
   code: string;
@@ -23,6 +24,10 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
     setCopied(true);
+    trackEvent("copy_code", {
+      filename: filename || "snippet",
+      language,
+    });
     setTimeout(() => setCopied(false), 2000);
   };
 

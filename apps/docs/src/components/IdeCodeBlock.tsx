@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-import {
-  Files,
-  Search,
-  GitBranch,
-  Bug,
-  LayoutGrid,
-  Check,
-  Copy,
-  X,
-  AlertTriangle,
-  XCircle,
-} from "lucide-react";
+import { Check, Copy, X } from "lucide-react";
+import { trackEvent } from "../lib/analytics";
 
 export type FrameworkType = "React" | "HTML" | "Vue";
 
@@ -76,6 +66,10 @@ export const IdeCodeBlock: React.FC<IdeCodeBlockProps> = ({
     if (code) {
       navigator.clipboard.writeText(code);
       setCopied(true);
+      trackEvent("copy_code", {
+        framework: active,
+        language: getLanguage(),
+      });
       setTimeout(() => setCopied(false), 2000);
     }
   };
@@ -208,7 +202,7 @@ export const IdeCodeBlock: React.FC<IdeCodeBlockProps> = ({
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActive(tab.id as any)}
+                    onClick={() => setActive(tab.id as FrameworkType | "Markdown")}
                     className={`flex h-full items-center gap-2 border-r border-zinc-200 px-4 text-xs transition-colors dark:border-zinc-800/80 ${
                       isActive
                         ? "border-t-2 border-t-blue-500 bg-white text-zinc-900 dark:bg-[#1e1e1e] dark:text-zinc-100"

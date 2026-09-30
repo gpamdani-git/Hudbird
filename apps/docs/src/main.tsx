@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
+import { AnalyticsTracker } from "./components/AnalyticsTracker";
 import "./index.css";
 
 // Suppress benign ResizeObserver notification loop events
@@ -26,6 +27,7 @@ if (typeof window !== "undefined") {
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <HashRouter>
+      <AnalyticsTracker />
       <App />
     </HashRouter>
   </React.StrictMode>
