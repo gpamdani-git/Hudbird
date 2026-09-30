@@ -16,6 +16,12 @@ if (typeof window !== "undefined") {
     }
   });
 }
+// Handle stale chunk errors (e.g., when a user has an old version open during a new Vercel deploy)
+if (typeof window !== "undefined") {
+  window.addEventListener("vite:preloadError", () => {
+    window.location.reload();
+  });
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
