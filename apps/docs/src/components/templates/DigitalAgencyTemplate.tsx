@@ -56,7 +56,7 @@ export function DigitalAgencyTemplate() {
       year: "2026",
       client: "Neuralyx",
       scope: ["Web Design", "Framer Developer"],
-      image: "/assets/templates/ai-startup.png",
+      image: "/assets/templates/ai-startup.webp",
       images: ["/assets/templates/ai-startup-full.png"],
     },
     {
@@ -67,7 +67,7 @@ export function DigitalAgencyTemplate() {
       year: "2026",
       client: "Insightly",
       scope: ["Product Design", "Frontend Dev"],
-      image: "/assets/templates/saas-launchpad.png",
+      image: "/assets/templates/saas-launchpad.webp",
       images: ["/assets/templates/saas-launchpad-full.png"],
     },
     {
@@ -78,7 +78,7 @@ export function DigitalAgencyTemplate() {
       year: "2026",
       client: "Studio Nouveau",
       scope: ["Art Direction", "UI/UX Design"],
-      image: "/assets/templates/modern-app.png",
+      image: "/assets/templates/modern-app.webp",
       images: ["/assets/templates/modern-app-full.png"],
     },
     {
@@ -89,8 +89,8 @@ export function DigitalAgencyTemplate() {
       year: "2026",
       client: "DAStudio",
       scope: ["Web Design", "Motion Design"],
-      image: "/assets/templates/digital-agency.png",
-      images: ["/assets/templates/digital-agency-full.png"],
+      image: "/assets/templates/digital-agency.webp",
+      images: ["/assets/templates/digital-agency-full.webp"],
     },
   ];
 
