@@ -143,53 +143,33 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const SCOPE = "[data-theme-preview]";
 
     const { c, h } = parseOklch(primaryColor);
-    const { light } = generateThemeColorScales(c, h);
-
-    const injectSemanticScale = (scaleName: string, colorStr: string) => {
-      const { c: sc, h: sh } = parseOklch(colorStr);
-      const { light: sl } = generateThemeColorScales(sc, sh);
-      let css = "";
-      for (const [k, v] of Object.entries(sl)) css += `  --color-${scaleName}-${k}: oklch(${v});\n`;
-      return css;
-    };
 
     let css = `${SCOPE} {\n`;
     css += `  --primary-c: ${c};\n`;
     css += `  --primary-h: ${h};\n`;
+
+    // Base style maps
+    const baseMap: Record<string, string> = {
+      slate: "0.008 240",
+      gray: "0.008 80",
+    };
+    if (activeBase !== "zinc" && activeBase in baseMap) {
+      css += `  --secondary-c: ${baseMap[activeBase].split(" ")[0]};\n`;
+      css += `  --secondary-h: ${baseMap[activeBase].split(" ")[1]};\n`;
+    }
+
     css += `  --theme-radius: ${activeRadius}rem;\n`;
-    css += `  --radius: ${activeRadius}rem;\n`;
-    css += `  --radius-sm: calc(${activeRadius}rem - 4px);\n`;
-    css += `  --radius-md: calc(${activeRadius}rem - 2px);\n`;
-    css += `  --radius-lg: ${activeRadius}rem;\n`;
-    css += `  --radius-xl: calc(${activeRadius}rem + 4px);\n`;
-    css += `  --radius-2xl: calc(${activeRadius}rem + 8px);\n`;
-    css += `  --radius-3xl: calc(${activeRadius}rem + 12px);\n`;
     css += `  --theme-font-sans: "${activeFontSans}";\n`;
     css += `  --theme-font-heading: "${activeFontHeading}";\n`;
-    css += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
-    // Primary scale
-    for (const [k, v] of Object.entries(light)) {
-      css += `  --color-primary-${k}: oklch(${v});\n`;
-    }
-    // Semantic scales
-    css += injectSemanticScale("emerald", successColor);
-    css += injectSemanticScale("amber", warningColor);
-    css += injectSemanticScale("rose", destructiveColor);
-    css += injectSemanticScale("sky", infoColor);
     css += `}\n`;
+
+    css += `${SCOPE} {\n`;
+    css += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
+    css += `}\n`;
+
     css += `${SCOPE} h1, ${SCOPE} h2, ${SCOPE} h3, ${SCOPE} h4, ${SCOPE} h5, ${SCOPE} h6 {\n`;
     css += `  font-family: var(--theme-font-heading), sans-serif !important;\n`;
     css += `}\n`;
-
-    // Base style
-    const baseMap: Record<string, string> = {
-      zinc: "0.09 0 0",
-      slate: "0.09 0.008 240",
-      gray: "0.09 0.008 80",
-    };
-    if (activeBase in baseMap) {
-      css += `${SCOPE} {\n  --background: oklch(${baseMap[activeBase as keyof typeof baseMap]});\n}\n`;
-    }
 
     // Debounce the DOM injection slightly to prevent reflow locking while dragging sliders
     const timeoutId = setTimeout(() => {
