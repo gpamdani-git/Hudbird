@@ -57,7 +57,7 @@ export function DigitalAgencyTemplate() {
       client: "Neuralyx",
       scope: ["Web Design", "Framer Developer"],
       image: "/assets/templates/ai-startup.webp",
-      images: ["/assets/templates/ai-startup-full.png"],
+      images: ["/assets/templates/ai-startup-full.webp"],
     },
     {
       name: "SaaS Template",
@@ -68,7 +68,7 @@ export function DigitalAgencyTemplate() {
       client: "Insightly",
       scope: ["Product Design", "Frontend Dev"],
       image: "/assets/templates/saas-launchpad.webp",
-      images: ["/assets/templates/saas-launchpad-full.png"],
+      images: ["/assets/templates/saas-launchpad-full.webp"],
     },
     {
       name: "Modern Template",
@@ -79,7 +79,7 @@ export function DigitalAgencyTemplate() {
       client: "Studio Nouveau",
       scope: ["Art Direction", "UI/UX Design"],
       image: "/assets/templates/modern-app.webp",
-      images: ["/assets/templates/modern-app-full.png"],
+      images: ["/assets/templates/modern-app-full.webp"],
     },
     {
       name: "Agency Template",

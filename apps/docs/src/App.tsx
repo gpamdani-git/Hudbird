@@ -72,14 +72,34 @@ const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
 const StackedLayoutDemo = lazy(() => import("./pages/demos/StackedLayoutDemo"));
 const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
 
-import { SaaSTemplate } from "./components/templates/SaaSTemplate";
-import { ModernAppTemplate } from "./components/templates/ModernAppTemplate";
-import { DigitalAgencyTemplate } from "./components/templates/DigitalAgencyTemplate";
-import { HybridStartupTemplate } from "./components/templates/HybridStartupTemplate";
-import AiStartupTemplate from "./app/landingpage";
-import { FintechTemplate } from "./components/templates/FintechTemplate";
-import { EcommerceTemplate } from "./components/templates/EcommerceTemplate";
-import { HospitalityTemplate } from "./components/templates/HospitalityTemplate";
+const SaaSTemplate = lazy(() =>
+  import("./components/templates/SaaSTemplate").then((m) => ({ default: m.SaaSTemplate }))
+);
+const ModernAppTemplate = lazy(() =>
+  import("./components/templates/ModernAppTemplate").then((m) => ({ default: m.ModernAppTemplate }))
+);
+const DigitalAgencyTemplate = lazy(() =>
+  import("./components/templates/DigitalAgencyTemplate").then((m) => ({
+    default: m.DigitalAgencyTemplate,
+  }))
+);
+const HybridStartupTemplate = lazy(() =>
+  import("./components/templates/HybridStartupTemplate").then((m) => ({
+    default: m.HybridStartupTemplate,
+  }))
+);
+const AiStartupTemplate = lazy(() => import("./app/landingpage"));
+const FintechTemplate = lazy(() =>
+  import("./components/templates/FintechTemplate").then((m) => ({ default: m.FintechTemplate }))
+);
+const EcommerceTemplate = lazy(() =>
+  import("./components/templates/EcommerceTemplate").then((m) => ({ default: m.EcommerceTemplate }))
+);
+const HospitalityTemplate = lazy(() =>
+  import("./components/templates/HospitalityTemplate").then((m) => ({
+    default: m.HospitalityTemplate,
+  }))
+);
 
 const BlocksGalleryDoc = lazy(() => import("./pages/BlocksGalleryDoc"));
 
