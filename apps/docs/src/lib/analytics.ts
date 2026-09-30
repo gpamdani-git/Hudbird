@@ -18,21 +18,20 @@ export function initGA(): void {
   if (typeof window === "undefined" || isInitialized) return;
   if (!GA_MEASUREMENT_ID) return;
 
-  // Initialize dataLayer
+  // Initialize dataLayer & gtag if not already present in HTML
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function (...args: unknown[]) {
-    window.dataLayer.push(args);
-  };
+  if (!window.gtag) {
+    window.gtag = function (...args: unknown[]) {
+      window.dataLayer.push(args);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", GA_MEASUREMENT_ID);
+  }
 
-  // Configure Google Tag
-  window.gtag("js", new Date());
-  // Disable automatic page_view so that SPA HashRouter route transitions are tracked manually
-  window.gtag("config", GA_MEASUREMENT_ID, {
-    send_page_view: false,
-  });
-
-  // Inject script asynchronously if not already present
-  const existingScript = document.getElementById("ga-gtag-script");
+  // Inject script asynchronously if not already present in HTML
+  const existingScript =
+    document.getElementById("ga-gtag-script") ||
+    document.querySelector('script[src*="googletagmanager.com/gtag/js"]');
   if (!existingScript) {
     const script = document.createElement("script");
     script.id = "ga-gtag-script";
