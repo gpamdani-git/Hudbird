@@ -99,11 +99,16 @@ export default function ThemesDoc() {
                   </div>
                 </div>
 
-                <Tabs variant="underlined" className="mb-6" onValueChange={setTab}>
-                  <Tab title="Overview" value="overview" />
-                  <Tab title="Analytics" value="analytics" />
-                  <Tab title="Reports" value="reports" />
-                  <Tab title="Notifications" value="notifications" />
+                <Tabs
+                  variant="underlined"
+                  className="mb-6"
+                  selectedKey={tab}
+                  onSelectionChange={setTab}
+                >
+                  <Tab title="Overview" tabKey="overview" />
+                  <Tab title="Analytics" tabKey="analytics" />
+                  <Tab title="Reports" tabKey="reports" />
+                  <Tab title="Notifications" tabKey="notifications" />
                 </Tabs>
 
                 {tab === "overview" && (
