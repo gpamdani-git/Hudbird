@@ -100,64 +100,41 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
   }, [activeFontSans, activeFontHeading]);
 
   const getCssString = () => {
-    const base = baseColors[activeBase];
-    if (!base) return "";
+    let styleStr = `/* 
+ * BLANK UI THEME
+ * Add this to your index.css or globals.css
+ */\n\n`;
 
-    let styleStr = `:root {\n`;
-    styleStr += generateScaleVars("primary", primaryColor);
-    styleStr += generateScaleVars("secondary", secondaryColor);
-    styleStr += `  --color-primary: var(--color-primary-600);\n`;
-    styleStr += `  --color-primary-hover: var(--color-primary-700);\n`;
-    styleStr += `  --color-primary-active: var(--color-primary-800);\n`;
-    styleStr += `  --color-primary-foreground: oklch(1 0 0);\n`;
-    styleStr += `  --color-primary-soft: var(--color-primary-50);\n`;
-    styleStr += `  --color-primary-soft-hover: var(--color-primary-100);\n`;
-    styleStr += `  --color-primary-soft-active: var(--color-primary-200);\n`;
-    styleStr += `  --color-primary-border: var(--color-primary-600);\n`;
-    styleStr += `  --color-primary-border-soft: var(--color-primary-200);\n`;
-    styleStr += `  --color-primary-text: var(--color-primary-700);\n`;
-    styleStr += `  --color-primary-text-soft: var(--color-primary-600);\n`;
-    styleStr += `  --theme-radius: ${activeRadius}rem;\n`;
-    styleStr += `}\n\n`;
-
-    styleStr += `.dark {\n`;
     const { c, h } = parseOklch(primaryColor);
-    const { dark } = generateThemeColorScales(c, h);
-    for (const [k, v] of Object.entries(dark)) {
-      styleStr += `  --color-primary-${k}: oklch(${v});\n`;
-    }
-    const secC = 0.01;
-    const secH = h;
-    const secDark = generateThemeColorScales(secC, secH).dark;
-    for (const [k, v] of Object.entries(secDark)) {
-      styleStr += `  --color-secondary-${k}: oklch(${v});\n`;
-    }
-    styleStr += `}\n\n`;
 
-    styleStr += `body {\n`;
+    styleStr += `:root {\n`;
+    styleStr += `  /* Core Theme Colors */\n`;
+    styleStr += `  --primary-c: ${c.toFixed(3)};\n`;
+    styleStr += `  --primary-h: ${h.toFixed(1)};\n`;
+
+    // Only output base scale if it's not the default Zinc
+    const baseMap: Record<string, string> = {
+      slate: "0.008 240",
+      gray: "0.008 80",
+    };
+    if (activeBase !== "zinc" && activeBase in baseMap) {
+      styleStr += `  --secondary-c: ${baseMap[activeBase].split(" ")[0]};\n`;
+      styleStr += `  --secondary-h: ${baseMap[activeBase].split(" ")[1]};\n`;
+    }
+
+    styleStr += `\n  /* Typography */\n`;
     styleStr += `  --theme-font-sans: "${activeFontSans}";\n`;
     styleStr += `  --theme-font-heading: "${activeFontHeading}";\n`;
-    styleStr += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
-    styleStr += `}\n\n`;
 
-    styleStr += `h1, h2, h3, h4, h5, h6 {\n`;
-    styleStr += `  font-family: var(--theme-font-heading), sans-serif !important;\n`;
-    styleStr += `}\n\n`;
-
-    styleStr += `@theme {\n`;
-    styleStr += generateThemeScales("primary");
-    styleStr += generateThemeScales("secondary");
-    styleStr += generateThemeScales("success");
-    styleStr += generateThemeScales("info");
-    styleStr += generateThemeScales("warning");
-    styleStr += generateThemeScales("destructive");
+    styleStr += `\n  /* Border Radius */\n`;
+    styleStr += `  --theme-radius: ${activeRadius}rem;\n`;
     styleStr += `}\n`;
 
     return styleStr;
   };
 
   const getCliCommand = () => {
-    return `# 1. Initialize Hudbird UI in your project\nnpx hudbird-ui@latest init\n\n# 2. Add individual components\nnpx hudbird-ui@latest add Button\nnpx hudbird-ui@latest add Input Select Badge Alert\n\n# 3. Paste the generated CSS theme above into your index.css`;
+    return `# 1. Initialize Blank UI in your project\nnpx blank-ui@latest init\n\n# 2. Add individual components\nnpx blank-ui@latest add Button Input Select Badge Alert\n\n# 3. Paste the lightweight CSS theme above into your index.css`;
   };
 
   useEffect(() => {
@@ -189,6 +166,7 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     css += `  --radius-3xl: calc(${activeRadius}rem + 12px);\n`;
     css += `  --theme-font-sans: "${activeFontSans}";\n`;
     css += `  --theme-font-heading: "${activeFontHeading}";\n`;
+    css += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
     // Primary scale
     for (const [k, v] of Object.entries(light)) {
       css += `  --color-primary-${k}: oklch(${v});\n`;
@@ -198,6 +176,9 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     css += injectSemanticScale("amber", warningColor);
     css += injectSemanticScale("rose", destructiveColor);
     css += injectSemanticScale("sky", infoColor);
+    css += `}\n`;
+    css += `${SCOPE} h1, ${SCOPE} h2, ${SCOPE} h3, ${SCOPE} h4, ${SCOPE} h5, ${SCOPE} h6 {\n`;
+    css += `  font-family: var(--theme-font-heading), sans-serif !important;\n`;
     css += `}\n`;
 
     // Base style
@@ -210,13 +191,21 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
       css += `${SCOPE} {\n  --background: oklch(${baseMap[activeBase as keyof typeof baseMap]});\n}\n`;
     }
 
-    let dynamicStyleEl = document.getElementById("theme-builder-dynamic");
-    if (!dynamicStyleEl) {
-      dynamicStyleEl = document.createElement("style");
-      dynamicStyleEl.id = "theme-builder-dynamic";
-      document.head.appendChild(dynamicStyleEl);
-    }
-    dynamicStyleEl.innerHTML = css;
+    // Debounce the DOM injection slightly to prevent reflow locking while dragging sliders
+    const timeoutId = setTimeout(() => {
+      let dynamicStyleEl = document.getElementById("theme-builder-dynamic");
+      if (!dynamicStyleEl) {
+        dynamicStyleEl = document.createElement("style");
+        dynamicStyleEl.id = "theme-builder-dynamic";
+        document.head.appendChild(dynamicStyleEl);
+      }
+      // Use requestAnimationFrame for smooth DOM updates
+      requestAnimationFrame(() => {
+        if (dynamicStyleEl) dynamicStyleEl.innerHTML = css;
+      });
+    }, 16); // roughly 1 frame
+
+    return () => clearTimeout(timeoutId);
   }, [
     activeBase,
     primaryColor,
