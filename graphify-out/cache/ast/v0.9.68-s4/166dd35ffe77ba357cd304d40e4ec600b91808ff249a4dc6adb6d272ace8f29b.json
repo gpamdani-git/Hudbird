@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "$graphify-root$_fix_script_py",
+      "label": "fix_script.py",
+      "file_type": "code",
+      "source_file": "fix_script.py",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "$graphify-root$_fix_script_py",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_script.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_python_import_module": "re",
+      "_python_import_bindings": [["re", "re"]],
+      "_python_import_module_binding": true
+    },
+    {
+      "source": "$graphify-root$_fix_script_py",
+      "target": "sys",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_script.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_python_import_module": "sys",
+      "_python_import_bindings": [["sys", "sys"]],
+      "_python_import_module_binding": true
+    }
+  ],
+  "raw_calls": []
+}

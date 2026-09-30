@@ -1,8 +1,156 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "@hudbird/ui";
-import { Eye, Search, Filter } from "lucide-react";
+import { Eye, Search, Filter, Code } from "lucide-react";
+import { TemplateCodeModal } from "../components/TemplateCodeModal";
+
+const TemplateLivePreview = ({
+  templateId,
+  name,
+  imageLight,
+  imageDark,
+  onCodeClick,
+}: {
+  templateId: string;
+  name: string;
+  imageLight: string;
+  imageDark: string;
+  onCodeClick: () => void;
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [shouldRenderIframe, setShouldRenderIframe] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [scale, setScale] = useState(1);
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (isHovered) {
+      setShouldRenderIframe(true);
+    } else {
+      // Delay unmounting the iframe to allow fallback image to fade in smoothly
+      timeout = setTimeout(() => {
+        setShouldRenderIframe(false);
+        setIframeLoaded(false); // Reset load state for next hover
+      }, 700);
+    }
+    return () => clearTimeout(timeout);
+  }, [isHovered]);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        setScale(entry.contentRect.width / 1440);
+      }
+    });
+    resizeObserver.observe(containerRef.current);
+    return () => resizeObserver.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="group absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-zinc-100 dark:bg-[#0a0a0b]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Fallback Image Thumbnail */}
+      <div
+        className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${isHovered && iframeLoaded ? "pointer-events-none opacity-0" : "opacity-100"}`}
+      >
+        <img
+          src={imageLight}
+          alt={name}
+          className="absolute inset-0 h-full w-full object-cover dark:hidden"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        <img
+          src={imageDark}
+          alt={name}
+          className="absolute inset-0 hidden h-full w-full object-cover dark:block"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
+        {/* Gradient fallback behind images */}
+        <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200/50 dark:from-zinc-900 dark:to-[#0a0a0b]">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-zinc-200 bg-white/50 shadow-sm dark:border-white/10 dark:bg-white/5">
+            <Eye className="h-6 w-6 text-zinc-400 dark:text-zinc-500" />
+          </div>
+          <span className="text-lg font-bold tracking-tight text-zinc-700 dark:text-zinc-300">
+            {name}
+          </span>
+          <span className="mt-2 text-xs font-medium text-zinc-500">Hover to Live Preview</span>
+        </div>
+      </div>
+
+      {/* Live Iframe */}
+      {shouldRenderIframe && (
+        <div
+          className={`absolute top-0 left-0 z-0 origin-top-left transition-opacity duration-1000 ease-in-out ${iframeLoaded ? "opacity-100" : "opacity-0"}`}
+          style={{
+            width: "1440px",
+            height: "1080px",
+            transform: `scale(${scale})`,
+          }}
+        >
+          <div className="h-full w-full origin-top scale-[1.02] transition-all duration-700 ease-out">
+            <iframe
+              src={`/#/templates/${templateId}`}
+              className="pointer-events-none h-full w-full border-0"
+              tabIndex={-1}
+              onLoad={() => setIframeLoaded(true)}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Buttons Overlay */}
+      <div
+        className={`absolute inset-0 z-20 flex items-center justify-center gap-2 bg-white/40 backdrop-blur-[2px] transition-opacity duration-300 dark:bg-black/40 ${isHovered ? "opacity-100" : "pointer-events-none opacity-0"}`}
+      >
+        <Button
+          variant="solid"
+          className="rounded-full bg-zinc-900 font-medium text-white shadow-xl hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
+          startContent={<Eye className="h-4 w-4" />}
+          onClick={(e) => {
+            e.stopPropagation();
+            window.open(`/#/templates/${templateId}`, "_blank");
+          }}
+        >
+          Live Preview
+        </Button>
+        <Button
+          variant="outline"
+          className="rounded-full bg-white font-medium text-zinc-900 shadow-xl hover:bg-zinc-100 dark:border-white/10 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
+          startContent={<Code className="h-4 w-4" />}
+          onClick={(e) => {
+            e.stopPropagation();
+            onCodeClick();
+          }}
+        >
+          Code
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 const TEMPLATES = [
+  {
+    id: "hybrid",
+    name: "Hybrid Startup",
+    author: "BlankUI Team",
+    category: "Software",
+    subCategory: "SaaS",
+    price: "Free",
+    imageDark: "/assets/templates/ai-startup.png",
+    imageLight: "/assets/templates/ai-startup-light.png",
+    date: "2026-09-26",
+    trendingScore: 99,
+  },
   {
     id: "saas-launchpad",
     name: "SaaS Launchpad",
@@ -75,6 +223,18 @@ const TEMPLATES = [
     date: "2026-09-10",
     trendingScore: 85,
   },
+  {
+    id: "hospitality",
+    name: "Luxury Villa & Resort",
+    author: "BlankUI Team",
+    category: "Services",
+    subCategory: "Hospitality",
+    price: "$149",
+    imageDark: "/assets/hospitality/bali-resort.jpg",
+    imageLight: "/assets/hospitality/bali-resort.jpg",
+    date: "2026-09-11",
+    trendingScore: 99,
+  },
 ];
 
 const CATEGORIES = [
@@ -96,12 +256,16 @@ const CATEGORIES = [
   },
   {
     name: "Services",
-    sub: ["Consulting", "Education", "Home", "Legal"],
+    sub: ["Consulting", "Education", "Hospitality", "Real Estate"],
   },
 ];
 
 export default function TemplatesDoc() {
   const [filter, setFilter] = useState<"Trending" | "Best" | "Recent">("Trending");
+  const [selectedTemplateForCode, setSelectedTemplateForCode] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubCategory, setActiveSubCategory] = useState<string | null>(null);
@@ -276,25 +440,15 @@ export default function TemplatesDoc() {
                   className="relative mb-4 aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-white/10 dark:bg-zinc-900"
                   onClick={() => window.open(`/#/templates/${template.id}`, "_blank")}
                 >
-                  <img
-                    src={template.imageLight}
-                    alt={template.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 dark:hidden"
+                  <TemplateLivePreview
+                    templateId={template.id}
+                    name={template.name}
+                    imageLight={template.imageLight}
+                    imageDark={template.imageDark}
+                    onCodeClick={() =>
+                      setSelectedTemplateForCode({ id: template.id, name: template.name })
+                    }
                   />
-                  <img
-                    src={template.imageDark}
-                    alt={template.name}
-                    className="hidden h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 dark:block"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-white/40 opacity-0 backdrop-blur-[2px] transition-opacity duration-300 group-hover:opacity-100 dark:bg-black/40">
-                    <Button
-                      variant="solid"
-                      className="rounded-full bg-zinc-900 font-medium text-white shadow-xl hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
-                      startContent={<Eye className="h-4 w-4" />}
-                    >
-                      Live Preview
-                    </Button>
-                  </div>
                 </div>
                 <div className="flex items-start justify-between px-1">
                   <div>
@@ -336,6 +490,13 @@ export default function TemplatesDoc() {
           </div>
         )}
       </div>
+
+      <TemplateCodeModal
+        isOpen={!!selectedTemplateForCode}
+        onClose={() => setSelectedTemplateForCode(null)}
+        templateId={selectedTemplateForCode?.id || null}
+        templateName={selectedTemplateForCode?.name || ""}
+      />
     </div>
   );
 }

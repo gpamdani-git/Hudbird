@@ -4,7 +4,13 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import { Card, CardHeader, CardBody, CardFooter } from "@hudbird/ui";
-import { motion, HTMLMotionProps } from "framer-motion";
+import {
+  motion,
+  HTMLMotionProps,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+} from "framer-motion";
 import { Slot } from "@radix-ui/react-slot";
 
 // ----------------------------------------------------------------------

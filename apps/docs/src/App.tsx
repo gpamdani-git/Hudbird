@@ -72,12 +72,16 @@ const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
 const StackedLayoutDemo = lazy(() => import("./pages/demos/StackedLayoutDemo"));
 const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
 
-import { SaaSLaunchpad } from "./components/templates/SaaSTemplate";
+import { SaaSTemplate } from "./components/templates/SaaSTemplate";
 import { ModernAppTemplate } from "./components/templates/ModernAppTemplate";
 import { DigitalAgencyTemplate } from "./components/templates/DigitalAgencyTemplate";
+import { HybridStartupTemplate } from "./components/templates/HybridStartupTemplate";
 import AiStartupTemplate from "./app/landingpage";
 import { FintechTemplate } from "./components/templates/FintechTemplate";
 import { EcommerceTemplate } from "./components/templates/EcommerceTemplate";
+import { HospitalityTemplate } from "./components/templates/HospitalityTemplate";
+
+const BlocksGalleryDoc = lazy(() => import("./pages/BlocksGalleryDoc"));
 
 export default function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -88,6 +92,7 @@ export default function App() {
     location.pathname.startsWith("/marketing") ||
     location.pathname.startsWith("/layouts") ||
     location.pathname === "/templates" ||
+    location.pathname === "/blocks" ||
     isThemesPage;
 
   // Automatically scroll to top on route change
@@ -120,12 +125,14 @@ export default function App() {
     return (
       <Suspense fallback={<DocLoadingSkeleton />}>
         <Routes>
-          <Route path="/templates/saas-launchpad" element={<SaaSLaunchpad />} />
+          <Route path="/templates/saas-launchpad" element={<SaaSTemplate />} />
           <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
           <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
+          <Route path="/templates/hybrid" element={<HybridStartupTemplate />} />
           <Route path="/templates/ai-startup" element={<AiStartupTemplate />} />
           <Route path="/templates/fintech" element={<FintechTemplate />} />
           <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
+          <Route path="/templates/hospitality" element={<HospitalityTemplate />} />
         </Routes>
       </Suspense>
     );
@@ -178,6 +185,7 @@ export default function App() {
                   <Route path="/changelog" element={<ChangelogDoc />} />
                   <Route path="/themes" element={<ThemesDoc />} />
                   <Route path="/templates" element={<TemplatesDoc />} />
+                  <Route path="/blocks" element={<BlocksGalleryDoc />} />
                   <Route path="/installation" element={<InstallationDoc />} />
                   <Route path="/button" element={<ButtonDoc />} />
                   <Route path="/input" element={<InputDoc />} />

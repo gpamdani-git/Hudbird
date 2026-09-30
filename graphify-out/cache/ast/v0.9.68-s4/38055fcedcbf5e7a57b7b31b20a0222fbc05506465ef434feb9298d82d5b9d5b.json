@@ -1,0 +1,69 @@
+{
+  "nodes": [
+    {
+      "id": "$graphify-root$_apps_docs_fix_animations_py",
+      "label": "fix_animations.py",
+      "file_type": "code",
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "$graphify-root$_apps_docs_fix_animations_replacer",
+      "label": "replacer()",
+      "file_type": "code",
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L9",
+      "_callable": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "$graphify-root$_apps_docs_fix_animations_py",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_python_import_module": "re",
+      "_python_import_bindings": [["re", "re"]],
+      "_python_import_module_binding": true
+    },
+    {
+      "source": "$graphify-root$_apps_docs_fix_animations_py",
+      "target": "$graphify-root$_apps_docs_fix_animations_replacer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L9",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "$graphify-root$_apps_docs_fix_animations_replacer",
+      "callee": "group",
+      "is_member_call": true,
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L10",
+      "receiver": "match"
+    },
+    {
+      "caller_nid": "$graphify-root$_apps_docs_fix_animations_replacer",
+      "callee": "replace",
+      "is_member_call": true,
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L16",
+      "receiver": "block"
+    },
+    {
+      "caller_nid": "$graphify-root$_apps_docs_fix_animations_replacer",
+      "callee": "replace",
+      "is_member_call": true,
+      "source_file": "apps/docs/fix_animations.py",
+      "source_location": "L19",
+      "receiver": "block"
+    }
+  ]
+}

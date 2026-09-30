@@ -1,0 +1,271 @@
+{
+  "nodes": [
+    {
+      "id": "$graphify-root$_packages_cli_package_json",
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L1"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_name",
+      "label": "name",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_version",
+      "label": "version",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_type",
+      "label": "type",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_description",
+      "label": "description",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L5"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_bin",
+      "label": "bin",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_bin_hudbird_ui",
+      "label": "hudbird-ui",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_files",
+      "label": "files",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_scripts",
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_scripts_prepack",
+      "label": "prepack",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_dependencies",
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_dependencies_picocolors",
+      "label": "picocolors",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "ref_picocolors",
+      "label": "picocolors",
+      "file_type": "concept",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_dependencies_prompts",
+      "label": "prompts",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "ref_prompts",
+      "label": "prompts",
+      "file_type": "concept",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_publishconfig",
+      "label": "publishConfig",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "$graphify-root$_packages_cli_package_publishconfig_access",
+      "label": "access",
+      "file_type": "code",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L21"
+    }
+  ],
+  "edges": [
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_name",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_version",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_type",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_description",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_bin",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_bin",
+      "target": "$graphify-root$_packages_cli_package_bin_hudbird_ui",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_files",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_scripts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_scripts",
+      "target": "$graphify-root$_packages_cli_package_scripts_prepack",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_dependencies",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_dependencies",
+      "target": "$graphify-root$_packages_cli_package_dependencies_picocolors",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "ref_picocolors",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_dependencies",
+      "target": "$graphify-root$_packages_cli_package_dependencies_prompts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "ref_prompts",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "context": "import"
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_json",
+      "target": "$graphify-root$_packages_cli_package_publishconfig",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "$graphify-root$_packages_cli_package_publishconfig",
+      "target": "$graphify-root$_packages_cli_package_publishconfig_access",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "packages/cli/package.json",
+      "source_location": "L21",
+      "weight": 1.0
+    }
+  ]
+}

@@ -13,6 +13,7 @@ interface MarketingPreviewProps {
   codeVue?: string;
   skill?: string;
   minHeight?: number;
+  trapFixed?: boolean;
 }
 
 export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
@@ -23,6 +24,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
   codeVue,
   skill,
   minHeight = 400,
+  trapFixed = false,
 }) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [viewport, setViewport] = useState<ViewportMode>("desktop");
@@ -121,11 +123,18 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             style={{ minHeight: `${minHeight}px` }}
           >
             <div
-              className="h-full w-full transition-all duration-300 ease-in-out"
+              className="w-full transition-all duration-300 ease-in-out"
               style={{ maxWidth: viewportWidths[viewport] }}
             >
               {viewport === "desktop" ? (
-                <div className="relative isolate h-full w-full overflow-hidden rounded-2xl bg-white ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800/50">
+                <div
+                  className={`relative isolate w-full bg-white dark:bg-zinc-950 ${trapFixed ? "overflow-hidden" : ""}`}
+                  style={
+                    trapFixed
+                      ? { transform: "translateZ(0)", minHeight: `${minHeight}px` }
+                      : { minHeight: `${minHeight}px` }
+                  }
+                >
                   {children}
                 </div>
               ) : (

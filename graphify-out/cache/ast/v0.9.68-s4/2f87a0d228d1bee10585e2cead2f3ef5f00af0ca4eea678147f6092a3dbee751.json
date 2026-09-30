@@ -1,0 +1,175 @@
+{
+  "nodes": [
+    {
+      "id": "$graphify-root$_fix_all_py",
+      "label": "fix_all.py",
+      "file_type": "code",
+      "source_file": "fix_all.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "$graphify-root$_fix_all_fix_pages",
+      "label": "fix_pages()",
+      "file_type": "code",
+      "source_file": "fix_all.py",
+      "source_location": "L5",
+      "_callable": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "$graphify-root$_fix_all_py",
+      "target": "os",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_all.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_python_import_module": "os",
+      "_python_import_bindings": [["os", "os"]],
+      "_python_import_module_binding": true
+    },
+    {
+      "source": "$graphify-root$_fix_all_py",
+      "target": "glob",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_all.py",
+      "source_location": "L2",
+      "weight": 1.0,
+      "_python_import_module": "glob",
+      "_python_import_bindings": [["glob", "glob"]],
+      "_python_import_module_binding": true
+    },
+    {
+      "source": "$graphify-root$_fix_all_py",
+      "target": "re",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_all.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_python_import_module": "re",
+      "_python_import_bindings": [["re", "re"]],
+      "_python_import_module_binding": true
+    },
+    {
+      "source": "$graphify-root$_fix_all_py",
+      "target": "$graphify-root$_fix_all_fix_pages",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "fix_all.py",
+      "source_location": "L5",
+      "weight": 1.0
+    }
+  ],
+  "raw_calls": [
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "glob",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L6",
+      "receiver": "glob"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "read",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L14",
+      "receiver": "f"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "sub",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L19",
+      "receiver": "re"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "search",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L22",
+      "receiver": "re"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "search",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L24",
+      "receiver": "re"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "start",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L24",
+      "receiver": "h1_match"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "group",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L26",
+      "receiver": "p_match"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "start",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L27",
+      "receiver": "h1_match"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "start",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L28",
+      "receiver": "h1_match"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "replace",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L29",
+      "receiver": "after_h1"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "sub",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L36",
+      "receiver": "re"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "replace",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L41",
+      "receiver": "content"
+    },
+    {
+      "caller_nid": "$graphify-root$_fix_all_fix_pages",
+      "callee": "write",
+      "is_member_call": true,
+      "source_file": "fix_all.py",
+      "source_location": "L45",
+      "receiver": "f"
+    }
+  ]
+}
