@@ -4,6 +4,8 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
+import { createPortal } from "react-dom";
+
 export type DialogSize = "sm" | "md";
 export type DialogSeverity = "default" | "danger";
 
@@ -55,6 +57,12 @@ const Dialog: React.FC<DialogProps> = ({
   isDismissable = true,
   children,
 }) => {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // ESC key to close
   React.useEffect(() => {
     if (!isOpen) return;
@@ -83,11 +91,11 @@ const Dialog: React.FC<DialogProps> = ({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  const content = (
     <DialogContext.Provider value={{ isOpen, onClose, size, severity }}>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
         {/* Backdrop */}
         <div
           className="animate-in fade-in-0 bg-background/80 fixed inset-0 backdrop-blur-md transition-opacity duration-200"
@@ -104,6 +112,8 @@ const Dialog: React.FC<DialogProps> = ({
       </div>
     </DialogContext.Provider>
   );
+
+  return createPortal(content, document.body);
 };
 Dialog.displayName = "Dialog";
 

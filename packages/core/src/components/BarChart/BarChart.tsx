@@ -87,10 +87,10 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
             data={data}
             layout={layout}
             margin={{
-              top: 10,
-              right: 10,
-              left: 0,
-              bottom: 0,
+              top: 24,
+              right: 24,
+              left: 24,
+              bottom: showLegend && !isSparkline ? 80 : 40,
             }}
           >
             {showGridLines && !isSparkline && (
@@ -109,7 +109,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                 tickLine={false}
                 axisLine={false}
                 tick={{ fontSize: 12 }}
-                tickMargin={12}
+                tickMargin={16}
                 tickFormatter={isVertical ? valueFormatter : undefined}
                 className="text-zinc-500 dark:text-zinc-400"
               />
@@ -121,7 +121,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                 tickLine={false}
                 axisLine={false}
                 tick={{ fontSize: 12 }}
-                tickMargin={12}
+                tickMargin={16}
                 tickFormatter={isVertical ? undefined : valueFormatter}
                 className="text-zinc-500 dark:text-zinc-400"
               />

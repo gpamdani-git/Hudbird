@@ -99,77 +99,92 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     linkEl.href = `https://fonts.googleapis.com/css2?${familyQuery}&display=swap`;
   }, [activeFontSans, activeFontHeading]);
 
-  const getCssString = () => {
-    let styleStr = `/* 
- * BLANK UI THEME
- * Add this to your index.css or globals.css
- */\n\n`;
-
+  const generateCssContent = (scope: string) => {
     const { c, h } = parseOklch(primaryColor);
+    const { light } = generateThemeColorScales(c, h);
 
-    styleStr += `:root {\n`;
-    styleStr += `  /* Core Theme Colors */\n`;
-    styleStr += `  --primary-c: ${c.toFixed(3)};\n`;
-    styleStr += `  --primary-h: ${h.toFixed(1)};\n`;
-
-    // Only output base scale if it's not the default Zinc
-    const baseMap: Record<string, string> = {
-      slate: "0.008 240",
-      gray: "0.008 80",
+    const injectSemanticScale = (scaleName: string, colorStr: string) => {
+      const { c: sc, h: sh } = parseOklch(colorStr);
+      const { light: sl } = generateThemeColorScales(sc, sh);
+      let scaleCss = "";
+      for (const [k, v] of Object.entries(sl))
+        scaleCss += `  --color-${scaleName}-${k}: oklch(${v});\n`;
+      return scaleCss;
     };
-    if (activeBase !== "zinc" && activeBase in baseMap) {
-      styleStr += `  --secondary-c: ${baseMap[activeBase].split(" ")[0]};\n`;
-      styleStr += `  --secondary-h: ${baseMap[activeBase].split(" ")[1]};\n`;
+
+    let css = `${scope} {\n`;
+    css += `  /* Core Variables */\n`;
+    css += `  --primary-c: ${c.toFixed(3)};\n`;
+    css += `  --primary-h: ${h.toFixed(1)};\n`;
+    css += `  --theme-radius: ${activeRadius}rem;\n`;
+    css += `  --radius: ${activeRadius}rem;\n`;
+    css += `  --radius-sm: calc(${activeRadius}rem - 4px);\n`;
+    css += `  --radius-md: calc(${activeRadius}rem - 2px);\n`;
+    css += `  --radius-lg: ${activeRadius}rem;\n`;
+    css += `  --radius-xl: calc(${activeRadius}rem + 4px);\n`;
+    css += `  --radius-2xl: calc(${activeRadius}rem + 8px);\n`;
+    css += `  --radius-3xl: calc(${activeRadius}rem + 12px);\n`;
+    css += `  --theme-font-sans: "${activeFontSans}";\n`;
+    css += `  --theme-font-heading: "${activeFontHeading}";\n`;
+    if (scope !== ":root") {
+      css += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
     }
 
-    styleStr += `\n  /* Typography */\n`;
-    styleStr += `  --theme-font-sans: "${activeFontSans}";\n`;
-    styleStr += `  --theme-font-heading: "${activeFontHeading}";\n`;
+    css += `\n  /* Primary Scale */\n`;
+    for (const [k, v] of Object.entries(light)) {
+      css += `  --color-primary-${k}: oklch(${v});\n`;
+    }
+    css += `  --color-primary: var(--color-primary-500);\n`;
+    css += `  --color-primary-hover: var(--color-primary-600);\n`;
+    css += `  --color-primary-active: var(--color-primary-700);\n`;
+    css += `  --color-primary-border: var(--color-primary-500);\n`;
+    css += `  --color-primary-text: var(--color-primary-400);\n`;
 
-    styleStr += `\n  /* Border Radius */\n`;
-    styleStr += `  --theme-radius: ${activeRadius}rem;\n`;
-    styleStr += `}\n`;
+    css += `\n  /* Semantic Scales */\n`;
+    css += injectSemanticScale("emerald", successColor);
+    css += `  --color-success: var(--color-emerald-500);\n`;
+    css += injectSemanticScale("amber", warningColor);
+    css += `  --color-warning: var(--color-amber-500);\n`;
+    css += injectSemanticScale("rose", destructiveColor);
+    css += `  --color-danger: var(--color-rose-500);\n`;
+    css += injectSemanticScale("sky", infoColor);
+    css += `  --color-info: var(--color-sky-500);\n`;
+    css += `}\n`;
 
-    return styleStr;
+    if (scope !== ":root") {
+      css += `${scope} h1, ${scope} h2, ${scope} h3, ${scope} h4, ${scope} h5, ${scope} h6 {\n`;
+      css += `  font-family: var(--theme-font-heading), sans-serif !important;\n`;
+      css += `}\n`;
+    }
+
+    const baseMap: Record<string, string> = {
+      zinc: "0.09 0 0",
+      slate: "0.09 0.008 240",
+      gray: "0.09 0.008 80",
+    };
+    if (activeBase in baseMap) {
+      css += `\n${scope} {\n  --background: oklch(${baseMap[activeBase as keyof typeof baseMap]});\n}\n`;
+    }
+
+    return css;
+  };
+
+  const getCssString = () => {
+    return `/* 
+ * HUDBIRD UI THEME
+ * Add this to your index.css or globals.css
+ */\n\n${generateCssContent(":root")}`;
   };
 
   const getCliCommand = () => {
-    return `# 1. Initialize Blank UI in your project\nnpx blank-ui@latest init\n\n# 2. Add individual components\nnpx blank-ui@latest add Button Input Select Badge Alert\n\n# 3. Paste the lightweight CSS theme above into your index.css`;
+    return `# 1. Initialize Hudbird UI in your project\nnpx hudbird-ui@latest init\n\n# 2. Add individual components\nnpx hudbird-ui@latest add Button Input Select Badge Alert\n\n# 3. Paste the lightweight CSS theme above into your index.css`;
   };
 
   useEffect(() => {
     // Scope = the preview wrapper in ThemesDoc, not the global :root
     // This prevents Theme Editor changes from modifying the rest of the app
     const SCOPE = "[data-theme-preview]";
-
-    const { c, h } = parseOklch(primaryColor);
-
-    let css = `${SCOPE} {\n`;
-    css += `  --primary-c: ${c};\n`;
-    css += `  --primary-h: ${h};\n`;
-
-    // Base style maps
-    const baseMap: Record<string, string> = {
-      slate: "0.008 240",
-      gray: "0.008 80",
-    };
-    if (activeBase !== "zinc" && activeBase in baseMap) {
-      css += `  --secondary-c: ${baseMap[activeBase].split(" ")[0]};\n`;
-      css += `  --secondary-h: ${baseMap[activeBase].split(" ")[1]};\n`;
-    }
-
-    css += `  --theme-radius: ${activeRadius}rem;\n`;
-    css += `  --theme-font-sans: "${activeFontSans}";\n`;
-    css += `  --theme-font-heading: "${activeFontHeading}";\n`;
-    css += `}\n`;
-
-    css += `${SCOPE} {\n`;
-    css += `  font-family: var(--theme-font-sans), sans-serif !important;\n`;
-    css += `}\n`;
-
-    css += `${SCOPE} h1, ${SCOPE} h2, ${SCOPE} h3, ${SCOPE} h4, ${SCOPE} h5, ${SCOPE} h6 {\n`;
-    css += `  font-family: var(--theme-font-heading), sans-serif !important;\n`;
-    css += `}\n`;
+    const css = generateCssContent(SCOPE);
 
     // Debounce the DOM injection slightly to prevent reflow locking while dragging sliders
     const timeoutId = setTimeout(() => {

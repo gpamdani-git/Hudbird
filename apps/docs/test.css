@@ -1,0 +1,226 @@
+@import "tailwindcss";
+@source "../../../packages";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --dyn-primary-600: oklch(0.53 calc(var(--primary-c) * 1) var(--primary-h));
+}
+
+@layer base {
+  .dark {
+    --color-primary: var(--color-primary-500);
+    --color-primary-hover: var(--color-primary-600);
+    --color-primary-active: var(--color-primary-700);
+    --color-primary-border: var(--color-primary-500);
+    --color-primary-soft: color-mix(in oklab, var(--color-primary-500) 15%, transparent);
+    --color-primary-soft-hover: color-mix(in oklab, var(--color-primary-500) 25%, transparent);
+    --color-primary-soft-active: color-mix(in oklab, var(--color-primary-500) 35%, transparent);
+    --color-primary-border-soft: color-mix(in oklab, var(--color-primary-500) 20%, transparent);
+    --color-primary-text: var(--color-primary-400);
+    --color-primary-text-soft: var(--color-primary-300);
+
+    --color-secondary: var(--color-secondary-500);
+    --color-secondary-hover: var(--color-secondary-600);
+    --color-secondary-active: var(--color-secondary-700);
+    --color-secondary-border: var(--color-secondary-500);
+    --color-secondary-soft: color-mix(in oklab, var(--color-secondary-500) 15%, transparent);
+    --color-secondary-soft-hover: color-mix(in oklab, var(--color-secondary-500) 25%, transparent);
+    --color-secondary-soft-active: color-mix(in oklab, var(--color-secondary-500) 35%, transparent);
+    --color-secondary-border-soft: color-mix(in oklab, var(--color-secondary-500) 20%, transparent);
+    --color-secondary-text: var(--color-secondary-400);
+    --color-secondary-text-soft: var(--color-secondary-300);
+  }
+
+  /* NEUTRAL THEMES */
+  /* Slate (h=240) */
+  :root,
+  .theme-slate {
+    --color-neutral-50: oklch(0.98 0.006 240);
+    --color-neutral-100: oklch(0.96 0.01 240);
+    --color-neutral-200: oklch(0.89 0.012 240);
+    --color-neutral-300: oklch(0.81 0.012 240);
+    --color-neutral-400: oklch(0.7 0.013 240);
+    --color-neutral-500: oklch(0.6 0.013 240);
+    --color-neutral-600: oklch(0.5 0.013 240);
+    --color-neutral-700: oklch(0.4 0.014 240);
+    --color-neutral-800: oklch(0.27 0.014 240);
+    --color-neutral-900: oklch(0.17 0.014 240);
+    --color-neutral-950: oklch(0.12 0.014 240);
+
+    --background: oklch(0.98 0.006 240);
+    --card: oklch(0.98 0.006 240);
+    --card-foreground: oklch(0.17 0.014 240);
+    --popover: oklch(0.98 0.006 240);
+    --popover-foreground: oklch(0.17 0.014 240);
+    --border: oklch(0.89 0.012 240);
+    --input: oklch(0.89 0.012 240);
+    --muted: oklch(0.96 0.01 240);
+    --muted-foreground: oklch(0.5 0.013 240);
+    --foreground: oklch(0.17 0.014 240);
+  }
+
+  .dark.theme-slate,
+  .theme-slate .dark,
+  .dark {
+    --color-neutral-50: oklch(0.09 0.008 240);
+    --color-neutral-100: oklch(0.15 0.012 240);
+    --color-neutral-200: oklch(0.24 0.014 240);
+    --color-neutral-300: oklch(0.32 0.014 240);
+    --color-neutral-400: oklch(0.45 0.012 240);
+    --color-neutral-500: oklch(0.55 0.01 240);
+    --color-neutral-600: oklch(0.65 0.009 240);
+    --color-neutral-700: oklch(0.75 0.008 240);
+    --color-neutral-800: oklch(0.89 0.008 240);
+    --color-neutral-900: oklch(0.94 0.008 240);
+    --color-neutral-950: oklch(0.98 0.006 240);
+
+    --background: oklch(0.09 0.008 240);
+    --card: oklch(0.15 0.012 240);
+    --card-foreground: oklch(0.94 0.008 240);
+    --popover: oklch(0.15 0.012 240);
+    --popover-foreground: oklch(0.94 0.008 240);
+    --border: oklch(0.24 0.014 240);
+    --input: oklch(0.24 0.014 240);
+    --muted: oklch(0.24 0.014 240);
+    --muted-foreground: oklch(0.65 0.009 240);
+    --foreground: oklch(0.94 0.008 240);
+  }
+
+  /* Zinc (h=0) */
+  .theme-zinc {
+    --color-neutral-50: oklch(0.98 0 0);
+    --color-neutral-100: oklch(0.96 0 0);
+    --color-neutral-200: oklch(0.89 0 0);
+    --color-neutral-300: oklch(0.81 0 0);
+    --color-neutral-400: oklch(0.7 0 0);
+    --color-neutral-500: oklch(0.6 0 0);
+    --color-neutral-600: oklch(0.5 0 0);
+    --color-neutral-700: oklch(0.4 0 0);
+    --color-neutral-800: oklch(0.27 0 0);
+    --color-neutral-900: oklch(0.17 0 0);
+    --color-neutral-950: oklch(0.12 0 0);
+
+    --background: oklch(0.98 0 0);
+    --card: oklch(0.98 0 0);
+    --card-foreground: oklch(0.17 0 0);
+    --popover: oklch(0.98 0 0);
+    --popover-foreground: oklch(0.17 0 0);
+    --border: oklch(0.89 0 0);
+    --input: oklch(0.89 0 0);
+    --muted: oklch(0.96 0 0);
+    --muted-foreground: oklch(0.5 0 0);
+    --foreground: oklch(0.17 0 0);
+  }
+
+  .dark.theme-zinc,
+  .theme-zinc .dark {
+    --color-neutral-50: oklch(0.09 0 0);
+    --color-neutral-100: oklch(0.15 0 0);
+    --color-neutral-200: oklch(0.24 0 0);
+    --color-neutral-300: oklch(0.32 0 0);
+    --color-neutral-400: oklch(0.45 0 0);
+    --color-neutral-500: oklch(0.55 0 0);
+    --color-neutral-600: oklch(0.65 0 0);
+    --color-neutral-700: oklch(0.75 0 0);
+    --color-neutral-800: oklch(0.89 0 0);
+    --color-neutral-900: oklch(0.94 0 0);
+    --color-neutral-950: oklch(0.98 0 0);
+
+    --background: oklch(0.09 0 0);
+    --card: oklch(0.15 0 0);
+    --card-foreground: oklch(0.94 0 0);
+    --popover: oklch(0.15 0 0);
+    --popover-foreground: oklch(0.94 0 0);
+    --border: oklch(0.24 0 0);
+    --input: oklch(0.24 0 0);
+    --muted: oklch(0.24 0 0);
+    --muted-foreground: oklch(0.65 0 0);
+    --foreground: oklch(0.94 0 0);
+  }
+
+  /* Gray (Warm, h=80, low c) */
+  .theme-gray {
+    --color-neutral-50: oklch(0.98 0.006 80);
+    --color-neutral-100: oklch(0.96 0.01 80);
+    --color-neutral-200: oklch(0.89 0.012 80);
+    --color-neutral-300: oklch(0.81 0.012 80);
+    --color-neutral-400: oklch(0.7 0.013 80);
+    --color-neutral-500: oklch(0.6 0.013 80);
+    --color-neutral-600: oklch(0.5 0.013 80);
+    --color-neutral-700: oklch(0.4 0.014 80);
+    --color-neutral-800: oklch(0.27 0.014 80);
+    --color-neutral-900: oklch(0.17 0.014 80);
+    --color-neutral-950: oklch(0.12 0.014 80);
+
+    --background: oklch(0.98 0.006 80);
+    --card: oklch(0.98 0.006 80);
+    --card-foreground: oklch(0.17 0.014 80);
+    --popover: oklch(0.98 0.006 80);
+    --popover-foreground: oklch(0.17 0.014 80);
+    --border: oklch(0.89 0.012 80);
+    --input: oklch(0.89 0.012 80);
+    --muted: oklch(0.96 0.01 80);
+    --muted-foreground: oklch(0.5 0.013 80);
+    --foreground: oklch(0.17 0.014 80);
+  }
+
+  .dark.theme-gray,
+  .theme-gray .dark {
+    --color-neutral-50: oklch(0.09 0.008 80);
+    --color-neutral-100: oklch(0.15 0.012 80);
+    --color-neutral-200: oklch(0.24 0.014 80);
+    --color-neutral-300: oklch(0.32 0.014 80);
+    --color-neutral-400: oklch(0.45 0.012 80);
+    --color-neutral-500: oklch(0.55 0.01 80);
+    --color-neutral-600: oklch(0.65 0.009 80);
+    --color-neutral-700: oklch(0.75 0.008 80);
+    --color-neutral-800: oklch(0.89 0.008 80);
+    --color-neutral-900: oklch(0.94 0.008 80);
+    --color-neutral-950: oklch(0.98 0.006 80);
+
+    --background: oklch(0.09 0.008 80);
+    --card: oklch(0.15 0.012 80);
+    --card-foreground: oklch(0.94 0.008 80);
+    --popover: oklch(0.15 0.012 80);
+    --popover-foreground: oklch(0.94 0.008 80);
+    --border: oklch(0.24 0.014 80);
+    --input: oklch(0.24 0.014 80);
+    --muted: oklch(0.24 0.014 80);
+    --muted-foreground: oklch(0.65 0.009 80);
+    --foreground: oklch(0.94 0.008 80);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

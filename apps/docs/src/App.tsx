@@ -100,6 +100,11 @@ const HospitalityTemplate = lazy(() =>
     default: m.HospitalityTemplate,
   }))
 );
+const AdminCmsTemplate = lazy(() =>
+  import("./components/templates/AdminCmsTemplate").then((m) => ({
+    default: m.AdminCmsTemplate,
+  }))
+);
 
 const BlocksGalleryDoc = lazy(() => import("./pages/BlocksGalleryDoc"));
 
@@ -153,6 +158,7 @@ export default function App() {
           <Route path="/templates/fintech" element={<FintechTemplate />} />
           <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
           <Route path="/templates/hospitality" element={<HospitalityTemplate />} />
+          <Route path="/templates/admin-cms" element={<AdminCmsTemplate />} />
         </Routes>
       </Suspense>
     );

@@ -408,10 +408,13 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       const first = childrenArray[0];
       if (React.isValidElement(first)) {
         const firstProps = (first.props as Record<string, any>) || {};
+        const rawKey = first.key as string | undefined;
         return (
-          (first.key as string)?.replace(/^\.\$/, "") ||
           firstProps.tabKey ||
           firstProps.id ||
+          (rawKey && rawKey.startsWith(".$") && !rawKey.match(/^\.\$\d+$/)
+            ? rawKey.replace(/^\.\$/, "")
+            : null) ||
           "tab-0"
         );
       }
@@ -480,10 +483,13 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
                 {childrenArray.map((child, index) => {
                   if (!React.isValidElement(child)) return null;
                   const childProps = (child.props as Record<string, any>) || {};
+                  const rawKey = child.key as string | undefined;
                   const key =
-                    (child.key as string)?.replace(/^\.\$/, "") ||
                     childProps.tabKey ||
                     childProps.id ||
+                    (rawKey && rawKey.startsWith(".$") && !rawKey.match(/^\.\$\d+$/)
+                      ? rawKey.replace(/^\.\$/, "")
+                      : null) ||
                     `tab-${index}`;
                   return (
                     <Tab
@@ -505,10 +511,13 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
               {childrenArray.map((child, index) => {
                 if (!React.isValidElement(child)) return null;
                 const childProps = (child.props as Record<string, any>) || {};
+                const rawKey = child.key as string | undefined;
                 const key =
-                  (child.key as string)?.replace(/^\.\$/, "") ||
                   childProps.tabKey ||
                   childProps.id ||
+                  (rawKey && rawKey.startsWith(".$") && !rawKey.match(/^\.\$\d+$/)
+                    ? rawKey.replace(/^\.\$/, "")
+                    : null) ||
                   `tab-${index}`;
                 return (
                   <TabPanel

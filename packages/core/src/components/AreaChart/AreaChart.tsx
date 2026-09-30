@@ -93,10 +93,10 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
           <RechartsAreaChart
             data={data}
             margin={{
-              top: 10,
-              right: 10,
-              left: 0,
-              bottom: 0,
+              top: 24,
+              right: 24,
+              left: 24,
+              bottom: showLegend && !isSparkline ? 80 : 40,
             }}
             stackOffset={type === "stacked" ? "none" : type === "percent" ? "expand" : undefined}
           >
@@ -115,7 +115,7 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
                 tickLine={false}
                 axisLine={false}
                 tick={{ fontSize: 12 }}
-                tickMargin={12}
+                tickMargin={16}
                 className="text-zinc-500 dark:text-zinc-400"
               />
             )}
@@ -126,7 +126,7 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
                 axisLine={false}
                 tick={{ fontSize: 12 }}
                 tickFormatter={valueFormatter}
-                tickMargin={12}
+                tickMargin={16}
                 className="text-zinc-500 dark:text-zinc-400"
               />
             )}

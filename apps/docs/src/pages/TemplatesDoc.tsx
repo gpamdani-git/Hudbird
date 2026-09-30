@@ -142,7 +142,7 @@ const TEMPLATES = [
   {
     id: "hybrid",
     name: "Hybrid Startup",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Software",
     subCategory: "SaaS",
     price: "Free",
@@ -154,7 +154,7 @@ const TEMPLATES = [
   {
     id: "saas-launchpad",
     name: "SaaS Launchpad",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Software",
     subCategory: "SaaS",
     price: "Free",
@@ -166,7 +166,7 @@ const TEMPLATES = [
   {
     id: "fintech",
     name: "Fintech App",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Software",
     subCategory: "Fintech",
     price: "$49",
@@ -178,7 +178,7 @@ const TEMPLATES = [
   {
     id: "ai-startup",
     name: "AI Startup",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Software",
     subCategory: "AI",
     price: "$99",
@@ -190,7 +190,7 @@ const TEMPLATES = [
   {
     id: "ecommerce",
     name: "E-Commerce",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Ecommerce",
     subCategory: "Digital",
     price: "$79",
@@ -202,7 +202,7 @@ const TEMPLATES = [
   {
     id: "modern-app",
     name: "Modern App",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Software",
     subCategory: "Apps",
     price: "$59",
@@ -214,7 +214,7 @@ const TEMPLATES = [
   {
     id: "enterprise",
     name: "Digital Agency",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Agency",
     subCategory: "Design",
     price: "$129",
@@ -226,7 +226,7 @@ const TEMPLATES = [
   {
     id: "hospitality",
     name: "Luxury Villa & Resort",
-    author: "BlankUI Team",
+    author: "Hudbird UI Team",
     category: "Services",
     subCategory: "Hospitality",
     price: "$149",
@@ -234,6 +234,18 @@ const TEMPLATES = [
     imageLight: "/assets/hospitality/bali-resort.jpg",
     date: "2026-09-11",
     trendingScore: 99,
+  },
+  {
+    id: "admin-cms",
+    name: "Admin CMS Dashboard",
+    author: "Hudbird UI Team",
+    category: "Software",
+    subCategory: "SaaS",
+    price: "$89",
+    imageDark: "/assets/templates/admin-cms.webp",
+    imageLight: "/assets/templates/admin-cms-light.webp",
+    date: "2026-09-12",
+    trendingScore: 94,
   },
 ];
 
