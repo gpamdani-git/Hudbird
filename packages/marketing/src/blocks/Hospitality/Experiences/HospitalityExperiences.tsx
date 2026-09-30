@@ -12,10 +12,10 @@ import { ChevronRight } from "lucide-react";
 import { ScrollFillTitle } from "../Highlights/HospitalityHighlights";
 
 const EXP_STRIP_IMAGES = [
-  "/assets/hospitality/experience_strip_1.jpg",
-  "/assets/hospitality/ayana_farm.jpg",
-  "/assets/hospitality/experience_strip_1.jpg",
-  "/assets/hospitality/putting_golf.jpg",
+  "/assets/hospitality/experience_strip_1.webp",
+  "/assets/hospitality/ayana_farm.webp",
+  "/assets/hospitality/experience_strip_1.webp",
+  "/assets/hospitality/putting_golf.webp",
 ];
 
 export function HospitalityExperiences() {
@@ -121,7 +121,7 @@ export function HospitalityExperiences() {
       >
         <motion.img
           style={{ y: contentY }}
-          src="/assets/hospitality/balinese_kecak_dance_experience.jpg"
+          src="/assets/hospitality/balinese_kecak_dance_experience.webp"
           alt="Balinese Kecak Dance"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -187,7 +187,7 @@ export function HospitalityExperiences() {
               >
                 <motion.img
                   style={{ y: yFast }}
-                  src="/assets/hospitality/ayana_farm.jpg"
+                  src="/assets/hospitality/ayana_farm.webp"
                   alt="AYANA Farm"
                   className="absolute inset-0 h-[130%] w-full object-cover"
                 />
@@ -213,7 +213,7 @@ export function HospitalityExperiences() {
               >
                 <motion.img
                   style={{ y: ySlow }}
-                  src="/assets/hospitality/putting_golf.jpg"
+                  src="/assets/hospitality/putting_golf.webp"
                   alt="18-Hole Putting Golf"
                   className="absolute inset-0 h-[115%] w-full object-cover"
                 />
@@ -239,7 +239,7 @@ export function HospitalityExperiences() {
               >
                 <motion.img
                   style={{ y: yReverse }}
-                  src="/assets/hospitality/romantic_dinner.jpg"
+                  src="/assets/hospitality/romantic_dinner.webp"
                   alt="Sunset Romantic Dinner"
                   className="absolute inset-0 h-[130%] w-full object-cover"
                 />
@@ -265,7 +265,7 @@ export function HospitalityExperiences() {
               >
                 <motion.img
                   style={{ y: ySlow }}
-                  src="/assets/hospitality/kids_club.jpg"
+                  src="/assets/hospitality/kids_club.webp"
                   alt="Kids Club"
                   className="absolute inset-0 h-[120%] w-full object-cover"
                 />

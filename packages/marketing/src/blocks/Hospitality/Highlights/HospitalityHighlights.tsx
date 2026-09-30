@@ -37,10 +37,10 @@ const HIGHLIGHTS = [
 ];
 
 const HOTEL_IMAGES = [
-  "/assets/hospitality/aerial.jpg", // Villas
-  "/assets/hospitality/bali-resort.jpg", // Segara
-  "/assets/hospitality/dance.jpg", // Resort
-  "/assets/hospitality/luxury_pool_villa.jpg", // Rimba
+  "/assets/hospitality/aerial.webp", // Villas
+  "/assets/hospitality/bali-resort.webp", // Segara
+  "/assets/hospitality/dance.webp", // Resort
+  "/assets/hospitality/luxury_pool_villa.webp", // Rimba
 ];
 
 const POOLS_IMAGES = [
@@ -252,7 +252,7 @@ export function HospitalityHighlights() {
         >
           <motion.img
             style={{ y: contentY }} // Scale ensures no gaps appear when shifting Y
-            src="/assets/hospitality/luxury_pool_villa.jpg?v=2"
+            src="/assets/hospitality/luxury_pool_villa.webp?v=2"
             alt="Luxury Resort Pool"
             className="absolute inset-0 h-full w-full object-cover"
             onError={(e) => {
@@ -410,7 +410,7 @@ export function HospitalityHighlights() {
         >
           <motion.img
             style={{ y: contentY }}
-            src="/assets/hospitality/ocean_beach_pool.jpg"
+            src="/assets/hospitality/ocean_beach_pool.webp"
             alt="Luxury Resort Pools and Beaches"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -465,7 +465,7 @@ export function HospitalityHighlights() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/ocean_beach_pool.jpg"
+                    src="/assets/hospitality/ocean_beach_pool.webp"
                     alt="Ocean Beach Pool"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -488,7 +488,7 @@ export function HospitalityHighlights() {
                 >
                   <motion.img
                     style={{ y: yReverse }}
-                    src="/assets/hospitality/rimba_cabana_pool.jpg"
+                    src="/assets/hospitality/rimba_cabana_pool.webp"
                     alt="RIMBA Cabana Pool"
                     className="absolute inset-0 h-[115%] w-full object-cover"
                   />
@@ -511,7 +511,7 @@ export function HospitalityHighlights() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/ayana_kids_pool.jpg"
+                    src="/assets/hospitality/ayana_kids_pool.webp"
                     alt="AYANA Kids Pool"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -549,7 +549,7 @@ export function HospitalityHighlights() {
                 >
                   <motion.img
                     style={{ y: ySlow }}
-                    src="/assets/hospitality/segara_pool.jpg"
+                    src="/assets/hospitality/segara_pool.webp"
                     alt="Segara pool"
                     className="absolute inset-0 h-[120%] w-full object-cover"
                   />
@@ -575,7 +575,7 @@ export function HospitalityHighlights() {
                 >
                   <motion.img
                     style={{ y: yReverse }}
-                    src="/assets/hospitality/kubu_beach.jpg"
+                    src="/assets/hospitality/kubu_beach.webp"
                     alt="Kubu Beach"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />

@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 
 export function HospitalityFooterHero({
-  backgroundImage = "/assets/hospitality/bali-resort.jpg",
+  backgroundImage = "/assets/hospitality/bali-resort.webp",
   backgroundVideo = "/assets/hospitality/hero-video.mp4",
 }: {
   backgroundImage?: string;

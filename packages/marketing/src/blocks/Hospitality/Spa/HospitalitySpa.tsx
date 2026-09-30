@@ -12,10 +12,10 @@ import { ChevronRight } from "lucide-react";
 import { ScrollFillTitle } from "../Highlights/HospitalityHighlights";
 
 const SPA_STRIP_IMAGES = [
-  "/assets/hospitality/spa_strip_1.jpg",
-  "/assets/hospitality/spa_strip_3.jpg",
-  "/assets/hospitality/spa_strip_1.jpg",
-  "/assets/hospitality/spa_strip_3.jpg",
+  "/assets/hospitality/spa_strip_1.webp",
+  "/assets/hospitality/spa_strip_3.webp",
+  "/assets/hospitality/spa_strip_1.webp",
+  "/assets/hospitality/spa_strip_3.webp",
 ];
 
 export function HospitalitySpa() {
@@ -111,7 +111,7 @@ export function HospitalitySpa() {
         >
           <motion.img
             style={{ y: contentY }}
-            src="/assets/hospitality/luxury_spa_on_the_rocks.jpg"
+            src="/assets/hospitality/luxury_spa_on_the_rocks.webp"
             alt="Spa on the Rocks"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -176,7 +176,7 @@ export function HospitalitySpa() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/aquatonic_pool.jpg"
+                    src="/assets/hospitality/aquatonic_pool.webp"
                     alt="Thalassotherapy Pool"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -202,7 +202,7 @@ export function HospitalitySpa() {
                 >
                   <motion.img
                     style={{ y: ySlow }}
-                    src="/assets/hospitality/balinese_massage.jpg"
+                    src="/assets/hospitality/balinese_massage.webp"
                     alt="Balinese Massage"
                     className="absolute inset-0 h-[115%] w-full object-cover"
                   />
@@ -228,7 +228,7 @@ export function HospitalitySpa() {
                 >
                   <motion.img
                     style={{ y: yReverse }}
-                    src="/assets/hospitality/flower_bath.jpg"
+                    src="/assets/hospitality/flower_bath.webp"
                     alt="Spa on the Rocks"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -254,7 +254,7 @@ export function HospitalitySpa() {
                 >
                   <motion.img
                     style={{ y: ySlow }}
-                    src="/assets/hospitality/luxury_spa_on_the_rocks.jpg"
+                    src="/assets/hospitality/luxury_spa_on_the_rocks.webp"
                     alt="Wellness Yoga"
                     className="absolute inset-0 h-[120%] w-full object-cover"
                   />
@@ -280,7 +280,7 @@ export function HospitalitySpa() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/wellness_yoga.jpg"
+                    src="/assets/hospitality/wellness_yoga.webp"
                     alt="Flower Bath"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />

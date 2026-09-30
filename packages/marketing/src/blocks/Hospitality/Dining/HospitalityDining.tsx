@@ -111,7 +111,7 @@ export function HospitalityDining() {
         >
           <motion.img
             style={{ y: contentY }}
-            src="/assets/hospitality/bali_sunset_bar.jpg"
+            src="/assets/hospitality/bali_sunset_bar.webp"
             alt="Dining Showcase"
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -176,7 +176,7 @@ export function HospitalityDining() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/rock_bar_cocktail.jpg"
+                    src="/assets/hospitality/rock_bar_cocktail.webp"
                     alt="Rock Bar Cocktail"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -202,7 +202,7 @@ export function HospitalityDining() {
                 >
                   <motion.img
                     style={{ y: ySlow }}
-                    src="/assets/hospitality/sami_sami_pizza.jpg"
+                    src="/assets/hospitality/sami_sami_pizza.webp"
                     alt="Sami Sami Pizza"
                     className="absolute inset-0 h-[115%] w-full object-cover"
                   />
@@ -228,7 +228,7 @@ export function HospitalityDining() {
                 >
                   <motion.img
                     style={{ y: yReverse }}
-                    src="/assets/hospitality/luxury_rock_bar_dining.jpg"
+                    src="/assets/hospitality/luxury_rock_bar_dining.webp"
                     alt="Rock Bar"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />
@@ -254,7 +254,7 @@ export function HospitalityDining() {
                 >
                   <motion.img
                     style={{ y: ySlow }}
-                    src="/assets/hospitality/kubu_beach_club.jpg"
+                    src="/assets/hospitality/kubu_beach_club.webp"
                     alt="Kubu Beach Club"
                     className="absolute inset-0 h-[120%] w-full object-cover"
                   />
@@ -280,7 +280,7 @@ export function HospitalityDining() {
                 >
                   <motion.img
                     style={{ y: yFast }}
-                    src="/assets/hospitality/dava_steak.jpg"
+                    src="/assets/hospitality/dava_steak.webp"
                     alt="DAVA Steak & Seafood"
                     className="absolute inset-0 h-[130%] w-full object-cover"
                   />

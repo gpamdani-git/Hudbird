@@ -10,27 +10,27 @@ import {
 } from "framer-motion";
 
 const SLOT_1 = [
-  "/assets/hospitality/ayana_farm.jpg",
-  "/assets/hospitality/aerial.jpg",
-  "/assets/hospitality/aquatonic_pool.jpg",
+  "/assets/hospitality/ayana_farm.webp",
+  "/assets/hospitality/aerial.webp",
+  "/assets/hospitality/aquatonic_pool.webp",
 ];
 
 const SLOT_2 = [
-  "/assets/hospitality/balinese_massage.jpg",
-  "/assets/hospitality/sami_sami_pizza.jpg",
-  "/assets/hospitality/ayana_kids_pool.jpg",
+  "/assets/hospitality/balinese_massage.webp",
+  "/assets/hospitality/sami_sami_pizza.webp",
+  "/assets/hospitality/ayana_kids_pool.webp",
 ];
 
 const SLOT_3 = [
-  "/assets/hospitality/putting_golf.jpg",
-  "/assets/hospitality/kubu_beach.jpg",
-  "/assets/hospitality/flower_bath.jpg",
+  "/assets/hospitality/putting_golf.webp",
+  "/assets/hospitality/kubu_beach.webp",
+  "/assets/hospitality/flower_bath.webp",
 ];
 
 const SLOT_4 = [
-  "/assets/hospitality/romantic_dinner.jpg",
-  "/assets/hospitality/luxury_pool_villa.jpg",
-  "/assets/hospitality/kids_club.jpg",
+  "/assets/hospitality/romantic_dinner.webp",
+  "/assets/hospitality/luxury_pool_villa.webp",
+  "/assets/hospitality/kids_club.webp",
 ];
 
 const POSITIONS = [
@@ -90,7 +90,7 @@ export function HospitalityCuratedJourneys() {
           {/* Background Texture */}
           <div className="absolute inset-0">
             <img
-              src="/assets/hospitality/stone_texture_bg.jpg"
+              src="/assets/hospitality/stone_texture_bg.webp"
               alt="Stone Texture Background"
               className="h-full w-full object-cover opacity-90"
             />

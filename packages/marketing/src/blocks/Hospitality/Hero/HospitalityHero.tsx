@@ -21,7 +21,7 @@ export interface HospitalityHeroProps {
 }
 
 export function HospitalityHero({
-  backgroundImage = "/assets/hospitality/bali-resort.jpg",
+  backgroundImage = "/assets/hospitality/bali-resort.webp",
   backgroundVideo = "/assets/hospitality/hero-video.mp4",
   logoText = "SAMSARA UBUD",
   subTitle = "THE SANCTUARY",
@@ -295,7 +295,7 @@ export function HospitalityHero({
           {/* Drone effect wrapper + Parallax */}
           <motion.div style={{ y: mapY }} className="absolute inset-0 -top-[5%] h-[110%] w-full">
             <motion.img
-              src="/assets/hospitality/aerial.jpg?v=2"
+              src="/assets/hospitality/aerial.webp?v=2"
               alt="Resort Aerial Map"
               className="h-full w-full scale-[1.05] object-cover"
               animate={{
