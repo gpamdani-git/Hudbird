@@ -1,5 +1,20 @@
 # @hudbird/theme
 
+## 1.4.1
+
+### Patch Changes
+
+- **Architecture Refactoring**:
+  - Deconstructed large monolithic template components (Hospitality, SaaS, Digital Agency) into fully modular, independent, and reusable `blocks/`.
+  - Introduced new scalable file structure (`Hero`, `About`, `Highlights`, `Experiences`, etc.) isolated by domain.
+- **Scroll & Stacking Engine**:
+  - Developed and integrated `SmoothStackingWrapper` across template sections.
+  - Re-engineered GPU-accelerated scroll tracking using high-tension `framer-motion` springs (`stiffness: 400, damping: 40`), eliminating native 1-frame scroll desync and jitter.
+- **UI & Layout Optimizations**:
+  - Perfected overlapping `liquid mask` transitions by enforcing `bg-transparent` across stacking wrappers.
+  - Increased bottom padding (`pb-[35vh]`) on tall stacking sections to ensure Overview UI remains fully accessible before overlap.
+  - Finalized precise `z-index` layering (`10` to `40`) for continuous stacking behaviors.
+
 ## 1.4.0
 
 ### Minor Changes
