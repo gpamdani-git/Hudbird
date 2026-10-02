@@ -68,7 +68,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Header / Logo */}
         <div className="relative z-10 mb-4 flex items-center justify-between px-1.5">
-          <div className="flex items-center gap-3 overflow-hidden">
+          <NavLink to="/" className="flex items-center gap-3 overflow-hidden transition-opacity hover:opacity-80">
             <img
               src="/assets/new-logo/hudbirdui-icon-black.svg"
               alt="Hudbird UI"
@@ -88,7 +88,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 v{changelogData[0]?.version || "1.2.0"}
               </span>
             </div>
-          </div>
+          </NavLink>
         </div>
 
         {/* Global Search */}

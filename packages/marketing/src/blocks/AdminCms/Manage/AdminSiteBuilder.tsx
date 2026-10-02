@@ -637,7 +637,7 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 className="bg-primary h-8 gap-1.5"
                 onClick={() => onNavigate?.("editor-page")}
               >
-                <Layout className="h-3.5 w-3.5" /> Edit with Visual Editor
+                <Layout className="h-3.5 w-3.5" /> Edit UI Layout
               </Button>
             )}
           </div>

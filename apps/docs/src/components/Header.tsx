@@ -44,9 +44,9 @@ export const Header: React.FC<HeaderProps> = ({
         }
       }
     } catch {
-      return "system";
+      return "dark";
     }
-    return "system";
+    return "dark";
   });
 
   const location = useLocation();
@@ -165,16 +165,6 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex shrink-0 items-center gap-3 text-sm font-medium xl:gap-6">
             {/* Desktop Navigation */}
             <div className="hidden items-center gap-6 xl:flex">
-              <Link to={isThemesPage ? "/" : "/themes"}>
-                <Button
-                  variant={isThemesPage ? "outline" : "solid"}
-                  color="primary"
-                  size="sm"
-                  className="h-7 px-3 py-0 text-[11px] font-semibold tracking-wide"
-                >
-                  {isThemesPage ? "Back to Docs" : "Create Theme"}
-                </Button>
-              </Link>
               <Link
                 to="/templates"
                 className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
@@ -310,14 +300,6 @@ export const Header: React.FC<HeaderProps> = ({
                   <DropdownItem>
                     <Link to="/templates" className="flex w-full items-center font-medium">
                       Templates
-                    </Link>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <Link
-                      to={isThemesPage ? "/" : "/themes"}
-                      className="flex w-full items-center font-medium"
-                    >
-                      {isThemesPage ? "Back to Docs" : "Create Theme"}
                     </Link>
                   </DropdownItem>
                   <DropdownItem className="my-1 border-t border-zinc-200 dark:border-zinc-800" />

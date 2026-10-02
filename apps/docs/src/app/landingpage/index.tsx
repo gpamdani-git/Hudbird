@@ -10,6 +10,8 @@ import {
   useHtmlTheme,
 } from "./components/shared";
 import React, { useState, useEffect, lazy, Suspense } from "react";
+import { SiteHeader } from "../../components/SiteHeader";
+import { SiteFooter } from "../../components/SiteFooter";
 import {
   Hero,
   HeroHeader,
@@ -116,6 +118,7 @@ import {
   useTemplateTheme,
 } from "../../components/templates/TemplateThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
+import { StatsSection } from "./components/StatsSection";
 
 const MorphingUIHero = lazy(() =>
   import("./components/MorphingUIHero").then((m) => ({ default: m.MorphingUIHero }))
@@ -174,7 +177,6 @@ const SEO = () => (
 export const AiStartupTemplate = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [activeAgentCard, setActiveAgentCard] = useState(0);
-  const { theme, toggleTheme } = useTemplateTheme();
 
   // Smooth scroll helper
   const scrollTo = (id: string) => {
@@ -185,8 +187,10 @@ export const AiStartupTemplate = () => {
     <>
       <SEO />
       <div className="flex min-h-screen w-full flex-col bg-white dark:bg-[#030712]">
+        <SiteHeader />
+
         {/* <!-- Hero Section --> */}
-        <Hero id="hero" size="full" className="relative overflow-hidden bg-white dark:bg-[#030712]">
+        <Hero id="hero" size="auto" className="relative overflow-hidden bg-white dark:bg-[#030712]">
           {/* Animated Aurora Background */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
             <motion.div
@@ -206,66 +210,26 @@ export const AiStartupTemplate = () => {
             />
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative z-50 w-full"
-          >
-            <HeroHeader
-              className="pt-4"
-              logo={
-                <a href="/#/" className="flex items-center gap-2">
-                  <Zap className="h-6 w-6 text-blue-500" fill="currentColor" />
-                  <span className="font-outfit text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-                    hudbird UI
-                  </span>
-                </a>
-              }
-              links={[
-                {
-                  label: "Installation",
-                  href: "/#/installation",
-                  className:
-                    "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-                },
-                {
-                  label: "Features",
-                  href: "/#features",
-                  className:
-                    "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-                },
-                {
-                  label: "Themplates",
-                  href: "/#/templates",
-                  className:
-                    "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-                },
-                {
-                  label: "Frequently Ask Question",
-                  href: "/#/templates",
-                  className:
-                    "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-                },
-              ]}
-              action={
-                <div className="flex items-center gap-3">
-                  <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
-                  <a href="/#/installation">
-                    <Button className="relative overflow-hidden rounded-xl bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all hover:bg-blue-600 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)]">
-                      <span className="relative z-10">Get started</span>
-                      <div className="absolute inset-0 rounded-xl border-t border-white/20" />
-                    </Button>
-                  </a>
-                </div>
-              }
-            />
-          </motion.div>
-
           <HeroBody
             align="center"
-            className="relative z-10 mx-auto mt-2 max-w-4xl sm:mt-20 lg:pt-0"
+            className="relative z-10 mx-auto max-w-4xl pt-8 pb-20 sm:pt-8"
           >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.8 }}
+              className="mb-8 flex justify-center"
+            >
+              <a
+                href="/#/templates"
+                className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500/20 dark:text-blue-400"
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>Hudbird Pro is here! Get All-Access Templates</span>
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -295,9 +259,9 @@ export const AiStartupTemplate = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <HeroActions className="mt-6 flex-col justify-center gap-3 sm:mt-8 sm:flex-row">
-                <a href="/#/installation" className="w-full sm:w-auto">
+                <a href="/#/docs" className="w-full sm:w-auto">
                   <Button className="group relative h-12 w-full overflow-hidden rounded-xl bg-blue-500 px-8 font-semibold text-white shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all hover:bg-blue-600 hover:shadow-[0_0_40px_rgba(59,130,246,0.7)] sm:w-auto">
-                    <span className="relative z-10">Get started free</span>
+                    <span className="relative z-10">Get started</span>
                     <div className="absolute inset-0 rounded-xl border-t border-white/30" />
                     <motion.div
                       className="absolute inset-0 rounded-xl border-2 border-white/0"
@@ -313,7 +277,7 @@ export const AiStartupTemplate = () => {
                   </Button>
                 </a>
 
-                <a href="/#/marketing/hero" className="w-full sm:w-auto">
+                <a href="/#/blocks" className="w-full sm:w-auto">
                   <Button
                     variant="outline"
                     className="group h-12 w-full rounded-xl border-zinc-200 bg-white/60 px-8 font-medium text-zinc-900 backdrop-blur-sm hover:bg-white sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
@@ -321,7 +285,7 @@ export const AiStartupTemplate = () => {
                     <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/10">
                       <PlayIcon className="h-3 w-3 text-zinc-900 dark:text-white" />
                     </div>
-                    Browse components
+                    Browse block
                   </Button>
                 </a>
               </HeroActions>
@@ -344,6 +308,9 @@ export const AiStartupTemplate = () => {
             </motion.div>
           </HeroBody>
         </Hero>
+
+        {/* <!-- Stats Section --> */}
+        <StatsSection />
 
         {/* <!-- Logo Cloud --> */}
         <section
@@ -368,16 +335,18 @@ export const AiStartupTemplate = () => {
           </LogoCloud>
         </section>
         {/* <!-- Component Gallery (bento mosaic) — same container width as #components --> */}
-        <Suspense
-          fallback={
-            <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
-          }
-        >
-          <ComponentShowcase />
-        </Suspense>
+        <div id="components">
+          <Suspense
+            fallback={
+              <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
+            }
+          >
+            <ComponentShowcase />
+          </Suspense>
+        </div>
         {/* <!-- Agent Showcase Section --> */}
         <section
-          id="components"
+          id="features"
           className="relative w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]"
         >
           {/* Subtle blue gradient glow — matches hero */}
@@ -538,8 +507,8 @@ export const AiStartupTemplate = () => {
 
               {/* Right Agent Chat Card — sticky on desktop, full-width on mobile */}
               <div className="sticky top-24 flex h-[450px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[550px] lg:h-[700px] dark:border-white/10 dark:bg-[#0f0f1a]">
-                {/* Chat Area — scrollable on mobile */}
-                <div className="relative flex flex-1 flex-col overflow-y-auto overscroll-contain scroll-smooth p-6">
+                {/* Chat Area */}
+                <div className="relative flex flex-1 flex-col overflow-hidden p-6 pointer-events-none">
                   <AnimatePresence mode="wait">
                     {activeAgentCard === 0 && (
                       <motion.div
@@ -1439,6 +1408,35 @@ export const AiStartupTemplate = () => {
           <TemplateMarquee />
         </Suspense>
 
+        {/* <!-- FAQ Section --> */}
+        <section id="faq" className="w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]">
+          <Faq 
+            variant="centered"
+            items={[
+              {
+                question: "Is Hudbird UI free to use?",
+                answer: "Yes, the core UI components are completely free and open-source under the MIT license. You can use them in personal and commercial projects without any restrictions."
+              },
+              {
+                question: "What is included in the Pro version?",
+                answer: "The Pro All-Access pass gives you premium Templates, complex Marketing Blocks (like complete Dashboards, Pricing Tables, and Analytics layouts), and priority support. It is designed to save you hundreds of hours."
+              },
+              {
+                question: "Do I need to pay for updates?",
+                answer: "No! Once you purchase the Pro pass, you get lifetime access and updates. Whenever we release new templates or blocks, you will receive them for free."
+              },
+              {
+                question: "What frameworks are supported?",
+                answer: "Hudbird UI is built specifically for React, Tailwind CSS v4, and Framer Motion. It works seamlessly with Next.js, Vite, Remix, and other modern React-based frameworks."
+              },
+              {
+                question: "Can I use the Pro templates for client work?",
+                answer: "Absolutely. You can use our templates and blocks to build unlimited projects for your clients. However, you cannot redistribute or resell the templates themselves as standalone products."
+              }
+            ]} 
+          />
+        </section>
+
         {/* <!-- CTA Section --> */}
         <section
           id="cta"
@@ -1484,23 +1482,7 @@ export const AiStartupTemplate = () => {
             </Suspense>
           </div>
         </section>
-
-        {/* <!-- Footer V4 - Mega --> */}
-        <FooterMega
-          className="border-t border-zinc-100 bg-white pt-16 dark:border-zinc-800 dark:bg-zinc-950"
-          logo={
-            <div className="flex items-center gap-2">
-              <Zap className="h-6 w-6 text-blue-400" fill="currentColor" />
-              <span className="text-lg font-bold text-zinc-900 dark:text-white">hudbird UI</span>
-            </div>
-          }
-          brandName=""
-          description="Beautiful, accessible React components built with TailwindCSS v4 & Framer Motion."
-          linkGroups={MEGA_LINK_GROUPS}
-          socials={SOCIALS}
-          copyright="&copy; 2026 hudbird UI. All rights reserved."
-          hideNewsletter={true}
-        />
+        <SiteFooter />
       </div>
     </>
   );

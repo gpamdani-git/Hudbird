@@ -8,10 +8,12 @@ import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { PageToolbar } from "./components/PageToolbar";
 import { DocsFooter } from "./components/DocsFooter";
+import { MarketingLayout } from "./components/MarketingLayout";
 import { getTocForPath } from "./tocData";
 
 // Lazy-load all documentation pages for lightning-fast initial load & low memory footprint
 const GettingStartedDoc = lazy(() => import("./pages/GettingStartedDoc"));
+const TemplateDetailDoc = lazy(() => import("./pages/TemplateDetailDoc").then((m) => ({ default: m.TemplateDetailDoc })));
 const ButtonDoc = lazy(() => import("./pages/ButtonDoc"));
 const AlertDoc = lazy(() => import("./pages/AlertDoc"));
 const AvatarDoc = lazy(() => import("./pages/AvatarDoc"));
@@ -83,11 +85,7 @@ const DigitalAgencyTemplate = lazy(() =>
     default: m.DigitalAgencyTemplate,
   }))
 );
-const HybridStartupTemplate = lazy(() =>
-  import("./components/templates/HybridStartupTemplate").then((m) => ({
-    default: m.HybridStartupTemplate,
-  }))
-);
+
 const AiStartupTemplate = lazy(() => import("./app/landingpage"));
 const FintechTemplate = lazy(() =>
   import("./components/templates/FintechTemplate").then((m) => ({ default: m.FintechTemplate }))
@@ -146,20 +144,38 @@ export default function App() {
     );
   }
 
-  if (location.pathname.startsWith("/templates/")) {
+  // Intercept template live previews (render without header/sidebar)
+  if (location.pathname.startsWith("/templates/") && !location.pathname.endsWith("/detail")) {
     return (
       <Suspense fallback={<DocLoadingSkeleton />}>
         <Routes>
           <Route path="/templates/saas-launchpad" element={<SaaSTemplate />} />
           <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
           <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
-          <Route path="/templates/hybrid" element={<HybridStartupTemplate />} />
+
           <Route path="/templates/ai-startup" element={<AiStartupTemplate />} />
           <Route path="/templates/fintech" element={<FintechTemplate />} />
           <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
           <Route path="/templates/hospitality" element={<HospitalityTemplate />} />
           <Route path="/templates/admin-cms" element={<AdminCmsTemplate />} />
         </Routes>
+      </Suspense>
+    );
+  }
+
+  // Intercept templates and template details for Marketing Layout
+  if (
+    location.pathname === "/templates" || 
+    (location.pathname.startsWith("/templates/") && location.pathname.endsWith("/detail"))
+  ) {
+    return (
+      <Suspense fallback={<DocLoadingSkeleton />}>
+        <MarketingLayout>
+          <Routes>
+            <Route path="/templates" element={<TemplatesDoc />} />
+            <Route path="/templates/:id/detail" element={<TemplateDetailDoc />} />
+          </Routes>
+        </MarketingLayout>
       </Suspense>
     );
   }
@@ -210,7 +226,6 @@ export default function App() {
                   <Route path="/support" element={<SupportDoc />} />
                   <Route path="/changelog" element={<ChangelogDoc />} />
                   <Route path="/themes" element={<ThemesDoc />} />
-                  <Route path="/templates" element={<TemplatesDoc />} />
                   <Route path="/blocks" element={<BlocksGalleryDoc />} />
                   <Route path="/installation" element={<InstallationDoc />} />
                   <Route path="/button" element={<ButtonDoc />} />

@@ -146,6 +146,10 @@ export const MEGA_LINK_GROUPS = [
       { label: "Badge", href: "/#/badge" },
       { label: "Accordion", href: "/#/accordion" },
       { label: "Tooltip", href: "/#/tooltip" },
+      { label: "Navbar", href: "/#/navbar" },
+      { label: "Divider", href: "/#/divider" },
+      { label: "Heading", href: "/#/heading" },
+      { label: "Text", href: "/#/text" },
     ],
   },
   {
@@ -161,6 +165,8 @@ export const MEGA_LINK_GROUPS = [
       { label: "Skeleton", href: "/#/skeleton" },
       { label: "Table", href: "/#/table" },
       { label: "Textarea", href: "/#/textarea" },
+      { label: "Description list", href: "/#/description-list" },
+      { label: "Fieldset", href: "/#/fieldset" },
     ],
   },
   {
@@ -176,6 +182,17 @@ export const MEGA_LINK_GROUPS = [
       { label: "Logo Clouds", href: "/#/marketing/logo-clouds" },
       { label: "Footer", href: "/#/marketing/footer" },
     ],
+    action: (
+      <a href="/#/blocks" className="relative group inline-flex rounded-xl overflow-hidden p-[1px] font-medium text-xs mt-2">
+        <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#3b82f6_50%,#0000_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#60a5fa_50%,#0000_100%)]" />
+        <span className="relative flex h-full w-full items-center justify-center rounded-xl bg-white dark:bg-zinc-950 px-3 py-1.5 transition-colors group-hover:bg-zinc-50 dark:group-hover:bg-zinc-900">
+          <span className="text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors whitespace-nowrap">
+            +40 more blocks
+          </span>
+          <ArrowRight className="ml-1 h-3 w-3 text-zinc-500 group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-white transition-colors" />
+        </span>
+      </a>
+    ),
   },
   {
     title: "Layouts",
@@ -183,6 +200,19 @@ export const MEGA_LINK_GROUPS = [
       { label: "Sidebar Layout", href: "/#/layouts/sidebar" },
       { label: "Stacked Layout", href: "/#/layouts/stacked" },
       { label: "Auth Layout", href: "/#/layouts/auth" },
+    ],
+  },
+  {
+    title: "Charts",
+    links: [
+      { label: "Area Chart", href: "/#/area-chart" },
+      { label: "Bar Chart", href: "/#/bar-chart" },
+      { label: "Line Chart", href: "/#/line-chart" },
+      { label: "Pie Chart", href: "/#/pie-chart" },
+      { label: "Composed Chart", href: "/#/composed-chart" },
+      { label: "Radar Chart", href: "/#/radar-chart" },
+      { label: "Radial Chart", href: "/#/radial-chart" },
+      { label: "Chart Tooltip", href: "/#/chart-tooltip" },
     ],
   },
   {
@@ -194,14 +224,7 @@ export const MEGA_LINK_GROUPS = [
       { label: "Changelog", href: "/#/changelog" },
       { label: "Support & FAQ", href: "/#/support" },
       { label: "GitHub", href: "https://github.com/gpamdani-git/Hudbird-UI-Discus" },
-      {
-        label: "Figma Kit",
-        badge: (
-          <Badge variant="soft" className="scale-90 opacity-70">
-            Soon
-          </Badge>
-        ),
-      },
+
     ],
   },
 ];

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@hudbird/ui";
 import { Eye, Search, Filter, Code, Sparkles, ArrowRight } from "lucide-react";
 import { TemplateCodeModal } from "../components/TemplateCodeModal";
@@ -9,14 +10,17 @@ const TemplateLivePreview = ({
   name,
   imageLight,
   imageDark,
+  previewUrl,
   onCodeClick,
 }: {
   templateId: string;
   name: string;
   imageLight: string;
   imageDark: string;
+  previewUrl?: string;
   onCodeClick: () => void;
 }) => {
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [shouldRenderIframe, setShouldRenderIframe] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
@@ -99,7 +103,7 @@ const TemplateLivePreview = ({
         >
           <div className="h-full w-full origin-top scale-[1.02] transition-all duration-700 ease-out">
             <iframe
-              src={`/#/templates/${templateId}`}
+              src={previewUrl || `/#/templates/${templateId}`}
               className="pointer-events-none h-full w-full border-0"
               tabIndex={-1}
               onLoad={() => setIframeLoaded(true)}
@@ -118,10 +122,10 @@ const TemplateLivePreview = ({
           startContent={<Eye className="h-4 w-4" />}
           onClick={(e) => {
             e.stopPropagation();
-            window.open(`/#/templates/${templateId}`, "_blank");
+            navigate(`/templates/${templateId}/detail`);
           }}
         >
-          Live Preview
+          Details
         </Button>
         <Button
           variant="outline"
@@ -140,29 +144,19 @@ const TemplateLivePreview = ({
 };
 
 const TEMPLATES = [
-  {
-    id: "hybrid",
-    name: "Hybrid Startup",
-    author: "Hudbird UI Team",
-    category: "Software",
-    subCategory: "SaaS",
-    price: "Free",
-    imageDark: "/assets/templates/ai-startup.webp",
-    imageLight: "/assets/templates/ai-startup-light.webp",
-    date: "2026-09-26",
-    trendingScore: 99,
-  },
+
   {
     id: "saas-launchpad",
-    name: "SaaS Launchpad",
+    name: "SaaS Launchpad + Hudbird CMS",
     author: "Hudbird UI Team",
     category: "Software",
-    subCategory: "SaaS",
-    price: "Free",
+    subCategory: "SaaS & Dashboard",
+    price: "$99",
+    previewUrl: "http://localhost:5174",
     imageDark: "/assets/templates/saas-launchpad.webp",
     imageLight: "/assets/templates/saas-launchpad-light.webp",
     date: "2026-09-01",
-    trendingScore: 95,
+    trendingScore: 99,
   },
   {
     id: "fintech",
@@ -170,7 +164,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Software",
     subCategory: "Fintech",
-    price: "$49",
+    price: "Free",
     imageDark: "/assets/templates/fintech.webp",
     imageLight: "/assets/templates/fintech-light.webp",
     date: "2026-09-02",
@@ -182,7 +176,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Software",
     subCategory: "AI",
-    price: "$99",
+    price: "Free",
     imageDark: "/assets/templates/ai-startup.webp",
     imageLight: "/assets/templates/ai-startup-light.webp",
     date: "2026-09-05",
@@ -194,7 +188,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Ecommerce",
     subCategory: "Digital",
-    price: "$79",
+    price: "Free",
     imageDark: "/assets/templates/ecommerce.webp",
     imageLight: "/assets/templates/ecommerce-light.webp",
     date: "2026-09-06",
@@ -206,7 +200,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Software",
     subCategory: "Apps",
-    price: "$59",
+    price: "Free",
     imageDark: "/assets/templates/modern-app.webp",
     imageLight: "/assets/templates/modern-app-light.webp",
     date: "2026-09-08",
@@ -218,7 +212,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Agency",
     subCategory: "Design",
-    price: "$129",
+    price: "Free",
     imageDark: "/assets/templates/digital-agency.webp",
     imageLight: "/assets/templates/digital-agency-light.webp",
     date: "2026-09-10",
@@ -230,7 +224,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Services",
     subCategory: "Hospitality",
-    price: "$149",
+    price: "Free",
     imageDark: "/assets/hospitality/bali-resort.jpg",
     imageLight: "/assets/hospitality/bali-resort.jpg",
     date: "2026-09-11",
@@ -242,7 +236,7 @@ const TEMPLATES = [
     author: "Hudbird UI Team",
     category: "Software",
     subCategory: "SaaS",
-    price: "$89",
+    price: "Free",
     imageDark: "/assets/templates/admin-cms.webp",
     imageLight: "/assets/templates/admin-cms-light.webp",
     date: "2026-09-12",
@@ -330,9 +324,9 @@ export default function TemplatesDoc() {
   }, [searchQuery, activeCategory, activeSubCategory, filter]);
 
   return (
-    <div className="mx-auto min-h-screen w-full bg-white text-zinc-900 dark:bg-[#0a0a0b] dark:text-white">
+    <div className="mx-auto w-full">
       {/* Header Section */}
-      <div className="w-full border-b border-zinc-200 bg-white pt-24 pb-12 dark:border-white/5 dark:bg-[#0a0a0b]">
+      <div className="w-full border-b border-zinc-200 pt-24 pb-12 dark:border-white/5">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-start">
             <div className="max-w-2xl">
@@ -372,12 +366,12 @@ export default function TemplatesDoc() {
                     Hudbird Pro All-Access Pass
                   </h3>
                   <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
-                    Early Bird $49
+                    Early Bird $249
                   </span>
                 </div>
                 <p className="mt-0.5 text-xs text-zinc-600 dark:text-zinc-400">
-                  Get full source-code repositories for all 9+ templates, the visual Admin CMS
-                  Builder, and free lifetime updates.
+                  Get full source-code repositories for all 9+ templates, premium Admin Dashboard UI,
+                  and free lifetime updates.
                 </p>
               </div>
             </div>
@@ -482,13 +476,14 @@ export default function TemplatesDoc() {
               <div key={template.id} className="group flex flex-col">
                 <div
                   className="relative mb-4 aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-white/10 dark:bg-zinc-900"
-                  onClick={() => window.open(`/#/templates/${template.id}`, "_blank")}
+                  onClick={() => navigate(`/templates/${template.id}/detail`)}
                 >
                   <TemplateLivePreview
                     templateId={template.id}
                     name={template.name}
                     imageLight={template.imageLight}
                     imageDark={template.imageDark}
+                    previewUrl={template.previewUrl}
                     onCodeClick={() =>
                       setSelectedTemplateForCode({ id: template.id, name: template.name })
                     }

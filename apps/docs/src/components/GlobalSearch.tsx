@@ -16,9 +16,10 @@ import { searchIndex, SearchItem } from "../data/searchIndex";
 
 interface GlobalSearchProps {
   className?: string;
+  isMini?: boolean;
 }
 
-export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) => {
+export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "", isMini = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -218,18 +219,22 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "" }) =>
           id="global-search-bar"
           onClick={() => setIsOpen(true)}
           aria-label="Search documentation"
-          className="group hidden h-9 w-48 cursor-pointer items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-3 text-xs text-zinc-400 shadow-2xs transition-all select-none hover:border-zinc-300 hover:bg-zinc-100/80 hover:text-zinc-600 sm:flex md:w-64 lg:w-72 xl:w-80 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:text-zinc-300"
+          className={`group hidden h-9 cursor-pointer items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-3 text-xs text-zinc-400 shadow-2xs transition-all select-none hover:border-zinc-300 hover:bg-zinc-100/80 hover:text-zinc-600 sm:flex dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-500 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:text-zinc-300 ${
+            isMini ? "w-9 justify-center px-0" : "w-48 md:w-64 lg:w-72 xl:w-80"
+          }`}
         >
           <div className="flex items-center gap-2.5 truncate">
             <Search className="h-3.5 w-3.5 shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-600 dark:group-hover:text-zinc-300" />
-            <span className="truncate">Search documentation...</span>
+            {!isMini && <span className="truncate">Search documentation...</span>}
           </div>
 
-          <div className="flex items-center gap-1">
-            <kbd className="inline-flex items-center rounded border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 shadow-2xs transition-colors group-hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:border-zinc-600">
-              {isMac ? "⌘" : "Ctrl+"}K
-            </kbd>
-          </div>
+          {!isMini && (
+            <div className="flex items-center gap-1">
+              <kbd className="inline-flex items-center rounded border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 shadow-2xs transition-colors group-hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:border-zinc-600">
+                {isMac ? "⌘" : "Ctrl+"}K
+              </kbd>
+            </div>
+          )}
         </button>
 
         {/* Mobile-only Trigger Icon Button */}

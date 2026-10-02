@@ -258,10 +258,10 @@ export const ProStyleVisualEditor = () => (
           <span>Introducing Blocks</span>
         </motion.div>
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl sm:text-5xl font-bold tracking-tight text-white mb-6">
-          Pro Style <br/> with Visual Editor
+          Pro Style <br/> with UI Components
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="text-lg text-zinc-400">
-          hudbird visual editor drag n drop premade beautifully section made with love in Bali.
+          hudbird UI components made beautifully with love in Bali.
         </motion.p>
       </div>
 
@@ -539,7 +539,7 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
           </MarketingPreview>
 
           <MarketingPreview
-            title="Pro Style with Visual Editor"
+            title="Pro Style with UI Components"
             skill={skillContent}
             code={proStyleCode}
           >

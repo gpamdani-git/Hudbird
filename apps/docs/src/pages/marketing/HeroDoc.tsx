@@ -285,7 +285,7 @@ function Example() {
             className="md:col-span-12 lg:col-span-7 bg-[#111] dark:bg-black rounded-[2rem] p-8 sm:p-12 min-h-[450px] flex flex-col justify-between relative overflow-hidden group"
           >
             <div className="relative z-10 text-white max-w-md">
-              <div className="text-xs font-semibold tracking-wider text-zinc-400 mb-4 uppercase">Visual Editor</div>
+              <div className="text-xs font-semibold tracking-wider text-zinc-400 mb-4 uppercase">UI Components</div>
               <h2 className="text-4xl sm:text-5xl font-medium tracking-tight leading-[1.1] mb-8">
                 Hudbird UI is built on top of modern web technologies
               </h2>
@@ -878,7 +878,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                   >
                     <div className="relative z-10 max-w-md text-white">
                       <div className="mb-4 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
-                        Visual Editor
+                        UI Components
                       </div>
                       <h2 className="mb-8 text-4xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
                         Hudbird UI is built on top of modern web technologies

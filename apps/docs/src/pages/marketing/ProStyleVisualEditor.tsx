@@ -33,7 +33,7 @@ export const ProStyleVisualEditor = () => (
           transition={{ delay: 0.1 }}
           className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl"
         >
-          Pro Style <br /> with Visual Editor
+          Pro Style <br /> with UI Components
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -42,7 +42,7 @@ export const ProStyleVisualEditor = () => (
           transition={{ delay: 0.2 }}
           className="text-lg text-zinc-400"
         >
-          hudbird visual editor drag n drop premade beautifully section made with love in Bali.
+          hudbird UI components made beautifully with love in Bali.
         </motion.p>
       </div>
 

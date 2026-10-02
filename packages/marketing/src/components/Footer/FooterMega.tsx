@@ -8,6 +8,7 @@ import { Input, Button } from "@hudbird/ui";
 export interface FooterLinkGroup {
   title: string;
   links: { label: string; href?: string; badge?: React.ReactNode }[];
+  action?: React.ReactNode;
 }
 
 export interface FooterMegaProps extends React.HTMLAttributes<HTMLElement> {
@@ -122,6 +123,7 @@ export const FooterMega = React.forwardRef<HTMLElement, FooterMegaProps>(
                         </li>
                       ))}
                     </ul>
+                    {group.action && <div className="mt-4">{group.action}</div>}
                   </motion.div>
                 ))}
               </div>
