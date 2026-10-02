@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Button } from "@hudbird/ui";
-import { Eye, Search, Filter, Code } from "lucide-react";
+import { Eye, Search, Filter, Code, Sparkles, ArrowRight } from "lucide-react";
 import { TemplateCodeModal } from "../components/TemplateCodeModal";
+import { ProPricingModal } from "../components/ProPricingModal";
 
 const TemplateLivePreview = ({
   templateId,
@@ -281,6 +282,7 @@ export default function TemplatesDoc() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubCategory, setActiveSubCategory] = useState<string | null>(null);
+  const [isProModalOpen, setIsProModalOpen] = useState(false);
 
   const handleCategorySelect = (category: string, subCategory?: string) => {
     if (activeCategory === category && activeSubCategory === (subCategory || null)) {
@@ -356,6 +358,36 @@ export default function TemplatesDoc() {
                 className="w-full rounded-full border border-zinc-200 bg-zinc-50 py-2.5 pr-4 pl-10 text-sm text-zinc-900 transition-all placeholder:text-zinc-400 focus:ring-2 focus:ring-zinc-200 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-zinc-500 dark:focus:ring-white/20"
               />
             </div>
+          </div>
+
+          {/* Early Bird Pro Banner */}
+          <div className="mb-10 flex flex-col items-center justify-between gap-5 rounded-2xl border border-blue-200/80 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white p-5 shadow-xs md:flex-row dark:border-blue-900/40 dark:from-blue-950/40 dark:via-indigo-950/20 dark:to-zinc-950">
+            <div className="flex items-center gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white shadow-md shadow-blue-500/20">
+                <Sparkles className="h-5 w-5" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="font-bold text-zinc-900 dark:text-white">
+                    Hudbird Pro All-Access Pass
+                  </h3>
+                  <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
+                    Early Bird $49
+                  </span>
+                </div>
+                <p className="mt-0.5 text-xs text-zinc-600 dark:text-zinc-400">
+                  Get full source-code repositories for all 9+ templates, the visual Admin CMS
+                  Builder, and free lifetime updates.
+                </p>
+              </div>
+            </div>
+            <Button
+              variant="primary"
+              className="w-full shrink-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-xs font-semibold text-white shadow-md shadow-blue-500/20 hover:from-blue-700 hover:to-indigo-700 md:w-auto"
+              onClick={() => setIsProModalOpen(true)}
+            >
+              Get All-Access ($49) <ArrowRight className="ml-1 h-3.5 w-3.5" />
+            </Button>
           </div>
 
           {/* Categories Grid */}
@@ -509,6 +541,8 @@ export default function TemplatesDoc() {
         templateId={selectedTemplateForCode?.id || null}
         templateName={selectedTemplateForCode?.name || ""}
       />
+
+      <ProPricingModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
     </div>
   );
 }

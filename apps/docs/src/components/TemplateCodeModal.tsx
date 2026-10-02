@@ -1,7 +1,8 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Dialog, DialogContent, Button } from "@hudbird/ui";
 import { IdeCodeBlock } from "./IdeCodeBlock";
-import { X } from "lucide-react";
+import { X, ArrowRight, Sparkles } from "lucide-react";
+import { ProPricingModal } from "./ProPricingModal";
 
 import AiStartupRaw from "./templates/AiStartupTemplate.tsx?raw";
 import DigitalAgencyRaw from "./templates/DigitalAgencyTemplate.tsx?raw";
@@ -48,6 +49,7 @@ export const TemplateCodeModal: React.FC<TemplateCodeModalProps> = ({
   templateId,
   templateName,
 }) => {
+  const [isProOpen, setIsProOpen] = useState(false);
   const code = useMemo(() => {
     if (!templateId) return "";
     return getCleanTemplateCode(templateId);
@@ -67,10 +69,35 @@ export const TemplateCodeModal: React.FC<TemplateCodeModalProps> = ({
             <X className="h-4 w-4" />
           </button>
         </div>
+
+        {/* Pro Banner */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-blue-100 bg-gradient-to-r from-blue-50/80 via-indigo-50/40 to-white px-4 py-2.5 text-xs dark:border-blue-900/30 dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-zinc-950">
+          <div className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">
+              PRO
+            </span>
+            <span>
+              Want the full ready-to-deploy Next.js & Vite starter repository with all components?
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              setIsProOpen(true);
+            }}
+            className="flex items-center gap-1 rounded-full bg-blue-600 px-3 py-1 font-semibold text-white shadow-xs transition-colors hover:bg-blue-700"
+          >
+            <span>Unlock All Templates ($49)</span>
+            <ArrowRight className="h-3 w-3" />
+          </button>
+        </div>
+
         <div className="max-h-[80vh] overflow-y-auto">
           <IdeCodeBlock codeReact={code} activeFramework="React" />
         </div>
       </DialogContent>
+      <ProPricingModal isOpen={isProOpen} onClose={() => setIsProOpen(false)} />
     </Dialog>
   );
 };

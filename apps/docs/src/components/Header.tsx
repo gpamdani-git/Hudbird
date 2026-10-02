@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Moon, Sun, Menu, Monitor, ChevronRight, PanelLeft } from "lucide-react";
+import { Moon, Sun, Menu, Monitor, ChevronRight, PanelLeft, Sparkles } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@hudbird/ui";
 import { navigationData } from "../navData";
 import changelogData from "../data/changelog.json";
+import { ProPricingModal } from "./ProPricingModal";
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -50,6 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   const location = useLocation();
   const isThemesPage = location.pathname.startsWith("/themes");
+  const [isProModalOpen, setIsProModalOpen] = useState(false);
 
   // Find breadcrumb
   let parentGroup = "";
@@ -189,6 +191,18 @@ export const Header: React.FC<HeaderProps> = ({
                 <span className="font-semibold text-zinc-900 dark:text-white">Builder</span>
               </a>
 
+              <button
+                type="button"
+                onClick={() => setIsProModalOpen(true)}
+                className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-md active:scale-95"
+              >
+                <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+                <span>Get All-Access</span>
+                <span className="py-0.2 rounded-full bg-white/20 px-1.5 text-[9px] font-bold">
+                  Pro
+                </span>
+              </button>
+
               {/* Segmented Switch UI: Light | Dark | System */}
               <div
                 role="radiogroup"
@@ -274,6 +288,16 @@ export const Header: React.FC<HeaderProps> = ({
                 </DropdownTrigger>
                 <DropdownMenu className="min-w-[180px]">
                   <DropdownItem>
+                    <button
+                      type="button"
+                      onClick={() => setIsProModalOpen(true)}
+                      className="flex w-full items-center gap-2 font-semibold text-blue-600 dark:text-blue-400"
+                    >
+                      <Sparkles className="h-4 w-4 text-amber-500" />
+                      Get All-Access (Pro)
+                    </button>
+                  </DropdownItem>
+                  <DropdownItem>
                     <a
                       href="https://hudbird-editor.vercel.app/"
                       target="_blank"
@@ -314,6 +338,8 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </header>
+
+      <ProPricingModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
     </div>
   );
 };
