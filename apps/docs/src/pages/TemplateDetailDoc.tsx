@@ -65,7 +65,7 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
       "/assets/templates/saas-launchpad.webp",
       "/assets/templates/saas-launchpad-light.webp",
     ],
-    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "/saas-launchpad/",
+    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "https://starterkit-pro.vercel.app/",
     purchaseUrl:
       "https://hudbirdui.lemonsqueezy.com/checkout/buy/985b3a9c-e686-44f4-bd2c-42d3c177d374",
     description:
