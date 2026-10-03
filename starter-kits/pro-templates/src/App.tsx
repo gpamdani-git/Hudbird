@@ -1,7 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { ShowcaseIndex } from "./ShowcaseIndex";
 import { Home } from "./pages/Home";
 import { AiStartup } from "./pages/AiStartup";
+import { ModernApp } from "./pages/ModernApp";
+import { Ecommerce } from "./pages/Ecommerce";
+import { Fintech } from "./pages/Fintech";
+import { Hospitality } from "./pages/Hospitality";
+import { Agency } from "./pages/Agency";
 import { About } from "./pages/About";
 import { Pricing } from "./pages/Pricing";
 import { Contact } from "./pages/Contact";
@@ -69,8 +75,14 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ShowcaseIndex />} />
+        <Route path="/saas-launchpad" element={<Home />} />
         <Route path="/ai-startup" element={<AiStartup />} />
+        <Route path="/modern-app" element={<ModernApp />} />
+        <Route path="/ecommerce" element={<Ecommerce />} />
+        <Route path="/fintech" element={<Fintech />} />
+        <Route path="/hospitality" element={<Hospitality />} />
+        <Route path="/agency" element={<Agency />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />

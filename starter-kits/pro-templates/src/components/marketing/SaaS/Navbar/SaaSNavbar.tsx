@@ -46,7 +46,7 @@ export const SaaSNavbar = () => {
     // Check initial theme (Default to dark)
     const storedTheme = localStorage.getItem("theme");
     const shouldBeDark = storedTheme === "dark" || storedTheme === null;
-    
+
     if (shouldBeDark) {
       document.documentElement.classList.add("dark");
       setIsDark(true);
@@ -99,57 +99,81 @@ export const SaaSNavbar = () => {
 
           <NavbarContent justify="center" className="gap-6">
             <NavbarItem>
-              <Link to="/" className={`transition-colors ${isActive('/') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>Home</Link>
+              <Link
+                to="/"
+                className={`transition-colors ${isActive("/") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+              >
+                Home
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link to="/about" className={`transition-colors ${isActive('/about') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>About</Link>
+              <Link
+                to="/about"
+                className={`transition-colors ${isActive("/about") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+              >
+                About
+              </Link>
             </NavbarItem>
             <NavbarItem>
               <Dropdown placement="bottom-start">
-                <DropdownTrigger className={`flex cursor-pointer items-center gap-1 transition-opacity outline-none ${isActive('/analytics') || isActive('/security') || isActive('/integrations') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>
+                <DropdownTrigger
+                  className={`flex cursor-pointer items-center gap-1 transition-opacity outline-none ${isActive("/analytics") || isActive("/security") || isActive("/integrations") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+                >
                   Products <ChevronDown className="h-3.5 w-3.5 opacity-70" />
                 </DropdownTrigger>
-                <DropdownMenu className="w-[280px] p-2 dark:border-white/10 dark:bg-[#161822] !mt-6">
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/analytics') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                <DropdownMenu className="!mt-6 w-[280px] p-2 dark:border-white/10 dark:bg-[#161822]">
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/analytics") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/analytics")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-blue-500/10 p-2 text-blue-600 dark:text-blue-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
                         <BarChart3 className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Analytics</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Track your team's performance</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Analytics
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Track your team's performance
+                      </span>
                     </div>
                   </DropdownItem>
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/security') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/security") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/security")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-orange-500/10 p-2 text-orange-600 dark:text-orange-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
                         <Shield className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Security</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Enterprise-grade protection</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Security
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Enterprise-grade protection
+                      </span>
                     </div>
                   </DropdownItem>
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/integrations') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/integrations") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/integrations")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-pink-500/10 p-2 text-pink-600 dark:text-pink-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-pink-600 dark:bg-pink-500/10 dark:text-pink-400">
                         <Blocks className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Integrations</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Connect your favorite tools</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Integrations
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Connect your favorite tools
+                      </span>
                     </div>
                   </DropdownItem>
                 </DropdownMenu>
@@ -157,60 +181,92 @@ export const SaaSNavbar = () => {
             </NavbarItem>
             <NavbarItem>
               <Dropdown placement="bottom-start">
-                <DropdownTrigger className={`flex cursor-pointer items-center gap-1 transition-opacity outline-none ${isActive('/docs') || isActive('/blog') || isActive('/community') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>
+                <DropdownTrigger
+                  className={`flex cursor-pointer items-center gap-1 transition-opacity outline-none ${isActive("/docs") || isActive("/blog") || isActive("/community") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+                >
                   Resources <ChevronDown className="h-3.5 w-3.5 opacity-70" />
                 </DropdownTrigger>
-                <DropdownMenu className="w-[280px] p-2 dark:border-white/10 dark:bg-[#161822] !mt-6">
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/docs') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                <DropdownMenu className="!mt-6 w-[280px] p-2 dark:border-white/10 dark:bg-[#161822]">
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/docs") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/docs")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-purple-500/10 p-2 text-purple-600 dark:text-purple-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400">
                         <BookOpen className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Documentation</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Learn how to use Taskk</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Documentation
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Learn how to use Taskk
+                      </span>
                     </div>
                   </DropdownItem>
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/blog') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/blog") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/blog")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-emerald-500/10 p-2 text-emerald-600 dark:text-emerald-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400">
                         <Newspaper className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Blog</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Latest updates and guides</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Blog
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Latest updates and guides
+                      </span>
                     </div>
                   </DropdownItem>
-                  <DropdownItem 
-                    className={`h-auto py-3 ${isActive('/community') ? 'bg-zinc-100 dark:bg-white/5' : ''}`}
+                  <DropdownItem
+                    className={`h-auto py-3 ${isActive("/community") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
                     onClick={() => navigate("/community")}
                     startContent={
-                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 dark:bg-cyan-500/10 p-2 text-cyan-600 dark:text-cyan-400">
+                      <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-cyan-600 dark:bg-cyan-500/10 dark:text-cyan-400">
                         <Users className="h-5 w-5" />
                       </div>
                     }
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">Community</span>
-                      <span className="text-xs font-normal text-zinc-500 dark:text-zinc-400 mt-0.5 whitespace-normal leading-snug">Join the conversation</span>
+                      <span className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Community
+                      </span>
+                      <span className="mt-0.5 text-xs leading-snug font-normal whitespace-normal text-zinc-500 dark:text-zinc-400">
+                        Join the conversation
+                      </span>
                     </div>
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
             </NavbarItem>
             <NavbarItem>
-              <Link to="/pricing" className={`transition-colors ${isActive('/pricing') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>Pricing</Link>
+              <Link
+                to="/pricing"
+                className={`transition-colors ${isActive("/pricing") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+              >
+                Pricing
+              </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link to="/contact" className={`transition-colors ${isActive('/contact') ? 'text-blue-600 dark:text-blue-400 font-semibold' : 'hover:opacity-80'}`}>Contact</Link>
+              <Link
+                to="/contact"
+                className={`transition-colors ${isActive("/contact") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+              >
+                Contact
+              </Link>
+            </NavbarItem>
+            <NavbarItem>
+              <Link
+                to="/dashboard"
+                className={`transition-colors ${isActive("/dashboard") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
+              >
+                Admin CMS
+              </Link>
             </NavbarItem>
           </NavbarContent>
 
@@ -222,11 +278,14 @@ export const SaaSNavbar = () => {
             >
               {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
-            <Link to="/login" className="hidden text-sm font-medium hover:opacity-80 md:inline-flex mr-2">
+            <Link
+              to="/login"
+              className="mr-2 hidden text-sm font-medium hover:opacity-80 md:inline-flex"
+            >
               Log in
             </Link>
-            <Link 
-              to="/register" 
+            <Link
+              to="/register"
               className="hidden rounded-full bg-blue-600 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 md:inline-flex dark:bg-[#1875ff] dark:hover:bg-blue-500"
             >
               Sign up
@@ -241,18 +300,32 @@ export const SaaSNavbar = () => {
             className="!bg-white/95 !backdrop-blur-3xl !backdrop-saturate-200 dark:!border-white/10 dark:!bg-[#070912]/95"
           >
             <NavbarMenuItem>
-              <Link to="/" className={`block w-full transition-colors ${isActive('/') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>Home</Link>
+              <Link
+                to="/"
+                className={`block w-full transition-colors ${isActive("/") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+              >
+                Home
+              </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link to="/about" className={`block w-full transition-colors ${isActive('/about') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>About</Link>
+              <Link
+                to="/about"
+                className={`block w-full transition-colors ${isActive("/about") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+              >
+                About
+              </Link>
             </NavbarMenuItem>
-            
+
             {/* Mobile Dropdowns using NavbarMenuItem for consistency */}
             <div className="flex flex-col">
               <NavbarMenuItem onClick={() => setMobileProductsOpen(!mobileProductsOpen)}>
-                <div className={`flex w-full items-center justify-between ${isActive('/analytics') || isActive('/security') || isActive('/integrations') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>
+                <div
+                  className={`flex w-full items-center justify-between ${isActive("/analytics") || isActive("/security") || isActive("/integrations") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+                >
                   <span>Products</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileProductsOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${mobileProductsOpen ? "rotate-180" : ""}`}
+                  />
                 </div>
               </NavbarMenuItem>
               <AnimatePresence>
@@ -264,13 +337,28 @@ export const SaaSNavbar = () => {
                     className="flex flex-col overflow-hidden pl-4"
                   >
                     <NavbarMenuItem>
-                      <Link to="/analytics" className={`block w-full transition-colors ${isActive('/analytics') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Analytics</Link>
+                      <Link
+                        to="/analytics"
+                        className={`block w-full transition-colors ${isActive("/analytics") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Analytics
+                      </Link>
                     </NavbarMenuItem>
                     <NavbarMenuItem>
-                      <Link to="/security" className={`block w-full transition-colors ${isActive('/security') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Security</Link>
+                      <Link
+                        to="/security"
+                        className={`block w-full transition-colors ${isActive("/security") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Security
+                      </Link>
                     </NavbarMenuItem>
                     <NavbarMenuItem>
-                      <Link to="/integrations" className={`block w-full transition-colors ${isActive('/integrations') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Integrations</Link>
+                      <Link
+                        to="/integrations"
+                        className={`block w-full transition-colors ${isActive("/integrations") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Integrations
+                      </Link>
                     </NavbarMenuItem>
                   </motion.div>
                 )}
@@ -279,9 +367,13 @@ export const SaaSNavbar = () => {
 
             <div className="flex flex-col">
               <NavbarMenuItem onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}>
-                <div className={`flex w-full items-center justify-between ${isActive('/docs') || isActive('/blog') || isActive('/community') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>
+                <div
+                  className={`flex w-full items-center justify-between ${isActive("/docs") || isActive("/blog") || isActive("/community") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+                >
                   <span>Resources</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`}
+                  />
                 </div>
               </NavbarMenuItem>
               <AnimatePresence>
@@ -293,13 +385,28 @@ export const SaaSNavbar = () => {
                     className="flex flex-col overflow-hidden pl-4"
                   >
                     <NavbarMenuItem>
-                      <Link to="/docs" className={`block w-full transition-colors ${isActive('/docs') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Documentation</Link>
+                      <Link
+                        to="/docs"
+                        className={`block w-full transition-colors ${isActive("/docs") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Documentation
+                      </Link>
                     </NavbarMenuItem>
                     <NavbarMenuItem>
-                      <Link to="/blog" className={`block w-full transition-colors ${isActive('/blog') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Blog</Link>
+                      <Link
+                        to="/blog"
+                        className={`block w-full transition-colors ${isActive("/blog") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Blog
+                      </Link>
                     </NavbarMenuItem>
                     <NavbarMenuItem>
-                      <Link to="/community" className={`block w-full transition-colors ${isActive('/community') ? 'text-blue-600 dark:text-blue-400 font-medium' : 'text-zinc-500 dark:text-zinc-400'}`}>Community</Link>
+                      <Link
+                        to="/community"
+                        className={`block w-full transition-colors ${isActive("/community") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        Community
+                      </Link>
                     </NavbarMenuItem>
                   </motion.div>
                 )}
@@ -307,22 +414,40 @@ export const SaaSNavbar = () => {
             </div>
 
             <NavbarMenuItem>
-              <Link to="/pricing" className={`block w-full transition-colors ${isActive('/pricing') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>Pricing</Link>
+              <Link
+                to="/pricing"
+                className={`block w-full transition-colors ${isActive("/pricing") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+              >
+                Pricing
+              </Link>
             </NavbarMenuItem>
             <NavbarMenuItem>
-              <Link to="/contact" className={`block w-full transition-colors ${isActive('/contact') ? 'text-blue-600 dark:text-blue-400 font-semibold' : ''}`}>Contact</Link>
+              <Link
+                to="/contact"
+                className={`block w-full transition-colors ${isActive("/contact") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+              >
+                Contact
+              </Link>
             </NavbarMenuItem>
-            
+            <NavbarMenuItem>
+              <Link
+                to="/dashboard"
+                className={`block w-full transition-colors ${isActive("/dashboard") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
+              >
+                Admin CMS
+              </Link>
+            </NavbarMenuItem>
+
             <div className="mt-6 flex flex-col gap-2">
-              <Link 
+              <Link
                 to="/login"
-                className="rounded-full border border-zinc-200 px-5 py-2 text-sm font-medium text-center hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
+                className="rounded-full border border-zinc-200 px-5 py-2 text-center text-sm font-medium hover:bg-zinc-50 dark:border-zinc-800 dark:hover:bg-zinc-900"
               >
                 Log in
               </Link>
-              <Link 
+              <Link
                 to="/register"
-                className="rounded-full bg-blue-600 px-5 py-2 text-sm font-medium text-center text-white transition-colors hover:bg-blue-700 dark:bg-[#1875ff] dark:hover:bg-blue-500"
+                className="rounded-full bg-blue-600 px-5 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-blue-700 dark:bg-[#1875ff] dark:hover:bg-blue-500"
               >
                 Sign up
               </Link>
