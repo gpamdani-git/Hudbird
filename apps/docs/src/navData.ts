@@ -17,7 +17,6 @@ export const navigationData: NavGroup[] = [
       { name: "Getting started", path: "/docs" },
       { name: "Tutorial Install Guide", path: "/installation" },
       { name: "Create Theme", path: "/themes" },
-      { name: "Templates", path: "/templates" },
       { name: "Blocks Gallery", path: "/blocks", isNew: true },
       { name: "Changelog", path: "/changelog" },
       { name: "Support & FAQ", path: "/support" },
