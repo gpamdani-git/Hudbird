@@ -151,7 +151,7 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "SaaS & Dashboard",
     price: "$99",
-    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "/saas-launchpad/",
+    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "https://starterkit-pro.vercel.app/",
     imageDark: "/assets/templates/saas-launchpad.webp",
     imageLight: "/assets/templates/saas-launchpad-light.webp",
     date: "2026-09-01",
