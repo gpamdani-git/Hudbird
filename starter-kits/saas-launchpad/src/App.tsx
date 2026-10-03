@@ -65,7 +65,7 @@ const AdminSiteBuilderWrapper = () => {
 
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.DEV ? "/" : "/saas-launchpad"}>
+    <BrowserRouter>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
