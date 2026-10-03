@@ -65,7 +65,7 @@ const AdminSiteBuilderWrapper = () => {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/saas-launchpad/">
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -83,7 +83,7 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        
+
         {/* Dashboard Routes (Hudbird CMS) */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<Dashboard />} />
