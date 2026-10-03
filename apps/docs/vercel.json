@@ -1,11 +1,5 @@
 {
-  "cleanUrls": true,
-  "trailingSlash": true,
   "rewrites": [
-    {
-      "source": "/saas-launchpad",
-      "destination": "/saas-launchpad/index.html"
-    },
     {
       "source": "/saas-launchpad/(.*)",
       "destination": "/saas-launchpad/index.html"
