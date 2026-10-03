@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "version": "1.0.0",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@9.15.0",
   "scripts": {
     "build": "turbo run build",
     "build:packages": "pnpm --filter './packages/*' build",
