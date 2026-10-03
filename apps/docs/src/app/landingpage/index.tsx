@@ -186,7 +186,7 @@ export const AiStartupTemplate = () => {
   return (
     <>
       <SEO />
-      <div className="flex min-h-screen w-full flex-col bg-white dark:bg-[#030712]">
+      <main className="flex min-h-screen w-full flex-col bg-white dark:bg-[#030712]">
         <SiteHeader />
 
         {/* <!-- Hero Section --> */}
@@ -235,11 +235,11 @@ export const AiStartupTemplate = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              <HeroTitle className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-7xl dark:text-white">
+              <h1 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-7xl dark:text-white">
                 Build Beautiful Interfaces
                 <br />
                 with hudbird-UI@latest.
-              </HeroTitle>
+              </h1>
             </motion.div>
 
             <motion.div
@@ -1483,7 +1483,7 @@ export const AiStartupTemplate = () => {
           </div>
         </section>
         <SiteFooter />
-      </div>
+      </main>
     </>
   );
 };
