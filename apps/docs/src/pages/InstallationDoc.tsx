@@ -40,32 +40,19 @@ export default defineConfig({
 });`}
         />
 
-        <h2>3. Install BlankUI</h2>
+        <h2>3. Initialize Hudbird UI</h2>
         <p>
-          Install the BlankUI package along with its dependencies like Framer Motion and Lucide
-          React.
+          Run the CLI to automatically install dependencies and configure your project for Hudbird
+          UI.
         </p>
-        <CodeBlock
-          language="bash"
-          code="npm install @hudbird/ui framer-motion lucide-react class-variance-authority"
-        />
+        <CodeBlock language="bash" code="npx hudbird-ui@latest init" />
 
-        <h2>4. Import CSS and Theme</h2>
+        <h2>4. Add Components</h2>
         <p>
-          In your main CSS file (e.g., <code>src/index.css</code>), import the Tailwind CSS
-          utilities and optionally apply the BlankUI theme variables.
+          You can now use the CLI to add components to your project. It will automatically resolve
+          dependencies and place them in your components folder.
         </p>
-        <CodeBlock
-          language="css"
-          code={`@import "tailwindcss";
-@import "@hudbird/ui/styles.css";
-
-/* Or define your custom variables here */
-@theme {
-  --color-primary: var(--primary);
-  /* ... */
-}`}
-        />
+        <CodeBlock language="bash" code="npx hudbird-ui@latest add Button Alert" />
 
         <h2>5. Use Components</h2>
         <p>Now you can import and use any BlankUI components directly in your application.</p>

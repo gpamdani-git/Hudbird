@@ -166,12 +166,12 @@ export const ParticleOrb = () => {
 
 // <!-- Generative AI Platform Theme - Data & Assets -->
 export const logos = [
-  { name: "TechCrunch", src: "/assets/marketing-section/logo/react-dev-logo.png" },
-  { name: "Wired", src: "/assets/marketing-section/logo/openai-com-brandmark.svg" },
-  { name: "Forbes", src: "/assets/marketing-section/logo/npmjs-com-logo.png" },
-  { name: "Bloomberg", src: "/assets/marketing-section/logo/ai-claude-net-logo.png" },
-  { name: "Verge", src: "/assets/marketing-section/logo/nike-com-brandmark.svg" },
-  { name: "OpenAI", src: "/assets/marketing-section/logo/openai-com-brandmark.svg" },
+  { name: "Vercel", src: "https://cdn.worldvectorlogo.com/logos/vercel.svg" },
+  { name: "Next.js", src: "https://cdn.worldvectorlogo.com/logos/next-js.svg" },
+  { name: "React", src: "https://cdn.worldvectorlogo.com/logos/react-2.svg" },
+  { name: "Tailwind CSS", src: "https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" },
+  { name: "Framer", src: "https://cdn.worldvectorlogo.com/logos/framer.svg" },
+  { name: "OpenAI", src: "https://cdn.worldvectorlogo.com/logos/openai-2.svg" },
 ];
 
 export const MEGA_LINK_GROUPS = [
@@ -1567,38 +1567,44 @@ export const FolderIcon = () => (
 const templatesData = [
   {
     name: "SaaS Launchpad",
-    src: "/assets/templates/saas-launchpad.webp",
-    srcLight: "/assets/templates/saas-launchpad-light.webp",
+    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[400px] lg:w-[600px]",
   },
   {
     name: "Fintech App",
-    src: "/assets/templates/fintech.webp",
-    srcLight: "/assets/templates/fintech-light.webp",
+    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[300px] lg:w-[400px]",
   },
   {
     name: "AI Startup",
-    src: "/assets/templates/ai-startup.webp",
-    srcLight: "/assets/templates/ai-startup-light.webp",
+    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[350px] lg:w-[500px]",
   },
   {
     name: "E-Commerce",
-    src: "/assets/templates/ecommerce.webp",
-    srcLight: "/assets/templates/ecommerce-light.webp",
+    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[450px] lg:w-[700px]",
   },
   {
     name: "Modern App",
-    src: "/assets/templates/modern-app.webp",
-    srcLight: "/assets/templates/modern-app-light.webp",
+    src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[300px] lg:w-[450px]",
   },
   {
     name: "Digital Agency",
-    src: "/assets/templates/digital-agency.webp",
-    srcLight: "/assets/templates/digital-agency-light.webp",
+    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800&h=500",
+    srcLight:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800&h=500",
     width: "w-[350px] lg:w-[500px]",
   },
 ];
@@ -1648,7 +1654,7 @@ export const TemplateMarquee = () => {
           className="flex w-full flex-col justify-between gap-4 sm:flex-row sm:items-center"
         >
           <h2 className="font-outfit text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
-            Hudbird Themplates
+            Hudbird Templates
           </h2>
           <Button
             variant="outline"
