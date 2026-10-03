@@ -144,7 +144,6 @@ const TemplateLivePreview = ({
 };
 
 const TEMPLATES = [
-
   {
     id: "saas-launchpad",
     name: "SaaS Launchpad + Hudbird CMS",
@@ -152,7 +151,7 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "SaaS & Dashboard",
     price: "$99",
-    previewUrl: "http://localhost:5174",
+    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "/saas-launchpad/",
     imageDark: "/assets/templates/saas-launchpad.webp",
     imageLight: "/assets/templates/saas-launchpad-light.webp",
     date: "2026-09-01",
@@ -370,8 +369,8 @@ export default function TemplatesDoc() {
                   </span>
                 </div>
                 <p className="mt-0.5 text-xs text-zinc-600 dark:text-zinc-400">
-                  Get full source-code repositories for all 9+ templates, premium Admin Dashboard UI,
-                  and free lifetime updates.
+                  Get full source-code repositories for all 9+ templates, premium Admin Dashboard
+                  UI, and free lifetime updates.
                 </p>
               </div>
             </div>

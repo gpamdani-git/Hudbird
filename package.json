@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "packageManager": "pnpm@9.0.0",
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && cd starter-kits/saas-launchpad && npx vite build --base=/saas-launchpad/ --outDir=../../dist/saas-launchpad",
     "build:packages": "pnpm --filter './packages/*' build",
     "dev": "vite --host 0.0.0.0 --port 3000",
     "lint": "eslint .",
