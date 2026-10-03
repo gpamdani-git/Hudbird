@@ -248,6 +248,9 @@ export const MEGA_LINK_GROUPS = [
   },
 ];
 
+export const features = [];
+export const agentCards = [];
+
 export const SOCIALS = [
   { label: "Twitter", href: "#", icon: <MessageSquare className="h-5 w-5" /> },
 ];
