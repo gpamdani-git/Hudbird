@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { Home } from "./pages/Home";
+import { AiStartup } from "./pages/AiStartup";
 import { About } from "./pages/About";
 import { Pricing } from "./pages/Pricing";
 import { Contact } from "./pages/Contact";
@@ -69,6 +70,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/ai-startup" element={<AiStartup />} />
         <Route path="/about" element={<About />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/contact" element={<Contact />} />
