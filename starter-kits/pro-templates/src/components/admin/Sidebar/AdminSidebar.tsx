@@ -13,6 +13,8 @@ import {
   Plug,
   ChevronRight,
   LogOut,
+  Bot,
+  Mail as MailIcon,
 } from "lucide-react";
 import { Avatar } from "@/components/ui";
 import { ConfirmModal } from "../Components/ConfirmModal";
@@ -35,7 +37,9 @@ export type AdminPage =
   | "security"
   | "settings"
   | "profile"
-  | "inbox";
+  | "inbox"
+  | "ai-chat"
+  | "ai-mail";
 
 interface SubItem {
   label: string;
@@ -82,6 +86,11 @@ const SYSTEM_MENU: NavItem[] = [
   { label: "Notifications", icon: Bell, pageKey: "notifications" },
   { label: "Security", icon: Shield, pageKey: "security" },
   { label: "Settings", icon: Settings, pageKey: "settings" },
+];
+
+const APPS_MENU: NavItem[] = [
+  { label: "AI Chat", icon: Bot, pageKey: "ai-chat" },
+  { label: "AI Mail", icon: MailIcon, pageKey: "ai-mail" },
 ];
 
 const SidebarSection = ({
@@ -224,6 +233,12 @@ export const AdminSidebar = ({
         <SidebarSection
           title="System"
           items={SYSTEM_MENU}
+          activePage={activePage}
+          onPageChange={onPageChange}
+        />
+        <SidebarSection
+          title="Apps"
+          items={APPS_MENU}
           activePage={activePage}
           onPageChange={onPageChange}
         />

@@ -154,59 +154,7 @@ export const AiStartupHero = ({ theme, toggleTheme }: { theme: any; toggleTheme:
         transition={{ duration: 0.8 }}
         className="relative z-50 w-full"
       >
-        <HeroHeader
-          className="pt-4"
-          logo={
-            <a href="/#/" className="flex items-center gap-2">
-              <Zap className="h-6 w-6 text-blue-500" fill="currentColor" />
-              <span className="font-outfit text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-                hudbird UI
-              </span>
-            </a>
-          }
-          links={[
-            {
-              label: "Installation",
-              href: "/#/installation",
-              className:
-                "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-            },
-            {
-              label: "Features",
-              href: "/#features",
-              className:
-                "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-            },
-            {
-              label: "Themplates",
-              href: "/#/templates",
-              className:
-                "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-            },
-            {
-              label: "Frequently Ask Question",
-              href: "/#/templates",
-              className:
-                "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors",
-            },
-          ]}
-          action={
-            <div className="flex items-center gap-3">
-              <button
-                onClick={toggleTheme}
-                className="rounded-md bg-gray-200 px-4 py-2 text-sm dark:bg-gray-800"
-              >
-                {theme === "dark" ? "Light Mode" : "Dark Mode"}
-              </button>
-              <a href="/#/installation">
-                <Button className="relative overflow-hidden rounded-xl bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all hover:bg-blue-600 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)]">
-                  <span className="relative z-10">Get started</span>
-                  <div className="absolute inset-0 rounded-xl border-t border-white/20" />
-                </Button>
-              </a>
-            </div>
-          }
-        />
+        {/* HeroHeader removed to avoid duplicate navbars */}
       </motion.div>
 
       <HeroBody align="center" className="relative z-10 mx-auto mt-2 max-w-4xl sm:mt-20 lg:pt-0">

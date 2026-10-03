@@ -111,47 +111,89 @@ import {
 } from "lucide-react";
 import { ThemeToggleButton } from "../../../components/templates/TemplateThemeToggle";
 
+const TemplateImage = ({
+  src,
+  alt,
+  className,
+  draggable,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+  draggable?: boolean;
+}) => {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className={`flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 ${className}`}>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-0 transition-opacity dark:opacity-100"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={`${src}?v=2`}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      draggable={draggable}
+      onError={() => setError(true)}
+    />
+  );
+};
+
 const templatesData = [
   {
     name: "SaaS Launchpad",
-    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/saas-launchpad.png",
+    srcLight: "/assets/templates/saas-launchpad-light.png",
     width: "w-[400px] lg:w-[600px]",
   },
   {
     name: "Fintech App",
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/fintech.png",
+    srcLight: "/assets/templates/fintech-light.png",
     width: "w-[300px] lg:w-[400px]",
   },
   {
     name: "AI Startup",
-    src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/ai-startup.png",
+    srcLight: "/assets/templates/ai-startup-light.png",
     width: "w-[350px] lg:w-[500px]",
   },
   {
     name: "E-Commerce",
-    src: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/ecommerce.png",
+    srcLight: "/assets/templates/ecommerce-light.png",
     width: "w-[450px] lg:w-[700px]",
   },
   {
     name: "Modern App",
-    src: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/modern-app.png",
+    srcLight: "/assets/templates/modern-app-light.png",
     width: "w-[300px] lg:w-[450px]",
   },
   {
     name: "Digital Agency",
-    src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800&h=500",
-    srcLight:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800&h=500",
+    src: "/assets/templates/agency.png",
+    srcLight: "/assets/templates/agency-light.png",
     width: "w-[350px] lg:w-[500px]",
   },
 ];
@@ -170,7 +212,10 @@ export const TemplateMarquee = () => {
   }, [theme]);
 
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950">
+    <div
+      id="templates"
+      className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950"
+    >
       {/* Header */}
       <div className="relative z-10 mx-auto mb-10 flex w-full max-w-7xl flex-col justify-between gap-4 px-4 sm:mb-12 sm:flex-row sm:items-center sm:px-6 lg:px-8">
         <motion.div
@@ -185,6 +230,7 @@ export const TemplateMarquee = () => {
           </h2>
           <Button
             variant="outline"
+            onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
             className="w-fit rounded-xl border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
           >
             Browse all templates
@@ -208,11 +254,10 @@ export const TemplateMarquee = () => {
                     key={`row1-${idx}`}
                     className="relative h-[362px] w-[580px] shrink-0 overflow-hidden rounded-2xl sm:h-[400px] sm:w-[640px] lg:h-[450px] lg:w-[720px]"
                   >
-                    <img
+                    <TemplateImage
                       src={theme === "dark" ? item.src : item.srcLight}
                       alt={item.name}
-                      className="h-full w-full object-cover object-top"
-                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-top"
                       draggable={false}
                     />
                   </div>
@@ -232,11 +277,10 @@ export const TemplateMarquee = () => {
                     key={`row2-${idx}`}
                     className="relative h-[362px] w-[580px] shrink-0 overflow-hidden rounded-2xl sm:h-[400px] sm:w-[640px] lg:h-[450px] lg:w-[720px]"
                   >
-                    <img
+                    <TemplateImage
                       src={theme === "dark" ? item.src : item.srcLight}
                       alt={item.name}
-                      className="h-full w-full object-cover object-top"
-                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover object-top"
                       draggable={false}
                     />
                   </div>

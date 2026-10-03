@@ -12,7 +12,7 @@ export default function InstallationDoc() {
           Installation Guide
         </h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
-          Step-by-step tutorial on how to install and configure BlankUI in your React project.
+          Step-by-step tutorial on how to install and configure Hudbird UI in your React project.
         </p>
       </div>
 
@@ -25,7 +25,7 @@ export default function InstallationDoc() {
         />
 
         <h2>2. Install Tailwind CSS v4</h2>
-        <p>BlankUI requires Tailwind CSS v4. Install it using the following command:</p>
+        <p>Hudbird UI requires Tailwind CSS v4. Install it using the following command:</p>
         <CodeBlock language="bash" code="npm install tailwindcss @tailwindcss/vite" />
         <p>Configure Vite to use the Tailwind plugin:</p>
         <CodeBlock
@@ -55,7 +55,7 @@ export default defineConfig({
         <CodeBlock language="bash" code="npx hudbird-ui@latest add Button Alert" />
 
         <h2>5. Use Components</h2>
-        <p>Now you can import and use any BlankUI components directly in your application.</p>
+        <p>Now you can import and use any Hudbird UI components directly in your application.</p>
         <CodeBlock
           language="tsx"
           code={`import { Button } from "@/components/hudbird-ui/Button";\nimport { Alert } from "@/components/hudbird-ui/Alert";
@@ -63,7 +63,7 @@ export default defineConfig({
 function App() {
   return (
     <div className="p-8 space-y-4">
-      <Alert title="Welcome" description="BlankUI is successfully installed!" color="success" />
+      <Alert title="Welcome" description="Hudbird UI is successfully installed!" color="success" />
       <Button variant="solid" color="primary">Click Me</Button>
     </div>
   );

@@ -1,8 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@hudbird/ui";
+
+const TemplateImage = ({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className: string;
+}) => {
+  const [error, setError] = useState(false);
+
+  if (error || !src) {
+    return (
+      <div className={`flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 ${className}`}>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-0 transition-opacity dark:opacity-100"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={`${src}?v=2`}
+      alt={alt}
+      className={className}
+      loading="lazy"
+      onError={() => setError(true)}
+    />
+  );
+};
 
 const TEMPLATES = [
   {
@@ -80,6 +125,26 @@ const ADMIN_CMS = [
     imageLight: "/assets/templates/admin-cms-light.png",
     imageDark: "/assets/templates/admin-cms.png",
   },
+  {
+    id: "admin-mail",
+    name: "Hudbird Mail",
+    category: "Admin CMS",
+    path: "/ai-mail",
+    isNew: false,
+    isWip: true,
+    imageLight: "/assets/templates/admin-mail-light.png",
+    imageDark: "/assets/templates/admin-mail-light.png",
+  },
+  {
+    id: "admin-ai-chat",
+    name: "Hudbird AI Chat",
+    category: "Admin CMS",
+    path: "/ai-chat",
+    isNew: false,
+    isWip: true,
+    imageLight: "/assets/templates/admin-ai-chat-light.png",
+    imageDark: "/assets/templates/admin-ai-chat-light.png",
+  },
 ];
 
 export function ShowcaseGallery() {
@@ -119,19 +184,17 @@ export function ShowcaseGallery() {
               </div>
 
               {/* Light Image */}
-              <img
+              <TemplateImage
                 src={template.imageLight}
                 alt={template.name}
                 className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 dark:hidden"
-                loading="lazy"
               />
 
               {/* Dark Image */}
-              <img
+              <TemplateImage
                 src={template.imageDark}
                 alt={template.name}
                 className="absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 dark:block"
-                loading="lazy"
               />
             </Link>
 
@@ -143,12 +206,28 @@ export function ShowcaseGallery() {
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">{template.category}</p>
               </div>
-              {template.isNew && (
+              {template.isNew && !template.isComingSoon && !template.isWip && (
                 <Badge
                   variant="default"
                   className="rounded-full border-none bg-lime-400 px-3 font-semibold text-lime-950 hover:bg-lime-500"
                 >
                   New
+                </Badge>
+              )}
+              {template.isComingSoon && (
+                <Badge
+                  variant="outline"
+                  className="rounded-full px-3 font-semibold text-zinc-500 dark:text-zinc-400"
+                >
+                  Coming Soon
+                </Badge>
+              )}
+              {template.isWip && (
+                <Badge
+                  variant="outline"
+                  className="rounded-full border-blue-200 bg-blue-50 px-3 font-semibold text-blue-500 dark:border-blue-900/50 dark:bg-blue-900/20"
+                >
+                  Work in Progress
                 </Badge>
               )}
             </div>
@@ -190,19 +269,17 @@ export function ShowcaseGallery() {
               </div>
 
               {/* Light Image */}
-              <img
+              <TemplateImage
                 src={template.imageLight}
                 alt={template.name}
                 className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 dark:hidden"
-                loading="lazy"
               />
 
               {/* Dark Image */}
-              <img
+              <TemplateImage
                 src={template.imageDark}
                 alt={template.name}
                 className="absolute inset-0 hidden h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105 dark:block"
-                loading="lazy"
               />
             </Link>
 
@@ -214,12 +291,28 @@ export function ShowcaseGallery() {
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">{template.category}</p>
               </div>
-              {template.isNew && (
+              {template.isNew && !template.isComingSoon && !template.isWip && (
                 <Badge
                   variant="default"
                   className="rounded-full border-none bg-lime-400 px-3 font-semibold text-lime-950 hover:bg-lime-500"
                 >
                   New
+                </Badge>
+              )}
+              {template.isComingSoon && (
+                <Badge
+                  variant="outline"
+                  className="rounded-full px-3 font-semibold text-zinc-500 dark:text-zinc-400"
+                >
+                  Coming Soon
+                </Badge>
+              )}
+              {template.isWip && (
+                <Badge
+                  variant="outline"
+                  className="rounded-full border-blue-200 bg-blue-50 px-3 font-semibold text-blue-500 dark:border-blue-900/50 dark:bg-blue-900/20"
+                >
+                  Work in Progress
                 </Badge>
               )}
             </div>

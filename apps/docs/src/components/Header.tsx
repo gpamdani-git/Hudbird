@@ -165,12 +165,6 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex shrink-0 items-center gap-3 text-sm font-medium xl:gap-6">
             {/* Desktop Navigation */}
             <div className="hidden items-center gap-6 xl:flex">
-              <Link
-                to="/templates"
-                className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-              >
-                <span className="font-semibold text-zinc-900 dark:text-white">Templates</span>
-              </Link>
               <a
                 href="https://hudbird-editor.vercel.app/"
                 target="_blank"
@@ -183,13 +177,13 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 type="button"
-                onClick={() => setIsProModalOpen(true)}
+                onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
                 className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-md active:scale-95"
               >
                 <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-                <span>Get All-Access</span>
+                <span>Unlock Templates</span>
                 <span className="py-0.2 rounded-full bg-white/20 px-1.5 text-[9px] font-bold">
-                  Pro
+                  PRO
                 </span>
               </button>
 
@@ -280,11 +274,11 @@ export const Header: React.FC<HeaderProps> = ({
                   <DropdownItem>
                     <button
                       type="button"
-                      onClick={() => setIsProModalOpen(true)}
+                      onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
                       className="flex w-full items-center gap-2 font-semibold text-blue-600 dark:text-blue-400"
                     >
                       <Sparkles className="h-4 w-4 text-amber-500" />
-                      Get All-Access (Pro)
+                      Unlock PRO Templates
                     </button>
                   </DropdownItem>
                   <DropdownItem>
@@ -297,11 +291,7 @@ export const Header: React.FC<HeaderProps> = ({
                       Builder
                     </a>
                   </DropdownItem>
-                  <DropdownItem>
-                    <Link to="/templates" className="flex w-full items-center font-medium">
-                      Templates
-                    </Link>
-                  </DropdownItem>
+
                   <DropdownItem className="my-1 border-t border-zinc-200 dark:border-zinc-800" />
                   <DropdownItem>
                     <a

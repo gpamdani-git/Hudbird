@@ -11,7 +11,7 @@ export const docsSidebarData = [
       { title: "Authentication", href: "/docs/api-reference", type: "guide" },
       { title: "Pagination", href: "/docs/api-reference", type: "guide" },
       { title: "Errors", href: "/docs/api-reference", type: "guide" },
-    ]
+    ],
   },
   {
     category: "Core Resources",
@@ -21,7 +21,7 @@ export const docsSidebarData = [
       { title: "Tasks", href: "/docs/api-reference", type: "api" },
       { title: "Users", href: "/docs/api-reference", type: "api" },
       { title: "Comments", href: "/docs/api-reference", type: "api" },
-    ]
+    ],
   },
   {
     category: "Advanced",
@@ -30,13 +30,13 @@ export const docsSidebarData = [
       { title: "Rate Limits", href: "/docs/api-reference", type: "guide" },
       { title: "Idempotency", href: "/docs/api-reference", type: "guide" },
       { title: "Versioning", href: "/docs/api-reference", type: "guide" },
-    ]
-  }
+    ],
+  },
 ];
 
 // Flatten for search
-const flatDocsData = docsSidebarData.flatMap(section => 
-  section.links.map(link => ({ ...link, category: section.category }))
+const flatDocsData = docsSidebarData.flatMap((section) =>
+  section.links.map((link) => ({ ...link, category: section.category }))
 );
 
 interface DocsSearchModalProps {
@@ -57,7 +57,11 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
       }
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
-        isOpen ? onClose() : document.dispatchEvent(new CustomEvent('open-docs-search'));
+        if (isOpen) {
+          onClose();
+        } else {
+          document.dispatchEvent(new CustomEvent("open-docs-search"));
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -72,9 +76,10 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
   }, [isOpen]);
 
   const filteredResults = query
-    ? flatDocsData.filter((item) =>
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.category.toLowerCase().includes(query.toLowerCase())
+    ? flatDocsData.filter(
+        (item) =>
+          item.title.toLowerCase().includes(query.toLowerCase()) ||
+          item.category.toLowerCase().includes(query.toLowerCase())
       )
     : flatDocsData;
 
@@ -99,7 +104,7 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed left-1/2 top-24 z-50 w-full max-w-2xl -translate-x-1/2 px-4 sm:px-0"
+            className="fixed top-24 left-1/2 z-50 w-full max-w-2xl -translate-x-1/2 px-4 sm:px-0"
           >
             <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-zinc-200 dark:bg-[#12141D] dark:ring-white/10">
               {/* Search Input */}
@@ -111,9 +116,9 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
                   placeholder="Search documentation..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="w-full bg-transparent px-4 text-zinc-900 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 outline-none dark:text-white"
+                  className="w-full bg-transparent px-4 text-zinc-900 outline-none placeholder:text-zinc-500 dark:text-white dark:placeholder:text-zinc-400"
                 />
-                <button 
+                <button
                   onClick={onClose}
                   className="rounded-md p-1 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-white/10 dark:hover:text-zinc-300"
                 >
@@ -133,10 +138,10 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
                       <button
                         key={i}
                         onClick={() => handleSelect(result.href)}
-                        className="group flex w-full items-center justify-between rounded-xl px-4 py-3 text-left hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
+                        className="group flex w-full items-center justify-between rounded-xl px-4 py-3 text-left transition-colors hover:bg-zinc-100 dark:hover:bg-white/5"
                       >
                         <div className="flex items-center gap-3">
-                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 dark:bg-white/5 dark:text-zinc-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors group-hover:bg-purple-500 group-hover:text-white dark:bg-white/5 dark:text-zinc-400">
                             <FileText className="h-4 w-4" />
                           </div>
                           <div className="flex flex-col">
@@ -148,7 +153,7 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
                             </span>
                           </div>
                         </div>
-                        <ArrowRight className="h-4 w-4 text-zinc-300 opacity-0 transition-all group-hover:opacity-100 group-hover:text-zinc-500 dark:text-zinc-600 dark:group-hover:text-zinc-400" />
+                        <ArrowRight className="h-4 w-4 text-zinc-300 opacity-0 transition-all group-hover:text-zinc-500 group-hover:opacity-100 dark:text-zinc-600 dark:group-hover:text-zinc-400" />
                       </button>
                     ))}
                   </div>
@@ -158,12 +163,16 @@ export function DocsSearchModal({ isOpen, onClose }: DocsSearchModalProps) {
               {/* Footer */}
               <div className="flex items-center justify-between border-t border-zinc-200 bg-zinc-50 px-4 py-3 text-xs text-zinc-500 dark:border-white/10 dark:bg-black/20">
                 <div className="flex items-center gap-2">
-                  <kbd className="rounded border border-zinc-200 bg-white px-2 py-0.5 font-sans dark:border-white/10 dark:bg-white/5">↑↓</kbd>
+                  <kbd className="rounded border border-zinc-200 bg-white px-2 py-0.5 font-sans dark:border-white/10 dark:bg-white/5">
+                    ↑↓
+                  </kbd>
                   <span>to navigate</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span>Press</span>
-                  <kbd className="rounded border border-zinc-200 bg-white px-2 py-0.5 font-sans dark:border-white/10 dark:bg-white/5">esc</kbd>
+                  <kbd className="rounded border border-zinc-200 bg-white px-2 py-0.5 font-sans dark:border-white/10 dark:bg-white/5">
+                    esc
+                  </kbd>
                   <span>to close</span>
                 </div>
               </div>

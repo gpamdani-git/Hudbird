@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Hudbird AI Chat — scoped design tokens & motion primitives
+   Every token lives under `.aichat` so the template never leaks into the
+   rest of the showcase. Switch themes with data-theme="light" | "dark".
+   ========================================================================== */
+
+@property --aichat-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.aichat {
+  --c-bg: #0a0a0b;
+  --c-sidebar: #0e0e10;
+  --c-surface: #1b1b1e;
+  --c-surface-2: #26262a;
+  --c-surface-3: #303035;
+  --c-elevated: #1f1f23;
+  --c-border: rgb(255 255 255 / 0.07);
+  --c-border-strong: rgb(255 255 255 / 0.13);
+  --c-text: #ededf0;
+  --c-muted: #a3a3ad;
+  --c-subtle: #6f6f7a;
+  --c-invert: #ffffff;
+  --c-invert-text: #0a0a0b;
+  --c-accent: #3d7bff;
+  --c-accent-soft: rgb(61 123 255 / 0.14);
+  --c-glow-1: #8b5cf6;
+  --c-glow-2: #3d7bff;
+  --c-glow-3: #22d3ee;
+  --c-glow-4: #f472b6;
+  --c-overlay: rgb(0 0 0 / 0.6);
+  --c-code: #111114;
+  color-scheme: dark;
+  color: var(--c-text);
+  background: var(--c-bg);
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+.aichat[data-theme="light"] {
+  --c-bg: #ffffff;
+  --c-sidebar: #f8f8f9;
+  --c-surface: #f3f3f5;
+  --c-surface-2: #e9e9ec;
+  --c-surface-3: #dedee3;
+  --c-elevated: #ffffff;
+  --c-border: rgb(10 10 11 / 0.08);
+  --c-border-strong: rgb(10 10 11 / 0.14);
+  --c-text: #0d0d0f;
+  --c-muted: #5b5b66;
+  --c-subtle: #8b8b96;
+  --c-invert: #0d0d0f;
+  --c-invert-text: #ffffff;
+  --c-accent: #2563eb;
+  --c-accent-soft: rgb(37 99 235 / 0.1);
+  --c-overlay: rgb(10 10 11 / 0.35);
+  --c-code: #f6f6f8;
+  color-scheme: light;
+}
+
+/* ---------- Scrollbars ---------- */
+.aichat .aichat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-surface-3) transparent;
+}
+.aichat .aichat-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.aichat .aichat-scroll::-webkit-scrollbar-thumb {
+  background: var(--c-surface-3);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.aichat .aichat-no-scrollbar {
+  scrollbar-width: none;
+}
+.aichat .aichat-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Glow ring (composer, voice, upgrade CTA) ---------- */
+.aichat-glow-ring {
+  position: relative;
+  isolation: isolate;
+}
+.aichat-glow-ring::before,
+.aichat-glow-ring::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--aichat-angle),
+    transparent 0deg,
+    var(--c-glow-1) 60deg,
+    var(--c-glow-2) 120deg,
+    var(--c-glow-3) 180deg,
+    transparent 240deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  animation: aichat-spin 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.aichat-glow-ring::after {
+  inset: -6px;
+  padding: 6px;
+  filter: blur(14px);
+  z-index: -1;
+}
+.aichat-glow-ring[data-glow="focus"]::before {
+  opacity: 0.55;
+}
+.aichat-glow-ring[data-glow="focus"]::after {
+  opacity: 0.18;
+}
+.aichat-glow-ring[data-glow="active"]::before {
+  opacity: 1;
+  animation-duration: 1.6s;
+}
+.aichat-glow-ring[data-glow="active"]::after {
+  opacity: 0.55;
+  animation-duration: 1.6s;
+}
+
+@keyframes aichat-spin {
+  to {
+    --aichat-angle: 360deg;
+  }
+}
+
+/* ---------- Shimmer text ("Thinking…", "Creating image…") ---------- */
+.aichat-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--c-subtle) 0%,
+    var(--c-subtle) 35%,
+    var(--c-text) 50%,
+    var(--c-subtle) 65%,
+    var(--c-subtle) 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aichat-shimmer 2.2s linear infinite;
+}
+@keyframes aichat-shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+/* ---------- Gradient brand text ---------- */
+.aichat-gradient-text {
+  background: linear-gradient(100deg, var(--c-glow-1), var(--c-glow-2) 45%, var(--c-glow-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Image generation canvas ---------- */
+.aichat-genfield {
+  background:
+    radial-gradient(60% 60% at 20% 25%, rgb(139 92 246 / 0.55), transparent 70%),
+    radial-gradient(55% 55% at 80% 30%, rgb(34 211 238 / 0.45), transparent 70%),
+    radial-gradient(60% 60% at 50% 85%, rgb(244 114 182 / 0.45), transparent 70%), var(--c-surface);
+  background-size: 180% 180%;
+  animation: aichat-genfield 6s ease-in-out infinite alternate;
+}
+@keyframes aichat-genfield {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 40%;
+  }
+  100% {
+    background-position: 30% 100%;
+  }
+}
+.aichat-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ---------- Streaming caret ---------- */
+.aichat-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: 0.2em;
+  border-radius: 999px;
+  background: var(--c-text);
+  vertical-align: middle;
+  animation: aichat-caret 900ms ease-in-out infinite;
+  box-shadow: 0 0 12px 2px rgb(61 123 255 / 0.55);
+}
+@keyframes aichat-caret {
+  0%,
+  100% {
+    transform: scale(0.75);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- Prose (assistant replies & canvas) ---------- */
+.aichat-prose {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--c-text);
+}
+.aichat-prose > * + * {
+  margin-top: 0.85em;
+}
+.aichat-prose h1 {
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.aichat-prose h2 {
+  font-size: 1.28em;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin-top: 1.4em;
+}
+.aichat-prose h3 {
+  font-size: 1.08em;
+  font-weight: 650;
+  margin-top: 1.2em;
+}
+.aichat-prose strong {
+  font-weight: 650;
+  color: var(--c-text);
+}
+.aichat-prose em {
+  font-style: italic;
+}
+.aichat-prose ul,
+.aichat-prose ol {
+  padding-left: 1.4em;
+}
+.aichat-prose ul {
+  list-style: disc;
+}
+.aichat-prose ol {
+  list-style: decimal;
+}
+.aichat-prose li + li {
+  margin-top: 0.35em;
+}
+.aichat-prose li::marker {
+  color: var(--c-subtle);
+}
+.aichat-prose hr {
+  border: 0;
+  border-top: 1px solid var(--c-border-strong);
+  margin: 1.6em 0;
+}
+.aichat-prose blockquote {
+  border-left: 3px solid var(--c-accent);
+  padding: 0.2em 0 0.2em 1em;
+  color: var(--c-muted);
+}
+.aichat-prose :not(pre) > code {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 0.86em;
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  background: var(--c-surface-2);
+}
+.aichat-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92em;
+}
+.aichat-prose th {
+  text-align: left;
+  font-weight: 600;
+  padding: 0.6em 0.8em;
+  border-bottom: 1px solid var(--c-border-strong);
+}
+.aichat-prose td {
+  padding: 0.6em 0.8em;
+  border-bottom: 1px solid var(--c-border);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .aichat *,
+  .aichat *::before,
+  .aichat *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

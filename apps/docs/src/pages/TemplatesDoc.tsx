@@ -151,7 +151,9 @@ const TEMPLATES = [
     category: "Software",
     subCategory: "SaaS & Dashboard",
     price: "$99",
-    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "https://starterkit-pro.vercel.app/",
+    previewUrl: import.meta.env.DEV
+      ? "http://localhost:5174"
+      : "https://starterkit-pro.vercel.app/",
     imageDark: "/assets/templates/saas-launchpad.webp",
     imageLight: "/assets/templates/saas-launchpad-light.webp",
     date: "2026-09-01",
@@ -362,7 +364,7 @@ export default function TemplatesDoc() {
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-zinc-900 dark:text-white">
-                    Hudbird Pro All-Access Pass
+                    Hudbird Pro Template Pass
                   </h3>
                   <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
                     Early Bird $249
@@ -379,7 +381,7 @@ export default function TemplatesDoc() {
               className="w-full shrink-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-xs font-semibold text-white shadow-md shadow-blue-500/20 hover:from-blue-700 hover:to-indigo-700 md:w-auto"
               onClick={() => setIsProModalOpen(true)}
             >
-              Get All-Access ($49) <ArrowRight className="ml-1 h-3.5 w-3.5" />
+              Unlock PRO Templates ($49) <ArrowRight className="ml-1 h-3.5 w-3.5" />
             </Button>
           </div>
 

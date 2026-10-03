@@ -180,6 +180,7 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
                 fill={`url(#${chartId}-colorUv-${i})`}
                 connectNulls={connectNulls}
                 stackId={type === "stacked" || type === "percent" ? "1" : undefined}
+                dot={false}
                 activeDot={(props: any) => {
                   const { cx, cy, stroke, fill, dataKey } = props;
                   if (cx === undefined || cy === undefined || isNaN(cx) || isNaN(cy)) return null;

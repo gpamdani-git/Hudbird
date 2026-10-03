@@ -33,12 +33,18 @@ export function SiteHeader() {
     }
   };
 
-  const activeClass = "text-sm font-medium text-blue-600 dark:text-blue-400 transition-colors cursor-pointer";
-  const inactiveClass = "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors cursor-pointer";
+  const activeClass =
+    "text-sm font-medium text-blue-600 dark:text-blue-400 transition-colors cursor-pointer";
+  const inactiveClass =
+    "text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white transition-colors cursor-pointer";
 
   const isHome = location.pathname === "/";
   const isTemplates = location.pathname.startsWith("/templates");
-  const isDocs = location.pathname.startsWith("/installation") || location.pathname.startsWith("/docs") || location.pathname.startsWith("/components") || location.pathname.startsWith("/blocks");
+  const isDocs =
+    location.pathname.startsWith("/installation") ||
+    location.pathname.startsWith("/docs") ||
+    location.pathname.startsWith("/components") ||
+    location.pathname.startsWith("/blocks");
 
   const shouldHaveBackground = !isHome || isScrolled;
 
@@ -47,8 +53,8 @@ export function SiteHeader() {
       <HeroHeader
         className={`fixed inset-x-0 top-0 z-[100] transition-all duration-300 ${
           shouldHaveBackground
-            ? "bg-white/80 dark:bg-[#030712]/80 backdrop-blur-md border-b border-zinc-200 dark:border-white/10 py-2"
-            : "bg-transparent border-transparent py-4"
+            ? "border-b border-zinc-200 bg-white/80 py-2 backdrop-blur-md dark:border-white/10 dark:bg-[#030712]/80"
+            : "border-transparent bg-transparent py-4"
         }`}
         logo={
           <a href="/#/" className="flex items-center gap-2">
@@ -72,11 +78,6 @@ export function SiteHeader() {
             className: inactiveClass,
           },
           {
-            label: "Templates",
-            href: "/#/templates",
-            className: isTemplates ? activeClass : inactiveClass,
-          },
-          {
             label: "Docs",
             href: "/#/installation",
             className: isDocs ? activeClass : inactiveClass,
@@ -92,10 +93,10 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
             <Button
-              onClick={() => setIsProModalOpen(true)}
+              onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
               className="relative overflow-hidden rounded-xl bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all hover:bg-blue-600 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)]"
             >
-              <span className="relative z-10">Get All Access Pro</span>
+              <span className="relative z-10">Unlock PRO Templates</span>
               <div className="absolute inset-0 rounded-xl border-t border-white/20" />
             </Button>
           </div>

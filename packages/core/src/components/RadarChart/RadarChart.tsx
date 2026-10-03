@@ -133,6 +133,7 @@ const RadarChart = React.forwardRef<HTMLDivElement, RadarChartProps>(
                   fill={color}
                   fillOpacity={fillOpacity}
                   isAnimationActive={false}
+                  dot={false}
                   activeDot={(props: any) => {
                     const { cx, cy } = props;
                     if (cx === undefined || cy === undefined || isNaN(cx) || isNaN(cy)) return null;

@@ -15,6 +15,14 @@ export function DashboardLayout() {
   }
 
   const handlePageChange = (page: AdminPage) => {
+    if (page === "ai-chat") {
+      navigate("/ai-chat");
+      return;
+    }
+    if (page === "ai-mail") {
+      navigate("/ai-mail");
+      return;
+    }
     if (page === "overview") navigate("/dashboard");
     else navigate(`/dashboard/${page}`);
     setSidebarOpen(false);
@@ -23,20 +31,17 @@ export function DashboardLayout() {
   return (
     <div className="flex h-screen overflow-hidden bg-zinc-50 dark:bg-zinc-950">
       {/* Sidebar */}
-      <AdminSidebar 
-        isOpen={sidebarOpen} 
+      <AdminSidebar
+        isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
         activePage={activePage}
         onPageChange={handlePageChange}
       />
 
       {/* Main Content Area */}
-      <div className="flex flex-col flex-1 w-full overflow-hidden">
+      <div className="flex w-full flex-1 flex-col overflow-hidden">
         {/* Header */}
-        <AdminHeader 
-          onMenuClick={() => setSidebarOpen(true)} 
-          onNavigate={handlePageChange}
-        />
+        <AdminHeader onMenuClick={() => setSidebarOpen(true)} onNavigate={handlePageChange} />
 
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">

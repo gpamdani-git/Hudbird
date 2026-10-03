@@ -188,8 +188,9 @@ export const SaaSNavbar = () => {
                 </DropdownTrigger>
                 <DropdownMenu className="!mt-6 w-[280px] p-2 dark:border-white/10 dark:bg-[#161822]">
                   <DropdownItem
-                    className={`h-auto py-3 ${isActive("/docs") ? "bg-zinc-100 dark:bg-white/5" : ""}`}
-                    onClick={() => navigate("/docs")}
+                    className={`h-auto py-3`}
+                    href="https://hudbird.vercel.app/#/docs"
+                    target="_blank"
                     startContent={
                       <div className="flex shrink-0 items-center justify-center rounded-lg bg-zinc-100/50 p-2 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400">
                         <BookOpen className="h-5 w-5" />
@@ -258,14 +259,6 @@ export const SaaSNavbar = () => {
                 className={`transition-colors ${isActive("/contact") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
               >
                 Contact
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link
-                to="/dashboard"
-                className={`transition-colors ${isActive("/dashboard") ? "font-semibold text-blue-600 dark:text-blue-400" : "hover:opacity-80"}`}
-              >
-                Admin CMS
               </Link>
             </NavbarItem>
           </NavbarContent>
@@ -385,12 +378,13 @@ export const SaaSNavbar = () => {
                     className="flex flex-col overflow-hidden pl-4"
                   >
                     <NavbarMenuItem>
-                      <Link
-                        to="/docs"
-                        className={`block w-full transition-colors ${isActive("/docs") ? "font-medium text-blue-600 dark:text-blue-400" : "text-zinc-500 dark:text-zinc-400"}`}
+                      <a
+                        href="https://hudbird.vercel.app/#/docs"
+                        target="_blank"
+                        className={`block w-full text-zinc-500 transition-colors dark:text-zinc-400`}
                       >
                         Documentation
-                      </Link>
+                      </a>
                     </NavbarMenuItem>
                     <NavbarMenuItem>
                       <Link
@@ -427,14 +421,6 @@ export const SaaSNavbar = () => {
                 className={`block w-full transition-colors ${isActive("/contact") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
               >
                 Contact
-              </Link>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <Link
-                to="/dashboard"
-                className={`block w-full transition-colors ${isActive("/dashboard") ? "font-semibold text-blue-600 dark:text-blue-400" : ""}`}
-              >
-                Admin CMS
               </Link>
             </NavbarMenuItem>
 

@@ -1,16 +1,29 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { ShowcaseIndex } from "./ShowcaseIndex";
-import { Home } from "./pages/Home";
-import { AiStartup } from "./pages/AiStartup";
-import { ModernApp } from "./pages/ModernApp";
-import { Ecommerce } from "./pages/Ecommerce";
-import { Fintech } from "./pages/Fintech";
-import { Hospitality } from "./pages/Hospitality";
-import { Agency } from "./pages/Agency";
+import { ShowcaseInstallation } from "./pages/ShowcaseInstallation";
+const Home = React.lazy(() => import("./pages/Home").then((m) => ({ default: m.Home })));
+const AiStartup = React.lazy(() =>
+  import("./pages/AiStartup").then((m) => ({ default: m.AiStartup }))
+);
+const ModernApp = React.lazy(() =>
+  import("./pages/ModernApp").then((m) => ({ default: m.ModernApp }))
+);
+const Ecommerce = React.lazy(() =>
+  import("./pages/Ecommerce").then((m) => ({ default: m.Ecommerce }))
+);
+const Fintech = React.lazy(() => import("./pages/Fintech").then((m) => ({ default: m.Fintech })));
+const Hospitality = React.lazy(() =>
+  import("./pages/Hospitality").then((m) => ({ default: m.Hospitality }))
+);
+const Agency = React.lazy(() => import("./pages/Agency").then((m) => ({ default: m.Agency })));
+import { AiChat } from "./pages/AiChat";
+import { AiMail } from "./pages/AiMail";
 import { About } from "./pages/About";
 import { Pricing } from "./pages/Pricing";
 import { Contact } from "./pages/Contact";
+import { Terms } from "./pages/Terms";
+import { Privacy } from "./pages/Privacy";
 import { Analytics } from "./pages/Analytics";
 import { Security } from "./pages/Security";
 import { Integrations } from "./pages/Integrations";
@@ -22,8 +35,12 @@ import { Community } from "./pages/Community";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { ForgotPassword } from "./pages/ForgotPassword";
-import { DashboardLayout } from "./layouts/DashboardLayout";
-import { Dashboard } from "./pages/Dashboard";
+const DashboardLayout = React.lazy(() =>
+  import("./layouts/DashboardLayout").then((m) => ({ default: m.DashboardLayout }))
+);
+const Dashboard = React.lazy(() =>
+  import("./pages/Dashboard").then((m) => ({ default: m.Dashboard }))
+);
 import { ScrollToTop } from "./components/ScrollToTop";
 
 // Admin CMS Components
@@ -74,52 +91,65 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<ShowcaseIndex />} />
-        <Route path="/saas-launchpad" element={<Home />} />
-        <Route path="/ai-startup" element={<AiStartup />} />
-        <Route path="/modern-app" element={<ModernApp />} />
-        <Route path="/ecommerce" element={<Ecommerce />} />
-        <Route path="/fintech" element={<Fintech />} />
-        <Route path="/hospitality" element={<Hospitality />} />
-        <Route path="/agency" element={<Agency />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/security" element={<Security />} />
-        <Route path="/integrations" element={<Integrations />} />
-        <Route path="/docs" element={<Docs />} />
-        <Route path="/docs/api-reference" element={<ApiReference />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+      <React.Suspense
+        fallback={
+          <div className="flex h-screen w-full items-center justify-center bg-zinc-50 dark:bg-zinc-950">
+            <div className="h-8 w-8 animate-spin rounded-full border-t-2 border-b-2 border-zinc-900 dark:border-white"></div>
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<ShowcaseIndex />} />
+          <Route path="/installation" element={<ShowcaseInstallation />} />
+          <Route path="/saas-launchpad" element={<Home />} />
+          <Route path="/ai-startup" element={<AiStartup />} />
+          <Route path="/ai-chat" element={<AiChat />} />
+          <Route path="/ai-mail" element={<AiMail />} />
+          <Route path="/modern-app" element={<ModernApp />} />
+          <Route path="/ecommerce" element={<Ecommerce />} />
+          <Route path="/fintech" element={<Fintech />} />
+          <Route path="/hospitality" element={<Hospitality />} />
+          <Route path="/agency" element={<Agency />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/security" element={<Security />} />
+          <Route path="/integrations" element={<Integrations />} />
+          <Route path="/docs" element={<Docs />} />
+          <Route path="/docs/api-reference" element={<ApiReference />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
 
-        {/* Dashboard Routes (Hudbird CMS) */}
-        <Route path="/dashboard" element={<DashboardLayout />}>
-          <Route index element={<Dashboard />} />
-          <Route path="analytics" element={<AdminAnalytics />} />
-          <Route path="messages" element={<AdminMessages />} />
-          <Route path="posts" element={<AdminPostsWrapper />} />
-          <Route path="pages" element={<AdminPagesWrapper />} />
-          <Route path="media" element={<AdminMedia />} />
-          <Route path="categories" element={<AdminCategories />} />
-          <Route path="users" element={<AdminUsers />} />
-          <Route path="site-builder" element={<AdminSiteBuilderWrapper />} />
-          <Route path="appearance" element={<AdminAppearance />} />
-          <Route path="plugins" element={<AdminPlugins />} />
-          <Route path="notifications" element={<AdminNotifications />} />
-          <Route path="security" element={<AdminSecurity />} />
-          <Route path="settings" element={<AdminSettings />} />
-          <Route path="profile" element={<AdminProfile />} />
-          <Route path="inbox" element={<AdminInbox />} />
-          <Route path="editor-post" element={<AdminEditorPostWrapper />} />
-          <Route path="editor-page" element={<AdminEditorPageWrapper />} />
-        </Route>
-      </Routes>
+          {/* Dashboard Routes (Hudbird CMS) */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="analytics" element={<AdminAnalytics />} />
+            <Route path="messages" element={<AdminMessages />} />
+            <Route path="posts" element={<AdminPostsWrapper />} />
+            <Route path="pages" element={<AdminPagesWrapper />} />
+            <Route path="media" element={<AdminMedia />} />
+            <Route path="categories" element={<AdminCategories />} />
+            <Route path="users" element={<AdminUsers />} />
+            <Route path="site-builder" element={<AdminSiteBuilderWrapper />} />
+            <Route path="appearance" element={<AdminAppearance />} />
+            <Route path="plugins" element={<AdminPlugins />} />
+            <Route path="notifications" element={<AdminNotifications />} />
+            <Route path="security" element={<AdminSecurity />} />
+            <Route path="settings" element={<AdminSettings />} />
+            <Route path="profile" element={<AdminProfile />} />
+            <Route path="inbox" element={<AdminInbox />} />
+            <Route path="editor-post" element={<AdminEditorPostWrapper />} />
+            <Route path="editor-page" element={<AdminEditorPageWrapper />} />
+          </Route>
+        </Routes>
+      </React.Suspense>
     </BrowserRouter>
   );
 }

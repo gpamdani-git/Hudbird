@@ -13,6 +13,7 @@ import {
   Plug,
   ChevronRight,
   LogOut,
+  LineChart,
 } from "lucide-react";
 import { Avatar } from "@hudbird/ui";
 import { ConfirmModal } from "../Components/ConfirmModal";
@@ -182,11 +183,13 @@ const SidebarSection = ({
 export interface AdminSidebarProps {
   activePage?: AdminPage;
   onPageChange?: (page: AdminPage) => void;
+  simplified?: boolean;
 }
 
 export const AdminSidebar = ({
   activePage = "overview",
   onPageChange = () => {},
+  simplified = false,
 }: AdminSidebarProps) => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
@@ -202,24 +205,41 @@ export const AdminSidebar = ({
 
       {/* Nav */}
       <div className="flex-1 space-y-5 overflow-y-auto px-3 py-4">
-        <SidebarSection
-          title="Content"
-          items={CONTENT_MENU}
-          activePage={activePage}
-          onPageChange={onPageChange}
-        />
-        <SidebarSection
-          title="Manage"
-          items={MANAGE_MENU}
-          activePage={activePage}
-          onPageChange={onPageChange}
-        />
-        <SidebarSection
-          title="System"
-          items={SYSTEM_MENU}
-          activePage={activePage}
-          onPageChange={onPageChange}
-        />
+        {simplified ? (
+          <SidebarSection
+            title="Preview"
+            items={[
+              { label: "Overview", icon: LayoutDashboard, pageKey: "overview" },
+              { label: "Analytics", icon: LineChart, pageKey: "analytics" },
+              { label: "Posts", icon: FileText, pageKey: "posts" },
+              { label: "Media", icon: Image, pageKey: "media" },
+              { label: "Users", icon: Users, pageKey: "users" },
+            ]}
+            activePage={activePage}
+            onPageChange={onPageChange}
+          />
+        ) : (
+          <>
+            <SidebarSection
+              title="Content"
+              items={CONTENT_MENU}
+              activePage={activePage}
+              onPageChange={onPageChange}
+            />
+            <SidebarSection
+              title="Manage"
+              items={MANAGE_MENU}
+              activePage={activePage}
+              onPageChange={onPageChange}
+            />
+            <SidebarSection
+              title="System"
+              items={SYSTEM_MENU}
+              activePage={activePage}
+              onPageChange={onPageChange}
+            />
+          </>
+        )}
       </div>
 
       {/* User */}
