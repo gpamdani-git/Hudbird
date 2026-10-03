@@ -210,10 +210,7 @@ export const AiStartupTemplate = () => {
             />
           </div>
 
-          <HeroBody
-            align="center"
-            className="relative z-10 mx-auto max-w-4xl pt-8 pb-20 sm:pt-8"
-          >
+          <HeroBody align="center" className="relative z-10 mx-auto max-w-4xl pt-8 pb-20 sm:pt-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -221,7 +218,9 @@ export const AiStartupTemplate = () => {
               className="mb-8 flex justify-center"
             >
               <a
-                href="/#/templates"
+                href="https://hudbirdui.lemonsqueezy.com/checkout"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500/20 dark:text-blue-400"
               >
                 <Sparkles className="h-4 w-4" />
@@ -508,7 +507,7 @@ export const AiStartupTemplate = () => {
               {/* Right Agent Chat Card — sticky on desktop, full-width on mobile */}
               <div className="sticky top-24 flex h-[450px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[550px] lg:h-[700px] dark:border-white/10 dark:bg-[#0f0f1a]">
                 {/* Chat Area */}
-                <div className="relative flex flex-1 flex-col overflow-hidden p-6 pointer-events-none">
+                <div className="pointer-events-none relative flex flex-1 flex-col overflow-hidden p-6">
                   <AnimatePresence mode="wait">
                     {activeAgentCard === 0 && (
                       <motion.div
@@ -1410,30 +1409,35 @@ export const AiStartupTemplate = () => {
 
         {/* <!-- FAQ Section --> */}
         <section id="faq" className="w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]">
-          <Faq 
+          <Faq
             variant="centered"
             items={[
               {
                 question: "Is Hudbird UI free to use?",
-                answer: "Yes, the core UI components are completely free and open-source under the MIT license. You can use them in personal and commercial projects without any restrictions."
+                answer:
+                  "Yes, the core UI components are completely free and open-source under the MIT license. You can use them in personal and commercial projects without any restrictions.",
               },
               {
                 question: "What is included in the Pro version?",
-                answer: "The Pro All-Access pass gives you premium Templates, complex Marketing Blocks (like complete Dashboards, Pricing Tables, and Analytics layouts), and priority support. It is designed to save you hundreds of hours."
+                answer:
+                  "The Pro All-Access pass gives you premium Templates, complex Marketing Blocks (like complete Dashboards, Pricing Tables, and Analytics layouts), and priority support. It is designed to save you hundreds of hours.",
               },
               {
                 question: "Do I need to pay for updates?",
-                answer: "No! Once you purchase the Pro pass, you get lifetime access and updates. Whenever we release new templates or blocks, you will receive them for free."
+                answer:
+                  "No! Once you purchase the Pro pass, you get lifetime access and updates. Whenever we release new templates or blocks, you will receive them for free.",
               },
               {
                 question: "What frameworks are supported?",
-                answer: "Hudbird UI is built specifically for React, Tailwind CSS v4, and Framer Motion. It works seamlessly with Next.js, Vite, Remix, and other modern React-based frameworks."
+                answer:
+                  "Hudbird UI is built specifically for React, Tailwind CSS v4, and Framer Motion. It works seamlessly with Next.js, Vite, Remix, and other modern React-based frameworks.",
               },
               {
                 question: "Can I use the Pro templates for client work?",
-                answer: "Absolutely. You can use our templates and blocks to build unlimited projects for your clients. However, you cannot redistribute or resell the templates themselves as standalone products."
-              }
-            ]} 
+                answer:
+                  "Absolutely. You can use our templates and blocks to build unlimited projects for your clients. However, you cannot redistribute or resell the templates themselves as standalone products.",
+              },
+            ]}
           />
         </section>
 
