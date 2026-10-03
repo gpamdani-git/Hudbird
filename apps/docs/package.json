@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cd ../../starter-kits/saas-launchpad && pnpm i && npx vite build --base=/saas-launchpad/ --outDir=../../apps/docs/dist/saas-launchpad",
-    "vercel-build": "vite build && cd ../../starter-kits/saas-launchpad && pnpm i && npx vite build --base=/saas-launchpad/ --outDir=../../apps/docs/dist/saas-launchpad",
+    "build": "vite build && cd ../../starter-kits/saas-launchpad && vite build --base=/saas-launchpad/ && cp -R dist ../../apps/docs/dist/saas-launchpad",
+    "vercel-build": "vite build && cd ../../starter-kits/saas-launchpad && vite build --base=/saas-launchpad/ && cp -R dist ../../apps/docs/dist/saas-launchpad",
     "preview": "vite preview"
   },
   "dependencies": {
