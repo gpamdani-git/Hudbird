@@ -4,6 +4,9 @@
   "private": true,
   "version": "1.0.0",
   "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "build": "turbo run build",
     "build:packages": "pnpm --filter './packages/*' build",
