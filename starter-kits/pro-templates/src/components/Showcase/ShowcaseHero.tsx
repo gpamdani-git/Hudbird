@@ -59,7 +59,7 @@ export function ShowcaseHero() {
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://hudbirdui.lemonsqueezy.com/checkout/buy/985b3a9c-e686-44f4-bd2c-42d3c177d374"
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
               target="_blank"
               rel="noreferrer"
             >

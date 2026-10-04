@@ -65,9 +65,10 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
       "/assets/templates/saas-launchpad.webp",
       "/assets/templates/saas-launchpad-light.webp",
     ],
-    previewUrl: import.meta.env.DEV ? "http://localhost:5174" : "https://starterkit-pro.vercel.app/",
-    purchaseUrl:
-      "https://hudbirdui.lemonsqueezy.com/checkout/buy/985b3a9c-e686-44f4-bd2c-42d3c177d374",
+    previewUrl: import.meta.env.DEV
+      ? "http://localhost:5174"
+      : "https://starterkit-pro.vercel.app/",
+    purchaseUrl: "https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess",
     description:
       "The ultimate starter kit for building modern SaaS applications. Includes a fully functional landing page with 15+ marketing sections and a premium Admin Dashboard UI.",
     longDescription:
@@ -578,7 +579,7 @@ export function TemplateDetailDoc() {
                     <ShoppingCart className="h-5 w-5" /> Get Pro Access — {template.price}
                   </a>
                   <p className="text-center text-xs text-zinc-500">
-                    Secure checkout via LemonSqueezy. Instant download.
+                    Secure checkout via Gumroad. Instant download.
                   </p>
                 </>
               )}

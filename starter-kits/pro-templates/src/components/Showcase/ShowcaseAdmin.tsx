@@ -14,16 +14,18 @@ import {
   type AdminPage,
 } from "@hudbird/marketing";
 
-const TABS: { label: string; value: AdminPage }[] = [
+const TABS: { label: string; value: string }[] = [
   { label: "Overview", value: "overview" },
   { label: "Analytics", value: "analytics" },
   { label: "Posts", value: "posts" },
   { label: "Media", value: "media" },
   { label: "Users", value: "users" },
+  { label: "AI Mail", value: "ai-mail" },
+  { label: "AI Chat", value: "ai-chat" },
 ];
 
 export function ShowcaseAdmin() {
-  const [activeTab, setActiveTab] = useState<AdminPage>("overview");
+  const [activeTab, setActiveTab] = useState<string>("overview");
 
   return (
     <section className="relative w-full overflow-hidden bg-zinc-50 py-24 dark:bg-zinc-950">
@@ -105,9 +107,16 @@ export function ShowcaseAdmin() {
         >
           {/* Admin CMS Layout */}
           <div className="flex h-[800px] w-full text-left">
-            <AdminSidebar activePage={activeTab} onPageChange={setActiveTab} simplified={true} />
+            <AdminSidebar
+              activePage={activeTab as AdminPage}
+              onPageChange={(p) => setActiveTab(p as string)}
+              simplified={true}
+            />
             <div className="relative flex min-w-0 flex-1 flex-col bg-zinc-50 dark:bg-[#09090b]">
-              <AdminHeader activePage={activeTab} onNavigate={setActiveTab} />
+              <AdminHeader
+                activePage={activeTab as AdminPage}
+                onNavigate={(p) => setActiveTab(p as string)}
+              />
               <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -129,6 +138,24 @@ export function ShowcaseAdmin() {
                     {activeTab === "posts" && <AdminPosts />}
                     {activeTab === "media" && <AdminMedia />}
                     {activeTab === "users" && <AdminUsers />}
+                    {activeTab === "ai-mail" && (
+                      <div className="h-[600px] w-full overflow-hidden rounded-2xl border border-zinc-200/50 shadow-sm dark:border-white/10">
+                        <iframe
+                          src="/ai-mail"
+                          className="h-full w-full border-none"
+                          title="AI Mail Preview"
+                        />
+                      </div>
+                    )}
+                    {activeTab === "ai-chat" && (
+                      <div className="h-[600px] w-full overflow-hidden rounded-2xl border border-zinc-200/50 shadow-sm dark:border-white/10">
+                        <iframe
+                          src="/ai-chat"
+                          className="h-full w-full border-none"
+                          title="AI Chat Preview"
+                        />
+                      </div>
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>

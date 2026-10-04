@@ -37,7 +37,12 @@ export function ShowcasePricing() {
               <PricingTierDescription>Open source UI components & blocks.</PricingTierDescription>
               <PricingTierPrice price="$0" period="/free forever" />
             </PricingTierHeader>
-            <a href="/docs" className="mt-2 block w-full">
+            <a
+              href="https://hudbirdui.com/docs"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-2 block w-full"
+            >
               <Button variant="outline" color="zinc" className="w-full">
                 Read Documentation
               </Button>
@@ -61,7 +66,7 @@ export function ShowcasePricing() {
               <PricingTierPrice popular price="$249" period="/lifetime" />
             </PricingTierHeader>
             <a
-              href="https://hudbirdui.lemonsqueezy.com/checkout"
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
               target="_blank"
               rel="noreferrer"
               className="mt-2 block w-full"
@@ -93,7 +98,7 @@ export function ShowcasePricing() {
               <PricingTierPrice price="$499" period="/lifetime" />
             </PricingTierHeader>
             <a
-              href="https://hudbirdui.lemonsqueezy.com/checkout"
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
               target="_blank"
               rel="noreferrer"
               className="mt-2 block w-full"

@@ -218,7 +218,7 @@ export const AiStartupTemplate = () => {
               className="mb-8 flex justify-center"
             >
               <a
-                href="https://hudbirdui.lemonsqueezy.com/checkout"
+                href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500/20 dark:text-blue-400"

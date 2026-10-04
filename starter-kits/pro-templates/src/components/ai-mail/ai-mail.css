@@ -1,0 +1,64 @@
+/* Hudbird AI Mail — scoped keyframes & utilities */
+
+@keyframes aimail-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes aimail-aurora {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(4%, -6%, 0) scale(1.08);
+  }
+}
+
+.aimail-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(161 161 170 / 0.35) transparent;
+}
+.aimail-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.aimail-scroll::-webkit-scrollbar-thumb {
+  background: rgb(161 161 170 / 0.35);
+  border-radius: 999px;
+}
+
+.aimail-noscroll {
+  scrollbar-width: none;
+}
+.aimail-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+.aimail-aurora {
+  animation: aimail-aurora 14s ease-in-out infinite;
+}
+
+.aimail-ai-border {
+  background:
+    linear-gradient(var(--aimail-surface, #fff), var(--aimail-surface, #fff)) padding-box,
+    linear-gradient(120deg, #6366f1, #a855f7, #ec4899, #22d3ee) border-box;
+  border: 1px solid transparent;
+}
+.dark .aimail-ai-border {
+  --aimail-surface: #18181b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aimail-root *,
+  .aimail-root *::before,
+  .aimail-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

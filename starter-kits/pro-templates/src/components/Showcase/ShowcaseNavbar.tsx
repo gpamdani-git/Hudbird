@@ -24,11 +24,11 @@ const MEGAMENU_DATA = {
     { title: "Hospitality", path: "/hospitality", isNew: false },
   ],
   coreUI: [
-    { title: "Core Components", path: "https://hudbird.vercel.app/#/docs", icon: Component },
-    { title: "Block Gallery", path: "https://hudbird.vercel.app/#/blocks", icon: LayoutGrid },
+    { title: "Core Components", path: "https://hudbirdui.com/docs", icon: Component },
+    { title: "Block Gallery", path: "https://hudbirdui.com/blocks", icon: LayoutGrid },
     {
       title: "Chart Library",
-      path: "https://hudbird.vercel.app/#/area-chart",
+      path: "https://hudbirdui.com/charts",
       icon: LayoutTemplate,
     },
   ],
@@ -372,7 +372,11 @@ export function ShowcaseNavbar() {
           >
             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
-          <a href="https://hudbirdui.lemonsqueezy.com/checkout" target="_blank" rel="noreferrer">
+          <a
+            href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Button className="rounded-full bg-zinc-900 font-semibold text-white shadow-md transition-transform hover:scale-105 active:scale-95 dark:bg-white dark:text-zinc-900">
               Purchase Now
             </Button>

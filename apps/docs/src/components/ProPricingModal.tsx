@@ -33,7 +33,7 @@ const PLANS = {
     period: "forever",
     icon: <Star className="h-5 w-5" />,
     cta: "Read Documentation",
-    checkoutUrl: "/docs",
+    checkoutUrl: "https://hudbirdui.com/docs",
     features: [
       "100+ UI Core Components",
       "30+ Marketing Blocks",
@@ -50,7 +50,7 @@ const PLANS = {
     period: "lifetime",
     icon: <Zap className="h-5 w-5" />,
     cta: "Get All-Access Pass",
-    checkoutUrl: "https://hudbirdui.lemonsqueezy.com/checkout",
+    checkoutUrl: "https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess",
     badge: "Best Value",
     features: [
       "All 9+ Production Starter Kits",
@@ -69,7 +69,7 @@ const PLANS = {
     period: "lifetime",
     icon: <Users className="h-5 w-5" />,
     cta: "Get Agency License",
-    checkoutUrl: "https://hudbirdui.lemonsqueezy.com/checkout",
+    checkoutUrl: "https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess",
     features: [
       "Everything in All-Access Pass",
       "Commercial & Agency License",

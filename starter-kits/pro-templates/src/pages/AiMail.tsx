@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMailEngine } from "../components/ai-mail/useMailEngine";
 import { AuthScreen } from "../components/ai-mail/AuthScreen";
 import { Sidebar } from "../components/ai-mail/Sidebar";
@@ -6,12 +6,40 @@ import { SearchHeader } from "../components/ai-mail/SearchHeader";
 import { MailList } from "../components/ai-mail/MailList";
 import { MailDetail } from "../components/ai-mail/MailDetail";
 import { ComposeModal } from "../components/ai-mail/ComposeModal";
+import { TopBar } from "../components/ai-mail/TopBar";
 import { AnimatePresence, motion } from "motion/react";
 import { Search, ChevronDown, Sparkles, Bell, SortDesc } from "lucide-react";
 
 export function AiMail() {
   const [isAuth, setIsAuth] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const [isDark, setIsDark] = useState(() => {
+    return localStorage.getItem("theme") !== "light";
+  });
+
+  useEffect(() => {
+    const handleStorage = () => {
+      setIsDark(localStorage.getItem("theme") !== "light");
+    };
+    window.addEventListener("storage", handleStorage);
+    try {
+      if (window.parent && window.parent.document.documentElement.classList.contains("dark")) {
+        setIsDark(true);
+      }
+    } catch (e) {
+      // Ignore cross-origin errors
+    }
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
 
   const engine = useMailEngine();
 
@@ -38,14 +66,10 @@ export function AiMail() {
               className="absolute z-40 h-full shadow-2xl md:relative md:shadow-none"
             >
               <Sidebar
-                activeFolder={engine.activeFolder}
-                onSelectFolder={(f) => {
-                  engine.setActiveFolder(f);
-                  if (engine.selectedMailId) engine.selectMail("");
-                  if (window.innerWidth < 768) setSidebarOpen(false); // Close on mobile after selection
+                engine={engine}
+                onNavigate={() => {
+                  if (window.innerWidth < 768) setSidebarOpen(false);
                 }}
-                onCompose={engine.openCompose}
-                unreadCount={unreadCount}
               />
             </motion.div>
           )}
@@ -66,53 +90,21 @@ export function AiMail() {
 
         {/* Main Content Area (Global Header + Panes) */}
         <div className="flex min-w-0 flex-1 flex-col overflow-hidden bg-white dark:bg-[#111111]">
-          {/* Unified Global Header */}
-          <div className="relative z-20 flex h-[72px] w-full shrink-0 items-center border-b border-zinc-100 dark:border-white/5">
-            {/* Left side (Mail List context) */}
-            <div className="flex w-[400px] shrink-0 items-center justify-between px-4 xl:w-[420px]">
-              <div className="flex items-baseline gap-3">
-                <h1 className="text-xl font-bold text-zinc-900 dark:text-white">
-                  Good Morning. Alex
-                </h1>
-                <span className="text-xs font-medium text-zinc-500">1,897 Emails</span>
-              </div>
-              <button className="text-zinc-400 transition-colors hover:text-zinc-600">
-                <SortDesc className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Divider */}
-            <div className="h-full w-px bg-zinc-100 dark:bg-white/5" />
-
-            {/* Right side (Search & Actions) */}
-            <div className="flex flex-1 items-center justify-between px-6">
-              <div className="flex w-full max-w-xl items-center rounded-lg border border-zinc-100 bg-zinc-50 px-4 py-2 dark:border-white/10 dark:bg-zinc-900">
-                <Search className="mr-2 h-4 w-4 shrink-0 text-zinc-400" />
-                <input
-                  type="text"
-                  placeholder="Search anything..."
-                  className="min-w-0 flex-1 border-none bg-transparent text-sm outline-none"
-                />
-                <div className="ml-2 flex shrink-0 cursor-pointer items-center gap-1 border-l border-zinc-200 pl-3 hover:text-zinc-900 dark:border-white/10">
-                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                    All Categories
-                  </span>
-                  <ChevronDown className="h-3 w-3 text-zinc-400" />
-                </div>
-              </div>
-
-              <div className="ml-4 flex shrink-0 items-center gap-4">
-                <button className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500 text-white shadow-sm shadow-purple-500/20 transition-colors hover:bg-purple-600">
-                  <Sparkles className="h-4 w-4" />
-                </button>
-                <div className="h-6 w-px bg-zinc-200 dark:bg-zinc-800" />
-                <button className="relative text-zinc-400 transition-colors hover:text-zinc-600">
-                  <Bell className="h-5 w-5" />
-                  <div className="absolute top-0 right-0 h-2 w-2 rounded-full border-2 border-white bg-red-500" />
-                </button>
-              </div>
-            </div>
-          </div>
+          <TopBar
+            engine={engine}
+            title="Inbox"
+            subtitle="1,897 Emails"
+            isDark={isDark}
+            onToggleTheme={() => {
+              const newTheme = !isDark;
+              setIsDark(newTheme);
+              localStorage.setItem("theme", newTheme ? "dark" : "light");
+            }}
+            onMenu={() => setSidebarOpen(true)}
+            onOpenAssistant={() => engine.setView("ai")}
+            onSignOut={() => setIsAuth(false)}
+            userName="Alex Doe"
+          />
 
           <div className="relative flex min-w-0 flex-1 overflow-hidden">
             {/* Middle Pane: Inbox List */}
@@ -124,16 +116,7 @@ export function AiMail() {
               }`}
             >
               <div className="flex h-full w-full min-w-[320px] flex-col">
-                <MailList
-                  emails={engine.emails}
-                  onSelect={engine.selectMail}
-                  onStar={engine.toggleStar}
-                  onSnooze={engine.snoozeMail}
-                  onArchive={engine.archiveMail}
-                  onTrash={engine.moveToTrash}
-                  onCompose={engine.openCompose}
-                  activeFolder={engine.activeFolder}
-                />
+                <MailList engine={engine} />
               </div>
             </div>
 
@@ -155,8 +138,8 @@ export function AiMail() {
                   >
                     <MailDetail
                       mail={selectedMail}
+                      engine={engine}
                       onBack={() => engine.selectMail("")}
-                      onStar={() => engine.toggleStar(selectedMail.id)}
                     />
                   </motion.div>
                 ) : (
