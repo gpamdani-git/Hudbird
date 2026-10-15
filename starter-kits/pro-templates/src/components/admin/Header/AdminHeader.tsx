@@ -240,7 +240,7 @@ export const AdminHeader = ({
         onClose={() => setIsLogoutModalOpen(false)}
         onConfirm={() => {
           setIsLogoutModalOpen(false);
-          navigate('/login');
+          navigate("/login");
         }}
         title="Sign Out"
         description="Are you sure you want to sign out of the CMS? You will need to enter your credentials again to access the dashboard."

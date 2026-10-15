@@ -183,7 +183,12 @@ export const ComponentShowcase = () => {
           <Button size="sm" variant="outline" radius="full">
             Alert Dialog
           </Button>
-          <Button size="sm" variant="outline" radius="full" endContent={<ChevronDown size={12} />}>
+          <Button
+            size="sm"
+            variant="outline"
+            radius="full"
+            endContent={<ChevronDown size={13} className="text-muted-foreground ml-1" />}
+          >
             Button Group
           </Button>
           <MockToggle />

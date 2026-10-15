@@ -45,7 +45,7 @@ const LABEL_STYLES: Record<string, string> = {
   finance: "bg-teal-50 text-teal-700 dark:bg-teal-500/10 dark:text-teal-300",
   social: "bg-pink-50 text-pink-700 dark:bg-pink-500/10 dark:text-pink-300",
   promotions: "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-300",
-  updates: "bg-violet-50 text-violet-700 dark:bg-violet-500/10 dark:text-violet-300",
+  updates: "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-300",
 };
 
 /* ------------------------------------------------------------------ */
@@ -96,7 +96,7 @@ function MailRow({
       {/* swipe backgrounds */}
       <motion.div
         style={{ opacity: archiveOpacity }}
-        className="absolute inset-0 flex items-center bg-emerald-500 pl-6 text-sm font-semibold text-white"
+        className="absolute inset-0 flex items-center bg-emerald-500 pl-6 text-sm font-semibold text-white dark:bg-emerald-600"
       >
         <motion.span style={{ scale: archiveScale }} className="flex items-center gap-2">
           <Archive className="h-5 w-5" /> Archive
@@ -104,7 +104,7 @@ function MailRow({
       </motion.div>
       <motion.div
         style={{ opacity: trashOpacity }}
-        className="absolute inset-0 flex items-center justify-end bg-rose-500 pr-6 text-sm font-semibold text-white"
+        className="absolute inset-0 flex items-center justify-end bg-rose-500 pr-6 text-sm font-semibold text-white dark:bg-rose-600"
       >
         <motion.span style={{ scale: trashScale }} className="flex items-center gap-2">
           Delete <Trash2 className="h-5 w-5" />
@@ -124,12 +124,12 @@ function MailRow({
         onKeyDown={(e) => e.key === "Enter" && onOpen()}
         aria-label={`${mail.isRead ? "" : "Unread, "}${mail.senderName}: ${mail.subject}`}
         className={cn(
-          "group relative flex cursor-pointer gap-3 border-b border-zinc-100 px-4 py-3.5 transition-colors outline-none focus-visible:bg-blue-50/60 sm:px-5 dark:border-white/[0.05] dark:focus-visible:bg-blue-500/10",
+          "group relative flex cursor-pointer gap-4 border-b border-zinc-100 px-4 py-4 transition-colors outline-none focus-visible:bg-blue-50/60 sm:px-5 dark:border-white/[0.05] dark:focus-visible:bg-blue-500/10",
           active
             ? "bg-blue-50/80 dark:bg-blue-500/[0.08]"
             : checked
               ? "bg-blue-50/50 dark:bg-blue-500/[0.05]"
-              : "bg-white hover:bg-zinc-50 dark:bg-[#0f0f10] dark:hover:bg-white/[0.025]"
+              : "bg-white hover:bg-zinc-50/80 dark:bg-[#0f0f10] dark:hover:bg-[#1f1f22]"
         )}
       >
         {active && (
@@ -141,9 +141,12 @@ function MailRow({
         )}
 
         {/* avatar / checkbox */}
-        <div className="relative shrink-0 pt-0.5">
+        <div className="relative flex h-[38px] w-[38px] shrink-0 items-center justify-center pt-0.5">
           <div
-            className={cn("transition-opacity", checked ? "opacity-0" : "group-hover:opacity-0")}
+            className={cn(
+              "absolute inset-0 transition-opacity",
+              checked ? "opacity-0" : "group-hover:opacity-0"
+            )}
           >
             <MailAvatar name={isOutgoing ? mail.to || "Draft" : mail.senderName} size={38} />
           </div>
@@ -152,13 +155,13 @@ function MailRow({
             aria-label={checked ? "Deselect" : "Select"}
             onClick={stop(() => engine.toggleChecked(mail.id))}
             className={cn(
-              "absolute inset-0 flex cursor-pointer items-center justify-center rounded-full border-2 transition-all",
+              "relative z-10 flex h-5 w-5 cursor-pointer items-center justify-center rounded border-[1.5px] transition-all",
               checked
                 ? "border-blue-600 bg-blue-600 text-white opacity-100"
-                : "border-zinc-300 bg-white opacity-0 group-hover:opacity-100 dark:border-zinc-600 dark:bg-zinc-900"
+                : "border-zinc-300 bg-white opacity-0 shadow-sm group-hover:opacity-100 dark:border-zinc-500 dark:bg-zinc-800"
             )}
           >
-            {checked && <Check className="h-4 w-4" strokeWidth={3} />}
+            {checked && <Check className="h-3 w-3" strokeWidth={3} />}
           </button>
         </div>
 
@@ -183,7 +186,7 @@ function MailRow({
               </span>
             )}
             {mail.aiPriority === "high" && (
-              <span className="flex shrink-0 items-center gap-0.5 rounded-md bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-violet-600 dark:text-violet-300">
+              <span className="flex shrink-0 items-center gap-0.5 rounded-md bg-blue-500/10 px-1.5 py-0.5 text-[10px] font-semibold text-blue-600 dark:text-blue-300">
                 <Sparkles className="h-2.5 w-2.5" /> Priority
               </span>
             )}
@@ -537,7 +540,7 @@ export function MailList({ engine }: { engine: MailEngine }) {
             onClick={() => engine.setView("ai")}
             className="aimail-ai-border group mx-4 mt-3 mb-1 flex w-[calc(100%-2rem)] cursor-pointer items-center gap-3 rounded-2xl p-3 text-left sm:mx-5 sm:w-[calc(100%-2.5rem)]"
           >
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-fuchsia-500 text-white shadow-md shadow-violet-500/30">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-500/30">
               <Sparkles className="h-4 w-4" />
             </span>
             <span className="min-w-0 flex-1">
@@ -549,7 +552,7 @@ export function MailList({ engine }: { engine: MailEngine }) {
                 urgency
               </span>
             </span>
-            <span className="text-xs font-semibold text-violet-600 transition-transform group-hover:translate-x-0.5 dark:text-violet-300">
+            <span className="text-xs font-semibold text-blue-600 transition-transform group-hover:translate-x-0.5 dark:text-blue-300">
               Review →
             </span>
           </motion.button>

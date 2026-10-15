@@ -8,7 +8,7 @@ import {
   HospitalityCuratedJourneys,
   HospitalityFooterHero,
   HospitalityFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/hospitality";
 
 export function Hospitality() {
   useEffect(() => {

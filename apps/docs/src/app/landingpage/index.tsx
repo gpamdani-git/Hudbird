@@ -1411,28 +1411,33 @@ export const AiStartupTemplate = () => {
         <section id="faq" className="w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]">
           <Faq
             variant="centered"
-            items={[
+            faqs={[
               {
+                id: "faq-free",
                 question: "Is Hudbird UI free to use?",
                 answer:
                   "Yes, the core UI components are completely free and open-source under the MIT license. You can use them in personal and commercial projects without any restrictions.",
               },
               {
+                id: "faq-pro",
                 question: "What is included in the Pro version?",
                 answer:
                   "The Pro All-Access pass gives you premium Templates, complex Marketing Blocks (like complete Dashboards, Pricing Tables, and Analytics layouts), and priority support. It is designed to save you hundreds of hours.",
               },
               {
+                id: "faq-updates",
                 question: "Do I need to pay for updates?",
                 answer:
                   "No! Once you purchase the Pro pass, you get lifetime access and updates. Whenever we release new templates or blocks, you will receive them for free.",
               },
               {
+                id: "faq-frameworks",
                 question: "What frameworks are supported?",
                 answer:
                   "Hudbird UI is built specifically for React, Tailwind CSS v4, and Framer Motion. It works seamlessly with Next.js, Vite, Remix, and other modern React-based frameworks.",
               },
               {
+                id: "faq-client-work",
                 question: "Can I use the Pro templates for client work?",
                 answer:
                   "Absolutely. You can use our templates and blocks to build unlimited projects for your clients. However, you cannot redistribute or resell the templates themselves as standalone products.",

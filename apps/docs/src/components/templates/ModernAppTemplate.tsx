@@ -13,7 +13,7 @@ import {
   ModernAppTestimonials,
   ModernAppCta,
   ModernAppFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/modern-app";
 
 export const ModernAppTemplate = () => {
   const { scrollY } = useScroll();

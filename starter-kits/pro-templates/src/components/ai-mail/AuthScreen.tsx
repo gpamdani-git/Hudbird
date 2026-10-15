@@ -254,7 +254,7 @@ function BrandPanel() {
           <div className="flex -space-x-2">
             {[
               "from-blue-500 to-indigo-600",
-              "from-violet-500 to-fuchsia-500",
+              "from-blue-500 to-indigo-500",
               "from-emerald-500 to-teal-600",
             ].map((g, i) => (
               <span
@@ -378,13 +378,18 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
   ];
 
   return (
-    <div className="aimail-root fixed inset-0 z-[100] overflow-y-auto bg-[#f7f7f8] font-sans text-zinc-900 dark:bg-[#0a0a0b] dark:text-zinc-100">
+    <div
+      className={cn(
+        "aimail-root fixed inset-0 z-[100] overflow-y-auto bg-[#f7f7f8] font-sans text-zinc-900 dark:bg-[#0a0a0b] dark:text-zinc-100",
+        isDark && "dark"
+      )}
+    >
       <div className="mx-auto grid min-h-full max-w-[1280px] gap-6 p-3 sm:p-6 lg:grid-cols-[1fr_1.05fr]">
         {/* Form column */}
         <div className="relative flex flex-col rounded-[32px] bg-white px-5 py-6 shadow-[0_1px_3px_rgba(15,23,42,0.06)] sm:px-10 sm:py-8 dark:bg-zinc-950 dark:ring-1 dark:ring-white/[0.06]">
           <header className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-violet-600 shadow-lg shadow-blue-600/30">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg shadow-blue-600/30">
                 <MailIcon className="h-4.5 w-4.5 text-white" />
               </div>
               <span className="font-heading text-lg font-semibold tracking-tight">HudMail</span>
@@ -456,7 +461,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                         {i < creating ? (
                           <Check className="h-3 w-3" strokeWidth={3} />
                         ) : i === creating ? (
-                          <Loader2 className="h-3 w-3 animate-spin text-violet-500" />
+                          <Loader2 className="h-3 w-3 animate-spin text-blue-500" />
                         ) : null}
                       </span>
                       {s}
@@ -635,7 +640,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                               className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-100 dark:bg-white/10"
                             >
                               <motion.div
-                                className="h-full rounded-full bg-gradient-to-r from-blue-600 to-violet-600"
+                                className="h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700"
                                 initial={false}
                                 animate={{ width: i <= step ? "100%" : "0%" }}
                                 transition={{ duration: 0.4, ease }}
@@ -829,7 +834,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                         <>
                           <div>
                             <h1 className="font-heading flex items-center gap-2 text-[30px] leading-tight font-semibold tracking-tight">
-                              Personalise your AI <Wand2 className="h-6 w-6 text-violet-500" />
+                              Personalise your AI <Wand2 className="h-6 w-6 text-blue-500" />
                             </h1>
                             <p className="mt-2 text-[15px] text-zinc-500 dark:text-zinc-400">
                               You can change this anytime in Settings.
@@ -848,7 +853,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                                   className={cn(
                                     "cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition-all",
                                     form.tone === t
-                                      ? "border-violet-500 bg-violet-600 text-white shadow-lg shadow-violet-600/25"
+                                      ? "border-blue-500 bg-blue-600 text-white shadow-lg shadow-blue-600/25"
                                       : "border-zinc-200 text-zinc-600 hover:border-zinc-300 dark:border-white/10 dark:text-zinc-300"
                                   )}
                                 >
@@ -883,7 +888,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                                   className={cn(
                                     "flex w-full cursor-pointer items-center gap-3 rounded-2xl border p-3 text-left transition-all",
                                     on
-                                      ? "border-violet-300 bg-violet-50/60 dark:border-violet-500/30 dark:bg-violet-500/[0.08]"
+                                      ? "border-blue-300 bg-blue-50/60 dark:border-blue-500/30 dark:bg-blue-500/[0.08]"
                                       : "border-zinc-200 dark:border-white/10"
                                   )}
                                 >
@@ -891,7 +896,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                                     className={cn(
                                       "flex h-5 w-5 items-center justify-center rounded-md border transition-colors",
                                       on
-                                        ? "border-violet-600 bg-violet-600 text-white"
+                                        ? "border-blue-600 bg-blue-600 text-white"
                                         : "border-zinc-300 dark:border-zinc-600"
                                     )}
                                   >
@@ -904,7 +909,7 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
                                   <Sparkles
                                     className={cn(
                                       "h-4 w-4",
-                                      on ? "text-violet-500" : "text-zinc-300 dark:text-zinc-700"
+                                      on ? "text-blue-500" : "text-zinc-300 dark:text-zinc-700"
                                     )}
                                   />
                                 </button>

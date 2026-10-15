@@ -3,8 +3,11 @@ import React from "react";
 export interface ApiPropRow {
   prop: string;
   type?: string;
-  defaultVal: string;
-  description: React.ReactNode;
+  defaultVal?: string;
+  default?: string;
+  required?: boolean;
+  description?: React.ReactNode;
+  desc?: React.ReactNode;
 }
 
 interface ApiTableProps {
@@ -48,16 +51,16 @@ export const ApiTable: React.FC<ApiTableProps> = ({ title, note, rows }) => {
                     {row.type || "-"}
                   </td>
                   <td className="px-6 py-4 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                    {row.defaultVal !== "-" ? (
+                    {(row.defaultVal ?? row.default) && (row.defaultVal ?? row.default) !== "-" ? (
                       <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-                        {row.defaultVal}
+                        {row.defaultVal ?? row.default}
                       </span>
                     ) : (
                       <span>-</span>
                     )}
                   </td>
                   <td className="px-6 py-4 text-sm leading-normal text-zinc-600 dark:text-zinc-400">
-                    {row.description}
+                    {row.description ?? row.desc}
                   </td>
                 </tr>
               ))}

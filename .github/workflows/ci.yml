@@ -6,9 +6,13 @@ on:
   pull_request:
     branches: ["main"]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
-    name: Build & Lint
+    name: Build, Lint & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +37,16 @@ jobs:
         run: pnpm format:check
 
       - name: Lint Code (ESLint)
-        run: pnpm lint
+        run: pnpm eslint . --quiet
+
+      - name: Run Unit Tests (Vitest)
+        run: pnpm test
 
       - name: Build Project
         run: pnpm build
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run Playwright E2E Tests
+        run: pnpm test:e2e

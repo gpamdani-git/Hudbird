@@ -29,6 +29,38 @@ export const searchIndex: SearchItem[] = [
       "introduction",
     ],
   },
+  {
+    id: "cli-reference",
+    title: "CLI Reference",
+    category: "Getting Started",
+    path: "/cli",
+    description:
+      "Official Hudbird UI CLI documentation: init, add, list, diff, components.json, and batch installation.",
+    keywords: [
+      "cli",
+      "terminal",
+      "command",
+      "hudbird-ui",
+      "components.json",
+      "diff",
+      "list",
+      "add",
+      "init",
+      "scaffold",
+      "batch",
+      "update",
+    ],
+    isNew: true,
+  },
+  {
+    id: "installation-guide",
+    title: "Tutorial Install Guide",
+    category: "Getting Started",
+    path: "/installation",
+    description:
+      "Step-by-step tutorial on how to install and configure Hudbird UI in your React project.",
+    keywords: ["install", "guide", "tutorial", "npm", "vite", "tailwind"],
+  },
 
   // Layouts
   {
@@ -119,6 +151,16 @@ export const searchIndex: SearchItem[] = [
     keywords: ["counter", "indicator", "pill", "tag", "notification", "chip", "status"],
   },
   {
+    id: "comp-breadcrumbs",
+    title: "Breadcrumbs",
+    category: "Components",
+    path: "/breadcrumbs",
+    description:
+      "Hierarchical breadcrumb navigation indicating current page location with customizable separators and collapsed ellipsis.",
+    keywords: ["breadcrumbs", "navigation", "hierarchy", "path", "trail", "links"],
+    isNew: true,
+  },
+  {
     id: "comp-button",
     title: "Button",
     category: "Components",
@@ -135,6 +177,16 @@ export const searchIndex: SearchItem[] = [
       "outline",
       "loading",
     ],
+  },
+  {
+    id: "comp-calendar",
+    title: "Calendar",
+    category: "Components",
+    path: "/calendar",
+    description:
+      "Zero-dependency calendar grid and popover datepicker with single and range selection modes, min/max bounds, and keyboard navigation.",
+    keywords: ["calendar", "datepicker", "date", "picker", "range", "month", "schedule"],
+    isNew: true,
   },
   {
     id: "comp-card",
@@ -219,6 +271,26 @@ export const searchIndex: SearchItem[] = [
     keywords: ["typography", "h1", "h2", "h3", "title", "header", "font"],
   },
   {
+    id: "comp-form",
+    title: "Form",
+    category: "Components",
+    path: "/form",
+    description:
+      "Enterprise form orchestration primitives with React Hook Form integration, automated ARIA associations, and real-time validation error messaging.",
+    keywords: [
+      "form",
+      "formfield",
+      "react-hook-form",
+      "rhf",
+      "validation",
+      "form control",
+      "form label",
+      "form message",
+      "accessibility",
+    ],
+    isNew: true,
+  },
+  {
     id: "comp-input",
     title: "Input",
     category: "Components",
@@ -226,6 +298,25 @@ export const searchIndex: SearchItem[] = [
     description:
       "Text inputs with flat, bordered, and underlined styles, start/end content icons, clear buttons, and validation messages.",
     keywords: ["textfield", "form", "text", "search input", "password", "validation", "label"],
+  },
+  {
+    id: "comp-input-otp",
+    title: "Input OTP",
+    category: "Components",
+    path: "/input-otp",
+    description:
+      "Accessible 6-digit and 4-digit PIN/OTP code inputs with auto-advance, backspace handling, separator groups, and clipboard paste support.",
+    keywords: [
+      "otp",
+      "pin",
+      "two factor",
+      "2fa",
+      "verification",
+      "sms code",
+      "input-otp",
+      "authentication",
+    ],
+    isNew: true,
   },
   {
     id: "comp-navbar",
@@ -253,6 +344,24 @@ export const searchIndex: SearchItem[] = [
     description:
       "Page switching controls with smart ellipsis range calculation, shapes, colors, and infinite scroll simulations.",
     keywords: ["pager", "infinite scroll", "pages", "navigation", "next", "previous", "ellipsis"],
+    isNew: true,
+  },
+  {
+    id: "comp-progress",
+    title: "Progress",
+    category: "Components",
+    path: "/progress",
+    description:
+      "Linear and circular progress indicators communicating real-time operation status, percentage completion, and indeterminate loading.",
+    keywords: [
+      "progress",
+      "progressbar",
+      "circular progress",
+      "loading",
+      "percentage",
+      "meter",
+      "indicator",
+    ],
     isNew: true,
   },
   {
@@ -343,6 +452,56 @@ export const searchIndex: SearchItem[] = [
     description:
       "Informational hover and focus popovers with top, bottom, left, and right placements, delay timers, and rich content.",
     keywords: ["popover", "hover", "hint", "info", "placement", "delay", "flyout"],
+    isNew: true,
+  },
+  {
+    id: "comp-toast",
+    title: "Toast",
+    category: "Components",
+    path: "/toast",
+    description:
+      "Non-intrusive floating feedback notifications with promise handling, auto-dismiss, action buttons, and 6 viewport positions.",
+    keywords: ["toast", "toaster", "notification", "snackbar", "alert", "feedback", "promise"],
+    isNew: true,
+  },
+  {
+    id: "comp-sheet",
+    title: "Sheet / Drawer",
+    category: "Components",
+    path: "/sheet",
+    description:
+      "Slide-over drawer panel anchored to left, right, top, or bottom edges with smooth spring animation and backdrop blur.",
+    keywords: ["sheet", "drawer", "slideover", "panel", "sidebar", "dialog", "overlay"],
+    isNew: true,
+  },
+  {
+    id: "comp-popover",
+    title: "Popover",
+    category: "Components",
+    path: "/popover",
+    description:
+      "Accessible floating contextual container triggered by click, with click-outside detection and 12 flexible placements.",
+    keywords: ["popover", "popup", "floating", "tooltip", "dropdown", "flyout", "menu"],
+    isNew: true,
+  },
+  {
+    id: "comp-slider",
+    title: "Slider",
+    category: "Components",
+    path: "/slider",
+    description:
+      "Accessible numeric range slider with drag & click fill track, custom steps, keyboard arrows, and value formatters.",
+    keywords: ["slider", "range", "track", "thumb", "volume", "number", "input", "scrubber"],
+    isNew: true,
+  },
+  {
+    id: "comp-command",
+    title: "Command Palette",
+    category: "Components",
+    path: "/command",
+    description:
+      "Fast accessible command menu palette (Cmd+K) supporting real-time search filtering, category groups, and keyboard navigation.",
+    keywords: ["command", "cmdk", "palette", "search", "menu", "shortcuts", "actions"],
     isNew: true,
   },
 

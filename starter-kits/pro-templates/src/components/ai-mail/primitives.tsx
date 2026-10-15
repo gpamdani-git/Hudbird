@@ -57,7 +57,7 @@ export function useClickOutside<T extends HTMLElement>(open: boolean, onClose: (
 /* ------------------------------------------------------------------ */
 const GRADIENTS = [
   "from-blue-500 to-indigo-600",
-  "from-violet-500 to-fuchsia-500",
+  "from-blue-500 to-indigo-500",
   "from-emerald-500 to-teal-600",
   "from-amber-400 to-orange-500",
   "from-rose-500 to-pink-600",
@@ -198,14 +198,14 @@ export function AiOrb({ size = 28, spinning = false }: { size?: number; spinning
       aria-hidden
     >
       <motion.span
-        className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,#6366f1,#a855f7,#ec4899,#22d3ee,#6366f1)] blur-[1px]"
+        className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg,#3b82f6,#6366f1,#22d3ee,#3b82f6)] blur-[1px]"
         animate={spinning ? { rotate: 360 } : { rotate: 0 }}
         transition={
           spinning ? { repeat: Infinity, duration: 1.6, ease: "linear" } : { duration: 0.4 }
         }
       />
       <span className="absolute inset-[2px] flex items-center justify-center rounded-full bg-white dark:bg-zinc-950">
-        <Sparkles className="text-violet-500" style={{ width: size * 0.5, height: size * 0.5 }} />
+        <Sparkles className="text-blue-500" style={{ width: size * 0.5, height: size * 0.5 }} />
       </span>
     </span>
   );
@@ -237,7 +237,7 @@ export function ThinkingSteps({ steps, current }: { steps: string[]; current: nu
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -4 }}
-      className="rounded-2xl border border-violet-200/70 bg-gradient-to-br from-violet-50 via-white to-sky-50 p-4 dark:border-violet-500/20 dark:from-violet-500/[0.08] dark:via-zinc-900 dark:to-sky-500/[0.06]"
+      className="rounded-2xl border border-blue-200/70 bg-gradient-to-br from-blue-50 via-white to-sky-50 p-4 dark:border-blue-500/20 dark:from-blue-500/[0.08] dark:via-zinc-900 dark:to-sky-500/[0.06]"
     >
       <div className="mb-3 flex items-center gap-2.5">
         <AiOrb size={22} spinning />
@@ -259,14 +259,14 @@ export function ThinkingSteps({ steps, current }: { steps: string[]; current: nu
                 className={cn(
                   "flex h-4 w-4 items-center justify-center rounded-full border transition-colors",
                   done && "border-emerald-500 bg-emerald-500 text-white",
-                  active && "border-violet-500",
+                  active && "border-blue-500",
                   !done && !active && "border-zinc-300 dark:border-zinc-700"
                 )}
               >
                 {done && <Check className="h-2.5 w-2.5" strokeWidth={3} />}
                 {active && (
                   <motion.span
-                    className="h-1.5 w-1.5 rounded-full bg-violet-500"
+                    className="h-1.5 w-1.5 rounded-full bg-blue-500"
                     animate={{ scale: [1, 1.6, 1] }}
                     transition={{ repeat: Infinity, duration: 0.9 }}
                   />
@@ -293,7 +293,7 @@ export function TypingDots() {
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="h-1.5 w-1.5 rounded-full bg-violet-500"
+          className="h-1.5 w-1.5 rounded-full bg-blue-500"
           animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
           transition={{ repeat: Infinity, duration: 0.9, delay: i * 0.15 }}
         />
@@ -306,7 +306,7 @@ export function StreamCaret() {
   return (
     <motion.span
       aria-hidden
-      className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[2px] rounded bg-violet-500"
+      className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[2px] rounded bg-blue-500"
       animate={{ opacity: [1, 0, 1] }}
       transition={{ repeat: Infinity, duration: 0.8 }}
     />
@@ -341,7 +341,7 @@ export function Modal({
       {open && (
         <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center sm:p-4">
           <motion.div
-            className="absolute inset-0 bg-zinc-950/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-zinc-900/30 backdrop-blur-sm dark:bg-zinc-950/40"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -398,9 +398,7 @@ export function Toaster({
               <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-400 dark:text-emerald-600" />
             )}
             {t.tone === "error" && <AlertCircle className="h-4 w-4 shrink-0 text-rose-400" />}
-            {t.tone === "ai" && (
-              <Sparkles className="h-4 w-4 shrink-0 text-violet-400 dark:text-violet-600" />
-            )}
+            {t.tone === "ai" && <Sparkles className="h-4 w-4 shrink-0 text-blue-500" />}
             <span className="flex-1">{t.message}</span>
             {t.action && (
               <button

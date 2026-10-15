@@ -49,12 +49,12 @@ const fieldsetVariants = cva("w-full transition-all duration-200", {
     {
       variant: "bordered",
       isInvalid: true,
-      className: "border-zinc-300 dark:border-rose-900/60 bg-zinc-100/50/10 dark:bg-rose-950/10",
+      className: "border-rose-300 dark:border-rose-900/60 bg-rose-50/10 dark:bg-rose-950/10",
     },
     {
       variant: "card",
       isInvalid: true,
-      className: "border-zinc-300 dark:border-rose-900/60 bg-zinc-100/50/20 dark:bg-rose-950/20",
+      className: "border-rose-300 dark:border-rose-900/60 bg-rose-50/20 dark:bg-rose-950/20",
     },
   ],
   defaultVariants: {

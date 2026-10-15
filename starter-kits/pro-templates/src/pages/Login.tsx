@@ -12,25 +12,25 @@ export function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
       setIsSuccess(true);
-      
+
       // Wait for success animation then navigate
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate("/dashboard");
       }, 1200);
     }, 1500);
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-4 relative overflow-hidden">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-zinc-50 p-4 dark:bg-zinc-950">
       {/* Fullscreen Success Overlay */}
       <AnimatePresence>
         {isSuccess && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-zinc-950/80 backdrop-blur-md"
@@ -44,16 +44,16 @@ export function Login() {
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-500/20 text-green-500">
                 <CheckCircle2 className="h-10 w-10" />
               </div>
-              <h2 className="text-2xl font-bold text-white tracking-tight">Login Successful</h2>
+              <h2 className="text-2xl font-bold tracking-tight text-white">Login Successful</h2>
               <p className="text-zinc-400">Redirecting to your dashboard...</p>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <Card className="w-full max-w-md p-8 shadow-xl relative z-10">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold mb-2">Welcome back</h1>
+      <Card className="relative z-10 w-full max-w-md p-8 shadow-xl">
+        <div className="mb-8 text-center">
+          <h1 className="mb-2 text-2xl font-bold">Welcome back</h1>
           <p className="text-zinc-500 dark:text-zinc-400">
             Enter your credentials to access your account
           </p>
@@ -61,21 +61,33 @@ export function Login() {
 
         <form className="space-y-4" onSubmit={handleLogin}>
           <div>
-            <label className="block text-sm font-medium mb-1">Email</label>
-            <Input type="email" placeholder="john@example.com" className="w-full" disabled={isLoading || isSuccess} required />
+            <label className="mb-1 block text-sm font-medium">Email</label>
+            <Input
+              type="email"
+              placeholder="john@example.com"
+              className="w-full"
+              disabled={isLoading || isSuccess}
+              required
+            />
           </div>
-          
+
           <div>
-            <div className="flex justify-between items-center mb-1">
+            <div className="mb-1 flex items-center justify-between">
               <label className="block text-sm font-medium">Password</label>
               <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
                 Forgot password?
               </Link>
             </div>
-            <Input type="password" placeholder="••••••••" className="w-full" disabled={isLoading || isSuccess} required />
+            <Input
+              type="password"
+              placeholder="••••••••"
+              className="w-full"
+              disabled={isLoading || isSuccess}
+              required
+            />
           </div>
 
-          <Button className="w-full mt-6" type="submit" disabled={isLoading || isSuccess}>
+          <Button className="mt-6 w-full" type="submit" disabled={isLoading || isSuccess}>
             {isLoading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -91,9 +103,7 @@ export function Login() {
               <div className="w-full border-t border-zinc-200 dark:border-zinc-800"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="bg-white dark:bg-zinc-900 px-2 text-zinc-500">
-                Or continue with
-              </span>
+              <span className="bg-white px-2 text-zinc-500 dark:bg-zinc-900">Or continue with</span>
             </div>
           </div>
 

@@ -12,12 +12,12 @@ export function ForgotPassword() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 p-4 dark:bg-zinc-950">
       <Card className="w-full max-w-md p-8 shadow-xl">
         {!submitted ? (
           <>
             <div className="mb-8">
-              <h1 className="text-2xl font-bold mb-2">Reset password</h1>
+              <h1 className="mb-2 text-2xl font-bold">Reset password</h1>
               <p className="text-zinc-500 dark:text-zinc-400">
                 Enter your email address and we'll send you a link to reset your password.
               </p>
@@ -25,22 +25,22 @@ export function ForgotPassword() {
 
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div>
-                <label className="block text-sm font-medium mb-1">Email address</label>
+                <label className="mb-1 block text-sm font-medium">Email address</label>
                 <Input type="email" placeholder="john@example.com" className="w-full" required />
               </div>
 
-              <Button className="w-full mt-6" type="submit">
+              <Button className="mt-6 w-full" type="submit">
                 Send reset link
               </Button>
             </form>
           </>
         ) : (
-          <div className="text-center py-6">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30 mb-6">
+          <div className="py-6 text-center">
+            <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/30">
               <CheckCircle2 className="h-8 w-8 text-emerald-600 dark:text-emerald-500" />
             </div>
-            <h2 className="text-2xl font-bold mb-3">Check your email</h2>
-            <p className="text-zinc-500 dark:text-zinc-400 mb-8">
+            <h2 className="mb-3 text-2xl font-bold">Check your email</h2>
+            <p className="mb-8 text-zinc-500 dark:text-zinc-400">
               We've sent a password reset link to your email address.
             </p>
             <Button className="w-full" variant="outline" onClick={() => setSubmitted(false)}>
@@ -52,7 +52,7 @@ export function ForgotPassword() {
         <div className="mt-8 text-center">
           <Link
             to="/login"
-            className="inline-flex items-center text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors"
+            className="inline-flex items-center text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to log in

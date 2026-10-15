@@ -4,7 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
 
-export type BadgeVariant = "solid" | "soft" | "outline";
+export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "default";
 export type BadgeColor = "primary" | "secondary" | "success" | "warning" | "danger" | "info";
 export type BadgeSize = "sm" | "md" | "lg";
 export type BadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -17,6 +17,8 @@ const badgeVariants = cva(
         solid: "text-white font-semibold shadow-xs",
         soft: "font-semibold",
         outline: "bg-transparent border",
+        flat: "font-medium",
+        default: "text-white font-semibold shadow-xs",
       },
       color: {
         primary: "",
@@ -82,25 +84,25 @@ const badgeVariants = cva(
         variant: "soft",
         color: "success",
         className:
-          "bg-emerald-100/50 text-emerald-700 ring-1 ring-inset ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:ring-emerald-500/20",
+          "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:ring-emerald-500/20",
       },
       {
         variant: "soft",
         color: "warning",
         className:
-          "bg-amber-100/50 text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:ring-amber-500/20",
+          "bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:ring-amber-500/20",
       },
       {
         variant: "soft",
         color: "danger",
         className:
-          "bg-rose-100/50 text-rose-700 ring-1 ring-inset ring-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:ring-rose-500/20",
+          "bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:ring-rose-500/20",
       },
       {
         variant: "soft",
         color: "info",
         className:
-          "bg-sky-100/50 text-sky-700 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:ring-sky-500/20",
+          "bg-sky-50 text-sky-700 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:ring-sky-500/20",
       },
 
       // Outline Variants
@@ -120,25 +122,90 @@ const badgeVariants = cva(
         variant: "outline",
         color: "success",
         className:
-          "border-zinc-600 text-emerald-700 hover:bg-zinc-100/50 dark:border-blue-500 dark:text-emerald-400 dark:hover:bg-blue-500/15",
+          "border-emerald-600 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-500 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
         variant: "outline",
         color: "warning",
         className:
-          "border-zinc-500 text-amber-700 hover:bg-zinc-100/50 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-blue-500/15",
+          "border-amber-500 text-amber-700 hover:bg-amber-50 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-500/15",
       },
       {
         variant: "outline",
         color: "danger",
         className:
-          "border-zinc-600 text-rose-700 hover:bg-zinc-100/50 dark:border-blue-500 dark:text-rose-400 dark:hover:bg-blue-500/15",
+          "border-rose-600 text-rose-700 hover:bg-rose-50 dark:border-rose-500 dark:text-rose-400 dark:hover:bg-rose-500/15",
       },
       {
         variant: "outline",
         color: "info",
         className:
-          "border-zinc-600 text-sky-700 hover:bg-zinc-100/50 dark:border-blue-500 dark:text-sky-400 dark:hover:bg-blue-500/15",
+          "border-sky-600 text-sky-700 hover:bg-sky-50 dark:border-sky-500 dark:text-sky-400 dark:hover:bg-sky-500/15",
+      },
+
+      // Flat Variants
+      {
+        variant: "flat",
+        color: "primary",
+        className: "bg-primary-50 text-primary-700 dark:bg-primary-500/15 dark:text-primary-400",
+      },
+      {
+        variant: "flat",
+        color: "secondary",
+        className:
+          "bg-secondary-50 text-secondary-700 dark:bg-secondary-500/15 dark:text-secondary-400",
+      },
+      {
+        variant: "flat",
+        color: "success",
+        className: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400",
+      },
+      {
+        variant: "flat",
+        color: "warning",
+        className: "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400",
+      },
+      {
+        variant: "flat",
+        color: "danger",
+        className: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-400",
+      },
+      {
+        variant: "flat",
+        color: "info",
+        className: "bg-sky-50 text-sky-700 dark:bg-sky-500/15 dark:text-sky-400",
+      },
+
+      // Default Variants
+      {
+        variant: "default",
+        color: "primary",
+        className: "bg-primary text-primary-foreground",
+      },
+      {
+        variant: "default",
+        color: "secondary",
+        className: "bg-secondary text-secondary-foreground",
+      },
+      {
+        variant: "default",
+        color: "success",
+        className: "bg-emerald-600 text-white dark:bg-emerald-500",
+      },
+      {
+        variant: "default",
+        color: "warning",
+        className: "bg-amber-500 text-zinc-950 font-bold dark:bg-amber-400",
+      },
+      {
+        variant: "default",
+        color: "danger",
+        className: "bg-rose-600 text-white dark:bg-rose-500",
+      },
+      {
+        variant: "default",
+        color: "info",
+        className: "bg-sky-600 text-white dark:bg-sky-500",
       },
     ],
     defaultVariants: {

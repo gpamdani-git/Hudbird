@@ -6,7 +6,7 @@ import { Accordion, AccordionItem } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 
 export interface FaqItem {
-  id: string | number;
+  id?: string | number;
   question: string;
   answer: React.ReactNode;
 }
@@ -16,6 +16,7 @@ export interface FaqProps {
   title?: string;
   description?: string;
   faqs?: FaqItem[];
+  items?: FaqItem[];
   className?: string;
   variant?: "centered" | "side-by-side";
   /**
@@ -67,12 +68,14 @@ export function Faq({
   label = "FAQ",
   title = "Frequently asked questions",
   description = "Find answers to common questions about our platform, pricing, and features. Can't find what you're looking for? Reach out to our support team.",
-  faqs = DEFAULT_FAQS,
+  faqs: propFaqs,
+  items,
   className,
   variant = "side-by-side",
   badgeClassName = "border-blue-200/50 bg-blue-50/50 text-blue-700 dark:border-blue-800/30 dark:bg-blue-900/20 dark:text-blue-400",
   accentClassName = "text-blue-600 dark:text-blue-400",
 }: FaqProps) {
+  const faqs = propFaqs || items || DEFAULT_FAQS;
   if (variant === "centered") {
     return (
       <section className={cn("overflow-hidden bg-transparent py-24 sm:py-32", className)}>
@@ -106,9 +109,9 @@ export function Faq({
 
           <div className="mx-auto max-w-3xl">
             <Accordion variant="splitted">
-              {faqs.map((faq) => (
+              {faqs.map((faq, index) => (
                 <AccordionItem
-                  key={faq.id}
+                  key={faq.id ?? index}
                   title={faq.question}
                   classNames={{
                     trigger: cn(
@@ -164,9 +167,9 @@ export function Faq({
           </div>
           <div className="lg:col-span-7">
             <Accordion variant="light">
-              {faqs.map((faq) => (
+              {faqs.map((faq, index) => (
                 <AccordionItem
-                  key={faq.id}
+                  key={faq.id ?? index}
                   title={faq.question}
                   classNames={{
                     trigger: cn(

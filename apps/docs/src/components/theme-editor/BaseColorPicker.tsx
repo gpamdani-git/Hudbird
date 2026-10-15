@@ -1,7 +1,7 @@
 import React from "react";
 import { useThemeEditor } from "./ThemeEditorContext";
 import { baseColors } from "../../lib/themes";
-import { cn } from "@hudbird/ui/utils/cn";
+import { cn } from "@hudbird/ui";
 
 export const BaseColorPicker = () => {
   const { activeBase, setActiveBase } = useThemeEditor();

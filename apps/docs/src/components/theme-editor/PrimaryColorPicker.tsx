@@ -1,7 +1,7 @@
 import React from "react";
 import { useThemeEditor } from "./ThemeEditorContext";
 import { hexToOklch, oklchToHex, parseOklch } from "../../lib/colorUtils";
-import { cn } from "@hudbird/ui/utils/cn";
+import { cn } from "@hudbird/ui";
 
 export const PrimaryColorPicker = () => {
   const { primaryColor, setPrimaryColor } = useThemeEditor();

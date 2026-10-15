@@ -3,6 +3,7 @@
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
+// @ts-expect-error maath does not have bundled type definitions
 import * as random from "maath/random/dist/maath-random.esm";
 
 function ParticleCloud(props: any) {

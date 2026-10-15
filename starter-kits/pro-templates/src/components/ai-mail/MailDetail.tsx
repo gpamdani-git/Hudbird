@@ -194,7 +194,7 @@ export function MailDetail({
               </span>
             ))}
             {mail.aiPriority === "high" && (
-              <span className="flex items-center gap-1 rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
+              <span className="flex items-center gap-1 rounded-md bg-blue-100 px-2 py-0.5 text-[11px] font-semibold text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">
                 <Sparkles className="h-3 w-3" /> High priority
               </span>
             )}
@@ -424,7 +424,7 @@ export function MailDetail({
           {!replyOpen && mail.folder !== "sent" && (
             <div className="mt-10">
               <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
-                <Sparkles className="h-3.5 w-3.5 text-violet-500" /> Smart replies
+                <Sparkles className="h-3.5 w-3.5 text-blue-500" /> Smart replies
               </p>
               <div className="flex flex-wrap gap-2">
                 {smartReplies.map((r, i) => (
@@ -437,7 +437,7 @@ export function MailDetail({
                     whileHover={{ y: -1 }}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => aiReply(r)}
-                    className="cursor-pointer rounded-full border border-violet-200 bg-violet-50/60 px-4 py-2 text-[13px] font-medium text-violet-800 transition-colors hover:border-violet-300 hover:bg-violet-100 dark:border-violet-500/20 dark:bg-violet-500/[0.08] dark:text-violet-200 dark:hover:bg-violet-500/15"
+                    className="cursor-pointer rounded-full border border-blue-200 bg-blue-50/60 px-4 py-2 text-[13px] font-medium text-blue-800 transition-colors hover:border-blue-300 hover:bg-blue-100 dark:border-blue-500/20 dark:bg-blue-500/[0.08] dark:text-blue-200 dark:hover:bg-blue-500/15"
                   >
                     {r}
                   </motion.button>
@@ -508,7 +508,7 @@ export function MailDetail({
                     type="button"
                     onClick={() => aiReply(replyText || "reply")}
                     disabled={replyThinking.isThinking || replyStream.isStreaming}
-                    className="flex h-9 cursor-pointer items-center gap-1.5 rounded-xl bg-violet-50 px-3 text-sm font-semibold text-violet-700 transition-colors hover:bg-violet-100 disabled:opacity-50 dark:bg-violet-500/10 dark:text-violet-300"
+                    className="flex h-9 cursor-pointer items-center gap-1.5 rounded-xl bg-blue-50 px-3 text-sm font-semibold text-blue-700 transition-colors hover:bg-blue-100 disabled:opacity-50 dark:bg-blue-500/10 dark:text-blue-300"
                   >
                     <Sparkles className="h-4 w-4" /> {replyText ? "Rewrite" : "Write with AI"}
                   </button>
@@ -528,7 +528,7 @@ export function MailDetail({
                     whileTap={{ scale: 0.97 }}
                     onClick={send}
                     disabled={!shownReply.trim() || replyStream.isStreaming}
-                    className="ml-auto flex h-9 cursor-pointer items-center gap-1.5 rounded-xl bg-blue-600 px-4 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="ml-auto flex h-9 cursor-pointer items-center gap-1.5 rounded-xl bg-blue-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     Send <Send className="h-3.5 w-3.5" />
                   </motion.button>
@@ -578,42 +578,44 @@ export function MailDetail({
 export function EmptyReader({ engine }: { engine: MailEngine }) {
   const unread = engine.counts.inbox ?? 0;
   return (
-    <div className="flex h-full flex-col items-center justify-center bg-[#fafafa] px-8 text-center dark:bg-[#0c0c0d]">
+    <div className="flex h-full w-full flex-col items-center justify-center bg-[#fafafa] px-8 text-center dark:bg-[#0c0c0d]">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={spring}
-        className="relative mb-6"
+        className="relative mb-8"
       >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/30 to-violet-500/30 blur-3xl" />
-        <img
-          src="/assets/ai-mail/ai-hero.jpg"
-          alt=""
-          className="relative h-40 w-52 rounded-3xl object-cover shadow-2xl"
-        />
+        <div className="absolute inset-0 rounded-full bg-blue-500/20 blur-3xl dark:bg-blue-500/30" />
+        <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl border border-zinc-200 bg-white shadow-sm dark:border-white/10 dark:bg-zinc-900">
+          <MailIcon className="h-10 w-10 text-zinc-400 dark:text-zinc-500" />
+        </div>
       </motion.div>
       <h3 className="font-heading text-xl font-semibold text-zinc-900 dark:text-white">
         Select an email to read
       </h3>
-      <p className="mt-2 max-w-sm text-sm text-zinc-500">
+      <p className="mt-2.5 max-w-sm text-sm leading-relaxed text-zinc-500">
         You have <b className="text-zinc-900 dark:text-white">{unread} unread</b> emails. Let AI
         give you a 30-second brief of what matters.
       </p>
-      <div className="mt-6 flex gap-2">
-        <button
+      <div className="mt-8 flex gap-3">
+        <motion.button
           type="button"
+          whileHover={{ y: -1 }}
+          whileTap={{ scale: 0.97 }}
           onClick={() => engine.setView("ai")}
-          className="flex cursor-pointer items-center gap-2 rounded-2xl bg-gradient-to-r from-violet-600 to-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-600/25"
+          className="flex cursor-pointer items-center gap-2 rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white dark:bg-blue-600"
         >
           <Sparkles className="h-4 w-4" /> Get AI brief
-        </button>
-        <button
+        </motion.button>
+        <motion.button
           type="button"
+          whileHover={{ y: -1 }}
+          whileTap={{ scale: 0.97 }}
           onClick={() => engine.openCompose("new")}
-          className="cursor-pointer rounded-2xl border border-zinc-200 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-200"
+          className="cursor-pointer rounded-2xl border border-zinc-200 bg-white px-5 py-3 text-sm font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
         >
           Compose
-        </button>
+        </motion.button>
       </div>
     </div>
   );

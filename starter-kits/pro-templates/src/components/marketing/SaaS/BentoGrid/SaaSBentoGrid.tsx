@@ -90,7 +90,8 @@ export const SaaSBentoGrid = () => (
             Smart Automations
           </span>
           <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
-            Let AI handle the <span className="italic font-light text-zinc-500 dark:text-zinc-400">busywork</span>
+            Let AI handle the{" "}
+            <span className="font-light text-zinc-500 italic dark:text-zinc-400">busywork</span>
           </h2>
           <p className="mx-auto max-w-2xl text-lg leading-relaxed text-balance text-zinc-600 dark:text-zinc-400">
             Taskk automatically organizes your priorities, assigns routine tasks, and alerts you

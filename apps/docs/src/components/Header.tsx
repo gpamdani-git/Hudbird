@@ -177,7 +177,12 @@ export const Header: React.FC<HeaderProps> = ({
 
               <button
                 type="button"
-                onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
+                onClick={() => {
+                  const url = import.meta.env.DEV
+                    ? "http://localhost:5174/"
+                    : "https://starterkit-pro.vercel.app/";
+                  window.open(url, "_blank");
+                }}
                 className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-md active:scale-95"
               >
                 <Sparkles className="h-3.5 w-3.5 text-amber-300" />
@@ -274,7 +279,12 @@ export const Header: React.FC<HeaderProps> = ({
                   <DropdownItem>
                     <button
                       type="button"
-                      onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
+                      onClick={() => {
+                        const url = import.meta.env.DEV
+                          ? "http://localhost:5174/"
+                          : "https://starterkit-pro.vercel.app/";
+                        window.open(url, "_blank");
+                      }}
                       className="flex w-full items-center gap-2 font-semibold text-blue-600 dark:text-blue-400"
                     >
                       <Sparkles className="h-4 w-4 text-amber-500" />

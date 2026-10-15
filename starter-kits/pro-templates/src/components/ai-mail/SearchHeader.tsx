@@ -1,5 +1,13 @@
 import React from "react";
-import { Search, Menu, Settings, HelpCircle, Grid, SlidersHorizontal } from "lucide-react";
+import {
+  Search,
+  Menu,
+  Settings,
+  HelpCircle,
+  Grid,
+  SlidersHorizontal,
+  Mail as MailIcon,
+} from "lucide-react";
 import { Avatar } from "@/components/ui";
 
 interface SearchHeaderProps {
@@ -25,16 +33,9 @@ export function SearchHeader({
           <Menu className="h-5 w-5" />
         </button>
         <div className="flex items-center gap-2">
-          <img
-            src="/assets/new-logo/hudbirdui-icon-black.svg"
-            className="h-8 w-8 dark:hidden"
-            alt="Logo"
-          />
-          <img
-            src="/assets/new-logo/hudbirdui-icon-white.svg"
-            className="hidden h-8 w-8 dark:block"
-            alt="Logo"
-          />
+          <div className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-blue-600">
+            <MailIcon className="h-4 w-4 text-white" />
+          </div>
           <span className="text-xl font-medium tracking-tight text-zinc-600 dark:text-zinc-300">
             Mail
           </span>

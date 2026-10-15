@@ -93,7 +93,12 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
             <Button
-              onClick={() => window.open("https://starterkit-pro.vercel.app/", "_blank")}
+              onClick={() => {
+                const url = import.meta.env.DEV
+                  ? "http://localhost:5174/"
+                  : "https://starterkit-pro.vercel.app/";
+                window.open(url, "_blank");
+              }}
               className="relative overflow-hidden rounded-xl bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all hover:bg-blue-600 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)]"
             >
               <span className="relative z-10">Unlock PRO Templates</span>

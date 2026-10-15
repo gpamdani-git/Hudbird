@@ -29,6 +29,11 @@ interface ThemeEditorState {
   setExportFormat: (format: ExportFormat) => void;
   getCssString: () => string;
   getCliCommand: () => string;
+  getTailwindV4ThemeString: () => string;
+  getFigmaTokensJson: () => string;
+  getComponentsJsonSnippet: () => string;
+  isExportModalOpen: boolean;
+  setIsExportModalOpen: (open: boolean) => void;
 }
 
 const ThemeEditorContext = createContext<ThemeEditorState | undefined>(undefined);
@@ -61,6 +66,7 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [activeFontSans, setActiveFontSans] = useState<string>("Inter");
   const [activeFontHeading, setActiveFontHeading] = useState<string>("Inter");
   const [exportFormat, setExportFormat] = useState<ExportFormat>("cli");
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   // Auto-generate semantic colors based on primary color
   useEffect(() => {
@@ -180,6 +186,136 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     return `# 1. Initialize Hudbird UI in your project\nnpx hudbird-ui@latest init\n\n# 2. Add individual components\nnpx hudbird-ui@latest add Button Input Select Badge Alert\n\n# 3. Paste the lightweight CSS theme above into your index.css`;
   };
 
+  const getTailwindV4ThemeString = () => {
+    const { c, h } = parseOklch(primaryColor);
+    const { light } = generateThemeColorScales(c, h);
+
+    const generateSemanticScales = (scaleName: string, colorStr: string) => {
+      const { c: sc, h: sh } = parseOklch(colorStr);
+      const { light: sl } = generateThemeColorScales(sc, sh);
+      let scaleCss = "";
+      for (const [k, v] of Object.entries(sl)) {
+        scaleCss += `  --color-${scaleName}-${k}: oklch(${v});\n`;
+      }
+      return scaleCss;
+    };
+
+    let theme = `/*\n * Hudbird UI — Tailwind CSS v4 Theme\n * Paste into your src/index.css beneath @import "tailwindcss";\n */\n@theme {\n`;
+    theme += `  /* Primary Palette (OKLCH) */\n`;
+    for (const [k, v] of Object.entries(light)) {
+      theme += `  --color-primary-${k}: oklch(${v});\n`;
+    }
+    theme += `  --color-primary: var(--color-primary-500);\n`;
+    theme += `  --color-primary-hover: var(--color-primary-600);\n`;
+    theme += `  --color-primary-active: var(--color-primary-700);\n\n`;
+
+    theme += `  /* Semantic Color Scales */\n`;
+    theme += generateSemanticScales("emerald", successColor);
+    theme += `  --color-success: var(--color-emerald-500);\n`;
+    theme += generateSemanticScales("amber", warningColor);
+    theme += `  --color-warning: var(--color-amber-500);\n`;
+    theme += generateSemanticScales("rose", destructiveColor);
+    theme += `  --color-danger: var(--color-rose-500);\n`;
+    theme += generateSemanticScales("sky", infoColor);
+    theme += `  --color-info: var(--color-sky-500);\n\n`;
+
+    theme += `  /* Border Radii */\n`;
+    theme += `  --radius-sm: calc(${activeRadius}rem - 4px);\n`;
+    theme += `  --radius-md: calc(${activeRadius}rem - 2px);\n`;
+    theme += `  --radius-lg: ${activeRadius}rem;\n`;
+    theme += `  --radius-xl: calc(${activeRadius}rem + 4px);\n`;
+    theme += `  --radius-2xl: calc(${activeRadius}rem + 8px);\n`;
+    theme += `  --radius-3xl: calc(${activeRadius}rem + 12px);\n\n`;
+
+    theme += `  /* Typography */\n`;
+    theme += `  --font-sans: "${activeFontSans}", sans-serif;\n`;
+    theme += `  --font-heading: "${activeFontHeading}", sans-serif;\n`;
+    theme += `}\n`;
+
+    return theme;
+  };
+
+  const getFigmaTokensJson = () => {
+    const { c, h } = parseOklch(primaryColor);
+    const { light } = generateThemeColorScales(c, h);
+
+    const buildScaleObject = (colorStr: string) => {
+      const { c: sc, h: sh } = parseOklch(colorStr);
+      const { light: sl } = generateThemeColorScales(sc, sh);
+      const scaleObj: Record<string, { value: string; type: string }> = {};
+      for (const [k, v] of Object.entries(sl)) {
+        scaleObj[k] = {
+          value: `oklch(${v})`,
+          type: "color",
+        };
+      }
+      return scaleObj;
+    };
+
+    const primaryObj: Record<string, { value: string; type: string }> = {};
+    for (const [k, v] of Object.entries(light)) {
+      primaryObj[k] = {
+        value: `oklch(${v})`,
+        type: "color",
+      };
+    }
+
+    const radiusPx = Math.round(activeRadius * 16);
+
+    const tokens = {
+      hudbird: {
+        color: {
+          primary: primaryObj,
+          semantic: {
+            emerald: buildScaleObject(successColor),
+            amber: buildScaleObject(warningColor),
+            rose: buildScaleObject(destructiveColor),
+            sky: buildScaleObject(infoColor),
+          },
+        },
+        borderRadius: {
+          none: { value: "0px", type: "borderRadius" },
+          sm: { value: `${Math.max(0, radiusPx - 4)}px`, type: "borderRadius" },
+          md: { value: `${Math.max(0, radiusPx - 2)}px`, type: "borderRadius" },
+          lg: { value: `${radiusPx}px`, type: "borderRadius" },
+          xl: { value: `${radiusPx + 4}px`, type: "borderRadius" },
+          "2xl": { value: `${radiusPx + 8}px`, type: "borderRadius" },
+          full: { value: "9999px", type: "borderRadius" },
+        },
+        fontFamilies: {
+          sans: { value: activeFontSans, type: "fontFamilies" },
+          heading: { value: activeFontHeading, type: "fontFamilies" },
+        },
+      },
+      $themes: [],
+      $metadata: {
+        tokenSetOrder: ["hudbird"],
+      },
+    };
+
+    return JSON.stringify(tokens, null, 2);
+  };
+
+  const getComponentsJsonSnippet = () => {
+    return JSON.stringify(
+      {
+        $schema: "https://hudbird.vercel.app/schema.json",
+        style: "default",
+        tailwind: {
+          version: 4,
+          css: "src/index.css",
+          baseColor: activeBase,
+        },
+        aliases: {
+          components: "@/components/hudbird-ui",
+          utils: "@/components/hudbird-ui/utils",
+        },
+      },
+      null,
+      2
+    );
+  };
+
   useEffect(() => {
     // Scope = the preview wrapper in ThemesDoc, not the global :root
     // This prevents Theme Editor changes from modifying the rest of the app
@@ -250,6 +386,11 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
         setExportFormat,
         getCssString,
         getCliCommand,
+        getTailwindV4ThemeString,
+        getFigmaTokensJson,
+        getComponentsJsonSnippet,
+        isExportModalOpen,
+        setIsExportModalOpen,
       }}
     >
       {children}

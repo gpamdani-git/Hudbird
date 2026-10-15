@@ -51,7 +51,7 @@ const switchTrackVariants = cva(
       {
         isChecked: true,
         color: "warning",
-        className: "bg-blue-500 hover:bg-amber-600",
+        className: "bg-amber-500 hover:bg-amber-600",
       },
     ],
     defaultVariants: {

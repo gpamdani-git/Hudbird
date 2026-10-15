@@ -1700,6 +1700,15 @@ export const TemplateMarquee = () => {
           </h2>
           <Button
             variant="outline"
+            onClick={() => {
+              const isDev = Boolean(
+                typeof window !== "undefined" &&
+                (window.location.hostname === "localhost" ||
+                  window.location.hostname === "127.0.0.1")
+              );
+              const url = isDev ? "http://localhost:5174/" : "https://starterkit-pro.vercel.app/";
+              window.open(url, "_blank");
+            }}
             className="w-fit rounded-xl border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"
           >
             Browse all templates

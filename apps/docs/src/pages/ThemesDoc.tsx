@@ -13,6 +13,7 @@ import {
   Alert,
 } from "@hudbird/ui";
 import { Search, Bell, Settings, CreditCard, Activity, Users, ArrowUpRight } from "lucide-react";
+import { ThemeSyncBar } from "../components/theme-editor/ThemeSyncBar";
 
 export default function ThemesDoc() {
   const [tab, setTab] = useState("overview");
@@ -21,15 +22,19 @@ export default function ThemesDoc() {
     <div className="mx-auto w-full">
       <div className="mt-16 mb-8 max-w-5xl px-4 sm:px-6">
         <h1 className="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          Theme Builder
+          Theme Builder &amp; Token Sync
         </h1>
         <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-          Customize your design system. Choose your colors, typography, and radius on the right, and
-          watch the entire dashboard adapt instantly.
+          Customize your design system in real-time. Tune colors, typography, and border radiuses,
+          and export production-ready Tailwind v4 <code className="text-xs">@theme</code> directives
+          or Figma Tokens Studio DTCG JSON.
         </p>
       </div>
 
       <div className="w-full max-w-5xl px-4 pb-16 sm:px-6">
+        {/* Interactive Theme Token Sync & Exporter Bar */}
+        <ThemeSyncBar />
+
         {/* Dashboard Mockup - scoped for Theme Editor CSS injection */}
         <div data-theme-preview className="w-full">
           <div className="flex flex-col gap-6">

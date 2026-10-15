@@ -91,7 +91,10 @@ export const SaaSPricing = () => {
             Simple Pricing
           </PricingBadge>
           <PricingTitle className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
-            Predictable costs, <span className="italic font-light text-zinc-500 dark:text-zinc-400">unlimited scale</span>
+            Predictable costs,{" "}
+            <span className="font-light text-zinc-500 italic dark:text-zinc-400">
+              unlimited scale
+            </span>
           </PricingTitle>
           <PricingDescription className="mx-auto max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
             Start free for 14 days. Cancel anytime. No hidden compute fees or per-query penalties.

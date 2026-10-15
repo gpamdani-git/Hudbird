@@ -47,7 +47,7 @@ interface TopBarProps {
 const NOTIF_ICON = { mail: MailIcon, ai: Sparkles, calendar: CalendarDays, system: Crown } as const;
 const NOTIF_TONE = {
   mail: "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400",
-  ai: "bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400",
+  ai: "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400",
   calendar: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
   system: "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
 } as const;
@@ -199,10 +199,10 @@ export function TopBar({
                 setSearchOpen(false);
                 onOpenAssistant();
               }}
-              className="mt-1 flex w-full cursor-pointer items-center gap-3 rounded-xl bg-gradient-to-r from-violet-50 to-sky-50 px-3 py-2.5 text-left text-sm dark:from-violet-500/10 dark:to-sky-500/10"
+              className="mt-1 flex w-full cursor-pointer items-center gap-3 rounded-xl bg-blue-50 px-3 py-2.5 text-left text-sm dark:bg-blue-500/10"
             >
-              <Sparkles className="h-4 w-4 text-violet-500" />
-              <span className="flex-1 text-zinc-700 dark:text-zinc-200">
+              <Sparkles className="h-4 w-4 text-blue-500" />
+              <span className="flex-1 text-blue-700 dark:text-zinc-200">
                 Ask AI: "What needs my reply today?"
               </span>
             </button>
@@ -336,9 +336,9 @@ export function TopBar({
           whileTap={{ scale: 0.96 }}
           onClick={onOpenAssistant}
           aria-label="Open AI assistant"
-          className="group relative flex h-9 cursor-pointer items-center gap-1.5 overflow-hidden rounded-xl px-2.5 text-sm font-semibold text-white shadow-[0_6px_20px_-6px_rgba(139,92,246,0.7)] sm:px-3"
+          className="group relative flex h-9 cursor-pointer items-center gap-1.5 overflow-hidden rounded-xl px-2.5 text-sm font-semibold text-white sm:px-3"
         >
-          <span className="absolute inset-0 bg-[linear-gradient(110deg,#4f46e5,#7c3aed,#db2777,#4f46e5)] bg-[length:200%_100%] transition-[background-position] duration-700 group-hover:bg-[position:100%_0]" />
+          <span className="absolute inset-0 bg-blue-600 transition-colors duration-300 group-hover:bg-blue-700 dark:bg-blue-600 dark:group-hover:bg-blue-700" />
           <Sparkles className="relative h-4 w-4" />
           <span className="relative hidden sm:inline">Ask AI</span>
         </motion.button>
@@ -474,7 +474,7 @@ export function TopBar({
                 engine.setView("upgrade");
                 setProfileOpen(false);
               }}
-              className="mx-1 mb-1 flex w-[calc(100%-0.5rem)] cursor-pointer items-center justify-between rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-3 py-2 text-xs font-semibold text-white"
+              className="mx-1 mb-1 flex w-[calc(100%-0.5rem)] cursor-pointer items-center justify-between rounded-xl bg-blue-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-blue-700"
             >
               <span className="flex items-center gap-1.5">
                 <Crown className="h-3.5 w-3.5" /> Free plan

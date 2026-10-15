@@ -11,7 +11,7 @@ import {
   SaaSTestimonials,
   SaaSCta,
   SaaSFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/saas";
 
 export const SaaSTemplate = () => {
   return (

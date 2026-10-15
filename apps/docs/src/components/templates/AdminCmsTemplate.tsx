@@ -23,8 +23,8 @@ import {
   AdminSecurity,
   AdminProfile,
   AdminInbox,
-} from "@hudbird/marketing";
-import type { AdminPage } from "@hudbird/marketing";
+} from "@hudbird/marketing/admin";
+import type { AdminPage } from "@hudbird/marketing/admin";
 import { Button } from "@hudbird/ui";
 import { Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

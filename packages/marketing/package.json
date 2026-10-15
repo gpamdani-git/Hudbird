@@ -9,6 +9,61 @@
       "types": "./dist/index.d.mts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./saas": {
+      "types": "./dist/saas.d.mts",
+      "import": "./dist/saas.mjs",
+      "require": "./dist/saas.js"
+    },
+    "./fintech": {
+      "types": "./dist/fintech.d.mts",
+      "import": "./dist/fintech.mjs",
+      "require": "./dist/fintech.js"
+    },
+    "./ecommerce": {
+      "types": "./dist/ecommerce.d.mts",
+      "import": "./dist/ecommerce.mjs",
+      "require": "./dist/ecommerce.js"
+    },
+    "./ai": {
+      "types": "./dist/ai.d.mts",
+      "import": "./dist/ai.mjs",
+      "require": "./dist/ai.js"
+    },
+    "./ai-startup": {
+      "types": "./dist/ai.d.mts",
+      "import": "./dist/ai.mjs",
+      "require": "./dist/ai.js"
+    },
+    "./agency": {
+      "types": "./dist/agency.d.mts",
+      "import": "./dist/agency.mjs",
+      "require": "./dist/agency.js"
+    },
+    "./hospitality": {
+      "types": "./dist/hospitality.d.mts",
+      "import": "./dist/hospitality.mjs",
+      "require": "./dist/hospitality.js"
+    },
+    "./admin": {
+      "types": "./dist/admin.d.mts",
+      "import": "./dist/admin.mjs",
+      "require": "./dist/admin.js"
+    },
+    "./admin-cms": {
+      "types": "./dist/admin.d.mts",
+      "import": "./dist/admin.mjs",
+      "require": "./dist/admin.js"
+    },
+    "./modern-app": {
+      "types": "./dist/modern-app.d.mts",
+      "import": "./dist/modern-app.mjs",
+      "require": "./dist/modern-app.js"
+    },
+    "./3d": {
+      "types": "./dist/3d.d.mts",
+      "import": "./dist/3d.mjs",
+      "require": "./dist/3d.js"
     }
   },
   "scripts": {

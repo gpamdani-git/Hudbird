@@ -122,7 +122,8 @@ export const SaaSCta = () => (
 
           {/* Title */}
           <h2 className="mb-6 text-5xl leading-tight font-bold tracking-tight text-balance text-zinc-900 sm:text-6xl dark:text-white">
-            Ready to transform how your team <span className="italic font-light text-zinc-500 dark:text-zinc-400">works?</span>
+            Ready to transform how your team{" "}
+            <span className="font-light text-zinc-500 italic dark:text-zinc-400">works?</span>
           </h2>
 
           {/* Subtitle */}

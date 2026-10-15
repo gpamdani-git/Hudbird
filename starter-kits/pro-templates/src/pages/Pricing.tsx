@@ -8,11 +8,11 @@ export function Pricing() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-zinc-50 selection:bg-zinc-200/50 dark:bg-[#070912]">
       <SaaSNavbar />
-      
+
       <div className="pt-24 sm:pt-32">
         <SaaSPricing />
       </div>
-      
+
       <SaaSFaq />
       <SaaSFooter />
     </div>

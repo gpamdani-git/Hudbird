@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const pagesDir = path.join(__dirname, '../apps/docs/src/pages');
+const pagesDir = path.join(__dirname, "../apps/docs/src/pages");
 
 function processDirectory(directory) {
   const files = fs.readdirSync(directory);
@@ -9,32 +9,36 @@ function processDirectory(directory) {
     const fullPath = path.join(directory, file);
     const stat = fs.statSync(fullPath);
     if (stat.isDirectory()) {
-      if (file !== 'demos') { // skip demos
+      if (file !== "demos") {
+        // skip demos
         processDirectory(fullPath);
       }
-    } else if (file.endsWith('Doc.tsx')) {
+    } else if (file.endsWith("Doc.tsx")) {
       processFile(fullPath);
     }
   }
 }
 
 function processFile(filePath) {
-  let content = fs.readFileSync(filePath, 'utf8');
-  
-  if (content.includes('<PageToolbar />')) {
+  let content = fs.readFileSync(filePath, "utf8");
+
+  if (content.includes("<PageToolbar />")) {
     return;
   }
 
   // 1. Add import
-  const isMarketing = filePath.includes('/marketing/');
-  const importPath = isMarketing ? `import { PageToolbar } from "../../components/PageToolbar";\n` : `import { PageToolbar } from "../components/PageToolbar";\n`;
+  const isMarketing = filePath.includes("/marketing/");
+  const importPath = isMarketing
+    ? `import { PageToolbar } from "../../components/PageToolbar";\n`
+    : `import { PageToolbar } from "../components/PageToolbar";\n`;
 
   // Insert import after React imports
   content = content.replace(/(import React.*?;\n)/, `$1${importPath}`);
 
   // 2. Find the Title block
-  const regex = /(\{\/\* Title.*? \*\/\}\s*)<div(?: className=".*?")?>(\s*<div className="mb-3 flex items-center gap-3">[\s\S]*?<\/p>\s*)<\/div>/;
-  
+  const regex =
+    /(\{\/\* Title.*? \*\/\}\s*)<div(?: className=".*?")?>(\s*<div className="mb-3 flex items-center gap-3">[\s\S]*?<\/p>\s*)<\/div>/;
+
   const match = content.match(regex);
   if (match) {
     const replacement = `${match[1]}<div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">

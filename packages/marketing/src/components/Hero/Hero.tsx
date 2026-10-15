@@ -92,7 +92,13 @@ Hero.displayName = "Hero";
 
 // --- Header ---
 
-type LinkItem = { label: string; href?: string; className?: string; items?: { label: string; href: string }[]; onClick?: (e: React.MouseEvent) => void };
+type LinkItem = {
+  label: string;
+  href?: string;
+  className?: string;
+  items?: { label: string; href: string }[];
+  onClick?: (e: React.MouseEvent) => void;
+};
 
 interface HeroHeaderProps extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
@@ -154,7 +160,10 @@ const HeroHeader = React.forwardRef<HTMLElement, HeroHeaderProps>(
                   key={item.label}
                   href={item.href}
                   onClick={item.onClick}
-                  className={cn("text-sm leading-6 font-semibold transition-opacity hover:opacity-80", item.className)}
+                  className={cn(
+                    "text-sm leading-6 font-semibold transition-opacity hover:opacity-80",
+                    item.className
+                  )}
                 >
                   {item.label}
                 </a>

@@ -11,7 +11,7 @@ import {
   FintechTestimonials,
   FintechCta,
   FintechFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/fintech";
 
 export const FintechTemplate = () => {
   return (

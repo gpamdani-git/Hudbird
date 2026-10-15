@@ -15,5 +15,7 @@
       "@hudbird/theme": ["packages/theme/src/index.ts"],
       "@hudbird/marketing": ["packages/marketing/src/index.ts"]
     }
-  }
+  },
+  "include": ["src/**/*", "vite.config.ts"],
+  "exclude": ["node_modules", "dist", "packages/**/*", "starter-kits/**/*", "apps/**/*"]
 }

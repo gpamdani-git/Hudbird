@@ -4,7 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-export type BadgeVariant = "solid" | "soft" | "outline";
+export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "default";
 export type BadgeColor = "primary" | "secondary" | "success" | "warning" | "danger" | "info";
 export type BadgeSize = "sm" | "md" | "lg";
 export type BadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -17,6 +17,8 @@ const badgeVariants = cva(
         solid: "text-white font-semibold shadow-xs",
         soft: "font-semibold",
         outline: "bg-transparent border",
+        flat: "font-medium",
+        default: "text-white font-semibold shadow-xs",
       },
       color: {
         primary: "",
@@ -139,6 +141,71 @@ const badgeVariants = cva(
         color: "info",
         className:
           "border-sky-600 text-sky-700 hover:bg-sky-50 dark:border-sky-500 dark:text-sky-400 dark:hover:bg-sky-500/15",
+      },
+
+      // Flat Variants
+      {
+        variant: "flat",
+        color: "primary",
+        className: "bg-primary-50 text-primary-700 dark:bg-primary-500/15 dark:text-primary-400",
+      },
+      {
+        variant: "flat",
+        color: "secondary",
+        className:
+          "bg-secondary-50 text-secondary-700 dark:bg-secondary-500/15 dark:text-secondary-400",
+      },
+      {
+        variant: "flat",
+        color: "success",
+        className: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400",
+      },
+      {
+        variant: "flat",
+        color: "warning",
+        className: "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-400",
+      },
+      {
+        variant: "flat",
+        color: "danger",
+        className: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-400",
+      },
+      {
+        variant: "flat",
+        color: "info",
+        className: "bg-sky-50 text-sky-700 dark:bg-sky-500/15 dark:text-sky-400",
+      },
+
+      // Default Variants
+      {
+        variant: "default",
+        color: "primary",
+        className: "bg-primary text-primary-foreground",
+      },
+      {
+        variant: "default",
+        color: "secondary",
+        className: "bg-secondary text-secondary-foreground",
+      },
+      {
+        variant: "default",
+        color: "success",
+        className: "bg-emerald-600 text-white dark:bg-emerald-500",
+      },
+      {
+        variant: "default",
+        color: "warning",
+        className: "bg-amber-500 text-zinc-950 font-bold dark:bg-amber-400",
+      },
+      {
+        variant: "default",
+        color: "danger",
+        className: "bg-rose-600 text-white dark:bg-rose-500",
+      },
+      {
+        variant: "default",
+        color: "info",
+        className: "bg-sky-600 text-white dark:bg-sky-500",
       },
     ],
     defaultVariants: {

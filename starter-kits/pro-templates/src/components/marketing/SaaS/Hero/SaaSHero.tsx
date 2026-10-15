@@ -123,7 +123,8 @@ export const SaaSHero = () => (
         >
           <HeroTitle className="mt-4 text-center text-5xl leading-tight font-semibold tracking-tight text-balance text-zinc-900 sm:text-6xl md:text-[4rem] dark:text-white">
             Manage All of Your Work In
-            <br className="hidden md:block" /> One Place <span className="italic font-light text-zinc-500 dark:text-zinc-400">Efficiently</span>
+            <br className="hidden md:block" /> One Place{" "}
+            <span className="font-light text-zinc-500 italic dark:text-zinc-400">Efficiently</span>
           </HeroTitle>
         </motion.div>
 
@@ -148,7 +149,7 @@ export const SaaSHero = () => (
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full flex-1 bg-transparent text-sm text-zinc-900 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 outline-none dark:text-white"
+              className="w-full flex-1 bg-transparent text-sm text-zinc-900 outline-none placeholder:text-zinc-500 dark:text-white dark:placeholder:text-zinc-400"
               required
             />
             <button

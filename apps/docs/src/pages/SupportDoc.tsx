@@ -183,8 +183,45 @@ export default function SupportDoc() {
             </p>
             <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
               Jika komponen sudah ada, CLI akan menanyakan konfirmasi sebelum menimpa file. Jawab{" "}
-              <Code>N</Code> untuk melewati dan menjaga kustomisasi Anda.
+              <Code>N</Code> untuk melewati dan menjaga kustomisasi Anda, atau gunakan flag{" "}
+              <Code>--overwrite</Code> jika ingin menimpa langsung.
             </p>
+          </div>
+        </div>
+
+        {/* Step 3: List & Diff */}
+        <div className="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+          <div className="flex items-center gap-3">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-sm font-bold text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+              3
+            </span>
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Cek Status &amp; Diff Upstream (list &amp; diff)
+            </h3>
+          </div>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Ketahui status instalasi 62 komponen secara real-time dan bandingkan modifikasi lokal
+            dengan registry upstream menggunakan diff engine:
+          </p>
+          <CodeBlock
+            code={`# Lihat semua komponen terpasang vs tersedia\nnpx hudbird-ui@latest list\n\n# Bandingkan perubahan kode lokal dengan upstream\nnpx hudbird-ui@latest diff Button\n\n# Scan seluruh project untuk komponen yang termodifikasi\nnpx hudbird-ui@latest diff`}
+          />
+          <div className="flex items-center justify-between rounded-lg border border-indigo-200 bg-indigo-50/50 p-4 dark:border-indigo-900/50 dark:bg-indigo-950/20">
+            <div>
+              <p className="text-xs font-semibold text-indigo-900 dark:text-indigo-200">
+                Dokumentasi CLI Lengkap Tersedia
+              </p>
+              <p className="mt-0.5 text-xs text-indigo-700/80 dark:text-indigo-300/80">
+                Pelajari konfigurasi <Code>components.json</Code>, interactive multi-select, dan
+                monorepo tooling di halaman CLI Reference.
+              </p>
+            </div>
+            <a
+              href="#/cli"
+              className="inline-flex shrink-0 items-center gap-1 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-indigo-500"
+            >
+              Buka CLI Docs &rarr;
+            </a>
           </div>
         </div>
 

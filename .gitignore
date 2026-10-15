@@ -1,9 +1,50 @@
+# Dependencies
 node_modules/
+.pnpm-store/
+
+# Production & Build outputs
 build/
 dist/
+**/dist/
+dist-releases/
+dist.css
+*.tsbuildinfo
+
+# Turbo & Cache
+.turbo/
+.cache/
+.eslintcache
+
+# Testing & Coverage
 coverage/
-.DS_Store
-*.log
+test-results/
+playwright-report/
+test_*.txt
+test_tabs.txt
+test_themes.txt
+extracted.txt
+apps/docs/test-*.js
+apps/docs/test-*.cjs
+apps/docs/fix-*.js
+apps/docs/fix-*.cjs
+apps/docs/check-*.js
+apps/docs/test.css
+
+# Binary archives & Large Starter Kits
+*.zip
+*.tar.gz
+*.tgz
+BlankUI-Pro-StarterKit.zip
+starter-kits/*.zip
+
+# Environment & Secrets
 .env*
 !.env.example
-.turbo
+
+# OS & Editor
+.DS_Store
+*.log
+*.local
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

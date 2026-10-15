@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/cn";
+import { Slot } from "../Slot";
 
 export type ButtonVariant =
   "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain";
@@ -68,28 +69,28 @@ const buttonVariants = cva(
         light: "focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-zinc-950",
         "dark/zinc": "focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-950",
         "dark/white": "focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-950",
-        red: "focus-visible:ring-zinc-500",
-        orange: "focus-visible:ring-zinc-500",
-        amber: "focus-visible:ring-zinc-500",
-        yellow: "focus-visible:ring-zinc-500",
+        red: "focus-visible:ring-red-500",
+        orange: "focus-visible:ring-orange-500",
+        amber: "focus-visible:ring-amber-500",
+        yellow: "focus-visible:ring-yellow-500",
         lime: "focus-visible:ring-lime-500",
         green: "focus-visible:ring-green-500",
-        emerald: "focus-visible:ring-zinc-500",
-        teal: "focus-visible:ring-zinc-500",
-        cyan: "focus-visible:ring-zinc-500",
-        sky: "focus-visible:ring-zinc-500",
-        blue: "focus-visible:ring-zinc-500",
-        indigo: "focus-visible:ring-zinc-500",
-        violet: "focus-visible:ring-zinc-500",
-        purple: "focus-visible:ring-zinc-500",
-        fuchsia: "focus-visible:ring-zinc-500",
-        pink: "focus-visible:ring-zinc-500",
-        rose: "focus-visible:ring-zinc-500",
+        emerald: "focus-visible:ring-emerald-500",
+        teal: "focus-visible:ring-teal-500",
+        cyan: "focus-visible:ring-cyan-500",
+        sky: "focus-visible:ring-sky-500",
+        blue: "focus-visible:ring-blue-500",
+        indigo: "focus-visible:ring-indigo-500",
+        violet: "focus-visible:ring-violet-500",
+        purple: "focus-visible:ring-purple-500",
+        fuchsia: "focus-visible:ring-fuchsia-500",
+        pink: "focus-visible:ring-pink-500",
+        rose: "focus-visible:ring-rose-500",
       },
       size: {
         sm: "h-8 px-3 text-xs gap-1.5",
-        md: "h-10 px-4 text-sm gap-2",
-        lg: "h-12 px-5 text-base gap-2.5",
+        md: "h-9 px-4 text-sm gap-2",
+        lg: "h-11 px-5 text-base gap-2.5",
       },
       radius: {
         none: "rounded-none",
@@ -111,12 +112,32 @@ const buttonVariants = cva(
       {
         isIconOnly: true,
         size: "md",
-        className: "w-10 h-10",
+        className: "w-9 h-9",
       },
       {
         isIconOnly: true,
         size: "lg",
-        className: "w-12 h-12",
+        className: "w-11 h-11",
+      },
+
+      // Capsule (radius: "full") extra padding to prevent trailing icons/chevrons from hitting corner curve
+      {
+        radius: "full",
+        size: "sm",
+        isIconOnly: false,
+        className: "px-3.5",
+      },
+      {
+        radius: "full",
+        size: "md",
+        isIconOnly: false,
+        className: "px-5",
+      },
+      {
+        radius: "full",
+        size: "lg",
+        isIconOnly: false,
+        className: "px-6",
       },
 
       // ==========================================
@@ -138,25 +159,25 @@ const buttonVariants = cva(
         variant: "solid",
         color: "success",
         className:
-          "bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 dark:bg-blue-500 dark:hover:bg-emerald-600",
+          "bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 dark:bg-emerald-500 dark:hover:bg-emerald-600",
       },
       {
         variant: "solid",
         color: "warning",
         className:
-          "bg-blue-500 text-zinc-950 font-bold hover:bg-amber-600 active:bg-amber-700 dark:bg-amber-400 dark:hover:bg-blue-500",
+          "bg-amber-500 text-zinc-950 font-bold hover:bg-amber-600 active:bg-amber-700 dark:bg-amber-400 dark:hover:bg-amber-500",
       },
       {
         variant: "solid",
         color: "danger",
         className:
-          "bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 dark:bg-blue-500 dark:hover:bg-rose-600",
+          "bg-rose-600 text-white hover:bg-rose-700 active:bg-rose-800 dark:bg-rose-500 dark:hover:bg-rose-600",
       },
       {
         variant: "solid",
         color: "info",
         className:
-          "bg-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 dark:bg-blue-500 dark:hover:bg-sky-600",
+          "bg-sky-600 text-white hover:bg-sky-700 active:bg-sky-800 dark:bg-sky-500 dark:hover:bg-sky-600",
       },
       {
         variant: "solid",
@@ -208,7 +229,7 @@ const buttonVariants = cva(
         variant: "solid",
         color: "amber",
         className:
-          "bg-blue-500 text-zinc-950 font-bold hover:bg-amber-400 dark:bg-amber-400 dark:text-zinc-950",
+          "bg-amber-500 text-zinc-950 font-bold hover:bg-amber-400 dark:bg-amber-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
@@ -232,24 +253,24 @@ const buttonVariants = cva(
         variant: "solid",
         color: "emerald",
         className:
-          "bg-emerald-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-emerald-400",
+          "bg-emerald-600 text-white hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400",
       },
       {
         variant: "solid",
         color: "teal",
         className:
-          "bg-teal-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-teal-400",
+          "bg-teal-600 text-white hover:bg-teal-500 dark:bg-teal-500 dark:hover:bg-teal-400",
       },
       {
         variant: "solid",
         color: "cyan",
         className:
-          "bg-blue-500 text-zinc-950 font-bold hover:bg-cyan-400 dark:bg-cyan-400 dark:text-zinc-950",
+          "bg-cyan-500 text-zinc-950 font-bold hover:bg-cyan-400 dark:bg-cyan-400 dark:text-zinc-950",
       },
       {
         variant: "solid",
         color: "sky",
-        className: "bg-blue-500 text-white hover:bg-sky-400 dark:bg-sky-400 dark:hover:bg-sky-300",
+        className: "bg-sky-500 text-white hover:bg-sky-400 dark:bg-sky-400 dark:hover:bg-sky-300",
       },
       {
         variant: "solid",
@@ -261,13 +282,13 @@ const buttonVariants = cva(
         variant: "solid",
         color: "indigo",
         className:
-          "bg-indigo-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-indigo-400",
+          "bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400",
       },
       {
         variant: "solid",
         color: "violet",
         className:
-          "bg-violet-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-violet-400",
+          "bg-violet-600 text-white hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400",
       },
       {
         variant: "solid",
@@ -279,7 +300,7 @@ const buttonVariants = cva(
         variant: "solid",
         color: "fuchsia",
         className:
-          "bg-fuchsia-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-fuchsia-400",
+          "bg-fuchsia-600 text-white hover:bg-fuchsia-500 dark:bg-fuchsia-500 dark:hover:bg-fuchsia-400",
       },
       {
         variant: "solid",
@@ -291,7 +312,7 @@ const buttonVariants = cva(
         variant: "solid",
         color: "rose",
         className:
-          "bg-rose-600 text-white hover:bg-blue-500 dark:bg-blue-500 dark:hover:bg-rose-400",
+          "bg-rose-600 text-white hover:bg-rose-500 dark:bg-rose-500 dark:hover:bg-rose-400",
       },
 
       // ==========================================
@@ -313,25 +334,25 @@ const buttonVariants = cva(
         variant: ["bordered", "outline"],
         color: "success",
         className:
-          "border-zinc-600 text-emerald-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-blue-500/15",
+          "border-emerald-600 text-emerald-700 hover:bg-emerald-50 active:bg-emerald-100 dark:border-emerald-400 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
         variant: ["bordered", "outline"],
         color: "warning",
         className:
-          "border-zinc-500 text-amber-600 hover:bg-zinc-100/50 active:bg-zinc-100 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-blue-500/15",
+          "border-amber-500 text-amber-600 hover:bg-amber-50 active:bg-amber-100 dark:border-amber-400 dark:text-amber-400 dark:hover:bg-amber-500/15",
       },
       {
         variant: ["bordered", "outline"],
         color: "danger",
         className:
-          "border-zinc-600 text-rose-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-blue-500/15",
+          "border-rose-600 text-rose-700 hover:bg-rose-50 active:bg-rose-100 dark:border-rose-400 dark:text-rose-400 dark:hover:bg-rose-500/15",
       },
       {
         variant: ["bordered", "outline"],
         color: "info",
         className:
-          "border-zinc-600 text-sky-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:border-sky-400 dark:text-sky-400 dark:hover:bg-blue-500/15",
+          "border-sky-600 text-sky-700 hover:bg-sky-50 active:bg-sky-100 dark:border-sky-400 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
       {
         variant: "bordered",
@@ -343,7 +364,7 @@ const buttonVariants = cva(
         variant: "bordered",
         color: "blue",
         className:
-          "border-zinc-600 text-blue-600 hover:bg-zinc-100/50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-zinc-950/40",
+          "border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-950/40",
       },
 
       // ==========================================
@@ -365,25 +386,25 @@ const buttonVariants = cva(
         variant: ["flat", "soft"],
         color: "success",
         className:
-          "bg-zinc-100/50 text-emerald-700 hover:bg-zinc-100 active:bg-emerald-200 dark:bg-blue-500/15 dark:text-emerald-400 dark:hover:bg-blue-500/25",
+          "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 active:bg-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:hover:bg-emerald-500/25",
       },
       {
         variant: ["flat", "soft"],
         color: "warning",
         className:
-          "bg-zinc-100/50 text-amber-600 hover:bg-zinc-100 active:bg-amber-200 dark:bg-blue-500/15 dark:text-amber-400 dark:hover:bg-blue-500/25",
+          "bg-amber-50 text-amber-600 hover:bg-amber-100 active:bg-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:hover:bg-amber-500/25",
       },
       {
         variant: ["flat", "soft"],
         color: "danger",
         className:
-          "bg-zinc-100/50 text-rose-700 hover:bg-zinc-100 active:bg-rose-200 dark:bg-blue-500/15 dark:text-rose-400 dark:hover:bg-blue-500/25",
+          "bg-rose-50 text-rose-700 hover:bg-rose-100 active:bg-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:hover:bg-rose-500/25",
       },
       {
         variant: ["flat", "soft"],
         color: "info",
         className:
-          "bg-zinc-100/50 text-sky-700 hover:bg-zinc-100 active:bg-sky-200 dark:bg-blue-500/15 dark:text-sky-400 dark:hover:bg-blue-500/25",
+          "bg-sky-50 text-sky-700 hover:bg-sky-100 active:bg-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:hover:bg-sky-500/25",
       },
       {
         variant: "flat",
@@ -411,25 +432,25 @@ const buttonVariants = cva(
         variant: ["light", "ghost"],
         color: "success",
         className:
-          "text-emerald-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:text-emerald-400 dark:hover:bg-blue-500/15",
+          "text-emerald-700 hover:bg-emerald-50 active:bg-emerald-100 dark:text-emerald-400 dark:hover:bg-emerald-500/15",
       },
       {
         variant: ["light", "ghost"],
         color: "warning",
         className:
-          "text-amber-600 hover:bg-zinc-100/50 active:bg-zinc-100 dark:text-amber-400 dark:hover:bg-blue-500/15",
+          "text-amber-600 hover:bg-amber-50 active:bg-amber-100 dark:text-amber-400 dark:hover:bg-amber-500/15",
       },
       {
         variant: ["light", "ghost"],
         color: "danger",
         className:
-          "text-rose-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:text-rose-400 dark:hover:bg-blue-500/15",
+          "text-rose-700 hover:bg-rose-50 active:bg-rose-100 dark:text-rose-400 dark:hover:bg-rose-500/15",
       },
       {
         variant: ["light", "ghost"],
         color: "info",
         className:
-          "text-sky-700 hover:bg-zinc-100/50 active:bg-zinc-100 dark:text-sky-400 dark:hover:bg-blue-500/15",
+          "text-sky-700 hover:bg-sky-50 active:bg-sky-100 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
       {
         variant: "light",
@@ -473,6 +494,10 @@ export interface ButtonProps
    */
   plain?: boolean;
   /**
+   * Delegate rendering to the immediate child element using Slot pattern.
+   */
+  asChild?: boolean;
+  /**
    * Optional link destination URL to render as an `<a>` tag.
    */
   href?: string;
@@ -494,6 +519,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       isLoading = false,
       outline,
       plain,
+      asChild = false,
       children,
       disabled,
       href,
@@ -516,6 +542,19 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         className,
       })
     );
+
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref as any}
+          className={computedClass}
+          aria-disabled={disabled || isLoading}
+          {...(props as any)}
+        >
+          {children}
+        </Slot>
+      );
+    }
 
     // Spinner indicator
     const spinner = (
@@ -552,7 +591,11 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       <>
         {isLoading ? spinner : startContent}
         {children}
-        {endContent}
+        {endContent && (
+          <span className="ml-0.5 inline-flex shrink-0 items-center" aria-hidden="true">
+            {endContent}
+          </span>
+        )}
       </>
     );
 

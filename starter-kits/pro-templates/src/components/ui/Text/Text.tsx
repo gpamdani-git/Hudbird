@@ -26,13 +26,8 @@ export interface TextProps
 
 const Text = React.forwardRef<HTMLElement, TextProps>(
   ({ className, variant, as: Component = "p", ...props }, ref) => {
-    return (
-      <Component
-        ref={ref as React.Ref<HTMLElement>}
-        className={cn(textVariants({ variant }), className)}
-        {...(props as any)}
-      />
-    );
+    const Comp = Component as any;
+    return <Comp ref={ref} className={cn(textVariants({ variant }), className)} {...props} />;
   }
 );
 Text.displayName = "Text";

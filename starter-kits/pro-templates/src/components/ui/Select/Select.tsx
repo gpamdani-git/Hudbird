@@ -32,9 +32,9 @@ export const selectTriggerVariants = cva(
           "bg-transparent border border-border text-foreground hover:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       },
       size: {
-        sm: "h-9 px-3 text-xs gap-2",
-        md: "h-10 px-3.5 text-sm gap-2.5",
-        lg: "h-12 px-4 text-base gap-3",
+        sm: "h-9 px-3.5 text-xs gap-2",
+        md: "h-10 px-4 text-sm gap-2.5",
+        lg: "h-12 px-5 text-base gap-3",
       },
       radius: {
         none: "rounded-none",
@@ -43,10 +43,27 @@ export const selectTriggerVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "border-zinc-600! focus-visible:ring-zinc-600!",
+        true: "border-rose-600! focus-visible:ring-rose-600!",
         false: "",
       },
     },
+    compoundVariants: [
+      {
+        radius: "full",
+        size: "sm",
+        className: "px-4",
+      },
+      {
+        radius: "full",
+        size: "md",
+        className: "px-5",
+      },
+      {
+        radius: "full",
+        size: "lg",
+        className: "px-6",
+      },
+    ],
     defaultVariants: {
       variant: "flat",
       size: "md",
@@ -235,7 +252,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
 
               <ChevronDown
                 className={cn(
-                  "text-muted-foreground shrink-0 transition-transform duration-200",
+                  "text-muted-foreground ml-2 shrink-0 transition-transform duration-200",
                   size === "sm" ? "h-3.5 w-3.5" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
                   isOpen && "text-foreground rotate-180"
                 )}

@@ -16,6 +16,81 @@ const MARKETING_COMPONENTS = path.resolve(ROOT_DIR, "packages/marketing/src/comp
 const registry = {};
 const CORE_DEPS = ["react", "react-dom"];
 
+const CATEGORIES = {
+  // Primitives
+  Button: "primitives",
+  Badge: "primitives",
+  Card: "primitives",
+  Text: "primitives",
+  Heading: "primitives",
+  Divider: "primitives",
+  Avatar: "primitives",
+  Skeleton: "primitives",
+  Slot: "primitives",
+
+  // Form & Inputs
+  Input: "forms",
+  InputOTP: "forms",
+  Form: "forms",
+  Textarea: "forms",
+  Checkbox: "forms",
+  Select: "forms",
+  ComboBox: "forms",
+  RadioGroup: "forms",
+  Switch: "forms",
+  Slider: "forms",
+  Fieldset: "forms",
+
+  // Overlays & Navigation
+  Dialog: "navigation",
+  Sheet: "navigation",
+  Popover: "navigation",
+  Dropdown: "navigation",
+  Command: "navigation",
+  Breadcrumbs: "navigation",
+  Navbar: "navigation",
+  Sidebar: "navigation",
+  Pagination: "navigation",
+  Tabs: "navigation",
+  Accordion: "navigation",
+
+  // Feedback & Status
+  Alert: "feedback",
+  Toast: "feedback",
+  Progress: "feedback",
+  Tooltip: "feedback",
+  InfiniteScroll: "feedback",
+
+  // Data & Charts
+  Table: "data",
+  DescriptionList: "data",
+  Calendar: "data",
+  LineChart: "charts",
+  BarChart: "charts",
+  AreaChart: "charts",
+  PieChart: "charts",
+  RadialChart: "charts",
+  RadarChart: "charts",
+  ComposedChart: "charts",
+  ChartTooltip: "charts",
+
+  // Marketing
+  Hero: "marketing",
+  BentoGrid: "marketing",
+  FeatureSection: "marketing",
+  Pricing: "marketing",
+  Testimonials: "marketing",
+  Faq: "marketing",
+  Footer: "marketing",
+  Cta: "marketing",
+  LogoCloud: "marketing",
+  Globe: "marketing",
+  ParticleSphere: "marketing",
+  CustomCursor: "marketing",
+  BlurRevealText: "marketing",
+  StackingWrapper: "marketing",
+};
+
 function extractNpmDependencies(content) {
   const deps = new Set();
   const importRegex = /import\s+(?:[^"']+\s+from\s+)?["']([^"']+)["']/g;
@@ -49,13 +124,22 @@ function processDirectory(srcDir, type) {
     if (entry.isDirectory()) {
       const compName = entry.name;
       const compDir = path.join(srcDir, compName);
-      const files = fs.readdirSync(compDir).filter((f) => f.endsWith(".tsx") || f.endsWith(".ts"));
+      const files = fs
+        .readdirSync(compDir)
+        .filter(
+          (f) =>
+            (f.endsWith(".tsx") || f.endsWith(".ts")) &&
+            !f.endsWith(".test.tsx") &&
+            !f.endsWith(".test.ts")
+        );
 
       if (files.length === 0) continue;
 
       const item = {
         name: compName,
         type,
+        category:
+          CATEGORIES[compName] || (type === "registry:marketing" ? "marketing" : "components"),
         dependencies: [],
         registryDependencies: [],
         files: [],
@@ -78,30 +162,41 @@ function processDirectory(srcDir, type) {
           "Alert",
           "Avatar",
           "Badge",
+          "Breadcrumbs",
           "Button",
+          "Calendar",
           "Card",
           "Checkbox",
           "ComboBox",
+          "Command",
           "DescriptionList",
           "Dialog",
           "Divider",
           "Dropdown",
           "Fieldset",
+          "Form",
           "Heading",
           "InfiniteScroll",
           "Input",
+          "InputOTP",
           "Navbar",
           "Pagination",
+          "Popover",
+          "Progress",
           "Provider",
           "RadioGroup",
           "Select",
+          "Sheet",
           "Sidebar",
           "Skeleton",
+          "Slider",
+          "Slot",
           "Switch",
           "Table",
           "Tabs",
           "Text",
           "Textarea",
+          "Toast",
           "Tooltip",
         ].sort((a, b) => b.length - a.length);
 
@@ -144,6 +239,9 @@ function processDirectory(srcDir, type) {
       item.dependencies = Array.from(deps);
 
       // Hardcode some known registry dependencies for now
+      if (compName === "Form" || compName === "Button") {
+        regDeps.add("Slot");
+      }
       if (compName === "Testimonials") {
         regDeps.add("Card");
         regDeps.add("Avatar");

@@ -141,12 +141,42 @@ npm run dev"
             </p>
           </div>
           <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">Overwrite Protection</h4>
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+              Batch &amp; Interactive Mode
+            </h4>
             <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-              Accidentally ran the install command twice? The CLI checks if a component already
-              exists and prompts you before overwriting, protecting your customized code.
+              Install multiple components at once (<Code>npx hudbird-ui add Button Card Form</Code>
+              ), or run <Code>npx hudbird-ui add</Code> bare to select components interactively.
             </p>
           </div>
+          <div className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+              Live Status &amp; Diff Engine
+            </h4>
+            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+              Use <Code>npx hudbird-ui list</Code> to inspect your local installation status, and{" "}
+              <Code>npx hudbird-ui diff</Code> to compare local changes against upstream registry
+              updates.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50/50 p-4 dark:border-indigo-900/60 dark:bg-indigo-950/30">
+          <div>
+            <h4 className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+              Explore the Full CLI Guide
+            </h4>
+            <p className="mt-0.5 text-xs text-indigo-700/80 dark:text-indigo-300/80">
+              Read the complete reference for command flags, components.json configuration, and
+              monorepo tips.
+            </p>
+          </div>
+          <a
+            href="#/cli"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-indigo-500"
+          >
+            CLI Reference &rarr;
+          </a>
         </div>
       </section>
 

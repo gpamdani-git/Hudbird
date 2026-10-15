@@ -17,7 +17,19 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@hudbird/ui": ["../core/dist/index.d.mts"],
+      "@hudbird/marketing": ["src/index.ts"],
+      "@hudbird/marketing/saas": ["src/blocks/SaaS/index.ts"],
+      "@hudbird/marketing/fintech": ["src/blocks/Fintech/index.ts"],
+      "@hudbird/marketing/ecommerce": ["src/blocks/Ecommerce/index.ts"],
+      "@hudbird/marketing/ai": ["src/blocks/AiStartup/index.ts"],
+      "@hudbird/marketing/ai-startup": ["src/blocks/AiStartup/index.ts"],
+      "@hudbird/marketing/agency": ["src/blocks/Agency/index.ts"],
+      "@hudbird/marketing/hospitality": ["src/blocks/Hospitality/index.ts"],
+      "@hudbird/marketing/admin": ["src/blocks/AdminCms/index.ts"],
+      "@hudbird/marketing/admin-cms": ["src/blocks/AdminCms/index.ts"],
+      "@hudbird/marketing/modern-app": ["src/blocks/ModernApp/index.ts"],
+      "@hudbird/marketing/3d": ["src/3d/index.ts"],
+      "@hudbird/ui": ["../core/src/index.ts"],
       "@hudbird/theme": ["../theme/src/index.js"]
     }
   },

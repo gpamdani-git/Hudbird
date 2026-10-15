@@ -111,7 +111,7 @@ function ImageGenerator({
       exit={{ opacity: 0, height: 0 }}
       className="overflow-hidden"
     >
-      <div className="mx-4 mb-3 rounded-2xl border border-fuchsia-200 bg-gradient-to-br from-fuchsia-50 to-violet-50 p-3 dark:border-fuchsia-500/20 dark:from-fuchsia-500/[0.07] dark:to-violet-500/[0.07]">
+      <div className="mx-4 mb-3 rounded-2xl border border-fuchsia-200 bg-gradient-to-br from-fuchsia-50 to-blue-50 p-3 dark:border-fuchsia-500/20 dark:from-fuchsia-500/[0.07] dark:to-blue-500/[0.07]">
         <div className="mb-2 flex items-center gap-2 text-xs font-semibold text-fuchsia-700 dark:text-fuchsia-300">
           <ImagePlus className="h-3.5 w-3.5" /> Generate image with AI
           <button
@@ -135,7 +135,7 @@ function ImageGenerator({
               autoFocus
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="A glass envelope floating in violet light…"
+              placeholder="A glass envelope floating in blue light…"
               aria-label="Image prompt"
               className="h-9 min-w-0 flex-1 rounded-xl border border-fuchsia-200 bg-white px-3 text-sm outline-none focus:ring-4 focus:ring-fuchsia-500/15 dark:border-white/10 dark:bg-zinc-900 dark:text-white"
             />
@@ -173,7 +173,7 @@ function ImageGenerator({
               <p className="mt-0.5 truncate text-xs text-zinc-500">"{prompt}"</p>
               <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white dark:bg-white/10">
                 <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-fuchsia-500 to-violet-600"
+                  className="h-full rounded-full bg-gradient-to-r from-fuchsia-500 to-blue-600"
                   animate={{ width: `${progress}%` }}
                 />
               </div>
@@ -538,7 +538,7 @@ export function ComposeModal({
                     exit={{ height: 0, opacity: 0 }}
                     className="shrink-0 overflow-hidden"
                   >
-                    <div className="m-4 mb-2 rounded-2xl bg-gradient-to-br from-violet-500/80 via-fuchsia-500/70 to-sky-500/80 p-px">
+                    <div className="m-4 mb-2 rounded-2xl bg-gradient-to-br from-blue-500/80 via-indigo-500/70 to-sky-500/80 p-px">
                       <div className="rounded-[15px] bg-white p-3 dark:bg-zinc-900">
                         <div className="flex items-start gap-2.5">
                           <AiOrb size={26} />
@@ -580,7 +580,7 @@ export function ComposeModal({
                                 <motion.span
                                   layoutId="compose-tone"
                                   transition={spring}
-                                  className="absolute inset-0 rounded-full bg-violet-600"
+                                  className="absolute inset-0 rounded-full bg-blue-600"
                                 />
                               )}
                               <span className="relative">{t}</span>
@@ -606,7 +606,7 @@ export function ComposeModal({
                             key={p}
                             type="button"
                             onClick={() => setPrompt(p)}
-                            className="shrink-0 cursor-pointer rounded-full border border-zinc-200 px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:border-violet-300 hover:text-violet-700 dark:border-white/10 dark:text-zinc-400 dark:hover:text-violet-300"
+                            className="shrink-0 cursor-pointer rounded-full border border-zinc-200 px-3 py-1.5 text-xs text-zinc-600 transition-colors hover:border-blue-300 hover:text-blue-700 dark:border-white/10 dark:text-zinc-400 dark:hover:text-blue-300"
                           >
                             {p}
                           </button>
@@ -680,7 +680,7 @@ export function ComposeModal({
                       key={t.l}
                       type="button"
                       onClick={() => runRewrite(t.a, t.s)}
-                      className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition-colors hover:bg-violet-100 dark:bg-violet-500/10 dark:text-violet-300 dark:hover:bg-violet-500/20"
+                      className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-100 dark:bg-blue-500/10 dark:text-blue-300 dark:hover:bg-blue-500/20"
                     >
                       <t.i className="h-3.5 w-3.5" /> {t.l}
                     </button>
@@ -745,7 +745,7 @@ export function ComposeModal({
                   whileTap={{ scale: 0.97 }}
                   onClick={() => engine.sendMail()}
                   disabled={!draft.to.trim() || busy || sending}
-                  className="flex h-10 cursor-pointer items-center gap-2 rounded-l-2xl bg-blue-600 pr-3 pl-4 text-sm font-semibold text-white shadow-md shadow-blue-600/25 transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex h-10 cursor-pointer items-center gap-2 rounded-l-2xl bg-blue-600 pr-3 pl-4 text-sm font-semibold text-white transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {draft.status === "sending" ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
@@ -792,7 +792,7 @@ export function ComposeModal({
                           <span className="text-xs text-zinc-400">{t}</span>
                         </button>
                       ))}
-                      <div className="mt-1 flex items-center gap-2 rounded-xl bg-violet-50 px-3 py-2 text-xs text-violet-700 dark:bg-violet-500/10 dark:text-violet-300">
+                      <div className="mt-1 flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2 text-xs text-blue-700 dark:bg-blue-500/10 dark:text-blue-300">
                         <Sparkles className="h-3.5 w-3.5" /> AI suggests: Tue 9:40 AM (highest open
                         rate)
                       </div>
@@ -805,7 +805,7 @@ export function ComposeModal({
                 label="AI write"
                 active={aiOpen}
                 onClick={() => setAiOpen((v) => !v)}
-                className="ml-1 text-violet-600 dark:text-violet-400"
+                className="ml-1 text-blue-600 dark:text-blue-400"
                 id="aimail-compose-ai-toggle"
               >
                 <Sparkles className="h-[18px] w-[18px]" />

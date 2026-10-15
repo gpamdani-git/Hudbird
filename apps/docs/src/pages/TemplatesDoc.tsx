@@ -269,6 +269,7 @@ const CATEGORIES = [
 ];
 
 export default function TemplatesDoc() {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState<"Trending" | "Best" | "Recent">("Trending");
   const [selectedTemplateForCode, setSelectedTemplateForCode] = useState<{
     id: string;
@@ -377,7 +378,7 @@ export default function TemplatesDoc() {
               </div>
             </div>
             <Button
-              variant="primary"
+              color="primary"
               className="w-full shrink-0 bg-gradient-to-r from-blue-600 to-indigo-600 text-xs font-semibold text-white shadow-md shadow-blue-500/20 hover:from-blue-700 hover:to-indigo-700 md:w-auto"
               onClick={() => setIsProModalOpen(true)}
             >

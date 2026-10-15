@@ -58,10 +58,11 @@ export const FaqGlass: React.FC<FaqGlassProps> = ({
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
-            const isOpen = openId === faq.id;
+            const currentId = faq.id ?? idx;
+            const isOpen = openId === currentId;
             return (
               <motion.div
-                key={faq.id}
+                key={currentId}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -69,7 +70,7 @@ export const FaqGlass: React.FC<FaqGlassProps> = ({
                 className="overflow-hidden rounded-2xl border border-white/50 bg-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/40 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
               >
                 <button
-                  onClick={() => toggleOpen(faq.id)}
+                  onClick={() => toggleOpen(currentId)}
                   className="flex w-full items-center justify-between px-6 py-5 text-left text-base font-medium text-zinc-900 transition-colors hover:bg-white/50 focus:outline-none dark:text-zinc-100 dark:hover:bg-zinc-800/50"
                 >
                   <span>{faq.question}</span>

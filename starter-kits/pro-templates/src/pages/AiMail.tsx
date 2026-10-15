@@ -2,36 +2,58 @@ import React, { useState, useEffect } from "react";
 import { useMailEngine } from "../components/ai-mail/useMailEngine";
 import { AuthScreen } from "../components/ai-mail/AuthScreen";
 import { Sidebar } from "../components/ai-mail/Sidebar";
-import { SearchHeader } from "../components/ai-mail/SearchHeader";
 import { MailList } from "../components/ai-mail/MailList";
-import { MailDetail } from "../components/ai-mail/MailDetail";
+import { MailDetail, EmptyReader } from "../components/ai-mail/MailDetail";
 import { ComposeModal } from "../components/ai-mail/ComposeModal";
 import { TopBar } from "../components/ai-mail/TopBar";
+import { AiFeaturesView, AiAssistantPanel } from "../components/ai-mail/AiViews";
+import {
+  CalendarView,
+  FoldersView,
+  SettingsView,
+  SupportView,
+  UpgradeView,
+} from "../components/ai-mail/WorkspaceViews";
+import { Toaster } from "../components/ai-mail/primitives";
 import { AnimatePresence, motion } from "motion/react";
-import { Search, ChevronDown, Sparkles, Bell, SortDesc } from "lucide-react";
+
+/* ------------------------------------------------------------------ */
+/*  Title map                                                          */
+/* ------------------------------------------------------------------ */
+const FOLDER_TITLES: Record<string, string> = {
+  inbox: "Inbox",
+  starred: "Starred",
+  snoozed: "Snoozed",
+  sent: "Sent",
+  drafts: "Drafts",
+  scheduled: "Scheduled",
+  archive: "Archive",
+  spam: "Spam",
+  trash: "Trash",
+};
+
+const VIEW_TITLES: Record<string, string> = {
+  ai: "AI Features",
+  calendar: "Calendar",
+  folders: "Manage Folders",
+  settings: "Settings",
+  support: "Help & Support",
+  upgrade: "Upgrade to Pro",
+};
 
 export function AiMail() {
   const [isAuth, setIsAuth] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [userName, setUserName] = useState("Alex Morgan");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [assistantOpen, setAssistantOpen] = useState(false);
 
+  /* -------- Theme -------- */
   const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") !== "light";
+    if (typeof window === "undefined") return true;
+    const stored = localStorage.getItem("aimail-theme");
+    if (stored) return stored === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
-
-  useEffect(() => {
-    const handleStorage = () => {
-      setIsDark(localStorage.getItem("theme") !== "light");
-    };
-    window.addEventListener("storage", handleStorage);
-    try {
-      if (window.parent && window.parent.document.documentElement.classList.contains("dark")) {
-        setIsDark(true);
-      }
-    } catch (e) {
-      // Ignore cross-origin errors
-    }
-    return () => window.removeEventListener("storage", handleStorage);
-  }, []);
 
   useEffect(() => {
     if (isDark) {
@@ -39,153 +61,199 @@ export function AiMail() {
     } else {
       document.documentElement.classList.remove("dark");
     }
+    localStorage.setItem("aimail-theme", isDark ? "dark" : "light");
   }, [isDark]);
 
+  const toggleTheme = () => setIsDark((v) => !v);
+
+  /* -------- Engine -------- */
   const engine = useMailEngine();
 
+  /* -------- Auth -------- */
   if (!isAuth) {
-    return <AuthScreen onSuccess={() => setIsAuth(true)} />;
+    return (
+      <AuthScreen
+        onSuccess={(name) => {
+          if (name) setUserName(name);
+          setIsAuth(true);
+        }}
+        isDark={isDark}
+        onToggleTheme={toggleTheme}
+      />
+    );
   }
 
+  /* -------- Computed -------- */
   const selectedMail = engine.selectedMailId
-    ? engine.allEmails.find((m) => m.id === engine.selectedMailId)
+    ? (engine.allEmails.find((m) => m.id === engine.selectedMailId) ?? null)
     : null;
 
-  const unreadCount = engine.allEmails.filter((m) => m.folder === "inbox" && !m.isRead).length;
+  const title =
+    engine.view === "mail"
+      ? engine.activeFolder.startsWith("f:")
+        ? (engine.folders.find((f) => f.id === engine.activeFolder)?.name ?? "Folder")
+        : (FOLDER_TITLES[engine.activeFolder] ?? "Inbox")
+      : (VIEW_TITLES[engine.view] ?? "HudMail");
 
+  const subtitle = engine.view === "mail" ? `${engine.emails.length} conversations` : undefined;
+
+  const showMailLayout = engine.view === "mail";
+
+  /* -------- Render -------- */
   return (
-    <div className="fixed inset-0 flex overflow-hidden bg-white font-sans text-zinc-900 dark:bg-[#111111] dark:text-zinc-200">
-      <div className="relative flex min-w-0 flex-1">
-        <AnimatePresence initial={false}>
-          {sidebarOpen && (
-            <motion.div
-              initial={{ x: -300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -300, opacity: 0 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="absolute z-40 h-full shadow-2xl md:relative md:shadow-none"
-            >
-              <Sidebar
-                engine={engine}
-                onNavigate={() => {
-                  if (window.innerWidth < 768) setSidebarOpen(false);
-                }}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Overlay for mobile sidebar */}
-        <AnimatePresence>
-          {sidebarOpen && (
+    <div className="aimail-root fixed inset-0 flex overflow-hidden bg-white font-sans text-zinc-900 dark:bg-[#111111] dark:text-zinc-200">
+      {/* Sidebar */}
+      <AnimatePresence initial={false}>
+        {sidebarOpen && (
+          <>
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 z-30 bg-black/20 md:hidden dark:bg-black/40"
+              className="fixed inset-0 z-40 bg-black/25 md:hidden dark:bg-black/50"
               onClick={() => setSidebarOpen(false)}
             />
-          )}
-        </AnimatePresence>
-
-        {/* Main Content Area (Global Header + Panes) */}
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden bg-white dark:bg-[#111111]">
-          <TopBar
-            engine={engine}
-            title="Inbox"
-            subtitle="1,897 Emails"
-            isDark={isDark}
-            onToggleTheme={() => {
-              const newTheme = !isDark;
-              setIsDark(newTheme);
-              localStorage.setItem("theme", newTheme ? "dark" : "light");
-            }}
-            onMenu={() => setSidebarOpen(true)}
-            onOpenAssistant={() => engine.setView("ai")}
-            onSignOut={() => setIsAuth(false)}
-            userName="Alex Doe"
-          />
-
-          <div className="relative flex min-w-0 flex-1 overflow-hidden">
-            {/* Middle Pane: Inbox List */}
-            <div
-              className={`z-10 flex h-full flex-col overflow-hidden border-r border-zinc-100 bg-white dark:border-white/5 dark:bg-[#111111] ${
-                selectedMail
-                  ? "hidden shrink-0 lg:flex lg:w-[400px] xl:w-[420px]"
-                  : "flex flex-1 shrink-0 lg:w-[400px] lg:flex-none xl:w-[420px]"
-              }`}
+            <motion.div
+              initial={{ x: -280 }}
+              animate={{ x: 0 }}
+              exit={{ x: -280 }}
+              transition={{ type: "spring", stiffness: 400, damping: 38 }}
+              className="fixed inset-y-0 left-0 z-50 shadow-2xl md:hidden"
             >
-              <div className="flex h-full w-full min-w-[320px] flex-col">
-                <MailList engine={engine} />
-              </div>
-            </div>
+              <Sidebar
+                engine={engine}
+                onNavigate={() => setSidebarOpen(false)}
+                onClose={() => setSidebarOpen(false)}
+              />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
-            {/* Right Pane: Mail Detail */}
-            <div
-              className={`relative h-full min-w-0 flex-1 flex-col overflow-hidden border-l border-zinc-100 bg-[#fcfcfd] dark:border-white/5 dark:bg-[#111111] ${
-                selectedMail ? "flex" : "hidden lg:flex"
-              }`}
-            >
-              <AnimatePresence mode="wait">
-                {selectedMail ? (
-                  <motion.div
-                    key="detail"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-                    className="flex h-full w-full flex-col"
-                  >
-                    <MailDetail
-                      mail={selectedMail}
-                      engine={engine}
-                      onBack={() => engine.selectMail("")}
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="empty"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-                    className="flex flex-1 flex-col items-center justify-center gap-4 text-zinc-400"
-                  >
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+      {/* Desktop sidebar */}
+      <div className="hidden md:block">
+        <Sidebar engine={engine} onNavigate={() => {}} />
+      </div>
+
+      {/* Main */}
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+        <TopBar
+          engine={engine}
+          title={title}
+          subtitle={subtitle}
+          isDark={isDark}
+          onToggleTheme={toggleTheme}
+          onMenu={() => setSidebarOpen(true)}
+          onOpenAssistant={() => setAssistantOpen(true)}
+          onSignOut={() => setIsAuth(false)}
+          userName={userName}
+        />
+
+        <div className="relative flex min-w-0 flex-1 overflow-hidden">
+          <AnimatePresence mode="wait">
+            {showMailLayout ? (
+              <motion.div
+                key="mail-layout"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex min-w-0 flex-1 overflow-hidden"
+              >
+                {/* Mail list */}
+                <div
+                  className={`z-10 flex h-full flex-col overflow-hidden border-r border-zinc-100 bg-white dark:border-white/5 dark:bg-[#111111] ${
+                    selectedMail
+                      ? "hidden shrink-0 lg:flex lg:w-[400px] xl:w-[420px]"
+                      : "flex flex-1 shrink-0 lg:w-[400px] lg:flex-none xl:w-[420px]"
+                  }`}
+                >
+                  <MailList engine={engine} />
+                </div>
+
+                {/* Mail detail / empty */}
+                <div
+                  className={`relative h-full min-w-0 flex-1 flex-col overflow-hidden bg-[#fcfcfd] dark:bg-[#111111] ${
+                    selectedMail ? "flex" : "hidden lg:flex"
+                  }`}
+                >
+                  <AnimatePresence mode="wait">
+                    {selectedMail ? (
+                      <motion.div
+                        key={`detail-${selectedMail.id}`}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.25 }}
+                        className="flex h-full w-full flex-col"
                       >
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                        <polyline points="22,6 12,13 2,6" />
-                      </svg>
-                    </div>
-                    <p className="text-sm font-medium">Select an item to read</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
+                        <MailDetail
+                          mail={selectedMail}
+                          engine={engine}
+                          onBack={() => engine.selectMail(null)}
+                        />
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="empty"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="flex h-full"
+                      >
+                        <EmptyReader engine={engine} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            ) : engine.view === "ai" ? (
+              <AiFeaturesView key="ai" engine={engine} userName={userName} />
+            ) : engine.view === "calendar" ? (
+              <CalendarView key="calendar" engine={engine} />
+            ) : engine.view === "folders" ? (
+              <FoldersView key="folders" engine={engine} />
+            ) : engine.view === "settings" ? (
+              <SettingsView
+                key="settings"
+                engine={engine}
+                isDark={isDark}
+                onToggleTheme={toggleTheme}
+              />
+            ) : engine.view === "support" ? (
+              <SupportView key="support" engine={engine} />
+            ) : engine.view === "upgrade" ? (
+              <UpgradeView key="upgrade" engine={engine} />
+            ) : null}
+          </AnimatePresence>
         </div>
       </div>
 
+      {/* Compose modal */}
       <AnimatePresence>
         {engine.composeDraft && (
           <ComposeModal
+            key={`compose-${engine.composeDraft.id}`}
             draft={engine.composeDraft}
-            onClose={engine.closeCompose}
-            onUpdate={engine.updateDraft}
-            onAiGenerate={engine.generateWithAi}
-            onSend={engine.sendMail}
+            engine={engine}
+            context={
+              engine.composeDraft.mode === "reply"
+                ? (engine.allEmails.find((m) => m.senderEmail === engine.composeDraft!.to) ?? null)
+                : null
+            }
           />
         )}
       </AnimatePresence>
+
+      {/* AI Assistant panel */}
+      <AiAssistantPanel
+        open={assistantOpen}
+        onClose={() => setAssistantOpen(false)}
+        engine={engine}
+      />
+
+      {/* Toast notifications */}
+      <Toaster toasts={engine.toasts} onDismiss={engine.dismissToast} />
     </div>
   );
 }

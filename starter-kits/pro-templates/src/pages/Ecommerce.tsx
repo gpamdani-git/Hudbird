@@ -10,7 +10,7 @@ import {
   EcommerceTestimonials,
   EcommerceCta,
   EcommerceFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/ecommerce";
 
 export function Ecommerce() {
   useEffect(() => {

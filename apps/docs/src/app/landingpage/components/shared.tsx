@@ -183,13 +183,16 @@ export const MEGA_LINK_GROUPS = [
       { label: "Footer", href: "/#/marketing/footer" },
     ],
     action: (
-      <a href="/#/blocks" className="relative group inline-flex rounded-xl overflow-hidden p-[1px] font-medium text-xs mt-2">
+      <a
+        href="/#/blocks"
+        className="group relative mt-2 inline-flex overflow-hidden rounded-xl p-[1px] text-xs font-medium"
+      >
         <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#3b82f6_50%,#0000_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#0000_0%,#60a5fa_50%,#0000_100%)]" />
-        <span className="relative flex h-full w-full items-center justify-center rounded-xl bg-white dark:bg-zinc-950 px-3 py-1.5 transition-colors group-hover:bg-zinc-50 dark:group-hover:bg-zinc-900">
-          <span className="text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors whitespace-nowrap">
+        <span className="relative flex h-full w-full items-center justify-center rounded-xl bg-white px-3 py-1.5 transition-colors group-hover:bg-zinc-50 dark:bg-zinc-950 dark:group-hover:bg-zinc-900">
+          <span className="whitespace-nowrap text-zinc-700 transition-colors group-hover:text-zinc-900 dark:text-zinc-300 dark:group-hover:text-white">
             +40 more blocks
           </span>
-          <ArrowRight className="ml-1 h-3 w-3 text-zinc-500 group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-white transition-colors" />
+          <ArrowRight className="ml-1 h-3 w-3 text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-white" />
         </span>
       </a>
     ),
@@ -224,7 +227,6 @@ export const MEGA_LINK_GROUPS = [
       { label: "Changelog", href: "/#/changelog" },
       { label: "Support & FAQ", href: "/#/support" },
       { label: "GitHub", href: "https://github.com/gpamdani-git/Hudbird-UI-Discus" },
-
     ],
   },
 ];

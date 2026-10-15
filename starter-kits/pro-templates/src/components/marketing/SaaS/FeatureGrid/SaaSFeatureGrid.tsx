@@ -90,7 +90,10 @@ export const SaaSFeatureGrid = () => (
         </FeatureBadge>
         <FeatureTitle className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
           Stop juggling apps. <br className="hidden sm:block" />
-          Start <span className="italic font-light text-zinc-500 dark:text-zinc-400">getting work done.</span>
+          Start{" "}
+          <span className="font-light text-zinc-500 italic dark:text-zinc-400">
+            getting work done.
+          </span>
         </FeatureTitle>
         <FeatureDescription className="mx-auto max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
           Your team shouldn't have to switch between chat, spreadsheets, and docs to understand

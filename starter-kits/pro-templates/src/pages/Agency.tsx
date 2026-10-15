@@ -4,8 +4,8 @@ import { motion, useScroll, useTransform, AnimatePresence, useInView } from "fra
 const logoBlack = "/assets/dastudio-logo/black-logo.png";
 const logoWhite = "/assets/dastudio-logo/white-logo.png";
 
+import { CustomCursor } from "@hudbird/marketing";
 import {
-  CustomCursor,
   AgencyHero,
   AgencyAbout,
   AgencyProjects,
@@ -13,7 +13,7 @@ import {
   AgencyExperiences,
   AgencyCta,
   AgencyFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/agency";
 
 export function Agency() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

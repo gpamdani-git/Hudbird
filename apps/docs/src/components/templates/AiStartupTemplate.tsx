@@ -118,6 +118,8 @@ import {
   MockBar,
   NavItem,
   ComponentShowcase,
+} from "@hudbird/marketing";
+import {
   AiStartupHero,
   AiStartupCta,
   AiStartupFeatures,
@@ -125,7 +127,7 @@ import {
   AiStartupFooter,
   AiStartupMarquee,
   AiStartupAgentShowcase,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/ai";
 export const AiStartupTemplate = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [activeAgentCard, setActiveAgentCard] = useState(0);

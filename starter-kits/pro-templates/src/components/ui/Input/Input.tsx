@@ -33,7 +33,7 @@ const inputWrapperVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "!border-zinc-600 focus-within:!border-zinc-600 focus-within:!ring-zinc-600/20",
+        true: "!border-rose-600 focus-within:!border-rose-600 focus-within:!ring-rose-600/20",
         false: "",
       },
       isDisabled: {
@@ -109,6 +109,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       labelPlacement = "outside",
       isInvalid = false,
       disabled = false,
+      isDisabled: propIsDisabled,
       description,
       errorMessage,
       startContent,
@@ -123,6 +124,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const resolvedDisabled = disabled || Boolean(propIsDisabled);
     // Support inputSize alias for seamless backwards-compatibility
     const resolvedSize = inputSize ?? size ?? "md";
 
@@ -176,7 +178,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "mb-1.5 text-xs font-semibold transition-colors select-none",
               isInvalid ? "text-rose-600" : "text-foreground",
-              disabled && "cursor-not-allowed opacity-50"
+              resolvedDisabled && "cursor-not-allowed opacity-50"
             )}
           >
             {label}
@@ -191,7 +193,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               size: resolvedSize,
               radius,
               isInvalid,
-              isDisabled: disabled,
+              isDisabled: resolvedDisabled,
               labelPlacement,
             })
           )}
@@ -220,7 +222,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 type={type}
                 value={isControlled ? value : uncontrolledVal}
                 onChange={handleInputChange}
-                disabled={disabled}
+                disabled={resolvedDisabled}
                 aria-invalid={isInvalid ? "true" : undefined}
                 className="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent p-0 leading-tight font-normal outline-none disabled:cursor-not-allowed"
                 {...props}
@@ -232,7 +234,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               type={type}
               value={isControlled ? value : uncontrolledVal}
               onChange={handleInputChange}
-              disabled={disabled}
+              disabled={resolvedDisabled}
               aria-invalid={isInvalid ? "true" : undefined}
               className="text-foreground placeholder:text-muted-foreground h-full w-full border-none bg-transparent font-normal outline-none disabled:cursor-not-allowed"
               {...props}
@@ -240,7 +242,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
 
           {/* Interactive Clear Button */}
-          {isClearable && hasValue && !disabled && (
+          {isClearable && hasValue && !resolvedDisabled && (
             <button
               type="button"
               aria-label="Clear input value"

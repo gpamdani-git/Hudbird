@@ -11,7 +11,7 @@ import {
   ModernAppTestimonials,
   ModernAppCta,
   ModernAppFooter,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/modern-app";
 
 export function ModernApp() {
   useEffect(() => {

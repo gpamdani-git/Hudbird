@@ -100,7 +100,7 @@ function NavItem({
       )}
       <span className="relative flex-1 truncate text-left">{label}</span>
       {badge && (
-        <span className="relative rounded-full bg-gradient-to-r from-violet-600 to-fuchsia-500 px-1.5 py-0.5 text-[10px] font-bold text-white">
+        <span className="relative rounded-full bg-blue-600 px-1.5 py-0.5 text-[10px] font-bold text-white">
           {badge}
         </span>
       )}
@@ -148,7 +148,7 @@ export function Sidebar({ engine, onNavigate, onClose }: SidebarProps) {
       {/* Brand */}
       <div className="flex h-16 shrink-0 items-center justify-between px-5">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-gradient-to-br from-blue-600 to-violet-600 shadow-md shadow-blue-600/25">
+          <div className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-blue-600">
             <MailIcon className="h-4 w-4 text-white" />
           </div>
           <span className="font-heading text-[17px] font-semibold tracking-tight text-zinc-900 dark:text-white">
@@ -181,12 +181,11 @@ export function Sidebar({ engine, onNavigate, onClose }: SidebarProps) {
             engine.openCompose("new");
             onNavigate?.();
           }}
-          className="group relative flex h-11 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-2xl bg-zinc-900 text-sm font-semibold text-white shadow-[0_10px_24px_-10px_rgba(79,70,229,0.8)] dark:bg-white dark:text-zinc-900"
+          className="group relative flex h-11 w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-2xl bg-blue-600 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
         >
-          <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-violet-600 to-fuchsia-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <PenSquare className="relative h-4 w-4" />
-          <span className="relative">Compose</span>
-          <span className="relative ml-1 flex items-center gap-1 rounded-md bg-white/15 px-1.5 py-0.5 text-[10px] dark:bg-zinc-900/10">
+          <PenSquare className="relative h-4 w-4 text-white" />
+          <span className="relative text-white">Compose</span>
+          <span className="relative ml-1 flex items-center gap-1 rounded-md bg-white/20 px-1.5 py-0.5 text-[10px] text-white">
             <Sparkles className="h-3 w-3" /> AI
           </span>
         </motion.button>
@@ -288,25 +287,25 @@ export function Sidebar({ engine, onNavigate, onClose }: SidebarProps) {
         <button
           type="button"
           onClick={() => goView("upgrade")}
-          className="group relative w-full cursor-pointer overflow-hidden rounded-2xl bg-zinc-950 p-4 text-left text-white dark:bg-zinc-900 dark:ring-1 dark:ring-white/10"
+          className="group relative w-full cursor-pointer overflow-hidden rounded-2xl border border-zinc-200 bg-white p-4 text-left dark:border-none dark:bg-zinc-900 dark:text-white dark:ring-1 dark:ring-white/10"
         >
-          <span className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-violet-600/50 blur-2xl transition-transform duration-500 group-hover:scale-125" />
-          <span className="absolute -bottom-12 -left-6 h-24 w-24 rounded-full bg-blue-600/40 blur-2xl" />
-          <span className="relative flex items-center gap-2 text-sm font-semibold">
-            <Crown className="h-4 w-4 text-amber-300" /> Upgrade to Pro
+          <span className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-blue-50 blur-2xl transition-transform duration-500 group-hover:scale-125 dark:bg-blue-600/50" />
+          <span className="absolute -bottom-12 -left-6 h-24 w-24 rounded-full bg-blue-50 blur-2xl dark:bg-blue-600/40" />
+          <span className="relative flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white">
+            <Crown className="h-4 w-4 text-blue-600 dark:text-amber-300" /> Upgrade to Pro
           </span>
-          <span className="relative mt-1 block text-xs text-white/60">
+          <span className="relative mt-1 block text-xs text-zinc-500 dark:text-white/60">
             Unlimited AI drafts & 1 TB storage
           </span>
-          <span className="relative mt-3 block h-1.5 overflow-hidden rounded-full bg-white/10">
+          <span className="relative mt-3 block h-1.5 overflow-hidden rounded-full bg-zinc-100 dark:bg-white/10">
             <motion.span
               initial={{ width: 0 }}
               animate={{ width: "62%" }}
               transition={{ duration: 1.2, delay: 0.3 }}
-              className="block h-full rounded-full bg-gradient-to-r from-blue-400 to-violet-400"
+              className="block h-full rounded-full bg-blue-500 dark:bg-gradient-to-r dark:from-blue-400 dark:to-blue-500"
             />
           </span>
-          <span className="relative mt-1.5 block text-[11px] text-white/50">
+          <span className="relative mt-1.5 block text-[11px] text-zinc-400 dark:text-white/50">
             9.3 GB of 15 GB used
           </span>
         </button>

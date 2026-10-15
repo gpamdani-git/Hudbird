@@ -10,6 +10,17 @@ export const gettingStartedTocItems: TocItem[] = [
   { id: "framework-examples", title: "Framework integration" },
 ];
 
+export const cliTocItems: TocItem[] = [
+  { id: "overview", title: "Overview & Features" },
+  { id: "quickstart", title: "Quickstart" },
+  { id: "configuration", title: "Configuration (components.json)" },
+  { id: "command-init", title: "Command: init" },
+  { id: "command-add", title: "Command: add" },
+  { id: "command-list", title: "Command: list & status" },
+  { id: "command-diff", title: "Command: diff & updates" },
+  { id: "troubleshooting", title: "Troubleshooting & Aliases" },
+];
+
 export const buttonTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -582,26 +593,178 @@ export const radialChartTocItems: TocItem[] = [
   { id: "recharts-theming", title: "Recharts Theming" },
 ];
 
+export const toastTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "toast-variants", title: "Toast variants" },
+      { id: "toast-positions", title: "Positioning" },
+      { id: "async-promise", title: "Promise toast" },
+      { id: "action-toast", title: "Action buttons" },
+    ],
+  },
+];
+
+export const sheetTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "sheet-sides", title: "Directional sides" },
+      { id: "sheet-sizes", title: "Panel sizes" },
+    ],
+  },
+];
+
+export const popoverTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "placements", title: "Placements" },
+      { id: "interactive-card", title: "Interactive card" },
+    ],
+  },
+];
+
+export const sliderTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-slider", title: "Basic slider" },
+      { id: "steps-and-range", title: "Custom min, max & step" },
+      { id: "disabled-state", title: "Disabled state" },
+    ],
+  },
+];
+
+export const commandTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "inline-palette", title: "Inline command palette" },
+      { id: "modal-dialog", title: "Modal command dialog" },
+    ],
+  },
+];
+
+export const progressTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-progress", title: "Basic progress bar" },
+      { id: "progress-colors", title: "Color variants" },
+      { id: "progress-sizes", title: "Size variations" },
+      { id: "striped-indeterminate", title: "Striped & Indeterminate" },
+      { id: "circular-progress", title: "Circular Progress" },
+    ],
+  },
+];
+
+export const breadcrumbsTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-breadcrumbs", title: "Basic Breadcrumbs" },
+      { id: "custom-separators", title: "Custom Separators" },
+      { id: "size-variations", title: "Size Variations" },
+      { id: "collapsed-items", title: "Collapsed Items (maxItems)" },
+      { id: "with-icons", title: "With Icons" },
+    ],
+  },
+];
+
+export const calendarTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-calendar", title: "Basic Calendar" },
+      { id: "range-selection", title: "Date Range Selection" },
+      { id: "color-themes", title: "Color Themes" },
+      { id: "date-picker", title: "DatePicker Dropdown" },
+    ],
+  },
+];
+
+export const formTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "basic-form", title: "Profile Settings Form" },
+      { id: "otp-integration", title: "Form with InputOTP" },
+      { id: "textarea-form", title: "Feedback & Multiline Fields" },
+      { id: "validation-states", title: "Realtime Validation Behavior" },
+    ],
+  },
+];
+
+export const inputOtpTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "six-digit-otp", title: "6-Digit OTP with Separator" },
+      { id: "four-digit-pin", title: "4-Digit PIN Code" },
+      { id: "otp-sizes", title: "Sizes & Radii" },
+      { id: "validation-states", title: "Validation & Error States" },
+      { id: "interactive-customizer", title: "Interactive Verification" },
+    ],
+  },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
   "/changelog": changelogTocItems,
   "/support": supportTocItems,
+  "/cli": cliTocItems,
   "/button": buttonTocItems,
   "/alert": alertTocItems,
   "/avatar": avatarTocItems,
   "/badge": badgeTocItems,
+  "/breadcrumbs": breadcrumbsTocItems,
+  "/calendar": calendarTocItems,
   "/checkbox": checkboxTocItems,
   "/combobox": comboBoxTocItems,
   "/description-list": descriptionListTocItems,
   "/dialog": dialogTocItems,
   "/divider": dividerTocItems,
   "/dropdown": dropdownTocItems,
+  "/form": formTocItems,
+  "/input-otp": inputOtpTocItems,
   "/fieldset": fieldsetTocItems,
   "/heading": headingTocItems,
   "/input": inputTocItems,
   "/card": cardTocItems,
   "/navbar": navbarTocItems,
   "/pagination": paginationTocItems,
+  "/progress": progressTocItems,
   "/select": selectTocItems,
   "/layouts/sidebar": sidebarTocItems,
   "/layouts/stacked": stackedTocItems,
@@ -623,6 +786,11 @@ const tocMap: Record<string, TocItem[]> = {
   "/radar-chart": radarChartTocItems,
   "/radial-chart": radialChartTocItems,
   "/chart-tooltip": chartTooltipTocItems,
+  "/toast": toastTocItems,
+  "/sheet": sheetTocItems,
+  "/popover": popoverTocItems,
+  "/slider": sliderTocItems,
+  "/command": commandTocItems,
 };
 
 const defaultToc: TocItem[] = [

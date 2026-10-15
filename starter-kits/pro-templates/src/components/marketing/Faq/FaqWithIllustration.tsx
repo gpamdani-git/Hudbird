@@ -103,7 +103,7 @@ const AnimatedIllustration = () => {
             {[...Array(3)].map((_, i) => (
               <motion.div
                 key={i}
-                className="relative h-12 w-full overflow-hidden rounded-xl border-2 border-zinc-2000 bg-blue-500/90 shadow-lg backdrop-blur-md dark:border-sky-400/50 dark:bg-sky-600/90"
+                className="border-zinc-2000 relative h-12 w-full overflow-hidden rounded-xl border-2 bg-blue-500/90 shadow-lg backdrop-blur-md dark:border-sky-400/50 dark:bg-sky-600/90"
                 style={{ transformOrigin: "left center" }}
                 animate={{
                   backgroundColor: [

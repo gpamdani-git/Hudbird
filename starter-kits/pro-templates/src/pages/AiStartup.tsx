@@ -8,7 +8,7 @@ import {
   AiStartupCta,
   AiStartupFooter,
   AiStartupAgentShowcase,
-} from "@hudbird/marketing";
+} from "@hudbird/marketing/ai";
 
 export function AiStartup() {
   const [theme, setTheme] = useState("dark");

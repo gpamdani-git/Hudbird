@@ -6,7 +6,7 @@ import { FontPicker } from "./FontPicker";
 import { RadiusPicker } from "./RadiusPicker";
 import { ActionMenu } from "./ActionMenu";
 import { Paintbrush, Minimize2 } from "lucide-react";
-import { cn } from "@hudbird/ui/utils/cn";
+import { cn } from "@hudbird/ui";
 
 export const ThemeEditorInner = () => {
   const [minimized, setMinimized] = useState(false);
@@ -59,9 +59,5 @@ export const ThemeEditorInner = () => {
 };
 
 export const ThemeEditor = ({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) => {
-  return (
-    <ThemeEditorProvider>
-      <ThemeEditorInner />
-    </ThemeEditorProvider>
-  );
+  return <ThemeEditorInner />;
 };

@@ -89,7 +89,8 @@ export const SaaSFaq = () => (
           variant="centered"
           title={
             <>
-              Frequently asked <span className="italic font-light text-zinc-500 dark:text-zinc-400">questions</span>
+              Frequently asked{" "}
+              <span className="font-light text-zinc-500 italic dark:text-zinc-400">questions</span>
             </>
           }
         />

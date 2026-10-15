@@ -11,7 +11,6 @@ import SaaSRaw from "./templates/SaaSTemplate.tsx?raw";
 import EcommerceRaw from "./templates/EcommerceTemplate.tsx?raw";
 import FintechRaw from "./templates/FintechTemplate.tsx?raw";
 
-
 const TEMPLATE_CODE: Record<string, string> = {
   "ai-startup": AiStartupRaw,
   enterprise: DigitalAgencyRaw,
@@ -19,7 +18,6 @@ const TEMPLATE_CODE: Record<string, string> = {
   "saas-launchpad": SaaSRaw,
   ecommerce: EcommerceRaw,
   fintech: FintechRaw,
-
 };
 
 export const getCleanTemplateCode = (id: string) => {

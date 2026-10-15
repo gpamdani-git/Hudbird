@@ -54,7 +54,81 @@ export default defineConfig({
         </p>
         <CodeBlock language="bash" code="npx hudbird-ui@latest add Button Alert" />
 
-        <h2>5. Use Components</h2>
+        <h2>5. CLI Commands Reference</h2>
+        <p>
+          The official Hudbird UI CLI provides a full suite of developer utilities for component
+          scaffolding, batch installations, and upstream diffing:
+        </p>
+
+        <div className="not-prose my-6 flex items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50/50 p-4 dark:border-indigo-900/60 dark:bg-indigo-950/30">
+          <div>
+            <h4 className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+              Looking for the complete CLI manual?
+            </h4>
+            <p className="mt-0.5 text-xs text-indigo-700/80 dark:text-indigo-300/80">
+              Read the full CLI documentation for multi-select prompts, --all flag, LCS diff engine,
+              and components.json schema.
+            </p>
+          </div>
+          <a
+            href="#/cli"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-indigo-500"
+          >
+            CLI Reference &rarr;
+          </a>
+        </div>
+
+        <h3>List Available Components &amp; Status</h3>
+        <p>
+          Inspect all 62 components categorized by domain with your local installation status (
+          <code>✔ installed</code> vs <code>○ available</code>):
+        </p>
+        <CodeBlock
+          language="bash"
+          code="npx hudbird-ui@latest list\n# Or shorthand:\nnpx hudbird-ui@latest ls"
+        />
+
+        <h3>Inspect Component Differences &amp; Upstream Updates</h3>
+        <p>
+          Compare your local component code against upstream registry updates using our
+          zero-dependency diff engine:
+        </p>
+        <CodeBlock
+          language="bash"
+          code="npx hudbird-ui@latest diff Button\n# Or scan all installed components across the project:\nnpx hudbird-ui@latest diff"
+        />
+
+        <h3>Batch Component Installation</h3>
+        <p>Install multiple components or launch the interactive multi-select menu:</p>
+        <CodeBlock
+          language="bash"
+          code="# Batch install\nnpx hudbird-ui@latest add Button Input Select Card Dialog\n\n# Interactive multi-select menu\nnpx hudbird-ui@latest add\n\n# Install all 62 components\nnpx hudbird-ui@latest add --all"
+        />
+
+        <h3>Configuration file (components.json)</h3>
+        <p>
+          Customize your import aliases, base color, and CSS variables in{" "}
+          <code>components.json</code>:
+        </p>
+        <CodeBlock
+          language="json"
+          filename="components.json"
+          code={`{
+  "$schema": "https://hudbird.vercel.app/schema.json",
+  "style": "default",
+  "tailwind": {
+    "version": 4,
+    "css": "src/index.css",
+    "baseColor": "zinc"
+  },
+  "aliases": {
+    "components": "@/components/hudbird-ui",
+    "utils": "@/components/hudbird-ui/utils"
+  }
+}`}
+        />
+
+        <h2>6. Use Components</h2>
         <p>Now you can import and use any Hudbird UI components directly in your application.</p>
         <CodeBlock
           language="tsx"

@@ -117,7 +117,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
       value: "128",
       icon: PenLine,
       delta: "+32",
-      color: "from-violet-500 to-fuchsia-500",
+      color: "from-blue-500 to-indigo-500",
     },
     {
       label: "Emails auto-sorted",
@@ -145,18 +145,18 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
     >
       <div className="mx-auto max-w-6xl space-y-5 px-4 py-6 pb-28 sm:px-6 md:pb-10">
         {/* Hero brief */}
-        <div className="relative overflow-hidden rounded-[28px] bg-zinc-950 p-6 text-white sm:p-8">
-          <div className="aimail-aurora pointer-events-none absolute -top-1/2 -right-1/4 h-[200%] w-[80%] bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.55),transparent_55%)]" />
-          <div className="pointer-events-none absolute -bottom-1/2 -left-1/4 h-[160%] w-[70%] bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.45),transparent_55%)]" />
+        <div className="relative overflow-hidden rounded-[28px] border border-zinc-200 bg-white p-6 text-zinc-900 shadow-sm sm:p-8 dark:border-none dark:bg-zinc-950 dark:text-white dark:shadow-none">
+          <div className="aimail-aurora pointer-events-none absolute -top-1/2 -right-1/4 h-[200%] w-[80%] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08),transparent_55%)] dark:bg-[radial-gradient(circle_at_center,rgba(124,58,237,0.55),transparent_55%)]" />
+          <div className="pointer-events-none absolute -bottom-1/2 -left-1/4 h-[160%] w-[70%] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.05),transparent_55%)] dark:bg-[radial-gradient(circle_at_center,rgba(37,99,235,0.45),transparent_55%)]" />
           <div className="relative flex flex-col gap-6 lg:flex-row lg:items-start">
             <div className="flex-1">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/70 backdrop-blur">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700 backdrop-blur dark:border-white/15 dark:bg-white/5 dark:text-white/70">
                 <Sparkles className="h-3 w-3" /> HudMail Intelligence
               </span>
               <h2 className="font-heading mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
                 {greet}, {userName.split(" ")[0]}.
               </h2>
-              <p className="mt-2 max-w-md text-sm text-white/60">
+              <p className="mt-2 max-w-md text-sm text-zinc-500 dark:text-white/60">
                 {engine.counts.inbox} unread · {priority.length} need replies · 2 meetings today.
                 Get a 30-second brief of everything that matters.
               </p>
@@ -167,14 +167,14 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                 whileTap={{ scale: 0.97 }}
                 onClick={runBrief}
                 disabled={briefThinking.isThinking || brief.isStreaming}
-                className="mt-6 flex cursor-pointer items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-zinc-900 shadow-xl shadow-violet-900/40 disabled:opacity-70"
+                className="mt-6 flex cursor-pointer items-center gap-2 rounded-2xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white disabled:opacity-70 dark:bg-white dark:text-zinc-900"
               >
-                <Zap className="h-4 w-4 text-violet-600" />{" "}
+                <Zap className="h-4 w-4 text-white dark:text-blue-600" />{" "}
                 {brief.text ? "Regenerate brief" : "Generate daily brief"}
               </motion.button>
             </div>
 
-            <div className="min-h-[200px] w-full rounded-3xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl lg:w-[440px]">
+            <div className="min-h-[200px] w-full rounded-3xl border border-zinc-100 bg-zinc-50/50 p-5 backdrop-blur-xl lg:w-[440px] dark:border-white/10 dark:bg-white/[0.06]">
               <AnimatePresence mode="wait">
                 {briefThinking.isThinking ? (
                   <motion.div
@@ -186,14 +186,14 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                   >
                     <div className="flex items-center gap-2.5">
                       <AiOrb size={24} spinning />
-                      <ShimmerText className="text-sm font-semibold">
+                      <ShimmerText className="text-sm font-semibold text-zinc-800 dark:text-white">
                         {BRIEF_STEPS[briefThinking.step]}…
                       </ShimmerText>
                     </div>
                     {[80, 95, 60, 88].map((w, i) => (
                       <motion.div
                         key={i}
-                        className="h-2.5 rounded-full bg-white/10"
+                        className="h-2.5 rounded-full bg-zinc-200 dark:bg-white/10"
                         style={{ width: `${w}%` }}
                         animate={{ opacity: [0.4, 1, 0.4] }}
                         transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.15 }}
@@ -205,7 +205,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                     key="b"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="text-[13.5px] leading-relaxed whitespace-pre-wrap text-white/85 [&_strong]:text-white"
+                    className="text-[13.5px] leading-relaxed whitespace-pre-wrap text-zinc-700 dark:text-white/85 [&_strong]:text-zinc-900 dark:[&_strong]:text-white"
                   >
                     <Md text={brief.text} />
                     {brief.isStreaming && <StreamCaret />}
@@ -215,7 +215,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                     key="e"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    className="flex h-full min-h-[160px] flex-col items-center justify-center text-center text-sm text-white/50"
+                    className="flex h-full min-h-[160px] flex-col items-center justify-center text-center text-sm text-zinc-500 dark:text-white/50"
                   >
                     <AiOrb size={40} />
                     <p className="mt-3">Your AI brief will appear here</p>
@@ -317,7 +317,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                   <button
                     type="button"
                     onClick={() => engine.openCompose("reply", m)}
-                    className="flex shrink-0 cursor-pointer items-center gap-1 rounded-xl bg-violet-50 px-2.5 py-1.5 text-xs font-semibold text-violet-700 hover:bg-violet-100 dark:bg-violet-500/10 dark:text-violet-300"
+                    className="flex shrink-0 cursor-pointer items-center gap-1 rounded-xl bg-blue-50 px-2.5 py-1.5 text-xs font-semibold text-blue-700 hover:bg-blue-100 dark:bg-blue-500/10 dark:text-blue-300"
                   >
                     <Reply className="h-3.5 w-3.5" /> AI reply
                   </button>
@@ -385,12 +385,12 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
           {/* Writing playground */}
           <SectionCard className="flex flex-col">
             <div className="mb-4 flex items-center gap-2">
-              <Wand2 className="h-5 w-5 text-violet-500" />
+              <Wand2 className="h-5 w-5 text-blue-500" />
               <h3 className="font-heading text-base font-semibold text-zinc-900 dark:text-white">
                 AI writing playground
               </h3>
             </div>
-            <div className="rounded-2xl border border-zinc-200 p-3 focus-within:border-violet-400 focus-within:ring-4 focus-within:ring-violet-500/10 dark:border-white/10">
+            <div className="rounded-2xl border border-zinc-200 p-3 focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10 dark:border-white/10">
               <textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
@@ -407,7 +407,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                     className={cn(
                       "cursor-pointer rounded-full px-2.5 py-1 text-[11.5px] font-medium transition-colors",
                       tone === t
-                        ? "bg-violet-600 text-white"
+                        ? "bg-blue-600 text-white"
                         : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-white/[0.06] dark:text-zinc-400"
                     )}
                   >
@@ -418,7 +418,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                   type="button"
                   onClick={runPlay}
                   disabled={playThinking.isThinking || play.isStreaming}
-                  className="ml-auto flex h-8 cursor-pointer items-center gap-1.5 rounded-xl bg-gradient-to-r from-violet-600 to-blue-600 px-3 text-xs font-semibold text-white disabled:opacity-60"
+                  className="ml-auto flex h-8 cursor-pointer items-center gap-1.5 rounded-xl bg-blue-600 px-3 text-xs font-semibold text-white disabled:opacity-60 dark:bg-blue-600"
                 >
                   <Sparkles className="h-3.5 w-3.5" /> Write
                 </button>
@@ -506,7 +506,7 @@ export function AiFeaturesView({ engine, userName }: { engine: MailEngine; userN
                 key={k}
                 className="flex items-start gap-3 rounded-2xl border border-zinc-100 p-3.5 dark:border-white/[0.06]"
               >
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
                   <Icon className="h-4 w-4" />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -609,7 +609,7 @@ export function AiAssistantPanel({
             className="fixed inset-y-0 right-0 z-[75] flex w-full flex-col border-l border-zinc-200 bg-white shadow-2xl sm:w-[440px] sm:rounded-l-[28px] dark:border-white/10 dark:bg-zinc-950"
           >
             <div className="relative flex h-16 shrink-0 items-center gap-3 overflow-hidden border-b border-zinc-100 px-5 dark:border-white/[0.06]">
-              <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-violet-500/20 blur-3xl" />
+              <div className="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-blue-500/20 blur-3xl" />
               <AiOrb size={30} spinning={phase !== "idle"} />
               <div className="flex-1">
                 <p className="text-sm font-semibold text-zinc-900 dark:text-white">HudMail AI</p>
@@ -652,7 +652,7 @@ export function AiAssistantPanel({
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 + i * 0.05 }}
                         onClick={() => ask(s)}
-                        className="cursor-pointer rounded-2xl border border-zinc-200 p-3 text-left text-[13px] text-zinc-700 transition-all hover:-translate-y-0.5 hover:border-violet-300 hover:shadow-md dark:border-white/10 dark:text-zinc-300"
+                        className="cursor-pointer rounded-2xl border border-zinc-200 p-3 text-left text-[13px] text-zinc-700 transition-all hover:-translate-y-0.5 hover:border-blue-300 dark:border-white/10 dark:text-zinc-300"
                       >
                         {s}
                       </motion.button>
@@ -716,7 +716,7 @@ export function AiAssistantPanel({
               }}
               className="shrink-0 border-t border-zinc-100 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] dark:border-white/[0.06]"
             >
-              <div className="flex items-end gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-2 pl-4 focus-within:border-violet-400 focus-within:ring-4 focus-within:ring-violet-500/10 dark:border-white/10 dark:bg-zinc-900">
+              <div className="flex items-end gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-2 pl-4 focus-within:border-blue-400 focus-within:ring-4 focus-within:ring-blue-500/10 dark:border-white/10 dark:bg-zinc-900">
                 <textarea
                   id="aimail-assistant-input"
                   value={input}
@@ -737,7 +737,7 @@ export function AiAssistantPanel({
                   whileTap={{ scale: 0.9 }}
                   disabled={!input.trim() || phase !== "idle"}
                   aria-label="Send"
-                  className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-gradient-to-br from-violet-600 to-blue-600 text-white disabled:opacity-40"
+                  className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-blue-600 text-white disabled:opacity-40"
                 >
                   <ArrowUp className="h-4 w-4" />
                 </motion.button>

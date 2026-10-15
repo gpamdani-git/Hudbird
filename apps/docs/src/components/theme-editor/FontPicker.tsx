@@ -1,7 +1,7 @@
 import React from "react";
 import { useThemeEditor } from "./ThemeEditorContext";
 import { typographyPresets } from "../../lib/themes";
-import { Select, SelectItem } from "@hudbird/ui/components/Select/Select";
+import { Select, SelectItem } from "@hudbird/ui";
 
 export const FontPicker = () => {
   const { activeFontSans, setActiveFontSans, activeFontHeading, setActiveFontHeading } =

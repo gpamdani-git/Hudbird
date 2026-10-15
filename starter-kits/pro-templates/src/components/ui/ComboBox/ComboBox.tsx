@@ -28,7 +28,7 @@ const comboBoxInputVariants = cva(
         lg: "min-h-12 text-base py-2 px-3.5",
       },
       isInvalid: {
-        true: "!border-zinc-600 !ring-zinc-600/20",
+        true: "!border-rose-600 !ring-rose-600/20",
         false: "",
       },
     },
@@ -297,7 +297,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
           />
 
           {/* Action Buttons (Clear & Chevron) */}
-          <div className="text-muted-foreground absolute top-1/2 right-2.5 flex -translate-y-1/2 items-center gap-1">
+          <div className="text-muted-foreground absolute top-1/2 right-3.5 flex -translate-y-1/2 items-center gap-1.5">
             {isClearable && hasSelection && !disabled && (
               <button
                 type="button"

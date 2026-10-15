@@ -3,6 +3,7 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
 import { ThemeEditor } from "./components/theme-editor/ThemeEditor";
+import { ThemeEditorProvider } from "./components/theme-editor/ThemeEditorContext";
 import { TableOfContents } from "./components/TableOfContents";
 import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
 import { ScrollToTop } from "./components/ScrollToTop";
@@ -13,7 +14,9 @@ import { getTocForPath } from "./tocData";
 
 // Lazy-load all documentation pages for lightning-fast initial load & low memory footprint
 const GettingStartedDoc = lazy(() => import("./pages/GettingStartedDoc"));
-const TemplateDetailDoc = lazy(() => import("./pages/TemplateDetailDoc").then((m) => ({ default: m.TemplateDetailDoc })));
+const TemplateDetailDoc = lazy(() =>
+  import("./pages/TemplateDetailDoc").then((m) => ({ default: m.TemplateDetailDoc }))
+);
 const ButtonDoc = lazy(() => import("./pages/ButtonDoc"));
 const AlertDoc = lazy(() => import("./pages/AlertDoc"));
 const AvatarDoc = lazy(() => import("./pages/AvatarDoc"));
@@ -48,12 +51,23 @@ const ComposedChartDoc = lazy(() => import("./pages/ComposedChartDoc"));
 const ChartTooltipDoc = lazy(() => import("./pages/ChartTooltipDoc"));
 const RadarChartDoc = lazy(() => import("./pages/RadarChartDoc"));
 const RadialChartDoc = lazy(() => import("./pages/RadialChartDoc"));
+const ToastDoc = lazy(() => import("./pages/ToastDoc"));
+const SheetDoc = lazy(() => import("./pages/SheetDoc"));
+const PopoverDoc = lazy(() => import("./pages/PopoverDoc"));
+const SliderDoc = lazy(() => import("./pages/SliderDoc"));
+const CommandDoc = lazy(() => import("./pages/CommandDoc"));
+const ProgressDoc = lazy(() => import("./pages/ProgressDoc"));
+const BreadcrumbsDoc = lazy(() => import("./pages/BreadcrumbsDoc"));
+const CalendarDoc = lazy(() => import("./pages/CalendarDoc"));
+const FormDoc = lazy(() => import("./pages/FormDoc"));
+const InputOTPDoc = lazy(() => import("./pages/InputOTPDoc"));
 
 const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 const ChangelogDoc = lazy(() => import("./pages/ChangelogDoc"));
 const ThemesDoc = lazy(() => import("./pages/ThemesDoc"));
 const TemplatesDoc = lazy(() => import("./pages/TemplatesDoc"));
 const InstallationDoc = lazy(() => import("./pages/InstallationDoc"));
+const CliDoc = lazy(() => import("./pages/CliDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
@@ -165,7 +179,7 @@ export default function App() {
 
   // Intercept templates and template details for Marketing Layout
   if (
-    location.pathname === "/templates" || 
+    location.pathname === "/templates" ||
     (location.pathname.startsWith("/templates/") && location.pathname.endsWith("/detail"))
   ) {
     return (
@@ -181,149 +195,166 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-50 dark:selection:bg-white dark:selection:text-zinc-950">
-      {/* Gemini Style Subtle Blue Glow Gradient */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent dark:from-blue-600/10" />
+    <ThemeEditorProvider>
+      <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-50 dark:selection:bg-white dark:selection:text-zinc-950">
+        {/* Gemini Style Subtle Blue Glow Gradient */}
+        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent dark:from-blue-600/10" />
 
-      {/* Focus Gradients (Top & Bottom) */}
-      <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-24 bg-gradient-to-b from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
-      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-24 bg-gradient-to-t from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
+        {/* Focus Gradients (Top & Bottom) */}
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-24 bg-gradient-to-b from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
+        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-24 bg-gradient-to-t from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
 
-      <div className="flex w-full">
-        {/* Left Sticky Sidebar */}
-        <Sidebar
-          isOpen={mobileSidebarOpen}
-          onClose={() => setMobileSidebarOpen(false)}
-          isMini={isMiniSidebar}
-          onToggleMini={() => setIsMiniSidebar(!isMiniSidebar)}
-        />
-
-        {/* Floating Theme Editor Panel */}
-        {isThemesPage && (
-          <ThemeEditor isOpen={mobileSidebarOpen} onClose={() => setMobileSidebarOpen(false)} />
-        )}
-
-        {/* Main Content & Right Table of Contents Layout */}
-        <main
-          className={`flex-1 ${
-            isMiniSidebar ? "lg:pl-0" : "lg:pl-[17.5rem]"
-          } flex min-w-0 flex-col transition-all duration-300 ease-in-out`}
-        >
-          {/* Global Top Navbar */}
-          <Header
-            onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)}
-            onToggleDesktopSidebar={() => setIsMiniSidebar(!isMiniSidebar)}
+        <div className="flex w-full">
+          {/* Left Sticky Sidebar */}
+          <Sidebar
+            isOpen={mobileSidebarOpen}
+            onClose={() => setMobileSidebarOpen(false)}
+            isMini={isMiniSidebar}
+            onToggleMini={() => setIsMiniSidebar(!isMiniSidebar)}
           />
 
-          <div
-            className={`flex w-full justify-center ${!isWideLayoutPage ? "mx-auto max-w-7xl gap-12 px-4 py-8 sm:px-8 lg:px-12" : ""}`}
+          {/* Floating Theme Editor Panel */}
+          {isThemesPage && (
+            <ThemeEditor isOpen={mobileSidebarOpen} onClose={() => setMobileSidebarOpen(false)} />
+          )}
+
+          {/* Main Content & Right Table of Contents Layout */}
+          <main
+            className={`flex-1 ${
+              isMiniSidebar ? "lg:pl-0" : "lg:pl-[17.5rem]"
+            } flex min-w-0 flex-col transition-all duration-300 ease-in-out`}
           >
-            {/* Center Main Content Container */}
-            <div className={`relative w-full max-w-full min-w-0 flex-1`}>
-              <Suspense fallback={<DocLoadingSkeleton />}>
-                <Routes>
-                  <Route path="/docs" element={<GettingStartedDoc />} />
-                  <Route path="/support" element={<SupportDoc />} />
-                  <Route path="/changelog" element={<ChangelogDoc />} />
-                  <Route path="/themes" element={<ThemesDoc />} />
-                  <Route path="/blocks" element={<BlocksGalleryDoc />} />
-                  <Route path="/installation" element={<InstallationDoc />} />
-                  <Route path="/button" element={<ButtonDoc />} />
-                  <Route path="/input" element={<InputDoc />} />
-                  <Route path="/card" element={<CardDoc />} />
-                  <Route path="/alert" element={<AlertDoc />} />
-                  <Route path="/avatar" element={<AvatarDoc />} />
-                  <Route path="/badge" element={<BadgeDoc />} />
-                  <Route path="/checkbox" element={<CheckboxDoc />} />
-                  <Route path="/combobox" element={<ComboBoxDoc />} />
-                  <Route path="/description-list" element={<DescriptionListDoc />} />
-                  <Route path="/dialog" element={<DialogDoc />} />
-                  <Route path="/divider" element={<DividerDoc />} />
-                  <Route path="/dropdown" element={<DropdownDoc />} />
-                  <Route path="/fieldset" element={<FieldsetDoc />} />
-                  <Route path="/heading" element={<HeadingDoc />} />
-                  <Route path="/navbar" element={<NavbarDoc />} />
-                  <Route path="/pagination" element={<PaginationDoc />} />
-                  <Route path="/select" element={<SelectDoc />} />
-                  <Route
-                    path="/layouts/sidebar"
-                    element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/layouts/stacked"
-                    element={<StackedLayoutDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/layouts/auth"
-                    element={<AuthLayoutDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route path="/skeleton" element={<SkeletonDoc />} />
-                  <Route path="/switch" element={<SwitchDoc />} />
-                  <Route path="/text" element={<TextDoc />} />
-                  <Route path="/textarea" element={<TextareaDoc />} />
-                  <Route path="/table" element={<TableDoc />} />
-                  <Route path="/accordion" element={<AccordionDoc />} />
-                  <Route path="/radio-group" element={<RadioGroupDoc />} />
-                  <Route path="/tabs" element={<TabsDoc />} />
-                  <Route path="/tooltip" element={<TooltipDoc />} />
-                  <Route path="/area-chart" element={<AreaChartDoc />} />
-                  <Route path="/bar-chart" element={<BarChartDoc />} />
-                  <Route path="/line-chart" element={<LineChartDoc />} />
-                  <Route path="/pie-chart" element={<PieChartDoc />} />
-                  <Route path="/composed-chart" element={<ComposedChartDoc />} />
-                  <Route path="/radar-chart" element={<RadarChartDoc />} />
-                  <Route path="/radial-chart" element={<RadialChartDoc />} />
-                  <Route path="/chart-tooltip" element={<ChartTooltipDoc />} />
-                  <Route
-                    path="/marketing/hero"
-                    element={<HeroDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/logo-clouds"
-                    element={<LogoCloudDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/feature-sections"
-                    element={<FeatureSectionDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/pricing"
-                    element={<PricingDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/bento-grid"
-                    element={<BentoGridDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/testimonials"
-                    element={<TestimonialsDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route
-                    path="/marketing/faq"
-                    element={<FaqDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
-                  />
-                  <Route path="/marketing/footer" element={<FooterDoc />} />
-                  <Route path="/marketing/cta" element={<CtaDoc />} />
+            {/* Global Top Navbar */}
+            <Header
+              onToggleMobileSidebar={() => setMobileSidebarOpen(!mobileSidebarOpen)}
+              onToggleDesktopSidebar={() => setIsMiniSidebar(!isMiniSidebar)}
+            />
 
-                  <Route path="*" element={<Navigate to="/button" replace />} />
-                </Routes>
-              </Suspense>
-              <DocsFooter isWide={isWideLayoutPage} />
+            <div
+              className={`flex w-full justify-center ${!isWideLayoutPage ? "mx-auto max-w-7xl gap-12 px-4 py-8 sm:px-8 lg:px-12" : ""}`}
+            >
+              {/* Center Main Content Container */}
+              <div className={`relative w-full max-w-full min-w-0 flex-1`}>
+                <Suspense fallback={<DocLoadingSkeleton />}>
+                  <Routes>
+                    <Route path="/docs" element={<GettingStartedDoc />} />
+                    <Route path="/support" element={<SupportDoc />} />
+                    <Route path="/changelog" element={<ChangelogDoc />} />
+                    <Route path="/themes" element={<ThemesDoc />} />
+                    <Route path="/blocks" element={<BlocksGalleryDoc />} />
+                    <Route path="/installation" element={<InstallationDoc />} />
+                    <Route path="/cli" element={<CliDoc />} />
+                    <Route path="/button" element={<ButtonDoc />} />
+                    <Route path="/input" element={<InputDoc />} />
+                    <Route path="/card" element={<CardDoc />} />
+                    <Route path="/alert" element={<AlertDoc />} />
+                    <Route path="/avatar" element={<AvatarDoc />} />
+                    <Route path="/badge" element={<BadgeDoc />} />
+                    <Route path="/checkbox" element={<CheckboxDoc />} />
+                    <Route path="/combobox" element={<ComboBoxDoc />} />
+                    <Route path="/description-list" element={<DescriptionListDoc />} />
+                    <Route path="/dialog" element={<DialogDoc />} />
+                    <Route path="/divider" element={<DividerDoc />} />
+                    <Route path="/dropdown" element={<DropdownDoc />} />
+                    <Route path="/fieldset" element={<FieldsetDoc />} />
+                    <Route path="/heading" element={<HeadingDoc />} />
+                    <Route path="/navbar" element={<NavbarDoc />} />
+                    <Route path="/pagination" element={<PaginationDoc />} />
+                    <Route path="/select" element={<SelectDoc />} />
+                    <Route
+                      path="/layouts/sidebar"
+                      element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/layouts/stacked"
+                      element={
+                        <StackedLayoutDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />
+                      }
+                    />
+                    <Route
+                      path="/layouts/auth"
+                      element={<AuthLayoutDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route path="/skeleton" element={<SkeletonDoc />} />
+                    <Route path="/switch" element={<SwitchDoc />} />
+                    <Route path="/text" element={<TextDoc />} />
+                    <Route path="/textarea" element={<TextareaDoc />} />
+                    <Route path="/table" element={<TableDoc />} />
+                    <Route path="/accordion" element={<AccordionDoc />} />
+                    <Route path="/radio-group" element={<RadioGroupDoc />} />
+                    <Route path="/tabs" element={<TabsDoc />} />
+                    <Route path="/tooltip" element={<TooltipDoc />} />
+                    <Route path="/area-chart" element={<AreaChartDoc />} />
+                    <Route path="/bar-chart" element={<BarChartDoc />} />
+                    <Route path="/line-chart" element={<LineChartDoc />} />
+                    <Route path="/pie-chart" element={<PieChartDoc />} />
+                    <Route path="/composed-chart" element={<ComposedChartDoc />} />
+                    <Route path="/radar-chart" element={<RadarChartDoc />} />
+                    <Route path="/radial-chart" element={<RadialChartDoc />} />
+                    <Route path="/chart-tooltip" element={<ChartTooltipDoc />} />
+                    <Route path="/toast" element={<ToastDoc />} />
+                    <Route path="/sheet" element={<SheetDoc />} />
+                    <Route path="/popover" element={<PopoverDoc />} />
+                    <Route path="/slider" element={<SliderDoc />} />
+                    <Route path="/command" element={<CommandDoc />} />
+                    <Route path="/progress" element={<ProgressDoc />} />
+                    <Route path="/breadcrumbs" element={<BreadcrumbsDoc />} />
+                    <Route path="/calendar" element={<CalendarDoc />} />
+                    <Route path="/form" element={<FormDoc />} />
+                    <Route path="/input-otp" element={<InputOTPDoc />} />
+                    <Route
+                      path="/marketing/hero"
+                      element={<HeroDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/marketing/logo-clouds"
+                      element={<LogoCloudDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/marketing/feature-sections"
+                      element={
+                        <FeatureSectionDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />
+                      }
+                    />
+                    <Route
+                      path="/marketing/pricing"
+                      element={<PricingDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/marketing/bento-grid"
+                      element={<BentoGridDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/marketing/testimonials"
+                      element={<TestimonialsDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route
+                      path="/marketing/faq"
+                      element={<FaqDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
+                    <Route path="/marketing/footer" element={<FooterDoc />} />
+                    <Route path="/marketing/cta" element={<CtaDoc />} />
+
+                    <Route path="*" element={<Navigate to="/button" replace />} />
+                  </Routes>
+                </Suspense>
+                <DocsFooter isWide={isWideLayoutPage} />
+              </div>
+
+              {/* Right Sticky Table of Contents Sidebar */}
+              {!isWideLayoutPage && (
+                <aside className="hidden w-56 shrink-0 xl:block">
+                  <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
+                    <TableOfContents items={getTocForPath(location.pathname)} />
+                  </div>
+                </aside>
+              )}
             </div>
+          </main>
+        </div>
 
-            {/* Right Sticky Table of Contents Sidebar */}
-            {!isWideLayoutPage && (
-              <aside className="hidden w-56 shrink-0 xl:block">
-                <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
-                  <TableOfContents items={getTocForPath(location.pathname)} />
-                </div>
-              </aside>
-            )}
-          </div>
-        </main>
+        <ScrollToTop />
       </div>
-
-      <ScrollToTop />
-    </div>
+    </ThemeEditorProvider>
   );
 }

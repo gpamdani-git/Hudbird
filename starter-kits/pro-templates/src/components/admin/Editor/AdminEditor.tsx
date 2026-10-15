@@ -153,7 +153,10 @@ export const AdminEditor = ({
               <span className="text-sm font-semibold">
                 {type === "post" ? "Editing Post" : "Editing Page"}
               </span>
-              <Badge variant="flat" className="h-5 bg-zinc-100/50 text-[10px] text-amber-500 dark:bg-amber-500/10 dark:text-amber-400">
+              <Badge
+                variant="flat"
+                className="h-5 bg-zinc-100/50 text-[10px] text-amber-500 dark:bg-amber-500/10 dark:text-amber-400"
+              >
                 Draft
               </Badge>
             </div>

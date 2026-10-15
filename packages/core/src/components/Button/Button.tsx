@@ -3,6 +3,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
+import { Slot } from "../Slot";
 
 export type ButtonVariant =
   "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain";
@@ -117,6 +118,26 @@ const buttonVariants = cva(
         isIconOnly: true,
         size: "lg",
         className: "w-11 h-11",
+      },
+
+      // Capsule (radius: "full") extra padding to prevent trailing icons/chevrons from hitting corner curve
+      {
+        radius: "full",
+        size: "sm",
+        isIconOnly: false,
+        className: "px-3.5",
+      },
+      {
+        radius: "full",
+        size: "md",
+        isIconOnly: false,
+        className: "px-5",
+      },
+      {
+        radius: "full",
+        size: "lg",
+        isIconOnly: false,
+        className: "px-6",
       },
 
       // ==========================================
@@ -473,6 +494,10 @@ export interface ButtonProps
    */
   plain?: boolean;
   /**
+   * Delegate rendering to the immediate child element using Slot pattern.
+   */
+  asChild?: boolean;
+  /**
    * Optional link destination URL to render as an `<a>` tag.
    */
   href?: string;
@@ -494,6 +519,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       isLoading = false,
       outline,
       plain,
+      asChild = false,
       children,
       disabled,
       href,
@@ -516,6 +542,19 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         className,
       })
     );
+
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref as any}
+          className={computedClass}
+          aria-disabled={disabled || isLoading}
+          {...(props as any)}
+        >
+          {children}
+        </Slot>
+      );
+    }
 
     // Spinner indicator
     const spinner = (
@@ -552,7 +591,11 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       <>
         {isLoading ? spinner : startContent}
         {children}
-        {endContent}
+        {endContent && (
+          <span className="ml-0.5 inline-flex shrink-0 items-center" aria-hidden="true">
+            {endContent}
+          </span>
+        )}
       </>
     );
 

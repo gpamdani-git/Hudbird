@@ -46,7 +46,7 @@ export const radioCircleVariants = cva(
           "bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600",
       },
       isInvalid: {
-        true: "!border-zinc-500 dark:!border-zinc-400",
+        true: "!border-rose-500 dark:!border-rose-400",
         false: "",
       },
     },
@@ -65,18 +65,18 @@ export const radioCircleVariants = cva(
         isChecked: true,
         color: "success",
         className:
-          "bg-emerald-600 border-zinc-600 text-white dark:bg-blue-500 dark:border-blue-500",
+          "bg-emerald-600 border-emerald-600 text-white dark:bg-emerald-500 dark:border-emerald-500",
       },
       {
         isChecked: true,
         color: "warning",
         className:
-          "bg-blue-500 border-zinc-500 text-zinc-950 dark:bg-amber-400 dark:border-amber-400",
+          "bg-amber-500 border-amber-500 text-zinc-950 dark:bg-amber-400 dark:border-amber-400",
       },
       {
         isChecked: true,
         color: "danger",
-        className: "bg-rose-600 border-zinc-600 text-white dark:bg-blue-500 dark:border-blue-500",
+        className: "bg-rose-600 border-rose-600 text-white dark:bg-rose-500 dark:border-rose-500",
       },
     ],
     defaultVariants: {

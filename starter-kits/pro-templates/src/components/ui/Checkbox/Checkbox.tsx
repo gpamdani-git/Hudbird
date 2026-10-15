@@ -27,7 +27,7 @@ const checkboxControlVariants = cva(
           "bg-white border-zinc-300 hover:border-zinc-400 dark:bg-zinc-900 dark:border-zinc-700 dark:hover:border-zinc-600 shadow-2xs",
       },
       isInvalid: {
-        true: "border-zinc-500 dark:border-rose-400 ring-1 ring-zinc-500/20",
+        true: "border-rose-500 dark:border-rose-400 ring-1 ring-rose-500/20",
         false: "",
       },
     },
@@ -43,14 +43,14 @@ const checkboxControlVariants = cva(
         isChecked: true,
         color: "success",
         className:
-          "bg-emerald-600 border-zinc-600 text-white shadow-xs dark:bg-blue-500 dark:border-blue-500",
+          "bg-emerald-600 border-emerald-600 text-white shadow-xs dark:bg-emerald-500 dark:border-emerald-500",
       },
       // Danger checked state
       {
         isChecked: true,
         color: "danger",
         className:
-          "bg-rose-600 border-zinc-600 text-white shadow-xs dark:bg-blue-500 dark:border-blue-500",
+          "bg-rose-600 border-rose-600 text-white shadow-xs dark:bg-rose-500 dark:border-rose-500",
       },
     ],
     defaultVariants: {

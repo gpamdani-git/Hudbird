@@ -32,7 +32,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={cn(
           textareaVariants({ variant }),
           isInvalid &&
-            "!border-zinc-600 focus-within:!border-zinc-600 focus-within:!ring-zinc-600/20",
+            "!border-rose-600 focus-within:!border-rose-600 focus-within:!ring-rose-600/20",
           "min-h-[80px] p-3",
           className
         )}

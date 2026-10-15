@@ -80,7 +80,8 @@ export const SaaSTestimonials = () => (
     <TestimonialsGlobe
       title={
         <>
-          Don't just take our words, listen to <span className="italic font-light text-zinc-500 dark:text-zinc-400">theirs.</span>
+          Don't just take our words, listen to{" "}
+          <span className="font-light text-zinc-500 italic dark:text-zinc-400">theirs.</span>
         </>
       }
     />

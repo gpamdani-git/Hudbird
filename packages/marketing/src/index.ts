@@ -1,3 +1,6 @@
+// packages/marketing/src/index.ts
+
+// Core Marketing Primitives
 export * from "./components/Hero";
 export * from "./components/BentoGrid";
 export * from "./utils/cn";
@@ -12,94 +15,17 @@ export * from "./components/Globe/Globe";
 export * from "./components/ParticleSphere";
 export * from "./components/CustomCursor/CustomCursor";
 export * from "./components/BlurRevealText/BlurRevealText";
-export * from "./blocks/Agency/Hero/AgencyHero";
-export * from "./blocks/Agency/About/AgencyAbout";
-export * from "./blocks/Agency/Projects/AgencyProjects";
-export * from "./blocks/Agency/Services/AgencyServices";
-export * from "./blocks/Agency/Experiences/AgencyExperiences";
-export * from "./blocks/Agency/Cta/AgencyCta";
-export * from "./blocks/Agency/Footer/AgencyFooter";
-export * from "./blocks/AiStartup/Hero/AiStartupHero";
-export * from "./blocks/AiStartup/LogoCloud/AiStartupLogoCloud";
-export * from "./blocks/AiStartup/Features/AiStartupFeatures";
-export * from "./blocks/AiStartup/Marquee/AiStartupMarquee";
-export * from "./blocks/AiStartup/Cta/AiStartupCta";
-export * from "./blocks/AiStartup/Footer/AiStartupFooter";
-export * from "./blocks/AiStartup/AgentShowcase/AiStartupAgentShowcase";
-export * from "./blocks/ModernApp/Navbar/ModernAppNavbar";
-export * from "./blocks/ModernApp/Hero/ModernAppHero";
-export * from "./blocks/ModernApp/LogoCloud/ModernAppLogoCloud";
-export * from "./blocks/ModernApp/Grid/ModernAppGrid";
-export * from "./blocks/ModernApp/Reflect/ModernAppReflect";
-export * from "./blocks/ModernApp/Network/ModernAppNetwork";
-export * from "./blocks/ModernApp/Radar/ModernAppRadar";
-export * from "./blocks/ModernApp/Meetings/ModernAppMeetings";
-export * from "./blocks/ModernApp/Testimonials/ModernAppTestimonials";
-export * from "./blocks/ModernApp/Cta/ModernAppCta";
-export * from "./blocks/ModernApp/Footer/ModernAppFooter";
-export * from "./blocks/SaaS/Navbar/SaaSNavbar";
-export * from "./blocks/SaaS/Hero/SaaSHero";
-export * from "./blocks/SaaS/LogoCloud/SaaSLogoCloud";
-export * from "./blocks/SaaS/FeatureGrid/SaaSFeatureGrid";
-export * from "./blocks/SaaS/BentoGrid/SaaSBentoGrid";
-export * from "./blocks/SaaS/Pricing/SaaSPricing";
-export * from "./blocks/SaaS/Faq/SaaSFaq";
-export * from "./blocks/SaaS/Testimonials/SaaSTestimonials";
-export * from "./blocks/SaaS/Cta/SaaSCta";
-export * from "./blocks/SaaS/Footer/SaaSFooter";
-export * from "./blocks/Ecommerce/Navbar/EcommerceNavbar";
-export * from "./blocks/Ecommerce/Hero/EcommerceHero";
-export * from "./blocks/Ecommerce/LogoCloud/EcommerceLogoCloud";
-export * from "./blocks/Ecommerce/FeatureGrid/EcommerceFeatureGrid";
-export * from "./blocks/Ecommerce/BentoGrid/EcommerceBentoGrid";
-export * from "./blocks/Ecommerce/Pricing/EcommercePricing";
-export * from "./blocks/Ecommerce/Faq/EcommerceFaq";
-export * from "./blocks/Ecommerce/Testimonials/EcommerceTestimonials";
-export * from "./blocks/Ecommerce/Cta/EcommerceCta";
-export * from "./blocks/Ecommerce/Footer/EcommerceFooter";
-export * from "./blocks/Fintech/Navbar/FintechNavbar";
-export * from "./blocks/Fintech/Hero/FintechHero";
-export * from "./blocks/Fintech/LogoCloud/FintechLogoCloud";
-export * from "./blocks/Fintech/FeatureGrid/FintechFeatureGrid";
-export * from "./blocks/Fintech/BentoGrid/FintechBentoGrid";
-export * from "./blocks/Fintech/Pricing/FintechPricing";
-export * from "./blocks/Fintech/Faq/FintechFaq";
-export * from "./blocks/Fintech/Testimonials/FintechTestimonials";
-export * from "./blocks/Fintech/Cta/FintechCta";
-export * from "./blocks/Fintech/Footer/FintechFooter";
-
-// Hospitality
-export * from "./blocks/Hospitality/Hero/HospitalityHero";
-export * from "./blocks/Hospitality/Highlights/HospitalityHighlights";
-export * from "./blocks/Hospitality/Dining/HospitalityDining";
-export { HospitalitySpa } from "./blocks/Hospitality/Spa/HospitalitySpa";
-export { HospitalityExperiences } from "./blocks/Hospitality/Experiences/HospitalityExperiences";
-export { HospitalityCuratedJourneys } from "./blocks/Hospitality/CuratedJourneys/HospitalityCuratedJourneys";
-export { HospitalityFooterHero } from "./blocks/Hospitality/FooterHero/HospitalityFooterHero";
-export { HospitalityFooter } from "./blocks/Hospitality/Footer/HospitalityFooter";
 export * from "./components/StackingWrapper";
 
-// Admin CMS
-export * from "./blocks/AdminCms/Sidebar/AdminSidebar";
-export * from "./blocks/AdminCms/Header/AdminHeader";
-export * from "./blocks/AdminCms/Stats/AdminStats";
-export * from "./blocks/AdminCms/Charts/AdminCharts";
-export * from "./blocks/AdminCms/Table/AdminTable";
-export * from "./blocks/AdminCms/Toolbar/AdminToolbar";
-export * from "./blocks/AdminCms/Analytics/AdminAnalytics";
-export * from "./blocks/AdminCms/Messages/AdminMessages";
-export * from "./blocks/AdminCms/Posts/AdminPosts";
-export * from "./blocks/AdminCms/Categories/AdminCategories";
-export * from "./blocks/AdminCms/Pages/AdminPages";
-export * from "./blocks/AdminCms/Media/AdminMedia";
-export * from "./blocks/AdminCms/Editor/AdminEditor";
-export * from "./blocks/AdminCms/Components/ConfirmModal";
-export * from "./blocks/AdminCms/Manage/AdminUsers";
-export * from "./blocks/AdminCms/Manage/AdminSiteBuilder";
-export * from "./blocks/AdminCms/Manage/AdminAppearance";
-export * from "./blocks/AdminCms/Manage/AdminPlugins";
-export * from "./blocks/AdminCms/Manage/AdminProfile";
-export * from "./blocks/AdminCms/Manage/AdminInbox";
-export * from "./blocks/AdminCms/System/AdminSettings";
-export * from "./blocks/AdminCms/System/AdminNotifications";
-export * from "./blocks/AdminCms/System/AdminSecurity";
+// 3D Entry Re-export
+export * from "./3d";
+
+// Vertical Blocks (Full backward compatibility)
+export * from "./blocks/Agency";
+export * from "./blocks/AiStartup";
+export * from "./blocks/ModernApp";
+export * from "./blocks/SaaS";
+export * from "./blocks/Ecommerce";
+export * from "./blocks/Fintech";
+export * from "./blocks/Hospitality";
+export * from "./blocks/AdminCms";

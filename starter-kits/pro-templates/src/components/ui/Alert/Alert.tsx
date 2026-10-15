@@ -43,22 +43,22 @@ const alertVariants = cva(
       {
         variant: "solid",
         color: "success",
-        className: "bg-emerald-600 text-white shadow-zinc-600/20 dark:bg-blue-500",
+        className: "bg-emerald-600 text-white shadow-emerald-600/20 dark:bg-emerald-500",
       },
       {
         variant: "solid",
         color: "danger",
-        className: "bg-rose-600 text-white shadow-zinc-600/20 dark:bg-blue-500",
+        className: "bg-rose-600 text-white shadow-rose-600/20 dark:bg-rose-500",
       },
       {
         variant: "solid",
         color: "warning",
-        className: "bg-blue-500 text-zinc-950 font-bold shadow-zinc-500/20 dark:bg-amber-400",
+        className: "bg-amber-500 text-zinc-950 font-bold shadow-amber-500/20 dark:bg-amber-400",
       },
       {
         variant: "solid",
         color: "info",
-        className: "bg-sky-600 text-white shadow-zinc-600/20 dark:bg-blue-500",
+        className: "bg-sky-600 text-white shadow-sky-600/20 dark:bg-sky-500",
       },
 
       // Flat Variants
@@ -78,25 +78,25 @@ const alertVariants = cva(
         variant: ["flat", "soft"],
         color: "success",
         className:
-          "bg-zinc-100/50 text-emerald-700 border border-zinc-200 dark:bg-blue-500/15 dark:text-emerald-400 dark:border-blue-500/20",
+          "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "danger",
         className:
-          "bg-zinc-100/50 text-rose-700 border border-zinc-200 dark:bg-blue-500/15 dark:text-rose-400 dark:border-blue-500/20",
+          "bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:border-rose-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "warning",
         className:
-          "bg-zinc-100/50 text-amber-700 border border-zinc-200 dark:bg-blue-500/15 dark:text-amber-400 dark:border-blue-500/20",
+          "bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "info",
         className:
-          "bg-zinc-100/50 text-sky-700 border border-zinc-200 dark:bg-blue-500/15 dark:text-sky-400 dark:border-blue-500/20",
+          "bg-sky-50 text-sky-700 border border-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:border-sky-500/20",
       },
 
       // Bordered Variants
@@ -116,22 +116,22 @@ const alertVariants = cva(
         variant: ["bordered", "outline"],
         color: "success",
         className:
-          "border-zinc-600 text-emerald-700 dark:border-blue-500 dark:text-emerald-400",
+          "border-emerald-600 text-emerald-700 dark:border-emerald-500 dark:text-emerald-400",
       },
       {
         variant: ["bordered", "outline"],
         color: "danger",
-        className: "border-zinc-600 text-rose-700 dark:border-blue-500 dark:text-rose-400",
+        className: "border-rose-600 text-rose-700 dark:border-rose-500 dark:text-rose-400",
       },
       {
         variant: ["bordered", "outline"],
         color: "warning",
-        className: "border-zinc-500 text-amber-700 dark:border-amber-400 dark:text-amber-400",
+        className: "border-amber-500 text-amber-700 dark:border-amber-400 dark:text-amber-400",
       },
       {
         variant: ["bordered", "outline"],
         color: "info",
-        className: "border-zinc-600 text-sky-700 dark:border-blue-500 dark:text-sky-400",
+        className: "border-sky-600 text-sky-700 dark:border-sky-500 dark:text-sky-400",
       },
     ],
     defaultVariants: {

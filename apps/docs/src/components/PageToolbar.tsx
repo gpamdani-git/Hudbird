@@ -5,6 +5,7 @@ import { getPrevNext } from "../navData";
 
 interface PageToolbarProps {
   isWide?: boolean;
+  breadcrumbs?: any;
 }
 
 export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {

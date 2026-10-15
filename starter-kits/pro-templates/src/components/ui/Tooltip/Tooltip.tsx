@@ -21,9 +21,9 @@ export const tooltipVariants = cva(
           "bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-900 dark:border-zinc-100",
         primary: "bg-primary text-primary-foreground",
         secondary: "bg-purple-600 text-white dark:bg-purple-500",
-        success: "bg-emerald-600 text-white dark:bg-blue-500",
-        warning: "bg-blue-500 text-zinc-950 dark:bg-amber-400",
-        danger: "bg-rose-600 text-white dark:bg-blue-500",
+        success: "bg-emerald-600 text-white dark:bg-emerald-500",
+        warning: "bg-amber-500 text-zinc-950 dark:bg-amber-400",
+        danger: "bg-rose-600 text-white dark:bg-rose-500",
       },
       size: {
         sm: "text-[11px] px-2 py-0.5 min-h-6",
@@ -52,9 +52,9 @@ const arrowColorStyles: Record<TooltipColor, string> = {
   foreground: "bg-zinc-950 dark:bg-white border-zinc-900 dark:border-zinc-100",
   primary: "bg-primary",
   secondary: "bg-purple-600 dark:bg-purple-500",
-  success: "bg-emerald-600 dark:bg-blue-500",
-  warning: "bg-blue-500 dark:bg-amber-400",
-  danger: "bg-rose-600 dark:bg-blue-500",
+  success: "bg-emerald-600 dark:bg-emerald-500",
+  warning: "bg-amber-500 dark:bg-amber-400",
+  danger: "bg-rose-600 dark:bg-rose-500",
 };
 
 export interface TooltipProps extends VariantProps<typeof tooltipVariants> {
