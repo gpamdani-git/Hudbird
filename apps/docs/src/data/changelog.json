@@ -1,8 +1,18 @@
 [
   {
+    "version": "1.5.0",
+    "date": "October 2026",
+    "content": "- 71a7cf3: ### Modern CLI & Developer Experience\n\n  - **Interactive Multi-select (`add`)**: Enhanced batch installation with interactive checklist, search filtering, and automatic dependency resolution.\n  - **Component Status Inspector (`list` / `ls`)**: Real-time project scanning detecting Installed, Missing, Outdated, and Modified components.\n  - **Unified Diff Engine (`diff`)**: Zero-dependency LCS diff comparing local components against the upstream registry with colorized additions and deletions.\n\n  ### Component & UX Hardening\n  - **Form Component**: Added `noValidate` boundary isolation to ensure accessible form errors without HTML5 native tooltip conflicts or adjacent form cross-talk.\n  - **Input OTP**: Full keyboard navigation, auto-advance, numeric-only pattern enforcement, and backspace cursor recovery.\n  - **Command & Global Search**: Recursive JSX text node extraction allowing seamless search filtering through icons, badges, and nested spans.\n  - **Dropdown**: Refined chevron icon spacing and flex alignment across item variants.\n\n  ### Design Token Sync & Export Studio\n  - **Tailwind v4 `@theme` Exporter**: One-click generation of native `@theme` directives with continuous OKLCH scales.\n  - **Figma Tokens Studio DTCG JSON**: Direct export and download of W3C DTCG-compliant `hudbird-tokens.json`.\n  - **Themes Quick Bar**: Live interactive palette, radius, and base color switcher with 100% two-way sync across canvas mockups.\n  - **Playwright E2E Test Suite**: Expanded comprehensive browser testing covering 29 end-to-end scenarios with 100% pass rate."
+  },
+  {
+    "version": "1.4.1",
+    "date": "October 2026",
+    "content": "- **Architecture Refactoring**:\n  - Deconstructed large monolithic template components (Hospitality, SaaS, Digital Agency) into fully modular, independent, and reusable `blocks/`.\n  - Introduced new scalable file structure (`Hero`, `About`, `Highlights`, `Experiences`, etc.) isolated by domain.\n- **Scroll & Stacking Engine**:\n  - Developed and integrated `SmoothStackingWrapper` across template sections.\n  - Re-engineered GPU-accelerated scroll tracking using high-tension `framer-motion` springs (`stiffness: 400, damping: 40`), eliminating native 1-frame scroll desync and jitter.\n- **UI & Layout Optimizations**:\n  - Perfected overlapping `liquid mask` transitions by enforcing `bg-transparent` across stacking wrappers.\n  - Increased bottom padding (`pb-[35vh]`) on tall stacking sections to ensure Overview UI remains fully accessible before overlap.\n  - Finalized precise `z-index` layering (`10` to `40`) for continuous stacking behaviors."
+  },
+  {
     "version": "1.4.0",
     "date": "October 2026",
-    "content": "- **Professional CLI DX Upgrade & components.json Standard**:\n  - Standard `components.json` configuration support with custom aliases (`@/components/hudbird-ui` vs `@/components/ui`) and utility mappings.\n  - New `hudbird-ui list` (or `ls`) command grouping all 62 components into 6 categories with real-time local project installation status (`✔ installed` vs `○ available`).\n  - New `hudbird-ui diff` command powered by a zero-dependency LCS unified diff engine to compare local code against upstream registry updates.\n  - Upgraded `hudbird-ui add` with interactive multi-select mode, batch installs (`add Button Card Dialog Form InputOTP`), `--all`, and `--overwrite` flags.\n  - Subpath exports for `@hudbird/marketing` slicing root bundle size from 1.04 MB to 158 KB."
+    "content": ""
   },
   {
     "version": "1.3.0",
