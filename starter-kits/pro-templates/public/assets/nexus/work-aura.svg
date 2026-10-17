@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <radialGradient id="auraGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#794a8b" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#08070b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3c3747"/>
+      <stop offset="50%" stop-color="#1e1b24"/>
+      <stop offset="100%" stop-color="#110f15"/>
+    </linearGradient>
+    <linearGradient id="goldRim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c78ee0"/>
+      <stop offset="50%" stop-color="#794a8b"/>
+      <stop offset="100%" stop-color="#462552"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="#08070b"/>
+  <rect width="1200" height="900" fill="url(#auraGlow)"/>
+
+  <!-- Minimal Hairline Pedestal Plinth -->
+  <path d="M 250 680 L 950 680 L 850 780 L 350 780 Z" fill="#121017" stroke="#252130" stroke-width="1"/>
+  <line x1="150" y1="680" x2="1050" y2="680" stroke="#252130" stroke-width="1" stroke-dasharray="2 6"/>
+
+  <!-- Aura Smart Ring (Sculptural Minimalist Centerpiece) -->
+  <g transform="translate(600, 420)">
+    <!-- Shadow -->
+    <ellipse cx="0" cy="180" rx="200" ry="24" fill="#000000" opacity="0.6"/>
+
+    <!-- Concentric Sensor Rings -->
+    <circle cx="0" cy="0" r="190" stroke="#231f2b" stroke-width="1"/>
+    <circle cx="0" cy="0" r="160" stroke="#363042" stroke-width="1" stroke-dasharray="4 8"/>
+
+    <!-- Outer Titanium Ring -->
+    <circle cx="0" cy="0" r="130" fill="url(#metal)" stroke="#4b4457" stroke-width="2"/>
+    <!-- Inner Core Void -->
+    <circle cx="0" cy="0" r="95" fill="#0c0a10" stroke="#1d1924" stroke-width="1.5"/>
+
+    <!-- Precision Sensor Arc with Purple Glow -->
+    <path d="M -70 -65 A 95 95 0 0 1 70 -65" fill="none" stroke="url(#goldRim)" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="0" cy="-65" r="4" fill="#c78ee0"/>
+
+    <!-- Monolithic Index Typography -->
+    <text x="0" y="10" font-family="monospace" font-size="12" fill="#8c8699" text-anchor="middle" letter-spacing="4">AURA NEURO</text>
+    <text x="0" y="30" font-family="monospace" font-size="10" fill="#595463" text-anchor="middle" letter-spacing="2">TITANIUM BAND 01</text>
+  </g>
+</svg>

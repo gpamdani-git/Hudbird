@@ -40,7 +40,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     id: "f1",
     featured: true,
     featuredImage:
-      "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?auto=format&fit=crop&q=80&w=400&h=500",
+      "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=600",
     featuredTitle: "How Puno Automated 80% of Lead Handling",
     author: "",
     role: "",
@@ -51,7 +51,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "David Lee",
     role: "Founder, Atodio Studio",
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "We were spending hours on repetitive tasks. Their automation system saved us 30+ hours per week and dramatically improved our sales performance.",
   },
@@ -60,7 +60,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Michael Tran",
     role: "Founder & CEO, Skyline Realty Group",
     avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "We reduced admin work by nearly 50% and doubled our qualified appointment bookings. The ROI was faster than we expected — and the system continues to scale with us.",
   },
@@ -69,7 +69,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Daniel Kim",
     role: "Founder, ScaleLabs Education",
     avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "Our enrollment process used to require manual follow-ups and spreadsheet tracking. Now, AI handles lead qualification, scheduling, reminders, and CRM updates automatically.\n\nWe've increased enrollment conversion by 35% in just one quarter.",
   },
@@ -78,7 +78,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Sarah Mitchell",
     role: "COO, BrightPath SaaS",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "We struggled with inconsistent lead follow-ups and slow response times. Their AI automation blueprint gave us clarity first, then execution.\n\nNow, our CRM runs intelligently, leads are scored automatically, and follow-ups happen without manual effort. We've increased demo bookings by 40% while reducing operational friction.",
   },
@@ -86,7 +86,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     id: "f2",
     featured: true,
     featuredImage:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400&h=500",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600",
     featuredTitle: "Scaling SaaS Operations with AI Automation",
     author: "",
     role: "",
@@ -97,7 +97,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Alex Johnson",
     role: "Head of Operations, Finovate Consulting",
     avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "Security and compliance were major concerns for us. They designed an automation architecture that was not only efficient but enterprise-grade secure.",
   },
@@ -106,7 +106,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Jonathan Reed",
     role: "Managing Director, Nexora Digital Agency",
     avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "We were scaling fast but drowning in manual workflows. Their automation system connected our CRM, email marketing, and reporting into one intelligent flow.\n\nThe result? 30+ hours saved per week and complete visibility across our pipeline.",
   },
@@ -115,7 +115,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Laura Martinez",
     role: "CMO, Elevate Commerce Co.",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=200",
     content:
       "Marketing automation always felt fragmented — too many tools, not enough cohesion.\n\nThey unified everything into one intelligent ecosystem. Campaign triggers, abandoned cart flows, segmentation — all automated with precision.",
   },

@@ -79,9 +79,11 @@ export function ShowcasePricing() {
               </Button>
             </a>
             <PricingTierFeatures popular>
-              <PricingTierFeature popular>All 9+ Production Starter Kits</PricingTierFeature>
-              <PricingTierFeature popular>Premium Admin Dashboard UI</PricingTierFeature>
-              <PricingTierFeature popular>Private GitHub Repo Access</PricingTierFeature>
+              <PricingTierFeature popular>All 47+ Pre-Built Industry Websites</PricingTierFeature>
+              <PricingTierFeature popular>
+                29+ Inner, Auth, 6-Digit OTP & Legal Pages
+              </PricingTierFeature>
+              <PricingTierFeature popular>Premium Admin CMS & AI Workspace Apps</PricingTierFeature>
               <PricingTierFeature popular>
                 Unlimited Personal & Commercial Projects
               </PricingTierFeature>

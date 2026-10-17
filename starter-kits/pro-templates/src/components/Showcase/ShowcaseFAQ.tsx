@@ -6,7 +6,7 @@ const faqs = [
   {
     question: "What exactly is included in Hudbird UI PRO?",
     answer:
-      "You get full source code access to 7+ premium full-page templates, 100+ core UI components, Admin CMS dashboards, and the marketing block gallery. Everything is built with React, Tailwind CSS v4, and Framer Motion.",
+      "You get full source code access to 47+ pre-built industry websites, 29+ inner, Auth, 6-digit OTP, and Legal pages per template, 100+ core UI components, Admin CMS dashboards, and interactive ROI & workflow sandboxes—all built with React, Tailwind CSS v4, Framer Motion, and curated Pexels media.",
   },
   {
     question: "Is this a subscription?",

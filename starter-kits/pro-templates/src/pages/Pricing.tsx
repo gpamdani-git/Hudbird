@@ -1,20 +1,22 @@
-import React from "react";
-import { SaaSNavbar } from "@/components/marketing/SaaS/Navbar/SaaSNavbar";
-import { SaaSPricing } from "@/components/marketing/SaaS/Pricing/SaaSPricing";
-import { SaaSFaq } from "@/components/marketing/SaaS/Faq/SaaSFaq";
-import { SaaSFooter } from "@/components/marketing/SaaS/Footer/SaaSFooter";
+import React, { useState } from "react";
+import { digitalAgencyNiche } from "@hudbird/schemas";
+import { NexusInnerPageRenderer, LivePreviewToolbar } from "../components/nexus-sections";
 
 export function Pricing() {
+  const [accentColor, setAccentColor] = useState(digitalAgencyNiche.theme.brandPrimary);
+
   return (
-    <div className="flex min-h-screen w-full flex-col bg-zinc-50 selection:bg-zinc-200/50 dark:bg-[#070912]">
-      <SaaSNavbar />
-
-      <div className="pt-24 sm:pt-32">
-        <SaaSPricing />
-      </div>
-
-      <SaaSFaq />
-      <SaaSFooter />
+    <div
+      data-niche={digitalAgencyNiche.slug}
+      style={{ "--brand-primary": accentColor } as React.CSSProperties}
+      className="relative min-h-screen bg-[#F4F5F8] text-[#0D0F14] dark:bg-[#0B0C10] dark:text-[#F9FAFB]"
+    >
+      <NexusInnerPageRenderer
+        niche={digitalAgencyNiche}
+        pageSlug="pricing"
+        customBrandPrimary={accentColor}
+      />
+      <LivePreviewToolbar currentAccentColor={accentColor} onAccentColorChange={setAccentColor} />
     </div>
   );
 }

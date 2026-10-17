@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#0a090e"/>
+  <rect x="100" y="80" width="1000" height="640" rx="16" fill="#13111a" stroke="#272333" stroke-width="1"/>
+  
+  <!-- Typography Specimen Rows -->
+  <g transform="translate(160, 160)">
+    <text x="0" y="0" font-family="monospace" font-size="11" fill="#794a8b" letter-spacing="3">[ TOKEN SYSTEM .01 ]</text>
+    <text x="0" y="60" font-family="serif" font-style="italic" font-size="44" fill="#ffffff">Instrument Serif</text>
+    <text x="0" y="110" font-family="system-ui, sans-serif" font-size="28" font-weight="300" fill="#a49eb3">Inter Tight Sans Scaled</text>
+
+    <!-- Pantone Chips -->
+    <g transform="translate(0, 180)">
+      <rect x="0" y="0" width="120" height="150" rx="8" fill="#794a8b"/>
+      <rect x="0" y="100" width="120" height="50" rx="0" fill="#1a1624"/>
+      <text x="12" y="125" font-family="monospace" font-size="10" fill="#ffffff">#794A8B</text>
+      <text x="12" y="140" font-family="monospace" font-size="9" fill="#888196">PRIMARY</text>
+
+      <rect x="150" y="0" width="120" height="150" rx="8" fill="#c78ee0"/>
+      <rect x="150" y="100" width="120" height="50" rx="0" fill="#1a1624"/>
+      <text x="162" y="125" font-family="monospace" font-size="10" fill="#ffffff">#C78EE0</text>
+      <text x="162" y="140" font-family="monospace" font-size="9" fill="#888196">ACCENT</text>
+
+      <rect x="300" y="0" width="120" height="150" rx="8" fill="#1b1824"/>
+      <rect x="300" y="100" width="120" height="50" rx="0" fill="#0d0b12"/>
+      <text x="312" y="125" font-family="monospace" font-size="10" fill="#ffffff">#1B1824</text>
+      <text x="312" y="140" font-family="monospace" font-size="9" fill="#888196">SURFACE</text>
+    </g>
+  </g>
+</svg>

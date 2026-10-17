@@ -13,6 +13,7 @@ export default defineConfig(() => {
         "@hudbird/ui": path.resolve(import.meta.dirname, "./packages/core/src"),
         "@hudbird/theme": path.resolve(import.meta.dirname, "./packages/theme/src"),
         "@hudbird/marketing": path.resolve(import.meta.dirname, "./packages/marketing/src"),
+        "@hudbird/schemas": path.resolve(import.meta.dirname, "./packages/schemas/src"),
       },
     },
     server: {

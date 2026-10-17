@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#08070c"/>
+  <rect x="140" y="120" width="920" height="560" rx="16" fill="#121017" stroke="#24202e" stroke-width="1"/>
+  
+  <g transform="translate(200, 200)">
+    <rect x="0" y="0" width="360" height="400" rx="12" fill="#191624" stroke="#302a3d" stroke-width="1"/>
+    <!-- Perfume Silhouette -->
+    <rect x="130" y="80" width="100" height="180" rx="10" fill="#292336" stroke="#483d57" stroke-width="1"/>
+    <rect x="150" y="50" width="60" height="30" rx="4" fill="#794a8b"/>
+    <text x="180" y="320" font-family="monospace" font-size="12" fill="#a099ad" text-anchor="middle" letter-spacing="2">EAU DE NOIR</text>
+    <text x="180" y="350" font-family="monospace" font-size="14" fill="#c78ee0" text-anchor="middle">$280</text>
+
+    <g transform="translate(420, 40)">
+      <text x="0" y="0" font-family="monospace" font-size="11" fill="#794a8b" letter-spacing="3">[ COMMERCE ENGINE ]</text>
+      <text x="0" y="50" font-family="system-ui, sans-serif" font-size="36" font-weight="300" fill="#ffffff">One-Click Checkout</text>
+      <text x="0" y="90" font-family="system-ui, sans-serif" font-size="16" fill="#888196">Sub-second headless Shopify storefront.</text>
+      
+      <rect x="0" y="140" width="220" height="48" rx="24" fill="#794a8b"/>
+      <text x="110" y="170" font-family="system-ui, sans-serif" font-size="14" font-weight="500" fill="#ffffff" text-anchor="middle">Buy in 1-Click</text>
+    </g>
+  </g>
+</svg>

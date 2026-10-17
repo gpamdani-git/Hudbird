@@ -2,6 +2,183 @@
 @source "../../../packages";
 @custom-variant dark (&:is(.dark *));
 
+/* ==========================================================================
+   Hudbird Nexus — Polymorphic Multi-Niche Editorial Design Tokens
+   Each niche activates its own authentic surface materiality, ink contrast,
+   border hairline character, and typographic voice via [data-niche="..."].
+   ========================================================================== */
+:root,
+[data-niche="digital-agency"] {
+  --nx-page: #f4f1ea;
+  --nx-surface: #faf8f3;
+  --nx-subtle: #eae5da;
+  --nx-canvas: #e5dfd2;
+  --nx-line: #d4cec0;
+  --nx-ink: #0e0e10;
+  --nx-ink-2: #46443e;
+  --nx-muted: #767268;
+  --nx-inverse: #0e0e10;
+  --nx-inverse-ink: #f4f1ea;
+  --nx-shadow: 14 14 16;
+  --theme-font-sans: "Plus Jakarta Sans";
+  --theme-font-heading: "Syne";
+  --theme-font-serif: "Instrument Serif";
+}
+
+.dark,
+.dark [data-niche="digital-agency"] {
+  --nx-page: #0a0a0c;
+  --nx-surface: #111115;
+  --nx-subtle: #18181e;
+  --nx-canvas: #141419;
+  --nx-line: rgba(244, 241, 234, 0.09);
+  --nx-ink: #f4f1ea;
+  --nx-ink-2: #a8a49b;
+  --nx-muted: #6f6c64;
+  --nx-inverse: #f4f1ea;
+  --nx-inverse-ink: #0a0a0c;
+  --nx-shadow: 0 0 0;
+}
+
+/* Niche 02: AI Copilot — True OLED Specular Precision */
+[data-niche="ai-copilot"] {
+  --nx-page: #f7f8fa;
+  --nx-surface: #ffffff;
+  --nx-subtle: #eef1f6;
+  --nx-canvas: #e6ebf2;
+  --nx-line: #dce1ea;
+  --nx-ink: #080a0f;
+  --nx-ink-2: #454e5f;
+  --nx-muted: #747f94;
+  --nx-inverse: #080a0f;
+  --nx-inverse-ink: #f7f8fa;
+  --theme-font-sans: "Inter";
+  --theme-font-heading: "Inter";
+  --theme-font-serif: "Instrument Serif";
+}
+
+.dark [data-niche="ai-copilot"] {
+  --nx-page: #050608;
+  --nx-surface: #0b0d12;
+  --nx-subtle: #11151d;
+  --nx-canvas: #0d1017;
+  --nx-line: rgba(255, 255, 255, 0.075);
+  --nx-ink: #f3f5f8;
+  --nx-ink-2: #949eae;
+  --nx-muted: #5c6577;
+  --nx-inverse: #f3f5f8;
+  --nx-inverse-ink: #050608;
+}
+
+/* Niche 03: Fintech Protocol — Sovereign Institutional Ledger */
+[data-niche="fintech-protocol"] {
+  --nx-page: #f8fafc;
+  --nx-surface: #ffffff;
+  --nx-subtle: #f1f5f9;
+  --nx-canvas: #e2e8f0;
+  --nx-line: #cbd5e1;
+  --nx-ink: #060a12;
+  --nx-ink-2: #334155;
+  --nx-muted: #64748b;
+  --nx-inverse: #060a12;
+  --nx-inverse-ink: #f8fafc;
+  --theme-font-sans: "Plus Jakarta Sans";
+  --theme-font-heading: "Plus Jakarta Sans";
+  --theme-font-serif: "Instrument Serif";
+}
+
+.dark [data-niche="fintech-protocol"] {
+  --nx-page: #040711;
+  --nx-surface: #0a101f;
+  --nx-subtle: #11192e;
+  --nx-canvas: #0d1526;
+  --nx-line: rgba(148, 163, 184, 0.12);
+  --nx-ink: #f8fafc;
+  --nx-ink-2: #94a3b8;
+  --nx-muted: #64748b;
+  --nx-inverse: #f8fafc;
+  --nx-inverse-ink: #040711;
+}
+
+/* Niche 04: Cyber Shield — Tactical Industrial Command HUD */
+[data-niche="cyber-shield"] {
+  --nx-page: #eef2f0;
+  --nx-surface: #f7faf8;
+  --nx-subtle: #e1e8e4;
+  --nx-canvas: #d6e0db;
+  --nx-line: #bcc8c2;
+  --nx-ink: #060b08;
+  --nx-ink-2: #34443b;
+  --nx-muted: #5e7066;
+  --nx-inverse: #060b08;
+  --nx-inverse-ink: #eef2f0;
+  --theme-font-sans: "Space Grotesk";
+  --theme-font-heading: "Space Grotesk";
+  --theme-font-serif: "Instrument Serif";
+}
+
+.dark [data-niche="cyber-shield"] {
+  --nx-page: #050807;
+  --nx-surface: #0a100d;
+  --nx-subtle: #101915;
+  --nx-canvas: #0d1411;
+  --nx-line: rgba(0, 230, 118, 0.14);
+  --nx-ink: #e4f0ea;
+  --nx-ink-2: #8aa396;
+  --nx-muted: #52695d;
+  --nx-inverse: #00e676;
+  --nx-inverse-ink: #050807;
+}
+
+/* Niche 05: Alunara Wellness — Botanical Editorial & Apothecary */
+[data-niche="alunara-wellness"] {
+  --nx-page: #f6f3ec;
+  --nx-surface: #fdfbf7;
+  --nx-subtle: #ede8dd;
+  --nx-canvas: #e6dfd1;
+  --nx-line: #dcd3c2;
+  --nx-ink: #1c1814;
+  --nx-ink-2: #524a40;
+  --nx-muted: #827769;
+  --nx-inverse: #1c1814;
+  --nx-inverse-ink: #f6f3ec;
+  --theme-font-sans: "Plus Jakarta Sans";
+  --theme-font-heading: "Cormorant Garamond";
+  --theme-font-serif: "Cormorant Garamond";
+}
+
+.dark [data-niche="alunara-wellness"] {
+  --nx-page: #15120f;
+  --nx-surface: #1e1a16;
+  --nx-subtle: #28221d;
+  --nx-canvas: #221d18;
+  --nx-line: rgba(234, 224, 208, 0.11);
+  --nx-ink: #f2ece1;
+  --nx-ink-2: #b8aea0;
+  --nx-muted: #857b6e;
+  --nx-inverse: #f2ece1;
+  --nx-inverse-ink: #15120f;
+}
+
+@theme inline {
+  --color-nx-page: var(--nx-page);
+  --color-nx-surface: var(--nx-surface);
+  --color-nx-subtle: var(--nx-subtle);
+  --color-nx-canvas: var(--nx-canvas);
+  --color-nx-line: var(--nx-line);
+  --color-nx-ink: var(--nx-ink);
+  --color-nx-ink-2: var(--nx-ink-2);
+  --color-nx-muted: var(--nx-muted);
+  --color-nx-inverse: var(--nx-inverse);
+  --color-nx-inverse-ink: var(--nx-inverse-ink);
+  --font-serif:
+    var(--theme-font-serif, "Instrument Serif"), ui-serif, Georgia, "Times New Roman", serif;
+  --font-editorial: "Cormorant Garamond", "Instrument Serif", Georgia, serif;
+  --font-display: "Syne", "Plus Jakarta Sans", sans-serif;
+  --font-tactical: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
 @theme {
   --radius: var(--theme-radius, 0.5rem);
   --radius-sm: calc(var(--theme-radius, 0.5rem) - 4px);
@@ -27,6 +204,17 @@
   --font-sans: var(--theme-font-sans, "Inter"), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--theme-font-heading, "Outfit"), ui-sans-serif, system-ui, sans-serif;
   --font-outfit: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: color-mix(in srgb, var(--brand-primary, #794a8b) 10%, white);
+  --color-brand-100: color-mix(in srgb, var(--brand-primary, #794a8b) 20%, white);
+  --color-brand-200: color-mix(in srgb, var(--brand-primary, #794a8b) 35%, white);
+  --color-brand-300: color-mix(in srgb, var(--brand-primary, #794a8b) 50%, white);
+  --color-brand-400: color-mix(in srgb, var(--brand-primary, #794a8b) 70%, white);
+  --color-brand-500: var(--brand-primary, #794a8b);
+  --color-brand-600: color-mix(in srgb, var(--brand-primary, #794a8b) 85%, black);
+  --color-brand-700: color-mix(in srgb, var(--brand-primary, #794a8b) 70%, black);
+  --color-brand-800: color-mix(in srgb, var(--brand-primary, #794a8b) 55%, black);
+  --color-brand-900: color-mix(in srgb, var(--brand-primary, #794a8b) 40%, black);
 
   /* Semantic Fallback Mappings */
   --color-primary: var(--color-primary-600);

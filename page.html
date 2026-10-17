@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hudbird UI Pro — Premium React, TypeScript & Tailwind Component Library</title>
+  <meta name="description" content="Ship modern, accessible, and high-converting web apps 10x faster. 70+ React primitives, multi-theme tokens, marketing blocks, and full Next.js starter templates." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#fbf7fd',
+              100: '#f5ecfa',
+              200: '#edd8f4',
+              300: '#deb9ec',
+              400: '#c78ee0',
+              500: '#9d58be',
+              600: '#794a8b',
+              700: '#643b74',
+              800: '#533360',
+              900: '#462d51',
+              950: '#2b1633',
+            },
+            dark: {
+              base: '#0B0B0E',
+              surface: '#121217',
+              card: '#181820',
+              border: '#272733',
+            }
+          },
+          boxShadow: {
+            'glow': '0 0 50px -12px rgba(157, 88, 190, 0.35)',
+            'glow-lg': '0 0 90px -20px rgba(121, 74, 139, 0.45)',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg-grid: rgba(121, 74, 139, 0.05);
+      --radial-glow: rgba(157, 88, 190, 0.08);
+    }
+    .dark {
+      --bg-grid: rgba(222, 185, 236, 0.04);
+      --radial-glow: rgba(157, 88, 190, 0.15);
+    }
+    .bg-hudbird-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
+    }
+    .hero-glow {
+      background: radial-gradient(circle 800px at 50% -10%, var(--radial-glow), transparent 70%);
+    }
+    [data-gumroad-follow-message]:empty { display: none; }
+    
+    /* Smooth gallery transitions */
+    .gallery-img {
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gallery-tab.active {
+      border-color: #9d58be;
+      background: rgba(157, 88, 190, 0.12);
+      color: #9d58be;
+    }
+    .dark .gallery-tab.active {
+      border-color: #deb9ec;
+      background: rgba(222, 185, 236, 0.15);
+      color: #deb9ec;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF9F6] dark:bg-dark-base text-[#1E1E24] dark:text-zinc-100 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300 min-h-screen flex flex-col font-sans">
+
+  <!-- Ambient Grid & Glow -->
+  <div class="fixed inset-0 bg-hudbird-grid pointer-events-none z-0" aria-hidden="true"></div>
+  <div class="fixed inset-0 hero-glow pointer-events-none z-0" aria-hidden="true"></div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="relative z-50 bg-gradient-to-r from-brand-900 via-brand-800 to-brand-950 text-white text-xs font-medium py-2 px-4 text-center border-b border-brand-700/50 shadow-xs">
+    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-500/30 text-brand-200 border border-brand-400/30 text-[11px] font-mono uppercase tracking-wider font-semibold">
+        ✨ v1.5.0 Release
+      </span>
+      <span><strong>Hudbird UI Pro</strong> with Tailwind CSS, React 19 &amp; 18+ Full Starter Blocks is live!</span>
+      <a href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess" class="underline underline-offset-4 hover:text-brand-200 font-semibold transition-colors">
+        Claim All-Access License &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#FAF9F6]/85 dark:bg-dark-base/85 border-b border-zinc-200/80 dark:border-dark-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      
+      <!-- Creator Brand -->
+      <a href="https://danihudbird.gumroad.com" class="flex items-center gap-3.5 group focus:outline-none">
+        <div class="relative">
+          <img
+            src="https://public-files.gumroad.com/ivb9p39ipx230ug36vvko88rkwlg"
+            alt="Dani Hudbird Avatar"
+            class="w-10 h-10 rounded-xl object-cover ring-2 ring-brand-500/30 group-hover:ring-brand-500 transition-all shadow-md"
+          />
+          <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white dark:border-dark-base rounded-full" title="Active Creator"></span>
+        </div>
+        <div>
+          <span class="font-extrabold tracking-tight text-base sm:text-lg block leading-none text-zinc-900 dark:text-white">
+            hudbird<span class="text-brand-500 dark:text-brand-400">.ui</span>
+            <span class="ml-1.5 px-1.5 py-0.5 rounded text-[10px] font-mono bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">PRO</span>
+          </span>
+          <span class="font-mono text-xs text-zinc-500 dark:text-zinc-400">by Dani Hudbird (@danihudbird)</span>
+        </div>
+      </a>
+
+      <!-- Navigation & Action -->
+      <div class="flex items-center gap-3 sm:gap-6">
+        <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-zinc-600 dark:text-zinc-300">
+          <a href="#overview" class="hover:text-brand-600 dark:hover:text-brand-300 transition-colors">Components</a>
+          <a href="#gallery" class="hover:text-brand-600 dark:hover:text-brand-300 transition-colors">Visuals</a>
+          <a href="#playground" class="hover:text-brand-600 dark:hover:text-brand-300 transition-colors">Live Demo</a>
+          <a href="#pricing" class="hover:text-brand-600 dark:hover:text-brand-300 transition-colors">Pricing</a>
+          <a href="#faq" class="hover:text-brand-600 dark:hover:text-brand-300 transition-colors">FAQ</a>
+        </nav>
+
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle color mode"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-300/80 dark:border-dark-border bg-white dark:bg-dark-card text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all shadow-xs"
+        >
+          <svg class="h-4 w-4 dark:hidden text-amber-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" />
+          </svg>
+          <svg class="h-4 w-4 hidden dark:block text-brand-300" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+        </button>
+
+        <!-- Direct Buy CTA -->
+        <a
+          href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+          class="inline-flex items-center gap-2 px-4.5 py-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-xs sm:text-sm hover:bg-brand-600 dark:hover:bg-brand-200 transition-all shadow-md hover:shadow-glow"
+        >
+          <span>Get All-Access</span>
+          <span class="font-mono text-xs opacity-75 font-normal">$249</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 flex-1">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="pt-12 pb-16 sm:pt-20 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-3xl mx-auto space-y-6">
+        
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-mono font-semibold bg-brand-50 dark:bg-brand-950/70 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800/80 shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>FEATHERWEIGHT · PRODUCTION READY · TAILWIND &amp; TYPESCRIPT</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.08]">
+          Ship gorgeous React apps <br class="hidden sm:block" />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 via-brand-500 to-amber-600 dark:from-brand-300 dark:via-brand-200 dark:to-amber-400">
+            in hours, not months.
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed">
+          The ultimate component library for developers, solo founders, and agencies. 
+          Stop reinventing complex sidebars, selects, and design tokens. Copy-paste battle-tested primitives directly into your codebase.
+        </p>
+
+        <!-- Primary CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
+          <a
+            href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-700 dark:bg-brand-500 dark:hover:bg-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/25 hover:shadow-glow transition-all hover:-translate-y-0.5 cursor-pointer"
+          >
+            <span>Get Hudbird UI Pro — $249</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+
+          <a
+            href="#playground"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-white dark:bg-dark-card hover:bg-zinc-100 dark:hover:bg-dark-border text-zinc-800 dark:text-zinc-200 border border-zinc-200/90 dark:border-dark-border font-semibold text-sm transition-all"
+          >
+            <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+            </svg>
+            <span>Try Interactive Demo</span>
+          </a>
+        </div>
+
+        <!-- Social Proof Stats -->
+        <div class="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-zinc-200/70 dark:border-dark-border text-left">
+          <div class="p-3 rounded-xl bg-white/70 dark:bg-dark-card/50 border border-zinc-200/60 dark:border-dark-border">
+            <div class="text-2xl font-extrabold font-mono text-zinc-900 dark:text-white">70+</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400">Accessible Primitives</div>
+          </div>
+          <div class="p-3 rounded-xl bg-white/70 dark:bg-dark-card/50 border border-zinc-200/60 dark:border-dark-border">
+            <div class="text-2xl font-extrabold font-mono text-zinc-900 dark:text-white">100%</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400">Strict TypeScript</div>
+          </div>
+          <div class="p-3 rounded-xl bg-white/70 dark:bg-dark-card/50 border border-zinc-200/60 dark:border-dark-border">
+            <div class="text-2xl font-extrabold font-mono text-zinc-900 dark:text-white">&lt; 15kB</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400">Featherweight Bundle</div>
+          </div>
+          <div class="p-3 rounded-xl bg-white/70 dark:bg-dark-card/50 border border-zinc-200/60 dark:border-dark-border">
+            <div class="text-2xl font-extrabold font-mono text-emerald-600 dark:text-emerald-400">Lifetime</div>
+            <div class="text-xs text-zinc-500 dark:text-zinc-400">Updates &amp; Releases</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== REAL PRODUCT IMAGE GALLERY ==================== -->
+    <section id="gallery" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-6 sm:p-10 shadow-2xl overflow-hidden relative">
+        
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+              REAL PRODUCT ASSETS
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 text-zinc-900 dark:text-white">
+              Inspecting the Pro Design System
+            </h2>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+              High-resolution captures directly from the active Gumroad release package.
+            </p>
+          </div>
+
+          <!-- Gallery Tabs -->
+          <div class="flex flex-wrap gap-2" role="tablist">
+            <button
+              type="button"
+              onclick="switchGallery('0')"
+              id="tab-0"
+              class="gallery-tab active px-3.5 py-2 rounded-xl text-xs font-mono font-semibold border border-zinc-200 dark:border-dark-border text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all cursor-pointer"
+            >
+              1. Master Showcase
+            </button>
+            <button
+              type="button"
+              onclick="switchGallery('1')"
+              id="tab-1"
+              class="gallery-tab px-3.5 py-2 rounded-xl text-xs font-mono font-semibold border border-zinc-200 dark:border-dark-border text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all cursor-pointer"
+            >
+              2. Multi-Panel Editor
+            </button>
+            <button
+              type="button"
+              onclick="switchGallery('2')"
+              id="tab-2"
+              class="gallery-tab px-3.5 py-2 rounded-xl text-xs font-mono font-semibold border border-zinc-200 dark:border-dark-border text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all cursor-pointer"
+            >
+              3. Dashboard &amp; Analytics
+            </button>
+            <button
+              type="button"
+              onclick="switchGallery('3')"
+              id="tab-3"
+              class="gallery-tab px-3.5 py-2 rounded-xl text-xs font-mono font-semibold border border-zinc-200 dark:border-dark-border text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all cursor-pointer"
+            >
+              4. SaaS Marketing Bento
+            </button>
+            <button
+              type="button"
+              onclick="switchGallery('4')"
+              id="tab-4"
+              class="gallery-tab px-3.5 py-2 rounded-xl text-xs font-mono font-semibold border border-zinc-200 dark:border-dark-border text-zinc-700 dark:text-zinc-300 hover:border-brand-500 transition-all cursor-pointer"
+            >
+              5. AI Studio Interface
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured Big Image Frame -->
+        <div class="relative rounded-2xl overflow-hidden border border-zinc-200/90 dark:border-dark-border bg-zinc-950 shadow-inner aspect-[16/9] sm:aspect-[2940/1672]">
+          <img
+            id="featured-image"
+            src="https://public-files.gumroad.com/bvjfbe9ddp7irp1b0t1wcld7upc3"
+            alt="Hudbird UI Pro All Access Design System"
+            class="gallery-img w-full h-full object-cover object-top"
+          />
+
+          <!-- Caption overlay -->
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent p-4 sm:p-6 flex items-center justify-between text-white">
+            <div>
+              <p id="featured-title" class="font-bold text-base sm:text-lg">Hudbird UI Pro — Master Architecture &amp; Theme Showcase</p>
+              <p id="featured-desc" class="text-xs sm:text-sm text-zinc-300 mt-0.5">Includes full dark/light tokens, responsive sidebar choreography, and modular components.</p>
+            </div>
+            <a
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+              class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs transition-colors shadow-md"
+            >
+              Buy Pro — $249
+            </a>
+          </div>
+        </div>
+
+        <!-- Thumbnail Strip -->
+        <div class="grid grid-cols-5 gap-3 mt-4">
+          <button type="button" onclick="switchGallery('0')" class="group relative rounded-xl overflow-hidden border-2 border-brand-500 focus:outline-none aspect-[16/10]">
+            <img src="https://public-files.gumroad.com/ctenyps4r75dhagxdjoy132kuuyt" alt="Cover 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          </button>
+          <button type="button" onclick="switchGallery('1')" class="group relative rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none aspect-[16/10]">
+            <img src="https://public-files.gumroad.com/3bghff1hownjbkmytpg3de9ymbdb" alt="Cover 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          </button>
+          <button type="button" onclick="switchGallery('2')" class="group relative rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none aspect-[16/10]">
+            <img src="https://public-files.gumroad.com/ylf9hh6fs4wwofcspfj0b0t1d2jt" alt="Cover 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          </button>
+          <button type="button" onclick="switchGallery('3')" class="group relative rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none aspect-[16/10]">
+            <img src="https://public-files.gumroad.com/6hgd8m3r7epy07tl49hq5mzv6mj9" alt="Cover 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          </button>
+          <button type="button" onclick="switchGallery('4')" class="group relative rounded-xl overflow-hidden border-2 border-transparent hover:border-brand-400 focus:outline-none aspect-[16/10]">
+            <img src="https://public-files.gumroad.com/44vka10uup8lpngrqrzjttivwzma" alt="Cover 5" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== THE PROBLEM VS THE SOLUTION ==================== -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-300">
+          WHY HUDBIRD UI PRO?
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1 text-zinc-900 dark:text-white">
+          Stop wasting billable hours rebuilding basic UI.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- The Painful Old Way -->
+        <div class="rounded-2xl p-7 sm:p-9 bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200/80 dark:border-rose-900/40 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+            ❌ The Painful Way (Without Hudbird)
+          </div>
+          <ul class="space-y-3.5 text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+            <li class="flex items-start gap-3">
+              <span class="text-rose-500 font-bold">✕</span>
+              <span><strong>Endless glue code:</strong> Hand-crafting multi-state dropdowns, dialogs, and nested menus using raw headless primitives.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-rose-500 font-bold">✕</span>
+              <span><strong>Messy Dark Mode:</strong> Inconsistent hex colors scattered across 50 CSS files that break in production.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-rose-500 font-bold">✕</span>
+              <span><strong>TypeScript headaches:</strong> Fixing missing variant props, vague generic types, and JSX runtime conflicts.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-rose-500 font-bold">✕</span>
+              <span><strong>Lost Revenue:</strong> Spending 3 to 4 weeks on dashboard UI while your competitors launch and monetize.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- The Hudbird Way -->
+        <div class="rounded-2xl p-7 sm:p-9 bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/40 space-y-5 shadow-lg shadow-emerald-500/5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            ✅ The Hudbird Way (With Hudbird UI Pro)
+          </div>
+          <ul class="space-y-3.5 text-sm sm:text-base text-zinc-700 dark:text-zinc-300">
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span><strong>Drop-in &amp; Ship:</strong> 70+ components designed to fit right into your project with zero bloat or vendor lock-in.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span><strong>True Theme Token Architecture:</strong> Switch between Light, Dark, Plum, and Obsidian effortlessly with zero layout flash.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span><strong>100% Type-Safe:</strong> Full autocomplete for every variant, size, and layout attribute in VS Code.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-emerald-500 font-bold">✓</span>
+              <span><strong>Commercial Freedom:</strong> Build unlimited client applications, commercial SaaS products, and digital stores.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE LIVE PLAYGROUND ==================== -->
+    <section id="playground" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="rounded-3xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-6 sm:p-10 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-5 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-mono font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+              INTERACTIVE COMPONENT INSPECTOR
+            </div>
+            <h2 class="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
+              Feel the micro-interactions before you buy.
+            </h2>
+            <p class="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Every Hudbird component is built with fluid state feedback, accessible ARIA roles, and keyboard navigation. Test the live controls on the right.
+            </p>
+
+            <div class="p-4 rounded-xl bg-zinc-50 dark:bg-dark-card border border-zinc-200/80 dark:border-dark-border space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono text-zinc-500">
+                <span>CLI INSTALLATION:</span>
+                <span class="text-brand-500 font-semibold">PNPM / NPM / YARN</span>
+              </div>
+              <div class="p-3 rounded-lg bg-zinc-900 text-zinc-200 font-mono text-xs flex items-center justify-between overflow-x-auto">
+                <code>pnpm add @hudbird/ui @hudbird/theme</code>
+                <button
+                  type="button"
+                  onclick="navigator.clipboard.writeText('pnpm add @hudbird/ui @hudbird/theme'); alert('Copied to clipboard!')"
+                  class="ml-2 px-2 py-1 rounded bg-zinc-800 hover:bg-zinc-700 text-[10px] text-zinc-300 shrink-0"
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Interactive Widget -->
+          <div class="lg:col-span-7">
+            <div class="rounded-2xl border border-zinc-200 dark:border-dark-border bg-zinc-50/70 dark:bg-dark-card p-6 sm:p-8 space-y-6 shadow-sm">
+              
+              <!-- Tab Selector -->
+              <div class="flex items-center justify-between border-b border-zinc-200/80 dark:border-dark-border pb-4">
+                <div>
+                  <span class="text-xs font-mono uppercase text-zinc-400 block">Active Preset</span>
+                  <span id="demo-preset-label" class="font-bold text-base text-zinc-900 dark:text-white">Hudbird Modern SaaS</span>
+                </div>
+                <div class="flex gap-1.5 p-1 rounded-xl bg-zinc-200/70 dark:bg-zinc-800/80 text-xs font-medium">
+                  <button type="button" onclick="setDemoTheme('saas')" class="px-3 py-1 rounded-lg bg-white dark:bg-zinc-700 shadow-xs font-semibold">SaaS</button>
+                  <button type="button" onclick="setDemoTheme('fintech')" class="px-3 py-1 rounded-lg hover:bg-white/50 transition-colors">Fintech</button>
+                  <button type="button" onclick="setDemoTheme('ai')" class="px-3 py-1 rounded-lg hover:bg-white/50 transition-colors">AI Studio</button>
+                </div>
+              </div>
+
+              <!-- Interactive Card Preview -->
+              <div id="demo-card-container" class="p-6 rounded-2xl bg-white dark:bg-dark-surface border border-zinc-200/80 dark:border-dark-border shadow-md space-y-4 transition-all">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div id="demo-badge-icon" class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-300 flex items-center justify-center font-bold text-lg">
+                      ⚡️
+                    </div>
+                    <div>
+                      <h4 id="demo-card-title" class="font-bold text-base text-zinc-900 dark:text-white">Analytics Velocity Engine</h4>
+                      <p id="demo-card-desc" class="text-xs text-zinc-500">Real-time telemetry and component render tracking.</p>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                    ONLINE
+                  </span>
+                </div>
+
+                <div class="space-y-3 pt-2">
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">GPU Accelerated Transitions</span>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked="true"
+                      data-demo-switch
+                      class="demo-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-brand-500 transition-colors duration-200 ease-in-out focus:outline-none"
+                    >
+                      <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+                    </button>
+                  </div>
+
+                  <div class="flex items-center justify-between text-sm">
+                    <span class="font-medium text-zinc-700 dark:text-zinc-300">Strict ARIA Focus Rings</span>
+                    <button
+                      type="button"
+                      role="switch"
+                      aria-checked="true"
+                      data-demo-switch
+                      class="demo-switch relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-brand-500 transition-colors duration-200 ease-in-out focus:outline-none"
+                    >
+                      <span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="pt-4 border-t border-zinc-100 dark:border-dark-border flex items-center justify-between">
+                  <span class="text-xs font-mono text-zinc-400">STATUS: 0 BUGS · 100% TEST COVERAGE</span>
+                  <button
+                    type="button"
+                    onclick="alert('Interactive component verified!')"
+                    class="px-4 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-xs transition-colors shadow-xs"
+                  >
+                    Test Action
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PRICING & TIERS (REAL GUMROAD DATA) ==================== -->
+    <section id="pricing" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-zinc-200/80 dark:border-dark-border">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-300">
+          INVEST IN SPEED
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight mt-2 text-zinc-900 dark:text-white">
+          Simple, transparent pricing.
+        </h2>
+        <p class="text-base text-zinc-600 dark:text-zinc-400 mt-2">
+          One-time investment. No recurring subscriptions. Lifetime updates and unlimited projects.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+        
+        <!-- Tier 1: Pro All Access (Popular Flagship) -->
+        <div class="relative rounded-3xl bg-white dark:bg-dark-surface border-2 border-brand-500 p-8 sm:p-10 flex flex-col justify-between shadow-glow hover:shadow-glow-lg transition-all">
+          <div class="absolute -top-3.5 right-8">
+            <span class="px-3.5 py-1 rounded-full text-xs font-mono font-bold bg-brand-500 text-white shadow-md uppercase tracking-wider">
+              MOST POPULAR
+            </span>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-white">Pro All Access</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">For solo developers, creators &amp; startup builders.</p>
+              </div>
+            </div>
+
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="text-5xl font-extrabold font-mono text-zinc-900 dark:text-white">$249</span>
+              <span class="text-sm font-semibold text-zinc-400">one-time / lifetime access</span>
+            </div>
+
+            <p class="text-xs text-brand-600 dark:text-brand-300 font-semibold mt-1">
+              ✨ Pays for itself on day 1 of your first project.
+            </p>
+
+            <ul class="mt-8 space-y-3.5 text-sm text-zinc-700 dark:text-zinc-300 border-t border-zinc-100 dark:border-dark-border pt-6">
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>All 70+ UI Primitives</strong> (Accordion, Select, Sidebar, Tabs, Modals)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Multi-Theme Design Token System</strong> (Light, Dark, Plum, Obsidian)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Full Source Code</strong> in TypeScript + Tailwind CSS</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Unlimited Personal &amp; Client Projects</strong></span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Next.js 15 &amp; React 19 Starter Kits</strong></span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Lifetime Updates</strong> and new component drops</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-zinc-100 dark:border-dark-border">
+            <a
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+              class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-base shadow-lg shadow-brand-500/25 transition-all hover:-translate-y-0.5 cursor-pointer"
+            >
+              <span>Get Pro All Access Now</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <div class="text-center mt-3 text-xs text-zinc-400">
+              🔒 Instant Delivery · 14-day Money-back Guarantee
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: Agency & Team License -->
+        <div class="rounded-3xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-8 sm:p-10 flex flex-col justify-between shadow-sm hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+          <div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-2xl font-extrabold text-zinc-900 dark:text-white">Agency &amp; Team</h3>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">For digital agencies, dev shops &amp; growing teams.</p>
+              </div>
+              <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-semibold bg-zinc-100 dark:bg-dark-card text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-dark-border">
+                TEAMS
+              </span>
+            </div>
+
+            <div class="mt-6 flex items-baseline gap-2">
+              <span class="text-5xl font-extrabold font-mono text-zinc-900 dark:text-white">$748</span>
+              <span class="text-sm font-semibold text-zinc-400">one-time ($249 + $499)</span>
+            </div>
+
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+              For teams needing multi-seat developer access and priority support.
+            </p>
+
+            <ul class="mt-8 space-y-3.5 text-sm text-zinc-700 dark:text-zinc-300 border-t border-zinc-100 dark:border-dark-border pt-6">
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Everything in Pro All Access</strong> included</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Up to 10 Developer Team Seats</strong></span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Client Hand-Off Rights</strong> (unlimited end deliverables)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Priority Discord / Email Support</strong> directly from creator</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="text-brand-500 font-bold">✓</span>
+                <span><strong>Architectural Consulting</strong> for complex monorepos</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-zinc-100 dark:border-dark-border">
+            <a
+              href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess?variant=Agency"
+              class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-zinc-950 font-bold text-base hover:bg-brand-600 dark:hover:bg-brand-200 transition-all cursor-pointer"
+            >
+              <span>Get Agency License</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <div class="text-center mt-3 text-xs text-zinc-400">
+              🔒 Instant Multi-seat Key &amp; GitHub Repo Access
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== FREQUENTLY ASKED QUESTIONS ==================== -->
+    <section id="faq" class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-600 dark:text-brand-300">
+          GOT QUESTIONS?
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-1 text-zinc-900 dark:text-white">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <details class="group rounded-2xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-5 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-zinc-900 dark:text-white list-none">
+            <span>Can I use Hudbird UI Pro in commercial client projects?</span>
+            <span class="text-brand-500 font-mono text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed">
+            Yes, 100%! You have full commercial rights to use the components in unlimited personal projects, commercial SaaS applications, and client deliverables. The only restriction is you cannot redistribute the raw component library as a competing UI kit.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-5 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-zinc-900 dark:text-white list-none">
+            <span>Does it work with Next.js 15 and React 19?</span>
+            <span class="text-brand-500 font-mono text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed">
+            Yes. Every component has been tested in React 19 and Next.js 15 App Router. Interactive controls include standard <code>"use client"</code> directives and are optimized for Server-Side Rendering (SSR) without hydration mismatch warnings.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-5 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-zinc-900 dark:text-white list-none">
+            <span>How do I receive updates?</span>
+            <span class="text-brand-500 font-mono text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed">
+            When you purchase the All-Access license on Gumroad, you get lifetime access to all new version downloads, changelogs, and updates delivered right to your Gumroad library and email.
+          </p>
+        </details>
+
+        <details class="group rounded-2xl bg-white dark:bg-dark-surface border border-zinc-200/90 dark:border-dark-border p-5 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-zinc-900 dark:text-white list-none">
+            <span>What if I am unhappy with my purchase?</span>
+            <span class="text-brand-500 font-mono text-xl transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed">
+            We offer a 14-day money-back guarantee. If Hudbird UI Pro doesn't save you massive development time or fit your technical stack, just reach out via your Gumroad receipt for a swift, hassle-free refund.
+          </p>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ==================== NEWSLETTER & UPDATES ==================== -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="rounded-3xl bg-gradient-to-br from-zinc-950 via-brand-950 to-zinc-900 text-white p-8 sm:p-12 lg:p-14 border border-brand-800/40 shadow-2xl relative overflow-hidden">
+        <div class="max-w-2xl relative z-10 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-white/10 text-brand-200 border border-white/10">
+            FREE DROPS &amp; RELEASE NOTES
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+            Follow Dani Hudbird on Gumroad.
+          </h2>
+
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Get notified whenever new UI primitives, Shopify OS 2.0 sections, and free developer snippets are dropped. Zero spam.
+          </p>
+
+          <form data-gumroad-follow class="pt-2 space-y-3">
+            <div class="flex flex-col sm:flex-row gap-3 max-w-md">
+              <label for="gumroad-email" class="sr-only">Email address</label>
+              <input
+                id="gumroad-email"
+                type="email"
+                name="email"
+                required
+                placeholder="you@company.com"
+                class="flex-1 rounded-xl bg-white/10 border border-white/20 px-4 py-3.5 text-sm text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand-400"
+              />
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-semibold text-sm transition-colors shrink-0 shadow-lg cursor-pointer"
+              >
+                Follow @danihudbird
+              </button>
+            </div>
+
+            <p
+              data-gumroad-follow-message
+              aria-live="polite"
+              class="text-xs font-mono text-emerald-300 bg-emerald-950/60 border border-emerald-700/50 rounded-lg px-3.5 py-2 max-w-md"
+            ></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky Bottom Quick Conversion Bar -->
+  <aside id="sticky-cta-bar" class="fixed bottom-4 inset-x-4 max-w-3xl mx-auto z-40 bg-zinc-900/90 dark:bg-dark-card/90 backdrop-blur-md text-white border border-zinc-700/60 dark:border-dark-border p-3.5 sm:p-4 rounded-2xl shadow-2xl flex items-center justify-between gap-4 transition-all duration-300 translate-y-24 opacity-0 pointer-events-none">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold text-sm">
+        ⚡️
+      </div>
+      <div>
+        <p class="font-bold text-sm leading-tight text-white">Hudbird UI Pro — All Access</p>
+        <p class="text-[11px] text-zinc-400">70+ Primitives · Tailwind &amp; TypeScript · $249</p>
+      </div>
+    </div>
+    <a
+      href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
+      class="px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-bold text-xs sm:text-sm transition-all shadow-md shrink-0 cursor-pointer"
+    >
+      Buy Now &rarr;
+    </a>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-zinc-200/80 dark:border-dark-border py-8 px-4 sm:px-6 lg:px-8 text-xs text-zinc-500 dark:text-zinc-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-zinc-800 dark:text-zinc-200">Dani Hudbird-UI</span>
+        <span>·</span>
+        <span class="font-mono">@danihudbird</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://danihudbird.gumroad.com" class="hover:text-brand-500 transition-colors">Gumroad Storefront</a>
+        <a href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess" class="hover:text-brand-500 transition-colors">Hudbird UI Pro ($249)</a>
+        <a href="https://danihudbird.gumroad.com/subscribe" class="hover:text-brand-500 transition-colors">Subscribe</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Interactivity & Gallery -->
+  <script>
+    (function () {
+      // 1. Theme Toggle
+      const root = document.documentElement;
+      const toggleBtn = document.getElementById('theme-toggle');
+
+      try {
+        const saved = localStorage.getItem('hudbird-theme');
+        if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          root.classList.add('dark');
+        }
+      } catch (e) {
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          root.classList.add('dark');
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          const isDark = root.classList.toggle('dark');
+          try {
+            localStorage.setItem('hudbird-theme', isDark ? 'dark' : 'light');
+          } catch (e) {}
+        });
+      }
+
+      // 2. Real Product Gallery Switcher
+      const galleryData = [
+        {
+          src: "https://public-files.gumroad.com/bvjfbe9ddp7irp1b0t1wcld7upc3",
+          title: "Hudbird UI Pro — Master Architecture & Theme Showcase",
+          desc: "Full dark/light tokens, responsive sidebar choreography, and modular components."
+        },
+        {
+          src: "https://public-files.gumroad.com/fclxrpox9mv4oakhtxpbq6tw1ygg",
+          title: "Multi-Panel Visual Builder & Workspace Shell",
+          desc: "Three-panel editor layout with collapsible navigation and code inspectors."
+        },
+        {
+          src: "https://public-files.gumroad.com/s1rvezcsjn9tqwy7rq8766xk3ur2",
+          title: "Real-time Analytics & Dashboard Primitives",
+          desc: "High-density data tables, metric trend sparklines, and interactive filters."
+        },
+        {
+          src: "https://public-files.gumroad.com/d48tyo5r2y178lydvav2pn53djr6",
+          title: "High-Converting Marketing Bento Grid",
+          desc: "Framer Motion animated interactive cards with custom hover depth."
+        },
+        {
+          src: "https://public-files.gumroad.com/s5njs4tsxswputyrutycmx9mb2x4",
+          title: "AI Studio & Conversational Assistant Interface",
+          desc: "Streaming chat components, prompt selectors, and multi-model cards."
+        }
+      ];
+
+      window.switchGallery = function (index) {
+        const idx = parseInt(index, 10);
+        const item = galleryData[idx];
+        if (!item) return;
+
+        const img = document.getElementById('featured-image');
+        const title = document.getElementById('featured-title');
+        const desc = document.getElementById('featured-desc');
+
+        if (img) {
+          img.style.opacity = '0';
+          setTimeout(() => {
+            img.src = item.src;
+            img.style.opacity = '1';
+          }, 150);
+        }
+        if (title) title.textContent = item.title;
+        if (desc) desc.textContent = item.desc;
+
+        document.querySelectorAll('.gallery-tab').forEach((tab, i) => {
+          if (i === idx) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+      };
+
+      // 3. Demo Preset Switcher
+      const presets = {
+        saas: {
+          label: "Hudbird Modern SaaS",
+          title: "Analytics Velocity Engine",
+          desc: "Real-time telemetry and component render tracking.",
+          icon: "⚡️"
+        },
+        fintech: {
+          label: "Fintech Vault Architecture",
+          title: "Encrypted Transaction Ledger",
+          desc: "High-security audit logs and tokenized asset transfers.",
+          icon: "💳"
+        },
+        ai: {
+          label: "AI Neural Studio",
+          title: "Agent Reasoning Inspector",
+          desc: "Autonomous workflow execution with subagent diagnostics.",
+          icon: "🧠"
+        }
+      };
+
+      window.setDemoTheme = function (key) {
+        const item = presets[key];
+        if (!item) return;
+        document.getElementById('demo-preset-label').textContent = item.label;
+        document.getElementById('demo-card-title').textContent = item.title;
+        document.getElementById('demo-card-desc').textContent = item.desc;
+        document.getElementById('demo-badge-icon').textContent = item.icon;
+      };
+
+      // 4. Interactive Switches
+      document.querySelectorAll('[data-demo-switch]').forEach(function (sw) {
+        sw.addEventListener('click', function () {
+          const checked = sw.getAttribute('aria-checked') === 'true';
+          const next = !checked;
+          sw.setAttribute('aria-checked', String(next));
+          sw.classList.toggle('bg-brand-500', next);
+          sw.classList.toggle('bg-zinc-300', !next);
+          sw.classList.toggle('dark:bg-zinc-700', !next);
+          const knob = sw.querySelector('span');
+          if (knob) {
+            knob.classList.toggle('translate-x-5', next);
+            knob.classList.toggle('translate-x-0', !next);
+          }
+        });
+      });
+
+      // 5. Sticky Bottom Bar Visibility on Scroll
+      const stickyBar = document.getElementById('sticky-cta-bar');
+      window.addEventListener('scroll', function () {
+        if (!stickyBar) return;
+        if (window.scrollY > 500) {
+          stickyBar.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+        } else {
+          stickyBar.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

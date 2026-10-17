@@ -11,6 +11,7 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "./src"),
       "@hudbird/ui": path.resolve(import.meta.dirname, "../../packages/core/src"),
       "@hudbird/theme": path.resolve(import.meta.dirname, "../../packages/theme/src"),
+      "@hudbird/schemas": path.resolve(import.meta.dirname, "../../packages/schemas/src"),
       "@hudbird/marketing/saas": path.resolve(
         import.meta.dirname,
         "../../packages/marketing/src/blocks/SaaS"
@@ -58,5 +59,8 @@ export default defineConfig({
   server: {
     port: 5174,
     strictPort: true,
+  },
+  optimizeDeps: {
+    exclude: ["@hudbird/schemas", "@hudbird/ui"],
   },
 });

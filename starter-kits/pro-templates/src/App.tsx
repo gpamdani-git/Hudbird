@@ -17,6 +17,20 @@ const Hospitality = React.lazy(() =>
   import("./pages/Hospitality").then((m) => ({ default: m.Hospitality }))
 );
 const Agency = React.lazy(() => import("./pages/Agency").then((m) => ({ default: m.Agency })));
+const DigitalAgencyDemo = React.lazy(() =>
+  import("./pages/DigitalAgencyDemo").then((m) => ({ default: m.DigitalAgencyDemo }))
+);
+const NexusMasterShowcase = React.lazy(() =>
+  import("./components/Showcase/NexusMasterShowcase").then((m) => ({
+    default: m.NexusMasterShowcase,
+  }))
+);
+const NexusNicheDemoView = React.lazy(() =>
+  import("./pages/NexusNicheDemoView").then((m) => ({ default: m.NexusNicheDemoView }))
+);
+const NexusInnerPageView = React.lazy(() =>
+  import("./pages/NexusInnerPageView").then((m) => ({ default: m.NexusInnerPageView }))
+);
 import { AiChat } from "./pages/AiChat";
 import { AiMail } from "./pages/AiMail";
 import { About } from "./pages/About";
@@ -34,7 +48,7 @@ import { BlogPost } from "./pages/BlogPost";
 import { Community } from "./pages/Community";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { ForgotPassword } from "./pages/ForgotPassword";
+import { ForgotPassword, OtpVerifyPage, MaintenancePage } from "./pages/ForgotPassword";
 const DashboardLayout = React.lazy(() =>
   import("./layouts/DashboardLayout").then((m) => ({ default: m.DashboardLayout }))
 );
@@ -110,6 +124,15 @@ export default function App() {
           <Route path="/fintech" element={<Fintech />} />
           <Route path="/hospitality" element={<Hospitality />} />
           <Route path="/agency" element={<Agency />} />
+          {/* Master Multiplier Sales Showcase Hub */}
+          <Route path="/nexus" element={<NexusMasterShowcase />} />
+          <Route path="/demos" element={<NexusMasterShowcase />} />
+
+          {/* Hudbird Nexus Flagship Studio Demos (All 47 Pre-built Templates & 29+ Inner Pages) */}
+          <Route path="/demos/digital-agency" element={<DigitalAgencyDemo />} />
+          <Route path="/digital-agency" element={<DigitalAgencyDemo />} />
+          <Route path="/demos/:nicheSlug" element={<NexusNicheDemoView />} />
+          <Route path="/demos/:nicheSlug/*" element={<NexusInnerPageView />} />
           <Route path="/about" element={<About />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
@@ -124,8 +147,12 @@ export default function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/community" element={<Community />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sign-in" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/sign-up" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/otp" element={<OtpVerifyPage />} />
+          <Route path="/maintenance" element={<MaintenancePage />} />
 
           {/* Dashboard Routes (Hudbird CMS) */}
           <Route path="/dashboard" element={<DashboardLayout />}>

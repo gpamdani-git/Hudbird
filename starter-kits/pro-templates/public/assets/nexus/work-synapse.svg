@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" fill="none">
+  <defs>
+    <radialGradient id="cubeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#794a8b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#08070c"/>
+  <rect width="1600" height="1000" fill="url(#cubeGlow)"/>
+
+  <!-- Studio Coordinate Crosshairs -->
+  <g opacity="0.15" stroke="#ffffff">
+    <line x1="800" y1="100" x2="800" y2="900" stroke-width="1"/>
+    <line x1="200" y1="500" x2="1400" y2="500" stroke-width="1"/>
+  </g>
+
+  <!-- Isometric Glass Cube & Floating Obsidian Core -->
+  <g transform="translate(800, 500)">
+    <!-- Glass Box Wireframe -->
+    <polygon points="0,-220 220,-90 0,40 -220,-90" fill="#ffffff" fill-opacity="0.03" stroke="#3d374a" stroke-width="1.5"/>
+    <polygon points="0,40 220,-90 220,180 0,310" fill="#ffffff" fill-opacity="0.02" stroke="#3d374a" stroke-width="1.5"/>
+    <polygon points="0,40 -220,-90 -220,180 0,310" fill="#ffffff" fill-opacity="0.04" stroke="#3d374a" stroke-width="1.5"/>
+
+    <!-- Inner Floating Obsidian Neural Sphere -->
+    <circle cx="0" cy="50" r="110" fill="#13101c" stroke="#794a8b" stroke-width="2"/>
+    <ellipse cx="0" cy="50" rx="100" ry="30" stroke="#c78ee0" stroke-width="1.2" stroke-opacity="0.5" stroke-dasharray="3 6"/>
+    <circle cx="0" cy="50" r="50" fill="#794a8b" fill-opacity="0.35"/>
+    <circle cx="0" cy="50" r="12" fill="#ffffff"/>
+  </g>
+
+  <text x="800" y="880" font-family="monospace" font-size="13" fill="#8c8599" text-anchor="middle" letter-spacing="4">SYNAPSE INTELLIGENCE SYSTEM</text>
+  <text x="800" y="910" font-family="monospace" font-size="11" fill="#794a8b" text-anchor="middle" letter-spacing="2">FOUNDATION MODEL .05</text>
+</svg>
