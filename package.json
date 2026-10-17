@@ -20,6 +20,7 @@
     "sync-changelog": "node scripts/sync-changelog.js",
     "sync:starter": "node scripts/sync-starter-kit.js",
     "pack:starter": "node scripts/pack-starter-kit.js",
+    "pack:monorepo": "node scripts/pack-monorepo.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

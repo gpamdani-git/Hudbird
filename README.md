@@ -1,69 +1,196 @@
-<img width="1810" height="576" alt="image" src="https://github.com/user-attachments/assets/c7fd4e05-8349-47c1-8a2a-f91e6390980d" />
-# Hudbird UI
+# 🦅 Hudbird UI Pro — Complete Monorepo Ecosystem
 
-**Fly through your development. Minimize the noise, keep the essence.**
+> **The modern, motion-first React & Tailwind component ecosystem.**  
+> Complete with 70+ UI primitives, 47+ Nexus niche templates, marketing blocks, CLI generator, and interactive documentation.
 
-Hudbird UI is a premium, headless-friendly React component library built with Tailwind CSS and Class Variance Authority (CVA). Designed to be beautiful out of the box, it seamlessly blends precise engineering with aesthetic elegance.
+Welcome to the **Hudbird UI Pro Monorepo** (v1.5.0). This package contains the entire production source code, tooling, and templates powering the Hudbird ecosystem.
 
-### 🔗 Quick Links
+---
 
-- **Hudbird Installation & Docs**: [https://hudbird.vercel.app/](https://hudbird.vercel.app/)
-- **Alpha Version Theme Builder**: [https://hudbird-editor.vercel.app](https://hudbird-editor.vercel.app)
+## 📂 Monorepo Architecture Overview
 
-### ☕ Support this project
+This repository is organized as a high-performance **PNPM & Turborepo workspace**:
 
-<a href="https://www.buymeacoffee.com/daniakbar" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
+```text
+BlankUI- (Root)
+├── apps/
+│   └── docs/                     # Full Documentation SPA & Interactive Component Playground (Vite + React)
+├── packages/
+│   ├── core/                     # @hudbird/ui: 70+ Featherweight UI Primitives (CVA + Framer Motion)
+│   ├── marketing/                # @hudbird/marketing: High-conversion hero, bento, testimonials, & section blocks
+│   ├── theme/                    # @hudbird/theme: Color tokens, CSS variables, & dynamic palette generators
+│   ├── schemas/                  # @hudbird/schemas: Type definitions & data schemas for all 47 Nexus templates
+│   └── cli/                      # hudbird-ui: Modern interactive CLI for scaffolding components & templates
+├── starter-kits/
+│   └── pro-templates/            # Production Nexus showcase featuring 47 niche demos & complete inner pages
+├── .agents/                      # AI design skills, craft workflows, and prompt engineering rules
+├── pnpm-workspace.yaml           # Multi-package linking config
+└── turbo.json                    # Turborepo build & caching pipelines
+```
 
-## 🧬 The Hudbird DNA
+---
 
-- **Precise Navigation:** Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang sangat presisi.
-- **Aesthetic Crown:** Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang elegan dan premium meskipun mengusung tema minimalis.
-- **Featherweight Core:** Sangat ringan, cepat, dan berfokus menghilangkan visual noise yang tidak perlu pada performa web modern.
+## ⚡ Prerequisites
 
-## 🚀 Getting Started
+Before running the monorepo, ensure you have the following installed on your machine:
 
-### Menginstal ekosistem Hudbird ke proyek Tailwind Anda
+1. **Node.js**: `v20.x` or higher (LTS recommended)
+   ```bash
+   node -v
+   ```
+2. **PNPM**: `v9.x` or higher (Required for workspace resolution)
+   If you don't have PNPM installed yet, enable it instantly with Corepack or NPM:
+   ```bash
+   corepack enable pnpm
+   # or: npm install -g pnpm
+   ```
+
+---
+
+## 🚀 Quick Start (Up & Running in 60 Seconds)
+
+### Step 1: Install Dependencies
+
+From the monorepo root directory, install all workspace packages with frozen lockfile support:
 
 ```bash
-pnpm dlx hudbird-ui@latest init
+pnpm install
 ```
 
-### Usage
+### Step 2: Build All Core Packages
 
-```tsx
-import { Button, Card, Text } from "@hudbird/ui";
+Build internal packages (`@hudbird/ui`, `@hudbird/marketing`, `@hudbird/schemas`, `@hudbird/theme`, `cli`):
 
-export default function App() {
-  return (
-    <Card>
-      <Text variant="strong">Hello Hudbird</Text>
-      <Text className="mt-2 mb-4">Minimize the noise, keep the essence.</Text>
-      <Button color="indigo">Get Started</Button>
-    </Card>
-  );
-}
+```bash
+pnpm build:packages
 ```
 
-## 📦 Deployment (Vercel)
+_(Tip: You can also run `pnpm build` to build all packages and applications simultaneously)._
 
-The documentation site is a React SPA built with Vite. It is fully optimized for Vercel deployment.
+### Step 3: Launch Local Development Servers
 
-1. Connect your repository to Vercel.
-2. Select the `apps/docs` directory as the Root Directory (or run the build from the monorepo root).
-3. Build command: `npm run build`
-4. Output directory: `dist`
+You can run either the documentation portal or the Nexus templates showcase (or both simultaneously):
 
-## 🛠 Tech Stack
+#### Option A: Run the Documentation & Component Playground (Port 3000)
 
-- React 18+
-- TypeScript
-- Tailwind CSS
-- class-variance-authority (CVA)
-- tailwind-merge & clsx
-- Radix UI (Primitives)
-- Lucide React (Icons)
-- Framer Motion (Animations)
+```bash
+pnpm dev
+```
 
-## License
+Open **[http://localhost:3000](http://localhost:3000)** in your browser to view:
 
-MIT
+- Interactive component showcases & copy-paste code snippets
+- Live color theme customizer
+- Full documentation for all UI primitives and marketing sections
+
+#### Option B: Run the Nexus Pro Templates Showcase (Port 5173)
+
+```bash
+pnpm dev:starter
+```
+
+Open **[http://localhost:5173](http://localhost:5173)** in your browser to explore:
+
+- **47 Prebuilt Niche Demos**: AI Copilot, Cyber Shield, Fintech Protocol, Digital Agency, Alunara Wellness, SaaS, Hospitality, E-Commerce, etc.
+- **14 Inner Pages**: Case Studies, Blog & Post Detail, Careers, Pricing Matrix, Client Workspace, Sprint Estimator, Legal, Auth, etc.
+- **Live Viewport Switcher**: Desktop, Tablet, and Mobile simulation toolbar.
+
+---
+
+## 📦 Workspace Packages Breakdown
+
+### 1. `@hudbird/ui` (`packages/core`)
+
+Featherweight, accessible primitives with zero runtime fluff.
+
+- **Components included**: Accordion, Alert, Avatar, Badge, Button, Calendar, Card, Checkbox, ComboBox, Command, Dialog, DoubleBezelCard, Dropdown, EditorialImage, Fieldset, Form, Heading, IconBox, Input, InputOTP, KineticButton, Navbar, Pagination, Popover, Progress, RadioGroup, Select, Sheet, Sidebar, Slider, Slot, SplitTextReveal, StickyStack, Switch, Table, Tabs, Text, Textarea, Toast, Tooltip, and more.
+- **Usage**:
+  ```tsx
+  import { Button, DoubleBezelCard, KineticButton } from "@hudbird/ui";
+  ```
+
+### 2. `@hudbird/marketing` (`packages/marketing`)
+
+Aesthetic marketing blocks with fluid Framer Motion micro-interactions.
+
+- **Sections included**: HeroGlass, BentoGrid, TestimonialsMasonry, TestimonialsGlobe, PricingMatrix, FaqWithIllustration, LogoCloudMarquee, ParticleSphere, CtaCentered, FooterMega, HospitalityHighlights, and 7 vertical industry bundles.
+- **Usage**:
+  ```tsx
+  import { SaaSHero, SaaSBentoGrid, SaaSPricing } from "@hudbird/marketing/saas";
+  ```
+
+### 3. `@hudbird/schemas` (`packages/schemas`)
+
+Complete TypeScript models, metadata, and section content schemas for all 47 templates and inner pages.
+
+- **Usage**:
+  ```tsx
+  import { PREBUILT_47_TEMPLATES, INNER_PAGES_MATRIX, type NicheConfig } from "@hudbird/schemas";
+  ```
+
+### 4. `@hudbird/theme` (`packages/theme`)
+
+Tailwind CSS variable design tokens supporting seamless Light Mode, Sleek Dark Mode, and bespoke multi-palette branding.
+
+### 5. `hudbird-ui` (`packages/cli`)
+
+Interactive CLI tool designed to scaffold individual components or entire starter templates into new projects.
+
+---
+
+## 🛠 How to Extract a Template to an External Project
+
+If you want to extract a specific template or components into your own standalone Next.js or Vite project:
+
+1. **Copy the Component / Page files**:
+   Copy the desired files from `starter-kits/pro-templates/src/components/nexus-sections/` or `packages/core/src/components/` into your target project's `src/components/` folder.
+2. **Install Peer Dependencies**:
+   Ensure your target project has the following standard dependencies:
+   ```bash
+   pnpm add framer-motion lucide-react clsx tailwind-merge class-variance-authority
+   ```
+3. **Copy the `cn` utility**:
+   Ensure you have a standard Tailwind class merger in `src/lib/cn.ts`:
+   ```ts
+   import { clsx, type ClassValue } from "clsx";
+   import { twMerge } from "tailwind-merge";
+   export function cn(...inputs: ClassValue[]) {
+     return twMerge(clsx(inputs));
+   }
+   ```
+
+---
+
+## 📜 Monorepo Scripts Reference
+
+All top-level commands you can run from the root:
+
+| Command               | Description                                                  |
+| :-------------------- | :----------------------------------------------------------- |
+| `pnpm install`        | Install all dependencies across all packages and apps        |
+| `pnpm build`          | Turbo build: builds all packages, apps, and starter kits     |
+| `pnpm build:packages` | Fast build: compiles all 5 packages in `packages/*`          |
+| `pnpm dev`            | Starts the `apps/docs` documentation server (Port 3000)      |
+| `pnpm dev:starter`    | Starts the `starter-kits/pro-templates` showcase (Port 5173) |
+| `pnpm test`           | Runs the Vitest test suite                                   |
+| `pnpm lint`           | Runs ESLint across the entire monorepo                       |
+| `pnpm format:fix`     | Runs Prettier to auto-format all code                        |
+| `pnpm sync:starter`   | Synchronizes latest core UI components into the starter kit  |
+| `pnpm pack:monorepo`  | Bundles this entire monorepo into a clean distribution ZIP   |
+
+---
+
+## 📄 License & Commercial Rights
+
+This product is licensed under the **Hudbird UI Pro Commercial License** (`LICENSE.md`).
+
+- ✅ **Allowed**: Unlimited commercial websites, SaaS apps, internal tools, and client deliverables.
+- ❌ **Prohibited**: Reselling, public re-distribution, or sharing raw monorepo source code as a competing template/library product.
+
+---
+
+## 💬 Support & Contact
+
+- **Documentation**: [https://hudbird.vercel.app](https://hudbird.vercel.app)
+- **Direct Inquiries**: `support@hudbird.studio` / `daniakbar`
+- **Updates**: Check your Gumroad library for notification on new template additions and version updates.
