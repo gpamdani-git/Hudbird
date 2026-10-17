@@ -11,3 +11,6 @@ public/
 !public/assets/
 .gemini/
 .agents/
+graphify-out/
+pnpm-lock.yaml
+page.html
