@@ -127,6 +127,7 @@ export const HudbirdTemplateLogoIcon: React.FC<{
     "digital-marketing-agency": Megaphone,
     "forex-trading": Activity,
     "decentralized-finance": Hexagon,
+    "vibecode-ui": Blocks,
   };
 
   const IconComp = map[s] || Compass;

@@ -28,6 +28,25 @@ interface FlagshipLandingTemplate {
 
 const FLAGSHIP_LANDING_TEMPLATES: FlagshipLandingTemplate[] = [
   {
+    id: "vibecode-ui-library",
+    name: "Vibecode UI & Shader Library",
+    category: "UI & Code Library · 3D Fan Deck, Shaders, Blocks & Demos",
+    badge: "New Theme",
+    accent: "#7C3AED",
+    slugSymbol: "vibecode-ui",
+    lightImage: "/assets/templates/vibecode-ui-light.png",
+    darkImage: "/assets/templates/vibecode-ui.png",
+    mainPath: "/vibecode-ui",
+    subPages: [
+      { name: "Home", path: "/vibecode-ui" },
+      { name: "Demos", path: "/vibecode-ui/demos" },
+      { name: "3D Blocks", path: "/vibecode-ui/blocks" },
+      { name: "Shaders", path: "/vibecode-ui/shaders" },
+      { name: "Sections", path: "/vibecode-ui/sections" },
+      { name: "Pricing", path: "/vibecode-ui/pricing" },
+    ],
+  },
+  {
     id: "nexus-digital-agency",
     name: "Digital Agency (Nexus Flagship)",
     category: "Flagship Agency · 47 Niches & 29+ Inner Pages",
@@ -289,7 +308,7 @@ export function ShowcaseGallery() {
         <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div className="max-w-2xl space-y-2.5">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#C8F560] px-3.5 py-1 text-xs font-bold text-[#0D0F14]">
-              <Sparkles className="h-3.5 w-3.5" />8 Flagship Multi-Page Landing Themes
+              <Sparkles className="h-3.5 w-3.5" />9 Flagship Multi-Page Landing Themes
             </span>
             <h2 className="text-3xl leading-[1.08] font-semibold tracking-[-0.035em] text-zinc-900 sm:text-4xl dark:text-white">
               Flagship Landing Page Suites
@@ -300,7 +319,7 @@ export function ShowcaseGallery() {
             </p>
           </div>
           <span className="inline-flex items-center gap-2 self-start rounded-full border border-black/[0.06] bg-white px-4 py-2 text-xs font-semibold text-zinc-700 sm:self-auto dark:border-white/10 dark:bg-[#14161E] dark:text-zinc-300">
-            <span>8 Multi-Page Suites · 3 Per Row</span>
+            <span>9 Multi-Page Suites · 3 Per Row</span>
           </span>
         </div>
 

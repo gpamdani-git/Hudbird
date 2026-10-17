@@ -20,6 +20,12 @@ import { HudbirdTemplateLogoIcon } from "../nexus-sections/HudbirdKit";
 const MEGAMENU_DATA = {
   landingPages: [
     {
+      title: "Vibecode UI & Shader Library",
+      desc: "3D Fan Deck, Shaders, Blocks & Code Library",
+      path: "/vibecode-ui",
+      badge: "New",
+    },
+    {
       title: "Digital Agency (Nexus Flagship)",
       desc: "Flagship Agency & Studio System",
       path: "/demos/digital-agency",
@@ -204,7 +210,7 @@ export function ShowcaseNavbar() {
             >
               <span>Landing Pages</span>
               <span className="rounded-full bg-zinc-200/80 px-1.5 py-0.5 text-[10px] leading-none font-semibold text-zinc-800 dark:bg-white/10 dark:text-zinc-200">
-                8
+                9
               </span>
               <ChevronDown
                 className={`h-3.5 w-3.5 transition-transform ${
@@ -225,10 +231,10 @@ export function ShowcaseNavbar() {
                   <div className="mb-3 flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-white/10">
                     <div>
                       <h4 className="text-xs font-bold tracking-wider text-zinc-400 uppercase">
-                        8 Flagship Landing Pages
+                        9 Flagship Landing Pages
                       </h4>
                       <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
-                        Original multi-page flagship themes + Digital Agency Nexus edition
+                        Vibecode UI Library, Digital Agency Nexus + Flagship Multi-Page Suites
                       </p>
                     </div>
                     <a

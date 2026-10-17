@@ -20,6 +20,14 @@ const Agency = React.lazy(() => import("./pages/Agency").then((m) => ({ default:
 const DigitalAgencyDemo = React.lazy(() =>
   import("./pages/DigitalAgencyDemo").then((m) => ({ default: m.DigitalAgencyDemo }))
 );
+const VibecodeUiTheme = React.lazy(() =>
+  import("./pages/VibecodeUiTheme").then((m) => ({ default: m.VibecodeUiTheme }))
+);
+const VibecodeUiDetailPage = React.lazy(() =>
+  import("./pages/VibecodeUiDetailPage").then((m) => ({
+    default: m.VibecodeUiDetailPage || m.default,
+  }))
+);
 const NexusMasterShowcase = React.lazy(() =>
   import("./components/Showcase/NexusMasterShowcase").then((m) => ({
     default: m.NexusMasterShowcase,
@@ -129,6 +137,13 @@ export default function App() {
           <Route path="/demos" element={<NexusMasterShowcase />} />
 
           {/* Hudbird Nexus Flagship Studio Demos (All 47 Pre-built Templates & 29+ Inner Pages) */}
+          <Route path="/vibecode-ui" element={<VibecodeUiTheme />} />
+          <Route path="/vibecode-ui/detail" element={<VibecodeUiDetailPage />} />
+          <Route path="/vibecode-ui/detail/:itemId" element={<VibecodeUiDetailPage />} />
+          <Route path="/vibecode-ui/item/:itemId" element={<VibecodeUiDetailPage />} />
+          <Route path="/demos/vibecode-ui/item/:itemId" element={<VibecodeUiDetailPage />} />
+          <Route path="/vibecode-ui/:sectionSlug" element={<VibecodeUiTheme />} />
+          <Route path="/demos/vibecode-ui" element={<VibecodeUiTheme />} />
           <Route path="/demos/digital-agency" element={<DigitalAgencyDemo />} />
           <Route path="/digital-agency" element={<DigitalAgencyDemo />} />
           <Route path="/demos/:nicheSlug" element={<NexusNicheDemoView />} />

@@ -20,8 +20,27 @@ import { HudbirdTemplateLogoIcon } from "../nexus-sections/HudbirdKit";
 
 const FEATURED_SHOWCASE_DEMOS = [
   {
-    slug: "digital-agency",
+    slug: "vibecode-ui",
     num: "01",
+    title: "Vibecode UI & Shader Library",
+    category: "UI, 3D Blocks & GLSL Shader Library",
+    headline: "The premium UI & code library for the vibecoding era",
+    accentWord: "vibecoding",
+    description:
+      "5-card interactive 3D fan deck, 8 live website demos, 8 3D motion blocks, 8 ordered dither & ASCII shaders, and glowing horizon footer.",
+    accent: "#7C3AED",
+    metric: "120+ Shaders & Blocks",
+    secondaryMetric: "60fps WebGL",
+    screenshot: "/assets/templates/vibecode-ui-light.png",
+    highlights: [
+      "Interactive 5-Card 3D Fan Hero & Video Reel",
+      "Real-Time Ordered Dither, Halftone & ASCII Shaders",
+      "3-Step CLI Workflow, Pricing & Horizon Beam Footer",
+    ],
+  },
+  {
+    slug: "digital-agency",
+    num: "02",
     title: "Digital Agency Studio",
     category: "Agency & Creative Flagship",
     headline: "Turning digital ideas into measurable client growth",
