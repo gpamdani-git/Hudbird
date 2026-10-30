@@ -55,13 +55,13 @@ const outerChassisVariants = cva(
     variants: {
       variant: {
         default:
-          "p-1.5 sm:p-2 bg-zinc-200/55 dark:bg-white/[0.03] border border-zinc-300/70 dark:border-white/[0.07] backdrop-blur-md hover:border-brand-500/40 dark:hover:border-brand-400/30",
+          "p-1.5 sm:p-2 bg-zinc-200/55 dark:bg-[#161618] border border-zinc-300/70 dark:border-[#2E2F33] backdrop-blur-md hover:border-brand-500/40 dark:hover:border-[#FFB1EE]/40",
         glass:
-          "p-2 bg-white/40 dark:bg-zinc-900/40 border border-white/60 dark:border-white/[0.1] backdrop-blur-xl shadow-lg hover:shadow-glow",
+          "p-2 bg-white/40 dark:bg-[#161618]/70 border border-white/60 dark:border-[#2E2F33] backdrop-blur-xl shadow-lg hover:shadow-glow",
         solid:
-          "p-1.5 sm:p-2 bg-zinc-100 dark:bg-[#121216] border border-zinc-300/90 dark:border-zinc-800",
+          "p-1.5 sm:p-2 bg-zinc-100 dark:bg-[#161618] border border-zinc-300/90 dark:border-[#2E2F33]",
         highlight:
-          "p-2 bg-gradient-to-b from-brand-500/20 via-brand-500/5 to-transparent border border-brand-500/30 dark:border-brand-400/30 shadow-glow",
+          "p-2 bg-gradient-to-b from-[#FFB1EE]/20 via-[#FFB1EE]/5 to-transparent border border-[#FFB1EE]/30 shadow-glow",
       },
       isHoverable: {
         true: "hover:-translate-y-1 hover:shadow-xl cursor-pointer",
@@ -87,13 +87,13 @@ const innerCoreVariants = cva(
       },
       variant: {
         default:
-          "bg-white dark:bg-[#111115] border border-zinc-200/90 dark:border-white/[0.06] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] text-zinc-900 dark:text-zinc-100",
+          "bg-white dark:bg-[#202124] border border-zinc-200/90 dark:border-[#2E2F33] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.06)] text-zinc-900 dark:text-[#E5E5E5]",
         glass:
-          "bg-white/80 dark:bg-[#121217]/80 backdrop-blur-md border border-white/40 dark:border-white/[0.06] shadow-sm text-zinc-900 dark:text-zinc-100",
+          "bg-white/80 dark:bg-[#202124]/90 backdrop-blur-md border border-white/40 dark:border-[#2E2F33] shadow-sm text-zinc-900 dark:text-[#E5E5E5]",
         solid:
-          "bg-white dark:bg-[#16161c] border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100",
+          "bg-white dark:bg-[#202124] border border-zinc-200 dark:border-[#2E2F33] text-zinc-900 dark:text-[#E5E5E5]",
         highlight:
-          "bg-white dark:bg-[#13121a] border border-brand-200/60 dark:border-brand-900/50 shadow-[inset_0_1px_0_0_rgba(157,88,190,0.15)] text-zinc-900 dark:text-zinc-100",
+          "bg-white dark:bg-[#202124] border border-[#FFB1EE]/30 shadow-[inset_0_1px_0_0_rgba(255,177,238,0.15)] text-zinc-900 dark:text-[#E5E5E5]",
       },
     },
     defaultVariants: {

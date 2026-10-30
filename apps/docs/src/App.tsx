@@ -198,13 +198,13 @@ export default function App() {
 
   return (
     <ThemeEditorProvider>
-      <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-50 dark:selection:bg-white dark:selection:text-zinc-950">
-        {/* Gemini Style Subtle Blue Glow Gradient */}
-        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent dark:from-blue-600/10" />
+      <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-[#161618] dark:text-[#e5e5e5] dark:selection:bg-white dark:selection:text-[#161618]">
+        {/* Subtle Ambient Surface Calibration */}
+        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/5 via-transparent to-transparent dark:from-transparent" />
 
         {/* Focus Gradients (Top & Bottom) */}
-        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-24 bg-gradient-to-b from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
-        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-24 bg-gradient-to-t from-white/40 to-transparent dark:from-zinc-950/40 dark:to-transparent" />
+        <div className="pointer-events-none fixed inset-x-0 top-0 z-50 h-24 bg-gradient-to-b from-white/40 to-transparent dark:from-[#161618]/60 dark:to-transparent" />
+        <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 h-24 bg-gradient-to-t from-white/40 to-transparent dark:from-[#161618]/60 dark:to-transparent" />
 
         <div className="flex w-full">
           {/* Left Sticky Sidebar */}

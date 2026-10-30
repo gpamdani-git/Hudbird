@@ -89,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <div className="pointer-events-none sticky top-3 z-40 mx-auto mt-3 w-[calc(100%-24px)] transition-all duration-300">
-      <header className="pointer-events-auto w-full rounded-xl border border-white/50 bg-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] backdrop-blur-3xl transition-colors duration-300 dark:border-white/10 dark:bg-[#1a1a1c]/60 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+      <header className="pointer-events-auto w-full rounded-xl border border-white/50 bg-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.08)] backdrop-blur-3xl transition-colors duration-300 dark:border-[#2e2f33] dark:bg-[#161618]/90 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
         {/* Subtle inner gradients */}
         <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-b from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
 

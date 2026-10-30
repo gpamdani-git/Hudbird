@@ -66,7 +66,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       <aside
-        className={`fixed top-3 bottom-3 left-3 z-50 flex w-64 flex-col overflow-hidden rounded-xl border border-white/50 bg-white/50 px-3 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-3xl dark:border-white/10 dark:bg-[#1a1a1c]/60 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] ${transformClasses} transition-transform duration-300 ease-in-out`}
+        className={`fixed top-3 bottom-3 left-3 z-50 flex w-64 flex-col overflow-hidden rounded-xl border border-white/50 bg-white/50 px-3 py-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-3xl dark:border-[#2e2f33] dark:bg-[#161618]/90 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)] ${transformClasses} transition-transform duration-300 ease-in-out`}
       >
         {/* Subtle glass gradients to enhance blur beautifulness */}
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />

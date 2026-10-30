@@ -99,11 +99,11 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       <h4 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">On This Page</h4>
       <ul className="space-y-2.5 text-sm">{items.map((item) => renderItem(item, false))}</ul>
 
-      <div className="mt-8 rounded-xl border border-zinc-200 p-4 dark:border-zinc-800">
+      <div className="mt-8 rounded-xl border border-zinc-200 p-4 dark:border-[#2e2f33] dark:bg-[#202124]/40">
         <h5 className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
           Support Hudbird UI
         </h5>
-        <p className="mb-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+        <p className="mb-4 text-xs leading-relaxed text-zinc-500 dark:text-[#828282]">
           Help us improve the library by reporting bugs or requesting new features on GitHub.
         </p>
         <div className="flex items-center gap-2">
@@ -111,7 +111,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
             href="https://github.com/gpamdani-git/Hudbird/issues"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-8 flex-1 items-center justify-center rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-900 shadow-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 dark:hover:bg-zinc-900"
+            className="inline-flex h-8 flex-1 items-center justify-center rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-900 shadow-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-[#2e2f33] dark:bg-[#202124] dark:text-zinc-100 dark:hover:bg-[#2e2f33]"
           >
             Open Issue
           </a>
@@ -119,7 +119,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
             href="https://discord.gg/NPBspwkXke"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-600 shadow-sm transition-colors hover:bg-indigo-50 hover:text-[#5865F2] dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-indigo-500/10 dark:hover:text-[#5865F2]"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-600 shadow-sm transition-colors hover:bg-indigo-50 hover:text-[#5865F2] dark:border-[#2e2f33] dark:bg-[#202124] dark:text-zinc-400 dark:hover:bg-indigo-500/10 dark:hover:text-[#5865F2]"
             title="Join Discord Community"
           >
             <DiscordIcon className="h-4 w-4" />

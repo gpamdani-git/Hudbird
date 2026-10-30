@@ -31,35 +31,41 @@ export default function GettingStartedDoc() {
       <div id="getting-started" className="scroll-mt-24">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="w-full min-w-0 flex-1 pr-4">
-            <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+            <div className="mb-4 text-[14px] font-extrabold tracking-[1.4px] text-pink-600 uppercase dark:text-[#ffb1ee]">
+              ESSENTIALS
+            </div>
+            <h1 className="font-outfit mb-6 text-4xl leading-[1.15] font-medium tracking-[-1.8px] text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
               Getting started
             </h1>
-            <Text className="mb-8 pr-12 text-base text-zinc-600 dark:text-zinc-400">
-              Fly through your development. Minimize the noise, keep the essence.
-            </Text>
+            <p className="mb-12 max-w-3xl text-lg leading-[1.625] font-normal text-zinc-600 sm:text-xl dark:text-[#828282]">
+              Fly through your development. Minimize the noise, keep the essence with kinetic
+              precision.
+            </p>
           </div>
           <PageToolbar />
         </div>
 
-        <div className="border-black-100 bg-black-50 dark:border-black-900/50 dark:bg-black-950/30 space-y-4 rounded-2xl border p-6 md:p-8">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">The Hudbird DNA</h2>
-          <div className="space-y-4 text-zinc-900 dark:text-zinc-50">
-            <Text>
-              <Strong className="text-zinc-900 dark:text-zinc-50">Precise Navigation</Strong> —
+        <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
+          <h2 className="text-xl font-semibold tracking-[-0.3px] text-zinc-900 dark:text-white">
+            The Hudbird DNA
+          </h2>
+          <div className="space-y-4 text-base leading-[1.7] text-zinc-700 dark:text-[#e5e5e5]">
+            <p>
+              <Strong className="text-zinc-900 dark:text-white">Precise Navigation</Strong> —
               Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library
               ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang
               sangat presisi.
-            </Text>
-            <Text>
-              <Strong className="text-zinc-900 dark:text-zinc-50">Aesthetic Crown</Strong> —
+            </p>
+            <p>
+              <Strong className="text-zinc-900 dark:text-white">Aesthetic Crown</Strong> —
               Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
               elegan dan premium meskipun mengusung tema minimalis.
-            </Text>
-            <Text>
-              <Strong className="text-zinc-900 dark:text-zinc-50">Featherweight Core</Strong> —
-              Sangat ringan, cepat, dan berfokus menghilangkan visual noise yang tidak perlu pada
-              performa web modern.
-            </Text>
+            </p>
+            <p>
+              <Strong className="text-zinc-900 dark:text-white">Featherweight Core</Strong> — Sangat
+              ringan, cepat, dan berfokus menghilangkan visual noise yang tidak perlu pada performa
+              web modern.
+            </p>
           </div>
         </div>
       </div>
