@@ -23,6 +23,7 @@ export const cliTocItems: TocItem[] = [
 
 export const aiSkillsTocItems: TocItem[] = [
   { id: "overview", title: "Why Use Hudbird UI Skills?" },
+  { id: "advantages", title: "Key Advantages & Superpowers" },
   { id: "quickstart-setup", title: "Quickstart Setup" },
   { id: "supported-assistants", title: "Configuring Your AI Model" },
   { id: "real-prompts", title: "Battle-Tested Prompts (No-Halu)" },

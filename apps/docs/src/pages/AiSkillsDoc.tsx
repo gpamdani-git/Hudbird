@@ -180,7 +180,116 @@ export default function AiSkillsDoc() {
           </div>
         </section>
 
-        {/* 2. Fast 1-Liner Installation */}
+        {/* 2. Key Advantages & Superpowers */}
+        <section id="advantages" className="scroll-mt-24 space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                Key Superpowers & Advantages
+              </h2>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                How the Hudbird UI Skill accelerates developer experience and turns natural language
+                into production code.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Advantage 1 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-indigo-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
+                <Zap className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                10x Prototyping Velocity
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Zero documentation context switching. You don't need to manually check prop names or
+                import paths—simply prompt your idea and get production-ready code in seconds.
+              </p>
+            </div>
+
+            {/* Advantage 2 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
+                <ShieldCheck className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                100% Zero-Hallucination
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Locks your model's vocabulary to authentic CVA variants, subcomponents, and color
+                tokens. Eliminates broken imports and non-existent props.
+              </p>
+            </div>
+
+            {/* Advantage 3 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-amber-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400">
+                <Sparkles className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                Automated Dark Mode & Glassmorphism
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Guarantees paired light/dark classes (
+                <code className="font-mono text-[11px]">bg-white dark:bg-zinc-950</code>) and
+                architectural backdrop blurs on every generated container.
+              </p>
+            </div>
+
+            {/* Advantage 4 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-purple-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-purple-50 text-purple-600 dark:bg-purple-950/60 dark:text-purple-400">
+                <Workflow className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                Kinetic Motion Out-of-the-Box
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Naturally implements signature components like{" "}
+                <code className="font-mono text-[11px]">KineticButton</code>,{" "}
+                <code className="font-mono text-[11px]">SplitTextReveal</code>, and{" "}
+                <code className="font-mono text-[11px]">StickyStack</code> without manual Framer
+                Motion hooks.
+              </p>
+            </div>
+
+            {/* Advantage 5 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-cyan-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-400">
+                <Terminal className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                Integrated CLI Scaffolding
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                The AI automatically instructs (or executes directly in terminal agents) the
+                required <code className="font-mono text-[11px]">npx hudbird-ui add</code> commands
+                with recursive sub-dependencies.
+              </p>
+            </div>
+
+            {/* Advantage 6 */}
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-rose-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
+                <Layers className="h-5 w-5" />
+              </div>
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                8 Vertical Niche Blocks Ready
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                Understands prebuilt blocks for SaaS, Fintech, ModernApp, Agency, Ecommerce,
+                Hospitality, AiStartup, and AdminCms to compose entire pages instantly.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. Fast 1-Liner Installation */}
         <section id="quickstart-setup" className="scroll-mt-24 space-y-5">
           <div className="flex items-center gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
