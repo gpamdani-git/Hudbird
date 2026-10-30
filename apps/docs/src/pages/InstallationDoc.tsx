@@ -1,22 +1,18 @@
 import React from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { CodeBlock } from "../components/CodeBlock";
 
 export default function InstallationDoc() {
   return (
-    <div className="mx-auto w-full">
-      <PageToolbar />
+    <div className="mx-auto w-full pb-20">
+      <DocHeader
+        category="ESSENTIALS"
+        title="Installation"
+        badge="v2.0"
+        description="Step-by-step tutorial on how to install and configure Hudbird UI in your React project with Tailwind CSS v4."
+      />
 
-      <div className="mb-8 max-w-3xl">
-        <h1 className="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          Installation Guide
-        </h1>
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          Step-by-step tutorial on how to install and configure Hudbird UI in your React project.
-        </p>
-      </div>
-
-      <div className="prose prose-zinc dark:prose-invert max-w-3xl">
+      <div className="prose prose-zinc dark:prose-invert mt-10 max-w-3xl">
         <h2>1. Create a New React Project</h2>
         <p>If you don't already have a React project, you can create one using Vite.</p>
         <CodeBlock
@@ -60,19 +56,19 @@ export default defineConfig({
           scaffolding, batch installations, and upstream diffing:
         </p>
 
-        <div className="not-prose my-6 flex items-center justify-between rounded-xl border border-indigo-200 bg-indigo-50/50 p-4 dark:border-indigo-900/60 dark:bg-indigo-950/30">
+        <div className="not-prose my-6 flex flex-col justify-between gap-4 rounded-xl border border-zinc-200 bg-zinc-50 p-5 sm:flex-row sm:items-center dark:border-[#2E2F33] dark:bg-[#202124]">
           <div>
-            <h4 className="text-sm font-semibold text-indigo-900 dark:text-indigo-200">
+            <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">
               Looking for the complete CLI manual?
             </h4>
-            <p className="mt-0.5 text-xs text-indigo-700/80 dark:text-indigo-300/80">
+            <p className="mt-1 text-xs text-zinc-600 dark:text-[#828282]">
               Read the full CLI documentation for multi-select prompts, --all flag, LCS diff engine,
               and components.json schema.
             </p>
           </div>
           <a
             href="#/cli"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-indigo-500"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-transparent bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#FFB1EE] dark:hover:bg-[#202124]"
           >
             CLI Reference &rarr;
           </a>

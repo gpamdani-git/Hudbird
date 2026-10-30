@@ -2,7 +2,7 @@
 import buttonCode from "../../../../packages/core/src/components/Button/Button.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Button } from "@hudbird/ui";
 import {
   Plus,
@@ -205,23 +205,12 @@ export default function ButtonDoc() {
   return (
     <div className="space-y-16 pb-24">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Button
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
-            Interactive trigger component with rich slot support for icons, loaders, compound
-            variants, and corner radiuses.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="COMPONENTS"
+        title="Button"
+        badge="Component"
+        description="Interactive trigger component with rich slot support for icons, loaders, compound variants, and corner radiuses."
+      />
 
       {/* Hero Preview & Code */}
       <section className="space-y-4">
@@ -276,7 +265,7 @@ function Example() {
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -294,7 +283,7 @@ function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="mb-2 text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
             Examples
           </h2>
         </div>
@@ -708,7 +697,7 @@ function Example() {
 
       {/* Appendix */}
       <section id="appendix" className="scroll-mt-24 space-y-10">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
           Appendix
         </h2>
 
@@ -722,15 +711,15 @@ function Example() {
           </p>
 
           {/* Adaptive color table */}
-          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900/40">
+          <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-[#2E2F33] dark:bg-[#161618]">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-200 bg-zinc-50/40 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200">
+              <thead className="border-b border-zinc-200 bg-zinc-50/40 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-zinc-200">
                 <tr>
                   <th className="w-1/2 px-4 py-3">Color</th>
                   <th className="w-1/2 px-4 py-3">Example</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-200/70 dark:divide-zinc-800/70">
+              <tbody className="divide-y divide-zinc-200/70 dark:divide-[#2E2F33]">
                 {adaptiveColors.map((item) => (
                   <tr key={item.name} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30">
                     <td className="px-4 py-3 font-mono text-xs font-semibold text-zinc-900 dark:text-zinc-100">

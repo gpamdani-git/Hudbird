@@ -1,5 +1,5 @@
 import React from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { CodeBlock } from "../components/CodeBlock";
 import {
   Terminal,
@@ -19,32 +19,29 @@ import {
 
 export default function CliDoc() {
   return (
-    <div className="mx-auto w-full">
-      <PageToolbar />
-
+    <div className="mx-auto w-full pb-24">
       {/* Hero Header */}
-      <div className="mb-10 max-w-4xl">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-800/60 dark:bg-indigo-950/40 dark:text-indigo-300">
-            <Terminal className="h-3.5 w-3.5" />
-            CLI v1.4.0
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-300">
-            <Sparkles className="h-3.5 w-3.5" />
-            Zero External Dependencies
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-zinc-800 dark:bg-zinc-800 dark:text-zinc-300">
-            <Sliders className="h-3.5 w-3.5" />
-            components.json Standard
-          </span>
-        </div>
-        <h1 className="text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
-          Hudbird UI CLI
-        </h1>
-        <p className="text-muted-foreground mt-4 text-lg leading-relaxed sm:text-xl">
-          The official developer command-line tool for scaffolding, batch-installing, and tracking
-          upstream diffs across 62+ components with 100% local code ownership.
-        </p>
+      <DocHeader
+        category="TOOLING"
+        title="Hudbird UI CLI"
+        badge="v1.4.0"
+        description="The official developer command-line tool for scaffolding, batch-installing, and tracking upstream diffs across 62+ components with 100% local code ownership."
+        className="mb-10 max-w-4xl"
+      />
+
+      <div className="mb-8 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+          <Terminal className="h-3.5 w-3.5" />
+          CLI v1.4.0
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+          <Sparkles className="h-3.5 w-3.5" />
+          Zero External Dependencies
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+          <Sliders className="h-3.5 w-3.5" />
+          components.json Standard
+        </span>
       </div>
 
       <div className="max-w-4xl space-y-14 text-zinc-800 dark:text-zinc-200">
@@ -65,14 +62,14 @@ export default function CliDoc() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <FolderGit2 className="h-4 w-4 text-indigo-500" />
+                <FolderGit2 className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
                 Local Code Ownership
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
                 Components live directly inside your project directory (e.g.{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   src/components/hudbird-ui
                 </code>
                 ). You have complete freedom to modify, style, or extend every line of code without
@@ -80,44 +77,44 @@ export default function CliDoc() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Layers className="h-4 w-4 text-emerald-500" />
+                <Layers className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
                 Recursive Dependency Graph
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
                 When you install complex components (like{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   Dialog
                 </code>{" "}
                 or{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   DatePicker
                 </code>
                 ), the CLI automatically resolves sub-components (
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   Slot
                 </code>
                 ,{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   utils/cn.ts
                 </code>
                 ) and installs missing NPM packages.
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Sliders className="h-4 w-4 text-amber-500" />
+                <Sliders className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
                 Standard components.json
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
                 Respects your custom path aliases (
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   @/components/ui
                 </code>{" "}
                 vs{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
                   @/components/hudbird-ui
                 </code>
                 ), base palette, and Tailwind CSS engine version (v4 or v3).

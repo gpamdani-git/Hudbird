@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { DocHeader } from "../components/DocHeader";
 import {
   Card,
   Button,
@@ -20,15 +21,22 @@ export default function ThemesDoc() {
 
   return (
     <div className="mx-auto w-full">
-      <div className="mt-16 mb-8 max-w-5xl px-4 sm:px-6">
-        <h1 className="text-foreground mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          Theme Builder &amp; Token Sync
-        </h1>
-        <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
-          Customize your design system in real-time. Tune colors, typography, and border radiuses,
-          and export production-ready Tailwind v4 <code className="text-xs">@theme</code> directives
-          or Figma Tokens Studio DTCG JSON.
-        </p>
+      <div className="mt-8 mb-8 max-w-5xl px-4 sm:px-6">
+        <DocHeader
+          category="CUSTOMIZATION"
+          title="Theme Builder"
+          badge="Live Sync"
+          description={
+            <span>
+              Customize your design system in real-time. Tune colors, typography, and border
+              radiuses, and export production-ready Tailwind v4{" "}
+              <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#FFB1EE]">
+                @theme
+              </code>{" "}
+              directives or Figma Tokens Studio DTCG JSON.
+            </span>
+          }
+        />
       </div>
 
       <div className="w-full max-w-5xl px-4 pb-16 sm:px-6">

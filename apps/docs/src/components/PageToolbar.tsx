@@ -26,12 +26,12 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
       <div className="relative">
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="flex h-8 items-center gap-2 rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-900"
+          className="flex h-8 items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-50 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5] dark:hover:bg-[#2E2F33] dark:hover:text-white"
         >
           {copied ? (
             <Check className="h-3.5 w-3.5 text-emerald-500" />
           ) : (
-            <Copy className="h-3.5 w-3.5" />
+            <Copy className="h-3.5 w-3.5 text-zinc-400 dark:text-[#828282]" />
           )}
           Copy Page
         </button>
@@ -39,10 +39,10 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
         {dropdownOpen && (
           <>
             <div className="fixed inset-0 z-40" onClick={() => setDropdownOpen(false)} />
-            <div className="absolute right-0 z-50 mt-1 w-48 rounded-md border border-zinc-200 bg-white p-1 shadow-lg dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="absolute right-0 z-50 mt-1 w-48 rounded-lg border border-zinc-200 bg-white p-1 shadow-lg dark:border-[#2E2F33] dark:bg-[#202124]">
               <button
                 onClick={copyUrl}
-                className="flex w-full items-center rounded-sm px-2 py-1.5 text-xs text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-900"
+                className="flex w-full items-center rounded-md px-2.5 py-1.5 text-xs text-zinc-700 hover:bg-zinc-100 dark:text-[#E5E5E5] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
               >
                 Copy URL
               </button>
@@ -54,13 +54,13 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
       {prev ? (
         <Link
           to={prev.path}
-          className="flex h-8 items-center justify-center rounded-md border border-zinc-200 bg-white px-2 text-zinc-600 shadow-sm transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
+          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
           title={`Previous: ${prev.name}`}
         >
           <ChevronLeft className="h-4 w-4" />
         </Link>
       ) : (
-        <div className="flex h-8 w-8 items-center justify-center rounded-md border border-zinc-100 bg-zinc-50 px-2 text-zinc-300 dark:border-zinc-800/50 dark:bg-zinc-900/30 dark:text-zinc-700">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 bg-zinc-50 px-2 text-zinc-300 dark:border-[#2E2F33]/40 dark:bg-[#161618] dark:text-zinc-700">
           <ChevronLeft className="h-4 w-4" />
         </div>
       )}
@@ -68,13 +68,13 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
       {next ? (
         <Link
           to={next.path}
-          className="flex h-8 items-center justify-center rounded-md border border-zinc-200 bg-white px-2 text-zinc-600 shadow-sm transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
+          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
           title={`Next: ${next.name}`}
         >
           <ChevronRight className="h-4 w-4" />
         </Link>
       ) : (
-        <div className="flex h-8 w-8 items-center justify-center rounded-md border border-zinc-100 bg-zinc-50 px-2 text-zinc-300 dark:border-zinc-800/50 dark:bg-zinc-900/30 dark:text-zinc-700">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-100 bg-zinc-50 px-2 text-zinc-300 dark:border-[#2E2F33]/40 dark:bg-[#161618] dark:text-zinc-700">
           <ChevronRight className="h-4 w-4" />
         </div>
       )}

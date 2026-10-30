@@ -25,24 +25,24 @@ export const CliCommandTabs: React.FC<CliCommandTabsProps> = ({ commandType }) =
   };
 
   return (
-    <div className="my-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-zinc-950/5 dark:border-zinc-800/80 dark:bg-zinc-900/60">
-      <div className="flex items-center gap-2 border-b border-zinc-200/80 bg-white/50 px-4 py-2 dark:border-zinc-800/80 dark:bg-zinc-950/50">
-        <ChevronRight className="h-4 w-4 text-zinc-500" />
+    <div className="my-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-zinc-50/50 dark:border-[#2E2F33] dark:bg-[#161618]">
+      <div className="flex items-center gap-2 border-b border-zinc-200/80 bg-zinc-100/50 px-4 py-2 dark:border-[#2E2F33] dark:bg-[#202124]/60">
+        <ChevronRight className="h-4 w-4 text-zinc-500 dark:text-[#828282]" />
         {(["pnpm", "npm", "yarn", "bun"] as const).map((pm) => (
           <button
             key={pm}
             onClick={() => setPkgManager(pm)}
             className={`rounded-md px-3 py-1 font-mono text-xs transition-colors ${
               pkgManager === pm
-                ? "bg-zinc-200 font-semibold text-zinc-900 dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300"
+                ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]"
+                : "text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
             }`}
           >
             {pm}
           </button>
         ))}
       </div>
-      <div className="overflow-x-auto px-4 py-3 font-mono text-[13px] text-zinc-800 dark:text-zinc-200">
+      <div className="overflow-x-auto px-4 py-3 font-mono text-[13.6px] leading-[1.65] text-zinc-800 dark:text-[#E5E5E5]">
         {getCommand()}
       </div>
     </div>

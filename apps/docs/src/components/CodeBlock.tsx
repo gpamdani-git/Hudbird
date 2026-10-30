@@ -140,11 +140,11 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   };
 
   return (
-    <div className="group relative my-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-white text-sm shadow-sm dark:border-zinc-800 dark:bg-[#1e1e1e]">
+    <div className="group relative my-4 overflow-hidden rounded-xl border border-zinc-200/80 bg-white text-sm shadow-sm dark:border-[#2E2F33] dark:bg-[#161618]">
       {filename && (
-        <div className="flex items-center justify-between border-b border-zinc-200/80 px-4 py-2 font-mono text-xs text-zinc-500 dark:border-zinc-800/80 dark:text-zinc-400">
+        <div className="flex items-center justify-between border-b border-zinc-200/80 bg-zinc-50/50 px-4 py-2 font-mono text-xs text-zinc-500 dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#828282]">
           <div className="flex items-center gap-2">
-            <span className="rounded bg-zinc-200/50 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-800 dark:bg-zinc-800/50 dark:text-zinc-200">
+            <span className="rounded bg-zinc-200/50 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-800 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
               TS
             </span>
             <span>{filename}</span>
@@ -153,7 +153,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             {isCollapsible && (
               <button
                 onClick={toggleExpand}
-                className="font-sans text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+                className="font-sans text-zinc-500 transition-colors hover:text-zinc-900 dark:text-[#828282] dark:hover:text-[#FFB1EE]"
               >
                 {isExpanded ? "Collapse" : "Expand"}
               </button>
@@ -161,7 +161,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             <button
               onClick={handleCopy}
               aria-label="Copy code"
-              className="text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-zinc-100"
+              className="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-[#828282] dark:hover:text-white"
             >
               {copied ? (
                 <Check className="h-4 w-4 text-emerald-500" />
@@ -178,7 +178,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           {isCollapsible && (
             <button
               onClick={toggleExpand}
-              className="rounded bg-white/80 px-2 py-1 text-xs font-medium text-zinc-500 opacity-0 shadow-xs backdrop-blur-sm transition-all group-hover:opacity-100 hover:text-zinc-900 dark:bg-zinc-800/80 dark:hover:text-zinc-100"
+              className="rounded bg-white/80 px-2 py-1 text-xs font-medium text-zinc-500 opacity-0 shadow-xs backdrop-blur-sm transition-all group-hover:opacity-100 hover:text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124]/90 dark:text-[#828282] dark:hover:text-[#FFB1EE]"
             >
               {isExpanded ? "Collapse" : "Expand"}
             </button>
@@ -186,7 +186,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           <button
             onClick={handleCopy}
             aria-label="Copy code"
-            className="rounded-lg border border-zinc-200/80 bg-white/80 p-1.5 text-zinc-400 opacity-0 shadow-xs backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:text-zinc-700 dark:border-zinc-700/80 dark:bg-zinc-800/80 dark:hover:text-zinc-200"
+            className="rounded-lg border border-zinc-200/80 bg-white/80 p-1.5 text-zinc-400 opacity-0 shadow-xs backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124]/90 dark:text-[#828282] dark:hover:text-white"
           >
             {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
           </button>
@@ -194,15 +194,15 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
       )}
 
       <div
-        className={`relative overflow-x-auto py-4 font-mono text-[13px] text-zinc-800 transition-all duration-300 dark:text-[#f8f8f2] ${!isExpanded ? "max-h-[300px] overflow-hidden" : ""}`}
+        className={`relative overflow-x-auto py-4 font-mono text-[13.6px] leading-[1.65] text-zinc-800 transition-all duration-300 dark:text-[#E5E5E5] ${!isExpanded ? "max-h-[300px] overflow-hidden" : ""}`}
       >
         <pre className="m-0 font-mono">{highlightCode(code)}</pre>
 
         {!isExpanded && (
-          <div className="absolute right-0 bottom-0 left-0 flex h-32 items-end justify-center bg-gradient-to-t from-zinc-50 to-transparent pb-4 dark:from-zinc-900">
+          <div className="absolute right-0 bottom-0 left-0 flex h-32 items-end justify-center bg-gradient-to-t from-zinc-50 to-transparent pb-4 dark:from-[#161618]">
             <button
               onClick={toggleExpand}
-              className="z-10 rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 shadow-sm transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+              className="z-10 rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-700 shadow-sm transition-colors hover:bg-zinc-50 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5] dark:hover:bg-[#2E2F33]"
             >
               Expand
             </button>

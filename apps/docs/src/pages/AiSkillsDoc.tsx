@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { CodeBlock } from "../components/CodeBlock";
 import { HUDBIRD_SKILL_CONTENT } from "../data/hudbirdSkillContent";
 import {
@@ -66,33 +66,29 @@ export default function AiSkillsDoc() {
   };
 
   return (
-    <div className="mx-auto w-full">
-      <PageToolbar />
-
+    <div className="mx-auto w-full pb-24">
       {/* Hero Header */}
-      <div className="mb-10 max-w-4xl">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-800/60 dark:bg-indigo-950/40 dark:text-indigo-300">
-            <Bot className="h-3.5 w-3.5" />
-            AI Skills v1.5
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-300">
-            <ShieldCheck className="h-3.5 w-3.5" />
-            Zero-Hallucination Guarantee
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-zinc-800 dark:bg-zinc-800 dark:text-zinc-300">
-            <Cpu className="h-3.5 w-3.5" />
-            Claude • Codex • Antigravity • Cursor
-          </span>
-        </div>
-        <h1 className="text-foreground text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
-          AI Agent Skills & DX
-        </h1>
-        <p className="text-muted-foreground mt-4 text-lg leading-relaxed sm:text-xl">
-          Supercharge your favorite AI coding assistant (Claude Code, OpenAI Codex, Antigravity,
-          Cursor, or Windsurf) with native knowledge of Hudbird UI. Build production-grade
-          interfaces using verified components, exact props, and battle-tested prompts.
-        </p>
+      <DocHeader
+        category="INTEGRATION"
+        title="AI Agent Skills & DX"
+        badge="v1.5"
+        description="Supercharge your favorite AI coding assistant (Claude Code, OpenAI Codex, Antigravity, Cursor, or Windsurf) with native knowledge of Hudbird UI. Build production-grade interfaces using verified components, exact props, and battle-tested prompts."
+        className="mb-8 max-w-4xl"
+      />
+
+      <div className="mb-8 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+          <Bot className="h-3.5 w-3.5" />
+          AI Skills v1.5
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+          <ShieldCheck className="h-3.5 w-3.5" />
+          Zero-Hallucination Guarantee
+        </span>
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+          <Cpu className="h-3.5 w-3.5" />
+          Claude • Codex • Antigravity • Cursor
+        </span>
       </div>
 
       <div className="max-w-4xl space-y-14 text-zinc-800 dark:text-zinc-200">
@@ -199,7 +195,7 @@ export default function AiSkillsDoc() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Advantage 1 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-indigo-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-indigo-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
                 <Zap className="h-5 w-5" />
               </div>
@@ -213,7 +209,7 @@ export default function AiSkillsDoc() {
             </div>
 
             {/* Advantage 2 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
                 <ShieldCheck className="h-5 w-5" />
               </div>
@@ -227,7 +223,7 @@ export default function AiSkillsDoc() {
             </div>
 
             {/* Advantage 3 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-amber-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-amber-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400">
                 <Sparkles className="h-5 w-5" />
               </div>
@@ -242,7 +238,7 @@ export default function AiSkillsDoc() {
             </div>
 
             {/* Advantage 4 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-purple-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-purple-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-purple-50 text-purple-600 dark:bg-purple-950/60 dark:text-purple-400">
                 <Workflow className="h-5 w-5" />
               </div>
@@ -259,7 +255,7 @@ export default function AiSkillsDoc() {
             </div>
 
             {/* Advantage 5 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-cyan-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-cyan-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-400">
                 <Terminal className="h-5 w-5" />
               </div>
@@ -274,7 +270,7 @@ export default function AiSkillsDoc() {
             </div>
 
             {/* Advantage 6 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-rose-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/50">
+            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-rose-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
                 <Layers className="h-5 w-5" />
               </div>
@@ -306,7 +302,7 @@ export default function AiSkillsDoc() {
             </div>
           </div>
 
-          <div className="relative rounded-xl border border-zinc-200 bg-zinc-950 p-4 font-mono text-sm text-zinc-100 dark:border-zinc-800">
+          <div className="relative rounded-xl border border-zinc-200 bg-zinc-950 p-4 font-mono text-sm text-zinc-100 dark:border-[#2E2F33]">
             <div className="flex items-center justify-between gap-4">
               <span className="overflow-x-auto text-xs select-all sm:text-sm">{curlCommand}</span>
               <button
@@ -370,7 +366,7 @@ export default function AiSkillsDoc() {
           </div>
 
           {/* Model Switcher Tabs */}
-          <div className="flex flex-wrap gap-2 border-b border-zinc-200 pb-3 dark:border-zinc-800">
+          <div className="flex flex-wrap gap-2 border-b border-zinc-200 pb-3 dark:border-[#2E2F33]">
             {[
               { id: "claude", label: "Claude Code / CLI" },
               { id: "antigravity", label: "Google Antigravity" },
@@ -395,7 +391,7 @@ export default function AiSkillsDoc() {
 
           {/* Tab Content: Claude Code */}
           {activeAgentTab === "claude" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
               <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-xs font-bold text-amber-600">
                   C
@@ -441,7 +437,7 @@ This project uses **Hudbird UI**. Whenever building UI, pages, or components:
 
           {/* Tab Content: Google Antigravity */}
           {activeAgentTab === "antigravity" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
               <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500/10 text-xs font-bold text-blue-600">
                   A
@@ -466,7 +462,7 @@ curl -sSL https://hudbird.vercel.app/skills/hudbird-ui.md -o .agents/skills/hudb
 
           {/* Tab Content: Cursor */}
           {activeAgentTab === "cursor" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
               <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-xs font-bold text-indigo-600">
                   CR
@@ -496,7 +492,7 @@ When asked to build or refactor frontend components or pages:
 
           {/* Tab Content: Windsurf */}
           {activeAgentTab === "windsurf" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
               <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-500/10 text-xs font-bold text-teal-600">
                   W
@@ -520,7 +516,7 @@ When asked to build or refactor frontend components or pages:
 
           {/* Tab Content: Codex / ChatGPT */}
           {activeAgentTab === "codex" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
               <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs font-bold text-green-600">
                   O
@@ -561,7 +557,7 @@ Ensure clean TypeScript types and paired Tailwind dark mode classes.`}
           </div>
 
           {/* Prompt 1 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-900/60">
+          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
             <div className="flex items-center justify-between">
               <span className="rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:bg-indigo-950/50 dark:text-indigo-300">
                 Prompt 1: Dark Mode SaaS Hero Section
@@ -606,7 +602,7 @@ import { Sparkles, ArrowRight } from "lucide-react";
 
 export function SaaSMarketingHero() {
   return (
-    <Hero size="full" withBlobs className="border-b border-zinc-200 dark:border-zinc-800">
+    <Hero size="full" withBlobs className="border-b border-zinc-200 dark:border-[#2E2F33]">
       <HeroHeader
         logo={<span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Hudbird</span>}
         links={[
@@ -654,7 +650,7 @@ export function SaaSMarketingHero() {
           </div>
 
           {/* Prompt 2 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-900/60">
+          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
             <div className="flex items-center justify-between">
               <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300">
                 Prompt 2: Bento Grid Feature Showcase with DoubleBezelCard
@@ -754,7 +750,7 @@ export function ProductFeatures() {
           </div>
 
           {/* Prompt 3 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-900/60">
+          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
             <div className="flex items-center justify-between">
               <span className="rounded-md bg-purple-50 px-2.5 py-1 text-xs font-bold text-purple-700 dark:bg-purple-950/50 dark:text-purple-300">
                 Prompt 3: Analytics Dashboard with Charts & Table
