@@ -91,21 +91,16 @@ export default function AiSkillsDoc() {
         </span>
       </div>
 
-      <div className="max-w-4xl space-y-14 text-zinc-800 dark:text-zinc-200">
+      <div className="max-w-4xl space-y-24 sm:space-y-32 text-zinc-800 dark:text-zinc-200">
         {/* 1. Overview & Zero-Hallucination */}
-        <section id="overview" className="scroll-mt-24 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
-              <Zap className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Why Use Hudbird UI Skills?
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Turn your AI from a generic code guesser into a specialized Hudbird UI architect.
-              </p>
-            </div>
+        <section id="overview" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Why Use Hudbird UI Skills?
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Turn your AI from a generic code guesser into a specialized Hudbird UI architect.
+            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -177,20 +172,14 @@ export default function AiSkillsDoc() {
         </section>
 
         {/* 2. Key Advantages & Superpowers */}
-        <section id="advantages" className="scroll-mt-24 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Key Superpowers & Advantages
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                How the Hudbird UI Skill accelerates developer experience and turns natural language
-                into production code.
-              </p>
-            </div>
+        <section id="advantages" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Key Superpowers &amp; Advantages
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              How the Hudbird UI Skill accelerates developer experience and turns natural language into production code.
+            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -286,20 +275,14 @@ export default function AiSkillsDoc() {
         </section>
 
         {/* 3. Fast 1-Liner Installation */}
-        <section id="quickstart-setup" className="scroll-mt-24 space-y-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-              <Terminal className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Quickstart: Install Skill in 1 Line
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Run this command in the root of any React / Next.js project to install the skill
-                instantly:
-              </p>
-            </div>
+        <section id="quickstart-setup" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Quickstart: Install Skill in 1 Line
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Run this command in the root of any React / Next.js project to install the skill instantly:
+            </p>
           </div>
 
           <div className="relative rounded-xl border border-zinc-200 bg-zinc-950 p-4 font-mono text-sm text-zinc-100 dark:border-[#2E2F33]">
@@ -349,20 +332,15 @@ export default function AiSkillsDoc() {
           </div>
         </section>
 
-        {/* 3. Supported AI Assistants */}
-        <section id="supported-assistants" className="scroll-mt-24 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
-              <Bot className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Configuring Your Model or Assistant
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Select your AI tool below for exact integration steps:
-              </p>
-            </div>
+        {/* 4. Supported AI Assistants */}
+        <section id="supported-assistants" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Configuring Your Model or Assistant
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Select your AI tool below for exact integration steps:
+            </p>
           </div>
 
           {/* Model Switcher Tabs */}
@@ -539,21 +517,15 @@ Ensure clean TypeScript types and paired Tailwind dark mode classes.`}
           )}
         </section>
 
-        {/* 4. Real Working Prompt Examples (No Halu) */}
+        {/* 5. Real Working Prompt Examples (No Halu) */}
         <section id="real-prompts" className="scroll-mt-24 space-y-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Battle-Tested Prompt Examples (Real Works, No Halu)
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                These prompts have been verified to generate 100% working, syntax-accurate code with
-                all tested models.
-              </p>
-            </div>
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Battle-Tested Prompt Examples (Real Works, No Halu)
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              These prompts have been verified to generate 100% working, syntax-accurate code with all tested models.
+            </p>
           </div>
 
           {/* Prompt 1 */}
@@ -834,21 +806,15 @@ export function AnalyticsOverview() {
           </div>
         </section>
 
-        {/* 5. Full Skill Reference */}
-        <section id="full-skill-reference" className="scroll-mt-24 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              <FileCode className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Full SKILL.md Reference File
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Download the official skill or preview and copy the full markdown definition loaded
-                by AI agents:
-              </p>
-            </div>
+        {/* 6. Full Skill Reference */}
+        <section id="full-skill-reference" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Full SKILL.md Reference File
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Download the official skill or preview and copy the full markdown definition loaded by AI agents:
+            </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-3">

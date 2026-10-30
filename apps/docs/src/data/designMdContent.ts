@@ -143,55 +143,63 @@ Every element in the typographic hierarchy is calibrated with exact optical trac
 
 - **Role:** Chapter / Category anchor (e.g., \`ESSENTIALS\`, \`GETTING STARTED\`).
 - **Font:** \`Plus Jakarta Sans\` or \`Google Sans Text\`
-- **Size:** \`14px\` (\`0.875rem\`)
+- **Size:** \`13px\` (\`0.8125rem\`)
 - **Weight:** \`800\` (Ultra-Bold)
-- **Line-Height:** \`20px\` (\`leading-5\`)
-- **Tracking (Letter-Spacing):** \`+1.4px\` (\`+0.1em\` / \`tracking-widest\` uppercase).
+- **Line-Height:** \`18px\`
+- **Tracking (Letter-Spacing):** \`+1.6px\` (\`tracking-widest\` uppercase).
 - **Color:** Electric Indigo (\`#6366F1\` / \`#818CF8\` in dark mode, \`#4F46E5\` in light mode).
-- **Bottom Spacing:** Strictly \`16px\` padding below the tag before the main title.
+- **Bottom Spacing (Law of Proximity):** Strictly \`24px\` to \`32px\` (\`mb-6 sm:mb-8\`) breathing room above the main title.
 
 ### 3.2 Display Hero Title (\`display-lg\` / \`h1\`)
 
 - **Role:** Primary page title.
 - **Font:** \`Outfit\` or \`Google Sans Display\`, sans-serif
-- **Size:** \`72px\` (\`4.5rem\` / \`clamp(2.5rem, 5.5vw, 4.5rem)\`)
-- **Weight:** \`500\` (Medium weight — creates refined elegance instead of heavy shouting bold).
-- **Line-Height:** \`86.4px\` (\`1.2\` ratio / \`leading-[1.2]\`).
-- **Tracking (Letter-Spacing):** \`-1.8px\` (\`-0.025em\` / \`tracking-tight\`). Closes loose gaps between large glyphs.
-- **Word-Spacing:** \`0px\` (optical tracking prevents uneven word drift).
+- **Size:** \`clamp(2.75rem, 6vw, 4.5rem)\` (\`44px\` mobile, \`64px - 72px\` desktop).
+- **Weight:** Strictly \`500\` (\`font-medium\` — creates majestic editorial calm; NEVER chunky bold \`700\`).
+- **Line-Height:** \`1.12\` (\`leading-[1.12]\`).
+- **Tracking (Letter-Spacing):** \`-1.8px\` to \`-2.2px\` (tight optical kerning closing loose gaps between glyphs).
+- **Word-Spacing:** \`0px\`.
 - **Color:** \`#FFFFFF\` (\`rgb(255, 255, 255)\`).
+- **Bottom Spacing:** Strictly \`28px\` to \`36px\` (\`mb-7 sm:mb-9\`) before the subtitle.
 - **Desktop Wrap Rule:** Never wrap beyond 3 lines on desktop viewports.
 
 ### 3.3 Lead Subtitle (\`subtitle\`)
 
 - **Role:** Contextual summary under the main title.
 - **Font:** \`Plus Jakarta Sans\` or \`Google Sans Text\`, sans-serif
-- **Size:** \`20px\` (\`1.25rem\` / \`text-xl\`)
-- **Weight:** \`400\` (Regular)
-- **Line-Height:** \`32.5px\` (\`1.625\` ratio / \`leading-relaxed\`).
-- **Tracking:** \`normal\` (\`0px\`).
+- **Size:** \`20px\` to \`24px\` (\`text-xl sm:text-2xl\`)
+- **Weight:** \`400\` (\`font-normal\`)
+- **Line-Height:** \`36px\` to \`38.4px\` (\`1.6\` ratio).
+- **Tracking:** \`-0.16px\`.
 - **Color:** Muted Neutral (\`#828282\` / \`rgb(130, 130, 130)\`).
-- **Max-Width:** Strictly constrained to \`768px\` (\`max-w-3xl\`) for optimal sentence scanability.
-- **Spacing:** \`8px\` top padding from H1, followed by \`48px\` to \`64px\` bottom whitespace before content sections.
+- **Max-Width:** Strictly constrained to \`768px\` (\`max-w-3xl\`) for effortless sentence scanability.
+- **Bottom Spacing (Header-to-Content Isolation):** Strictly \`80px\` to \`112px\` (\`mb-20 sm:mb-28\`) monumental whitespace before content sections.
 
 ### 3.4 Content Headings (\`headline-md\` / \`h2\` & \`h3\`)
 
 - **Section Heading (\`h2\`):**
-  - Size: \`24px\` (\`1.5rem\`), Weight: \`600\` (Semi-Bold), Line-Height: \`32px\` (\`1.33\` ratio), Tracking: \`-0.3px\` (\`-0.015em\`).
-  - Spacing: \`48px\` margin-top (\`mt-12\`), \`16px\` margin-bottom (\`mb-4\`).
+  - **Size:** \`32px\` to \`36px\` (\`2rem\` - \`2.25rem\` / \`text-3xl sm:text-4xl\`).
+  - **Weight:** \`500\` (\`font-medium\` — refined editorial weight matching Google Stitch).
+  - **Line-Height:** \`1.22\` (\`leading-tight\`).
+  - **Tracking:** \`-0.8px\` (\`-0.02em\`).
+  - **Color:** \`#FFFFFF\` (\`rgb(255, 255, 255)\`).
+  - **Top Spacing (Section-to-Section Gap):** Strictly \`80px\` to \`128px\` (\`mt-20 sm:mt-32\` / \`space-y-24 sm:space-y-32\`).
+  - **Bottom Spacing to Prose:** Strictly \`24px\` to \`32px\` (\`mb-6 sm:mb-8\`).
+  - **Anti-Slop Rule:** Strictly NO colorful rounded icon badge squares next to headings. Headings stand with pure typographic authority.
 - **Sub-Section Heading (\`h3\`):**
-  - Size: \`20px\` (\`1.25rem\`), Weight: \`500\` (Medium), Line-Height: \`28px\` (\`1.4\` ratio), Tracking: \`-0.3px\`.
-  - Spacing: \`32px\` margin-top (\`mt-8\`), \`12px\` margin-bottom (\`mb-3\`).
+  - **Size:** \`22px\` to \`24px\` (\`text-xl sm:text-2xl\`), Weight: \`500\` (\`font-medium\`), Line-Height: \`1.33\`, Tracking: \`-0.4px\`.
+  - **Top Spacing:** \`48px\` to \`64px\` (\`mt-12 sm:mt-16\`), Bottom Spacing: \`16px\` to \`20px\` (\`mb-4 sm:mb-5\`).
 
 ### 3.5 Editorial Body Paragraphs (\`body-base\` / \`p\`)
 
 - **Role:** Standard explanatory documentation prose.
 - **Font:** \`Plus Jakarta Sans\` (or \`Geist Sans\`), sans-serif
-- **Size:** \`16px\` (\`1rem\`)
-- **Weight:** \`400\` (Regular)
-- **Line-Height:** \`27.2px\` (\`1.7\` ratio / \`leading-[1.7]\`). Generous vertical line clearance eliminates line colliding.
-- **Tracking (Letter-Spacing):** \`-0.16px\` (\`-0.01em\`). Tightens word flow slightly for effortless horizontal eye sweeps.
-- **Paragraph Margin-Bottom:** \`24px\` (\`mb-6\`). Provides clean breathing space between thoughts.
+- **Size:** \`17px\` to \`18px\` (\`text-[17px] sm:text-lg\`).
+- **Weight:** \`400\` (\`font-normal\`).
+- **Line-Height:** \`29.75px\` to \`31.5px\` (\`1.75\` ratio / \`leading-[1.75]\`). Generous vertical clearance.
+- **Tracking (Letter-Spacing):** \`-0.16px\` (\`-0.01em\`).
+- **Concept Lead Anchor:** Begin key sentences with bold lead concepts (e.g. \`<strong>Step 1.</strong>\`, \`<strong>Ideate.</strong>\`).
+- **Paragraph Spacing:** Strictly \`28px\` to \`36px\` (\`mb-7 sm:mb-9\`) before codeblocks or next blocks.
 - **Color:** Soft Off-White (\`#E5E5E5\` / \`rgb(229, 229, 229)\`).
 - **Line-Length Limit:** Maximum 65 characters per line (\`max-w-[65ch]\`).
 
@@ -201,8 +209,9 @@ Every element in the typographic hierarchy is calibrated with exact optical trac
 - **Size:** \`13.6px\` (\`0.85rem\`)
 - **Weight:** \`500\` (Medium)
 - **Background:** Charcoal Badge (\`#323232\` / \`rgb(50, 50, 50)\`).
-- **Padding:** \`1px 5px\` (\`py-0.5 px-1.5\`).
-- **Radius:** \`4px\` (\`rounded\`).
+- **Padding:** \`2px 6px\` (\`py-0.5 px-1.5\`).
+- **Radius:** \`6px\` (\`rounded-md\`).
+- **CodeBlock Margins:** \`my-8 sm:my-10\` (\`32px\` to \`40px\` vertical clearance). Internal block padding \`p-6 sm:p-8\`.
 - **Tracking:** \`-0.01em\`.
 
 ---
@@ -311,4 +320,6 @@ To preserve human agency and elite design execution, the following patterns are 
 8. ❌ **No Generic Placeholder Names:** Never use _"John Doe"_, _"Acme Corp"_, or _"Company Inc"_. Use realistic personas and specific technical domains.
 9. ❌ **No Filler UI Prompts:** Never add _"Scroll to explore"_, _"Swipe down"_, or animated bouncing down chevrons.
 10. ❌ **No Layout Shifts on Mobile:** Multi-column grids must cleanly collapse to a single column below \`768px\` with zero horizontal overflow.
+11. ❌ **No Rainbow Icon Badge Squares Next to Headings (UI Slop):** Strictly forbidden to prefix section headings with multi-colored rounded icon badge squares (e.g. green sparkles in green box, orange file in amber box, purple layers in purple box). Headings must assert visual dominance through scale, weight, and negative space alone.
+12. ❌ **No Claustrophobic Section Spacing (Violation of the Law of Proximity):** Sections must never sit closer than 80px apart (\`mt-20 sm:mt-28\`). Compressing vertical gaps below 64px collapses visual grouping and causes severe cognitive fatigue.
 `;

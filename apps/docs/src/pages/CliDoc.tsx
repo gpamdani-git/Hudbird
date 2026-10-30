@@ -44,21 +44,16 @@ export default function CliDoc() {
         </span>
       </div>
 
-      <div className="max-w-4xl space-y-14 text-zinc-800 dark:text-zinc-200">
+      <div className="max-w-4xl space-y-24 sm:space-y-32 text-zinc-800 dark:text-zinc-200">
         {/* 1. Overview & Architecture */}
-        <section id="overview" className="scroll-mt-24 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 dark:bg-indigo-950 dark:text-indigo-400">
-              <Cpu className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Architecture & Core Features
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Built specifically for rapid prototyping and enterprise design systems.
-              </p>
-            </div>
+        <section id="overview" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Architecture & Core Features
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Built specifically for rapid prototyping and enterprise design systems.
+            </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -135,55 +130,48 @@ export default function CliDoc() {
         </section>
 
         {/* 2. Quickstart */}
-        <section id="quickstart" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Quickstart Guide
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Get up and running in less than 60 seconds with no global installation required.
-              </p>
-            </div>
+        <section id="quickstart" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Quickstart Guide
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Get up and running in less than 60 seconds with no global installation required.
+            </p>
           </div>
 
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Initialize your project configuration, scaffold utility functions, and inject the
-            Tailwind theme tokens:
-          </p>
-          <CodeBlock language="bash" code="npx hudbird-ui@latest init" />
+          <div className="space-y-4">
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              <strong>Initialize configuration.</strong> Scaffold utility functions and inject Tailwind CSS tokens:
+            </p>
+            <CodeBlock language="bash" code="npx hudbird-ui@latest init" />
+          </div>
 
-          <p className="pt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Add components individually, in batch, or using the interactive selector:
-          </p>
-          <CodeBlock
-            language="bash"
-            code={`# Add specific components\nnpx hudbird-ui@latest add Button Input Select\n\n# Or launch interactive multiselect selector\nnpx hudbird-ui@latest add`}
-          />
+          <div className="space-y-4">
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              <strong>Add components.</strong> Install components individually, in batch, or using the interactive selector:
+            </p>
+            <CodeBlock
+              language="bash"
+              code={`# Add specific components\nnpx hudbird-ui@latest add Button Input Select\n\n# Or launch interactive multiselect selector\nnpx hudbird-ui@latest add`}
+            />
+          </div>
         </section>
 
         {/* 3. Configuration (components.json) */}
-        <section id="configuration" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
-              <FileCode className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Configuration: components.json
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Declarative configuration schema stored at your project root.
-              </p>
-            </div>
+        <section id="configuration" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Configuration: components.json
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Declarative configuration schema stored at your project root.
+            </p>
           </div>
 
-          <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             The{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               components.json
             </code>{" "}
             file configures your import aliases, CSS variable definitions, and Tailwind integration:
@@ -295,26 +283,21 @@ export default function CliDoc() {
         </section>
 
         {/* 4. Command: init */}
-        <section id="command-init" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-950 dark:text-blue-400">
-              <RefreshCw className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Command: init
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Setup and configure your project for Hudbird UI.
-              </p>
-            </div>
+        <section id="command-init" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Command: init
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Setup and configure your project for Hudbird UI.
+            </p>
           </div>
 
           <CodeBlock language="bash" code="npx hudbird-ui@latest init [options]" />
 
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Running{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               init
             </code>{" "}
             executes an automated setup sequence:
@@ -397,19 +380,14 @@ export default function CliDoc() {
         </section>
 
         {/* 5. Command: add */}
-        <section id="command-add" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-950 dark:text-purple-400">
-              <Package className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Command: add
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Add one, multiple, or all components to your codebase.
-              </p>
-            </div>
+        <section id="command-add" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Command: add
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Add one, multiple, or all components to your codebase.
+            </p>
           </div>
 
           <CodeBlock language="bash" code="npx hudbird-ui@latest add [components...] [options]" />
@@ -490,19 +468,14 @@ export default function CliDoc() {
         </section>
 
         {/* 6. Command: list */}
-        <section id="command-list" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-              <Layers className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Command: list &amp; status
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Inspect registry catalog and check real-time local project installation status.
-              </p>
-            </div>
+        <section id="command-list" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Command: list &amp; status
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Inspect registry catalog and check real-time local project installation status.
+            </p>
           </div>
 
           <CodeBlock
@@ -510,9 +483,9 @@ export default function CliDoc() {
             code="npx hudbird-ui@latest list\n# Or shorthand:\nnpx hudbird-ui@latest ls"
           />
 
-          <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             The{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               list
             </code>{" "}
             command scans your local project against the 62 components in the official registry,
@@ -546,28 +519,23 @@ export default function CliDoc() {
         </section>
 
         {/* 7. Command: diff */}
-        <section id="command-diff" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-100 text-rose-600 dark:bg-rose-950 dark:text-rose-400">
-              <GitCompare className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Command: diff &amp; updates
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Inspect local modifications and upstream registry changes before updating.
-              </p>
-            </div>
+        <section id="command-diff" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Command: diff &amp; updates
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Inspect local modifications and upstream registry changes before updating.
+            </p>
           </div>
 
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Compare a specific component against upstream:
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>Compare single component.</strong> Inspect changes against upstream registry:
           </p>
           <CodeBlock language="bash" code="npx hudbird-ui@latest diff Button" />
 
-          <p className="pt-2 text-sm text-zinc-600 dark:text-zinc-400">
-            Or scan your entire project to detect all modified or out-of-sync components:
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>Scan entire project.</strong> Detect all modified or out-of-sync components:
           </p>
           <CodeBlock language="bash" code="npx hudbird-ui@latest diff" />
 
@@ -590,19 +558,14 @@ export default function CliDoc() {
         </section>
 
         {/* 8. Troubleshooting & FAQ */}
-        <section id="troubleshooting" className="scroll-mt-24 space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-              <ShieldCheck className="h-5 w-5" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-                Troubleshooting &amp; Monorepos
-              </h2>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                Frequently asked questions and best practices.
-              </p>
-            </div>
+        <section id="troubleshooting" className="scroll-mt-24 space-y-8">
+          <div className="space-y-3 mb-6">
+            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+              Troubleshooting &amp; Monorepos
+            </h2>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
+              Frequently asked questions and best practices.
+            </p>
           </div>
 
           <div className="space-y-4">

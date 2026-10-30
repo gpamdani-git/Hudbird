@@ -203,7 +203,7 @@ export default function ButtonDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-20 sm:space-y-28 pb-32">
       {/* Title & Introduction */}
       <DocHeader
         category="COMPONENTS"
@@ -213,7 +213,7 @@ export default function ButtonDoc() {
       />
 
       {/* Hero Preview & Code */}
-      <section className="space-y-4">
+      <section className="space-y-6">
         <ComponentPreview>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Button color="primary" startContent={<Sparkles className="h-4 w-4" />}>
@@ -259,13 +259,13 @@ function Example() {
 }`}
         />
       </section>
-      <div id="installation" className="scroll-mt-24 space-y-4">
+      <div id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs componentName="button" manualCode={buttonCode} />
       </div>
 
       {/* Component API */}
-      <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -281,9 +281,9 @@ function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-16">
         <div>
-          <h2 className="mb-2 text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit mb-4 text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
             Examples
           </h2>
         </div>

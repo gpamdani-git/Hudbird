@@ -26,18 +26,18 @@ export const gettingStartedTocItems = [
 
 export default function GettingStartedDoc() {
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 sm:space-y-32 pb-32">
       {/* 1. Getting started */}
       <div id="getting-started" className="scroll-mt-24">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-4 text-[14px] font-extrabold tracking-[1.4px] text-indigo-600 uppercase dark:text-indigo-400">
+            <div className="mb-6 text-[14px] font-extrabold tracking-[1.4px] text-indigo-600 uppercase dark:text-indigo-400">
               ESSENTIALS
             </div>
-            <h1 className="font-outfit mb-6 text-4xl leading-[1.15] font-medium tracking-[-1.8px] text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">
+            <h1 className="font-outfit mb-8 text-4xl sm:text-6xl lg:text-[72px] leading-[1.12] font-medium tracking-[-1.8px] sm:tracking-[-2.2px] text-zinc-900 dark:text-white">
               Getting started
             </h1>
-            <p className="mb-12 max-w-3xl text-lg leading-[1.625] font-normal text-zinc-600 sm:text-xl dark:text-[#828282]">
+            <p className="mb-12 max-w-3xl text-lg sm:text-xl lg:text-2xl leading-[1.6] font-normal text-zinc-600 dark:text-[#828282]">
               Fly through your development. Minimize the noise, keep the essence with kinetic
               precision.
             </p>
@@ -46,23 +46,21 @@ export default function GettingStartedDoc() {
         </div>
 
         <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-          <h2 className="text-xl font-semibold tracking-[-0.3px] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-[-0.5px] text-zinc-900 dark:text-white">
             The Hudbird DNA
           </h2>
-          <div className="space-y-4 text-base leading-[1.7] text-zinc-700 dark:text-[#e5e5e5]">
+          <div className="space-y-4 text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-700 dark:text-[#e5e5e5]">
             <p>
-              <Strong className="text-zinc-900 dark:text-white">Precise Navigation</Strong> —
-              Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library
+              <Strong className="text-zinc-900 dark:text-white">Precise Navigation.</Strong> Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library
               ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang
               sangat presisi.
             </p>
             <p>
-              <Strong className="text-zinc-900 dark:text-white">Aesthetic Crown</Strong> —
-              Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
+              <Strong className="text-zinc-900 dark:text-white">Aesthetic Crown.</Strong> Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
               elegan dan premium meskipun mengusung tema minimalis.
             </p>
             <p>
-              <Strong className="text-zinc-900 dark:text-white">Featherweight Core</Strong> — Sangat
+              <Strong className="text-zinc-900 dark:text-white">Featherweight Core.</Strong> Sangat
               ringan, cepat, dan berfokus menghilangkan visual noise yang tidak perlu pada performa
               web modern.
             </p>
@@ -71,16 +69,15 @@ export default function GettingStartedDoc() {
       </div>
 
       {/* 2. New Project */}
-      <section id="new-project" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+      <section id="new-project" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
           New Project Quickstart
         </h2>
-        <Text>
-          If you are starting from scratch, the fastest way to begin is by generating a new Vite or
-          Next.js project with Tailwind CSS already configured.
-        </Text>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Start from scratch.</strong> If you don't have an existing project, generate a new Vite or Next.js app with Tailwind CSS already configured:
+        </p>
 
-        <h3 className="mt-4 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="mt-6 text-lg font-medium text-zinc-900 dark:text-zinc-100">
           For Vite (React):
         </h3>
         <CodeBlock
@@ -90,7 +87,7 @@ npm install -D tailwindcss @tailwindcss/vite
 npm run dev"
         />
 
-        <h3 className="mt-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+        <h3 className="mt-8 text-lg font-medium text-zinc-900 dark:text-zinc-100">
           For Next.js:
         </h3>
         <CodeBlock
@@ -101,28 +98,30 @@ npm run dev"
       </section>
 
       {/* 3. Existing Project */}
-      <section id="existing-project" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+      <section id="existing-project" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
           Adding to an Existing Project
         </h2>
-        <Text>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
           Ensure your project has React 18+ and Tailwind CSS installed. To initialize Hudbird UI,
           run our setup command at the root of your project:
-        </Text>
+        </p>
         <CliCommandTabs commandType="init" />
-        <Text className="text-sm text-zinc-500">
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
           This command will set up the necessary base dependencies and prepare your project for
           component installation.
-        </Text>
+        </p>
       </section>
 
       {/* 4. Smart CLI */}
-      <section id="smart-cli" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Using the Smart CLI</h2>
-        <Text>
-          Hudbird UI features a highly intelligent CLI designed to make adding components a breeze.
+      <section id="smart-cli" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Using the Smart CLI
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          Hudbird UI features an intelligent CLI designed to make adding components a breeze.
           To add any component, simply run:
-        </Text>
+        </p>
         <CliCommandTabs commandType="add" />
 
         <div className="mt-6 space-y-4">
