@@ -1,3 +1,100 @@
+---
+name: Hudbird UI Kinetic
+colors:
+  surface: "#f9fafb"
+  surface-dim: "#f0f2f5"
+  surface-bright: "#ffffff"
+  surface-container-lowest: "#ffffff"
+  surface-container-low: "#f8fafc"
+  surface-container: "#f1f5f9"
+  surface-container-high: "#e2e8f0"
+  surface-container-highest: "#cbd5e1"
+  on-surface: "#0f172a"
+  on-surface-variant: "#64748b"
+  inverse-surface: "#090d16"
+  inverse-on-surface: "#f8fafc"
+  outline: "#e2e8f0"
+  outline-variant: "#cbd5e1"
+  surface-tint: "#4f46e5"
+  primary: "#4f46e5"
+  on-primary: "#ffffff"
+  primary-container: "#eef2ff"
+  on-primary-container: "#3730a3"
+  inverse-primary: "#818cf8"
+  secondary: "#06b6d4"
+  on-secondary: "#ffffff"
+  secondary-container: "#ecfeff"
+  on-secondary-container: "#0e7490"
+  tertiary: "#10b981"
+  on-tertiary: "#ffffff"
+  tertiary-container: "#ecfdf5"
+  on-tertiary-container: "#065f46"
+  error: "#f43f5e"
+  on-error: "#ffffff"
+  error-container: "#fff1f2"
+  on-error-container: "#9f1239"
+  background: "#f9fafb"
+  on-background: "#0f172a"
+  surface-variant: "#f1f5f9"
+typography:
+  display-lg:
+    fontFamily: Outfit, sans-serif
+    fontSize: 48px
+    fontWeight: "700"
+    lineHeight: 56px
+    letterSpacing: -0.035em
+  headline-md:
+    fontFamily: Outfit, sans-serif
+    fontSize: 24px
+    fontWeight: "600"
+    lineHeight: 32px
+    letterSpacing: -0.025em
+  body-base:
+    fontFamily: Plus Jakarta Sans, sans-serif
+    fontSize: 16px
+    fontWeight: "400"
+    lineHeight: 26px
+    letterSpacing: "0"
+  body-bold:
+    fontFamily: Plus Jakarta Sans, sans-serif
+    fontSize: 16px
+    fontWeight: "600"
+    lineHeight: 26px
+    letterSpacing: "0"
+  label-caps:
+    fontFamily: Plus Jakarta Sans, sans-serif
+    fontSize: 12px
+    fontWeight: "600"
+    lineHeight: 16px
+    letterSpacing: 0.05em
+  code-mono:
+    fontFamily: JetBrains Mono, monospace
+    fontSize: 13px
+    fontWeight: "500"
+    lineHeight: 20px
+    letterSpacing: -0.01em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.25rem
+  2xl: 1.75rem
+  3xl: 2rem
+  full: 9999px
+spacing:
+  unit: 4px
+  xs: 4px
+  sm: 8px
+  md: 16px
+  lg: 24px
+  xl: 32px
+  2xl: 48px
+  gutter: 16px
+  margin-mobile: 16px
+  margin-desktop: 32px
+---
+
 # Design System: Hudbird UI (Kinetic System)
 
 **Project ID:** `projects/hudbird-ui-kinetic`
@@ -107,7 +204,7 @@ Hierarchy is enforced strictly through weight contrast, tracking adjustments, an
 
 ---
 
-## 6. Motion & Kinetic Interaction
+## 6. Motion & Kinetic Interaction (Stitch Generation Guidance)
 
 - **Spring Physics Baseline:**
   - Default spring config: `type: "spring", stiffness: 100, damping: 20, mass: 1`.
