@@ -54,13 +54,13 @@ typography:
     fontSize: 16px
     fontWeight: '400'
     lineHeight: 26px
-    letterSpacing: '0'
+    letterSpacing: 0px
   body-bold:
     fontFamily: Plus Jakarta Sans, sans-serif
     fontSize: 16px
     fontWeight: '600'
     lineHeight: 26px
-    letterSpacing: '0'
+    letterSpacing: 0px
   label-caps:
     fontFamily: Plus Jakarta Sans, sans-serif
     fontSize: 12px
