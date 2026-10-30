@@ -2,7 +2,7 @@ import React from "react";
 import chartTooltipCode from "../../../../packages/core/src/components/ChartTooltip/ChartTooltip.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import { ChartTooltip } from "@hudbird/ui/components/ChartTooltip";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { TableOfContents } from "../components/TableOfContents";
 import { ApiTable } from "../components/ApiTable";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -79,39 +79,26 @@ export default function ChartTooltipDoc() {
   ];
 
   return (
-    <div className="flex w-full max-w-6xl flex-col lg:flex-row lg:items-start lg:gap-12">
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-col items-start justify-between gap-4 pb-8 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Chart Tooltip
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                New
-              </span>
-              <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-                Component
-              </span>
-            </div>
-            <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-              A composable React tooltip for chart data points with customizable indicators, labels,
-              and value formatters.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 sm:space-y-32 pb-32">
+      <DocHeader
+        category="CHARTS"
+        title="Chart Tooltip"
+        badge="Component"
+        description="A composable React tooltip for chart data points with customizable indicators, labels, and value formatters."
+      />
 
-        <section id="installation" className="mb-12 scroll-mt-20">
-          <InstallationTabs
-            componentName="chart-tooltip"
-            dependencies="recharts clsx tailwind-merge"
-            manualCode={chartTooltipCode}
-          />
-        </section>
+      <section id="installation" className="scroll-mt-24 space-y-6">
+        <InstallationTabs
+          componentName="chart-tooltip"
+          dependencies="recharts clsx tailwind-merge"
+          manualCode={chartTooltipCode}
+        />
+      </section>
 
-        <section id="usage" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Usage</h2>
+      <section id="usage" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Usage
+        </h2>
           <ComponentPreview>
             <div className="flex w-full justify-center px-4 py-8">
               <ChartTooltip active={true} label="Jan" payload={dummyPayload} />
@@ -232,8 +219,11 @@ export default function Usage() {
           />
         </section>
 
-        <section id="anatomy" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Anatomy</h2>
+      <section id="anatomy" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Anatomy
+        </h2>
+        <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
             language="tsx"
             code={`import { Tooltip } from "recharts";
@@ -241,30 +231,29 @@ import { ChartTooltip } from "@hudbird/ui/components/ChartTooltip";
 
 <Tooltip content={<ChartTooltip {...props} />} />`}
           />
-        </section>
+        </div>
+      </section>
 
-        <section id="component-api" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Component API
-          </h2>
-          <ApiTable rows={apiRows} />
-          <h3 className="mt-8 mb-4 text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            API Reference
-          </h3>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            ref : (
-            <a
-              href="https://recharts.org/en-US/api/Tooltip"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              https://recharts.org/en-US/api/Tooltip
-            </a>
-            )
-          </p>
-        </section>
-      </div>
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Component API
+        </h2>
+        <ApiTable rows={apiRows} />
+        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+          API Reference
+        </h3>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          External documentation reference:{" "}
+          <a
+            href="https://recharts.org/en-US/api/Tooltip"
+            target="_blank"
+            rel="noreferrer"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            https://recharts.org/en-US/api/Tooltip
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

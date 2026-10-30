@@ -1,7 +1,7 @@
 import pieChartCode from "../../../../packages/core/src/components/PieChart/PieChart.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { PieChart, Card } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -108,39 +108,29 @@ export default function PieChartDoc() {
   ];
 
   return (
-    <div className="flex w-full max-w-6xl flex-col lg:flex-row lg:items-start lg:gap-12">
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-col items-start justify-between gap-4 pb-8 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Pie Chart
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                New
-              </span>
-              <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-                Component
-              </span>
-            </div>
-            <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-              A chart that displays information as slices of a circle, typically illustrating
-              numerical proportions.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 sm:space-y-32 pb-32">
+      <DocHeader
+        category="CHARTS"
+        title="Pie Chart"
+        badge="Component"
+        description="A chart that displays information as slices of a circle, typically illustrating numerical proportions and donut metrics."
+      />
 
-        <section id="installation" className="mb-12 scroll-mt-20">
-          <InstallationTabs
-            componentName="pie-chart"
-            dependencies="recharts clsx tailwind-merge"
-            manualCode={pieChartCode}
-          />
-        </section>
+      <section id="installation" className="scroll-mt-24 space-y-6">
+        <InstallationTabs
+          componentName="pie-chart"
+          dependencies="recharts clsx tailwind-merge"
+          manualCode={pieChartCode}
+        />
+      </section>
 
-        <section id="anatomy" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Anatomy</h2>
+      <section id="anatomy" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Anatomy
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Abstracted layer.</strong> Pie and Donut charts provide clean SVG rendering with centered KPI labels and automated legend bindings:
+        </p>
           <CodeBlock
             language="tsx"
             code={`import { PieChart } from "@hudbird/ui";
@@ -523,28 +513,26 @@ export default function App() {
           />
         </section>
 
-        <section id="component-api" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            API Reference
-          </h2>
-          <ApiTable rows={apiRows} />
-          <h3 className="mt-8 mb-4 text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Recharts API Reference
-          </h3>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            ref : (
-            <a
-              href="https://recharts.github.io/en-US/api/PieChart/"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              https://recharts.github.io/en-US/api/PieChart/
-            </a>
-            )
-          </p>
-        </section>
-      </div>
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          API Reference
+        </h2>
+        <ApiTable rows={apiRows} />
+        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+          Recharts API Reference
+        </h3>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          External documentation reference:{" "}
+          <a
+            href="https://recharts.github.io/en-US/api/PieChart/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            https://recharts.github.io/en-US/api/PieChart/
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

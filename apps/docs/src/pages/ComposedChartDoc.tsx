@@ -1,7 +1,7 @@
 import composedChartCode from "../../../../packages/core/src/components/ComposedChart/ComposedChart.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { ComposedChart, Card } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -108,38 +108,30 @@ export default function ComposedChartDoc() {
   ];
 
   return (
-    <div className="flex w-full max-w-6xl flex-col lg:flex-row lg:items-start lg:gap-12">
-      <div className="min-w-0 flex-1">
-        <div className="flex flex-col items-start justify-between gap-4 pb-8 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Composed Chart
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                New
-              </span>
-              <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-                Component
-              </span>
-            </div>
-            <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-              A chart that can combine bars, lines, and areas in a single visualization.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 sm:space-y-32 pb-32">
+      <DocHeader
+        category="CHARTS"
+        title="Composed Chart"
+        badge="Component"
+        description="A hybrid chart that unifies bars, lines, and areas within a single cohesive data visualization."
+      />
 
-        <section id="installation" className="mb-12 scroll-mt-20">
-          <InstallationTabs
-            componentName="composed-chart"
-            dependencies="recharts clsx tailwind-merge"
-            manualCode={composedChartCode}
-          />
-        </section>
+      <section id="installation" className="scroll-mt-24 space-y-6">
+        <InstallationTabs
+          componentName="composed-chart"
+          dependencies="recharts clsx tailwind-merge"
+          manualCode={composedChartCode}
+        />
+      </section>
 
-        <section id="anatomy" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Anatomy</h2>
+      <section id="anatomy" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Anatomy
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Abstracted layer.</strong> Composed chart synchronizes multi-series geometries (bars, lines, areas) into an unified coordinate system:
+        </p>
+        <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
             language="tsx"
             code={`import { ComposedChart } from "@hudbird/ui";
@@ -157,7 +149,8 @@ export default function App() {
   );
 }`}
           />
-        </section>
+        </div>
+      </section>
 
         <section id="stacked-bar-with-line" className="mb-12 scroll-mt-20">
           <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -277,68 +270,81 @@ export default function App() {
           />
         </section>
 
-        <section id="css-classes" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">CSS Classes</h2>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            The ComposedChart component applies standard Tailwind classes for dark mode and
-            dimensions. The internal Recharts components accept specific classes via our{" "}
-            <code>className</code> prop to ensure responsive container scaling.
-          </p>
-        </section>
-
-        <section id="advanced-customization" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Advanced Customization
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            You can inject custom SVG gradients via <code>children</code>, change stroke styles, and
-            use completely custom tooltips with images.
-          </p>
-          <ComponentPreview>
-            <Card className="mx-auto w-full max-w-2xl p-4">
-              <ComposedChart
-                data={dummyData}
-                index="date"
-                series={[
-                  { category: "Desktop", type: "bar", color: "url(#custom-gradient-composed)" },
-                  { category: "Mobile", type: "line", color: "#facc15" },
-                ]}
-                customTooltip={(props: any) => {
-                  if (!props.active || !props.payload || props.payload.length === 0) return null;
-                  return (
-                    <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
-                      <img
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                        alt="Avatar"
-                        className="h-10 w-10 rounded-full"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-zinc-300">Total Visits</p>
-                        {props.payload.map((item: any, i: number) => (
-                          <div
-                            key={i}
-                            className="mt-1 flex items-center justify-between gap-4 text-sm"
-                          >
-                            <span style={{ color: item.color }}>{item.name}</span>
-                            <span className="font-bold text-white">{item.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                }}
-              >
-                <defs>
-                  <linearGradient id="custom-gradient-composed" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#818cf8" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#818cf8" stopOpacity={0.2} />
-                  </linearGradient>
-                </defs>
-              </ComposedChart>
-            </Card>
-          </ComponentPreview>
+      <section id="css-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          CSS Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Root container customization.</strong> The ComposedChart component applies standard Tailwind classes for height and width, and renders inside a standard wrapper that accepts a <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop:
+        </p>
+        <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
             code={`<ComposedChart
+  className="h-[350px] w-full"
+  data={dummyData}
+  index="date"
+  series={[
+    { category: "Desktop", type: "bar" },
+    { category: "Mobile", type: "line" }
+  ]}
+/>`}
+            language="tsx"
+          />
+        </div>
+      </section>
+
+      <section id="advanced-customization" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Advanced Customization
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>SVG gradient injection.</strong> Inject custom SVG gradients via <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">children</code>, configure stroke styles, and render custom tooltips with avatars:
+        </p>
+        <ComponentPreview>
+          <Card className="mx-auto w-full max-w-2xl p-4">
+            <ComposedChart
+              data={dummyData}
+              index="date"
+              series={[
+                { category: "Desktop", type: "bar", color: "url(#custom-gradient-composed)" },
+                { category: "Mobile", type: "line", color: "#facc15" },
+              ]}
+              customTooltip={(props: any) => {
+                if (!props.active || !props.payload || props.payload.length === 0) return null;
+                return (
+                  <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
+                    <img
+                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                      alt="Avatar"
+                      className="h-10 w-10 rounded-full"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-zinc-300">Total Visits</p>
+                      {props.payload.map((item: any, i: number) => (
+                        <div
+                          key={i}
+                          className="mt-1 flex items-center justify-between gap-4 text-sm"
+                        >
+                          <span style={{ color: item.color }}>{item.name}</span>
+                          <span className="font-bold text-white">{item.value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              }}
+            >
+              <defs>
+                <linearGradient id="custom-gradient-composed" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#818cf8" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#818cf8" stopOpacity={0.2} />
+                </linearGradient>
+              </defs>
+            </ComposedChart>
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          code={`<ComposedChart
   data={dummyData}
   index="date"
   series={[
@@ -370,31 +376,29 @@ export default function App() {
     </linearGradient>
   </defs>
 </ComposedChart>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="component-api" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            API Reference
-          </h2>
-          <ApiTable rows={apiRows} />
-          <h3 className="mt-8 mb-4 text-xl font-bold text-zinc-900 dark:text-zinc-100">
-            Recharts API Reference
-          </h3>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            ref : (
-            <a
-              href="https://recharts.github.io/en-US/api/ComposedChart/"
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              https://recharts.github.io/en-US/api/ComposedChart/
-            </a>
-            )
-          </p>
-        </section>
-      </div>
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          API Reference
+        </h2>
+        <ApiTable rows={apiRows} />
+        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+          Recharts API Reference
+        </h3>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          External documentation reference:{" "}
+          <a
+            href="https://recharts.github.io/en-US/api/ComposedChart/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+          >
+            https://recharts.github.io/en-US/api/ComposedChart/
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

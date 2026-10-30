@@ -272,7 +272,7 @@ The Button architecture is governed by strict tactile feedback and explicit geom
 Google Stitch achieves its premium feel through uncrowded, deliberate spatial rhythms:
 
 - **Vertical Section Rhythm (Whitespace Strategy):**
-  - Section-to-section gap: `clamp(3.5rem, 7vw, 6rem)` (`56px` to `96px`). Gives users breathing room between key conceptual shifts.
+  - Section-to-section gap: `clamp(5rem, 8vw, 8rem)` (`80px` to `128px` / `space-y-24 sm:space-y-32`). Delivers monumental, uncrowded breathing room between major conceptual shifts.
   - Title-to-Content gap: `48px` (`mt-12`).
   - Paragraph-to-Paragraph gap: `24px` (`mb-6`).
   - Headline-to-Paragraph gap: `16px` (`mb-4`).
@@ -322,3 +322,70 @@ To preserve human agency and elite design execution, the following patterns are 
 10. ❌ **No Layout Shifts on Mobile:** Multi-column grids must cleanly collapse to a single column below `768px` with zero horizontal overflow.
 11. ❌ **No Rainbow Icon Badge Squares Next to Headings (UI Slop):** Strictly forbidden to prefix section headings with multi-colored rounded icon badge squares (e.g. green sparkles in green box, orange file in amber box, purple layers in purple box). Headings must assert visual dominance through scale, weight, and negative space alone.
 12. ❌ **No Claustrophobic Section Spacing (Violation of the Law of Proximity):** Sections must never sit closer than 80px apart (`mt-20 sm:mt-28`). Compressing vertical gaps below 64px collapses visual grouping and causes severe cognitive fatigue.
+
+---
+
+## 8. UX Psychology Blueprint (Cognitive Architecture)
+
+All components, layouts, and interactive workflows in Hudbird UI are bound by human cognitive psychology principles to eliminate cognitive overload, reduce error rates, and deliver effortless high-agency usability:
+
+### 8.1 Law of Proximity (Gestalt)
+- **Principle:** Elements positioned close to one another are cognitively perceived as belonging to the same functional cluster.
+- **Rule:**
+  - Micro-spacing (`4px` to `8px` / `gap-1` to `gap-2`): Connect closely coupled items (e.g. form label to input, icon to accompanying button text).
+  - Meso-spacing (`16px` to `24px` / `gap-4` to `gap-6`): Differentiate sibling cards, controls, or list items within the same parent section.
+  - Macro-spacing (`80px` to `128px` / `mt-20 sm:mt-32` / `space-y-24 sm:space-y-32`): Separate distinct thematic sections. Vertical gaps smaller than 64px violate proximity and cause cognitive fatigue.
+
+### 8.2 Law of Common Region (Gestalt)
+- **Principle:** Elements enclosed within a clearly defined visual boundary are perceived as sharing a single unified purpose.
+- **Rule:**
+  - Enclose related data, code previews, or form groups inside explicit perimeter containers (e.g. `DoubleBezelCard` or 1px hairline border `border-zinc-200 dark:border-white/10`).
+  - **Anti-Nesting Rule:** Strictly ban gratuitous nested frames ("cards inside cards inside cards"). A container must have distinct informational boundary purpose, not redundant decorative framing.
+
+### 8.3 Law of Similarity (Gestalt)
+- **Principle:** Elements sharing visual characteristics (color, shape, typography) are perceived to perform the same function.
+- **Rule:**
+  - Headings at each hierarchy tier (`h1`, `h2`, `h3`) must strictly share the same typeface, weight (`500`), letter-spacing, and line-height across every page.
+  - Banned: Arbitrary rainbow badge styling where each section or card invents a unique accent color. Color must signal functional states (system status, primary intent), not arbitrary cosmetic variety.
+
+### 8.4 Aesthetic-Usability Effect
+- **Principle:** Users perceive visually balanced, polished, and clutter-free interfaces as significantly more intuitive, tolerant of minor friction, and credible.
+- **Rule:**
+  - Prioritize generous negative space, deliberate typography, and subdued surfaces over visual noise, emojis, or neon effects. Software that looks clean feels faster, safer, and more reliable.
+
+### 8.5 Fitts's Law
+- **Principle:** The time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
+- **Rule:**
+  - **Minimum Touch Targets:** Interactive targets must measure at least `44px × 44px` on mobile/touch viewports (`h-11`) and `36px × 36px` on desktop viewports (`h-9`).
+  - Icon-only interactive buttons must never drop below `32px` (`w-8 h-8`) and must provide ample surrounding tap margin.
+  - Primary call-to-actions must be positioned along primary natural focal paths (top-right or bottom-left terminal anchor).
+
+### 8.6 Hick's Law
+- **Principle:** The time required to make a decision increases logarithmically with the number and complexity of choices presented.
+- **Rule:**
+  - Limit the number of primary options: strictly one primary button (`variant="solid"`) per view or card cluster.
+  - Employ progressive disclosure: bury advanced configurations, detailed filters, or verbose telemetry behind expandable disclosures or modal steps rather than overwhelming the default viewport.
+
+### 8.7 Miller's Law (Cognitive Chunking)
+- **Principle:** The average human working memory can hold only 7 (± 2) discrete chunks of information simultaneously.
+- **Rule:**
+  - Group navigation links, form fields, and telemetry metrics into digestible clusters of 5 to 7 items.
+  - Bento grids and dashboard summaries must limit active primary blocks to 3–5 high-signal widgets per view. Long lists must use categorical headings and dividers.
+
+### 8.8 Jakob's Law
+- **Principle:** Users spend most of their time using other digital products; they expect your system to operate according to well-established mental models.
+- **Rule:**
+  - Preserve familiar architectural conventions: left-hand navigation sidebar, top-right utility actions/search (`Cmd+K`), right-hand "On this page" TOC, standard form inputs (labels on top, error message below).
+  - Never invert or obscure universal interaction standards (e.g. standard ESC to dismiss modals, Tab to navigate form fields).
+
+### 8.9 Von Restorff Effect (Isolation Effect)
+- **Principle:** When multiple similar objects are present, the item that visually differs from the rest is the most memorable and most likely to receive action.
+- **Rule:**
+  - Reserve the high-contrast Electric Indigo (`#4F46E5` / `#6366F1`) brand accent exclusively for the primary intended user action.
+  - Subordinate all supporting secondary actions to neutral surfaces (`variant="outline"`, `variant="ghost"`). If every button or card is highlighted, visual hierarchy collapses.
+
+### 8.10 Zeigarnik Effect & Goal Gradient Effect
+- **Principle:** Incomplete tasks generate cognitive tension that motivates completion, and user momentum accelerates as they perceive proximity to their goal.
+- **Rule:**
+  - Multi-step configurations, setup wizards, and documentation walkthroughs must render clear, linear step indicators (e.g. `Step 1 of 4` or subtle progress track).
+  - Display tangible completion milestones rather than open-ended sequences, without resorting to bulky or distracting visual badges.
