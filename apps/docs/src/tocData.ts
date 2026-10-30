@@ -30,6 +30,15 @@ export const aiSkillsTocItems: TocItem[] = [
   { id: "full-skill-reference", title: "Full SKILL.md Reference" },
 ];
 
+export const designSystemTocItems: TocItem[] = [
+  { id: "visual-atmosphere", title: "1. Visual Theme & Atmosphere" },
+  { id: "color-palette", title: "2. Color Palette & Roles" },
+  { id: "typography-architecture", title: "3. Typography Architecture" },
+  { id: "component-stylings", title: "4. Component Stylings & Anatomy" },
+  { id: "anti-patterns", title: "5. Anti-Patterns (Banned)" },
+  { id: "live-editor", title: "Live Markdown Editor" },
+];
+
 export const buttonTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -754,6 +763,7 @@ const tocMap: Record<string, TocItem[]> = {
   "/support": supportTocItems,
   "/cli": cliTocItems,
   "/ai-skills": aiSkillsTocItems,
+  "/design-system": designSystemTocItems,
   "/button": buttonTocItems,
   "/alert": alertTocItems,
   "/avatar": avatarTocItems,

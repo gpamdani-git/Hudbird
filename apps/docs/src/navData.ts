@@ -18,6 +18,7 @@ export const navigationData: NavGroup[] = [
       { name: "Tutorial Install Guide", path: "/installation" },
       { name: "CLI Commands", path: "/cli", isNew: true },
       { name: "AI Agent Skills", path: "/ai-skills", isNew: true },
+      { name: "Design System (DESIGN.md)", path: "/design-system", isNew: true },
       { name: "Create Theme", path: "/themes" },
       { name: "Blocks Gallery", path: "/blocks", isNew: true },
       { name: "Changelog", path: "/changelog" },
