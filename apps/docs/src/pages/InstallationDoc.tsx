@@ -68,7 +68,7 @@ export default defineConfig({
           </div>
           <a
             href="#/cli"
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-transparent bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#FFB1EE] dark:hover:bg-[#202124]"
+            className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-transparent bg-zinc-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 dark:border-[#2E2F33] dark:bg-[#161618] dark:text-indigo-400 dark:hover:bg-[#202124]"
           >
             CLI Reference &rarr;
           </a>

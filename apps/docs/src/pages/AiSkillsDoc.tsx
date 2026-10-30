@@ -77,7 +77,7 @@ export default function AiSkillsDoc() {
       />
 
       <div className="mb-8 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
           <Bot className="h-3.5 w-3.5" />
           AI Skills v1.5
         </span>

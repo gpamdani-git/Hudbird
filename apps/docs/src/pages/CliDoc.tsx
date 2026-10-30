@@ -30,7 +30,7 @@ export default function CliDoc() {
       />
 
       <div className="mb-8 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
           <Terminal className="h-3.5 w-3.5" />
           CLI v1.4.0
         </span>
@@ -64,7 +64,7 @@ export default function CliDoc() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <FolderGit2 className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
+                <FolderGit2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 Local Code Ownership
               </div>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
@@ -79,7 +79,7 @@ export default function CliDoc() {
 
             <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Layers className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
+                <Layers className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 Recursive Dependency Graph
               </div>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
@@ -105,7 +105,7 @@ export default function CliDoc() {
 
             <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
               <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Sliders className="h-4 w-4 text-pink-600 dark:text-[#FFB1EE]" />
+                <Sliders className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
                 Standard components.json
               </div>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">

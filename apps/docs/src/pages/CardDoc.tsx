@@ -134,19 +134,19 @@ export default function CardDoc() {
         description={
           <span>
             A modular, versatile surface container composed of{" "}
-            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-[#FFB1EE]">
+            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-indigo-400">
               Card
             </code>
             ,{" "}
-            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-[#FFB1EE]">
+            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-indigo-400">
               CardHeader
             </code>
             ,{" "}
-            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-[#FFB1EE]">
+            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-indigo-400">
               CardBody
             </code>
             , and{" "}
-            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-[#FFB1EE]">
+            <code className="font-mono text-xs font-semibold text-zinc-800 dark:text-indigo-400">
               CardFooter
             </code>{" "}
             with interactive hover, press feedback, and glassmorphic overlay support.

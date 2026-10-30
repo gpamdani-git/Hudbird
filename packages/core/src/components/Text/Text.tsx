@@ -9,7 +9,7 @@ const textVariants = cva("text-zinc-700 dark:text-[#E5E5E5]", {
       prose: "text-[16px] leading-[1.7] tracking-[-0.16px] max-w-[65ch]",
       lead: "text-lg sm:text-xl leading-[1.625] text-zinc-600 dark:text-[#828282] max-w-3xl",
       eyebrow:
-        "text-[14px] font-extrabold uppercase tracking-[1.4px] leading-5 text-pink-600 dark:text-[#FFB1EE]",
+        "text-[14px] font-extrabold uppercase tracking-[1.4px] leading-5 text-indigo-600 dark:text-indigo-400",
       strong: "font-semibold text-zinc-900 dark:text-white",
       muted: "text-sm text-zinc-500 dark:text-[#828282]",
       small: "text-sm/6 sm:text-xs/6 text-zinc-600 dark:text-zinc-400",

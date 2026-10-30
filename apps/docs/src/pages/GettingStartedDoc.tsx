@@ -31,7 +31,7 @@ export default function GettingStartedDoc() {
       <div id="getting-started" className="scroll-mt-24">
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
           <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-4 text-[14px] font-extrabold tracking-[1.4px] text-pink-600 uppercase dark:text-[#ffb1ee]">
+            <div className="mb-4 text-[14px] font-extrabold tracking-[1.4px] text-indigo-600 uppercase dark:text-indigo-400">
               ESSENTIALS
             </div>
             <h1 className="font-outfit mb-6 text-4xl leading-[1.15] font-medium tracking-[-1.8px] text-zinc-900 sm:text-5xl lg:text-6xl dark:text-white">

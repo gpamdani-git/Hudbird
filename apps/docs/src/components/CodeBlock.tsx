@@ -153,7 +153,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             {isCollapsible && (
               <button
                 onClick={toggleExpand}
-                className="font-sans text-zinc-500 transition-colors hover:text-zinc-900 dark:text-[#828282] dark:hover:text-[#FFB1EE]"
+                className="font-sans text-zinc-500 transition-colors hover:text-zinc-900 dark:text-[#828282] dark:hover:text-indigo-400"
               >
                 {isExpanded ? "Collapse" : "Expand"}
               </button>
@@ -178,7 +178,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           {isCollapsible && (
             <button
               onClick={toggleExpand}
-              className="rounded bg-white/80 px-2 py-1 text-xs font-medium text-zinc-500 opacity-0 shadow-xs backdrop-blur-sm transition-all group-hover:opacity-100 hover:text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124]/90 dark:text-[#828282] dark:hover:text-[#FFB1EE]"
+              className="rounded bg-white/80 px-2 py-1 text-xs font-medium text-zinc-500 opacity-0 shadow-xs backdrop-blur-sm transition-all group-hover:opacity-100 hover:text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124]/90 dark:text-[#828282] dark:hover:text-indigo-400"
             >
               {isExpanded ? "Collapse" : "Expand"}
             </button>

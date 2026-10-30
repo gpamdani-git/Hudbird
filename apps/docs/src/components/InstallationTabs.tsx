@@ -65,7 +65,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
           onClick={() => setActiveTab("command")}
           className={`border-b-2 pb-2 text-sm font-medium transition-colors ${
             activeTab === "command"
-              ? "border-zinc-900 text-zinc-900 dark:border-[#FFB1EE] dark:text-[#FFB1EE]"
+              ? "border-zinc-900 text-zinc-900 dark:border-indigo-400 dark:text-indigo-400"
               : "border-transparent text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
           }`}
         >
@@ -75,7 +75,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
           onClick={() => setActiveTab("manual")}
           className={`border-b-2 pb-2 text-sm font-medium transition-colors ${
             activeTab === "manual"
-              ? "border-zinc-900 text-zinc-900 dark:border-[#FFB1EE] dark:text-[#FFB1EE]"
+              ? "border-zinc-900 text-zinc-900 dark:border-indigo-400 dark:text-indigo-400"
               : "border-transparent text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
           }`}
         >
@@ -93,7 +93,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
                 onClick={() => setPkgManager(pm)}
                 className={`rounded-md px-3 py-1 font-mono text-xs transition-colors ${
                   pkgManager === pm
-                    ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]"
+                    ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400"
                     : "text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
                 }`}
               >
@@ -111,7 +111,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
         <div className="space-y-8">
           {/* Step 1 */}
           <div className="relative pl-8">
-            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]">
+            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400">
               1
             </div>
             <h4 className="mb-3 text-sm leading-6 font-semibold text-zinc-900 dark:text-[#E5E5E5]">
@@ -126,7 +126,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
                     onClick={() => setPkgManager(pm)}
                     className={`rounded-md px-3 py-1 font-mono text-xs transition-colors ${
                       pkgManager === pm
-                        ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]"
+                        ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400"
                         : "text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
                     }`}
                   >
@@ -142,7 +142,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
 
           {/* Step 2 */}
           <div className="relative pl-8">
-            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]">
+            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400">
               2
             </div>
             <h4 className="mb-3 text-sm leading-6 font-semibold text-zinc-900 dark:text-[#E5E5E5]">
@@ -158,7 +158,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
 
           {/* Step 3 */}
           <div className="relative pl-8">
-            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]">
+            <div className="absolute top-0 left-0 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400">
               3
             </div>
             <h4 className="text-sm leading-6 font-semibold text-zinc-900 dark:text-[#E5E5E5]">

@@ -22,7 +22,7 @@ export const DocHeader: React.FC<DocHeaderProps> = ({
     >
       <div className="w-full min-w-0 flex-1">
         {category && (
-          <div className="mb-3.5 text-[13px] font-extrabold tracking-[1.4px] text-pink-600 uppercase dark:text-[#FFB1EE]">
+          <div className="mb-3.5 text-[13px] font-extrabold tracking-[1.4px] text-indigo-600 uppercase dark:text-indigo-400">
             {category}
           </div>
         )}
@@ -31,7 +31,7 @@ export const DocHeader: React.FC<DocHeaderProps> = ({
             {title}
           </h1>
           {badge && (
-            <span className="rounded-full border border-pink-500/30 bg-pink-500/10 px-2.5 py-0.5 text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+            <span className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
               {badge}
             </span>
           )}

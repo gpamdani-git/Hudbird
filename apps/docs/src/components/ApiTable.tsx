@@ -54,7 +54,7 @@ export const ApiTable: React.FC<ApiTableProps> = ({ title, note, rows }) => {
                   key={idx}
                   className="transition-colors hover:bg-zinc-50/50 dark:hover:bg-[#202124]/50"
                 >
-                  <td className="px-6 py-4 font-mono text-xs font-semibold text-pink-600 dark:text-[#FFB1EE]">
+                  <td className="px-6 py-4 font-mono text-xs font-semibold text-indigo-600 dark:text-indigo-400">
                     {row.prop}
                   </td>
                   <td className="px-6 py-4 font-mono text-xs text-zinc-600 dark:text-[#828282]">

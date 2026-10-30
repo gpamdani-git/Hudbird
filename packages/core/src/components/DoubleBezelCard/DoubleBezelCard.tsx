@@ -55,13 +55,13 @@ const outerChassisVariants = cva(
     variants: {
       variant: {
         default:
-          "p-1.5 sm:p-2 bg-zinc-200/55 dark:bg-[#161618] border border-zinc-300/70 dark:border-[#2E2F33] backdrop-blur-md hover:border-brand-500/40 dark:hover:border-[#FFB1EE]/40",
+          "p-1.5 sm:p-2 bg-zinc-200/55 dark:bg-[#161618] border border-zinc-300/70 dark:border-[#2E2F33] backdrop-blur-md hover:border-brand-500/40 dark:hover:border-indigo-500/40",
         glass:
           "p-2 bg-white/40 dark:bg-[#161618]/70 border border-white/60 dark:border-[#2E2F33] backdrop-blur-xl shadow-lg hover:shadow-glow",
         solid:
           "p-1.5 sm:p-2 bg-zinc-100 dark:bg-[#161618] border border-zinc-300/90 dark:border-[#2E2F33]",
         highlight:
-          "p-2 bg-gradient-to-b from-[#FFB1EE]/20 via-[#FFB1EE]/5 to-transparent border border-[#FFB1EE]/30 shadow-glow",
+          "p-2 bg-gradient-to-b from-indigo-500/20 via-indigo-500/5 to-transparent border border-indigo-500/30 shadow-glow",
       },
       isHoverable: {
         true: "hover:-translate-y-1 hover:shadow-xl cursor-pointer",
@@ -93,7 +93,7 @@ const innerCoreVariants = cva(
         solid:
           "bg-white dark:bg-[#202124] border border-zinc-200 dark:border-[#2E2F33] text-zinc-900 dark:text-[#E5E5E5]",
         highlight:
-          "bg-white dark:bg-[#202124] border border-[#FFB1EE]/30 shadow-[inset_0_1px_0_0_rgba(255,177,238,0.15)] text-zinc-900 dark:text-[#E5E5E5]",
+          "bg-white dark:bg-[#202124] border border-indigo-500/30 shadow-[inset_0_1px_0_0_rgba(99,102,241,0.15)] text-zinc-900 dark:text-[#E5E5E5]",
       },
     },
     defaultVariants: {

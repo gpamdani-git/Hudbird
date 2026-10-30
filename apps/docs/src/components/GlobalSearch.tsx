@@ -356,7 +356,7 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "", isMi
                                 </span>
 
                                 {item.isNew && (
-                                  <span className="py-0.2 rounded-md border border-pink-500/30 bg-pink-500/10 px-1.5 text-[10px] leading-none font-semibold text-pink-600 dark:text-[#FFB1EE]">
+                                  <span className="py-0.2 rounded-md border border-indigo-500/30 bg-indigo-500/10 px-1.5 text-[10px] leading-none font-semibold text-indigo-600 dark:text-indigo-400">
                                     New
                                   </span>
                                 )}

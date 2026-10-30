@@ -42,7 +42,7 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
             <div className="absolute right-0 z-50 mt-1 w-48 rounded-lg border border-zinc-200 bg-white p-1 shadow-lg dark:border-[#2E2F33] dark:bg-[#202124]">
               <button
                 onClick={copyUrl}
-                className="flex w-full items-center rounded-md px-2.5 py-1.5 text-xs text-zinc-700 hover:bg-zinc-100 dark:text-[#E5E5E5] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
+                className="flex w-full items-center rounded-md px-2.5 py-1.5 text-xs text-zinc-700 hover:bg-zinc-100 dark:text-[#E5E5E5] dark:hover:bg-[#2E2F33] dark:hover:text-indigo-400"
               >
                 Copy URL
               </button>
@@ -54,7 +54,7 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
       {prev ? (
         <Link
           to={prev.path}
-          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
+          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-indigo-400"
           title={`Previous: ${prev.name}`}
         >
           <ChevronLeft className="h-4 w-4" />
@@ -68,7 +68,7 @@ export const PageToolbar: React.FC<PageToolbarProps> = ({ isWide }) => {
       {next ? (
         <Link
           to={next.path}
-          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-[#FFB1EE]"
+          className="flex h-8 items-center justify-center rounded-lg border border-zinc-200 bg-white px-2 text-zinc-600 shadow-xs transition-colors hover:bg-zinc-50 hover:text-zinc-900 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:hover:bg-[#2E2F33] dark:hover:text-indigo-400"
           title={`Next: ${next.name}`}
         >
           <ChevronRight className="h-4 w-4" />

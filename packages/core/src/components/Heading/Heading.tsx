@@ -7,7 +7,7 @@ import { cn } from "../../utils/cn";
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 export type HeadingSize = "display" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "inherit";
 export type HeadingTracking = "stitch" | "tighter" | "tight" | "normal" | "wide";
-export type HeadingColor = "default" | "muted" | "primary" | "stitch";
+export type HeadingColor = "default" | "muted" | "primary" | "stitch" | "brand";
 
 const headingVariants = cva("font-display transition-colors duration-150 leading-tight", {
   variants: {
@@ -32,7 +32,8 @@ const headingVariants = cva("font-display transition-colors duration-150 leading
       default: "text-zinc-900 dark:text-white",
       muted: "text-zinc-500 dark:text-[#828282]",
       primary: "text-primary",
-      stitch: "text-pink-600 dark:text-[#FFB1EE]",
+      stitch: "text-indigo-600 dark:text-indigo-400",
+      brand: "text-indigo-600 dark:text-indigo-400",
     },
     withDivider: {
       true: "pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80 mb-4",

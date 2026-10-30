@@ -10,7 +10,7 @@ module.exports = plugin(
         "--overlay": "0 0 0",
         "--border": "229 231 235",
         "--primary-indigo": "79 70 229",
-        "--stitch-lilac": "217 70 239",
+        "--hudbird-brand": "79 70 229",
         "--stitch-prose": "39 39 42",
         "--stitch-muted": "113 113 122",
         "--success": "34 197 94",
@@ -22,7 +22,7 @@ module.exports = plugin(
         "--overlay": "22 22 24",
         "--border": "46 47 51", // Google Stitch Hairline Border (#2E2F33)
         "--primary-indigo": "99 102 241",
-        "--stitch-lilac": "255 177 238", // Google Stitch Luminous Lilac (#FFB1EE)
+        "--hudbird-brand": "129 140 248", // Hudbird Brand Indigo (#818CF8)
         "--stitch-prose": "229 229 229", // Google Stitch Editorial Prose (#E5E5E5)
         "--stitch-muted": "130 130 130", // Google Stitch Muted Metadata (#828282)
         "--success": "74 222 128",
@@ -49,11 +49,14 @@ module.exports = plugin(
           primary: {
             indigo: "rgb(var(--primary-indigo) / <alpha-value>)",
           },
+          hudbird: {
+            brand: "#4F46E5",
+            cyan: "#06B6D4",
+          },
           stitch: {
             canvas: "#161618",
             surface: "#202124",
             border: "#2E2F33",
-            lilac: "#FFB1EE",
             prose: "#E5E5E5",
             muted: "#828282",
           },

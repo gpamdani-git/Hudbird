@@ -89,7 +89,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             onClick={() => setViewport("desktop")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "desktop"
-                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-[#ffb1ee]"
+                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Desktop View (Full Width)"
@@ -102,7 +102,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             onClick={() => setViewport("tablet")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "tablet"
-                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-[#ffb1ee]"
+                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Tablet View (768px)"
@@ -115,7 +115,7 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
             onClick={() => setViewport("mobile")}
             className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
               viewport === "mobile"
-                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-[#ffb1ee]"
+                ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Mobile View (390px)"

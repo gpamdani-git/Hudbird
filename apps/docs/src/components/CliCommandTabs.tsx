@@ -34,7 +34,7 @@ export const CliCommandTabs: React.FC<CliCommandTabsProps> = ({ commandType }) =
             onClick={() => setPkgManager(pm)}
             className={`rounded-md px-3 py-1 font-mono text-xs transition-colors ${
               pkgManager === pm
-                ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#FFB1EE]"
+                ? "bg-zinc-200 font-semibold text-zinc-900 dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-500 hover:text-zinc-700 dark:text-[#828282] dark:hover:text-white"
             }`}
           >

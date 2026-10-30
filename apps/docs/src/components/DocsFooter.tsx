@@ -22,7 +22,7 @@ export const DocsFooter: React.FC<DocsFooterProps> = ({ isWide }) => {
           to={prev.path}
           className="group flex flex-col items-start gap-1 rounded-xl border border-transparent p-3 text-zinc-600 transition-all hover:bg-zinc-50 hover:text-zinc-900 dark:text-[#828282] dark:hover:border-[#2E2F33] dark:hover:bg-[#202124] dark:hover:text-white"
         >
-          <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-[#828282] dark:group-hover:text-[#FFB1EE]">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-[#828282] dark:group-hover:text-indigo-400">
             <ChevronLeft className="h-4 w-4" />
             Previous
           </div>
@@ -39,7 +39,7 @@ export const DocsFooter: React.FC<DocsFooterProps> = ({ isWide }) => {
           to={next.path}
           className="group flex flex-col items-end gap-1 rounded-xl border border-transparent p-3 text-zinc-600 transition-all hover:bg-zinc-50 hover:text-zinc-900 dark:text-[#828282] dark:hover:border-[#2E2F33] dark:hover:bg-[#202124] dark:hover:text-white"
         >
-          <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-[#828282] dark:group-hover:text-[#FFB1EE]">
+          <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-[#828282] dark:group-hover:text-indigo-400">
             Next
             <ChevronRight className="h-4 w-4" />
           </div>

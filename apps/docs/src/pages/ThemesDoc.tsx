@@ -30,7 +30,7 @@ export default function ThemesDoc() {
             <span>
               Customize your design system in real-time. Tune colors, typography, and border
               radiuses, and export production-ready Tailwind v4{" "}
-              <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#FFB1EE]">
+              <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-indigo-400">
                 @theme
               </code>{" "}
               directives or Figma Tokens Studio DTCG JSON.

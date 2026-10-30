@@ -15,20 +15,20 @@ colors:
   inverse-on-surface: "#161618"
   outline: "#2e2f33"
   outline-variant: "#3e3f44"
-  surface-tint: "#ffb1ee"
+  surface-tint: "#4f46e5"
   primary: "#4f46e5"
   on-primary: "#ffffff"
   primary-container: "#eef2ff"
   on-primary-container: "#3730a3"
   inverse-primary: "#818cf8"
-  secondary: "#ffb1ee"
-  on-secondary: "#161618"
-  secondary-container: "#3d1d36"
-  on-secondary-container: "#ffb1ee"
-  tertiary: "#06b6d4"
+  secondary: "#06b6d4"
+  on-secondary: "#ffffff"
+  secondary-container: "#ecfeff"
+  on-secondary-container: "#0e7490"
+  tertiary: "#10b981"
   on-tertiary: "#ffffff"
-  tertiary-container: "#ecfeff"
-  on-tertiary-container: "#0e7490"
+  tertiary-container: "#ecfdf5"
+  on-tertiary-container: "#065f46"
   error: "#f43f5e"
   on-error: "#ffffff"
   error-container: "#fff1f2"
@@ -127,18 +127,17 @@ Hudbird UI uses a carefully calibrated OKLCH & Hex palette constrained below 80%
 
 ### 2.2 Brand & Kinetic Accents
 
-- **Electric Indigo** (`#4F46E5` / `#6366F1`) — Primary interactive brand color. Applied to primary call-to-actions, active tab indicators, and keyboard focus rings.
-- **Stitch Luminous Lilac** (`#FFB1EE`) — Category eyebrow tag accent, live state markers, and pill badge highlight (`rgb(255, 177, 238)`).
-- **Kinetic Cyan** (`#06B6D4`) — Secondary kinetic accent. Used for velocity indicators, micro-badges, and real-time state badges.
+- **Electric Indigo** (`#4F46E5` / `#6366F1`) — Primary signature brand color for Hudbird UI. Applied to category eyebrow tags, primary call-to-actions, active tab indicators, and keyboard focus rings.
+- **Kinetic Cyan** (`#06B6D4`) — Secondary kinetic brand accent. Used for velocity indicators, micro-badges, and real-time state badges.
 - **Emerald Vitality** (`#10B981`) — Semantic success state, operational indicators, verified badges, and positive metric deltas.
 - **Amber Warning** (`#F59E0B`) — Semantic caution state, pending queues, rate limit warnings, and non-blocking notifications.
 - **Rose Danger** (`#F43F5E`) — Destructive actions, validation error outlines, network disconnection indicators, and high-urgency alerts.
 
 ---
 
-## 3. Typography Architecture & Micro-Spacing (Google Stitch Spec)
+## 3. Typography Architecture & Micro-Spacing (Editorial Standard)
 
-Every element in the typographic hierarchy is calibrated with exact optical tracking, line-height ratios, and paragraph pacing to achieve Google Stitch's signature editorial elegance.
+Every element in the typographic hierarchy is calibrated with exact optical tracking, line-height ratios, and paragraph pacing to achieve signature editorial elegance.
 
 ### 3.1 Category Eyebrow Tag (`label-caps`)
 
@@ -148,7 +147,7 @@ Every element in the typographic hierarchy is calibrated with exact optical trac
 - **Weight:** `800` (Ultra-Bold)
 - **Line-Height:** `20px` (`leading-5`)
 - **Tracking (Letter-Spacing):** `+1.4px` (`+0.1em` / `tracking-widest` uppercase).
-- **Color:** Luminous Lilac (`#FFB1EE` / `rgb(255, 177, 238)`).
+- **Color:** Electric Indigo (`#6366F1` / `#818CF8` in dark mode, `#4F46E5` in light mode).
 - **Bottom Spacing:** Strictly `16px` padding below the tag before the main title.
 
 ### 3.2 Display Hero Title (`display-lg` / `h1`)

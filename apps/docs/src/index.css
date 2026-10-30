@@ -209,11 +209,11 @@
     --muted-foreground: #828282;
     --foreground: #e5e5e5;
 
-    /* Google Stitch Token Additions */
+    /* Google Stitch Layout & Hudbird Identity Tokens */
     --stitch-canvas: #161618;
     --stitch-surface: #202124;
     --stitch-border: #2e2f33;
-    --stitch-lilac: #ffb1ee;
+    --hudbird-brand: #818cf8;
     --stitch-prose: #e5e5e5;
     --stitch-muted: #828282;
   }
@@ -367,7 +367,7 @@
     text-transform: uppercase;
     letter-spacing: 1.4px;
     line-height: 20px;
-    color: var(--stitch-lilac, #ffb1ee);
+    color: var(--hudbird-brand, #6366f1);
     margin-bottom: 16px;
   }
   .stitch-display {
