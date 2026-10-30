@@ -583,7 +583,7 @@ export const digitalAgencyNiche: NicheConfig = {
       ],
       socialLinks: [
         { platform: "X", href: "https://twitter.com/danihudbird" },
-        { platform: "GitHub", href: "https://github.com/gpamdani-git/BlankUI-" },
+        { platform: "GitHub", href: "https://github.com/gpamdani-git/Hudbird" },
         { platform: "Dribbble", href: "https://dribbble.com" },
         { platform: "LinkedIn", href: "https://linkedin.com" },
       ],
