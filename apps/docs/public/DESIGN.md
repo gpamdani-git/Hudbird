@@ -1,75 +1,75 @@
 ---
-name: Hudbird UI Kinetic
+name: Hudbird UI Kinetic (Stitch Editorial Standard)
 colors:
-  surface: '#f9fafb'
-  surface-dim: '#f0f2f5'
-  surface-bright: '#ffffff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#f8fafc'
-  surface-container: '#f1f5f9'
-  surface-container-high: '#e2e8f0'
-  surface-container-highest: '#cbd5e1'
-  on-surface: '#0f172a'
-  on-surface-variant: '#64748b'
-  inverse-surface: '#090d16'
-  inverse-on-surface: '#f8fafc'
-  outline: '#e2e8f0'
-  outline-variant: '#cbd5e1'
-  surface-tint: '#4f46e5'
+  surface: '#161618'
+  surface-dim: '#111113'
+  surface-bright: '#202124'
+  surface-container-lowest: '#161618'
+  surface-container-low: '#1c1c1f'
+  surface-container: '#242428'
+  surface-container-high: '#2c2c31'
+  surface-container-highest: '#38383e'
+  on-surface: '#ffffff'
+  on-surface-variant: '#828282'
+  inverse-surface: '#ffffff'
+  inverse-on-surface: '#161618'
+  outline: '#2e2f33'
+  outline-variant: '#3e3f44'
+  surface-tint: '#ffb1ee'
   primary: '#4f46e5'
   on-primary: '#ffffff'
   primary-container: '#eef2ff'
   on-primary-container: '#3730a3'
   inverse-primary: '#818cf8'
-  secondary: '#06b6d4'
-  on-secondary: '#ffffff'
-  secondary-container: '#ecfeff'
-  on-secondary-container: '#0e7490'
-  tertiary: '#10b981'
+  secondary: '#ffb1ee'
+  on-secondary: '#161618'
+  secondary-container: '#3d1d36'
+  on-secondary-container: '#ffb1ee'
+  tertiary: '#06b6d4'
   on-tertiary: '#ffffff'
-  tertiary-container: '#ecfdf5'
-  on-tertiary-container: '#065f46'
+  tertiary-container: '#ecfeff'
+  on-tertiary-container: '#0e7490'
   error: '#f43f5e'
   on-error: '#ffffff'
   error-container: '#fff1f2'
   on-error-container: '#9f1239'
-  background: '#f9fafb'
-  on-background: '#0f172a'
-  surface-variant: '#f1f5f9'
+  background: '#161618'
+  on-background: '#ffffff'
+  surface-variant: '#202124'
 typography:
   display-lg:
     fontFamily: Outfit, sans-serif
-    fontSize: 48px
-    fontWeight: '700'
-    lineHeight: 56px
-    letterSpacing: -0.035em
+    fontSize: 72px
+    fontWeight: '500'
+    lineHeight: 86.4px
+    letterSpacing: -1.8px
   headline-md:
     fontFamily: Outfit, sans-serif
     fontSize: 24px
     fontWeight: '600'
     lineHeight: 32px
-    letterSpacing: -0.025em
+    letterSpacing: -0.3px
   body-base:
     fontFamily: Plus Jakarta Sans, sans-serif
     fontSize: 16px
     fontWeight: '400'
-    lineHeight: 26px
-    letterSpacing: 0px
+    lineHeight: 27.2px
+    letterSpacing: -0.16px
   body-bold:
     fontFamily: Plus Jakarta Sans, sans-serif
     fontSize: 16px
     fontWeight: '600'
-    lineHeight: 26px
-    letterSpacing: 0px
+    lineHeight: 27.2px
+    letterSpacing: -0.16px
   label-caps:
     fontFamily: Plus Jakarta Sans, sans-serif
-    fontSize: 12px
-    fontWeight: '600'
-    lineHeight: 16px
-    letterSpacing: 0.05em
+    fontSize: 14px
+    fontWeight: '800'
+    lineHeight: 20px
+    letterSpacing: 1.4px
   code-mono:
     fontFamily: JetBrains Mono, monospace
-    fontSize: 13px
+    fontSize: 13.6px
     fontWeight: '500'
     lineHeight: 20px
     letterSpacing: -0.01em
@@ -95,17 +95,17 @@ spacing:
   margin-desktop: 32px
 ---
 
-# Design System: Hudbird UI (Kinetic System)
+# Design System: Hudbird UI (Stitch Editorial Standard)
 **Project ID:** `projects/hudbird-ui-kinetic`
 
 ---
 
 ## 1. Visual Theme & Atmosphere
 
-A restrained, high-agency kinetic interface combining architectural editorial precision with weighted physical micro-motion. The visual tone is technical, confident, and anti-generic — evoking the clarity of a high-end aerospace telemetry terminal crossed with contemporary Swiss publication craft.
+A restrained, high-agency editorial interface directly calibrated from the Google Stitch official documentation system (`stitch.withgoogle.com`). Combines architectural editorial calm, extreme typographic control, deep charcoal canvas surfaces, and physical kinetic micro-motion.
 
-* **Density Spectrum (5/10 — Balanced SaaS & Marketing):** Generous internal element breathing room paired with compact, high-precision typography and tabular numeric readouts.
-* **Variance Spectrum (8/10 — Offset Asymmetric):** Rejects templated centering. Favors asymmetric editorial split layouts, 5-to-7 column bento compositions, staggered narrative blocks, and dynamic optical balancing.
+* **Density Spectrum (4/10 — Gallery Airy & Editorial Calm):** Generous breathing room, isolated reading channels, uncrowded margins, and strict visual pacing.
+* **Variance Spectrum (8/10 — Offset Asymmetric):** Rejects uniform 3-card templates. Favors asymmetric editorial split layouts, 5-to-7 column bento compositions, staggered narrative blocks, and dynamic optical balancing.
 * **Motion Spectrum (8/10 — Cinematic Kinetic Physics):** Powered by hardware-accelerated spring dynamics (`stiffness: 100, damping: 20`). Interactive surfaces react with tactile magnetic pull, tactile depression, and perpetual micro-interaction states.
 
 ---
@@ -114,42 +114,88 @@ A restrained, high-agency kinetic interface combining architectural editorial pr
 
 Hudbird UI uses a carefully calibrated OKLCH & Hex palette constrained below 80% saturation. Pure black (`#000000`) and oversaturated "AI neon glows" are strictly prohibited.
 
-### 2.1 Neutral Base & Surfaces
-* **Canvas Light** (`#F9FAFB`) — Primary background canvas in light mode. Clean, warm off-white surface that eliminates eye fatigue.
-* **Pure Surface Light** (`#FFFFFF`) — Card containers, elevated modals, dialogs, and popovers in light mode.
-* **Deep Void Slate** (`#090D16`) — Primary background canvas in dark mode. A deep, oceanic off-black with subtle cool undertones. Never pure `#000000`.
-* **Surface Dark** (`#0F172A`) — Elevated cards, sidebars, headers, and floating toolbars in dark mode.
-* **Charcoal Ink** (`#0F172A`) — Primary high-contrast typography, headings, and active iconography in light mode.
-* **Luminous Silver** (`#F8FAFC`) — Primary high-contrast text and prominent accents in dark mode.
-* **Muted Steel** (`#64748B`) — Secondary body copy, descriptive subtitles, metadata labels, and disabled states.
-* **Whisper Border Light** (`rgba(226, 232, 240, 0.8)`) — 1px structural dividing lines and subtle card outlines in light mode.
-* **Whisper Border Dark** (`rgba(255, 255, 255, 0.08)`) — Glass card borders, hairline dividers, and inner-glow bezel lines in dark mode.
+### 2.1 Neutral Base & Surfaces (Google Stitch Dark Canvas)
+* **Obsidian Charcoal** (`#161618`) — Primary background canvas in dark mode (derived directly from Stitch docs computed style `rgb(22, 22, 24)`). Soft, deep neutral eliminating OLED clipping. Never pure `#000000`.
+* **Elevated Surface** (`#202124`) — Cards, floating pill search bars, sidebars, headers, and modal dialogs.
+* **Border & Divider** (`#2E2F33`) — 1px hairline container borders and section dividing rules.
+* **Primary Text** (`#FFFFFF`) — High-contrast display headlines and section titles.
+* **Editorial Prose** (`#E5E5E5`) — High-legibility body paragraph text (`rgb(229, 229, 229)`).
+* **Muted Subtitle & Metadata** (`#828282`) — Subtitles, section numbers, keyboard shortcut glyphs, and secondary captions (`rgb(130, 130, 130)`).
+* **Canvas Light (Alternative Mode)** (`#F9FAFB`) — Clean, warm off-white surface for light mode canvas.
 
 ### 2.2 Brand & Kinetic Accents
 * **Electric Indigo** (`#4F46E5` / `#6366F1`) — Primary interactive brand color. Applied to primary call-to-actions, active tab indicators, and keyboard focus rings.
-* **Kinetic Cyan** (`#06B6D4`) — Secondary kinetic accent. Used for velocity indicators, micro-badges, gradient endpoints, and real-time state badges.
+* **Stitch Luminous Lilac** (`#FFB1EE`) — Category eyebrow tag accent, live state markers, and pill badge highlight (`rgb(255, 177, 238)`).
+* **Kinetic Cyan** (`#06B6D4`) — Secondary kinetic accent. Used for velocity indicators, micro-badges, and real-time state badges.
 * **Emerald Vitality** (`#10B981`) — Semantic success state, operational indicators, verified badges, and positive metric deltas.
 * **Amber Warning** (`#F59E0B`) — Semantic caution state, pending queues, rate limit warnings, and non-blocking notifications.
 * **Rose Danger** (`#F43F5E`) — Destructive actions, validation error outlines, network disconnection indicators, and high-urgency alerts.
 
 ---
 
-## 3. Typography Architecture
+## 3. Typography Architecture & Micro-Spacing (Google Stitch Spec)
 
-Hierarchy is enforced strictly through weight contrast, tracking adjustments, and spatial rhythm rather than oversized shouting font sizes.
+Every element in the typographic hierarchy is calibrated with exact optical tracking, line-height ratios, and paragraph pacing to achieve Google Stitch's signature editorial elegance.
 
-* **Display & Headline Font:** `Outfit`, sans-serif
-  * **Scale:** `clamp(2rem, 5vw, 4.25rem)` for hero displays; `1.75rem` to `2.25rem` for section titles.
-  * **Tracking & Weight:** Track-tight (`letter-spacing: -0.035em`), weight 600 (Semi-Bold) to 700 (Bold).
-  * **Rule:** Never wrap beyond 3 lines on desktop. Banned from using rainbow gradient text on full paragraphs.
-* **Body & UI Font:** `Plus Jakarta Sans`, sans-serif (or `Geist Sans`)
-  * **Scale:** `0.875rem` (14px) for dense UI controls; `1rem` (16px) for standard editorial body; `1.125rem` (18px) for lead intros.
-  * **Leading & Line-Length:** Relaxed leading (`line-height: 1.65`), strictly capped at 65 characters per line (`max-w-[65ch]`).
-  * **Color:** Muted Steel (`#64748B` / `#94A3B8`) to allow headlines and interactive affordances to anchor visual weight.
-* **Monospace Font:** `JetBrains Mono` (`font-mono`)
-  * **Role:** Precision tabular numbers, terminal commands, CLI arguments, code blocks, keyboard shortcut keys (`<kbd>`), and git commit hashes.
-  * **Tracking:** Normal (`letter-spacing: -0.01em`), font-size `0.8125rem` (13px).
-* **Banned Fonts:** `Inter` is prohibited for unique brand identity. Generic web-safe serifs (`Times New Roman`, `Georgia`, `Palatino`) are banned in software and dashboard views.
+### 3.1 Category Eyebrow Tag (`label-caps`)
+* **Role:** Chapter / Category anchor (e.g., `ESSENTIALS`, `GETTING STARTED`).
+* **Font:** `Plus Jakarta Sans` or `Google Sans Text`
+* **Size:** `14px` (`0.875rem`)
+* **Weight:** `800` (Ultra-Bold)
+* **Line-Height:** `20px` (`leading-5`)
+* **Tracking (Letter-Spacing):** `+1.4px` (`+0.1em` / `tracking-widest` uppercase).
+* **Color:** Luminous Lilac (`#FFB1EE` / `rgb(255, 177, 238)`).
+* **Bottom Spacing:** Strictly `16px` padding below the tag before the main title.
+
+### 3.2 Display Hero Title (`display-lg` / `h1`)
+* **Role:** Primary page title.
+* **Font:** `Outfit` or `Google Sans Display`, sans-serif
+* **Size:** `72px` (`4.5rem` / `clamp(2.5rem, 5.5vw, 4.5rem)`)
+* **Weight:** `500` (Medium weight — creates refined elegance instead of heavy shouting bold).
+* **Line-Height:** `86.4px` (`1.2` ratio / `leading-[1.2]`).
+* **Tracking (Letter-Spacing):** `-1.8px` (`-0.025em` / `tracking-tight`). Closes loose gaps between large glyphs.
+* **Word-Spacing:** `0px` (optical tracking prevents uneven word drift).
+* **Color:** `#FFFFFF` (`rgb(255, 255, 255)`).
+* **Desktop Wrap Rule:** Never wrap beyond 3 lines on desktop viewports.
+
+### 3.3 Lead Subtitle (`subtitle`)
+* **Role:** Contextual summary under the main title.
+* **Font:** `Plus Jakarta Sans` or `Google Sans Text`, sans-serif
+* **Size:** `20px` (`1.25rem` / `text-xl`)
+* **Weight:** `400` (Regular)
+* **Line-Height:** `32.5px` (`1.625` ratio / `leading-relaxed`).
+* **Tracking:** `normal` (`0px`).
+* **Color:** Muted Neutral (`#828282` / `rgb(130, 130, 130)`).
+* **Max-Width:** Strictly constrained to `768px` (`max-w-3xl`) for optimal sentence scanability.
+* **Spacing:** `8px` top padding from H1, followed by `48px` to `64px` bottom whitespace before content sections.
+
+### 3.4 Content Headings (`headline-md` / `h2` & `h3`)
+* **Section Heading (`h2`):**
+  * Size: `24px` (`1.5rem`), Weight: `600` (Semi-Bold), Line-Height: `32px` (`1.33` ratio), Tracking: `-0.3px` (`-0.015em`).
+  * Spacing: `48px` margin-top (`mt-12`), `16px` margin-bottom (`mb-4`).
+* **Sub-Section Heading (`h3`):**
+  * Size: `20px` (`1.25rem`), Weight: `500` (Medium), Line-Height: `28px` (`1.4` ratio), Tracking: `-0.3px`.
+  * Spacing: `32px` margin-top (`mt-8`), `12px` margin-bottom (`mb-3`).
+
+### 3.5 Editorial Body Paragraphs (`body-base` / `p`)
+* **Role:** Standard explanatory documentation prose.
+* **Font:** `Plus Jakarta Sans` (or `Geist Sans`), sans-serif
+* **Size:** `16px` (`1rem`)
+* **Weight:** `400` (Regular)
+* **Line-Height:** `27.2px` (`1.7` ratio / `leading-[1.7]`). Generous vertical line clearance eliminates line colliding.
+* **Tracking (Letter-Spacing):** `-0.16px` (`-0.01em`). Tightens word flow slightly for effortless horizontal eye sweeps.
+* **Paragraph Margin-Bottom:** `24px` (`mb-6`). Provides clean breathing space between thoughts.
+* **Color:** Soft Off-White (`#E5E5E5` / `rgb(229, 229, 229)`).
+* **Line-Length Limit:** Maximum 65 characters per line (`max-w-[65ch]`).
+
+### 3.6 Precision Monospace & Inline Code (`code-mono`)
+* **Font:** `JetBrains Mono` or `Google Sans Mono`, monospace
+* **Size:** `13.6px` (`0.85rem`)
+* **Weight:** `500` (Medium)
+* **Background:** Charcoal Badge (`#323232` / `rgb(50, 50, 50)`).
+* **Padding:** `1px 5px` (`py-0.5 px-1.5`).
+* **Radius:** `4px` (`rounded`).
+* **Tracking:** `-0.01em`.
 
 ---
 
@@ -185,7 +231,7 @@ The Button architecture is governed by strict tactile feedback and explicit geom
   * Banned: High-saturation neon outer drop-shadows and non-standard cursor pointers.
 
 ### 4.2 Cards & Double-Bezel Containers
-* **DoubleBezelCard:** Signature Hudbird container styling. Composed of an outer 1px border (`rgba(255, 255, 255, 0.08)`), an inner surface fill (`#0F172A` / `#FFFFFF`), and an interior 1px highlight perimeter (`rgba(255, 255, 255, 0.04)`), creating tangible bevel depth without heavy shadows.
+* **DoubleBezelCard:** Signature Hudbird container styling. Composed of an outer 1px border (`rgba(255, 255, 255, 0.08)`), an inner surface fill (`#161618` / `#202124`), and an interior 1px highlight perimeter (`rgba(255, 255, 255, 0.04)`), creating tangible bevel depth without heavy shadows.
 * **Corner Roundness:** Generous `1.25rem` (20px) to `1.75rem` (28px).
 * **Elevation & Shadow:** Zero heavy drop shadows. Layering is conveyed through subtle tone shifts and translucent borders.
 
@@ -201,17 +247,22 @@ The Button architecture is governed by strict tactile feedback and explicit geom
 
 ---
 
-## 5. Layout Principles
+## 5. Layout Principles & Spatial Whitespace Strategy
 
-* **Asymmetric Hero Section:**
-  * Split-screen narrative with left-aligned typographic hierarchy (60% column width) and live interactive kinetic sandbox on the right (40% column width).
-  * Banned: Centered hero titles with dual identical "Get Started / Learn More" buttons.
-* **Bento Grid Architecture:**
-  * Fluid asymmetric compositions (e.g. 8-column primary card accompanied by 4-column auxiliary telemetry widget).
-  * The generic "3 equal cards horizontally" feature row is strictly BANNED.
-* **Max-Width Containment:**
-  * All public pages constrained to `max-w-7xl` (1280px) or `max-w-[1400px]` with auto horizontal margins (`mx-auto`).
-  * Generous horizontal gutter padding (`px-4 sm:px-6 lg:px-8`).
+Google Stitch achieves its premium feel through uncrowded, deliberate spatial rhythms:
+
+* **Vertical Section Rhythm (Whitespace Strategy):**
+  * Section-to-section gap: `clamp(3.5rem, 7vw, 6rem)` (`56px` to `96px`). Gives users breathing room between key conceptual shifts.
+  * Title-to-Content gap: `48px` (`mt-12`).
+  * Paragraph-to-Paragraph gap: `24px` (`mb-6`).
+  * Headline-to-Paragraph gap: `16px` (`mb-4`).
+* **Channel Containment:**
+  * Prose reading channel: Capped at `768px` (`max-w-3xl`) or `65ch` to prevent eye fatigue.
+  * Full layout canvas: Constrained to `1280px` (`max-w-7xl`) or `1440px` centered with auto margins (`mx-auto`).
+  * Outer page gutter padding: `px-6 sm:px-8 lg:px-12`.
+* **Sidebar & On-This-Page TOC Rails:**
+  * Left Navigation: `280px` fixed width with pill-shaped active state containers (`rounded-full` or `rounded-xl`).
+  * Right TOC Rail: `220px` sticky column with `14px` font size and subtle `8px` item gaps.
 * **Safe Viewport Heights:**
   * Full-height sections must use `min-h-[100dvh]` to eliminate iOS Safari viewport jumps. Never use `h-screen`.
 
@@ -240,7 +291,7 @@ The Button architecture is governed by strict tactile feedback and explicit geom
 To preserve human agency and elite design execution, the following patterns are explicitly forbidden across all Hudbird implementations:
 
 1. ❌ **No Emojis in Production UI:** Never use emojis (🚀, 💡, 🔥, ✨) in button labels, navbar items, or feature headlines. Use geometric Lucide SVG icons instead.
-2. ❌ **No Pure Black Backgrounds:** Absolute `#000000` is banned. Use Deep Void Slate (`#090D16`) or Zinc-950 (`#09090B`).
+2. ❌ **No Pure Black Backgrounds:** Absolute `#000000` is banned. Use Obsidian Charcoal (`#161618`) or Deep Void Slate (`#090D16`).
 3. ❌ **No AI Neon Glows:** Over-saturated purple/magenta blur spheres and cyan radial under-glows behind cards are banned.
 4. ❌ **No 3-Equal Cards Feature Rows:** Generic 3-card horizontal rows are banned. Use asymmetric bento grids or alternating 2-column layouts.
 5. ❌ **No Over-Saturated Accents:** Accent saturation must remain under 80%.
