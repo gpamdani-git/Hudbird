@@ -28,16 +28,16 @@ const InteractionResponseType = {
   MODAL: 9,
 };
 
-// Component catalog for /docs and /cli
+// Complete component catalog across Core, Marketing, Charts, and Layouts
 interface ComponentInfo {
   name: string;
   slug: string;
-  category: "core" | "marketing" | "charts";
+  category: "core" | "marketing" | "charts" | "layouts";
   description: string;
 }
 
 const COMPONENTS: ComponentInfo[] = [
-  // Marketing & Motion
+  // ── Kinetic & Motion Highlights ──
   {
     name: "KineticButton",
     slug: "kinetic-button",
@@ -45,16 +45,10 @@ const COMPONENTS: ComponentInfo[] = [
     description: "Magnetic button with kinetic arrow animations and CVA variants.",
   },
   {
-    name: "BentoGrid",
-    slug: "marketing/bento-grid",
-    category: "marketing",
-    description: "Asymmetric marketing bento grid with dynamic kinetic cards.",
-  },
-  {
-    name: "Hero Section",
-    slug: "marketing/hero",
-    category: "marketing",
-    description: "High-conversion marketing hero with animated aurora background.",
+    name: "DoubleBezelCard",
+    slug: "double-bezel-card",
+    category: "core",
+    description: "Dual-border luxury glass card with crosshairs and depth glow.",
   },
   {
     name: "SplitTextReveal",
@@ -68,11 +62,267 @@ const COMPONENTS: ComponentInfo[] = [
     category: "core",
     description: "Hardware-accelerated stacking cards on scroll interaction.",
   },
+
+  // ── Core UI Primitives ──
   {
-    name: "DoubleBezelCard",
-    slug: "double-bezel-card",
+    name: "Accordion",
+    slug: "accordion",
     category: "core",
-    description: "Dual-border luxury glass card with crosshairs and depth glow.",
+    description: "Collapsible accordion panel group with multi-expand and spring motion.",
+  },
+  {
+    name: "Alert",
+    slug: "alert",
+    category: "core",
+    description: "Feedback banners with status colors, icons, and dismissible actions.",
+  },
+  {
+    name: "Avatar",
+    slug: "avatar",
+    category: "core",
+    description: "User profile image with fallback initials and status indicators.",
+  },
+  {
+    name: "Badge",
+    slug: "badge",
+    category: "core",
+    description: "Compact status indicator with soft, solid, and outline variants.",
+  },
+  {
+    name: "Breadcrumbs",
+    slug: "breadcrumbs",
+    category: "core",
+    description: "Hierarchical path navigation with separator customization.",
+  },
+  {
+    name: "Button",
+    slug: "button",
+    category: "core",
+    description: "Accessible button with solid, soft, flat, and outline variants.",
+  },
+  {
+    name: "Calendar",
+    slug: "calendar",
+    category: "core",
+    description: "Accessible date picker & range selection calendar.",
+  },
+  {
+    name: "Card",
+    slug: "card",
+    category: "core",
+    description: "Structured card with CardHeader, CardBody, and CardFooter.",
+  },
+  {
+    name: "Checkbox",
+    slug: "checkbox",
+    category: "core",
+    description: "Accessible controlled checkbox with indeterminate state support.",
+  },
+  {
+    name: "Combobox",
+    slug: "combobox",
+    category: "core",
+    description: "Searchable autocomplete dropdown with filtered option lists.",
+  },
+  {
+    name: "Command",
+    slug: "command",
+    category: "core",
+    description: "Fast command palette dialog with keyboard navigation (cmd+k).",
+  },
+  {
+    name: "DescriptionList",
+    slug: "description-list",
+    category: "core",
+    description: "Key-value pair metadata layout for clean profile & detail views.",
+  },
+  {
+    name: "Dialog",
+    slug: "dialog",
+    category: "core",
+    description: "Modal dialog overlay with focus trap and backdrop blur.",
+  },
+  {
+    name: "Divider",
+    slug: "divider",
+    category: "core",
+    description: "Horizontal or vertical separator line with optional text label.",
+  },
+  {
+    name: "Dropdown",
+    slug: "dropdown",
+    category: "core",
+    description: "Floating action menu with trigger, menu items, and keyboard navigation.",
+  },
+  {
+    name: "EditorialImage",
+    slug: "editorial-image",
+    category: "core",
+    description: "Art-directed responsive image container with grain overlays.",
+  },
+  {
+    name: "Fieldset",
+    slug: "fieldset",
+    category: "core",
+    description: "Grouped form controls with legend and validation error messaging.",
+  },
+  {
+    name: "Form",
+    slug: "form",
+    category: "core",
+    description: "Accessible form wrapper with validation state management.",
+  },
+  {
+    name: "Heading",
+    slug: "heading",
+    category: "core",
+    description: "Typography display and title elements with responsive sizing.",
+  },
+  {
+    name: "IconBox",
+    slug: "icon-box",
+    category: "core",
+    description: "Styled geometric wrapper for iconography and badges.",
+  },
+  {
+    name: "InfiniteScroll",
+    slug: "infinite-scroll",
+    category: "core",
+    description: "Virtualized infinite feed loader for high-performance long lists.",
+  },
+  {
+    name: "Input",
+    slug: "input",
+    category: "core",
+    description: "Form text input with prefix/suffix icons, helper text, and validation states.",
+  },
+  {
+    name: "InputOTP",
+    slug: "input-otp",
+    category: "core",
+    description: "Accessible one-time password segmented verification input.",
+  },
+  {
+    name: "Navbar",
+    slug: "navbar",
+    category: "core",
+    description: "Sticky responsive navigation header with brand and action items.",
+  },
+  {
+    name: "Pagination",
+    slug: "pagination",
+    category: "core",
+    description: "Multi-page navigation controls with range ellipsis.",
+  },
+  {
+    name: "Popover",
+    slug: "popover",
+    category: "core",
+    description: "Floating content popover anchored to trigger button.",
+  },
+  {
+    name: "Progress",
+    slug: "progress",
+    category: "core",
+    description: "Linear and circular progress indicators with smooth animations.",
+  },
+  {
+    name: "RadioGroup",
+    slug: "radio-group",
+    category: "core",
+    description: "Single-selection option list with accessible keyboard controls.",
+  },
+  {
+    name: "Select",
+    slug: "select",
+    category: "core",
+    description: "Accessible custom select dropdown with search and option groups.",
+  },
+  {
+    name: "Sheet",
+    slug: "sheet",
+    category: "core",
+    description: "Slide-out side drawer from top, right, bottom, or left.",
+  },
+  {
+    name: "Sidebar",
+    slug: "sidebar",
+    category: "core",
+    description: "Responsive collapsible desktop and mobile navigation sidebar.",
+  },
+  {
+    name: "Skeleton",
+    slug: "skeleton",
+    category: "core",
+    description: "Pulsing placeholder for component loading states.",
+  },
+  {
+    name: "Slider",
+    slug: "slider",
+    category: "core",
+    description: "Range slider input with thumb tooltip and tick marks.",
+  },
+  {
+    name: "Switch",
+    slug: "switch",
+    category: "core",
+    description: "Accessible toggle switch with smooth spring thumb motion.",
+  },
+  {
+    name: "Table",
+    slug: "table",
+    category: "core",
+    description: "Data table with sortable columns, pagination, and striped rows.",
+  },
+  {
+    name: "Tabs",
+    slug: "tabs",
+    category: "core",
+    description: "Animated pill and underline tab switches with active layoutId indicator.",
+  },
+  {
+    name: "Text",
+    slug: "text",
+    category: "core",
+    description: "Paragraph, muted, and inline typography primitives.",
+  },
+  {
+    name: "Textarea",
+    slug: "textarea",
+    category: "core",
+    description: "Multi-line text input with auto-resize capability.",
+  },
+  {
+    name: "Toast",
+    slug: "toast",
+    category: "core",
+    description: "Floating notification toasts with action buttons and timers.",
+  },
+  {
+    name: "Tooltip",
+    slug: "tooltip",
+    category: "core",
+    description: "Floating micro-spring tooltip with arrow anchor.",
+  },
+
+  // ── Marketing Sections ──
+  {
+    name: "Hero Section",
+    slug: "marketing/hero",
+    category: "marketing",
+    description: "High-conversion marketing hero with animated aurora background.",
+  },
+  {
+    name: "BentoGrid",
+    slug: "marketing/bento-grid",
+    category: "marketing",
+    description: "Asymmetric marketing bento grid with dynamic kinetic cards.",
+  },
+  {
+    name: "Logo Clouds",
+    slug: "marketing/logo-clouds",
+    category: "marketing",
+    description: "Partner & customer brand logo ticker with smooth marquee animation.",
   },
   {
     name: "Feature Sections",
@@ -98,88 +348,20 @@ const COMPONENTS: ComponentInfo[] = [
     category: "marketing",
     description: "Fluid accordion questions with smooth Framer Motion transitions.",
   },
-
-  // Core Primitives
   {
-    name: "Button",
-    slug: "button",
-    category: "core",
-    description: "Accessible button with solid, soft, flat, and outline variants.",
+    name: "Call to Action",
+    slug: "marketing/cta",
+    category: "marketing",
+    description: "High-impact conversion banner with primary & secondary buttons.",
   },
   {
-    name: "Card",
-    slug: "card",
-    category: "core",
-    description: "Structured card with CardHeader, CardBody, and CardFooter.",
-  },
-  {
-    name: "Dialog / Modal",
-    slug: "dialog",
-    category: "core",
-    description: "Accessible dialog overlay with focus trap and spring animations.",
-  },
-  {
-    name: "Dropdown",
-    slug: "dropdown",
-    category: "core",
-    description: "Floating action menu with trigger, menu items, and keyboard navigation.",
-  },
-  {
-    name: "Input",
-    slug: "input",
-    category: "core",
-    description: "Text input with prefix/suffix icons, helper text, and validation states.",
-  },
-  {
-    name: "InputOTP",
-    slug: "input-otp",
-    category: "core",
-    description: "Accessible one-time password segmented verification input.",
-  },
-  {
-    name: "Tabs",
-    slug: "tabs",
-    category: "core",
-    description: "Animated pill and underline tab switches with active layoutId indicator.",
-  },
-  {
-    name: "Badge",
-    slug: "badge",
-    category: "core",
-    description: "Compact status indicator with soft, solid, and outline variants.",
-  },
-  {
-    name: "Accordion",
-    slug: "accordion",
-    category: "core",
-    description: "Collapsible accordion panel group with multi-expand support.",
-  },
-  {
-    name: "Select",
-    slug: "select",
-    category: "core",
-    description: "Accessible custom select dropdown with search and option groups.",
-  },
-  {
-    name: "Table",
-    slug: "table",
-    category: "core",
-    description: "Data table with sortable columns, pagination, and striped rows.",
-  },
-  {
-    name: "Sidebar",
-    slug: "sidebar",
-    category: "core",
-    description: "Responsive collapsible desktop and mobile navigation sidebar.",
-  },
-  {
-    name: "Tooltip",
-    slug: "tooltip",
-    category: "core",
-    description: "Floating context label with micro-spring entry and pointer arrow.",
+    name: "Footer",
+    slug: "marketing/footer",
+    category: "marketing",
+    description: "Mega footer with multi-column links, newsletter, and socials.",
   },
 
-  // Charts
+  // ── Charts ──
   {
     name: "AreaChart",
     slug: "area-chart",
@@ -204,6 +386,50 @@ const COMPONENTS: ComponentInfo[] = [
     category: "charts",
     description: "Donut and pie chart with percentage breakdown and legends.",
   },
+  {
+    name: "ComposedChart",
+    slug: "composed-chart",
+    category: "charts",
+    description: "Combined bar, line, and area chart for multi-metric comparison.",
+  },
+  {
+    name: "RadarChart",
+    slug: "radar-chart",
+    category: "charts",
+    description: "Multivariate radial radar chart for dimensional score analysis.",
+  },
+  {
+    name: "RadialChart",
+    slug: "radial-chart",
+    category: "charts",
+    description: "Circular gauge and multi-ring radial progress chart.",
+  },
+  {
+    name: "ChartTooltip",
+    slug: "chart-tooltip",
+    category: "charts",
+    description: "Custom styled chart hover tooltip with indicators and values.",
+  },
+
+  // ── Layouts ──
+  {
+    name: "Sidebar Layout",
+    slug: "layouts/sidebar",
+    category: "layouts",
+    description: "Complete modern dashboard layout with responsive sidebar and top bar.",
+  },
+  {
+    name: "Stacked Layout",
+    slug: "layouts/stacked",
+    category: "layouts",
+    description: "Full-width application layout with horizontal top navigation.",
+  },
+  {
+    name: "Auth Layout",
+    slug: "layouts/auth",
+    category: "layouts",
+    description: "Split-screen and centered sign-in / registration auth layout.",
+  },
 ];
 
 interface DiscordOption {
@@ -214,7 +440,6 @@ interface DiscordOption {
 
 // Helper: read raw body from request stream or parsed body
 async function getRawBody(req: IncomingMessage): Promise<string> {
-  // 1. If Vercel provided rawBody
   const anyReq = req as unknown as { rawBody?: unknown; body?: unknown };
   if (anyReq.rawBody) {
     return typeof anyReq.rawBody === "string"
@@ -224,11 +449,9 @@ async function getRawBody(req: IncomingMessage): Promise<string> {
         : JSON.stringify(anyReq.rawBody);
   }
 
-  // 2. If body is already string or Buffer
   if (typeof anyReq.body === "string") return anyReq.body;
   if (Buffer.isBuffer(anyReq.body)) return anyReq.body.toString("utf8");
 
-  // 3. Try reading from stream
   try {
     const chunks: Buffer[] = [];
     for await (const chunk of req) {
@@ -240,7 +463,6 @@ async function getRawBody(req: IncomingMessage): Promise<string> {
     // Stream may already be closed/consumed
   }
 
-  // 4. Fallback if body was parsed into a JSON object
   if (anyReq.body && typeof anyReq.body === "object") {
     return JSON.stringify(anyReq.body);
   }
@@ -330,11 +552,11 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
   // 2. AUTOCOMPLETE handler for slash commands
   if (interaction.type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
     const focusedOption = interaction.data?.options?.find((opt: DiscordOption) => opt.focused);
-    const query = (focusedOption?.value || "").toString().toLowerCase();
+    const query = (focusedOption?.value || "").toString().toLowerCase().trim();
 
     const matches = COMPONENTS.filter(
       (c) => c.name.toLowerCase().includes(query) || c.slug.toLowerCase().includes(query)
-    ).slice(0, 15);
+    ).slice(0, 25);
 
     const choices = matches.map((c) => ({
       name: `${c.name} (${c.category})`,
@@ -372,6 +594,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
       if (matched) {
         const docUrl = `https://hudbird.vercel.app/#/${matched.slug}`;
+        const cliName = matched.slug.replace("marketing/", "").replace("layouts/", "");
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.end(
@@ -380,18 +603,18 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
             data: {
               embeds: [
                 {
-                  title: `🦅 ${matched.name}`,
+                  title: `🦅 ${matched.name} (${matched.category.toUpperCase()})`,
                   url: docUrl,
                   description: matched.description,
                   color: 0x6366f1, // Indigo
                   fields: [
                     {
                       name: "📦 Quick Install (CLI)",
-                      value: `\`\`\`bash\nnpx hudbird-ui add ${matched.slug.replace("marketing/", "")}\n\`\`\``,
+                      value: `\`\`\`bash\nnpx hudbird-ui add ${cliName}\n\`\`\``,
                     },
                     {
                       name: "📚 Full Documentation & Interactive Sandbox",
-                      value: `[View ${matched.name} on Hudbird UI Docs](${docUrl})`,
+                      value: `[Open ${matched.name} Documentation](${docUrl})`,
                     },
                   ],
                   footer: { text: "Hudbird UI — Fly through your development" },
@@ -403,7 +626,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         return;
       }
 
-      // Default /docs
+      // Default /docs overview
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
       res.end(
@@ -412,24 +635,34 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
           data: {
             embeds: [
               {
-                title: "🦅 Hudbird UI Documentation",
+                title: "🦅 Hudbird UI Documentation & Components",
                 url: "https://hudbird.vercel.app",
                 description:
-                  "A premium, featherweight React UI & Kinetic Motion Component Library built with Tailwind CSS v4 and Framer Motion.",
+                  "A premium, featherweight React UI & Kinetic Motion Component Library built with Tailwind CSS v4 and Framer Motion.\n\nExplore **70+ primitives, marketing sections, charts, and layouts**:",
                 color: 0x3b82f6, // Blue
                 fields: [
                   {
-                    name: "🚀 Getting Started",
+                    name: "⚛️ Core Primitives (40+ Components)",
                     value:
-                      "• [Installation Guide](https://hudbird.vercel.app/#/installation)\n• [CLI Commands](https://hudbird.vercel.app/#/cli)\n• [AI Skills Integration](https://hudbird.vercel.app/#/ai-skills)",
+                      "`Button`, `Card`, `Dialog`, `Dropdown`, `Input`, `Select`, `Tabs`, `Table`, `Accordion`, `InputOTP`, `Combobox`, `Calendar`, `Breadcrumbs`, `Sheet`, `Popover`, `Progress`, `RadioGroup`, `Skeleton`, `Slider`, `Switch`, `Toast`, `Tooltip`...",
                   },
                   {
-                    name: "✨ Featured Kinetic Components",
+                    name: "🚀 Marketing & Kinetic Sections (9 Blocks)",
                     value:
-                      "• [KineticButton](https://hudbird.vercel.app/#/kinetic-button)\n• [BentoGrid](https://hudbird.vercel.app/#/marketing/bento-grid)\n• [DoubleBezelCard](https://hudbird.vercel.app/#/double-bezel-card)\n• [SplitTextReveal](https://hudbird.vercel.app/#/split-text-reveal)",
+                      "• [KineticButton](https://hudbird.vercel.app/#/kinetic-button) & [DoubleBezelCard](https://hudbird.vercel.app/#/double-bezel-card)\n• [SplitTextReveal](https://hudbird.vercel.app/#/split-text-reveal) & [StickyStack](https://hudbird.vercel.app/#/sticky-stack)\n• [Hero Section](https://hudbird.vercel.app/#/marketing/hero) & [BentoGrid](https://hudbird.vercel.app/#/marketing/bento-grid)\n• [Pricing](https://hudbird.vercel.app/#/marketing/pricing) & [Testimonials](https://hudbird.vercel.app/#/marketing/testimonials)",
+                  },
+                  {
+                    name: "📊 Interactive Charts (8 Types)",
+                    value:
+                      "`AreaChart`, `BarChart`, `LineChart`, `PieChart`, `ComposedChart`, `RadarChart`, `RadialChart`, `ChartTooltip`",
+                  },
+                  {
+                    name: "💡 Look Up Any Component Instantly",
+                    value:
+                      "Type `/docs component:` and start typing any component name to open its exact docs and CLI install code!",
                   },
                 ],
-                footer: { text: "Tip: Use /docs <component> to look up specific components!" },
+                footer: { text: "Hudbird UI — https://hudbird.vercel.app" },
               },
             ],
           },
@@ -441,7 +674,9 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
     // ── Command: /cli ──
     if (name === "cli") {
       const compSlug = optionMap.get("component") as string | undefined;
-      const cleanSlug = compSlug ? compSlug.replace("marketing/", "") : "[component-name]";
+      const cleanSlug = compSlug
+        ? compSlug.replace("marketing/", "").replace("layouts/", "")
+        : "[component-name]";
 
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
