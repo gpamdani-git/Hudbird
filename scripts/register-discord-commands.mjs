@@ -142,3 +142,4 @@ register().catch((err) => {
   console.error(`\x1b[31m[Registration Failed]\x1b[0m`, err.message);
   process.exit(1);
 });
+
