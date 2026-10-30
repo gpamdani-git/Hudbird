@@ -212,13 +212,40 @@ interface DiscordOption {
   focused?: boolean;
 }
 
-// Helper: read raw body from request stream
+// Helper: read raw body from request stream or parsed body
 async function getRawBody(req: IncomingMessage): Promise<string> {
-  const chunks: Buffer[] = [];
-  for await (const chunk of req) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+  // 1. If Vercel provided rawBody
+  const anyReq = req as unknown as { rawBody?: unknown; body?: unknown };
+  if (anyReq.rawBody) {
+    return typeof anyReq.rawBody === "string"
+      ? anyReq.rawBody
+      : Buffer.isBuffer(anyReq.rawBody)
+        ? anyReq.rawBody.toString("utf8")
+        : JSON.stringify(anyReq.rawBody);
   }
-  return Buffer.concat(chunks).toString("utf8");
+
+  // 2. If body is already string or Buffer
+  if (typeof anyReq.body === "string") return anyReq.body;
+  if (Buffer.isBuffer(anyReq.body)) return anyReq.body.toString("utf8");
+
+  // 3. Try reading from stream
+  try {
+    const chunks: Buffer[] = [];
+    for await (const chunk of req) {
+      chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+    }
+    const fromStream = Buffer.concat(chunks).toString("utf8");
+    if (fromStream.length > 0) return fromStream;
+  } catch {
+    // Stream may already be closed/consumed
+  }
+
+  // 4. Fallback if body was parsed into a JSON object
+  if (anyReq.body && typeof anyReq.body === "object") {
+    return JSON.stringify(anyReq.body);
+  }
+
+  return "";
 }
 
 // Helper: verify Discord Ed25519 signature
@@ -234,14 +261,22 @@ function verifyDiscordSignature({
   publicKeyHex: string;
 }): boolean {
   try {
+    const cleanKey = publicKeyHex.trim();
+    const cleanSig = signature.trim();
+    const cleanTimestamp = timestamp.trim();
+
+    if (cleanKey.length !== 64 || cleanSig.length !== 128) {
+      return false;
+    }
+
     const spkiPrefix = Buffer.from("302a300506032b6570032100", "hex");
     const key = crypto.createPublicKey({
-      key: Buffer.concat([spkiPrefix, Buffer.from(publicKeyHex, "hex")]),
+      key: Buffer.concat([spkiPrefix, Buffer.from(cleanKey, "hex")]),
       format: "der",
       type: "spki",
     });
-    const message = Buffer.from(timestamp + rawBody);
-    const sig = Buffer.from(signature, "hex");
+    const message = Buffer.from(cleanTimestamp + rawBody);
+    const sig = Buffer.from(cleanSig, "hex");
     return crypto.verify(null, message, key, sig);
   } catch {
     return false;
