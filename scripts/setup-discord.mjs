@@ -1,11 +1,22 @@
 #!/usr/bin/env node
 
 /**
- * Hudbird UI - Discord Community Setup Script
- * Creates categories, channels, topics, and initial messages via Discord REST API.
+ * Hudbird UI - Discord Community Setup & Security Script
+ * Configures categories, channels, topics, security permission overwrites,
+ * and initial welcome messages via Discord REST API.
+ *
+ * Security Model:
+ *  - 🔒 READ_ONLY channels: #welcome, #announcements, #rules, #official-links
+ *      -> @everyone can view, read history, and react with emoji, but CANNOT chat or make threads.
+ *  - 💬 INTERACTIVE channels: #general, #feedback, #components-help, #ai-and-skills, #bug-reports, #feature-requests, #contributing, #design-taste
+ *      -> @everyone can chat, attach files, embed links, but CANNOT @everyone / @here spam.
+ *  - 📸 SHOWCASE channel: #showcase
+ *      -> optimized for screenshots, live demo links, and discussions with no @everyone spam.
+ *  - 🔊 VOICE channels: Lounge & Pair Programming
+ *      -> @everyone can connect, speak, stream/screen-share with VAD.
  *
  * Usage:
- *   DISCORD_BOT_TOKEN="your_bot_token" DISCORD_GUILD_ID="your_server_id" node scripts/setup-discord.mjs
+ *   DISCORD_BOT_TOKEN="your_token" DISCORD_GUILD_ID="your_server_id" node scripts/setup-discord.mjs
  *   or via .env.local:
  *   DISCORD_BOT_TOKEN=...
  *   DISCORD_GUILD_ID=...
@@ -88,6 +99,97 @@ async function discordFetch(endpoint, options = {}) {
   return res.json();
 }
 
+// Discord Permission Bitwise Flags (BigInt)
+const PERMS = {
+  CREATE_INSTANT_INVITE: 1n << 0n,
+  ADD_REACTIONS: 1n << 6n,
+  STREAM: 1n << 9n,
+  VIEW_CHANNEL: 1n << 10n,
+  SEND_MESSAGES: 1n << 11n,
+  SEND_TTS_MESSAGES: 1n << 12n,
+  MANAGE_MESSAGES: 1n << 13n,
+  EMBED_LINKS: 1n << 14n,
+  ATTACH_FILES: 1n << 15n,
+  READ_MESSAGE_HISTORY: 1n << 16n,
+  MENTION_EVERYONE: 1n << 17n,
+  USE_EXTERNAL_EMOJIS: 1n << 18n,
+  CONNECT: 1n << 20n,
+  SPEAK: 1n << 21n,
+  USE_VAD: 1n << 25n,
+  CREATE_PUBLIC_THREADS: 1n << 35n,
+  CREATE_PRIVATE_THREADS: 1n << 36n,
+  SEND_MESSAGES_IN_THREADS: 1n << 38n,
+};
+
+// Generates permission overwrite for @everyone (id = guild_id)
+function createOverwrites(profile, guildId) {
+  if (profile === "READ_ONLY") {
+    return [
+      {
+        id: guildId,
+        type: 0, // Role
+        allow: (
+          PERMS.VIEW_CHANNEL |
+          PERMS.READ_MESSAGE_HISTORY |
+          PERMS.ADD_REACTIONS
+        ).toString(),
+        deny: (
+          PERMS.SEND_MESSAGES |
+          PERMS.SEND_MESSAGES_IN_THREADS |
+          PERMS.CREATE_PUBLIC_THREADS |
+          PERMS.CREATE_PRIVATE_THREADS |
+          PERMS.MENTION_EVERYONE |
+          PERMS.SEND_TTS_MESSAGES
+        ).toString(),
+      },
+    ];
+  }
+
+  if (profile === "INTERACTIVE" || profile === "SHOWCASE") {
+    return [
+      {
+        id: guildId,
+        type: 0,
+        allow: (
+          PERMS.VIEW_CHANNEL |
+          PERMS.SEND_MESSAGES |
+          PERMS.READ_MESSAGE_HISTORY |
+          PERMS.EMBED_LINKS |
+          PERMS.ATTACH_FILES |
+          PERMS.ADD_REACTIONS |
+          PERMS.USE_EXTERNAL_EMOJIS |
+          PERMS.CREATE_PUBLIC_THREADS |
+          PERMS.SEND_MESSAGES_IN_THREADS
+        ).toString(),
+        deny: (
+          PERMS.MENTION_EVERYONE |
+          PERMS.SEND_TTS_MESSAGES |
+          PERMS.CREATE_PRIVATE_THREADS
+        ).toString(),
+      },
+    ];
+  }
+
+  if (profile === "VOICE") {
+    return [
+      {
+        id: guildId,
+        type: 0,
+        allow: (
+          PERMS.VIEW_CHANNEL |
+          PERMS.CONNECT |
+          PERMS.SPEAK |
+          PERMS.STREAM |
+          PERMS.USE_VAD
+        ).toString(),
+        deny: (PERMS.MENTION_EVERYONE).toString(),
+      },
+    ];
+  }
+
+  return [];
+}
+
 const STRUCTURE = [
   {
     category: "📢 WELCOME & INFO",
@@ -95,6 +197,7 @@ const STRUCTURE = [
       {
         name: "welcome",
         type: 0, // Guild Text
+        profile: "READ_ONLY",
         topic: "Welcome to Hudbird UI Community! Introduce yourself & check our resources.",
         initialMessage: {
           content: "🎉 **Welcome to the Official Hudbird UI Community!**",
@@ -116,9 +219,9 @@ const STRUCTURE = [
                     "Add the official Hudbird UI skill to Claude Code, Antigravity, or Codex for zero-hallucination UI generation!",
                 },
                 {
-                  name: "👋 Introduce Yourself",
+                  name: "👋 Join the Discussion",
                   value:
-                    "Drop a message below! Tell us what you are building and what tech stack you love.",
+                    "Head over to #general or #components-help to start chatting and exploring!",
                 },
               ],
               footer: { text: "Hudbird UI — Fly through your development" },
@@ -129,11 +232,13 @@ const STRUCTURE = [
       {
         name: "announcements",
         type: 0,
+        profile: "READ_ONLY",
         topic: "Latest releases, package updates, and news for Hudbird UI.",
       },
       {
         name: "rules",
         type: 0,
+        profile: "READ_ONLY",
         topic: "Community guidelines and code of conduct.",
         initialMessage: {
           content: "📜 **Hudbird UI Community Guidelines**",
@@ -172,6 +277,7 @@ const STRUCTURE = [
       {
         name: "official-links",
         type: 0,
+        profile: "READ_ONLY",
         topic: "Official websites, repositories, package registry, and docs.",
         initialMessage: {
           content: "🔗 **Official Hudbird UI Resources**",
@@ -180,14 +286,23 @@ const STRUCTURE = [
               title: "Essential Links",
               color: 0x06b6d4, // Cyan
               fields: [
-                { name: "🌐 Documentation & Showcase", value: "https://hudbird.vercel.app" },
-                { name: "🐙 GitHub Repository", value: "https://github.com/gpamdani-git/Hudbird" },
+                {
+                  name: "🌐 Documentation & Showcase",
+                  value: "https://hudbird.vercel.app",
+                },
+                {
+                  name: "🐙 GitHub Repository",
+                  value: "https://github.com/gpamdani-git/Hudbird",
+                },
                 {
                   name: "📦 NPM Packages",
                   value:
                     "[@hudbird/ui](https://npmjs.com/package/@hudbird/ui) & [@hudbird/marketing](https://npmjs.com/package/@hudbird/marketing)",
                 },
-                { name: "🤖 AI Skill Guide", value: "https://hudbird.vercel.app/docs/ai-skills" },
+                {
+                  name: "🤖 AI Skill Guide",
+                  value: "https://hudbird.vercel.app/#/ai-skills",
+                },
               ],
             },
           ],
@@ -201,16 +316,19 @@ const STRUCTURE = [
       {
         name: "general",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "General chat about web development, frontend architecture, and design.",
       },
       {
         name: "showcase",
         type: 0,
-        topic: "Show off what you have built using Hudbird UI!",
+        profile: "SHOWCASE",
+        topic: "Show off what you have built using Hudbird UI! Links & screenshots welcome.",
       },
       {
         name: "feedback",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Share feedback, UX ideas, and impressions of Hudbird UI.",
       },
     ],
@@ -221,21 +339,25 @@ const STRUCTURE = [
       {
         name: "components-help",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Questions and troubleshooting for @hudbird/ui, @hudbird/marketing, and Tailwind.",
       },
       {
         name: "ai-and-skills",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Building with Hudbird AI Skills in Claude Code, Antigravity, Cursor, and Codex.",
       },
       {
         name: "bug-reports",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Report bugs or unexpected component behavior before filing on GitHub.",
       },
       {
         name: "feature-requests",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Suggest new components, kinetic animations, and marketing blocks.",
       },
     ],
@@ -246,11 +368,13 @@ const STRUCTURE = [
       {
         name: "contributing",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Monorepo development, pull requests, RFCs, and package publishing.",
       },
       {
         name: "design-taste",
         type: 0,
+        profile: "INTERACTIVE",
         topic: "Kinetic animations, tokens, aesthetic directions, and visual benchmarks.",
       },
     ],
@@ -261,10 +385,12 @@ const STRUCTURE = [
       {
         name: "Community Lounge",
         type: 2, // Guild Voice
+        profile: "VOICE",
       },
       {
         name: "Pair Programming",
         type: 2, // Guild Voice
+        profile: "VOICE",
       },
     ],
   },
@@ -272,14 +398,14 @@ const STRUCTURE = [
 
 async function run() {
   console.log(
-    `\x1b[36m[Hudbird Discord Setup]\x1b[0m Connecting to Discord Guild ID: ${GUILD_ID}...`
+    `\x1b[36m[Hudbird Discord Setup & Security]\x1b[0m Connecting to Discord Guild ID: ${GUILD_ID}...`
   );
 
   // 1. Verify guild access
   const guild = await discordFetch(`/guilds/${GUILD_ID}`);
   console.log(`\x1b[32m✔ Connected to server:\x1b[0m "${guild.name}" (${guild.id})`);
 
-  // 2. Fetch existing channels to avoid duplicates
+  // 2. Fetch existing channels
   const existingChannels = await discordFetch(`/guilds/${GUILD_ID}/channels`);
   console.log(`ℹ Found ${existingChannels.length} existing channel(s).`);
 
@@ -300,16 +426,17 @@ async function run() {
       channelMap.set(categoryChannel.name.toLowerCase(), categoryChannel);
     } else {
       console.log(
-        `\x1b[90m[Category]\x1b[0m "${cat.category}" already exists (ID: ${categoryChannel.id}).`
+        `\x1b[90m[Category]\x1b[0m "${cat.category}" verified (ID: ${categoryChannel.id}).`
       );
     }
 
     for (const ch of cat.channels) {
+      const overwrites = createOverwrites(ch.profile, GUILD_ID);
       let existing = channelMap.get(ch.name.toLowerCase());
-      let createdChannelId = existing?.id;
+      let targetChannelId = existing?.id;
 
       if (!existing) {
-        console.log(`  \x1b[34m[Channel]\x1b[0m Creating #${ch.name}...`);
+        console.log(`  \x1b[34m[Channel]\x1b[0m Creating #${ch.name} (Security: ${ch.profile})...`);
         const created = await discordFetch(`/guilds/${GUILD_ID}/channels`, {
           method: "POST",
           body: JSON.stringify({
@@ -317,9 +444,10 @@ async function run() {
             type: ch.type,
             parent_id: categoryChannel.id,
             topic: ch.topic || undefined,
+            permission_overwrites: overwrites,
           }),
         });
-        createdChannelId = created.id;
+        targetChannelId = created.id;
         channelMap.set(created.name.toLowerCase(), created);
 
         // Send initial message if defined
@@ -335,13 +463,28 @@ async function run() {
           }
         }
       } else {
-        console.log(`  \x1b[90m[Channel]\x1b[0m #${ch.name} already exists.`);
+        // Sync security permissions and topic on existing channels!
+        console.log(
+          `  \x1b[33m[Syncing Security]\x1b[0m Updating #${ch.name} permissions to \x1b[1m${ch.profile}\x1b[0m...`
+        );
+        try {
+          await discordFetch(`/channels/${existing.id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+              topic: ch.topic || undefined,
+              permission_overwrites: overwrites,
+            }),
+          });
+          console.log(`    \x1b[32m✔\x1b[0m Locked down #${ch.name} with ${ch.profile} rules.`);
+        } catch (err) {
+          console.warn(`    ⚠️ Could not update #${ch.name} permissions: ${err.message}`);
+        }
       }
     }
   }
 
   console.log(
-    `\n\x1b[32m🎉 Success! All Hudbird UI Discord community channels are configured!\x1b[0m`
+    `\n\x1b[32m🎉 Success! All Hudbird UI channels and security permissions have been synchronized!\x1b[0m`
   );
 }
 
