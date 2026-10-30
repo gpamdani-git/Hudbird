@@ -186,7 +186,7 @@ Hudbird UI includes an official AI engineering skill that enables coding models 
 
 ```bash
 # Install the AI skill into any project in 1 line
-mkdir -p .agents/skills/hudbird-ui && curl -sSL https://hudbird.vercel.app/skills/hudbird-ui.md -o .agents/skills/hudbird-ui/SKILL.md
+mkdir -p .agents/skills/hudbird-ui && curl -sSL https://raw.githubusercontent.com/gpamdani-git/Hudbird/main/.agents/skills/hudbird-ui/SKILL.md -o .agents/skills/hudbird-ui/SKILL.md
 ```
 
 - **Supported assistants**: Anthropic Claude Code, Google Antigravity, Cursor IDE, Windsurf Cascade, and OpenAI Codex.

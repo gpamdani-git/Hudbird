@@ -30,7 +30,7 @@ export default function AiSkillsDoc() {
     "claude" | "codex" | "antigravity" | "cursor" | "windsurf"
   >("claude");
 
-  const curlCommand = `mkdir -p .agents/skills/hudbird-ui && curl -sSL https://hudbird.vercel.app/skills/hudbird-ui.md -o .agents/skills/hudbird-ui/SKILL.md`;
+  const curlCommand = `mkdir -p .agents/skills/hudbird-ui && curl -sSL https://raw.githubusercontent.com/gpamdani-git/Hudbird/main/.agents/skills/hudbird-ui/SKILL.md -o .agents/skills/hudbird-ui/SKILL.md`;
 
   const handleCopyCurl = () => {
     navigator.clipboard.writeText(curlCommand);
@@ -783,16 +783,28 @@ export function AnalyticsOverview() {
               )}
             </button>
 
-            <a
-              href="/skills/hudbird-ui.md"
-              download="SKILL.md"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400"
-            >
-              <span>Raw URL</span>
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
+            <div className="ml-auto flex items-center gap-3">
+              <a
+                href="https://raw.githubusercontent.com/gpamdani-git/Hudbird/main/.agents/skills/hudbird-ui/SKILL.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400"
+              >
+                <span>GitHub Raw</span>
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <span className="text-zinc-300 dark:text-zinc-700">•</span>
+              <a
+                href="/skills/hudbird-ui.md"
+                download="SKILL.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400"
+              >
+                <span>Direct Raw</span>
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
           </div>
 
           <div className="space-y-2">
