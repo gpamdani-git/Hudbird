@@ -83,191 +83,93 @@ npx hudbird-ui add --all
 
 ---
 
-## 3. Complete Component Catalog & API Reference
+## 3. Exhaustive Component Inventory (All 66+ Items)
 
-### A. Primitives & Foundation
-* **`Button`**:
-  * **Variants**: `solid` (default), `bordered`, `flat`, `soft`, `light`, `ghost`, `outline`, `plain`
-  * **Colors**: `primary` (indigo), `secondary`, `success` (emerald), `warning` (amber), `danger` (rose), `info` (sky), `dark`, `zinc`, `white`, `light`, `dark/zinc`, `dark/white`
-  * **Sizes**: `sm` (h-8), `md` (h-9), `lg` (h-11)
-  * **Props**: `startContent`, `endContent`, `isLoading`, `isIconOnly`, `asChild`, `href`
-  ```tsx
-  import { Button } from "@/components/hudbird-ui/Button";
-  import { ArrowRight, Loader2 } from "lucide-react";
-
-  <Button variant="solid" color="primary" endContent={<ArrowRight className="h-4 w-4" />}>
-    Get Started
-  </Button>
-  ```
-* **`Badge`**: Status indicators (`variant="solid|flat|outline"`, `color="primary|success|warning|danger|zinc"`).
-* **`Avatar`**: User pictures with fallback initials and ring colors.
-* **`Card`**, **`CardHeader`**, **`CardBody`**, **`CardFooter`**: Clean, bordered, rounded containers.
-* **`Heading`** & **`Text`**: Typographic hierarchy components with preset tracking and weights.
-* **`Divider`**, **`Skeleton`**, **`Slot`**.
-
----
-
-### B. Signature Interactive & Motion Components
-* **`DoubleBezelCard`**: Architectural dual-chassis card with corner crosshairs and inner core.
-  * **Props**: `variant="default" | "glass" | "solid" | "highlight"`, `padding="none" | "sm" | "md" | "lg"`, `isHoverable={true|false}`, `showCrosshairs={true | ["top-left", "bottom-right"]}`.
-  ```tsx
-  import { DoubleBezelCard } from "@/components/hudbird-ui/DoubleBezelCard";
-
-  <DoubleBezelCard variant="glass" showCrosshairs isHoverable padding="lg">
-    <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">Enterprise Engine</h3>
-    <p className="mt-2 text-zinc-500 dark:text-zinc-400">Ultra-fast edge compilation.</p>
-  </DoubleBezelCard>
-  ```
-* **`KineticButton`**: High-end interactive CTA featuring rolling duplicate text and dual-diagonal sliding arrows.
-  * **Props**: `variant="primary" | "brand" | "secondary" | "outline" | "ghost"`, `size="sm" | "md" | "lg"`, `showArrow={true}`, `arrowPosition="right" | "left"`, `href="/pricing"`.
-  ```tsx
-  import { KineticButton } from "@/components/hudbird-ui/KineticButton";
-
-  <KineticButton variant="primary" size="lg" href="/dashboard">
-    Launch Platform
-  </KineticButton>
-  ```
-* **`SplitTextReveal`**: Scroll-driven kinetic typography reveal using Framer Motion scroll progress.
-  * **Props**: `text: string`, `as="h1" | "h2" | "p"`, `by="words" | "characters"`, `baseOpacity={0.2}`.
-  ```tsx
-  import { SplitTextReveal } from "@/components/hudbird-ui/SplitTextReveal";
-
-  <SplitTextReveal
-    as="h2"
-    text="Designed for speed. Engineered for absolute precision."
-    className="text-4xl sm:text-6xl font-extrabold text-zinc-900 dark:text-white"
-  />
-  ```
-* **`StickyStack` & `StickyStackItem`**: Stacking cards that lock and scale progressively on scroll.
-  ```tsx
-  import { StickyStack, StickyStackItem } from "@/components/hudbird-ui/StickyStack";
-
-  <StickyStack baseTop="6rem" offsetStep="1.5rem">
-    {items.map((item, index) => (
-      <StickyStackItem key={index} index={index}>
-        <DoubleBezelCard variant="solid">
-          <h4>{item.title}</h4>
-        </DoubleBezelCard>
-      </StickyStackItem>
-    ))}
-  </StickyStack>
-  ```
-* **`BlurRevealText`**, **`ParticleSphere`**, **`Globe`**, **`CustomCursor`**.
+| Category | Component Name | Subcomponents & Compound Elements | Primary Props & Variants |
+| :--- | :--- | :--- | :--- |
+| **Primitives** | `Button` | Self-contained, `asChild` via Slot | `variant`: solid, bordered, flat, soft, light, ghost, outline, plain<br/>`color`: primary, secondary, success, warning, danger, zinc, dark/zinc<br/>`size`: sm, md, lg<br/>`isLoading`, `startContent`, `endContent`, `isIconOnly`, `href` |
+| **Primitives** | `Badge` | Self-contained | `variant`: solid, flat, outline, soft<br/>`color`: primary, secondary, success, warning, danger, zinc |
+| **Primitives** | `Avatar` | `Avatar`, `AvatarImage`, `AvatarFallback` | `size`: sm, md, lg, xl<br/>`src`, `alt`, `ringColor` |
+| **Primitives** | `Card` | `Card`, `CardHeader`, `CardBody`, `CardFooter` | `variant`: default, flat, bordered, shadow |
+| **Primitives** | `Heading` | Self-contained | `as`: h1, h2, h3, h4, h5, h6<br/>`size`: xs, sm, md, lg, xl, 2xl, 3xl |
+| **Primitives** | `Text` | Self-contained | `as`: p, span, div<br/>`size`: xs, sm, base, lg<br/>`variant`: default, muted, subtle |
+| **Primitives** | `Divider` | Self-contained | `orientation`: horizontal, vertical |
+| **Primitives** | `Skeleton` | Self-contained | `className` for width, height, rounded |
+| **Primitives** | `Slot` | `Slot`, `Slottable` | For Radix-style `asChild` composition |
+| **Signature** | `DoubleBezelCard` | `DoubleBezelCard`, `CornerCrosshair` | `variant`: default, glass, solid, highlight<br/>`padding`: none, sm, md, lg<br/>`showCrosshairs`: boolean or array of positions<br/>`isHoverable`: boolean |
+| **Signature** | `KineticButton` | Self-contained with animated rolling text | `variant`: primary, brand, secondary, outline, ghost<br/>`size`: sm, md, lg<br/>`showArrow`: boolean<br/>`arrowPosition`: right, left<br/>`href`: string |
+| **Signature** | `SplitTextReveal` | Self-contained with Framer Motion scroll | `text`: string<br/>`as`: h1, h2, h3, p, span<br/>`by`: words, characters<br/>`baseOpacity`: number (default 0.2)<br/>`scrollOffset`: [start, end] |
+| **Signature** | `StickyStack` | `StickyStack`, `StickyStackItem` | `baseTop`: string (e.g. "6rem")<br/>`offsetStep`: string (e.g. "1.5rem")<br/>`scaleStep`: number |
+| **Signature** | `IconBox` | Self-contained | `variant`: solid, soft, outline, glass<br/>`color`: primary, success, warning, danger |
+| **Signature** | `EditorialImage` | Self-contained | `src`, `alt`, `aspectRatio`, `caption` |
+| **Forms** | `Input` | Self-contained | `type`, `startContent`, `endContent`, `isClearable`, `isInvalid`, `errorMessage`, `label`, `description` |
+| **Forms** | `InputOTP` | `InputOTP`, `InputOTPGroup`, `InputOTPSlot`, `InputOTPSeparator` | `maxLength`: number (default 6)<br/>`value`, `onChange` |
+| **Forms** | `Textarea` | Self-contained | `rows`, `minRows`, `maxRows`, `isInvalid`, `label` |
+| **Forms** | `Checkbox` | Self-contained | `isSelected`, `onValueChange`, `color`, `size` |
+| **Forms** | `RadioGroup` | `RadioGroup`, `RadioGroupItem` | `value`, `onValueChange`, `orientation` |
+| **Forms** | `Switch` | Self-contained | `isSelected`, `onValueChange`, `color`, `size` |
+| **Forms** | `Slider` | Self-contained | `value`, `minValue`, `maxValue`, `step`, `showSteps` |
+| **Forms** | `Select` | `Select`, `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectItem`, `SelectGroup`, `SelectLabel` | Accessible dropdown menu select |
+| **Forms** | `ComboBox` | `ComboBox`, `ComboBoxInput`, `ComboBoxList`, `ComboBoxItem` | Searchable fuzzy-filter dropdown |
+| **Forms** | `Fieldset` | `Fieldset`, `Legend`, `FieldLabel`, `FieldDescription`, `FieldError` | Accessible semantic form grouping |
+| **Forms** | `Form` | `Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormDescription`, `FormMessage` | React Hook Form native integration |
+| **Navigation** | `Navbar` | `Navbar`, `NavbarBrand`, `NavbarContent`, `NavbarItem`, `NavbarMenuToggle`, `NavbarMenu`, `NavbarMenuItem` | Glassmorphic floating navigation header with mobile drawer |
+| **Navigation** | `Sidebar` | `Sidebar`, `SidebarHeader`, `SidebarContent`, `SidebarFooter`, `SidebarGroup`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuButton` | Collapsible dashboard navigation |
+| **Navigation** | `Tabs` | `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent` | Animated sliding active indicator pill |
+| **Navigation** | `Breadcrumbs` | `Breadcrumbs`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbSeparator`, `BreadcrumbPage` | Hierarchical trail navigation |
+| **Navigation** | `Pagination` | `Pagination`, `PaginationContent`, `PaginationItem`, `PaginationLink`, `PaginationNext`, `PaginationPrevious`, `PaginationEllipsis` | Page index switcher |
+| **Navigation** | `Command` | `Command`, `CommandInput`, `CommandList`, `CommandEmpty`, `CommandGroup`, `CommandItem`, `CommandShortcut`, `CommandSeparator` | Spotlight / Cmd+K fuzzy-search palette |
+| **Navigation** | `Accordion` | `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent` | Collapsible FAQ disclosure panel |
+| **Overlays** | `Dialog` | `Dialog`, `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`, `DialogClose` | Accessible modal overlay with backdrop blur |
+| **Overlays** | `Sheet` | `Sheet`, `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter` | Slide-out side drawer (left, right, top, bottom) |
+| **Overlays** | `Dropdown` | `Dropdown`, `DropdownTrigger`, `DropdownMenu`, `DropdownItem`, `DropdownSection` | Contextual action popup menu |
+| **Overlays** | `Popover` | `Popover`, `PopoverTrigger`, `PopoverContent` | Floating panel anchored to trigger |
+| **Feedback** | `Alert` | `Alert`, `AlertTitle`, `AlertDescription` | `variant`: solid, flat, bordered<br/>`color`: primary, success, warning, danger |
+| **Feedback** | `Toast` | `Toast`, `ToastAction`, `ToastClose`, `ToastTitle`, `ToastDescription`, `ToastProvider`, `ToastViewport` | Transient notification banner with queue |
+| **Feedback** | `Tooltip` | `Tooltip`, `TooltipTrigger`, `TooltipContent`, `TooltipProvider` | Hover tooltip with arrow indicator |
+| **Feedback** | `Progress` | Self-contained | `value`: 0-100, `color`: primary, success, warning, danger |
+| **Feedback** | `InfiniteScroll` | Self-contained | `hasMore`, `next`, `loader`, `endMessage` |
+| **Data Display** | `Table` | `Table`, `TableHeader`, `TableBody`, `TableFooter`, `TableRow`, `TableHead`, `TableCell`, `TableCaption` | Data table with borders, striped rows, and selection |
+| **Charts** | `AreaChart` | Self-contained (Recharts + Motion) | `data`, `categories`, `index`, `colors`, `className` |
+| **Charts** | `BarChart` | Self-contained (Recharts + Motion) | `data`, `categories`, `index`, `colors`, `layout` |
+| **Charts** | `LineChart` | Self-contained (Recharts + Motion) | `data`, `categories`, `index`, `colors` |
+| **Charts** | `PieChart` | Self-contained (Recharts + Motion) | `data`, `category`, `index`, `colors` |
+| **Charts** | `RadarChart` | Self-contained (Recharts + Motion) | `data`, `categories`, `index`, `colors` |
+| **Charts** | `RadialChart` | Self-contained (Recharts + Motion) | `data`, `category`, `index`, `colors` |
+| **Charts** | `ComposedChart` | Self-contained (Recharts + Motion) | Mixed bar, line, and area charts |
+| **Charts** | `ChartTooltip` | `ChartTooltip`, `ChartTooltipContent` | Styled tooltip popover for Recharts |
+| **Marketing** | `Hero` | `Hero`, `HeroHeader`, `HeroBody`, `HeroContent`, `HeroMedia`, `HeroBackground`, `HeroBadge`, `HeroTitle`, `HeroDescription`, `HeroActions` | `size`: full, auto, fixed<br/>`withBlobs`: boolean<br/>`HeroBody variant`: centered, split |
+| **Marketing** | `BentoGrid` | `BentoGrid`, `BentoCard`, `BentoCardBackground`, `BentoCardContent`, `BentoCardHeader`, `BentoCardBody`, `BentoCardFooter` | Auto-rows grid with Framer Motion hover scale and layered content |
+| **Marketing** | `FeatureSection` | `Feature`, `FeatureGlass` | Grid of feature cards with icons and descriptions |
+| **Marketing** | `Testimonials` | `Testimonials`, `TestimonialsMarquee`, `TestimonialsFlat`, `TestimonialGlass`, `TestimonialsGlobe`, `TestimonialsSideBySide` | Infinite marquee or masonry testimonial cards |
+| **Marketing** | `Pricing` | `PricingSection`, `PricingHeader`, `PricingGrid`, `PricingCard` | Tier cards with monthly/yearly billing toggle |
+| **Marketing** | `Faq` | `Faq`, `FaqGlass`, `FaqCategorized`, `FaqWithIllustration` | Expandable question list with category tabs |
+| **Marketing** | `Cta` | `CtaCentered`, `CtaGlass`, `CtaSplit` | Full-width high-converting call to action |
+| **Marketing** | `Footer` | `FooterSimple`, `FooterGlass`, `FooterMega` | Multi-column footer with social links and legal |
+| **Marketing** | `LogoCloud` | `LogoCloud`, `LogoCloudMarquee` | Client/partner brand logo ticker |
+| **Marketing** | `Globe` | Self-contained (Cobe Canvas) | Interactive 3D WebGL globe |
+| **Marketing** | `ParticleSphere` | Self-contained (Three.js/Canvas) | Animated 3D particle sphere |
+| **Marketing** | `BlurRevealText` | Self-contained (Framer Motion) | Cinematic text blur reveal |
+| **Marketing** | `CustomCursor` | Self-contained (Framer Motion) | Magnetic custom cursor follower |
 
 ---
 
-### C. Forms & Data Input
-* **`Input`**: Text input with `startContent`, `endContent`, `isClearable`, error states.
-* **`InputOTP`**: Segmented one-time-password input with auto-focus and clipboard paste.
-* **`Textarea`**: Auto-resizing textarea with character count support.
-* **`Checkbox`**, **`RadioGroup`**, **`Switch`**, **`Slider`**.
-* **`Select`** & **`ComboBox`**: Accessible dropdown selectors with search filtering.
-* **`Form`**: React Hook Form integration wrapper (`FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormMessage`).
-  ```tsx
-  import { useForm } from "react-hook-form";
-  import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/hudbird-ui/Form";
-  import { Input } from "@/components/hudbird-ui/Input";
-  import { Button } from "@/components/hudbird-ui/Button";
+## 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`)
 
-  const form = useForm({ defaultValues: { email: "" } });
-  // Pass form to <Form {...form}>...
-  ```
+When building entire industry websites, Hudbird UI provides ready-to-use prebuilt niche blocks under `packages/marketing/src/blocks`:
+
+1. **`SaaS`**: High-conversion software landing page (`SaaSHero`, `SaaSBentoGrid`, `SaaSPricing`, `SaaSFeatureGrid`, `SaaSTestimonials`, `SaaSFaq`, `SaaSCta`, `SaaSFooter`).
+2. **`ModernApp`**: Futuristic consumer app layout (`Meetings`, `Network`, `Radar`, `Reflect`, `Grid`).
+3. **`Fintech`**: High-trust banking & crypto protocol styling with dark metallic glass and currency matrices.
+4. **`Agency`**: Bold brutalist editorial design for creative agencies and studios.
+5. **`Ecommerce`**: Product spotlights, cart drawers, and category carousels.
+6. **`Hospitality`**: Luxury resort, dining, and hotel booking showcase.
+7. **`AiStartup`**: Neon accents, particle canvas backgrounds, and prompt demo playgrounds.
+8. **`AdminCms`**: Complete enterprise dashboard with sidebar, stats grid, and data tables.
 
 ---
 
-### D. Navigation, Overlays & Feedback
-* **`Navbar`**: Floating glassmorphic navbar with mobile menu toggle and active pill indicator.
-* **`Sidebar`**: Collapsible dashboard navigation bar with group sections and badge counts.
-* **`Dialog`**: Modal overlay with focus trap, backdrop blur, and exit transitions.
-* **`Sheet`**: Slide-out drawer panel from left, right, top, or bottom.
-* **`Dropdown`**: Menu popover with nested sub-menus, keyboard arrows, and checkable items.
-* **`Command`**: Spotlight / Cmd+K fuzzy-search command palette.
-* **`Tabs`**: Segmented tab control with animated sliding active indicator.
-* **`Accordion`**: Expandable FAQ / detail panels.
-* **`Toast`**: Transient notifications (success, warning, error, info).
-* **`Table`**: Data table with striped rows, sorting headers, and selection checkboxes.
-
----
-
-### E. Charts (Recharts + Animated Motion)
-* **`AreaChart`**, **`BarChart`**, **`LineChart`**, **`PieChart`**, **`RadarChart`**, **`RadialChart`**, **`ComposedChart`**:
-  * Clean, theme-integrated SVG charts with smooth Framer Motion mounting animations.
-  * Standardized tooltip: `<ChartTooltip />`.
-  ```tsx
-  import { AreaChart } from "@/components/hudbird-ui/AreaChart";
-
-  <AreaChart
-    data={analyticsData}
-    categories={["revenue", "expenses"]}
-    index="month"
-    colors={["indigo", "emerald"]}
-    className="h-72 w-full"
-  />
-  ```
-
----
-
-### F. Marketing & Section Blocks (`@hudbird/marketing`)
-* **`Hero`**:
-  ```tsx
-  import {
-    Hero,
-    HeroHeader,
-    HeroBody,
-    HeroContent,
-    HeroBadge,
-    HeroTitle,
-    HeroDescription,
-    HeroActions,
-    HeroMedia,
-  } from "@/components/hudbird-ui/Hero";
-  import { KineticButton } from "@/components/hudbird-ui/KineticButton";
-  import { Button } from "@/components/hudbird-ui/Button";
-
-  <Hero size="full" withBlobs>
-    <HeroHeader logo={<span className="font-bold text-xl">Hudbird</span>} />
-    <HeroBody variant="centered">
-      <HeroContent align="center">
-        <HeroBadge>Introducing Hudbird 1.5</HeroBadge>
-        <HeroTitle>Build AI-native interfaces at lightspeed</HeroTitle>
-        <HeroDescription>
-          60+ production-grade components engineered for high conversion and effortless styling.
-        </HeroDescription>
-        <HeroActions>
-          <KineticButton variant="primary" size="lg">Get Started Free</KineticButton>
-          <Button variant="outline" size="lg">Explore Docs</Button>
-        </HeroActions>
-      </HeroContent>
-    </HeroBody>
-  </Hero>
-  ```
-* **`BentoGrid` & `BentoCard`**:
-  ```tsx
-  import { BentoGrid, BentoCard, BentoCardContent } from "@/components/hudbird-ui/BentoGrid";
-
-  <BentoGrid>
-    <BentoCard className="md:col-span-2">
-      <BentoCardContent>
-        <h4 className="text-xl font-bold">Fast Performance</h4>
-        <p className="text-zinc-500">Sub-millisecond hydration with React 19.</p>
-      </BentoCardContent>
-    </BentoCard>
-    <BentoCard>
-      <BentoCardContent>
-        <h4 className="text-xl font-bold">Encrypted Data</h4>
-      </BentoCardContent>
-    </BentoCard>
-  </BentoGrid>
-  ```
-* **`Testimonials`** (`TestimonialsMarquee`, `TestimonialsFlat`, `TestimonialGlass`).
-* **`Pricing`** (`PricingSection`, `PricingHeader`, `PricingGrid`, `PricingCard`).
-* **`Faq`** (`Faq`, `FaqGlass`, `FaqCategorized`).
-* **`Cta`** (`CtaCentered`, `CtaGlass`, `CtaSplit`).
-* **`Footer`** (`FooterSimple`, `FooterGlass`, `FooterMega`).
-
----
-
-## 4. End-to-End Production Recipes
+## 5. End-to-End Production Recipes
 
 ### Recipe 1: Modern SaaS Landing Page
 ```tsx
@@ -415,7 +317,7 @@ export default function LandingPage() {
 import React from "react";
 import { DoubleBezelCard } from "@/components/hudbird-ui/DoubleBezelCard";
 import { AreaChart } from "@/components/hudbird-ui/AreaChart";
-import { Table } from "@/components/hudbird-ui/Table";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/hudbird-ui/Table";
 import { Badge } from "@/components/hudbird-ui/Badge";
 import { Button } from "@/components/hudbird-ui/Button";
 import { TrendingUp, Users, DollarSign, Activity } from "lucide-react";
@@ -488,7 +390,7 @@ export default function AnalyticsDashboard() {
 
 ---
 
-## 5. Rules for AI Code Generation
+## 6. Rules for AI Code Generation
 
 When generating UI with Hudbird UI, always enforce these rules:
 
@@ -508,4 +410,3 @@ When generating UI with Hudbird UI, always enforce these rules:
      ```bash
      npx hudbird-ui add [ComponentName]
      ```
-
