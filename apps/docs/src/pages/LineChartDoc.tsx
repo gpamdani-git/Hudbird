@@ -566,22 +566,21 @@ export default function App() {
           />
         </section>
 
-        <section id="css-classes" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">CSS Classes</h2>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            The LineChart component applies standard Tailwind classes for dark mode and dimensions.
-            The internal Recharts components accept specific classes via our <code>className</code>{" "}
-            prop to ensure responsive container scaling.
+        <section id="css-classes" className="scroll-mt-24 space-y-6">
+          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+            CSS Classes
+          </h2>
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>Responsive scaling.</strong> The LineChart component applies standard Tailwind classes for dark mode and dimensions. Internal Recharts components accept specific utility classes via the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop to ensure responsive container scaling.
           </p>
         </section>
 
-        <section id="advanced-customization" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+        <section id="advanced-customization" className="scroll-mt-24 space-y-6">
+          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
             Advanced Customization
           </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            You can inject custom SVG definitions via <code>children</code>, change stroke styles,
-            and use custom tooltips with images.
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>Custom SVG &amp; tooltips.</strong> Inject custom SVG definitions via <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">children</code>, configure stroke styles, and render rich custom tooltips with live trend metrics.
           </p>
           <ComponentPreview>
             <Card className="mx-auto w-full max-w-2xl p-4">

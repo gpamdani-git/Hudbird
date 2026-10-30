@@ -4,6 +4,7 @@ import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
 import { ArrowUp, ArrowDown } from "lucide-react";
 import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { AreaChart, Card, Tabs, Tab } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -155,30 +156,16 @@ export default function AreaChartDoc() {
   ];
 
   return (
-    <div className="pb-24">
+    <div className="space-y-24 sm:space-y-32 pb-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Area Chart
-            </h1>
-            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              New
-            </span>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            An area chart for visualizing trends with gradient fills, stacked series, and sparkline
-            variants.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="CHARTS"
+        title="Area Chart"
+        badge="Component"
+        description="An area chart for visualizing trends over time with gradient fills, stacked series, and sparkline variants."
+      />
 
-      <section id="installation" className="mb-12 scroll-mt-20">
+      <section id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs
           componentName="area-chart"
           dependencies="recharts clsx tailwind-merge"
@@ -186,11 +173,12 @@ export default function AreaChartDoc() {
         />
       </section>
 
-      <section id="anatomy" className="mb-12 scroll-mt-20">
-        <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Anatomy</h2>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-          Area chart is built on top of the <code>recharts</code> library. It abstracts away the
-          complexity of configuring multiple components.
+      <section id="anatomy" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          Anatomy
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Abstracted layer.</strong> Area chart is built on top of the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">recharts</code> library, eliminating boilerplate and providing built-in responsive containers and theme tokens:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -606,11 +594,12 @@ export default function App() {
         </div>
       </section>
 
-      <section id="css-classes" className="mb-12 scroll-mt-20">
-        <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">CSS Classes</h2>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-          The chart components accept a <code>className</code> prop which is passed to the root
-          wrapper.
+      <section id="css-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          CSS Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Root container customization.</strong> The chart components accept a <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop passed directly to the root wrapper:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -625,14 +614,12 @@ export default function App() {
         </div>
       </section>
 
-      <section id="element-classes" className="mb-12 scroll-mt-20">
-        <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+      <section id="element-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
           Element Classes
         </h2>
-        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-          Recharts generates specific SVG elements. You can style them globally by targeting classes
-          like <code>.recharts-cartesian-grid-horizontal line</code> or{" "}
-          <code>.recharts-tooltip-wrapper</code> in your global CSS.
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>SVG element targeting.</strong> Recharts generates semantic SVG DOM nodes. Style them globally by targeting CSS classes like <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-cartesian-grid-horizontal line</code> or <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-tooltip-wrapper</code> in your global stylesheet:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock

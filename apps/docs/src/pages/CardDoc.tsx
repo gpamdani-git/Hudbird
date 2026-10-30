@@ -186,7 +186,7 @@ export default function CardDoc() {
               <CardBody>
                 <p className="text-sm text-zinc-600 dark:text-zinc-400">
                   Staff Frontend Architect building open-source design systems with TypeScript,
-                  Tailwind CSS, and Class Variance Authority. 🚀
+                  Tailwind CSS, and Class Variance Authority.
                 </p>
               </CardBody>
               <CardFooter className="justify-between pt-2">
@@ -239,7 +239,7 @@ export default function Example() {
 
       <CardBody>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Staff Frontend Architect building open-source design systems. 🚀
+          Staff Frontend Architect building open-source design systems.
         </p>
       </CardBody>
 

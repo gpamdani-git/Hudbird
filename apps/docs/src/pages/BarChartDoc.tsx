@@ -611,23 +611,21 @@ export function TimeAggregationExample() {
           </div>
         </section>
 
-        <section id="css-classes" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">CSS Classes</h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            You can override the styles of the wrapper using the <code>className</code> prop. By
-            default, the <code>variant="sparkline"</code> sets the height to 120px, and the default
-            variant sets it to 350px.
+        <section id="css-classes" className="scroll-mt-24 space-y-6">
+          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+            CSS Classes
+          </h2>
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>Wrapper overrides.</strong> Customize container dimensions and padding using the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop. By default, <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">variant="sparkline"</code> sets the height to 120px, and the standard variant sets it to 350px.
           </p>
         </section>
 
-        <section id="element-classes" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+        <section id="element-classes" className="scroll-mt-24 space-y-6">
+          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
             Element Classes
           </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            Recharts components expose specific class names that you can target with global CSS if
-            you need to override the SVG styles. For example, <code>.recharts-bar-rectangle</code>,{" "}
-            <code>.recharts-cartesian-axis-tick-value</code>, etc.
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+            <strong>SVG DOM targeting.</strong> Recharts exposes specific class names that you can style with global CSS for custom fills and hover states: <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-bar-rectangle</code>, <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-cartesian-axis-tick-value</code>.
           </p>
         </section>
 

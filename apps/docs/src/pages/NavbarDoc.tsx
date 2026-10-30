@@ -50,6 +50,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  Zap,
 } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { IframePreview } from "../components/IframePreview";
@@ -301,7 +302,7 @@ export default function NavbarDoc() {
                   <NavbarBrand>
                     <div className="flex items-center gap-2">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-900 text-sm font-black text-white dark:bg-white dark:text-zinc-900">
-                        ⚡
+                        <Zap className="h-4 w-4 fill-current" />
                       </div>
                       <span className="text-base font-bold tracking-tight whitespace-nowrap text-zinc-900 dark:text-zinc-50">
                         Acme Studio
@@ -411,7 +412,9 @@ export default function StandardNavbarExample() {
         <NavbarMenuToggle className="md:hidden" />
         <NavbarBrand>
           <div className="flex items-center gap-2">
-            <div className="h-8 w-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center font-bold">⚡</div>
+            <div className="h-8 w-8 rounded-lg bg-zinc-900 text-white flex items-center justify-center font-bold">
+              <Zap className="h-4 w-4 fill-current" />
+            </div>
             <span className="font-bold">Acme Studio</span>
           </div>
         </NavbarBrand>
