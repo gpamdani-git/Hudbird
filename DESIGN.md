@@ -389,3 +389,68 @@ All components, layouts, and interactive workflows in Hudbird UI are bound by hu
 - **Rule:**
   - Multi-step configurations, setup wizards, and documentation walkthroughs must render clear, linear step indicators (e.g. `Step 1 of 4` or subtle progress track).
   - Display tangible completion milestones rather than open-ended sequences, without resorting to bulky or distracting visual badges.
+
+---
+
+## 9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)
+
+Digital layouts frequently look unbalanced when aligned strictly by bounding-box coordinates. Hudbird UI mandates optical compensation rules so interfaces feel balanced to human eyes:
+
+### 9.1 Mathematical vs. Visual Center (Center of Mass Compensation)
+- **Principle:** Symmetrical geometric bounding boxes do not account for asymmetric mass distribution. For example, a right-pointing triangle (`Play` icon) has more visual mass on its left vertical base than on its right apex point.
+- **Rule:**
+  - In circular or square containers, right-pointing play icons must be optically nudged by `+1px` to `+2px` horizontally (`translate-x-[1px]` or `translate-x-[1.5px]`).
+  - Asymmetric icons (e.g. magnifying glass, diagonal arrows) must be optically centered based on their visual centroid, not purely by CSS `flex justify-center items-center`.
+
+### 9.2 Cap-Height & Baseline Alignment
+- **Principle:** Font bounding boxes contain whitespace for ascenders and descenders (e.g. `p`, `y`, `d`, `h`), which often causes inline icons and adjacent badges to look vertically misaligned.
+- **Rule:**
+  - Inline icons next to text must align to the text’s **Cap-Height** (the height of capital letters), not the arbitrary line-height wrapper.
+  - When pairing `16px` icons with `14px` or `16px` text in buttons, apply an optical offset (`-mt-px` or `translate-y-[-0.5px]`) if vertical centering leaves an awkward gap beneath baseline.
+
+### 9.3 Concentric Radii Formula (Nested Corner Continuity)
+- **Principle:** When an inner card sits inside an outer card or bezel container, using identical corner radii makes the inner corners appear sharp, pinched, or distorted.
+- **Rule:**
+  - All nested surfaces must satisfy the concentric radius formula: `R_inner = R_outer - padding`.
+  - **Example:** For an outer container with `rounded-[28px]` and padding of `6px` (`p-1.5`), the inner core must strictly use `rounded-[22px]` (28 - 6 = 22).
+
+### 9.4 Visual Weight & Density Balancing
+- **Principle:** Solid (filled) shapes appear 20% to 30% larger and heavier than stroked (outlined) shapes of the exact same pixel dimensions.
+- **Rule:**
+  - In icon-text pairs or split-action groups, filled icons must be sized down slightly (e.g. `14px` filled vs. `16px` outline) or paired with slightly wider spacing to avoid dominating visual hierarchy.
+  - Circular badges beside rectangular buttons must be optically scaled so their perceived surface area matches the visual weight of the adjacent typography.
+
+### 9.5 Overshoot & Optical Perimeter Balance
+- **Principle:** Curved forms (circles, rounded pill containers) visually appear smaller than squares of the exact same pixel width because their corners do not fill the bounding box.
+- **Rule:**
+  - Circular avatar rings, status dots, and pill buttons must apply an optical overshoot (~1px to 2px extra clearance or dimension) when placed flush with crisp rectangular grids.
+
+---
+
+## 10. Architecting Intuition (Cognitive Interaction & Physical Affordances)
+
+Intuition in user experience is the synthesis of cognitive psychology, tactile physics, and immediate causality:
+
+### 10.1 Physical Affordances & Perceived Interactability
+- **Principle:** Users should instantly intuit how an element behaves without reading instructions.
+- **Rule:**
+  - Tactile depth is conveyed through subtle 1px specular highlights (`shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]`) and hairline whisper borders, not cartoonish gradients or drop shadows.
+  - Interactive components must visibly shift state on hover: slight surface luminosity shift (+4% lightness) and tactile compression on click (`active:scale-[0.98]`).
+
+### 10.2 Zero-Latency Feedback Loops
+- **Principle:** Any delay greater than 100ms breaks the perception of immediate physical causation, increasing user cognitive friction.
+- **Rule:**
+  - Button presses and toggle switches must provide instantaneous visual feedback within 16ms (1 frame).
+  - High-agency physics: Always use the signature Hudbird spring curve `duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]` for fluid positional shifts. Never use browser default `ease` or linear timers.
+
+### 10.3 Spatial Constancy & Motion Continuity
+- **Principle:** Sudden layout shifts and jumping elements destroy spatial orientation and force users to re-scan the screen.
+- **Rule:**
+  - Dialogs, popovers, and menus must reveal from their triggering origin point or slide upwards smoothly (`y: 12px -> 0px`).
+  - Animated layout transitions must use Framer Motion layout animations (`layoutId`) to morph between active tabs or selection pills seamlessly.
+
+### 10.4 Progressive Disclosure & Contextual Scaffolding
+- **Principle:** Present only the vital decisions required for the current task; reserve secondary complexity for deliberate inquiry.
+- **Rule:**
+  - High-density data tables and component configuration forms must present the primary 3–5 controls by default.
+  - Deep options (advanced filters, custom SQL overrides, raw JSON telemetry) must be tucked within explicit expanders, drawers, or modal drawers with clear visual cues.

@@ -31,6 +31,32 @@ This skill equips any AI model with comprehensive knowledge of all 60+ component
 
 ---
 
+## 1.1 Cognitive Architecture & Optical Physics (Stitch & UX Laws)
+
+Every component generated or styled with Hudbird UI must adhere to human cognitive psychology and optical mechanics:
+
+1. **Optical Alignment vs. Bounding-Box Centering:**
+   - **Play Icon Offset:** Triangles have asymmetric center of mass. In circular buttons, nudge right-pointing arrows/triangles by `+1px` to `+2px` horizontally (`translate-x-[1px]`).
+   - **Cap-Height Icon Alignment:** Align inline icons to the uppercase cap-height of adjacent text, applying `-mt-px` or `translate-y-[-0.5px]` if vertical padding feels heavy on the baseline.
+   - **Concentric Radii Formula:** Inner cards must follow `R_inner = R_outer - padding` (e.g., `rounded-[28px]` outer with `p-1.5` (6px) requires `rounded-[22px]` inner).
+2. **Cognitive UX Laws (The 10 Laws):**
+   - **Proximity:** Micro gaps (`4px–8px`), Meso gaps (`16px–24px`), Macro section gaps (`80px–128px` / `space-y-24 sm:space-y-32`).
+   - **Fitts's Law:** Touch targets $\ge 44\text{px}$ on mobile (`h-11`) and $\ge 36\text{px}$ on desktop (`h-9`).
+   - **Von Restorff Effect:** Reserve Electric Indigo (`#4F46E5`) exclusively for the single primary CTA. Secondary controls remain neutral (`variant="outline"`).
+   - **Hick's Law:** Limit default choices; tuck deep complexity into progressive disclosures.
+   - **Miller's Law:** Group information into 5–7 digestible items.
+3. **Architecting Intuition:**
+   - **Tactile Feedback:** Instant $-2\%$ micro-compression on click (`active:scale-[0.98]`).
+   - **Luxury Spring Physics:** `duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`.
+   - **Spatial Constancy:** Seamless transitions with `layoutId` and directional entries (`y: 12px -> 0px`).
+4. **Anti-Patterns Forbidden:**
+   - ❌ Emojis in production UI (use Lucide SVG).
+   - ❌ Rainbow icon badge squares next to section headings.
+   - ❌ Pure black backgrounds (`#000000`).
+   - ❌ Generic 3-equal card rows (use asymmetric Bento Grids).
+
+---
+
 ## 2. CLI & Setup Workflow
 
 When helping a user initialize or add Hudbird UI components to their project, follow these commands:
