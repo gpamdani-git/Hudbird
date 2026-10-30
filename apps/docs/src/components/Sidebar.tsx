@@ -17,6 +17,7 @@ import { navigationData } from "../navData";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlobalSearch } from "./GlobalSearch";
 import changelogData from "../data/changelog.json";
+import { DiscordIcon } from "./SocialIcons";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -173,6 +174,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
               Community
             </h5>
             <ul className="relative space-y-0.5">
+              <li>
+                <a
+                  href="https://discord.gg/NPBspwkXke"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] text-zinc-600 transition-all duration-200 ease-in-out outline-none hover:bg-black/5 hover:text-[#5865F2] dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-[#5865F2]"
+                  title={isMini ? "Discord Community" : undefined}
+                >
+                  <div className="flex items-center gap-2.5 overflow-hidden">
+                    <DiscordIcon className="h-4 w-4 shrink-0 text-[#5865F2]" />
+                    <span className="whitespace-nowrap">Discord Community</span>
+                  </div>
+                </a>
+              </li>
               <li>
                 <a
                   href="https://github.com/gpamdani-git/Hudbird/discussions"

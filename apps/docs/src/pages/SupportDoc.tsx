@@ -436,7 +436,7 @@ export default function SupportDoc() {
           Still stuck? We're here to help. Visit our official support page for more guides and FAQs,
           or open a GitHub issue to report a bug directly.
         </Text>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <a
             href="https://hudbird.vercel.app/#/support"
             target="_blank"
@@ -452,6 +452,21 @@ export default function SupportDoc() {
             </span>
             <span className="mt-1 font-mono text-xs text-indigo-500 dark:text-indigo-400">
               hudbird.vercel.app/#/support
+            </span>
+          </a>
+          <a
+            href="https://discord.gg/NPBspwkXke"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col gap-2 rounded-xl border border-blue-200 bg-blue-50 p-5 transition hover:border-blue-400 hover:bg-blue-100 dark:border-blue-900/60 dark:bg-blue-950/30 dark:hover:border-blue-700 dark:hover:bg-blue-900/40"
+          >
+            <span className="text-xl">💬</span>
+            <span className="font-bold text-blue-900 dark:text-blue-200">Discord Community</span>
+            <span className="text-sm text-blue-700 dark:text-blue-300">
+              Join fellow developers, ask questions in real-time, share your work, and get help.
+            </span>
+            <span className="mt-1 font-mono text-xs text-blue-500 dark:text-blue-400">
+              discord.gg/NPBspwkXke
             </span>
           </a>
           <a

@@ -1,5 +1,12 @@
 # 🦅 Hudbird UI Pro — Complete Monorepo Ecosystem
 
+<p align="left">
+  <a href="https://discord.gg/NPBspwkXke"><img src="https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Community" /></a>
+  <a href="https://github.com/gpamdani-git/Hudbird"><img src="https://img.shields.io/github/stars/gpamdani-git/Hudbird?style=flat&logo=github&color=blue" alt="GitHub Stars" /></a>
+  <a href="https://hudbird.vercel.app"><img src="https://img.shields.io/badge/Docs-hudbird.vercel.app-000000?style=flat&logo=vercel" alt="Documentation" /></a>
+  <img src="https://img.shields.io/badge/License-MIT-emerald.svg" alt="License: MIT" />
+</p>
+
 > **The modern, motion-first React & Tailwind component ecosystem.**  
 > Complete with 70+ UI primitives, 47+ Nexus niche templates, marketing blocks, CLI generator, and interactive documentation.
 

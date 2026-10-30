@@ -5,6 +5,7 @@ import { ThemeToggleButton, useTemplateTheme } from "./templates/TemplateThemeTo
 import { Button } from "@hudbird/ui";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ProPricingModal } from "./ProPricingModal";
+import { DiscordIcon, GithubIcon } from "./SocialIcons";
 
 export function SiteHeader() {
   const { theme, toggleTheme } = useTemplateTheme();
@@ -90,7 +91,27 @@ export function SiteHeader() {
           },
         ]}
         action={
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            <a
+              href="https://discord.gg/NPBspwkXke"
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/50 text-zinc-600 transition-colors hover:border-indigo-500/30 hover:bg-indigo-50 hover:text-[#5865F2] dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-[#5865F2]"
+              title="Join Discord Community"
+              aria-label="Discord"
+            >
+              <DiscordIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://github.com/gpamdani-git/Hudbird"
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white/50 text-zinc-600 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900 dark:border-white/10 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+              title="GitHub Repository"
+              aria-label="GitHub"
+            >
+              <GithubIcon className="h-4 w-4" />
+            </a>
             <ThemeToggleButton theme={theme} onToggle={toggleTheme} />
             <Button
               onClick={() => {

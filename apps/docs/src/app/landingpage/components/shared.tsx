@@ -55,6 +55,7 @@ import {
   TriangleAlert,
   Settings,
 } from "lucide-react";
+import { DiscordIcon, GithubIcon } from "../../../components/SocialIcons";
 
 export const ParticleOrb = () => {
   const numParticles = 120;
@@ -226,11 +227,22 @@ export const MEGA_LINK_GROUPS = [
       { label: "Create Theme", href: "/#/themes" },
       { label: "Changelog", href: "/#/changelog" },
       { label: "Support & FAQ", href: "/#/support" },
+      { label: "Discord Community", href: "https://discord.gg/NPBspwkXke" },
       { label: "GitHub", href: "https://github.com/gpamdani-git/Hudbird" },
     ],
   },
 ];
 export const SOCIALS = [
+  {
+    label: "Discord",
+    href: "https://discord.gg/NPBspwkXke",
+    icon: <DiscordIcon className="h-5 w-5" />,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/gpamdani-git/Hudbird",
+    icon: <GithubIcon className="h-5 w-5" />,
+  },
   { label: "Twitter", href: "#", icon: <MessageSquare className="h-5 w-5" /> },
 ];
 
