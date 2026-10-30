@@ -419,7 +419,7 @@ export const fintechProtocolNiche: NicheConfig = {
       socialLinks: [
         { platform: "X", href: "https://x.com" },
         { platform: "Discord", href: "https://discord.com" },
-        { platform: "GitHub", href: "https://github.com" },
+        { platform: "GitHub", href: "https://github.com/gpamdani-git/Hudbird" },
       ],
       copyrightText: "© 2026 Aura Protocol Labs Ltd. All rights reserved.",
     },

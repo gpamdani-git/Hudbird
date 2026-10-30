@@ -12,7 +12,7 @@ Welcome to the **Hudbird UI Pro Monorepo** (v1.5.0). This package contains the e
 This repository is organized as a high-performance **PNPM & Turborepo workspace**:
 
 ```text
-BlankUI- (Root)
+Hudbird (Root)
 ├── apps/
 │   └── docs/                     # Full Documentation SPA & Interactive Component Playground (Vite + React)
 ├── packages/
@@ -180,6 +180,20 @@ All top-level commands you can run from the root:
 
 ---
 
+## 🤖 AI Agent Skills (Claude Code, Codex, Antigravity, Cursor, Windsurf)
+
+Hudbird UI includes an official AI engineering skill that enables coding models to build interfaces without hallucinating non-existent props or CSS soup:
+
+```bash
+# Install the AI skill into any project in 1 line
+mkdir -p .agents/skills/hudbird-ui && curl -sSL https://hudbird.vercel.app/skills/hudbird-ui.md -o .agents/skills/hudbird-ui/SKILL.md
+```
+
+- **Supported assistants**: Anthropic Claude Code, Google Antigravity, Cursor IDE, Windsurf Cascade, and OpenAI Codex.
+- **Official Documentation**: [https://hudbird.vercel.app/#/ai-skills](https://hudbird.vercel.app/#/ai-skills)
+
+---
+
 ## 📄 License & Commercial Rights
 
 This product is licensed under the **Hudbird UI Pro Commercial License** (`LICENSE.md`).
@@ -189,8 +203,11 @@ This product is licensed under the **Hudbird UI Pro Commercial License** (`LICEN
 
 ---
 
-## 💬 Support & Contact
+## 💬 Community, Support & Links
 
 - **Documentation**: [https://hudbird.vercel.app](https://hudbird.vercel.app)
+- **GitHub Repository**: [https://github.com/gpamdani-git/Hudbird](https://github.com/gpamdani-git/Hudbird)
+- **Report an Issue**: [https://github.com/gpamdani-git/Hudbird/issues](https://github.com/gpamdani-git/Hudbird/issues)
+- **Discussions**: [https://github.com/gpamdani-git/Hudbird/discussions](https://github.com/gpamdani-git/Hudbird/discussions)
 - **Direct Inquiries**: `support@hudbird.studio` / `daniakbar`
 - **Updates**: Check your Gumroad library for notification on new template additions and version updates.

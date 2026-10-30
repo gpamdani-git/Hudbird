@@ -68,6 +68,7 @@ const ThemesDoc = lazy(() => import("./pages/ThemesDoc"));
 const TemplatesDoc = lazy(() => import("./pages/TemplatesDoc"));
 const InstallationDoc = lazy(() => import("./pages/InstallationDoc"));
 const CliDoc = lazy(() => import("./pages/CliDoc"));
+const AiSkillsDoc = lazy(() => import("./pages/AiSkillsDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
@@ -244,6 +245,7 @@ export default function App() {
                     <Route path="/blocks" element={<BlocksGalleryDoc />} />
                     <Route path="/installation" element={<InstallationDoc />} />
                     <Route path="/cli" element={<CliDoc />} />
+                    <Route path="/ai-skills" element={<AiSkillsDoc />} />
                     <Route path="/button" element={<ButtonDoc />} />
                     <Route path="/input" element={<InputDoc />} />
                     <Route path="/card" element={<CardDoc />} />

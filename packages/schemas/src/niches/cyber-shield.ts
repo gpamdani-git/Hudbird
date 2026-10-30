@@ -421,7 +421,7 @@ export const cyberShieldNiche: NicheConfig = {
         },
       ],
       socialLinks: [
-        { platform: "GitHub", href: "https://github.com" },
+        { platform: "GitHub", href: "https://github.com/gpamdani-git/Hudbird" },
         { platform: "X", href: "https://x.com" },
         { platform: "LinkedIn", href: "https://linkedin.com" },
       ],

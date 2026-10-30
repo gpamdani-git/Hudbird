@@ -235,7 +235,7 @@ export const MEGA_LINK_GROUPS = [
       { label: "Create Theme", href: "/#/themes" },
       { label: "Changelog", href: "/#/changelog" },
       { label: "Support & FAQ", href: "/#/support" },
-      { label: "GitHub", href: "https://github.com/gpamdani-git/Hudbird-UI-Discus" },
+      { label: "GitHub", href: "https://github.com/gpamdani-git/Hudbird" },
       {
         label: "Figma Kit",
         badge: (

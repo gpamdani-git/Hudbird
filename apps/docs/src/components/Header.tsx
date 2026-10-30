@@ -305,7 +305,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <DropdownItem className="my-1 border-t border-zinc-200 dark:border-zinc-800" />
                   <DropdownItem>
                     <a
-                      href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
+                      href="https://github.com/gpamdani-git/Hudbird"
                       target="_blank"
                       rel="noreferrer"
                       className="flex w-full items-center font-medium"

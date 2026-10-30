@@ -43,7 +43,7 @@ For full documentation, interactive examples, layout templates, and copy-paste c
 
 ## 🤝 Community & Support
 
-- **Issue Tracker & Discussions:** [Public Collaboration Repo](https://github.com/gpamdani-git/Hudbird-UI-Discus)
+- **GitHub Repository & Issues:** [Hudbird on GitHub](https://github.com/gpamdani-git/Hudbird)
 - **Theme Builder:** [Hudbird AI Editor](https://hudbird-editor.vercel.app/)
 - **Support:** [Buy me a coffee](https://www.buymeacoffee.com/daniakbar)
 

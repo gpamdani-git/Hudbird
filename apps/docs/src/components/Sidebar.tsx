@@ -10,6 +10,8 @@ import {
   CircleDot,
   PanelLeftClose,
   PanelLeft,
+  Bot,
+  Terminal,
 } from "lucide-react";
 import { navigationData } from "../navData";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +28,9 @@ interface SidebarProps {
 // Icon mapping helper
 const getIconForName = (name: string, isGroupTitle: boolean = false) => {
   if (name === "Getting started") return <Home className="h-4 w-4 shrink-0" />;
+  if (name === "CLI Commands") return <Terminal className="h-4 w-4 shrink-0" />;
+  if (name === "AI Agent Skills")
+    return <Bot className="h-4 w-4 shrink-0 text-indigo-500 dark:text-indigo-400" />;
   if (name === "Templates") return <Layout className="h-4 w-4 shrink-0" />;
   if (name === "Changelog") return <Layout className="h-4 w-4 shrink-0" />;
   if (name === "Support & FAQ") return <LifeBuoy className="h-4 w-4 shrink-0" />;
@@ -170,7 +175,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <ul className="relative space-y-0.5">
               <li>
                 <a
-                  href="https://github.com/gpamdani-git/Hudbird-UI-Discus"
+                  href="https://github.com/gpamdani-git/Hudbird/discussions"
                   target="_blank"
                   rel="noreferrer"
                   className="group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] text-zinc-600 transition-all duration-200 ease-in-out outline-none hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-200"

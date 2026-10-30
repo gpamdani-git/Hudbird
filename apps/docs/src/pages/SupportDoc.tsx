@@ -455,7 +455,7 @@ export default function SupportDoc() {
             </span>
           </a>
           <a
-            href="https://github.com/gpamdani-git/Hudbird-UI-Discus/issues/new?assignees=&labels=bug%2C+triage&template=bug_report.yml&title=%5BBUG%5D+"
+            href="https://github.com/gpamdani-git/Hudbird/issues/new?assignees=&labels=bug%2C+triage&template=bug_report.yml&title=%5BBUG%5D+"
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col gap-2 rounded-xl border border-rose-200 bg-rose-50 p-5 transition hover:border-rose-400 hover:bg-rose-100 dark:border-rose-900/60 dark:bg-rose-950/30 dark:hover:border-rose-700 dark:hover:bg-rose-900/40"
@@ -466,7 +466,7 @@ export default function SupportDoc() {
               Found something broken? Open an issue on GitHub with a pre-filled bug report template.
             </span>
             <span className="mt-1 font-mono text-xs text-rose-500 dark:text-rose-400">
-              github.com/gpamdani-git/Hudbird-UI-Discus
+              github.com/gpamdani-git/Hudbird
             </span>
           </a>
         </div>

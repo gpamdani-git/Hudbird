@@ -21,6 +21,14 @@ export const cliTocItems: TocItem[] = [
   { id: "troubleshooting", title: "Troubleshooting & Aliases" },
 ];
 
+export const aiSkillsTocItems: TocItem[] = [
+  { id: "overview", title: "Why Use Hudbird UI Skills?" },
+  { id: "quickstart-setup", title: "Quickstart Setup" },
+  { id: "supported-assistants", title: "Configuring Your AI Model" },
+  { id: "real-prompts", title: "Battle-Tested Prompts (No-Halu)" },
+  { id: "full-skill-reference", title: "Full SKILL.md Reference" },
+];
+
 export const buttonTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -744,6 +752,7 @@ const tocMap: Record<string, TocItem[]> = {
   "/changelog": changelogTocItems,
   "/support": supportTocItems,
   "/cli": cliTocItems,
+  "/ai-skills": aiSkillsTocItems,
   "/button": buttonTocItems,
   "/alert": alertTocItems,
   "/avatar": avatarTocItems,
