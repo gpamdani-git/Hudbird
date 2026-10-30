@@ -155,14 +155,34 @@ Hierarchy is enforced strictly through weight contrast, tracking adjustments, an
 
 ## 4. Component Stylings
 
-### 4.1 Buttons
-* **Shape:** Subtly rounded corners (\`border-radius: 0.5rem\` / \`8px\`) for standard controls; pill shape (\`rounded-full\`) exclusively for search bars and notification pills.
-* **Primary Variant:** Solid Electric Indigo (\`#4F46E5\`) fill, pure white text, hairline inset ring (\`inset 0 1px 0 rgba(255,255,255,0.15)\`).
-* **Secondary / Outline Variant:** Translucent background (\`rgba(255,255,255,0.04)\` dark / \`rgba(0,0,0,0.02)\` light) with 1px Whisper Border.
-* **Kinetic Interaction:**
-  * Active state: \`-1px\` vertical translation (\`translate-y-[1px]\`), scale compression (\`scale: 0.98\`), spring duration 0.15s.
-  * Hover state: Ambient lift with soft diffused tinted shadow (\`box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.2)\`).
-  * Banned: No high-saturation neon outer drop-shadows. No custom non-standard cursor pointers.
+### 4.1 Buttons & Interactive Controls (Derived from packages/core/src/components/Button)
+
+The Button architecture is governed by strict tactile feedback and explicit geometric tokens extracted directly from \`Button.tsx\` and \`KineticButton.tsx\`:
+
+* **Variants Architecture:**
+  * **Solid (\`variant="solid"\`):** Solid opaque background with crisp contrast text (\`text-primary-foreground\`), high-agency active press feedback, and micro-elevation (\`shadow-xs\`).
+  * **Bordered (\`variant="bordered"\`):** Transparent background framed by a structured 2px high-contrast stroke (\`border-2\`).
+  * **Flat & Soft (\`variant="flat" | "soft"\`):** Borderless container with translucent tint fill for secondary actions.
+  * **Outline (\`variant="outline"\`):** Hairline 1px border (\`border-zinc-950/10\` light / \`border-white/15\` dark) with gentle hover wash.
+  * **Light & Ghost (\`variant="light" | "ghost"\`):** Borderless text button with surface-tinted hover state (\`hover:bg-zinc-100\` / \`hover:bg-zinc-800\`).
+  * **Plain (\`variant="plain"\`):** Zero background or border, used exclusively for inline links or tertiary triggers.
+* **Dimensional Scales & Touch Targets:**
+  * **Small (\`size="sm"\`):** Height \`32px\` (\`h-8\`), horizontal padding \`12px\` (\`px-3\`), font size \`12px\` (\`text-xs\`), icon gap \`6px\` (\`gap-1.5\`).
+  * **Medium (\`size="md"\`):** Height \`36px\` (\`h-9\`), horizontal padding \`16px\` (\`px-4\`), font size \`14px\` (\`text-sm\`), icon gap \`8px\` (\`gap-2\`). Default standard control.
+  * **Large (\`size="lg"\`):** Height \`44px\` (\`h-11\`), horizontal padding \`20px\` (\`px-5\`), font size \`16px\` (\`text-base\`), icon gap \`10px\` (\`gap-2.5\`). Satisfies mobile accessibility target.
+* **Corner Radius Mapping:**
+  * **Sharp (\`radius="none"\`):** Squared edges (\`0px\` / \`rounded-none\`).
+  * **Medium (\`radius="md"\`):** Generously rounded (\`12px\` / \`rounded-xl\`).
+  * **Large (\`radius="lg"\`):** Fluid organic corners (\`16px\` / \`rounded-2xl\`).
+  * **Full Capsule (\`radius="full"\`):** Pill shape (\`9999px\` / \`rounded-full\`) with optical compensation padding (\`px-3.5\` for sm, \`px-5\` for md, \`px-6\` for lg).
+* **Icon-Only Precision (\`isIconOnly={true}\`):**
+  * Strictly locked to 1:1 square aspect ratios (\`w-8 h-8\`, \`w-9 h-9\`, \`w-11 h-11\`) with zero horizontal padding (\`p-0\`).
+* **Tactile Micro-Interactions & Focus:**
+  * Active state: Tactile \`-2%\` scale compression (\`active:scale-[0.98]\`) with \`200ms\` duration.
+  * Focus state: \`2px\` focus ring with \`2px\` offset (\`focus-visible:ring-2 focus-visible:ring-offset-2\`).
+  * Kinetic spring easing: \`ease-[cubic-bezier(0.16,1,0.3,1)]\` for smooth physical velocity.
+* **Enforced Restrictions:**
+  * Banned: High-saturation neon outer drop-shadows and non-standard cursor pointers.
 
 ### 4.2 Cards & Double-Bezel Containers
 * **DoubleBezelCard:** Signature Hudbird container styling. Composed of an outer 1px border (\`rgba(255, 255, 255, 0.08)\`), an inner surface fill (\`#0F172A\` / \`#FFFFFF\`), and an interior 1px highlight perimeter (\`rgba(255, 255, 255, 0.04)\`), creating tangible bevel depth without heavy shadows.
