@@ -28,7 +28,7 @@ export default function BlocksGalleryDoc() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
             <div>
-              <h1 className="mb-4 text-4xl font-semibold tracking-tight text-zinc-900 md:text-5xl dark:text-white">
+              <h1 className="font-outfit mb-4 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl dark:text-white">
                 Blocks Gallery
               </h1>
               <p className="max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
@@ -71,7 +71,7 @@ export default function BlocksGalleryDoc() {
       {/* Main Content */}
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             {activeCategory} Blocks{" "}
             <span className="text-lg text-zinc-400">({filteredBlocks.length})</span>
           </h2>
@@ -141,7 +141,9 @@ function LazyBlock({ block, activeCategory }: { block: any; activeCategory: stri
     >
       <div className="mb-3 flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-medium text-zinc-900 dark:text-white">{block.name}</h3>
+          <h3 className="font-outfit text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
+            {block.name}
+          </h3>
           <p className="text-xs text-zinc-500">From {block.template} Template</p>
         </div>
       </div>
