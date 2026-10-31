@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { PageToolbar } from "../../components/PageToolbar";
+import { DocHeader } from "../../components/DocHeader";
 import { motion } from "framer-motion";
 import heroCode from "../../../../../packages/marketing/src/components/Hero/Hero.tsx?raw";
 import heroGlassCode from "../../../../../packages/marketing/src/components/Hero/HeroGlass.tsx?raw";
@@ -466,722 +466,708 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
   ];
 
   return (
-    <div className="flex w-full flex-col items-center pt-24 pb-24">
-      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
-        <div className="mb-10 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Hero Sections
-            </h1>
-            <p className="pt-4 text-base text-zinc-600 lg:max-w-4xl dark:text-zinc-400">
-              Use these Tailwind CSS hero section examples to add important messaging, product
-              photos, and call-to-actions to the top of your website. These hero examples are fully
-              responsive and support native dark mode.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 pb-24 sm:space-y-32">
+      {/* Title & Subtitle */}
+      <DocHeader
+        category="Marketing"
+        title="Hero Sections"
+        badge="Marketing"
+        description="Use these Tailwind CSS hero section examples to add important messaging, product showcases, and call-to-actions to the top of your website."
+      />
 
-        <div id="installation" className="scroll-mt-24 space-y-4">
-          <InstallationTabs componentName="hero" manualCode={heroCode} />
-        </div>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="hero" manualCode={heroCode} />
+      </div>
 
-        <div className="flex flex-col gap-16">
-          <MarketingPreview title="Minimalist Centered" skill={skillContent} code={minimalistCode}>
-            <Hero size="full">
-              <HeroBackground
-                src="/assets/marketing-section/hero-bg.webp"
-                overlayClassName="bg-white/40 dark:bg-zinc-950/80 backdrop-blur-md"
-              />
-              <HeroHeader
-                logo={
-                  <>
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-black.svg"
-                      alt="Logo"
-                      className="h-8 w-auto dark:hidden"
-                    />
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-white.svg"
-                      alt="Logo"
-                      className="hidden h-8 w-auto dark:block"
-                    />
-                  </>
-                }
-                links={[
-                  { label: "Product", href: "#" },
-                  {
-                    label: "Features",
-                    items: [
-                      { label: "Analytics", href: "#" },
-                      { label: "Security", href: "#" },
-                      { label: "Integrations", href: "#" },
-                    ],
-                  },
-                  { label: "Company", href: "#" },
-                ]}
-                action={
-                  <a
-                    href="#"
-                    className="text-sm leading-6 font-semibold text-zinc-900 transition-colors hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
-                  >
-                    Log in &rarr;
-                  </a>
-                }
-              />
-              <HeroBody align="center">
-                <HeroBadge>
-                  Announcing our next round of funding.{" "}
-                  <a
-                    href="#"
-                    className="ml-1 font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400"
-                  >
-                    Read more &rarr;
-                  </a>
-                </HeroBadge>
-                <HeroTitle>Data to enrich your online business</HeroTitle>
-                <HeroDescription className="mx-auto max-w-xl">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-                  commodo. Elit sunt amet fugiat veniam occaecat.
-                </HeroDescription>
-                <HeroActions className="justify-center">
-                  <Button color="primary" className="flex items-center gap-1">
-                    Get started <ArrowRight size={16} />
-                  </Button>
-                  <Button variant="light" className="flex items-center gap-1">
-                    Learn more <ArrowRight size={16} />
-                  </Button>
-                </HeroActions>
-              </HeroBody>
-            </Hero>
-          </MarketingPreview>
-
-          <MarketingPreview title="Split Screen Hero" skill={skillContent} code={splitCode}>
-            <Hero
-              size="full"
-              withBlobs={false}
-              className="bg-zinc-50 text-zinc-900 dark:bg-[#050505] dark:text-white"
-            >
-              <HeroHeader
-                logo={
-                  <>
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-black.svg"
-                      alt="Logo"
-                      className="h-8 w-auto dark:hidden"
-                    />
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-white.svg"
-                      alt="Logo"
-                      className="hidden h-8 w-auto dark:block"
-                    />
-                  </>
-                }
-                links={[
-                  { label: "Product", href: "#" },
-                  {
-                    label: "Features",
-                    items: [
-                      { label: "Analytics", href: "#" },
-                      { label: "Security", href: "#" },
-                    ],
-                  },
-                ]}
-                action={
-                  <a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white">
-                    Log in &rarr;
-                  </a>
-                }
-                className="[&_a]:text-zinc-600 dark:[&_a]:text-white [&_button]:text-zinc-900 dark:[&_button]:text-white"
-              />
-              <HeroBody>
-                <div className="grid items-center gap-12 lg:grid-cols-2">
-                  <HeroContent align="left">
-                    <HeroBadge className="bg-white/50 text-zinc-600 ring-zinc-200 backdrop-blur-md hover:ring-zinc-300 dark:bg-white/10 dark:text-zinc-200 dark:ring-white/20 dark:hover:ring-white/30">
-                      New Feature Release
-                    </HeroBadge>
-                    <HeroTitle className="text-left text-5xl text-zinc-900 sm:text-6xl dark:text-white">
-                      Build faster with Hudbird UI
-                    </HeroTitle>
-                    <HeroDescription className="text-left text-zinc-500 dark:text-zinc-400">
-                      Deploy your next web application in minutes with our premium React components.
-                      Beautifully designed, accessible, and ready for production.
-                    </HeroDescription>
-                    <HeroActions>
-                      <Button color="primary" className="flex items-center gap-1">
-                        Start building <ArrowRight size={16} />
-                      </Button>
-                    </HeroActions>
-                  </HeroContent>
-                  <HeroMedia className="relative flex items-center justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="relative w-full"
-                    >
-                      <img
-                        src="/assets/marketing-section/split-screen-light.webp"
-                        alt="App screenshot"
-                        className="h-auto max-h-[80vh] w-full rounded-3xl object-cover shadow-xl transition-opacity duration-700 ease-in-out dark:opacity-0"
-                      />
-                      <img
-                        src="/assets/marketing-section/split-screen-dark.webp"
-                        alt="App screenshot"
-                        className="absolute top-0 left-0 h-full w-full rounded-3xl object-cover opacity-0 shadow-2xl ring-1 ring-white/10 transition-opacity duration-700 ease-in-out dark:opacity-100"
-                      />
-                    </motion.div>
-                  </HeroMedia>
-                </div>
-              </HeroBody>
-            </Hero>
-          </MarketingPreview>
-
-          <MarketingPreview
-            title="Background Image Overlay"
-            skill={skillContent}
-            code={overlayCode}
-          >
-            <Hero size="full" withBlobs={false}>
-              <HeroBackground
-                src="/assets/marketing-section/hero-bg.webp"
-                overlayClassName="bg-zinc-900/80 dark:bg-zinc-950/90 backdrop-blur-sm"
-              />
-              <HeroHeader
-                logo={
+      <div className="flex flex-col gap-16">
+        <MarketingPreview title="Minimalist Centered" skill={skillContent} code={minimalistCode}>
+          <Hero size="full">
+            <HeroBackground
+              src="/assets/marketing-section/hero-bg.webp"
+              overlayClassName="bg-white/40 dark:bg-zinc-950/80 backdrop-blur-md"
+            />
+            <HeroHeader
+              logo={
+                <>
+                  <img
+                    src="/assets/new-logo/hudbirdui-icon-black.svg"
+                    alt="Logo"
+                    className="h-8 w-auto dark:hidden"
+                  />
                   <img
                     src="/assets/new-logo/hudbirdui-icon-white.svg"
                     alt="Logo"
-                    className="h-8 w-auto"
+                    className="hidden h-8 w-auto dark:block"
                   />
-                }
-                links={[
-                  { label: "Product", href: "#" },
-                  {
-                    label: "Features",
-                    items: [
-                      { label: "Analytics", href: "#" },
-                      { label: "Security", href: "#" },
-                    ],
-                  },
-                ]}
-                action={
-                  <a href="#" className="text-sm font-semibold text-white">
-                    Log in &rarr;
-                  </a>
-                }
-                className="[&_a]:text-white [&_button]:text-white"
-              />
-              <HeroBody align="center">
-                <HeroBadge className="bg-white/10 text-zinc-200 ring-white/20 backdrop-blur-md hover:ring-white/30">
-                  Available now
-                </HeroBadge>
-                <HeroTitle className="text-white">Experience the future</HeroTitle>
-                <HeroDescription className="mx-auto max-w-xl text-zinc-300">
-                  Immersive, full-screen background images create a stunning first impression for
-                  your marketing campaigns.
-                </HeroDescription>
-                <HeroActions className="justify-center">
-                  <Button color="primary">Get started</Button>
-                  <Button
-                    variant="plain"
-                    className="flex items-center gap-1 text-white hover:bg-white/10"
-                  >
-                    <Play size={16} /> Watch video
-                  </Button>
-                </HeroActions>
-              </HeroBody>
-            </Hero>
-          </MarketingPreview>
+                </>
+              }
+              links={[
+                { label: "Product", href: "#" },
+                {
+                  label: "Features",
+                  items: [
+                    { label: "Analytics", href: "#" },
+                    { label: "Security", href: "#" },
+                    { label: "Integrations", href: "#" },
+                  ],
+                },
+                { label: "Company", href: "#" },
+              ]}
+              action={
+                <a
+                  href="#"
+                  className="text-sm leading-6 font-semibold text-zinc-900 transition-colors hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
+                >
+                  Log in &rarr;
+                </a>
+              }
+            />
+            <HeroBody align="center">
+              <HeroBadge>
+                Announcing our next round of funding.{" "}
+                <a
+                  href="#"
+                  className="ml-1 font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400"
+                >
+                  Read more &rarr;
+                </a>
+              </HeroBadge>
+              <HeroTitle>Data to enrich your online business</HeroTitle>
+              <HeroDescription className="mx-auto max-w-xl">
+                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
+                commodo. Elit sunt amet fugiat veniam occaecat.
+              </HeroDescription>
+              <HeroActions className="justify-center">
+                <Button color="primary" className="flex items-center gap-1">
+                  Get started <ArrowRight size={16} />
+                </Button>
+                <Button variant="light" className="flex items-center gap-1">
+                  Learn more <ArrowRight size={16} />
+                </Button>
+              </HeroActions>
+            </HeroBody>
+          </Hero>
+        </MarketingPreview>
 
-          <MarketingPreview
-            title="Interactive WebGL Background"
-            skill={skillContent}
-            code={threeCode}
+        <MarketingPreview title="Split Screen Hero" skill={skillContent} code={splitCode}>
+          <Hero
+            size="full"
+            withBlobs={false}
+            className="bg-zinc-50 text-zinc-900 dark:bg-[#050505] dark:text-white"
           >
-            <Hero size="full" withBlobs={false}>
-              <Suspense
-                fallback={
-                  <div className="absolute inset-0 flex items-center justify-center bg-zinc-950 text-zinc-500">
-                    Loading 3D Engine...
-                  </div>
-                }
-              >
-                <HeroThreeBackground />
-              </Suspense>
-              <HeroHeader
-                logo={
+            <HeroHeader
+              logo={
+                <>
+                  <img
+                    src="/assets/new-logo/hudbirdui-icon-black.svg"
+                    alt="Logo"
+                    className="h-8 w-auto dark:hidden"
+                  />
                   <img
                     src="/assets/new-logo/hudbirdui-icon-white.svg"
                     alt="Logo"
-                    className="h-8 w-auto"
+                    className="hidden h-8 w-auto dark:block"
                   />
-                }
-                links={[
-                  { label: "Product", href: "#" },
-                  {
-                    label: "Features",
-                    items: [
-                      { label: "Analytics", href: "#" },
-                      { label: "Security", href: "#" },
-                    ],
-                  },
-                ]}
-                action={
-                  <a href="#" className="text-sm font-semibold text-white">
-                    Log in &rarr;
-                  </a>
-                }
-                className="[&_a]:text-white [&_button]:text-white"
-              />
-              <HeroBody align="center">
-                <HeroBadge className="bg-white/10 text-zinc-200 ring-white/20 backdrop-blur-md hover:ring-white/30">
-                  Interactive WebGL
-                </HeroBadge>
-                <HeroTitle className="text-white">Stand out from the crowd</HeroTitle>
-                <HeroDescription className="mx-auto max-w-xl text-zinc-300">
-                  Add a premium touch with high-performance 3D particle backgrounds powered by React
-                  Three Fiber.
-                </HeroDescription>
-                <HeroActions className="justify-center">
-                  <Button color="primary" className="flex items-center gap-1">
-                    Get started <ArrowRight size={16} />
-                  </Button>
-                </HeroActions>
-              </HeroBody>
-            </Hero>
-          </MarketingPreview>
-
-          <MarketingPreview
-            title="Split Screen Hero (Full Image)"
-            skill={skillContent}
-            code={fullImageSplitCode}
-          >
-            <Hero
-              size="full"
-              withBlobs={false}
-              className="overflow-hidden bg-zinc-50 p-0 dark:bg-zinc-950"
-            >
-              <div className="grid min-h-screen lg:grid-cols-2">
-                <div className="relative z-10 flex min-h-[50vh] flex-col justify-center px-6 pt-8 pb-16 sm:px-12 xl:px-24">
-                  <HeroHeader
-                    logo={
-                      <img
-                        src="/assets/new-logo/hudbirdui-icon-black.svg"
-                        alt="Logo"
-                        className="h-8 w-auto dark:hidden"
-                      />
-                    }
-                    links={[
-                      { label: "Product", href: "#" },
-                      { label: "Features", href: "#" },
-                    ]}
-                    action={
-                      <a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white">
-                        Log in &rarr;
-                      </a>
-                    }
-                    className="mx-auto mb-auto w-full max-w-xl pb-12"
-                  />
-                  <HeroContent align="left" className="mx-auto max-w-xl py-24 lg:py-48">
-                    <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white/50 px-3 py-1 text-sm text-zinc-600 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300">
-                      New Feature Release
-                    </div>
-                    <HeroTitle className="mb-6 text-left text-5xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">
-                      Redefining digital experiences.
-                    </HeroTitle>
-                    <HeroDescription className="mb-8 text-left text-lg text-zinc-500 dark:text-zinc-400">
-                      Create breathtaking web experiences that engage users and drive conversions
-                      with our expertly crafted UI toolkit.
-                    </HeroDescription>
-                    <HeroActions className="flex items-center gap-4">
-                      <Button
-                        color="primary"
-                        className="shadow-primary/20 flex items-center gap-1 shadow-lg"
-                      >
-                        Get Started <ArrowRight size={16} />
-                      </Button>
-                      <Button
-                        variant="light"
-                        className="font-semibold text-zinc-700 dark:text-zinc-300"
-                      >
-                        View Demo
-                      </Button>
-                    </HeroActions>
-                  </HeroContent>
-                  <div className="mt-auto"></div>
-                </div>
-                <div className="relative h-full min-h-[50vh] w-full border-l border-zinc-200 lg:min-h-screen dark:border-zinc-800">
-                  <img
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069"
-                    alt="Office Minimalist"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </Hero>
-          </MarketingPreview>
-
-          <MarketingPreview title="Bento Grid Hero" skill={skillContent} code={bentoGridCode}>
-            <Hero
-              size="full"
-              withBlobs={true}
-              className="overflow-hidden bg-zinc-50 dark:bg-zinc-950"
-            >
-              <HeroHeader
-                logo={
-                  <>
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-black.svg"
-                      alt="Logo"
-                      className="h-8 w-auto dark:hidden"
-                    />
-                    <img
-                      src="/assets/new-logo/hudbirdui-icon-white.svg"
-                      alt="Logo"
-                      className="hidden h-8 w-auto dark:block"
-                    />
-                  </>
-                }
-                links={[
-                  { label: "Products", href: "#" },
-                  { label: "App", href: "#" },
-                  { label: "About", href: "#" },
-                  { label: "FAQ", href: "#" },
-                ]}
-                action={
-                  <div className="flex items-center gap-2">
-                    <a
-                      href="#"
-                      className="px-3 py-1 text-sm font-semibold text-zinc-900 dark:text-white"
-                    >
-                      Log in
-                    </a>
-                    <Button
-                      size="sm"
-                      className="rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
-                    >
-                      Sign Up
+                </>
+              }
+              links={[
+                { label: "Product", href: "#" },
+                {
+                  label: "Features",
+                  items: [
+                    { label: "Analytics", href: "#" },
+                    { label: "Security", href: "#" },
+                  ],
+                },
+              ]}
+              action={
+                <a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white">
+                  Log in &rarr;
+                </a>
+              }
+              className="[&_a]:text-zinc-600 dark:[&_a]:text-white [&_button]:text-zinc-900 dark:[&_button]:text-white"
+            />
+            <HeroBody>
+              <div className="grid items-center gap-12 lg:grid-cols-2">
+                <HeroContent align="left">
+                  <HeroBadge className="bg-white/50 text-zinc-600 ring-zinc-200 backdrop-blur-md hover:ring-zinc-300 dark:bg-white/10 dark:text-zinc-200 dark:ring-white/20 dark:hover:ring-white/30">
+                    New Feature Release
+                  </HeroBadge>
+                  <HeroTitle className="text-left text-5xl text-zinc-900 sm:text-6xl dark:text-white">
+                    Build faster with Hudbird UI
+                  </HeroTitle>
+                  <HeroDescription className="text-left text-zinc-500 dark:text-zinc-400">
+                    Deploy your next web application in minutes with our premium React components.
+                    Beautifully designed, accessible, and ready for production.
+                  </HeroDescription>
+                  <HeroActions>
+                    <Button color="primary" className="flex items-center gap-1">
+                      Start building <ArrowRight size={16} />
                     </Button>
-                  </div>
-                }
-              />
-              <HeroBody className="pt-10">
-                <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 p-4 md:grid-cols-12 lg:gap-6">
-                  {/* Main Large Card (Left) */}
+                  </HeroActions>
+                </HeroContent>
+                <HeroMedia className="relative flex items-center justify-center">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="group relative flex min-h-[450px] flex-col justify-between overflow-hidden rounded-[2rem] bg-[#111] p-8 sm:p-12 md:col-span-12 lg:col-span-7 dark:bg-black"
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative w-full"
                   >
-                    <div className="relative z-10 max-w-md text-white">
-                      <div className="mb-4 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
-                        UI Components
-                      </div>
-                      <h2 className="mb-8 text-4xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
-                        Hudbird UI is built on top of modern web technologies
-                      </h2>
+                    <img
+                      src="/assets/marketing-section/split-screen-light.webp"
+                      alt="App screenshot"
+                      className="h-auto max-h-[80vh] w-full rounded-3xl object-cover shadow-xl transition-opacity duration-700 ease-in-out dark:opacity-0"
+                    />
+                    <img
+                      src="/assets/marketing-section/split-screen-dark.webp"
+                      alt="App screenshot"
+                      className="absolute top-0 left-0 h-full w-full rounded-3xl object-cover opacity-0 shadow-2xl ring-1 ring-white/10 transition-opacity duration-700 ease-in-out dark:opacity-100"
+                    />
+                  </motion.div>
+                </HeroMedia>
+              </div>
+            </HeroBody>
+          </Hero>
+        </MarketingPreview>
+
+        <MarketingPreview title="Background Image Overlay" skill={skillContent} code={overlayCode}>
+          <Hero size="full" withBlobs={false}>
+            <HeroBackground
+              src="/assets/marketing-section/hero-bg.webp"
+              overlayClassName="bg-zinc-900/80 dark:bg-zinc-950/90 backdrop-blur-sm"
+            />
+            <HeroHeader
+              logo={
+                <img
+                  src="/assets/new-logo/hudbirdui-icon-white.svg"
+                  alt="Logo"
+                  className="h-8 w-auto"
+                />
+              }
+              links={[
+                { label: "Product", href: "#" },
+                {
+                  label: "Features",
+                  items: [
+                    { label: "Analytics", href: "#" },
+                    { label: "Security", href: "#" },
+                  ],
+                },
+              ]}
+              action={
+                <a href="#" className="text-sm font-semibold text-white">
+                  Log in &rarr;
+                </a>
+              }
+              className="[&_a]:text-white [&_button]:text-white"
+            />
+            <HeroBody align="center">
+              <HeroBadge className="bg-white/10 text-zinc-200 ring-white/20 backdrop-blur-md hover:ring-white/30">
+                Available now
+              </HeroBadge>
+              <HeroTitle className="text-white">Experience the future</HeroTitle>
+              <HeroDescription className="mx-auto max-w-xl text-zinc-300">
+                Immersive, full-screen background images create a stunning first impression for your
+                marketing campaigns.
+              </HeroDescription>
+              <HeroActions className="justify-center">
+                <Button color="primary">Get started</Button>
+                <Button
+                  variant="plain"
+                  className="flex items-center gap-1 text-white hover:bg-white/10"
+                >
+                  <Play size={16} /> Watch video
+                </Button>
+              </HeroActions>
+            </HeroBody>
+          </Hero>
+        </MarketingPreview>
+
+        <MarketingPreview
+          title="Interactive WebGL Background"
+          skill={skillContent}
+          code={threeCode}
+        >
+          <Hero size="full" withBlobs={false}>
+            <Suspense
+              fallback={
+                <div className="absolute inset-0 flex items-center justify-center bg-zinc-950 text-zinc-500">
+                  Loading 3D Engine...
+                </div>
+              }
+            >
+              <HeroThreeBackground />
+            </Suspense>
+            <HeroHeader
+              logo={
+                <img
+                  src="/assets/new-logo/hudbirdui-icon-white.svg"
+                  alt="Logo"
+                  className="h-8 w-auto"
+                />
+              }
+              links={[
+                { label: "Product", href: "#" },
+                {
+                  label: "Features",
+                  items: [
+                    { label: "Analytics", href: "#" },
+                    { label: "Security", href: "#" },
+                  ],
+                },
+              ]}
+              action={
+                <a href="#" className="text-sm font-semibold text-white">
+                  Log in &rarr;
+                </a>
+              }
+              className="[&_a]:text-white [&_button]:text-white"
+            />
+            <HeroBody align="center">
+              <HeroBadge className="bg-white/10 text-zinc-200 ring-white/20 backdrop-blur-md hover:ring-white/30">
+                Interactive WebGL
+              </HeroBadge>
+              <HeroTitle className="text-white">Stand out from the crowd</HeroTitle>
+              <HeroDescription className="mx-auto max-w-xl text-zinc-300">
+                Add a premium touch with high-performance 3D particle backgrounds powered by React
+                Three Fiber.
+              </HeroDescription>
+              <HeroActions className="justify-center">
+                <Button color="primary" className="flex items-center gap-1">
+                  Get started <ArrowRight size={16} />
+                </Button>
+              </HeroActions>
+            </HeroBody>
+          </Hero>
+        </MarketingPreview>
+
+        <MarketingPreview
+          title="Split Screen Hero (Full Image)"
+          skill={skillContent}
+          code={fullImageSplitCode}
+        >
+          <Hero
+            size="full"
+            withBlobs={false}
+            className="overflow-hidden bg-zinc-50 p-0 dark:bg-zinc-950"
+          >
+            <div className="grid min-h-screen lg:grid-cols-2">
+              <div className="relative z-10 flex min-h-[50vh] flex-col justify-center px-6 pt-8 pb-16 sm:px-12 xl:px-24">
+                <HeroHeader
+                  logo={
+                    <img
+                      src="/assets/new-logo/hudbirdui-icon-black.svg"
+                      alt="Logo"
+                      className="h-8 w-auto dark:hidden"
+                    />
+                  }
+                  links={[
+                    { label: "Product", href: "#" },
+                    { label: "Features", href: "#" },
+                  ]}
+                  action={
+                    <a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white">
+                      Log in &rarr;
+                    </a>
+                  }
+                  className="mx-auto mb-auto w-full max-w-xl pb-12"
+                />
+                <HeroContent align="left" className="mx-auto max-w-xl py-24 lg:py-48">
+                  <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white/50 px-3 py-1 text-sm text-zinc-600 backdrop-blur-md dark:border-zinc-700 dark:bg-zinc-800/50 dark:text-zinc-300">
+                    New Feature Release
+                  </div>
+                  <HeroTitle className="mb-6 text-left text-5xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">
+                    Redefining digital experiences.
+                  </HeroTitle>
+                  <HeroDescription className="mb-8 text-left text-lg text-zinc-500 dark:text-zinc-400">
+                    Create breathtaking web experiences that engage users and drive conversions with
+                    our expertly crafted UI toolkit.
+                  </HeroDescription>
+                  <HeroActions className="flex items-center gap-4">
+                    <Button
+                      color="primary"
+                      className="shadow-primary/20 flex items-center gap-1 shadow-lg"
+                    >
+                      Get Started <ArrowRight size={16} />
+                    </Button>
+                    <Button
+                      variant="light"
+                      className="font-semibold text-zinc-700 dark:text-zinc-300"
+                    >
+                      View Demo
+                    </Button>
+                  </HeroActions>
+                </HeroContent>
+                <div className="mt-auto"></div>
+              </div>
+              <div className="relative h-full min-h-[50vh] w-full border-l border-zinc-200 lg:min-h-screen dark:border-zinc-800">
+                <img
+                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069"
+                  alt="Office Minimalist"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Hero>
+        </MarketingPreview>
+
+        <MarketingPreview title="Bento Grid Hero" skill={skillContent} code={bentoGridCode}>
+          <Hero
+            size="full"
+            withBlobs={true}
+            className="overflow-hidden bg-zinc-50 dark:bg-zinc-950"
+          >
+            <HeroHeader
+              logo={
+                <>
+                  <img
+                    src="/assets/new-logo/hudbirdui-icon-black.svg"
+                    alt="Logo"
+                    className="h-8 w-auto dark:hidden"
+                  />
+                  <img
+                    src="/assets/new-logo/hudbirdui-icon-white.svg"
+                    alt="Logo"
+                    className="hidden h-8 w-auto dark:block"
+                  />
+                </>
+              }
+              links={[
+                { label: "Products", href: "#" },
+                { label: "App", href: "#" },
+                { label: "About", href: "#" },
+                { label: "FAQ", href: "#" },
+              ]}
+              action={
+                <div className="flex items-center gap-2">
+                  <a
+                    href="#"
+                    className="px-3 py-1 text-sm font-semibold text-zinc-900 dark:text-white"
+                  >
+                    Log in
+                  </a>
+                  <Button
+                    size="sm"
+                    className="rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+                  >
+                    Sign Up
+                  </Button>
+                </div>
+              }
+            />
+            <HeroBody className="pt-10">
+              <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-4 p-4 md:grid-cols-12 lg:gap-6">
+                {/* Main Large Card (Left) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="group relative flex min-h-[450px] flex-col justify-between overflow-hidden rounded-[2rem] bg-[#111] p-8 sm:p-12 md:col-span-12 lg:col-span-7 dark:bg-black"
+                >
+                  <div className="relative z-10 max-w-md text-white">
+                    <div className="mb-4 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
+                      UI Components
                     </div>
-                    <div className="relative z-10 mt-12 sm:mt-0">
-                      <div className="inline-flex cursor-pointer items-center gap-3 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg transition-colors hover:bg-zinc-100">
-                        <span>Explore editor</span>
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
+                    <h2 className="mb-8 text-4xl leading-[1.1] font-medium tracking-tight sm:text-5xl">
+                      Hudbird UI is built on top of modern web technologies
+                    </h2>
+                  </div>
+                  <div className="relative z-10 mt-12 sm:mt-0">
+                    <div className="inline-flex cursor-pointer items-center gap-3 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg transition-colors hover:bg-zinc-100">
+                      <span>Explore editor</span>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <path d="M16 10a4 4 0 0 1-8 0" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Minimalist Editor Illustration */}
+                  <div className="pointer-events-none absolute -right-4 -bottom-4 flex h-[280px] w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 opacity-90 shadow-2xl transition-transform duration-700 group-hover:-translate-y-2 group-hover:scale-105 sm:right-4 sm:bottom-4">
+                    <div className="flex h-8 items-center gap-1.5 border-b border-zinc-800 bg-zinc-900/50 px-3">
+                      <div className="h-2.5 w-2.5 rounded-full bg-red-500/80"></div>
+                      <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></div>
+                      <div className="h-2.5 w-2.5 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div className="flex flex-1 gap-4 bg-zinc-950 p-4">
+                      <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900/20">
+                        <motion.div
+                          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
+                          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                          className="flex h-16 w-16 items-center justify-center rounded-2xl border border-indigo-500/50 bg-indigo-500/20"
                         >
-                          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                          <line x1="3" y1="6" x2="21" y2="6" />
-                          <path d="M16 10a4 4 0 0 1-8 0" />
-                        </svg>
+                          <div className="h-8 w-8 rounded-full bg-indigo-400 blur-sm"></div>
+                        </motion.div>
                       </div>
-                    </div>
+                      <div className="w-20 space-y-3">
+                        <div className="h-3 w-full rounded bg-zinc-800"></div>
+                        <motion.div
+                          animate={{ width: ["100%", "60%", "100%"] }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                          className="h-2 rounded bg-zinc-800"
+                        />
+                        <div className="h-2 w-4/5 rounded bg-zinc-800"></div>
+                        <div className="h-2 w-full rounded bg-zinc-800"></div>
+                        <div className="h-2 w-3/4 rounded bg-zinc-800"></div>
 
-                    {/* Minimalist Editor Illustration */}
-                    <div className="pointer-events-none absolute -right-4 -bottom-4 flex h-[280px] w-full max-w-[320px] flex-col overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 opacity-90 shadow-2xl transition-transform duration-700 group-hover:-translate-y-2 group-hover:scale-105 sm:right-4 sm:bottom-4">
-                      <div className="flex h-8 items-center gap-1.5 border-b border-zinc-800 bg-zinc-900/50 px-3">
-                        <div className="h-2.5 w-2.5 rounded-full bg-red-500/80"></div>
-                        <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80"></div>
-                        <div className="h-2.5 w-2.5 rounded-full bg-green-500/80"></div>
-                      </div>
-                      <div className="flex flex-1 gap-4 bg-zinc-950 p-4">
-                        <div className="relative flex flex-1 items-center justify-center overflow-hidden rounded-lg border border-zinc-800/50 bg-zinc-900/20">
-                          <motion.div
-                            animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="flex h-16 w-16 items-center justify-center rounded-2xl border border-indigo-500/50 bg-indigo-500/20"
-                          >
-                            <div className="h-8 w-8 rounded-full bg-indigo-400 blur-sm"></div>
-                          </motion.div>
-                        </div>
-                        <div className="w-20 space-y-3">
-                          <div className="h-3 w-full rounded bg-zinc-800"></div>
-                          <motion.div
-                            animate={{ width: ["100%", "60%", "100%"] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="h-2 rounded bg-zinc-800"
-                          />
-                          <div className="h-2 w-4/5 rounded bg-zinc-800"></div>
-                          <div className="h-2 w-full rounded bg-zinc-800"></div>
-                          <div className="h-2 w-3/4 rounded bg-zinc-800"></div>
-
-                          <div className="mt-6 space-y-2">
-                            <div className="flex items-center justify-between">
-                              <div className="h-5 w-5 rounded bg-zinc-800"></div>
-                              <div className="h-5 w-10 rounded bg-zinc-800"></div>
-                            </div>
-                            <div className="flex items-center justify-between">
-                              <div className="h-5 w-5 rounded bg-zinc-800"></div>
-                              <div className="h-5 w-10 rounded bg-zinc-800"></div>
-                            </div>
+                        <div className="mt-6 space-y-2">
+                          <div className="flex items-center justify-between">
+                            <div className="h-5 w-5 rounded bg-zinc-800"></div>
+                            <div className="h-5 w-10 rounded bg-zinc-800"></div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="h-5 w-5 rounded bg-zinc-800"></div>
+                            <div className="h-5 w-10 rounded bg-zinc-800"></div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                </motion.div>
+
+                {/* Right Side Grid */}
+                <div className="grid grid-cols-2 grid-rows-2 gap-4 md:col-span-12 lg:col-span-5 lg:gap-6">
+                  {/* Top Wide Card - Layers Panel */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                    className="group relative col-span-2 row-span-1 overflow-hidden rounded-[2rem] bg-zinc-200/50 p-6 transition-colors hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+                  >
+                    <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-zinc-500 uppercase">
+                      Scalable Hierarchy
+                    </div>
+                    <h3 className="relative z-10 mt-4 text-3xl font-medium text-zinc-900 dark:text-white">
+                      Layer Management
+                    </h3>
+
+                    <div className="relative z-10 mt-8 space-y-3">
+                      {[1, 2, 3].map((i) => (
+                        <motion.div
+                          key={i}
+                          animate={{ x: [0, 10, 0] }}
+                          transition={{
+                            duration: 3,
+                            delay: i * 0.4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="flex w-3/4 max-w-[200px] items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/80"
+                        >
+                          <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-700">
+                            <div className="h-3 w-3 rounded-sm border border-zinc-400"></div>
+                          </div>
+                          <div className="h-2 w-full rounded bg-zinc-300 dark:bg-zinc-600"></div>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-zinc-300 opacity-50 blur-xl transition-transform duration-500 group-hover:scale-110 dark:bg-zinc-700" />
                   </motion.div>
 
-                  {/* Right Side Grid */}
-                  <div className="grid grid-cols-2 grid-rows-2 gap-4 md:col-span-12 lg:col-span-5 lg:gap-6">
-                    {/* Top Wide Card - Layers Panel */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-                      className="group relative col-span-2 row-span-1 overflow-hidden rounded-[2rem] bg-zinc-200/50 p-6 transition-colors hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800"
-                    >
-                      <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-zinc-500 uppercase">
-                        Scalable Hierarchy
+                  {/* Bottom Left Square - Color Picker */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+                    className="group relative col-span-1 row-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#a77dfa] p-6 transition-colors hover:bg-[#9760ff]"
+                  >
+                    <div>
+                      <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-white/70 uppercase">
+                        Design Tokens
                       </div>
-                      <h3 className="relative z-10 mt-4 text-3xl font-medium text-zinc-900 dark:text-white">
-                        Layer Management
-                      </h3>
+                      <h3 className="relative z-10 text-2xl font-medium text-white">Colors</h3>
+                    </div>
 
-                      <div className="relative z-10 mt-8 space-y-3">
-                        {[1, 2, 3].map((i) => (
-                          <motion.div
-                            key={i}
-                            animate={{ x: [0, 10, 0] }}
-                            transition={{
-                              duration: 3,
-                              delay: i * 0.4,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                            }}
-                            className="flex w-3/4 max-w-[200px] items-center gap-3 rounded-xl border border-zinc-200 bg-white p-2.5 shadow-sm dark:border-zinc-700/50 dark:bg-zinc-800/80"
-                          >
-                            <div className="flex h-6 w-6 items-center justify-center rounded bg-zinc-100 dark:bg-zinc-700">
-                              <div className="h-3 w-3 rounded-sm border border-zinc-400"></div>
-                            </div>
-                            <div className="h-2 w-full rounded bg-zinc-300 dark:bg-zinc-600"></div>
-                          </motion.div>
-                        ))}
-                      </div>
-                      <div className="pointer-events-none absolute -right-10 -bottom-10 h-48 w-48 rounded-full bg-zinc-300 opacity-50 blur-xl transition-transform duration-500 group-hover:scale-110 dark:bg-zinc-700" />
-                    </motion.div>
+                    <div className="relative z-10 mt-6 flex justify-center gap-2">
+                      <motion.div
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        className="h-10 w-10 rounded-full border-4 border-purple-200 bg-white shadow-lg"
+                      />
+                      <motion.div
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{
+                          duration: 2,
+                          delay: 0.2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="h-10 w-10 rounded-full border-4 border-purple-800 bg-black shadow-lg"
+                      />
+                      <motion.div
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{
+                          duration: 2,
+                          delay: 0.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="h-10 w-10 rounded-full border-4 border-[#8cee2c] bg-[#a3ff47] shadow-lg"
+                      />
+                    </div>
+                  </motion.div>
 
-                    {/* Bottom Left Square - Color Picker */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-                      className="group relative col-span-1 row-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#a77dfa] p-6 transition-colors hover:bg-[#9760ff]"
-                    >
-                      <div>
-                        <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-white/70 uppercase">
-                          Design Tokens
-                        </div>
-                        <h3 className="relative z-10 text-2xl font-medium text-white">Colors</h3>
+                  {/* Bottom Right Square - Responsive */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+                    className="group relative col-span-1 row-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#a3ff47] p-6 transition-colors hover:bg-[#8cee2c]"
+                  >
+                    <div>
+                      <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-black/60 uppercase">
+                        Any Device
                       </div>
+                      <h3 className="relative z-10 text-2xl font-medium text-black">Responsive</h3>
+                    </div>
 
-                      <div className="relative z-10 mt-6 flex justify-center gap-2">
-                        <motion.div
-                          animate={{ y: [0, -8, 0] }}
-                          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                          className="h-10 w-10 rounded-full border-4 border-purple-200 bg-white shadow-lg"
-                        />
-                        <motion.div
-                          animate={{ y: [0, -8, 0] }}
-                          transition={{
-                            duration: 2,
-                            delay: 0.2,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="h-10 w-10 rounded-full border-4 border-purple-800 bg-black shadow-lg"
-                        />
-                        <motion.div
-                          animate={{ y: [0, -8, 0] }}
-                          transition={{
-                            duration: 2,
-                            delay: 0.4,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="h-10 w-10 rounded-full border-4 border-[#8cee2c] bg-[#a3ff47] shadow-lg"
-                        />
-                      </div>
-                    </motion.div>
-
-                    {/* Bottom Right Square - Responsive */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-                      className="group relative col-span-1 row-span-1 flex flex-col justify-between overflow-hidden rounded-[2rem] bg-[#a3ff47] p-6 transition-colors hover:bg-[#8cee2c]"
-                    >
-                      <div>
-                        <div className="relative z-10 mb-2 text-[10px] font-bold tracking-wider text-black/60 uppercase">
-                          Any Device
-                        </div>
-                        <h3 className="relative z-10 text-2xl font-medium text-black">
-                          Responsive
-                        </h3>
-                      </div>
-
-                      <div className="relative z-10 mt-8 flex items-end justify-center gap-3">
-                        <motion.div
-                          animate={{ height: ["40px", "60px", "40px"] }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                          className="w-8 rounded-t-lg bg-black/80"
-                        />
-                        <motion.div
-                          animate={{ height: ["60px", "80px", "60px"] }}
-                          transition={{
-                            duration: 3,
-                            delay: 0.5,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="w-12 rounded-t-lg bg-black/60"
-                        />
-                        <motion.div
-                          animate={{ height: ["30px", "50px", "30px"] }}
-                          transition={{
-                            duration: 3,
-                            delay: 1,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          className="w-6 rounded-t-lg bg-black/40"
-                        />
-                      </div>
-                    </motion.div>
-                  </div>
+                    <div className="relative z-10 mt-8 flex items-end justify-center gap-3">
+                      <motion.div
+                        animate={{ height: ["40px", "60px", "40px"] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-8 rounded-t-lg bg-black/80"
+                      />
+                      <motion.div
+                        animate={{ height: ["60px", "80px", "60px"] }}
+                        transition={{
+                          duration: 3,
+                          delay: 0.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="w-12 rounded-t-lg bg-black/60"
+                      />
+                      <motion.div
+                        animate={{ height: ["30px", "50px", "30px"] }}
+                        transition={{
+                          duration: 3,
+                          delay: 1,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="w-6 rounded-t-lg bg-black/40"
+                      />
+                    </div>
+                  </motion.div>
                 </div>
-              </HeroBody>
-            </Hero>
+              </div>
+            </HeroBody>
+          </Hero>
+        </MarketingPreview>
+
+        {/* Glassmorphic Hero */}
+        <div id="glass" className="scroll-mt-24">
+          <MarketingPreview title="Glassmorphic Hero" code={heroGlassCode}>
+            <HeroGlass
+              badge={
+                <span>
+                  Announcing our next round of funding.{" "}
+                  <a href="#" className="ml-1 font-semibold text-indigo-600 dark:text-indigo-400">
+                    Read more &rarr;
+                  </a>
+                </span>
+              }
+              title="Data to enrich your online business"
+              description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat."
+              actions={
+                <>
+                  <Button color="primary">
+                    Get started <ArrowRight size={16} className="ml-1" />
+                  </Button>
+                  <Button variant="light">
+                    Learn more <ArrowRight size={16} className="ml-1" />
+                  </Button>
+                </>
+              }
+              illustration={
+                <img
+                  src="/assets/marketing-section/split-screen-light.webp"
+                  alt="App screenshot"
+                  className="h-auto w-full object-cover dark:hidden"
+                />
+              }
+            />
           </MarketingPreview>
-
-          {/* Glassmorphic Hero */}
-          <div id="glass" className="scroll-mt-24">
-            <MarketingPreview title="Glassmorphic Hero" code={heroGlassCode}>
-              <HeroGlass
-                badge={
-                  <span>
-                    Announcing our next round of funding.{" "}
-                    <a href="#" className="ml-1 font-semibold text-indigo-600 dark:text-indigo-400">
-                      Read more &rarr;
-                    </a>
-                  </span>
-                }
-                title="Data to enrich your online business"
-                description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat."
-                actions={
-                  <>
-                    <Button color="primary">
-                      Get started <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                    <Button variant="light">
-                      Learn more <ArrowRight size={16} className="ml-1" />
-                    </Button>
-                  </>
-                }
-                illustration={
-                  <img
-                    src="/assets/marketing-section/split-screen-light.webp"
-                    alt="App screenshot"
-                    className="h-auto w-full object-cover dark:hidden"
-                  />
-                }
-              />
-            </MarketingPreview>
-          </div>
         </div>
+      </div>
 
-        {/* Component API */}
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
+      {/* Component API */}
+      <section id="component-api" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Component API
+        </h2>
+        <ApiTable
+          title="Hero Props"
+          note={
+            <span>
+              <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Hero</strong> is
+              built using compound components for maximum layout flexibility.
+            </span>
+          }
+          rows={[
+            ...apiRows,
+            {
+              prop: "align (HeroBody & HeroContent)",
+              type: '"left" | "center" | "right"',
+              defaultVal: '"left"',
+              description:
+                "Controls the internal alignment (flex items and text align) of the body or content.",
+            },
+          ]}
+        />
+        <div>
+          <h3 className="font-outfit mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+            HeroGlass Props
+          </h3>
           <ApiTable
-            title="Hero Props"
-            note={
-              <span>
-                <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Hero</strong> is
-                built using compound components for maximum layout flexibility.
-              </span>
-            }
+            title="HeroGlass"
             rows={[
-              ...apiRows,
               {
-                prop: "align (HeroBody & HeroContent)",
-                type: '"left" | "center" | "right"',
-                defaultVal: '"left"',
-                description:
-                  "Controls the internal alignment (flex items and text align) of the body or content.",
+                prop: "title",
+                type: "ReactNode",
+                defaultVal: "required",
+                description: "Main hero title.",
+              },
+              {
+                prop: "description",
+                type: "ReactNode",
+                defaultVal: "required",
+                description: "Main hero description.",
+              },
+              {
+                prop: "badge",
+                type: "ReactNode",
+                defaultVal: "undefined",
+                description: "Optional badge element above the title.",
+              },
+              {
+                prop: "actions",
+                type: "ReactNode",
+                defaultVal: "undefined",
+                description: "Buttons or action links below the description.",
+              },
+              {
+                prop: "illustration",
+                type: "ReactNode",
+                defaultVal: "undefined",
+                description: "Optional illustration/image element.",
               },
             ]}
           />
-          <div>
-            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              HeroGlass Props
-            </h3>
-            <ApiTable
-              title="HeroGlass"
-              rows={[
-                {
-                  prop: "title",
-                  type: "ReactNode",
-                  defaultVal: "required",
-                  description: "Main hero title.",
-                },
-                {
-                  prop: "description",
-                  type: "ReactNode",
-                  defaultVal: "required",
-                  description: "Main hero description.",
-                },
-                {
-                  prop: "badge",
-                  type: "ReactNode",
-                  defaultVal: "undefined",
-                  description: "Optional badge element above the title.",
-                },
-                {
-                  prop: "actions",
-                  type: "ReactNode",
-                  defaultVal: "undefined",
-                  description: "Buttons or action links below the description.",
-                },
-                {
-                  prop: "illustration",
-                  type: "ReactNode",
-                  defaultVal: "undefined",
-                  description: "Optional illustration/image element.",
-                },
-              ]}
-            />
-          </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }

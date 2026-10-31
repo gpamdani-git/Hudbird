@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PageToolbar } from "../../components/PageToolbar";
+import { DocHeader } from "../../components/DocHeader";
 import pricingCode from "../../../../../packages/marketing/src/components/Pricing/Pricing.tsx?raw";
 import pricingGlassCode from "../../../../../packages/marketing/src/components/Pricing/PricingGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
@@ -169,225 +169,213 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
   ];
 
   return (
-    <div className="flex w-full flex-col items-center pt-24 pb-24">
-      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Pricing Sections
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                New
-              </span>
-            </div>
-            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
-              Beautifully designed pricing tables that convert visitors into customers. Built with
-              accessibility and flexibility in mind.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 pb-24 sm:space-y-32">
+      {/* Title & Subtitle */}
+      <DocHeader
+        category="Marketing"
+        title="Pricing Sections"
+        badge="Marketing"
+        description="Beautifully designed pricing tables that convert visitors into customers. Built with accessibility and flexibility in mind."
+      />
 
-        <div id="installation" className="scroll-mt-24 space-y-4">
-          <InstallationTabs componentName="pricing" manualCode={pricingCode} />
-        </div>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="pricing" manualCode={pricingCode} />
+      </div>
 
-        <div className="mt-16 flex flex-col gap-16">
-          <MarketingPreview title="Standard Three Tier" skill={skillContent} code={threeTierCode}>
-            <PricingSection variant="subtle">
-              <PricingHeader>
-                <PricingBadge>Pricing</PricingBadge>
-                <PricingTitle>Pricing that grows with you</PricingTitle>
-                <PricingDescription>
-                  Choose an affordable plan that's packed with the best features for engaging your
-                  audience, creating customer loyalty, and driving sales.
-                </PricingDescription>
-                <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
-              </PricingHeader>
+      <div className="flex flex-col gap-16">
+        <MarketingPreview title="Standard Three Tier" skill={skillContent} code={threeTierCode}>
+          <PricingSection variant="subtle">
+            <PricingHeader>
+              <PricingBadge>Pricing</PricingBadge>
+              <PricingTitle>Pricing that grows with you</PricingTitle>
+              <PricingDescription>
+                Choose an affordable plan that's packed with the best features for engaging your
+                audience, creating customer loyalty, and driving sales.
+              </PricingDescription>
+              <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
+            </PricingHeader>
 
-              <PricingGrid>
-                {/* Tier 1 */}
-                <PricingTier index={0}>
-                  <PricingTierHeader>
-                    <PricingTierName>Freelancer</PricingTierName>
-                    <PricingTierDescription>
-                      The essentials to provide your best work for clients.
-                    </PricingTierDescription>
-                    <PricingTierPrice
-                      price={isAnnual ? "$190" : "$19"}
-                      period={isAnnual ? "/year" : "/month"}
-                    />
-                  </PricingTierHeader>
-                  <Button variant="outline" className="mt-2 w-full">
-                    Buy plan
-                  </Button>
-                  <PricingTierFeatures>
-                    <PricingTierFeature>5 products</PricingTierFeature>
-                    <PricingTierFeature>Up to 1,000 subscribers</PricingTierFeature>
-                    <PricingTierFeature>Basic analytics</PricingTierFeature>
-                    <PricingTierFeature>48-hour support response time</PricingTierFeature>
-                  </PricingTierFeatures>
-                </PricingTier>
+            <PricingGrid>
+              {/* Tier 1 */}
+              <PricingTier index={0}>
+                <PricingTierHeader>
+                  <PricingTierName>Freelancer</PricingTierName>
+                  <PricingTierDescription>
+                    The essentials to provide your best work for clients.
+                  </PricingTierDescription>
+                  <PricingTierPrice
+                    price={isAnnual ? "$190" : "$19"}
+                    period={isAnnual ? "/year" : "/month"}
+                  />
+                </PricingTierHeader>
+                <Button variant="outline" className="mt-2 w-full">
+                  Buy plan
+                </Button>
+                <PricingTierFeatures>
+                  <PricingTierFeature>5 products</PricingTierFeature>
+                  <PricingTierFeature>Up to 1,000 subscribers</PricingTierFeature>
+                  <PricingTierFeature>Basic analytics</PricingTierFeature>
+                  <PricingTierFeature>48-hour support response time</PricingTierFeature>
+                </PricingTierFeatures>
+              </PricingTier>
 
-                {/* Tier 2 (Popular) */}
-                <PricingTier index={1} popular>
-                  <PricingTierHeader>
-                    <PricingTierName popular>Startup</PricingTierName>
-                    <PricingTierDescription popular>
-                      A plan that scales with your rapidly growing business.
-                    </PricingTierDescription>
-                    <PricingTierPrice
-                      popular
-                      price={isAnnual ? "$490" : "$49"}
-                      period={isAnnual ? "/year" : "/month"}
-                    />
-                  </PricingTierHeader>
-                  <Button
-                    color="primary"
-                    className="mt-2 w-full ring-1 ring-white/20 hover:ring-white/40"
-                  >
-                    Buy plan
-                  </Button>
-                  <PricingTierFeatures popular>
-                    <PricingTierFeature popular>25 products</PricingTierFeature>
-                    <PricingTierFeature popular>Up to 10,000 subscribers</PricingTierFeature>
-                    <PricingTierFeature popular>Advanced analytics</PricingTierFeature>
-                    <PricingTierFeature popular>24-hour support response time</PricingTierFeature>
-                    <PricingTierFeature popular>Marketing automations</PricingTierFeature>
-                  </PricingTierFeatures>
-                </PricingTier>
+              {/* Tier 2 (Popular) */}
+              <PricingTier index={1} popular>
+                <PricingTierHeader>
+                  <PricingTierName popular>Startup</PricingTierName>
+                  <PricingTierDescription popular>
+                    A plan that scales with your rapidly growing business.
+                  </PricingTierDescription>
+                  <PricingTierPrice
+                    popular
+                    price={isAnnual ? "$490" : "$49"}
+                    period={isAnnual ? "/year" : "/month"}
+                  />
+                </PricingTierHeader>
+                <Button
+                  color="primary"
+                  className="mt-2 w-full ring-1 ring-white/20 hover:ring-white/40"
+                >
+                  Buy plan
+                </Button>
+                <PricingTierFeatures popular>
+                  <PricingTierFeature popular>25 products</PricingTierFeature>
+                  <PricingTierFeature popular>Up to 10,000 subscribers</PricingTierFeature>
+                  <PricingTierFeature popular>Advanced analytics</PricingTierFeature>
+                  <PricingTierFeature popular>24-hour support response time</PricingTierFeature>
+                  <PricingTierFeature popular>Marketing automations</PricingTierFeature>
+                </PricingTierFeatures>
+              </PricingTier>
 
-                {/* Tier 3 */}
-                <PricingTier index={2}>
-                  <PricingTierHeader>
-                    <PricingTierName>Enterprise</PricingTierName>
-                    <PricingTierDescription>
-                      Dedicated support and infrastructure for your company.
-                    </PricingTierDescription>
-                    <PricingTierPrice
-                      price={isAnnual ? "$990" : "$99"}
-                      period={isAnnual ? "/year" : "/month"}
-                    />
-                  </PricingTierHeader>
-                  <Button variant="outline" className="mt-2 w-full">
-                    Buy plan
-                  </Button>
-                  <PricingTierFeatures>
-                    <PricingTierFeature>Unlimited products</PricingTierFeature>
-                    <PricingTierFeature>Unlimited subscribers</PricingTierFeature>
-                    <PricingTierFeature>Advanced analytics</PricingTierFeature>
-                    <PricingTierFeature>1-hour, dedicated support response time</PricingTierFeature>
-                    <PricingTierFeature>Marketing automations</PricingTierFeature>
-                    <PricingTierFeature>Custom reporting tools</PricingTierFeature>
-                  </PricingTierFeatures>
-                </PricingTier>
-              </PricingGrid>
-            </PricingSection>
-          </MarketingPreview>
-        </div>
+              {/* Tier 3 */}
+              <PricingTier index={2}>
+                <PricingTierHeader>
+                  <PricingTierName>Enterprise</PricingTierName>
+                  <PricingTierDescription>
+                    Dedicated support and infrastructure for your company.
+                  </PricingTierDescription>
+                  <PricingTierPrice
+                    price={isAnnual ? "$990" : "$99"}
+                    period={isAnnual ? "/year" : "/month"}
+                  />
+                </PricingTierHeader>
+                <Button variant="outline" className="mt-2 w-full">
+                  Buy plan
+                </Button>
+                <PricingTierFeatures>
+                  <PricingTierFeature>Unlimited products</PricingTierFeature>
+                  <PricingTierFeature>Unlimited subscribers</PricingTierFeature>
+                  <PricingTierFeature>Advanced analytics</PricingTierFeature>
+                  <PricingTierFeature>1-hour, dedicated support response time</PricingTierFeature>
+                  <PricingTierFeature>Marketing automations</PricingTierFeature>
+                  <PricingTierFeature>Custom reporting tools</PricingTierFeature>
+                </PricingTierFeatures>
+              </PricingTier>
+            </PricingGrid>
+          </PricingSection>
+        </MarketingPreview>
+      </div>
 
-        {/* Glassmorphic Pricing */}
-        <div id="glass" className="mt-16 scroll-mt-24">
-          <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
-            Glassmorphic Pricing
-          </h3>
-          <MarketingPreview>
-            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-              <div className="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
-              <div className="absolute right-1/4 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
+      {/* Glassmorphic Pricing */}
+      <div id="glass" className="scroll-mt-24 space-y-4">
+        <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+          Glassmorphic Pricing
+        </h3>
+        <MarketingPreview>
+          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
+            <div className="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
+            <div className="absolute right-1/4 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
 
-              <PricingGlass
-                isAnnual={isAnnual}
-                onToggleAnnual={setIsAnnual}
-                tiers={[
-                  {
-                    name: "Freelancer",
-                    description: "The essentials to provide your best work for clients.",
-                    price: isAnnual ? "$190" : "$19",
-                    period: isAnnual ? "/year" : "/month",
-                    buttonLabel: "Buy plan",
-                    features: [
-                      "5 products",
-                      "Up to 1,000 subscribers",
-                      "Basic analytics",
-                      "48-hour support response time",
-                    ],
-                  },
-                  {
-                    name: "Startup",
-                    description: "A plan that scales with your rapidly growing business.",
-                    price: isAnnual ? "$490" : "$49",
-                    period: isAnnual ? "/year" : "/month",
-                    popular: true,
-                    buttonLabel: "Buy plan",
-                    features: [
-                      "25 products",
-                      "Up to 10,000 subscribers",
-                      "Advanced analytics",
-                      "24-hour support response time",
-                      "Marketing automations",
-                    ],
-                  },
-                  {
-                    name: "Enterprise",
-                    description: "Dedicated support and infrastructure for your company.",
-                    price: isAnnual ? "$990" : "$99",
-                    period: isAnnual ? "/year" : "/month",
-                    buttonLabel: "Buy plan",
-                    features: [
-                      "Unlimited products",
-                      "Unlimited subscribers",
-                      "Advanced analytics",
-                      "1-hour, dedicated support response time",
-                      "Marketing automations",
-                      "Custom reporting tools",
-                    ],
-                  },
-                ]}
-              />
-            </div>
-          </MarketingPreview>
-        </div>
-
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-8">
-          <div>
-            <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-              Component API
-            </h2>
-            <ApiTable title="Pricing Props" rows={apiRows} />
-          </div>
-          <div>
-            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              PricingGlass Props
-            </h3>
-            <ApiTable
-              title="PricingGlass"
-              rows={[
+            <PricingGlass
+              isAnnual={isAnnual}
+              onToggleAnnual={setIsAnnual}
+              tiers={[
                 {
-                  prop: "tiers",
-                  type: "PricingGlassTier[]",
-                  defaultVal: "-",
-                  description: "Array of pricing tiers to display.",
+                  name: "Freelancer",
+                  description: "The essentials to provide your best work for clients.",
+                  price: isAnnual ? "$190" : "$19",
+                  period: isAnnual ? "/year" : "/month",
+                  buttonLabel: "Buy plan",
+                  features: [
+                    "5 products",
+                    "Up to 1,000 subscribers",
+                    "Basic analytics",
+                    "48-hour support response time",
+                  ],
                 },
                 {
-                  prop: "isAnnual",
-                  type: "boolean",
-                  defaultVal: "false",
-                  description: "State controlling the toggle switch position.",
+                  name: "Startup",
+                  description: "A plan that scales with your rapidly growing business.",
+                  price: isAnnual ? "$490" : "$49",
+                  period: isAnnual ? "/year" : "/month",
+                  popular: true,
+                  buttonLabel: "Buy plan",
+                  features: [
+                    "25 products",
+                    "Up to 10,000 subscribers",
+                    "Advanced analytics",
+                    "24-hour support response time",
+                    "Marketing automations",
+                  ],
                 },
                 {
-                  prop: "onToggleAnnual",
-                  type: "(isAnnual: boolean) => void",
-                  defaultVal: "-",
-                  description:
-                    "Callback fired when the toggle is clicked. If not provided, toggle is hidden.",
+                  name: "Enterprise",
+                  description: "Dedicated support and infrastructure for your company.",
+                  price: isAnnual ? "$990" : "$99",
+                  period: isAnnual ? "/year" : "/month",
+                  buttonLabel: "Buy plan",
+                  features: [
+                    "Unlimited products",
+                    "Unlimited subscribers",
+                    "Advanced analytics",
+                    "1-hour, dedicated support response time",
+                    "Marketing automations",
+                    "Custom reporting tools",
+                  ],
                 },
               ]}
             />
           </div>
-        </section>
+        </MarketingPreview>
       </div>
+
+      <section id="component-api" className="scroll-mt-24 space-y-8">
+        <div>
+          <h2 className="font-outfit mb-4 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+            Component API
+          </h2>
+          <ApiTable title="Pricing Props" rows={apiRows} />
+        </div>
+        <div>
+          <h3 className="font-outfit mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+            PricingGlass Props
+          </h3>
+          <ApiTable
+            title="PricingGlass"
+            rows={[
+              {
+                prop: "tiers",
+                type: "PricingGlassTier[]",
+                defaultVal: "-",
+                description: "Array of pricing tiers to display.",
+              },
+              {
+                prop: "isAnnual",
+                type: "boolean",
+                defaultVal: "false",
+                description: "State controlling the toggle switch position.",
+              },
+              {
+                prop: "onToggleAnnual",
+                type: "(isAnnual: boolean) => void",
+                defaultVal: "-",
+                description:
+                  "Callback fired when the toggle is clicked. If not provided, toggle is hidden.",
+              },
+            ]}
+          />
+        </div>
+      </section>
     </div>
   );
 }

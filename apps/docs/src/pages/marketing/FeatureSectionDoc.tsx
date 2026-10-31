@@ -1,5 +1,5 @@
 import React from "react";
-import { PageToolbar } from "../../components/PageToolbar";
+import { DocHeader } from "../../components/DocHeader";
 import featureCode from "../../../../../packages/marketing/src/components/FeatureSection/Feature.tsx?raw";
 import featureGlassCode from "../../../../../packages/marketing/src/components/FeatureSection/FeatureGlass.tsx?raw";
 import { InstallationTabs } from "../../components/InstallationTabs";
@@ -392,248 +392,235 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
   ];
 
   return (
-    <div className="flex w-full flex-col items-center pt-24 pb-24">
-      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
-        <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Feature Sections
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                New
-              </span>
-            </div>
-            <p className="pr-32 text-base text-zinc-600 sm:pr-40 lg:max-w-4xl dark:text-zinc-400">
-              Highlight the key benefits and capabilities of your product. Use grids for quick
-              overviews or alternating layouts for deep dives.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+    <div className="space-y-24 pb-24 sm:space-y-32">
+      {/* Title & Subtitle */}
+      <DocHeader
+        category="Marketing"
+        title="Feature Sections"
+        badge="Marketing"
+        description="Highlight the key benefits and capabilities of your product. Use grids for quick overviews or alternating layouts for deep dives."
+      />
 
-        <div id="installation" className="scroll-mt-24 space-y-4">
-          <InstallationTabs componentName="feature-section" manualCode={featureCode} />
-        </div>
-
-        <div className="mt-16 flex flex-col gap-16">
-          <MarketingPreview title="Grid Layout" skill={skillContent} code={gridCode}>
-            <FeatureSection>
-              <FeatureHeader>
-                <FeatureBadge>Deploy faster</FeatureBadge>
-                <FeatureTitle>Everything you need to build your app</FeatureTitle>
-                <FeatureDescription>
-                  Our platform provides all the tools you need to create, deploy, and scale your
-                  applications with ease and confidence.
-                </FeatureDescription>
-              </FeatureHeader>
-
-              <FeatureGrid>
-                <FeatureCard index={0}>
-                  <FeatureIcon>
-                    <Zap size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Lightning Fast</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Global edge network ensures your application loads instantly for users anywhere
-                    in the world.
-                  </FeatureCardDescription>
-                </FeatureCard>
-                <FeatureCard index={1}>
-                  <FeatureIcon>
-                    <Shield size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Enterprise Security</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Advanced DDoS protection and automatic SSL certificates keep your data safe and
-                    secure.
-                  </FeatureCardDescription>
-                </FeatureCard>
-                <FeatureCard index={2}>
-                  <FeatureIcon>
-                    <Globe size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Global CDN</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Deliver content faster with our strategically placed servers across 100+ global
-                    locations.
-                  </FeatureCardDescription>
-                </FeatureCard>
-                <FeatureCard index={3}>
-                  <FeatureIcon>
-                    <Lock size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Identity & Access</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Built-in authentication and role-based access control for your entire
-                    organization.
-                  </FeatureCardDescription>
-                </FeatureCard>
-                <FeatureCard index={4}>
-                  <FeatureIcon>
-                    <Smartphone size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Mobile Optimized</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Responsive APIs and SDKs designed specifically for mobile application
-                    performance.
-                  </FeatureCardDescription>
-                </FeatureCard>
-                <FeatureCard index={5}>
-                  <FeatureIcon>
-                    <Cloud size={20} />
-                  </FeatureIcon>
-                  <FeatureCardTitle>Auto Scaling</FeatureCardTitle>
-                  <FeatureCardDescription>
-                    Never worry about traffic spikes again. Our infrastructure scales automatically
-                    with demand.
-                  </FeatureCardDescription>
-                </FeatureCard>
-              </FeatureGrid>
-            </FeatureSection>
-          </MarketingPreview>
-
-          <MarketingPreview title="Alternating Layout" skill={skillContent} code={alternatingCode}>
-            <FeatureSection variant="subtle">
-              <FeatureHeader>
-                <FeatureBadge>Workflow</FeatureBadge>
-                <FeatureTitle>Supercharge your development</FeatureTitle>
-                <FeatureDescription>
-                  Streamline your workflow with tools designed for modern development teams.
-                </FeatureDescription>
-              </FeatureHeader>
-
-              <FeatureAlternating>
-                <FeatureRow>
-                  <FeatureRowContent>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                      Push to deploy
-                    </h3>
-                    <p className="text-base text-zinc-600 dark:text-zinc-400">
-                      Just push your code to GitHub, GitLab, or Bitbucket, and we'll automatically
-                      build and deploy your application. Every commit gets a unique preview URL.
-                    </p>
-                  </FeatureRowContent>
-                  <FeatureRowMedia>
-                    <PushToDeployIllustration />
-                  </FeatureRowMedia>
-                </FeatureRow>
-
-                <FeatureRow reverse>
-                  <FeatureRowContent>
-                    <h3 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
-                      Real-time analytics
-                    </h3>
-                    <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-                      Gain deep insights into your application's performance and user behavior with
-                      our built-in analytics dashboard. Monitor traffic, errors, and core web vitals
-                      in real-time.
-                    </p>
-                  </FeatureRowContent>
-                  <FeatureRowMedia>
-                    <AnalyticsIllustration />
-                  </FeatureRowMedia>
-                </FeatureRow>
-              </FeatureAlternating>
-            </FeatureSection>
-          </MarketingPreview>
-
-          <MarketingPreview
-            title="Pro Style with UI Components"
-            skill={skillContent}
-            code={proStyleCode}
-          >
-            <ProStyleVisualEditor />
-          </MarketingPreview>
-
-          {/* Glassmorphic Features */}
-          <div id="glass" className="scroll-mt-24">
-            <MarketingPreview title="Glassmorphic Features" code={featureGlassCode}>
-              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-                <div className="absolute top-1/2 left-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 blur-[120px]" />
-                <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/30 blur-[120px]" />
-
-                <FeatureGlass
-                  badge={
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-indigo-900 ring-1 ring-indigo-500/20 backdrop-blur-md ring-inset dark:bg-indigo-500/10 dark:text-indigo-200 dark:ring-indigo-500/30">
-                      Features
-                    </span>
-                  }
-                  features={[
-                    {
-                      title: "Lightning Fast",
-                      description:
-                        "Global edge network ensures your application loads instantly for users anywhere in the world.",
-                      icon: <Zap size={20} />,
-                    },
-                    {
-                      title: "Enterprise Security",
-                      description:
-                        "Advanced DDoS protection and automatic SSL certificates keep your data safe and secure.",
-                      icon: <Shield size={20} />,
-                    },
-                    {
-                      title: "Global CDN",
-                      description:
-                        "Deliver content faster with our strategically placed servers across 100+ global locations.",
-                      icon: <Globe size={20} />,
-                    },
-                    {
-                      title: "Built-in Auth",
-                      description:
-                        "Secure, ready-to-use authentication with social logins and 2FA support.",
-                      icon: <Lock size={20} />,
-                    },
-                    {
-                      title: "Mobile Optimized",
-                      description:
-                        "Responsive layouts and touch-friendly components built right into the core.",
-                      icon: <Smartphone size={20} />,
-                    },
-                    {
-                      title: "Cloud Native",
-                      description:
-                        "Seamlessly deploy and scale with native support for major cloud providers.",
-                      icon: <Cloud size={20} />,
-                    },
-                  ]}
-                />
-              </div>
-            </MarketingPreview>
-          </div>
-        </div>
-
-        <section id="component-api" className="mt-16 scroll-mt-24 space-y-8">
-          <div>
-            <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-              Component API
-            </h2>
-            <ApiTable title="FeatureSection Props" rows={apiRows} />
-          </div>
-          <div>
-            <h3 className="mb-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
-              FeatureGlass Props
-            </h3>
-            <ApiTable
-              title="FeatureGlass"
-              rows={[
-                {
-                  prop: "features",
-                  type: "FeatureGlassItem[]",
-                  defaultVal: "-",
-                  description: "Array of feature objects with icon, title, and description.",
-                },
-                {
-                  prop: "badge",
-                  type: "ReactNode",
-                  defaultVal: "undefined",
-                  description: "Optional badge element shown above the title.",
-                },
-              ]}
-            />
-          </div>
-        </section>
+      <div id="installation" className="scroll-mt-24 space-y-4">
+        <InstallationTabs componentName="feature-section" manualCode={featureCode} />
       </div>
+
+      <div className="flex flex-col gap-16">
+        <MarketingPreview title="Grid Layout" skill={skillContent} code={gridCode}>
+          <FeatureSection>
+            <FeatureHeader>
+              <FeatureBadge>Deploy faster</FeatureBadge>
+              <FeatureTitle>Everything you need to build your app</FeatureTitle>
+              <FeatureDescription>
+                Our platform provides all the tools you need to create, deploy, and scale your
+                applications with ease and confidence.
+              </FeatureDescription>
+            </FeatureHeader>
+
+            <FeatureGrid>
+              <FeatureCard index={0}>
+                <FeatureIcon>
+                  <Zap size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Lightning Fast</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Global edge network ensures your application loads instantly for users anywhere in
+                  the world.
+                </FeatureCardDescription>
+              </FeatureCard>
+              <FeatureCard index={1}>
+                <FeatureIcon>
+                  <Shield size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Enterprise Security</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Advanced DDoS protection and automatic SSL certificates keep your data safe and
+                  secure.
+                </FeatureCardDescription>
+              </FeatureCard>
+              <FeatureCard index={2}>
+                <FeatureIcon>
+                  <Globe size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Global CDN</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Deliver content faster with our strategically placed servers across 100+ global
+                  locations.
+                </FeatureCardDescription>
+              </FeatureCard>
+              <FeatureCard index={3}>
+                <FeatureIcon>
+                  <Lock size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Identity & Access</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Built-in authentication and role-based access control for your entire
+                  organization.
+                </FeatureCardDescription>
+              </FeatureCard>
+              <FeatureCard index={4}>
+                <FeatureIcon>
+                  <Smartphone size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Mobile Optimized</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Responsive APIs and SDKs designed specifically for mobile application performance.
+                </FeatureCardDescription>
+              </FeatureCard>
+              <FeatureCard index={5}>
+                <FeatureIcon>
+                  <Cloud size={20} />
+                </FeatureIcon>
+                <FeatureCardTitle>Auto Scaling</FeatureCardTitle>
+                <FeatureCardDescription>
+                  Never worry about traffic spikes again. Our infrastructure scales automatically
+                  with demand.
+                </FeatureCardDescription>
+              </FeatureCard>
+            </FeatureGrid>
+          </FeatureSection>
+        </MarketingPreview>
+
+        <MarketingPreview title="Alternating Layout" skill={skillContent} code={alternatingCode}>
+          <FeatureSection variant="subtle">
+            <FeatureHeader>
+              <FeatureBadge>Workflow</FeatureBadge>
+              <FeatureTitle>Supercharge your development</FeatureTitle>
+              <FeatureDescription>
+                Streamline your workflow with tools designed for modern development teams.
+              </FeatureDescription>
+            </FeatureHeader>
+
+            <FeatureAlternating>
+              <FeatureRow>
+                <FeatureRowContent>
+                  <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                    Push to deploy
+                  </h3>
+                  <p className="text-base text-zinc-600 dark:text-zinc-400">
+                    Just push your code to GitHub, GitLab, or Bitbucket, and we'll automatically
+                    build and deploy your application. Every commit gets a unique preview URL.
+                  </p>
+                </FeatureRowContent>
+                <FeatureRowMedia>
+                  <PushToDeployIllustration />
+                </FeatureRowMedia>
+              </FeatureRow>
+
+              <FeatureRow reverse>
+                <FeatureRowContent>
+                  <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                    Real-time analytics
+                  </h3>
+                  <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+                    Gain deep insights into your application's performance and user behavior with
+                    our built-in analytics dashboard. Monitor traffic, errors, and core web vitals
+                    in real-time.
+                  </p>
+                </FeatureRowContent>
+                <FeatureRowMedia>
+                  <AnalyticsIllustration />
+                </FeatureRowMedia>
+              </FeatureRow>
+            </FeatureAlternating>
+          </FeatureSection>
+        </MarketingPreview>
+
+        <MarketingPreview
+          title="Pro Style with UI Components"
+          skill={skillContent}
+          code={proStyleCode}
+        >
+          <ProStyleVisualEditor />
+        </MarketingPreview>
+
+        {/* Glassmorphic Features */}
+        <div id="glass" className="scroll-mt-24">
+          <MarketingPreview title="Glassmorphic Features" code={featureGlassCode}>
+            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
+              <div className="absolute top-1/2 left-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 blur-[120px]" />
+              <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/30 blur-[120px]" />
+
+              <FeatureGlass
+                badge={
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-indigo-900 ring-1 ring-indigo-500/20 backdrop-blur-md ring-inset dark:bg-indigo-500/10 dark:text-indigo-200 dark:ring-indigo-500/30">
+                    Features
+                  </span>
+                }
+                features={[
+                  {
+                    title: "Lightning Fast",
+                    description:
+                      "Global edge network ensures your application loads instantly for users anywhere in the world.",
+                    icon: <Zap size={20} />,
+                  },
+                  {
+                    title: "Enterprise Security",
+                    description:
+                      "Advanced DDoS protection and automatic SSL certificates keep your data safe and secure.",
+                    icon: <Shield size={20} />,
+                  },
+                  {
+                    title: "Global CDN",
+                    description:
+                      "Deliver content faster with our strategically placed servers across 100+ global locations.",
+                    icon: <Globe size={20} />,
+                  },
+                  {
+                    title: "Built-in Auth",
+                    description:
+                      "Secure, ready-to-use authentication with social logins and 2FA support.",
+                    icon: <Lock size={20} />,
+                  },
+                  {
+                    title: "Mobile Optimized",
+                    description:
+                      "Responsive layouts and touch-friendly components built right into the core.",
+                    icon: <Smartphone size={20} />,
+                  },
+                  {
+                    title: "Cloud Native",
+                    description:
+                      "Seamlessly deploy and scale with native support for major cloud providers.",
+                    icon: <Cloud size={20} />,
+                  },
+                ]}
+              />
+            </div>
+          </MarketingPreview>
+        </div>
+      </div>
+
+      <section id="component-api" className="scroll-mt-24 space-y-8">
+        <div>
+          <h2 className="font-outfit mb-4 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+            Component API
+          </h2>
+          <ApiTable title="FeatureSection Props" rows={apiRows} />
+        </div>
+        <div>
+          <h3 className="font-outfit mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+            FeatureGlass Props
+          </h3>
+          <ApiTable
+            title="FeatureGlass"
+            rows={[
+              {
+                prop: "features",
+                type: "FeatureGlassItem[]",
+                defaultVal: "-",
+                description: "Array of feature objects with icon, title, and description.",
+              },
+              {
+                prop: "badge",
+                type: "ReactNode",
+                defaultVal: "undefined",
+                description: "Optional badge element shown above the title.",
+              },
+            ]}
+          />
+        </div>
+      </section>
     </div>
   );
 }
