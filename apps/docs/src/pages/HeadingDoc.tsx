@@ -2,7 +2,7 @@
 import headingCode from "../../../../packages/core/src/components/Heading/Heading.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Heading,
   type HeadingLevel,
@@ -169,25 +169,14 @@ export default function HeadingDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Heading
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Typographic heading primitives rendered with semantic HTML levels (H1–H6), optical
-            letter-spacing, fluid responsiveness, and native dark mode contrast.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="PRIMITIVES"
+        title="Heading"
+        badge="Typography"
+        description="Typographic heading primitives rendered with semantic HTML levels (H1–H6), optical letter-spacing, fluid responsiveness, and native dark mode contrast."
+      />
 
       {/* Hero Showcase Preview */}
       <section className="space-y-4">
@@ -222,7 +211,7 @@ export default function Example() {
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -234,14 +223,14 @@ export default function Example() {
       {/* Examples Header */}
       <section id="examples" className="scroll-mt-24 space-y-14">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Semantic Hierarchy (H1 - H6) */}
         <div id="semantic-hierarchy" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Semantic Hierarchy (H1 - H6)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -315,7 +304,7 @@ export default function HierarchyExample() {
 
         {/* 2. Heading Colors & Styles */}
         <div id="heading-colors-and-styles" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Heading Colors & Styles
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -399,7 +388,7 @@ export default function HierarchyExample() {
 
         {/* 3. Heading with Divider */}
         <div id="heading-with-divider" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Heading with Divider
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -468,7 +457,7 @@ export default function ArticleSections() {
 
         {/* 4. Interactive Customizer */}
         <div id="interactive-customizer" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Customizer
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

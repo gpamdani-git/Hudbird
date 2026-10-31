@@ -63,8 +63,8 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const [destructiveColor, setDestructiveColor] = useState("0.6 0.2 25");
   const [activeBase, setActiveBase] = useState<keyof typeof baseColors>("zinc");
   const [activeRadius, setActiveRadius] = useState<number>(0.5);
-  const [activeFontSans, setActiveFontSans] = useState<string>("Inter");
-  const [activeFontHeading, setActiveFontHeading] = useState<string>("Inter");
+  const [activeFontSans, setActiveFontSans] = useState<string>("Plus Jakarta Sans");
+  const [activeFontHeading, setActiveFontHeading] = useState<string>("Outfit");
   const [exportFormat, setExportFormat] = useState<ExportFormat>("cli");
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 

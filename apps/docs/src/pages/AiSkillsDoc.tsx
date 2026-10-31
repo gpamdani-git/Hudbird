@@ -20,6 +20,7 @@ import {
   Copy,
   Download,
   ExternalLink,
+  XCircle,
 } from "lucide-react";
 
 export default function AiSkillsDoc() {
@@ -91,11 +92,11 @@ export default function AiSkillsDoc() {
         </span>
       </div>
 
-      <div className="max-w-4xl space-y-24 sm:space-y-32 text-zinc-800 dark:text-zinc-200">
+      <div className="max-w-4xl space-y-24 text-zinc-800 sm:space-y-32 dark:text-zinc-200">
         {/* 1. Overview & Zero-Hallucination */}
         <section id="overview" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Why Use Hudbird UI Skills?
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -106,7 +107,8 @@ export default function AiSkillsDoc() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="rounded-xl border border-rose-200/80 bg-rose-50/40 p-5 dark:border-rose-900/30 dark:bg-rose-950/20">
               <div className="flex items-center gap-2 font-semibold text-rose-700 dark:text-rose-400">
-                <span>❌</span> Without AI Skill (Hallucinations)
+                <XCircle className="h-4 w-4 shrink-0 text-rose-500" />
+                <span>Without AI Skill (Hallucinations)</span>
               </div>
               <ul className="mt-3 space-y-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 <li className="flex items-start gap-1.5">
@@ -137,7 +139,8 @@ export default function AiSkillsDoc() {
 
             <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/40 p-5 dark:border-emerald-900/30 dark:bg-emerald-950/20">
               <div className="flex items-center gap-2 font-semibold text-emerald-700 dark:dark:text-emerald-400">
-                <span>✅</span> With Hudbird UI Skill (Real Works)
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
+                <span>With Hudbird UI Skill (Real Works)</span>
               </div>
               <ul className="mt-3 space-y-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 <li className="flex items-start gap-1.5">
@@ -173,12 +176,13 @@ export default function AiSkillsDoc() {
 
         {/* 2. Key Advantages & Superpowers */}
         <section id="advantages" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Key Superpowers &amp; Advantages
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              How the Hudbird UI Skill accelerates developer experience and turns natural language into production code.
+              How the Hudbird UI Skill accelerates developer experience and turns natural language
+              into production code.
             </p>
           </div>
 
@@ -276,12 +280,13 @@ export default function AiSkillsDoc() {
 
         {/* 3. Fast 1-Liner Installation */}
         <section id="quickstart-setup" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Quickstart: Install Skill in 1 Line
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              Run this command in the root of any React / Next.js project to install the skill instantly:
+              Run this command in the root of any React / Next.js project to install the skill
+              instantly:
             </p>
           </div>
 
@@ -334,8 +339,8 @@ export default function AiSkillsDoc() {
 
         {/* 4. Supported AI Assistants */}
         <section id="supported-assistants" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Configuring Your Model or Assistant
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -519,12 +524,13 @@ Ensure clean TypeScript types and paired Tailwind dark mode classes.`}
 
         {/* 5. Real Working Prompt Examples (No Halu) */}
         <section id="real-prompts" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Battle-Tested Prompt Examples (Real Works, No Halu)
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              These prompts have been verified to generate 100% working, syntax-accurate code with all tested models.
+              These prompts have been verified to generate 100% working, syntax-accurate code with
+              all tested models.
             </p>
           </div>
 
@@ -808,12 +814,13 @@ export function AnalyticsOverview() {
 
         {/* 6. Full Skill Reference */}
         <section id="full-skill-reference" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Full SKILL.md Reference File
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              Download the official skill or preview and copy the full markdown definition loaded by AI agents:
+              Download the official skill or preview and copy the full markdown definition loaded by
+              AI agents:
             </p>
           </div>
 

@@ -20,26 +20,24 @@ export default function ThemesDoc() {
   const [tab, setTab] = useState("overview");
 
   return (
-    <div className="mx-auto w-full">
-      <div className="mt-8 mb-8 max-w-5xl px-4 sm:px-6">
-        <DocHeader
-          category="CUSTOMIZATION"
-          title="Theme Builder"
-          badge="Live Sync"
-          description={
-            <span>
-              Customize your design system in real-time. Tune colors, typography, and border
-              radiuses, and export production-ready Tailwind v4{" "}
-              <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-indigo-400">
-                @theme
-              </code>{" "}
-              directives or Figma Tokens Studio DTCG JSON.
-            </span>
-          }
-        />
-      </div>
+    <div className="space-y-16 pb-24">
+      <DocHeader
+        category="CUSTOMIZATION"
+        title="Theme Builder"
+        badge="Live Sync"
+        description={
+          <span>
+            Customize your design system in real-time. Tune colors, typography, and border radiuses,
+            and export production-ready Tailwind v4{" "}
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-indigo-400">
+              @theme
+            </code>{" "}
+            directives or Figma Tokens Studio DTCG JSON.
+          </span>
+        }
+      />
 
-      <div className="w-full max-w-5xl px-4 pb-16 sm:px-6">
+      <div className="w-full space-y-8">
         {/* Interactive Theme Token Sync & Exporter Bar */}
         <ThemeSyncBar />
 
@@ -99,7 +97,9 @@ export default function ThemesDoc() {
               <main className="flex-1 p-6 md:p-8">
                 <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
-                    <h2 className="text-2xl font-bold tracking-tight">Overview</h2>
+                    <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                      Overview
+                    </h2>
                     <p className="text-muted-foreground text-sm">
                       Monitor your revenue and user metrics.
                     </p>
@@ -159,7 +159,9 @@ export default function ThemesDoc() {
                         {/* Left Column: Recent Activity */}
                         <Card className="bg-card text-card-foreground border-border/50 col-span-2 p-6 shadow-sm">
                           <div className="mb-4 flex items-center justify-between">
-                            <h3 className="text-lg font-semibold tracking-tight">Recent Sales</h3>
+                            <h3 className="font-outfit text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
+                              Recent Sales
+                            </h3>
                             <Badge variant="soft" color="primary">
                               View All
                             </Badge>
@@ -208,7 +210,7 @@ export default function ThemesDoc() {
 
                         {/* Right Column: Quick Settings */}
                         <Card className="bg-card text-card-foreground border-border/50 p-6 shadow-sm">
-                          <h3 className="mb-4 text-lg font-semibold tracking-tight">
+                          <h3 className="font-outfit mb-4 text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
                             Quick Settings
                           </h3>
                           <div className="space-y-6">
@@ -255,7 +257,9 @@ export default function ThemesDoc() {
                     <div className="animate-in fade-in slide-in-from-bottom-2 duration-500">
                       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                         <Card className="bg-card text-card-foreground border-border/50 p-6 shadow-sm">
-                          <h3 className="mb-4 text-lg font-semibold">Traffic Overview</h3>
+                          <h3 className="font-outfit mb-4 text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
+                            Traffic Overview
+                          </h3>
                           <div className="flex h-64 items-end justify-between gap-2 px-2">
                             {[40, 70, 45, 90, 65, 85, 110].map((h, i) => (
                               <div
@@ -276,7 +280,9 @@ export default function ThemesDoc() {
                           </div>
                         </Card>
                         <Card className="bg-card text-card-foreground border-border/50 p-6 shadow-sm">
-                          <h3 className="mb-4 text-lg font-semibold">Active Users</h3>
+                          <h3 className="font-outfit mb-4 text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
+                            Active Users
+                          </h3>
                           <div className="flex h-64 items-end justify-between gap-2 px-2">
                             {[80, 50, 75, 60, 95, 120, 105].map((h, i) => (
                               <div
@@ -315,7 +321,9 @@ export default function ThemesDoc() {
                               Generated
                             </Badge>
                           </div>
-                          <h3 className="mt-4 font-semibold">Q{i > 4 ? 1 : i} Financial Report</h3>
+                          <h3 className="font-outfit mt-4 font-medium text-zinc-900 dark:text-white">
+                            Q{i > 4 ? 1 : i} Financial Report
+                          </h3>
                           <p className="text-muted-foreground mt-1 text-sm">
                             Generated on Oct {i * 4}, 2024
                           </p>
@@ -369,7 +377,9 @@ export default function ThemesDoc() {
                                   />
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="font-semibold">{notif.title}</h4>
+                                  <h4 className="font-outfit font-medium text-zinc-900 dark:text-white">
+                                    {notif.title}
+                                  </h4>
                                   <p className="text-muted-foreground mt-1 text-sm">{notif.desc}</p>
                                   <p className="text-muted-foreground/60 mt-2 text-xs">
                                     {notif.time}
