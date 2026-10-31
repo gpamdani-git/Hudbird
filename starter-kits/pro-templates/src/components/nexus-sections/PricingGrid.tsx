@@ -146,7 +146,7 @@ export const PricingGrid: React.FC<{ data: PricingGridProps }> = ({ data }) => {
         <Reveal delay={0.2}>
           <div className="border-nx-line bg-nx-surface text-nx-ink-2 mx-auto mt-12 flex max-w-xl items-center gap-4 rounded-[24px] border p-5 text-xs sm:text-sm">
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#C8F560] font-bold text-zinc-950">
-              ✓
+              <Check className="h-4 w-4 stroke-[2.5]" />
             </div>
             <div>
               <span className="text-nx-ink block font-semibold">{data.guarantee.title}</span>

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, LayoutGrid, Component, Terminal } from "lucide-react";
+import { ArrowRight, LayoutGrid, Component, Terminal, Check } from "lucide-react";
 
 export function ShowcaseDeveloper() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -126,7 +126,7 @@ export function ShowcaseDeveloper() {
                   className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-300"
                 >
                   <div className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">
-                    ✓
+                    <Check className="h-3 w-3 stroke-[2.5]" />
                   </div>
                   {feature}
                 </li>
@@ -220,7 +220,7 @@ export function ShowcaseDeveloper() {
                     className="flex items-center gap-3 text-sm font-medium text-zinc-700 dark:text-zinc-300"
                   >
                     <div className="flex h-5 w-5 items-center justify-center rounded-full bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400">
-                      ✓
+                      <Check className="h-3 w-3 stroke-[2.5]" />
                     </div>
                     {feature}
                   </li>

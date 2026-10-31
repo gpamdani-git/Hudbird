@@ -609,7 +609,9 @@ const cards = [
     <div className="mt-6 space-y-2 rounded-2xl border border-zinc-100 bg-zinc-50/50 p-3 dark:border-white/5 dark:bg-white/[0.02]">
       <div className="flex items-center justify-between text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <span>Auto-Rebalance</span>
-        <span className="text-emerald-500">Active ✓</span>
+        <span className="inline-flex items-center gap-1 text-emerald-500">
+          <Check className="h-3 w-3 stroke-[2.5]" /> Active
+        </span>
       </div>
       <div className="flex items-center justify-between text-xs font-semibold text-zinc-700 dark:text-zinc-300">
         <span>Zero-Knowledge Audit</span>

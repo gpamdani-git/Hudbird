@@ -422,7 +422,7 @@ export const CaseStudyDetailView: React.FC<{
                   : "text-zinc-600 dark:text-zinc-400"
               }`}
             >
-              After Launch ✓
+              After Launch
             </button>
           </div>
         </div>

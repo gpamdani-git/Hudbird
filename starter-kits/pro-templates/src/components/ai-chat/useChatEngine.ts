@@ -358,9 +358,9 @@ export function useChatEngine() {
           "\n\n## Why now\n\nRemote and hybrid work made context-switching the default. The tools that win the next decade will be the ones that **protect attention** instead of competing for it.";
       if (action === "emoji")
         next = canvas.content
-          .replace("## The problem", "## 😩 The problem")
-          .replace("## Our approach", "## ✨ Our approach")
-          .replace("## What's next", "## 🚀 What's next");
+          .replace("## The problem", "## [Issue] The problem")
+          .replace("## Our approach", "## [Solution] Our approach")
+          .replace("## What's next", "## [Roadmap] What's next");
       if (action === "reading")
         next = canvas.content.replace(
           "Every great product begins with a simple observation",

@@ -15,6 +15,8 @@ import {
   ArrowUpRight,
   Sparkles,
   Check,
+  X,
+  Star,
   Play,
   Pause,
   Sliders,
@@ -626,8 +628,9 @@ export const HudbirdPolymorphicHero: React.FC<{
                       className="h-9 w-9 rounded-full object-cover ring-2 ring-white dark:ring-[#0B0C10]"
                     />
                   ))}
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C8F560] text-[11px] font-bold text-[#0D0F14] ring-2 ring-white dark:ring-[#0B0C10]">
-                    4.9★
+                  <span className="flex h-9 w-9 items-center justify-center gap-0.5 rounded-full bg-[#C8F560] text-[10px] font-bold text-[#0D0F14] ring-2 ring-white dark:ring-[#0B0C10]">
+                    4.9
+                    <Star className="h-2 w-2 fill-current" />
                   </span>
                 </div>
                 <div className="text-xs text-zinc-500 dark:text-zinc-400">
@@ -1291,7 +1294,13 @@ export const HudbirdInteractiveRoiSimulator: React.FC<{
                     : "bg-zinc-200 text-zinc-700 dark:bg-white/10 dark:text-zinc-300"
                 }`}
               >
-                {annualCommit ? "Enabled ✓" : "Enable"}
+                {annualCommit ? (
+                  <span className="inline-flex items-center gap-1">
+                    <Check className="h-3 w-3 stroke-[2.5]" /> Enabled
+                  </span>
+                ) : (
+                  "Enable"
+                )}
               </button>
             </div>
           </div>
@@ -1423,8 +1432,8 @@ export const HudbirdBeforeAfterAndCases: React.FC<{
                     key={i}
                     className="flex items-start gap-3 text-sm text-zinc-600 dark:text-zinc-400"
                   >
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-500/15 text-xs font-bold text-rose-500">
-                      ✕
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-rose-500/15 text-rose-500">
+                      <X className="h-3 w-3 stroke-[2.5]" />
                     </span>
                     <span>{pt}</span>
                   </li>

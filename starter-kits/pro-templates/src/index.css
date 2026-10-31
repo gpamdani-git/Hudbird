@@ -52,8 +52,8 @@
   --nx-muted: #747f94;
   --nx-inverse: #080a0f;
   --nx-inverse-ink: #f7f8fa;
-  --theme-font-sans: "Inter";
-  --theme-font-heading: "Inter";
+  --theme-font-sans: "Plus Jakarta Sans";
+  --theme-font-heading: "Outfit";
   --theme-font-serif: "Instrument Serif";
 }
 
@@ -201,7 +201,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
 
-  --font-sans: var(--theme-font-sans, "Inter"), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--theme-font-sans, "Plus Jakarta Sans"), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--theme-font-heading, "Outfit"), ui-sans-serif, system-ui, sans-serif;
   --font-outfit: "Outfit", ui-sans-serif, system-ui, sans-serif;
 

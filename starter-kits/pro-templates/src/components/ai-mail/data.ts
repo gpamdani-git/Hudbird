@@ -124,7 +124,7 @@ You can view the full breakdown in your Stripe Dashboard.
     id: "m4",
     senderName: "Priya Raman",
     senderEmail: "priya@hudmail.ai",
-    subject: "Team offsite photos 📸",
+    subject: "Team offsite photos",
     preview: "What a day! Sharing a few favourites from the rooftop session. Full album in Drive…",
     body: `Hi team,
 
@@ -440,7 +440,7 @@ export const MOCK_EVENTS: CalendarEvent[] = [
   },
   {
     id: "e6",
-    title: "Flight to Lisbon ✈",
+    title: "Flight to Lisbon",
     date: dayOffset(9),
     start: "07:30",
     end: "10:15",
@@ -497,7 +497,7 @@ export const AI_IMAGE_POOL = [IMG.hero, IMG.neon, IMG.cat, IMG.moodboard];
 
 export const SMART_REPLIES: Record<string, string[]> = {
   default: ["Thanks, got it!", "Let me review and get back to you.", "Sounds great — let's do it."],
-  m1: ["Approved — ship it 🚀", "Let's keep AI as an add-on.", "Oct 16 works for me."],
+  m1: ["Approved — ship it.", "Let's keep AI as an add-on.", "Oct 16 works for me."],
   m2: ["Love it! Tomorrow at 2pm?", "Can we try a darker neutral?", "Looks great, approved."],
   m6: [
     "Yes, open to a November pilot.",

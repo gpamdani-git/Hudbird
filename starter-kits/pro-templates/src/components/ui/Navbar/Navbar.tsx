@@ -4,6 +4,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 export type NavbarLayout = "standard" | "admin";
@@ -552,7 +553,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                     className="cursor-pointer rounded-md p-1 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
                     aria-label="Close menu"
                   >
-                    ✕
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
               )}
@@ -626,7 +627,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                       className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-zinc-900 dark:hover:text-zinc-100"
                       aria-label="Close menu"
                     >
-                      ✕
+                      <X className="h-4 w-4" />
                     </button>
                   </div>
                   <div className="flex flex-1 flex-col gap-1.5">{children}</div>
@@ -702,7 +703,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                       className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-zinc-900 dark:hover:text-zinc-100"
                       aria-label="Close menu"
                     >
-                      ✕
+                      <X className="h-4 w-4" />
                     </button>
                   </div>
                   <div className="flex flex-1 flex-col gap-1.5">{children}</div>
@@ -762,7 +763,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                 className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 shadow-xs transition-all hover:scale-105 active:scale-95 dark:bg-zinc-900 dark:text-zinc-200"
                 aria-label="Close fullscreen menu"
               >
-                ✕
+                <X className="h-4 w-4" />
               </button>
             </div>
 

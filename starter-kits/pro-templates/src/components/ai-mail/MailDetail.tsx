@@ -311,7 +311,7 @@ export function MailDetail({
                 }}
                 className="cursor-pointer rounded-xl bg-emerald-600 px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-default disabled:bg-emerald-600/40"
               >
-                {meetingAdded ? "Added ✓" : "Add to calendar"}
+                {meetingAdded ? "Added" : "Add to calendar"}
               </button>
             </motion.div>
           )}

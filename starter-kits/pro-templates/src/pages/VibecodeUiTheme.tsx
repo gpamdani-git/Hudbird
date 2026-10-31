@@ -2423,7 +2423,7 @@ export function VibecodeUiTheme() {
                   onClick={() => handleCopy("modal-copy", activeCodeModal.code)}
                   className="cursor-pointer rounded-full bg-white px-4 py-2 text-xs font-bold text-zinc-950 hover:bg-[#C8F560]"
                 >
-                  {copiedId === "modal-copy" ? "Copied to Clipboard ✓" : "Copy JSX Snippet"}
+                  {copiedId === "modal-copy" ? "Copied to Clipboard" : "Copy JSX Snippet"}
                 </button>
               </div>
             </motion.div>

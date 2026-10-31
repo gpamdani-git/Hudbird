@@ -203,9 +203,9 @@ export function AuthScreen({
                     aria-label="Country code"
                     className="h-[52px] rounded-full border border-[var(--c-border-strong)] bg-transparent px-4 text-sm"
                   >
-                    <option>🇮🇩 +62</option>
-                    <option>🇺🇸 +1</option>
-                    <option>🇸🇬 +65</option>
+                    <option>ID +62</option>
+                    <option>US +1</option>
+                    <option>SG +65</option>
                   </select>
                   <div className="flex-1">
                     <FloatingInput

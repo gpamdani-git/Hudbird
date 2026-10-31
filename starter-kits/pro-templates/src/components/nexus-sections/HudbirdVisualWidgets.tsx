@@ -437,7 +437,7 @@ export const HudbirdFeatureWidgetGrid: React.FC<{
                       onClick={() => setAddedToCart(!addedToCart)}
                       className="shrink-0 cursor-pointer rounded-full bg-[#0D0F14] px-4 py-2 text-xs font-medium text-white transition-opacity hover:opacity-90"
                     >
-                      {addedToCart ? "Added ✓" : "Add to cart"}
+                      {addedToCart ? "Added" : "Add to cart"}
                     </button>
                   </div>
                 </div>

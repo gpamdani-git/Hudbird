@@ -91,7 +91,7 @@ export function Community() {
                     user: "AlexD",
                     avatar: "bg-blue-500",
                     time: "10:24 AM",
-                    text: "Hey everyone! Just deployed the new API endpoint, loving the speed so far 🚀",
+                    text: "Hey everyone! Just deployed the new API endpoint, loving the speed so far.",
                   },
                   {
                     user: "SarahJ",

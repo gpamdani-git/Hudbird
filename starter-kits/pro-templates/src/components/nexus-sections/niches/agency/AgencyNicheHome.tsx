@@ -16,6 +16,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
+  X,
   Play,
   Star,
   Plus,
@@ -123,7 +124,7 @@ const HUDBIRD_PROJECTS = [
     title: "Verdant Travel",
     subtitle: "Immersive Booking & Discovery App",
     category: "Brand & Mobile",
-    metric: "4.9★ App Store Rating",
+    metric: "4.9 / 5.0 App Store Rating",
     image: PEXELS.projects[4],
   },
   {
@@ -670,9 +671,9 @@ export const AgencyNicheHome: React.FC<AgencyNicheHomeProps> = ({ niche }) => {
                 <button
                   type="button"
                   onClick={() => setIsVideoModalOpen(false)}
-                  className="cursor-pointer rounded-full bg-white/10 px-3 py-1 text-xs hover:bg-white/20"
+                  className="inline-flex cursor-pointer items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs hover:bg-white/20"
                 >
-                  Close ✕
+                  Close <X className="h-3 w-3" />
                 </button>
               </div>
               <div className="flex aspect-video flex-col items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#4C1D95] via-[#7C3AED] to-[#EC4899] p-8 text-center">

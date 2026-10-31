@@ -193,7 +193,7 @@ function BrandPanel() {
 
       <div className="relative z-10 flex items-center gap-2 text-sm font-medium text-white/70">
         <span className="rounded-full border border-white/15 bg-white/5 px-3 py-1 backdrop-blur">
-          ✦ New · AI Compose 2.0
+          New · AI Compose 2.0
         </span>
       </div>
 

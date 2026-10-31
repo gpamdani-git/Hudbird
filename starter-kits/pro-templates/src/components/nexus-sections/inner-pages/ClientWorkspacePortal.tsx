@@ -255,7 +255,9 @@ export const ClientWorkspacePortal: React.FC<{
 
               {ticketSent ? (
                 <div className="space-y-2 rounded-2xl border border-[#C8F560] bg-[#C8F560]/20 p-6 text-center">
-                  <p className={`text-sm font-bold ${HB.ink}`}>✓ Ticket #9481 Dispatched</p>
+                  <p className={`inline-flex items-center gap-1.5 text-sm font-bold ${HB.ink}`}>
+                    <Check className="h-4 w-4 text-emerald-500" /> Ticket #9481 Dispatched
+                  </p>
                   <p className={`text-xs ${HB.ink2}`}>
                     Your principal architect will respond in Slack within 15 minutes.
                   </p>

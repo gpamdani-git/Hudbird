@@ -576,7 +576,7 @@ export function MailList({ engine }: { engine: MailEngine }) {
             <p className="mt-1 max-w-xs text-sm text-zinc-500">
               {engine.searchQuery
                 ? "Try different keywords or ask AI to search for you."
-                : "Nothing in this view right now. Enjoy the calm ✨"}
+                : "Nothing in this view right now. Enjoy the calm."}
             </p>
           </motion.div>
         ) : (

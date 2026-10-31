@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { HeroAgencyProps } from "@hudbird/schemas";
 import { Container, MaskedHeading, Reveal, PillLink } from "./ScrollReveal";
 import { PEXELS } from "./HudbirdVisualWidgets";
-import { Globe, Box, Sparkles } from "lucide-react";
+import { Globe, Box, Sparkles, Flame } from "lucide-react";
 
 export const HeroAgency: React.FC<{ data: HeroAgencyProps }> = ({ data }) => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -103,8 +103,8 @@ export const HeroAgency: React.FC<{ data: HeroAgencyProps }> = ({ data }) => {
 
             <Reveal delay={0.28} y={14}>
               <div className="flex items-center justify-between gap-6 pt-1 opacity-55 grayscale dark:opacity-50">
-                <span className="flex items-center gap-1 text-base font-bold tracking-tight text-zinc-700 dark:text-zinc-300">
-                  <span className="text-lg">🔥</span> hotjar
+                <span className="flex items-center gap-1.5 text-base font-bold tracking-tight text-zinc-700 dark:text-zinc-300">
+                  <Flame className="h-4 w-4" /> hotjar
                 </span>
                 <span className="text-base font-semibold tracking-wide text-zinc-700 dark:text-zinc-300">
                   scapic

@@ -578,7 +578,7 @@ export function AiChat() {
           toast(
             p === "free"
               ? "Switched to Free"
-              : `Welcome to Hudbird ${p === "plus" ? "Plus" : "Pro"} ✦`
+              : `Welcome to Hudbird ${p === "plus" ? "Plus" : "Pro"}`
           );
         }}
       />
