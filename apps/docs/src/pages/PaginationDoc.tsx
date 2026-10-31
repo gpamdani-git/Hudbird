@@ -2,7 +2,7 @@
 import paginationCode from "../../../../packages/core/src/components/Pagination/Pagination.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Pagination,
   type PaginationVariant,
@@ -294,26 +294,14 @@ export default function PaginationDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Header Section */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Pagination & Infinite Scroll
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            High-performance data management components for handling paginated datasets and endless
-            feeds with smooth micro-interactions, smart ellipsis calculation, and native
-            IntersectionObserver integration.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Pagination"
+        badge="Core"
+        description="High-performance data management components for handling paginated datasets and endless feeds with smooth micro-interactions, smart ellipsis calculation, and native IntersectionObserver integration."
+      />
 
       {/* Hero Interactive Preview */}
       <section className="space-y-4">
@@ -413,7 +401,7 @@ export default function Example() {
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-6">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Component API
           </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
@@ -430,14 +418,14 @@ export default function Example() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-lg font-medium text-zinc-900 dark:text-white">
             Pagination Props
           </h3>
           <ApiTable rows={paginationApiRows} />
         </div>
 
         <div className="space-y-4 pt-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-lg font-medium text-zinc-900 dark:text-white">
             InfiniteScroll Props
           </h3>
           <ApiTable rows={infiniteScrollApiRows} />
@@ -445,9 +433,9 @@ export default function Example() {
       </section>
 
       {/* Pagination Examples Section */}
-      <section id="pagination-examples" className="space-y-12">
+      <section id="pagination-examples" className="space-y-20 sm:space-y-24">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Pagination Examples
           </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
@@ -457,7 +445,7 @@ export default function Example() {
 
         {/* 1. Basic Pagination */}
         <div id="basic-pagination" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Basic Interactive Pagination
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -475,7 +463,7 @@ export default function Example() {
 
         {/* 2. Variants & Shapes */}
         <div id="pagination-variants" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Style Variants & Border Radii
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -535,7 +523,9 @@ export default function Example() {
 
         {/* 3. Color Themes */}
         <div id="pagination-colors" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Color Themes</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Color Themes
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Dedicated semantic color palettes: Indigo Primary, Emerald Success, Rose Danger, and
             Dark Zinc.
@@ -583,7 +573,7 @@ export default function Example() {
 
         {/* 4. Smart Ellipsis Range */}
         <div id="large-dataset-ellipsis" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Smart Logarithmic Ellipsis Truncation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -681,7 +671,7 @@ export default function Example() {
 
         {/* 5. Sizes & Custom Controls */}
         <div id="custom-controls-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Sizes & Custom Controls
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -724,9 +714,9 @@ export default function Example() {
       </section>
 
       {/* Infinite Scroll Examples Section */}
-      <section id="infinite-scroll-examples" className="space-y-12">
+      <section id="infinite-scroll-examples" className="space-y-20 sm:space-y-24">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Infinite Scroll Component
           </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
@@ -741,7 +731,7 @@ export default function Example() {
 
         {/* Interactive Scroll Simulation */}
         <div id="infinite-scroll-simulation" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Scroll Simulation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -901,7 +891,7 @@ export default function InfiniteFeed() {
 
         {/* Custom Loader & End State */}
         <div id="custom-loader-end" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Custom Skeleton Loader & Root Margins
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -923,7 +913,7 @@ export default function InfiniteFeed() {
   }
   endMessage={
     <div className="py-4 text-center text-xs text-zinc-400">
-      🎉 You've reached the end of the feed!
+      You have reached the end of the feed.
     </div>
   }
 >

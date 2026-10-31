@@ -2,7 +2,7 @@
 import progressCode from "../../../../packages/core/src/components/Progress/Progress.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Progress, CircularProgress, Button } from "@hudbird/ui";
 import { Sparkles, Play, RotateCcw } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -72,28 +72,14 @@ export default function ProgressDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Header */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
-              Progress
-            </h1>
-            <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-500">
-              <Sparkles className="h-3 w-3" />
-              New in v1.5
-            </span>
-          </div>
-          <p className="text-muted-foreground text-base">
-            Linear and circular progress indicators communicating real-time operation status and
-            percentage completion.
-          </p>
-        </div>
-        <div className="flex w-full shrink-0 justify-end sm:w-auto">
-          <PageToolbar />
-        </div>
-      </div>
+      <DocHeader
+        category="Components"
+        title="Progress"
+        badge="Core"
+        description="Linear and circular progress indicators communicating real-time operation status and percentage completion."
+      />
 
       {/* Installation */}
       <section id="installation" className="space-y-4">
@@ -117,7 +103,9 @@ export default function ProgressDoc() {
 
       {/* Basic Progress */}
       <section id="basic-progress" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Basic Progress</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Basic Progress
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-md space-y-6">
             <Progress value={val} label="Storage Used" showValueLabel />
@@ -132,7 +120,9 @@ export default function ProgressDoc() {
 
       {/* Color Variants */}
       <section id="progress-colors" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Color Variants</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Color Variants
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-md space-y-4">
             <Progress value={75} color="primary" label="Primary (75%)" showValueLabel />
@@ -146,7 +136,9 @@ export default function ProgressDoc() {
 
       {/* Sizes */}
       <section id="progress-sizes" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Size Variations</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Size Variations
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-md space-y-4">
             <Progress size="sm" value={60} label="Small (sm)" />
@@ -158,7 +150,7 @@ export default function ProgressDoc() {
 
       {/* Striped & Indeterminate */}
       <section id="striped-indeterminate" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Striped & Indeterminate
         </h2>
         <ComponentPreview>
@@ -171,7 +163,9 @@ export default function ProgressDoc() {
 
       {/* Circular Progress */}
       <section id="circular-progress" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Circular Progress</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Circular Progress
+        </h2>
         <ComponentPreview>
           <div className="flex flex-wrap items-center justify-around gap-8">
             <CircularProgress value={val} size="sm" showValueLabel />
@@ -189,7 +183,9 @@ export default function ProgressDoc() {
 
       {/* Component API */}
       <section id="component-api" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Component API</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Component API
+        </h2>
         <ApiTable rows={apiRows} />
       </section>
     </div>

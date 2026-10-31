@@ -1,6 +1,6 @@
 import sidebarCode from "../../../../packages/core/src/components/Sidebar/Sidebar.tsx?raw";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Sidebar,
   SidebarHeader,
@@ -278,323 +278,312 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
   };
 
   return (
-    <div className="flex w-full flex-col items-center pt-24 pb-24">
-      <div className="mx-auto w-full max-w-7xl space-y-8 px-4 sm:px-8 lg:px-12">
-        {/* Title & Subtitle */}
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-3 flex items-center gap-3">
-              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                Sidebar Layout
-              </h1>
-              <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                Updated
-              </span>
+    <div className="space-y-24 pb-24 sm:space-y-32">
+      {/* Title & Subtitle */}
+      <DocHeader
+        category="Components"
+        title="Sidebar"
+        badge="Core"
+        description="A flexible, collapsible sidebar component with nested navigation items, active route indicators, and smooth transition states."
+      />
+
+      {/* Main Preview & Code */}
+      <section className="space-y-4">
+        <ComponentPreview demoUrl="/demos/sidebar">
+          <div className="flex w-full items-center justify-center px-4 py-8 sm:px-8">
+            <div className="relative flex h-[700px] w-full max-w-5xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
+              <Sidebar variant="bordered" radius="md" size="md">
+                <SidebarHeader className="relative h-14">
+                  <div className="flex items-center gap-3 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black dark:bg-white">
+                      <svg
+                        className="h-5 w-5 text-white dark:text-black"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"
+                        />
+                      </svg>
+                    </div>
+                    <span className="truncate text-[15px] font-bold text-zinc-900 dark:text-zinc-50">
+                      Bird Studio
+                    </span>
+                  </div>
+                  <SidebarToggle className="absolute right-4 border border-zinc-200 bg-white shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:border-zinc-800 dark:bg-zinc-950" />
+                </SidebarHeader>
+
+                <SidebarContent>
+                  <div className="mb-4 space-y-1 px-3 pt-2">
+                    <SidebarItem icon={<Search size={18} />} label="Search">
+                      Search
+                    </SidebarItem>
+                    <SidebarItem
+                      icon={<Inbox size={18} />}
+                      isActive={activeItem1 === "Inbox"}
+                      onClick={() => setActiveItem1("Inbox")}
+                      label="Inbox"
+                    >
+                      Inbox
+                    </SidebarItem>
+                  </div>
+
+                  <SidebarNav>
+                    <SidebarItem
+                      icon={<Home size={18} />}
+                      isActive={activeItem1 === "Home"}
+                      onClick={() => setActiveItem1("Home")}
+                      label="Home"
+                    >
+                      Home
+                    </SidebarItem>
+                    <SidebarItem
+                      icon={<Ticket size={18} />}
+                      isActive={activeItem1 === "Events"}
+                      onClick={() => setActiveItem1("Events")}
+                      label="Events"
+                    >
+                      Events
+                    </SidebarItem>
+                    <SidebarItem
+                      icon={<ShoppingBag size={18} />}
+                      isActive={activeItem1 === "Orders"}
+                      onClick={() => setActiveItem1("Orders")}
+                      label="Orders"
+                    >
+                      Orders
+                    </SidebarItem>
+                    <SidebarItem
+                      icon={<Radio size={18} />}
+                      isActive={activeItem1 === "Broadcasts"}
+                      onClick={() => setActiveItem1("Broadcasts")}
+                      label="Broadcasts"
+                    >
+                      Broadcasts
+                    </SidebarItem>
+                    <SidebarItem
+                      icon={<Settings size={18} />}
+                      isActive={activeItem1 === "Settings"}
+                      onClick={() => setActiveItem1("Settings")}
+                      label="Settings"
+                    >
+                      Settings
+                    </SidebarItem>
+                  </SidebarNav>
+
+                  <SidebarNav title="Upcoming Events">
+                    <SidebarItem
+                      isActive={activeItem1 === "Bear Hug"}
+                      onClick={() => setActiveItem1("Bear Hug")}
+                      label="Bear Hug"
+                    >
+                      Bear Hug: Live in Concert
+                    </SidebarItem>
+                    <SidebarItem
+                      isActive={activeItem1 === "Viking People"}
+                      onClick={() => setActiveItem1("Viking People")}
+                      label="Viking People"
+                    >
+                      Viking People
+                    </SidebarItem>
+                    <SidebarItem
+                      isActive={activeItem1 === "Six Fingers"}
+                      onClick={() => setActiveItem1("Six Fingers")}
+                      label="Six Fingers"
+                    >
+                      Six Fingers — DJ Set
+                    </SidebarItem>
+                  </SidebarNav>
+
+                  <div className="mt-auto pt-8">
+                    <SidebarNav>
+                      <SidebarItem
+                        icon={<LifeBuoy size={18} />}
+                        isActive={activeItem1 === "Support"}
+                        onClick={() => setActiveItem1("Support")}
+                        label="Support"
+                      >
+                        Support
+                      </SidebarItem>
+                      <SidebarItem
+                        icon={<FileText size={18} />}
+                        isActive={activeItem1 === "Changelog"}
+                        onClick={() => setActiveItem1("Changelog")}
+                        label="Changelog"
+                      >
+                        Changelog
+                      </SidebarItem>
+                    </SidebarNav>
+                  </div>
+                </SidebarContent>
+
+                <SidebarFooter className="border-t border-zinc-200 dark:border-zinc-800/50">
+                  <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 py-1 group-aria-[expanded=false]:justify-center">
+                    <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-zinc-300 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800">
+                      <img
+                        src="https://i.pravatar.cc/150?img=47"
+                        alt="Avatar"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                      <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                        Erica
+                      </span>
+                      <span className="truncate text-xs text-zinc-500">erica@example.com</span>
+                    </div>
+                  </div>
+                </SidebarFooter>
+              </Sidebar>
+
+              <main className="flex-1 overflow-y-auto bg-white dark:bg-zinc-950">
+                {renderContent()}
+              </main>
             </div>
-            <p className="pr-8 text-base text-zinc-600 lg:max-w-4xl dark:text-zinc-400">
-              A production-ready application layout simulating page transitions. Inspired by
-              Catalyst UI.
-            </p>
           </div>
-          <PageToolbar />
+        </ComponentPreview>
+        <CodeBlock code={codeBordered} />
+      </section>
+
+      <div id="installation" className="scroll-mt-24">
+        <InstallationTabs componentName="sidebar" manualCode={sidebarCode} />
+      </div>
+
+      {/* Component API */}
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Component API
+        </h2>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          Props for the{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+            {"<Sidebar />"}
+          </code>{" "}
+          and{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+            {"<SidebarItem />"}
+          </code>{" "}
+          components.
+        </p>
+
+        <div className="mt-6 mb-8">
+          <h3 className="font-outfit mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+            &lt;Sidebar /&gt;
+          </h3>
+          <ApiTable rows={sidebarApiProps} />
         </div>
 
-        {/* Main Preview & Code */}
-        <section className="space-y-4">
-          <ComponentPreview demoUrl="/demos/sidebar">
-            <div className="flex w-full items-center justify-center px-4 py-8 sm:px-8">
-              <div className="relative flex h-[700px] w-full max-w-5xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-                <Sidebar variant="bordered" radius="md" size="md">
+        <div className="mt-6">
+          <h3 className="font-outfit mb-4 text-lg font-medium text-zinc-900 dark:text-white">
+            &lt;SidebarItem /&gt;
+          </h3>
+          <ApiTable rows={sidebarItemApiProps} />
+        </div>
+      </section>
+
+      {/* Examples */}
+      <section id="examples" className="scroll-mt-24 space-y-20 pt-4 sm:space-y-24">
+        <h2 className="font-outfit mb-2 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Examples
+        </h2>
+
+        <div id="flat-variant" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Flat Variant
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Using{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              variant="flat"
+            </code>{" "}
+            and{" "}
+            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
+              size="sm"
+            </code>{" "}
+            to create a smaller, softer sidebar without an outer border. Perfect for inner layouts
+            or modals.
+          </p>
+
+          <ComponentPreview demoUrl="/demos/sidebar-flat">
+            <div className="flex w-full items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-100 to-zinc-200 p-4 dark:from-zinc-900 dark:to-zinc-950">
+              <div className="relative flex h-[480px] w-full max-w-3xl overflow-hidden rounded-xl border border-zinc-200/50 shadow-xl dark:border-zinc-800/50">
+                <Sidebar variant="flat" size="sm" radius="full">
                   <SidebarHeader className="relative h-14">
-                    <div className="flex items-center gap-3 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black dark:bg-white">
-                        <svg
-                          className="h-5 w-5 text-white dark:text-black"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M13 10V3L4 14h7v7l9-11h-7z"
-                          />
-                        </svg>
-                      </div>
-                      <span className="truncate text-[15px] font-bold text-zinc-900 dark:text-zinc-50">
-                        Bird Studio
+                    <div className="flex items-center gap-2 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                      <span className="text-sm font-bold tracking-wider text-zinc-900 dark:text-zinc-50">
+                        WORKSPACE
                       </span>
                     </div>
-                    <SidebarToggle className="absolute right-4 border border-zinc-200 bg-white shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:border-zinc-800 dark:bg-zinc-950" />
+                    <SidebarToggle className="absolute right-4 bg-white/50 shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:bg-zinc-800/50" />
                   </SidebarHeader>
 
                   <SidebarContent>
-                    <div className="mb-4 space-y-1 px-3 pt-2">
-                      <SidebarItem icon={<Search size={18} />} label="Search">
-                        Search
-                      </SidebarItem>
-                      <SidebarItem
-                        icon={<Inbox size={18} />}
-                        isActive={activeItem1 === "Inbox"}
-                        onClick={() => setActiveItem1("Inbox")}
-                        label="Inbox"
-                      >
-                        Inbox
-                      </SidebarItem>
+                    <div className="mb-2 px-3 pt-2">
+                      <div className="flex items-center gap-2 rounded-full bg-zinc-200/50 px-2.5 py-1.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
+                        <Search size={14} className="shrink-0" />
+                        <span className="overflow-hidden text-xs whitespace-nowrap transition-all group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
+                          Search...
+                        </span>
+                      </div>
                     </div>
-
                     <SidebarNav>
                       <SidebarItem
-                        icon={<Home size={18} />}
-                        isActive={activeItem1 === "Home"}
-                        onClick={() => setActiveItem1("Home")}
+                        icon={<Home size={16} />}
+                        isActive={activeItem2 === "Home"}
+                        onClick={() => setActiveItem2("Home")}
                         label="Home"
                       >
                         Home
                       </SidebarItem>
                       <SidebarItem
-                        icon={<Ticket size={18} />}
-                        isActive={activeItem1 === "Events"}
-                        onClick={() => setActiveItem1("Events")}
-                        label="Events"
+                        icon={<Users size={16} />}
+                        isActive={activeItem2 === "Contacts"}
+                        onClick={() => setActiveItem2("Contacts")}
+                        label="Contacts"
                       >
-                        Events
+                        Contacts
                       </SidebarItem>
                       <SidebarItem
-                        icon={<ShoppingBag size={18} />}
-                        isActive={activeItem1 === "Orders"}
-                        onClick={() => setActiveItem1("Orders")}
-                        label="Orders"
-                      >
-                        Orders
-                      </SidebarItem>
-                      <SidebarItem
-                        icon={<Radio size={18} />}
-                        isActive={activeItem1 === "Broadcasts"}
-                        onClick={() => setActiveItem1("Broadcasts")}
-                        label="Broadcasts"
-                      >
-                        Broadcasts
-                      </SidebarItem>
-                      <SidebarItem
-                        icon={<Settings size={18} />}
-                        isActive={activeItem1 === "Settings"}
-                        onClick={() => setActiveItem1("Settings")}
+                        icon={<Settings size={16} />}
+                        isActive={activeItem2 === "Settings"}
+                        onClick={() => setActiveItem2("Settings")}
                         label="Settings"
                       >
                         Settings
                       </SidebarItem>
                     </SidebarNav>
-
-                    <SidebarNav title="Upcoming Events">
-                      <SidebarItem
-                        isActive={activeItem1 === "Bear Hug"}
-                        onClick={() => setActiveItem1("Bear Hug")}
-                        label="Bear Hug"
-                      >
-                        Bear Hug: Live in Concert
-                      </SidebarItem>
-                      <SidebarItem
-                        isActive={activeItem1 === "Viking People"}
-                        onClick={() => setActiveItem1("Viking People")}
-                        label="Viking People"
-                      >
-                        Viking People
-                      </SidebarItem>
-                      <SidebarItem
-                        isActive={activeItem1 === "Six Fingers"}
-                        onClick={() => setActiveItem1("Six Fingers")}
-                        label="Six Fingers"
-                      >
-                        Six Fingers — DJ Set
-                      </SidebarItem>
-                    </SidebarNav>
-
-                    <div className="mt-auto pt-8">
-                      <SidebarNav>
-                        <SidebarItem
-                          icon={<LifeBuoy size={18} />}
-                          isActive={activeItem1 === "Support"}
-                          onClick={() => setActiveItem1("Support")}
-                          label="Support"
-                        >
-                          Support
-                        </SidebarItem>
-                        <SidebarItem
-                          icon={<FileText size={18} />}
-                          isActive={activeItem1 === "Changelog"}
-                          onClick={() => setActiveItem1("Changelog")}
-                          label="Changelog"
-                        >
-                          Changelog
-                        </SidebarItem>
-                      </SidebarNav>
-                    </div>
                   </SidebarContent>
 
-                  <SidebarFooter className="border-t border-zinc-200 dark:border-zinc-800/50">
-                    <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 py-1 group-aria-[expanded=false]:justify-center">
-                      <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-zinc-300 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800">
-                        <img
-                          src="https://i.pravatar.cc/150?img=47"
-                          alt="Avatar"
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
+                  <SidebarFooter>
+                    <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 group-aria-[expanded=false]:justify-center">
+                      <div className="h-8 w-8 shrink-0 rounded-full border-2 border-white bg-indigo-500 dark:border-zinc-900" />
                       <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
                         <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-                          Erica
+                          Jane Doe
                         </span>
-                        <span className="truncate text-xs text-zinc-500">erica@example.com</span>
+                        <span className="truncate text-[10px] text-zinc-500">jane@example.com</span>
                       </div>
                     </div>
                   </SidebarFooter>
                 </Sidebar>
 
-                <main className="flex-1 overflow-y-auto bg-white dark:bg-zinc-950">
-                  {renderContent()}
-                </main>
-              </div>
-            </div>
-          </ComponentPreview>
-          <CodeBlock code={codeBordered} />
-        </section>
-
-        <div id="installation" className="scroll-mt-24">
-          <InstallationTabs componentName="sidebar" manualCode={sidebarCode} />
-        </div>
-
-        {/* Component API */}
-        <section id="component-api" className="scroll-mt-24 space-y-4">
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Component API
-          </h2>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Props for the{" "}
-            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
-              {"<Sidebar />"}
-            </code>{" "}
-            and{" "}
-            <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
-              {"<SidebarItem />"}
-            </code>{" "}
-            components.
-          </p>
-
-          <div className="mt-6 mb-8">
-            <h4 className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              &lt;Sidebar /&gt;
-            </h4>
-            <ApiTable rows={sidebarApiProps} />
-          </div>
-
-          <div className="mt-6">
-            <h4 className="mb-4 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-              &lt;SidebarItem /&gt;
-            </h4>
-            <ApiTable rows={sidebarItemApiProps} />
-          </div>
-        </section>
-
-        {/* Examples */}
-        <section id="examples" className="scroll-mt-24 space-y-10 pt-4">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-50">Examples</h2>
-
-          <div id="flat-variant" className="scroll-mt-24 space-y-4">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Flat variant</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Using{" "}
-              <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
-                variant="flat"
-              </code>{" "}
-              and{" "}
-              <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
-                size="sm"
-              </code>{" "}
-              to create a smaller, softer sidebar without an outer border. Perfect for inner layouts
-              or modals.
-            </p>
-
-            <ComponentPreview demoUrl="/demos/sidebar-flat">
-              <div className="flex w-full items-center justify-center rounded-2xl bg-gradient-to-br from-zinc-100 to-zinc-200 p-4 dark:from-zinc-900 dark:to-zinc-950">
-                <div className="relative flex h-[480px] w-full max-w-3xl overflow-hidden rounded-xl border border-zinc-200/50 shadow-xl dark:border-zinc-800/50">
-                  <Sidebar variant="flat" size="sm" radius="full">
-                    <SidebarHeader className="relative h-14">
-                      <div className="flex items-center gap-2 overflow-hidden transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                        <span className="text-sm font-bold tracking-wider text-zinc-900 dark:text-zinc-50">
-                          WORKSPACE
-                        </span>
-                      </div>
-                      <SidebarToggle className="absolute right-4 bg-white/50 shadow-sm transition-all duration-300 group-aria-[expanded=false]:right-1/2 group-aria-[expanded=false]:translate-x-1/2 dark:bg-zinc-800/50" />
-                    </SidebarHeader>
-
-                    <SidebarContent>
-                      <div className="mb-2 px-3 pt-2">
-                        <div className="flex items-center gap-2 rounded-full bg-zinc-200/50 px-2.5 py-1.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
-                          <Search size={14} className="shrink-0" />
-                          <span className="overflow-hidden text-xs whitespace-nowrap transition-all group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                            Search...
-                          </span>
-                        </div>
-                      </div>
-                      <SidebarNav>
-                        <SidebarItem
-                          icon={<Home size={16} />}
-                          isActive={activeItem2 === "Home"}
-                          onClick={() => setActiveItem2("Home")}
-                          label="Home"
-                        >
-                          Home
-                        </SidebarItem>
-                        <SidebarItem
-                          icon={<Users size={16} />}
-                          isActive={activeItem2 === "Contacts"}
-                          onClick={() => setActiveItem2("Contacts")}
-                          label="Contacts"
-                        >
-                          Contacts
-                        </SidebarItem>
-                        <SidebarItem
-                          icon={<Settings size={16} />}
-                          isActive={activeItem2 === "Settings"}
-                          onClick={() => setActiveItem2("Settings")}
-                          label="Settings"
-                        >
-                          Settings
-                        </SidebarItem>
-                      </SidebarNav>
-                    </SidebarContent>
-
-                    <SidebarFooter>
-                      <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 group-aria-[expanded=false]:justify-center">
-                        <div className="h-8 w-8 shrink-0 rounded-full border-2 border-white bg-indigo-500 dark:border-zinc-900" />
-                        <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
-                          <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-                            Jane Doe
-                          </span>
-                          <span className="truncate text-[10px] text-zinc-500">
-                            jane@example.com
-                          </span>
-                        </div>
-                      </div>
-                    </SidebarFooter>
-                  </Sidebar>
-
-                  <div className="flex flex-1 flex-col items-center justify-center border-l border-zinc-200/50 bg-white p-6 dark:border-zinc-800/50 dark:bg-zinc-950">
-                    <div className="flex w-full max-w-sm animate-pulse flex-col items-center gap-4">
-                      <div className="h-6 w-3/4 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
-                      <div className="h-24 w-full rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
-                      <div className="h-4 w-5/6 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
-                    </div>
+                <div className="flex flex-1 flex-col items-center justify-center border-l border-zinc-200/50 bg-white p-6 dark:border-zinc-800/50 dark:bg-zinc-950">
+                  <div className="flex w-full max-w-sm animate-pulse flex-col items-center gap-4">
+                    <div className="h-6 w-3/4 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
+                    <div className="h-24 w-full rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
+                    <div className="h-4 w-5/6 rounded-md bg-zinc-200 dark:bg-zinc-800"></div>
                   </div>
                 </div>
               </div>
-            </ComponentPreview>
-            <CodeBlock code={codeFlat} />
-          </div>
-        </section>
-      </div>
+            </div>
+          </ComponentPreview>
+          <CodeBlock code={codeFlat} />
+        </div>
+      </section>
     </div>
   );
 }

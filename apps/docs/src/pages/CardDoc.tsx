@@ -125,12 +125,12 @@ export default function CardDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Header */}
       <DocHeader
-        category="COMPONENTS"
+        category="Components"
         title="Card"
-        badge="Component"
+        badge="Core"
         description={
           <span>
             A modular, versatile surface container composed of{" "}
@@ -260,7 +260,7 @@ export default function Example() {
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -270,16 +270,16 @@ export default function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit mb-2 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Basic Cards */}
         <div id="basic-cards" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Basic Cards (Shadow, Bordered, Flat)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -387,7 +387,7 @@ export default function Example() {
 
         {/* 2. Interactive Cards */}
         <div id="interactive-cards" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Cards (Hoverable & Pressable)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -503,7 +503,7 @@ export function InteractiveCardsExample() {
 
         {/* 3. Rich Content Card */}
         <div id="rich-content-card" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Rich Content Card (Social & Media)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -641,7 +641,7 @@ export function RichContentCard() {
 
         {/* 4. Image Cover Card */}
         <div id="image-cover-card" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Image Cover Card (Blurred Footer Overlay)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -745,7 +745,7 @@ export function ImageCoverCard() {
 
         {/* 5. Interactive Playground */}
         <div id="interactive-customizer" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Card Playground
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

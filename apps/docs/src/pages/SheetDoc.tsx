@@ -2,7 +2,7 @@
 import sheetCode from "../../../../packages/core/src/components/Sheet/Sheet.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Sheet,
   SheetContent,
@@ -109,25 +109,14 @@ export default function SheetDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Header */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Sheet
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Slide-over drawer panel anchored to any viewport edge, featuring spring animations,
-            backdrop blur, and keyboard dismissal.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Sheet"
+        badge="Core"
+        description="Slide-over drawer panel anchored to any viewport edge, featuring spring animations, backdrop blur, and keyboard dismissal."
+      />
 
       {/* Main Preview */}
       <section className="space-y-4">
@@ -177,12 +166,15 @@ export function Example() {
 
       {/* Installation */}
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="sheet" manualCode={sheetCode} />
       </div>
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -197,16 +189,16 @@ export function Example() {
       </section>
 
       {/* Examples */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Sides */}
         <div id="sheet-sides" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Directional sides
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -240,7 +232,9 @@ export function Example() {
 
         {/* 2. Sizes */}
         <div id="sheet-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Panel sizes</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Panel sizes
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Support for small panels, standard forms, or full-screen takeovers:
           </p>

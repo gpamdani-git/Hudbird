@@ -2,7 +2,7 @@
 import avatarCode from "../../../../packages/core/src/components/Avatar/Avatar.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Avatar, Button } from "@hudbird/ui";
 import { RefreshCw } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -140,24 +140,14 @@ export default function AvatarDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Avatar
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Visual representation of a user or entity using photos, initials, or status icons.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Avatar"
+        badge="Core"
+        description="Visual representation of a user or entity using photos, initials, or status indicators with graceful fallback handling."
+      />
 
       {/* Main Preview & Code */}
       <section className="space-y-4">
@@ -199,7 +189,7 @@ function Example() {
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -215,16 +205,18 @@ function Example() {
       </section>
 
       {/* Examples */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Image avatars */}
         <div id="image-avatars" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Image avatars</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Image Avatars
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Provide a{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -270,8 +262,8 @@ function Example() {
 
         {/* 2. Fallback initials & Colors */}
         <div id="fallback-initials" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Fallback initials & Colors
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Fallback Initials & Colors
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             If no{" "}
@@ -312,7 +304,9 @@ function Example() {
 
         {/* 3. Avatar sizes */}
         <div id="avatar-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Avatar sizes</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Avatar Sizes
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Scale from compact lists to large profile banners with{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -384,7 +378,9 @@ function Example() {
 
         {/* 4. Border radii */}
         <div id="avatar-radii" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Border radii</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Border Radii
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Customize corner rounding with{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -448,7 +444,9 @@ function Example() {
 
         {/* 5. Avatar group */}
         <div id="avatar-group" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Avatar group</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Avatar Group
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Stack multiple avatars with negative margin and ring borders:
           </p>
@@ -492,8 +490,8 @@ function AvatarGroup() {
         {/* 6. Fallback error handling */}
         <div id="error-handling" className="scroll-mt-24 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-              Fallback error demo
+            <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Fallback Error Demo
             </h3>
             <Button
               size="sm"

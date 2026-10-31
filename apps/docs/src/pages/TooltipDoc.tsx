@@ -2,7 +2,7 @@
 import tooltipCode from "../../../../packages/core/src/components/Tooltip/Tooltip.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Tooltip, Button, Avatar, Badge } from "@hudbird/ui";
 import { Info, HelpCircle, Bell, Share2, Sparkles, Check, Heart } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -112,28 +112,14 @@ export default function TooltipDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Tooltip
-            </h1>
-            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              New
-            </span>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Tooltips display contextual informational labels when users hover over or focus an
-            interactive element, with automatic directional arrows and full keyboard support.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Tooltip"
+        badge="Core"
+        description="Tooltips display contextual informational labels when users hover over or focus an interactive element, with automatic directional arrows and full keyboard support."
+      />
 
       {/* Main Preview */}
       <section className="space-y-4">
@@ -174,14 +160,20 @@ export default function Example() {
 }`}
         />
       </section>
+      {/* Installation */}
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="tooltip" manualCode={tooltipCode} />
       </div>
 
       {/* Component API */}
       <section className="space-y-6" id="component-api">
         <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+            Component API
+          </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Complete prop specification for the{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
@@ -195,16 +187,18 @@ export default function Example() {
       </section>
 
       {/* Examples & Variants */}
-      <div className="space-y-12" id="examples">
+      <div className="space-y-20 sm:space-y-24" id="examples">
         <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples & Variants
           </h2>
         </div>
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-tooltip">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Basic Usage
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Wrap any button, link, or icon with Tooltip to attach accessible helper text.
           </p>
@@ -242,7 +236,7 @@ export default function Example() {
 
         {/* Placements */}
         <section className="space-y-4" id="tooltip-placements">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Placements (Top, Bottom, Left, Right)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -281,7 +275,7 @@ export default function Example() {
 
         {/* Colors */}
         <section className="space-y-4" id="tooltip-colors">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Color Options
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -331,7 +325,9 @@ export default function Example() {
 
         {/* Delay Timers */}
         <section className="space-y-4" id="delay-timing">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Delay Timers</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Delay Timers
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Customize{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">delay</code>{" "}
@@ -368,7 +364,7 @@ export default function Example() {
 
         {/* Rich Custom Content */}
         <section className="space-y-4" id="rich-content">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Rich Custom Content
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -425,7 +421,7 @@ export default function Example() {
 
         {/* Radius Options */}
         <section className="space-y-4" id="custom-radius">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Radius Options
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -468,7 +464,7 @@ export default function Example() {
 
         {/* Controlled State */}
         <section className="space-y-4" id="controlled-state">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Controlled State
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

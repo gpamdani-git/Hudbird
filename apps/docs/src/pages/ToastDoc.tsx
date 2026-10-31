@@ -2,7 +2,7 @@
 import toastCode from "../../../../packages/core/src/components/Toast/Toast.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { toast, Toaster, Button } from "@hudbird/ui";
 import { CheckCircle2, AlertTriangle, AlertCircle, Info, Loader2, Sparkles } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -91,28 +91,17 @@ export default function ToastDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Container Toaster */}
       <Toaster position={position} />
 
       {/* Header */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Toast
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Non-intrusive floating feedback notifications with decoupled state, promise handling,
-            and customizable positions.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Toast"
+        badge="Core"
+        description="Non-intrusive floating feedback notifications with decoupled state, promise handling, and customizable positions."
+      />
 
       {/* Main Preview & Code */}
       <section className="space-y-4">
@@ -164,12 +153,15 @@ export function App() {
 
       {/* Installation */}
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="toast" manualCode={toastCode} />
       </div>
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -185,16 +177,18 @@ export function App() {
       </section>
 
       {/* Examples */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Variants */}
         <div id="toast-variants" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Toast variants</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Toast variants
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Pre-configured semantic helpers for standard feedback loops:
           </p>
@@ -269,7 +263,9 @@ toast.info("Update available");`}
 
         {/* 2. Positioning */}
         <div id="toast-positions" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Positioning</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Positioning
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Configure where the toasts appear in viewport coordinates:
           </p>
@@ -306,7 +302,9 @@ toast.info("Update available");`}
 
         {/* 3. Promise toast */}
         <div id="async-promise" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Promise toast</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Promise toast
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Automatically tracks asynchronous operations through pending, success, and error states:
           </p>
@@ -343,7 +341,9 @@ toast.info("Update available");`}
 
         {/* 4. Action toast */}
         <div id="action-toast" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Action buttons</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Action buttons
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Toasts can include action and cancel callbacks for quick reversals (e.g. undo delete):
           </p>

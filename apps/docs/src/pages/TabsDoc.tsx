@@ -2,7 +2,7 @@
 import tabsCode from "../../../../packages/core/src/components/Tabs/Tabs.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Tabs, Tab, TabList, TabPanel, Card, CardBody, Button, Badge } from "@hudbird/ui";
 import { Music, Image, Video, Settings, User, Bell, Shield, Heart } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -123,29 +123,14 @@ export default function TabsDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Tabs
-            </h1>
-            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              New
-            </span>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Tabs organize related content across multiple panels, allowing users to switch between
-            different views within the same context with full keyboard navigation and WAI-ARIA
-            compliance.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Tabs"
+        badge="Core"
+        description="Tabs organize related content across multiple panels, allowing users to switch between different views within the same context with full keyboard navigation and WAI-ARIA compliance."
+      />
 
       {/* Main Preview */}
       <section className="space-y-4">
@@ -247,7 +232,9 @@ export default function Example() {
       {/* Component API */}
       <section className="space-y-6" id="component-api">
         <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+            Component API
+          </h2>
           <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
             Properties and handlers for the root{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
@@ -262,14 +249,14 @@ export default function Example() {
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-white">
             Tabs Props
           </h3>
           <ApiTable rows={tabsApiRows} />
         </div>
 
         <div>
-          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-white">
             Tab Item Props
           </h3>
           <ApiTable rows={tabItemApiRows} />
@@ -277,16 +264,18 @@ export default function Example() {
       </section>
 
       {/* Examples & Variants */}
-      <div className="space-y-12" id="examples">
+      <div className="space-y-20 sm:space-y-24" id="examples">
         <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples & Variants
           </h2>
         </div>
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-tabs">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Basic Usage
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             A standard tab bar with declarative panels rendered inside.
           </p>
@@ -322,7 +311,9 @@ export default function Example() {
 
         {/* Variants */}
         <section className="space-y-4" id="tab-variants">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Variants</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Variants
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Tabs support 4 distinct visual variants:{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">solid</code>,{" "}
@@ -394,7 +385,9 @@ export default function Example() {
 
         {/* Colors */}
         <section className="space-y-4" id="tab-colors">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Colors</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Colors
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Choose from 5 dynamic semantic color variations.
           </p>
@@ -433,7 +426,7 @@ export default function Example() {
 
         {/* Sizes and Radius */}
         <section className="space-y-4" id="sizes-and-radius">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Sizes & Radius
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -464,7 +457,7 @@ export default function Example() {
 
         {/* Icons & Badges */}
         <section className="space-y-4" id="icons-and-badges">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             With Icons & Badges
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -495,7 +488,7 @@ export default function Example() {
 
         {/* Vertical Orientation */}
         <section className="space-y-4" id="vertical-tabs">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Vertical Orientation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -545,7 +538,7 @@ export default function Example() {
 
         {/* Disabled States */}
         <section className="space-y-4" id="disabled-state">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -575,7 +568,9 @@ export default function Example() {
 
         {/* Full Width */}
         <section className="space-y-4" id="full-width-tabs">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Full Width</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Full Width
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Tabs can expand to equally distribute space across the parent container using{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 text-xs dark:bg-zinc-800">
