@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Moon, Sun, Menu, Monitor, ChevronRight, PanelLeft, Sparkles } from "lucide-react";
-import { useLocation, Link } from "react-router-dom";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@hudbird/ui";
+import {
+  Moon,
+  Sun,
+  Menu,
+  Monitor,
+  ChevronRight,
+  PanelLeft,
+  MoreHorizontal,
+  ExternalLink,
+  LifeBuoy,
+  FileText,
+} from "lucide-react";
+import { useLocation, Link, useNavigate } from "react-router-dom";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
 import { navigationData } from "../navData";
-import changelogData from "../data/changelog.json";
-import { ProPricingModal } from "./ProPricingModal";
 import { GithubIcon, DiscordIcon } from "./SocialIcons";
 
 interface HeaderProps {
@@ -33,8 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
   });
 
   const location = useLocation();
-  const isThemesPage = location.pathname.startsWith("/themes");
-  const [isProModalOpen, setIsProModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Find breadcrumb
   let parentGroup = "";
@@ -90,9 +98,6 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <div className="pointer-events-none sticky top-3 z-40 mx-auto mt-3 w-[calc(100%-24px)] transition-all duration-300">
       <header className="pointer-events-auto w-full rounded-xl bg-white/80 backdrop-blur-3xl transition-colors duration-300 dark:bg-[#161618]/90">
-        {/* Subtle inner gradients */}
-        <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-b from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
-
         <div className="relative z-10 flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6">
           {/* Left: Toggles & Breadcrumbs */}
           <div className="flex shrink-0 items-center gap-3">
@@ -144,202 +149,174 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Right: Navigation items & Theme Segmented Switch UI */}
-          <div className="flex shrink-0 items-center gap-3 text-sm font-medium xl:gap-6">
-            {/* Desktop Navigation */}
-            <div className="hidden items-center gap-6 xl:flex">
-              <a
-                href="https://hudbird-editor.vercel.app/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-                title="Hudbird Builder"
+          {/* Right: Actions (Templates, Theme, Three-Dots Menu) */}
+          <div className="flex shrink-0 items-center gap-2 text-sm font-medium sm:gap-3">
+            {/* Subtle Templates PRO Pill */}
+            <button
+              type="button"
+              onClick={() => {
+                const url = import.meta.env.DEV
+                  ? "http://localhost:5174/"
+                  : "https://starterkit-pro.vercel.app/";
+                window.open(url, "_blank");
+              }}
+              className="flex items-center gap-1.5 rounded-full border border-black/10 bg-black/5 px-2.5 py-1 text-xs font-medium text-zinc-700 transition-all hover:bg-black/10 active:scale-95 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
+              title="Explore PRO Templates"
+            >
+              <span>Templates</span>
+              <span className="py-0.2 rounded-full bg-zinc-200/80 px-1.5 text-[9px] font-semibold text-zinc-800 dark:bg-white/15 dark:text-zinc-200">
+                PRO
+              </span>
+            </button>
+
+            {/* Segmented Switch UI: Light | Dark | System */}
+            <div
+              role="radiogroup"
+              aria-label="Theme mode switcher"
+              className="hidden items-center rounded-xl border border-zinc-200/50 bg-white/50 p-0.5 sm:flex dark:border-zinc-800/50 dark:bg-zinc-900/50"
+            >
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === "light"}
+                onClick={() => setTheme("light")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                  theme === "light"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="Light mode"
               >
-                <span className="font-semibold text-zinc-900 dark:text-white">Builder</span>
-              </a>
+                <Sun className={`h-3 w-3 ${theme === "light" ? "text-amber-500" : ""}`} />
+                <span>Light</span>
+              </button>
 
               <button
                 type="button"
-                onClick={() => {
-                  const url = import.meta.env.DEV
-                    ? "http://localhost:5174/"
-                    : "https://starterkit-pro.vercel.app/";
-                  window.open(url, "_blank");
-                }}
-                className="group relative flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-3 py-1 text-xs font-semibold text-white shadow-sm transition-all hover:from-blue-700 hover:to-indigo-700 hover:shadow-md active:scale-95"
+                role="radio"
+                aria-checked={theme === "dark"}
+                onClick={() => setTheme("dark")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                  theme === "dark"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="Dark mode"
               >
-                <Sparkles className="h-3.5 w-3.5 text-amber-300" />
-                <span>Unlock Templates</span>
-                <span className="py-0.2 rounded-full bg-white/20 px-1.5 text-[9px] font-bold">
-                  PRO
-                </span>
+                <Moon
+                  className={`h-3 w-3 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                />
+                <span>Dark</span>
               </button>
 
-              {/* Segmented Switch UI: Light | Dark | System */}
-              <div
-                role="radiogroup"
-                aria-label="Theme mode switcher"
-                className="flex items-center rounded-xl border border-zinc-200/50 bg-white/50 p-0.5 dark:border-zinc-800/50 dark:bg-zinc-900/50"
+              <button
+                type="button"
+                role="radio"
+                aria-checked={theme === "system"}
+                onClick={() => setTheme("system")}
+                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
+                  theme === "system"
+                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
+                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+                }`}
+                title="System preference"
               >
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={theme === "light"}
-                  onClick={() => setTheme("light")}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                    theme === "light"
-                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                  }`}
-                  title="Light mode"
-                >
-                  <Sun className={`h-3 w-3 ${theme === "light" ? "text-amber-500" : ""}`} />
-                  <span>Light</span>
-                </button>
-
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={theme === "dark"}
-                  onClick={() => setTheme("dark")}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                    theme === "dark"
-                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                  }`}
-                  title="Dark mode"
-                >
-                  <Moon
-                    className={`h-3 w-3 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                  />
-                  <span>Dark</span>
-                </button>
-
-                <button
-                  type="button"
-                  role="radio"
-                  aria-checked={theme === "system"}
-                  onClick={() => setTheme("system")}
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                    theme === "system"
-                      ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                  }`}
-                  title="System preference"
-                >
-                  <Monitor
-                    className={`h-3 w-3 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                  />
-                  <span>System</span>
-                </button>
-              </div>
-
-              {/* Socials: Discord & GitHub */}
-              <div className="flex items-center gap-1 border-l border-zinc-200 pl-4 dark:border-zinc-800">
-                <a
-                  href="https://discord.gg/NPBspwkXke"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-[#5865F2] dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-[#5865F2]"
-                  title="Join Discord Community"
-                  aria-label="Discord"
-                >
-                  <DiscordIcon className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://github.com/gpamdani-git/Hudbird"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-white"
-                  title="GitHub Repository"
-                  aria-label="GitHub"
-                >
-                  <GithubIcon className="h-4 w-4" />
-                </a>
-              </div>
+                <Monitor
+                  className={`h-3 w-3 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
+                />
+                <span>System</span>
+              </button>
             </div>
 
-            {/* Mobile Navigation Dropdown */}
-            <div className="flex xl:hidden">
-              <Dropdown placement="bottom-end">
-                <DropdownTrigger
-                  className="flex items-center justify-center rounded-lg p-2 text-zinc-600 transition-colors hover:bg-black/5 dark:text-zinc-400 dark:hover:bg-white/5"
-                  title="Menu"
+            {/* Three-Dots Menu (Gestalt grouped secondary items) */}
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+                title="More options"
+                aria-label="More options"
+              >
+                <MoreHorizontal className="h-4 w-4" />
+              </DropdownTrigger>
+              <DropdownMenu className="min-w-[190px]">
+                <DropdownItem
+                  startContent={<ExternalLink className="h-4 w-4" />}
+                  onClick={() => window.open("https://hudbird-editor.vercel.app/", "_blank")}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="1" />
-                    <circle cx="12" cy="5" r="1" />
-                    <circle cx="12" cy="19" r="1" />
-                  </svg>
-                </DropdownTrigger>
-                <DropdownMenu className="min-w-[180px]">
-                  <DropdownItem>
+                  Builder
+                </DropdownItem>
+                <DropdownItem
+                  startContent={<DiscordIcon className="h-4 w-4 text-[#5865F2]" />}
+                  onClick={() => window.open("https://discord.gg/NPBspwkXke", "_blank")}
+                >
+                  Discord Community
+                </DropdownItem>
+                <DropdownItem
+                  startContent={<GithubIcon className="h-4 w-4" />}
+                  onClick={() => window.open("https://github.com/gpamdani-git/Hudbird", "_blank")}
+                >
+                  GitHub Repository
+                </DropdownItem>
+                <DropdownItem
+                  startContent={<FileText className="h-4 w-4" />}
+                  onClick={() => navigate("/changelog")}
+                >
+                  Changelog
+                </DropdownItem>
+                <DropdownItem
+                  startContent={<LifeBuoy className="h-4 w-4" />}
+                  onClick={() => navigate("/support")}
+                >
+                  Support & FAQ
+                </DropdownItem>
+
+                {/* Mobile-only quick theme toggle */}
+                <div className="my-1 border-t border-zinc-200 sm:hidden dark:border-zinc-800" />
+                <div className="flex items-center justify-between px-3 py-1.5 text-xs text-zinc-500 sm:hidden dark:text-zinc-400">
+                  <span>Theme</span>
+                  <div className="flex gap-1">
                     <button
                       type="button"
-                      onClick={() => {
-                        const url = import.meta.env.DEV
-                          ? "http://localhost:5174/"
-                          : "https://starterkit-pro.vercel.app/";
-                        window.open(url, "_blank");
-                      }}
-                      className="flex w-full items-center gap-2 font-semibold text-blue-600 dark:text-blue-400"
+                      onClick={() => setTheme("light")}
+                      className={`rounded p-1 ${
+                        theme === "light"
+                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
+                          : ""
+                      }`}
+                      title="Light"
                     >
-                      <Sparkles className="h-4 w-4 text-amber-500" />
-                      Unlock PRO Templates
+                      <Sun className="h-3.5 w-3.5" />
                     </button>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <a
-                      href="https://hudbird-editor.vercel.app/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex w-full items-center font-medium"
+                    <button
+                      type="button"
+                      onClick={() => setTheme("dark")}
+                      className={`rounded p-1 ${
+                        theme === "dark"
+                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
+                          : ""
+                      }`}
+                      title="Dark"
                     >
-                      Builder
-                    </a>
-                  </DropdownItem>
-
-                  <DropdownItem className="my-1 border-t border-zinc-200 dark:border-zinc-800" />
-                  <DropdownItem>
-                    <a
-                      href="https://discord.gg/NPBspwkXke"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex w-full items-center font-medium text-[#5865F2] hover:text-[#4752C4]"
+                      <Moon className="h-3.5 w-3.5" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setTheme("system")}
+                      className={`rounded p-1 ${
+                        theme === "system"
+                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
+                          : ""
+                      }`}
+                      title="System"
                     >
-                      <DiscordIcon className="mr-2 h-4 w-4" />
-                      Discord Community
-                    </a>
-                  </DropdownItem>
-                  <DropdownItem>
-                    <a
-                      href="https://github.com/gpamdani-git/Hudbird"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex w-full items-center font-medium"
-                    >
-                      <GithubIcon className="mr-2 h-4 w-4" />
-                      GitHub
-                    </a>
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-            </div>
+                      <Monitor className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </DropdownMenu>
+            </Dropdown>
           </div>
         </div>
       </header>
-
-      <ProPricingModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
     </div>
   );
 };
