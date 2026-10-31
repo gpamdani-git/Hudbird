@@ -25,7 +25,7 @@ export function useRadioGroupContext() {
 }
 
 export const radioCircleVariants = cva(
-  "shrink-0 rounded-full border flex items-center justify-center transition-all duration-150 ease-out",
+  "shrink-0 rounded-full border flex items-center justify-center transition-all duration-150 ease-out active:scale-[0.98]",
   {
     variants: {
       size: {

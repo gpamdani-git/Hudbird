@@ -2,7 +2,7 @@
 import radioGroupCode from "../../../../packages/core/src/components/RadioGroup/RadioGroup.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { RadioGroup, Radio } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -134,28 +134,14 @@ export default function RadioGroupDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              RadioGroup
-            </h1>
-            <span className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-              New
-            </span>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Radio groups let users select a single choice from a set of mutually exclusive options
-            with accessible keyboard arrow navigation and clear visual indicators.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="RadioGroup"
+        badge="Core"
+        description="Radio groups let users select a single choice from a set of mutually exclusive options with accessible keyboard arrow navigation and clear visual indicators."
+      />
 
       {/* Main Preview */}
       <section className="space-y-4">
@@ -215,10 +201,12 @@ export default function Example() {
       </div>
 
       {/* Component API */}
-      <section className="space-y-6" id="component-api">
-        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Component API</h2>
-          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+      <section className="space-y-8" id="component-api">
+        <div>
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+            Component API
+          </h2>
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             Properties for{" "}
             <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-xs dark:bg-zinc-800">
               RadioGroup
@@ -231,15 +219,15 @@ export default function Example() {
           </p>
         </div>
 
-        <div>
-          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <div className="space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             RadioGroup Props
           </h3>
           <ApiTable rows={radioGroupApiRows} />
         </div>
 
-        <div>
-          <h3 className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+        <div className="space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Radio Item Props
           </h3>
           <ApiTable rows={radioApiRows} />
@@ -247,16 +235,18 @@ export default function Example() {
       </section>
 
       {/* Examples & Variants */}
-      <div className="space-y-12" id="examples">
-        <div className="border-b border-zinc-200 pb-2 dark:border-zinc-800">
-          <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <div className="space-y-20 sm:space-y-24" id="examples">
+        <div>
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples & Variants
           </h2>
         </div>
 
         {/* Basic Usage */}
         <section className="space-y-4" id="basic-radio-group">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Basic Usage</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Basic Usage
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Standard vertical stack with label and simple choices.
           </p>
@@ -282,7 +272,7 @@ export default function Example() {
 
         {/* Horizontal Orientation */}
         <section className="space-y-4" id="horizontal-orientation">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Horizontal Orientation
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -317,7 +307,7 @@ export default function Example() {
 
         {/* Colors */}
         <section className="space-y-4" id="radio-colors">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Color Options
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -354,7 +344,7 @@ export default function Example() {
 
         {/* Sizes */}
         <section className="space-y-4" id="radio-sizes">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Sizes (sm, md, lg)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -392,7 +382,7 @@ export default function Example() {
 
         {/* With Descriptions */}
         <section className="space-y-4" id="with-descriptions">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             With Descriptions
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -441,7 +431,7 @@ export default function Example() {
 
         {/* Custom Card Tiles */}
         <section className="space-y-4" id="radio-cards">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Custom Radio Card Tiles
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -495,7 +485,7 @@ export default function Example() {
 
         {/* Validation & Disabled */}
         <section className="space-y-4" id="invalid-and-disabled">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Validation & Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

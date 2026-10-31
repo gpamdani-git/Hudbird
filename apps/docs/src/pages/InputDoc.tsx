@@ -170,12 +170,12 @@ export default function InputDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
       <DocHeader
-        category="COMPONENTS"
+        category="Components"
         title="Input"
-        badge="Component"
+        badge="Core"
         description="A high-performance form field primitive with rich visual variants, embedded inside/outside labels, interactive clear buttons, custom start/end content slots, and robust validation state handling."
       />
 
@@ -213,12 +213,15 @@ export default function Example() {
         />
       </section>
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="input" manualCode={inputCode} />
       </div>
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -228,16 +231,16 @@ export default function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Basic Form Variants */}
         <div id="basic-inputs" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Basic Form Variants (Flat, Bordered, Underlined)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -295,7 +298,7 @@ export default function Example() {
 
         {/* 2. Label Placements */}
         <div id="label-placements" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Label Placements (Outside vs Inside)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -348,7 +351,7 @@ export default function Example() {
 
         {/* 3. Content Slots */}
         <div id="content-slots" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Input with Content Slots (Start & End)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -464,7 +467,9 @@ export function ContentSlotsExample() {
 
         {/* 4. Clearable Input */}
         <div id="clearable-input" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Clearable Input</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Clearable Input
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Enable{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -515,7 +520,7 @@ export function ClearableExample() {
 
         {/* 5. Validation States */}
         <div id="validation-states" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Validation & Descriptions
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -580,7 +585,7 @@ export function ClearableExample() {
 
         {/* 6. Sizes & Radius */}
         <div id="sizes-and-radius" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Sizes & Corner Radii
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -669,7 +674,7 @@ export function ClearableExample() {
 
         {/* 7. Interactive Customizer */}
         <div id="interactive-customizer" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Customizer
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

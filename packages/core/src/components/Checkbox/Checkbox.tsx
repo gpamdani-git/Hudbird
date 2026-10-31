@@ -8,7 +8,7 @@ export type CheckboxColor = "primary" | "success" | "danger";
 export type CheckboxSize = "sm" | "md" | "lg";
 
 const checkboxControlVariants = cva(
-  "inline-flex items-center justify-center shrink-0 border transition-all duration-200 ease-in-out select-none active:scale-[0.96] focus-within:ring-2 focus-within:ring-offset-2",
+  "inline-flex items-center justify-center shrink-0 border transition-all duration-200 ease-in-out select-none active:scale-[0.98] focus-within:ring-2 focus-within:ring-offset-2",
   {
     variants: {
       size: {

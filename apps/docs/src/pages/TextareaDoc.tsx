@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import textareaCode from "../../../../packages/core/src/components/Textarea/Textarea.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import { Textarea } from "@hudbird/ui";
@@ -34,28 +34,20 @@ export default function TextareaDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Textarea
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            A multi-line text input field used for long-form content.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Textarea"
+        badge="Core"
+        description="A multi-line text input field used for long-form content, support tickets, comments, and narrative user input."
+      />
 
       {/* Main Preview */}
-      <section className="space-y-4" id="overview">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Overview</h2>
+      <section className="space-y-6" id="overview">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Overview
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-sm">
             <Textarea
@@ -84,13 +76,15 @@ export default function Example() {
 }`}
         />
       </section>
-      <div id="installation" className="scroll-mt-24 space-y-4">
+      <div id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs componentName="textarea" manualCode={textareaCode} />
       </div>
 
       {/* Variants */}
-      <section className="space-y-4" id="variants">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Variants</h2>
+      <section className="space-y-6" id="variants">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Variants
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-sm space-y-4">
             <Textarea variant="bordered" placeholder="Bordered (default)" />
@@ -106,8 +100,10 @@ export default function Example() {
       </section>
 
       {/* Invalid State */}
-      <section className="space-y-4" id="invalid-state">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Invalid State</h2>
+      <section className="space-y-6" id="invalid-state">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Invalid State
+        </h2>
         <ComponentPreview>
           <div className="w-full max-w-sm">
             <Textarea
@@ -123,8 +119,10 @@ export default function Example() {
       </section>
 
       {/* API Reference */}
-      <section className="space-y-4" id="api">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">API Reference</h2>
+      <section className="space-y-6" id="api">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          API Reference
+        </h2>
         <ApiTable
           note="Textarea supports all native HTML textarea element attributes."
           rows={apiRows}

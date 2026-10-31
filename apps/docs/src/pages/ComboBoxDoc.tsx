@@ -2,7 +2,7 @@
 import comboBoxCode from "../../../../packages/core/src/components/ComboBox/ComboBox.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { ComboBox, type ComboBoxOption } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -163,25 +163,14 @@ export default function ComboBoxDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              ComboBox
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Advanced searchable autocomplete dropdown supporting single selection and multi-select
-            tags/chips with live fuzzy filtering.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="ComboBox"
+        badge="Core"
+        description="Advanced searchable autocomplete dropdown supporting single selection and multi-select tags/chips with live fuzzy filtering."
+      />
 
       {/* Hero Preview & Code */}
       <section className="space-y-4">
@@ -223,12 +212,15 @@ function Example() {
         />
       </section>
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="combo-box" manualCode={comboBoxCode} />
       </div>
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -244,16 +236,16 @@ function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Single Select (Autocomplete) */}
         <div id="single-select" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Single Select (Autocomplete)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -301,7 +293,7 @@ function Example() {
 
         {/* 2. Multi-Select (Advanced Chips) */}
         <div id="multi-select" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Multi-Select (Advanced Chips)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -359,7 +351,7 @@ function Example() {
 
         {/* 3. Variants & Sizes */}
         <div id="variants-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Variants & Sizes
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -423,7 +415,7 @@ function Example() {
 
         {/* 4. Disabled & Invalid States */}
         <div id="states" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Disabled & Invalid States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

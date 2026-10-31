@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import switchCode from "../../../../packages/core/src/components/Switch/Switch.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import { Switch } from "@hudbird/ui";
@@ -56,28 +56,20 @@ export default function SwitchDoc() {
   const [isChecked3, setIsChecked3] = useState(false);
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Switch
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            A control that allows the user to toggle between checked and not checked.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Switch"
+        badge="Core"
+        description="A tactile toggle control that allows users to instantly alternate between binary states with spring-driven physics."
+      />
 
       {/* Main Preview */}
-      <section className="space-y-4" id="overview">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Overview</h2>
+      <section className="space-y-6" id="overview">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Overview
+        </h2>
         <ComponentPreview>
           <div className="flex flex-col items-center gap-4">
             <Switch
@@ -104,13 +96,15 @@ export default function Example() {
 }`}
         />
       </section>
-      <div id="installation" className="scroll-mt-24 space-y-4">
+      <div id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs componentName="switch" manualCode={switchCode} />
       </div>
 
       {/* Sizes */}
-      <section className="space-y-4" id="sizes">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Sizes</h2>
+      <section className="space-y-6" id="sizes">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Sizes
+        </h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           Switches come in three sizes:{" "}
           <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">sm</code>,{" "}
@@ -133,8 +127,10 @@ export default function Example() {
       </section>
 
       {/* Colors */}
-      <section className="space-y-4" id="colors">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">Colors</h2>
+      <section className="space-y-6" id="colors">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Colors
+        </h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           Choose from different color variants to match your branding or indicate states.
         </p>
@@ -155,8 +151,10 @@ export default function Example() {
       </section>
 
       {/* With Description */}
-      <section className="space-y-4" id="with-labels">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">With Description</h2>
+      <section className="space-y-6" id="with-labels">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          With Description
+        </h2>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
           Provide additional context by passing a{" "}
           <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
@@ -193,8 +191,10 @@ export default function Example() {
       </section>
 
       {/* API Reference */}
-      <section className="space-y-4" id="api">
-        <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">API Reference</h2>
+      <section className="space-y-6" id="api">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          API Reference
+        </h2>
         <ApiTable rows={apiRows} />
       </section>
     </div>

@@ -2,7 +2,7 @@
 import selectCode from "../../../../packages/core/src/components/Select/Select.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Select,
   SelectItem,
@@ -189,26 +189,14 @@ export default function SelectDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Header Section */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Select
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Modular dropdown select component featuring pure React state interaction, outside click
-            handling, animated chevron rotation, high-elevation floating menus, and comprehensive
-            dark mode support.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Select"
+        badge="Core"
+        description="Modular dropdown select component featuring pure React state interaction, outside click handling, animated chevron rotation, high-elevation floating menus, and comprehensive dark mode support."
+      />
 
       {/* Hero Interactive Playground */}
       <section className="space-y-4">
@@ -337,31 +325,27 @@ export default function SelectHero() {
       </div>
 
       {/* Component API Documentation */}
-      <section id="component-api" className="scroll-mt-24 space-y-6">
+      <section id="component-api" className="scroll-mt-24 space-y-8">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Component API
           </h2>
-          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             Complete props interface specification for{" "}
-            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
-              &lt;Select&gt;
-            </code>{" "}
-            and{" "}
-            <code className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
-              &lt;SelectItem&gt;
-            </code>
-            .
+            <code className="text-primary font-mono text-xs">&lt;Select&gt;</code> and{" "}
+            <code className="text-primary font-mono text-xs">&lt;SelectItem&gt;</code>.
           </p>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">Select Props</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Select Props
+          </h3>
           <ApiTable rows={selectApiRows} />
         </div>
 
         <div className="space-y-4 pt-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             SelectItem Props
           </h3>
           <ApiTable rows={selectItemApiRows} />
@@ -369,19 +353,21 @@ export default function SelectHero() {
       </section>
 
       {/* Showcase Examples */}
-      <section id="select-examples" className="space-y-12">
+      <section id="select-examples" className="space-y-20 sm:space-y-24">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Select Examples
           </h2>
-          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
             Explore diverse usage patterns, layout variants, size scales, and validation states.
           </p>
         </div>
 
         {/* 1. Basic Select */}
         <div id="basic-select" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Basic Select</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Basic Select
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Standard role selector with clean flat styling, chevron toggle indicator, and automatic
             outside click dismissal.
@@ -418,7 +404,7 @@ export default function SelectHero() {
 
         {/* 2. Variants & Sizes */}
         <div id="select-variants-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Select Variants & Sizes
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -542,7 +528,9 @@ export default function SelectHero() {
 
         {/* 3. Corner Radii */}
         <div id="select-radius" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">Corner Radii</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Corner Radii
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Shape tokens ranging from modern rounded (<code className="font-mono text-xs">md</code>{" "}
             / <code className="font-mono text-xs">lg</code>) to full pill (
@@ -588,7 +576,7 @@ export default function SelectHero() {
 
         {/* 4. With Option Icons */}
         <div id="select-icons" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             With Option Icons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -634,7 +622,7 @@ export default function SelectHero() {
 
         {/* 5. Error & Disabled States */}
         <div id="select-states" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Error & Disabled States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import inputOtpCode from "../../../../packages/core/src/components/InputOTP/InputOTP.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator, Button } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -102,25 +102,14 @@ export default function InputOTPDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Input OTP
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-32 text-base text-zinc-600 sm:pr-40 dark:text-zinc-400">
-            Accessible, modern one-time password and PIN verification inputs with auto-advance,
-            backspace handling, separator groups, and clipboard paste support.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Input OTP"
+        badge="Core"
+        description="Accessible, modern one-time password and PIN verification inputs with auto-advance, backspace handling, separator groups, and clipboard paste support."
+      />
 
       {/* Hero Showcase Preview */}
       <section className="space-y-4">
@@ -206,7 +195,7 @@ export default function VerificationDemo() {
 
       {/* Installation */}
       <section id="installation" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Installation
         </h2>
         <InstallationTabs componentName="InputOTP" manualCode={inputOtpCode} />
@@ -214,7 +203,7 @@ export default function VerificationDemo() {
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -224,16 +213,16 @@ export default function VerificationDemo() {
       </section>
 
       {/* Examples */}
-      <section id="examples" className="scroll-mt-24 space-y-12">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Six digit */}
         <div id="six-digit-otp" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             6-Digit OTP with Separator
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -260,7 +249,7 @@ export default function VerificationDemo() {
 
         {/* 2. Four digit PIN */}
         <div id="four-digit-pin" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             4-Digit PIN Code
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -283,7 +272,7 @@ export default function VerificationDemo() {
 
         {/* 3. Sizes & Radii */}
         <div id="otp-sizes" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Sizes & Corner Radii
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -335,7 +324,7 @@ export default function VerificationDemo() {
 
         {/* 4. Validation States */}
         <div id="validation-states" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Validation & Error States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -365,7 +354,7 @@ export default function VerificationDemo() {
 
         {/* 5. Interactive Verification Customizer */}
         <div id="interactive-customizer" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Interactive Verification
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

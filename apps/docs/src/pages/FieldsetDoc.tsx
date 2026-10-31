@@ -2,7 +2,7 @@
 import fieldsetCode from "../../../../packages/core/src/components/Fieldset/Fieldset.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Fieldset,
   FieldsetHeader,
@@ -106,26 +106,14 @@ export default function FieldsetDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Fieldset
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Structural container used to group related form controls, provide legends, render
-            descriptive helper guidance, support left-aligned labels or split section layouts, and
-            broadcast collective error states.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Fieldset"
+        badge="Core"
+        description="Structural container used to group related form controls, provide legends, render descriptive helper guidance, support left-aligned labels or split section layouts, and broadcast collective error states."
+      />
 
       {/* Hero Preview & Code (Horizontal Left Labels Showcase) */}
       <section className="space-y-4">
@@ -225,12 +213,15 @@ function ShippingDetailsExample() {
         />
       </section>
       <div id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
         <InstallationTabs componentName="fieldset" manualCode={fieldsetCode} />
       </div>
 
       {/* Component API */}
       <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -272,16 +263,16 @@ function ShippingDetailsExample() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Left-Aligned Labels (Horizontal Style) */}
         <div id="left-labels-fieldset" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Left-Aligned Labels (Horizontal Style)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -390,7 +381,7 @@ function Example() {
 
         {/* 2. Basic Stacked Fieldset */}
         <div id="basic-fieldset" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Basic Stacked Fieldset
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -444,7 +435,7 @@ function Example() {
 
         {/* 3. Side-by-Side (Split Section Style) */}
         <div id="side-by-side-layout" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Side-by-Side (Split Section Style)
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -550,7 +541,7 @@ function SideBySideExample() {
 
         {/* 4. Bordered & Card Variants */}
         <div id="bordered-and-card" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Bordered & Card Variants
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -634,7 +625,7 @@ function SideBySideExample() {
 
         {/* 5. Invalid & Disabled Fieldset States */}
         <div id="invalid-and-disabled" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Invalid & Disabled Fieldset States
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">

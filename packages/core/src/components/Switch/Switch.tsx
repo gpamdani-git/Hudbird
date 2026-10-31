@@ -9,7 +9,7 @@ export type SwitchColor = "primary" | "success" | "danger" | "warning";
 export type SwitchSize = "sm" | "md" | "lg";
 
 const switchTrackVariants = cva(
-  "inline-flex shrink-0 items-center rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out cursor-pointer",
+  "inline-flex shrink-0 items-center rounded-full border-2 border-transparent transition-all duration-200 ease-in-out cursor-pointer active:scale-[0.98]",
   {
     variants: {
       size: {

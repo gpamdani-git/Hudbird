@@ -203,12 +203,12 @@ export default function ButtonDoc() {
   ];
 
   return (
-    <div className="space-y-20 sm:space-y-28 pb-32">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Introduction */}
       <DocHeader
-        category="COMPONENTS"
+        category="Components"
         title="Button"
-        badge="Component"
+        badge="Core"
         description="Interactive trigger component with rich slot support for icons, loaders, compound variants, and corner radiuses."
       />
 
@@ -264,8 +264,8 @@ function Example() {
       </div>
 
       {/* Component API */}
-      <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+      <section id="component-api" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -281,16 +281,16 @@ function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-16">
+      <section id="examples" className="scroll-mt-24 space-y-20 sm:space-y-24">
         <div>
-          <h2 className="font-outfit mb-4 text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
         </div>
 
         {/* 1. Basic Buttons & Colors */}
         <div id="basic-buttons" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Basic Buttons & Colors
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -354,7 +354,9 @@ function Example() {
 
         {/* 2. Button Variants */}
         <div id="button-variants" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Button Variants</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Button Variants
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Choose between{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -410,7 +412,7 @@ function Example() {
 
         {/* 3. Buttons with Icons */}
         <div id="buttons-with-icons" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Buttons with Icons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -480,7 +482,7 @@ function Example() {
 
         {/* 4. Icon Only */}
         <div id="icon-only" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Icon Only Buttons
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -548,7 +550,9 @@ function Example() {
 
         {/* 5. Custom Radius */}
         <div id="custom-radius" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Custom Radius</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Custom Radius
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Customize corner rounding from sharp edges to full pills using the{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -593,7 +597,7 @@ function Example() {
         {/* 6. Loading & Disabled States */}
         <div id="loading-disabled" className="scroll-mt-24 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+            <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
               Loading & Disabled States
             </h3>
             <Button size="sm" variant="bordered" onClick={() => setIsLoadingActive((v) => !v)}>
@@ -661,7 +665,9 @@ function Example() {
 
         {/* 7. Using as a link */}
         <div id="using-as-a-link" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Using as a link</h3>
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Using as a link
+          </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Pass the{" "}
             <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
@@ -697,13 +703,13 @@ function Example() {
 
       {/* Appendix */}
       <section id="appendix" className="scroll-mt-24 space-y-10">
-        <h2 className="text-2xl font-medium tracking-[-0.3px] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Appendix
         </h2>
 
         {/* Solid color reference */}
         <div id="solid-color-reference" className="scroll-mt-24 space-y-6">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             Solid Color Reference
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
