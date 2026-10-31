@@ -204,10 +204,7 @@ export const VscodeAutocompleteIllustration = () => {
   const visibleCount = step < 4 ? 4 : step === 4 ? 6 : editorLines.length;
 
   return (
-    <div className="relative w-full max-w-3xl overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white font-sans text-sm shadow-md backdrop-blur-sm dark:border-white/10 dark:bg-[#0a0f1c]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:14px_14px] opacity-[0.04] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.06)_1px,transparent_1px)] dark:opacity-[0.06]" />
-
+    <div className="relative w-full max-w-3xl overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white font-sans text-sm shadow-xs dark:border-white/10 dark:bg-[#161618]">
       <motion.div
         className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent will-change-transform dark:via-white/15"
         initial={{ y: 0, opacity: 0 }}
@@ -220,26 +217,11 @@ export const VscodeAutocompleteIllustration = () => {
       <div className="pointer-events-none absolute bottom-3 left-3 z-10 h-5 w-5 border-b border-l border-zinc-200 dark:border-white/10" />
       <div className="pointer-events-none absolute right-3 bottom-3 z-10 h-5 w-5 border-r border-b border-zinc-200 dark:border-white/10" />
 
-      {/* Header — glass */}
-      <div className="relative z-10 flex items-center gap-2 border-b border-zinc-200/60 bg-white/70 px-4 py-3 backdrop-blur-md dark:border-white/10 dark:bg-white/5">
-        <motion.div
-          className="h-3 w-3 rounded-full bg-red-500"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(239,68,68,0.6)" }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-yellow-400"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2.3, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(250,204,21,0.6)" }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-emerald-400"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(52,211,153,0.6)" }}
-        />
+      {/* Header */}
+      <div className="relative z-10 flex items-center gap-2 border-b border-zinc-200/60 bg-zinc-50/70 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
         <div className="ml-2 flex-1 text-center">
           <motion.span
             animate={{ opacity: [0.5, 1, 0.5] }}
@@ -249,12 +231,7 @@ export const VscodeAutocompleteIllustration = () => {
             EDITOR // HUDBIRD.IDE
           </motion.span>
         </div>
-        <motion.div
-          className="h-2 w-2 rounded-full bg-cyan-500 dark:bg-cyan-400"
-          animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1.2, repeat: Infinity }}
-          style={{ boxShadow: "0 0 8px rgba(34,211,238,0.8)" }}
-        />
+        <div className="bg-primary h-2 w-2 rounded-full" />
       </div>
 
       {/* Body — command phase then editor phase */}
@@ -269,10 +246,7 @@ export const VscodeAutocompleteIllustration = () => {
               transition={{ duration: 0.35, ease: "easeOut" }}
               className="relative flex h-[300px] flex-col gap-3 p-5"
             >
-              <TerminalTyping
-                text="pnpm dlx hudbird-ui@latest add Hero"
-                color="text-blue-700 dark:text-blue-300"
-              />
+              <TerminalTyping text="pnpm dlx hudbird-ui@latest add Hero" color="text-primary" />
               <AnimatePresence>
                 {step >= 1 && <IdeSuggestPopup items={suggestions} className="top-12 left-9" />}
               </AnimatePresence>
@@ -282,10 +256,9 @@ export const VscodeAutocompleteIllustration = () => {
                   animate={{ opacity: 1 }}
                   className="flex items-center gap-2 pl-4 font-mono text-xs text-zinc-500 sm:text-sm dark:text-zinc-500"
                 >
-                  <span className="text-cyan-600 dark:text-cyan-500">✔</span>
+                  <span className="text-emerald-500">✔</span>
                   <span>
-                    Fetching <span className="text-blue-600 dark:text-blue-400">Hero</span> from
-                    registry
+                    Fetching <span className="text-primary">Hero</span> from registry
                     <motion.span
                       animate={{ opacity: [0.2, 1, 0.2] }}
                       transition={{ duration: 1.2, repeat: Infinity }}
@@ -310,7 +283,7 @@ export const VscodeAutocompleteIllustration = () => {
               {/* File tabs */}
               <div className="flex items-center gap-1 border-b border-zinc-100 bg-zinc-50/80 px-3 pt-2 text-xs dark:border-white/5 dark:bg-white/[0.02]">
                 <div className="flex items-center gap-1.5 rounded-t-lg border border-b-0 border-zinc-200 bg-white px-3 py-1.5 font-medium text-zinc-700 dark:border-white/10 dark:bg-[#1e1e2e] dark:text-zinc-200">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+                  <span className="bg-primary h-1.5 w-1.5 rounded-full" />
                   HeroSection.tsx
                 </div>
                 <div className="px-3 py-1.5 text-zinc-400 dark:text-zinc-600">page.tsx</div>
@@ -347,7 +320,7 @@ export const VscodeAutocompleteIllustration = () => {
                     exit={{ opacity: 0 }}
                     className="flex items-center gap-2 border-t border-zinc-100 bg-white px-4 py-2 font-mono text-xs dark:border-white/5 dark:bg-transparent"
                   >
-                    <span className="text-cyan-600 dark:text-cyan-500">✔</span>
+                    <span className="text-emerald-500">✔</span>
                     <span className="text-zinc-500">Created</span>
                     <span className="font-medium text-zinc-900 dark:text-white">
                       components/ui/Hero.tsx
@@ -358,13 +331,6 @@ export const VscodeAutocompleteIllustration = () => {
             </motion.div>
           )}
         </AnimatePresence>
-
-        {/* Bottom glow line */}
-        <motion.div
-          className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-blue-600/[0.04] to-transparent dark:from-blue-500/5"
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
       </div>
     </div>
   );

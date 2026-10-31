@@ -145,18 +145,7 @@ export const AtomicIllustration = () => {
   ];
 
   return (
-    <div className="relative flex h-[340px] w-full max-w-3xl items-center justify-center overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md backdrop-blur-sm sm:h-[380px] dark:border-white/10 dark:bg-[#0a0f1c]">
-      {/* Glass radial — same as Designed for how products… */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:14px_14px] opacity-[0.04] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.06)_1px,transparent_1px)] dark:opacity-[0.06]" />
-
-      {/* Central glow — transform + opacity only */}
-      <motion.div
-        className="absolute h-40 w-40 rounded-full bg-blue-500/5 blur-[60px] will-change-transform dark:bg-blue-500/8 dark:blur-[70px]"
-        animate={{ scale: [1, 1.25, 1], opacity: [0.4, 0.7, 0.4] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-
+    <div className="relative flex h-[340px] w-full max-w-3xl items-center justify-center overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-xs sm:h-[380px] dark:border-white/10 dark:bg-[#161618]">
       {/* Scan line — zinc glass, transform-only */}
       <motion.div
         className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent will-change-transform dark:via-white/15"
@@ -361,18 +350,12 @@ export const AtomicIllustration = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 1.04 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
-            className="relative z-10 w-[260px] overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.06),0_8px_24px_-12px_rgba(16,24,40,0.12)] sm:w-[300px] dark:border-blue-500/25 dark:bg-[#0d0d1f] dark:shadow-[0_0_50px_rgba(59,130,246,0.2)]"
+            className="relative z-10 w-[260px] overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-sm sm:w-[300px] dark:border-white/10 dark:bg-[#1C1C1F]"
           >
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent dark:via-blue-400/60" />
             {/* Navbar */}
-            <div className="flex items-center justify-between border-b border-zinc-100 bg-zinc-50 px-4 py-2.5 dark:border-blue-500/10 dark:bg-[#080815]">
+            <div className="flex items-center justify-between border-b border-zinc-100 bg-zinc-50 px-4 py-2.5 dark:border-white/5 dark:bg-[#202124]">
               <div className="flex items-center gap-2">
-                <motion.div
-                  className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500"
-                  animate={{ opacity: [0.6, 1, 0.6] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  style={{ boxShadow: "0 0 8px rgba(59,130,246,0.8)" }}
-                />
+                <div className="bg-primary h-2 w-2 rounded-full" />
                 <div className="h-1.5 w-16 rounded-full bg-blue-600/30 dark:bg-blue-400/30" />
               </div>
               <div className="flex items-center gap-2">
@@ -451,18 +434,12 @@ export const AtomicIllustration = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.94 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.15 }}
-            className="relative z-10 flex h-[220px] w-[260px] overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.06),0_8px_24px_-12px_rgba(16,24,40,0.12)] sm:h-[240px] sm:w-[310px] dark:border-blue-500/20 dark:bg-[#0a0a18] dark:shadow-[0_0_60px_rgba(59,130,246,0.25)]"
+            className="relative z-10 flex h-[220px] w-[260px] overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-sm sm:h-[240px] sm:w-[310px] dark:border-white/10 dark:bg-[#1C1C1F]"
           >
-            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent dark:via-blue-400/50" />
             {/* Sidebar */}
-            <div className="w-14 shrink-0 border-r border-zinc-100 bg-zinc-50 p-2 sm:w-16 dark:border-blue-500/10 dark:bg-[#07070f]">
+            <div className="w-14 shrink-0 border-r border-zinc-100 bg-zinc-50 p-2 sm:w-16 dark:border-white/5 dark:bg-[#202124]">
               <div className="mb-3 flex items-center gap-1">
-                <motion.div
-                  className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500"
-                  animate={{ opacity: [0.5, 1, 0.5] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  style={{ boxShadow: "0 0 6px rgba(59,130,246,0.8)" }}
-                />
+                <div className="bg-primary h-2 w-2 rounded-full" />
               </div>
               {[65, 45, 58, 38, 52, 42].map((w, i) => (
                 <motion.div

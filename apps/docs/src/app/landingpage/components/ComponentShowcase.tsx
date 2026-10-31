@@ -725,13 +725,8 @@ export const ComponentShowcase = () => {
     <section
       id="gallery"
       aria-labelledby="gallery-title"
-      className="relative w-full overflow-hidden border-b border-zinc-100 bg-zinc-50/60 px-4 py-12 sm:px-8 sm:py-16 dark:border-white/5 dark:bg-[#03071200]"
+      className="relative w-full overflow-hidden border-b border-zinc-100 bg-zinc-50/60 px-4 py-12 sm:px-8 sm:py-16 dark:border-white/5 dark:bg-[#161618]"
     >
-      {/* Subtle blue gradient glow — matches hero */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute -top-[50%] -right-[-20%] -left-[-30%] h-[60%] w-[40%] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
-        <div className="absolute -bottom-[20%] -left-[10%] h-[50%] w-[100%] rounded-full bg-blue-400/5 blur-[100px] dark:bg-blue-500/8" />
-      </div>
       <div className="relative z-10 mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -740,7 +735,7 @@ export const ComponentShowcase = () => {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="mb-12 max-w-2xl"
         >
-          <span className="mb-1 inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-2 text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
+          <span className="border-primary/20 bg-primary/10 text-primary mb-1 inline-flex items-center rounded-full border px-3.5 py-2 text-xs font-semibold tracking-wide uppercase">
             Hudbird UI — Component Gallery
           </span>
           <h1

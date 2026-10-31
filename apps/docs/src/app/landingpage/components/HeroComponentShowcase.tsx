@@ -7,12 +7,10 @@ import {
   Copy,
   Terminal,
   Layers,
-  Sparkles,
   Sliders,
   Palette,
   Search,
   CheckCircle2,
-  Code2,
 } from "lucide-react";
 import { Button, Badge, Input } from "@hudbird/ui";
 
@@ -21,9 +19,6 @@ export function HeroComponentShowcase() {
   const [isSwitchOn, setIsSwitchOn] = useState(true);
   const [copiedCli, setCopiedCli] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [activeButtonVariant, setActiveButtonVariant] = useState<"solid" | "bordered" | "soft">(
-    "solid"
-  );
 
   const cliCommand = "pnpm dlx hudbird-ui@latest init";
 
@@ -36,7 +31,7 @@ export function HeroComponentShowcase() {
   return (
     <div className="relative mx-auto w-full max-w-5xl">
       {/* Outer Double-Bezel Frame */}
-      <div className="relative rounded-2xl border border-zinc-200/80 bg-zinc-100/80 p-1.5 shadow-2xl backdrop-blur-md dark:border-white/10 dark:bg-[#1C1C1F]">
+      <div className="relative rounded-2xl border border-zinc-200/80 bg-zinc-100/80 p-1.5 backdrop-blur-md dark:border-white/10 dark:bg-[#1C1C1F]">
         {/* Inner Surface with Concentric Radius */}
         <div className="relative overflow-hidden rounded-[14px] border border-zinc-200/60 bg-white dark:border-white/5 dark:bg-[#161618]">
           {/* Top Window Navigation Bar */}
@@ -50,7 +45,7 @@ export function HeroComponentShowcase() {
               </div>
               <span className="h-4 w-px bg-zinc-200 dark:bg-white/10" />
               <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                <Layers className="h-3.5 w-3.5 text-indigo-500" />
+                <Layers className="text-primary h-3.5 w-3.5" />
                 <span className="font-mono text-[11px] text-zinc-800 dark:text-zinc-200">
                   @hudbird/ui
                 </span>
@@ -76,7 +71,7 @@ export function HeroComponentShowcase() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`relative flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition-all ${
                       isActive
-                        ? "bg-white text-zinc-900 shadow-sm dark:bg-[#202124] dark:text-white"
+                        ? "bg-white text-zinc-900 shadow-xs dark:bg-[#202124] dark:text-white"
                         : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                     }`}
                   >
@@ -122,11 +117,12 @@ export function HeroComponentShowcase() {
                       </p>
                     </div>
 
-                    {/* Button Gallery Row */}
+                    {/* Button Gallery Row using native Hudbird color="primary" */}
                     <div className="flex flex-wrap items-center gap-3">
                       <Button
+                        variant="solid"
+                        color="primary"
                         size="md"
-                        className="bg-[#4F46E5] text-white transition-transform duration-200 hover:bg-[#4338CA] active:scale-[0.98]"
                         endContent={<ArrowRight className="h-3.5 w-3.5" />}
                       >
                         Primary Solid
@@ -135,7 +131,7 @@ export function HeroComponentShowcase() {
                       <Button
                         size="md"
                         variant="outline"
-                        className="border-zinc-200 bg-white text-zinc-800 transition-transform duration-200 hover:bg-zinc-50 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10"
+                        className="border-zinc-200 bg-white text-zinc-800 hover:bg-zinc-50 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10"
                       >
                         Secondary Outline
                       </Button>
@@ -146,7 +142,7 @@ export function HeroComponentShowcase() {
                         variant="outline"
                         isIconOnly
                         aria-label="Play demonstration"
-                        className="border-zinc-200 bg-white text-zinc-700 transition-transform duration-200 hover:bg-zinc-50 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
+                        className="border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
                       >
                         {/* Optical compensation: +1px horizontal offset on play icon */}
                         <Play className="h-3.5 w-3.5 translate-x-[1px] fill-current" />
@@ -189,7 +185,7 @@ export function HeroComponentShowcase() {
                           }}
                           className={`flex h-8 cursor-pointer items-center justify-between rounded-lg border px-3 transition-colors ${
                             isSwitchOn
-                              ? "border-indigo-500/30 bg-indigo-50/50 dark:border-indigo-500/20 dark:bg-indigo-500/10"
+                              ? "border-primary/30 bg-primary/10 dark:border-primary/20 dark:bg-primary/10"
                               : "border-zinc-200 bg-zinc-50 dark:border-white/5 dark:bg-white/5"
                           }`}
                         >
@@ -198,7 +194,7 @@ export function HeroComponentShowcase() {
                           </span>
                           <div
                             className={`relative h-4 w-7 rounded-full transition-colors duration-200 ${
-                              isSwitchOn ? "bg-indigo-600" : "bg-zinc-300 dark:bg-zinc-700"
+                              isSwitchOn ? "bg-primary" : "bg-zinc-300 dark:bg-zinc-700"
                             }`}
                           >
                             <motion.span
@@ -236,7 +232,7 @@ export function HeroComponentShowcase() {
                         <span className="font-mono text-[11px] font-semibold text-zinc-700 dark:text-zinc-300">
                           Button.tsx
                         </span>
-                        <span className="rounded bg-indigo-500/10 px-1.5 py-0.5 font-mono text-[10px] font-medium text-indigo-600 dark:text-indigo-400">
+                        <span className="bg-primary/10 text-primary rounded px-1.5 py-0.5 font-mono text-[10px] font-medium">
                           React 19 + CVA
                         </span>
                       </div>
@@ -250,7 +246,6 @@ export function HeroCta() {
       variant="solid"
       color="primary"
       size="md"
-      className="active:scale-[0.98]"
     >
       Ship with Confidence
     </Button>
@@ -295,7 +290,7 @@ export function HeroCta() {
                   <div className="rounded-xl border border-zinc-200/80 bg-zinc-900 p-4 text-white dark:border-white/10 dark:bg-[#111113]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 font-mono text-xs text-zinc-400">
-                        <Terminal className="h-3.5 w-3.5 text-indigo-400" />
+                        <Terminal className="text-primary h-3.5 w-3.5" />
                         <span>Terminal</span>
                       </div>
                       <button
@@ -345,7 +340,7 @@ export function HeroCta() {
                       03. CSS-FIRST DESIGN SYSTEM TOKENS
                     </span>
                     <h4 className="font-outfit mt-1 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
-                      Calibrated Palette & Concentric Radii
+                      Hudbird Native Token Palette
                     </h4>
                     <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                       Tailwind v4 @theme variables configured for zero OLED contrast clipping.
@@ -357,19 +352,21 @@ export function HeroCta() {
                       <div className="h-8 w-full rounded-md border border-white/20 bg-[#161618]" />
                       <div className="mt-3">
                         <div className="text-xs font-semibold text-zinc-900 dark:text-white">
-                          Obsidian
+                          Canvas
                         </div>
                         <div className="font-mono text-[10px] text-zinc-500">#161618</div>
                       </div>
                     </div>
 
                     <div className="rounded-xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-white/5 dark:bg-[#1E1E22]">
-                      <div className="h-8 w-full rounded-md bg-[#4F46E5]" />
+                      <div className="bg-primary h-8 w-full rounded-md" />
                       <div className="mt-3">
                         <div className="text-xs font-semibold text-zinc-900 dark:text-white">
-                          Electric Indigo
+                          Primary (Hudbird)
                         </div>
-                        <div className="font-mono text-[10px] text-zinc-500">#4F46E5</div>
+                        <div className="font-mono text-[10px] text-zinc-500">
+                          var(--color-primary)
+                        </div>
                       </div>
                     </div>
 
@@ -377,9 +374,11 @@ export function HeroCta() {
                       <div className="h-8 w-full rounded-md bg-[#06B6D4]" />
                       <div className="mt-3">
                         <div className="text-xs font-semibold text-zinc-900 dark:text-white">
-                          Kinetic Cyan
+                          Secondary
                         </div>
-                        <div className="font-mono text-[10px] text-zinc-500">#06B6D4</div>
+                        <div className="font-mono text-[10px] text-zinc-500">
+                          var(--color-secondary)
+                        </div>
                       </div>
                     </div>
 
@@ -387,7 +386,7 @@ export function HeroCta() {
                       <div className="h-8 w-full rounded-md bg-[#10B981]" />
                       <div className="mt-3">
                         <div className="text-xs font-semibold text-zinc-900 dark:text-white">
-                          Emerald Vitality
+                          Success
                         </div>
                         <div className="font-mono text-[10px] text-zinc-500">#10B981</div>
                       </div>

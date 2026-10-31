@@ -710,20 +710,6 @@ export const MorphingUIHero: React.FC = () => {
 
   return (
     <div className="relative flex h-[280px] w-full items-center justify-center sm:h-[380px] md:h-[460px]">
-      {/* Subtle dot grid */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.04)_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_60%_at_center,black_40%,transparent)] bg-[length:20px_20px] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.06)_1px,transparent_1px)]" />
-
-      {/* Soft glow behind shape */}
-      <motion.div
-        className="pointer-events-none absolute rounded-full blur-[80px]"
-        animate={{
-          width: Math.max(state.w * 1.5, 120),
-          height: Math.max(state.h * 1.5, 120),
-          backgroundColor: dark ? "rgba(59,130,246,0.12)" : "rgba(59,130,246,0.08)",
-        }}
-        transition={MORPH}
-      />
-
       {/* ── Morphing container ───────────────────────────────────── */}
       <motion.div
         animate={{

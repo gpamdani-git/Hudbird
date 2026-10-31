@@ -190,9 +190,6 @@ export const AiStartupTemplate = () => {
 
         {/* <!-- Hero Section --> */}
         <Hero id="hero" size="auto" className="relative overflow-hidden bg-white dark:bg-[#161618]">
-          {/* Subtle Ambient Vignette */}
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/15 via-transparent to-transparent opacity-30 dark:opacity-20" />
-
           <HeroBody
             align="center"
             className="relative z-10 mx-auto max-w-5xl pt-8 pb-16 sm:pt-12 sm:pb-24"
@@ -207,14 +204,12 @@ export const AiStartupTemplate = () => {
                 href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-zinc-50/80 px-4 py-1.5 text-xs font-medium text-zinc-700 transition-all hover:border-indigo-500/40 hover:bg-zinc-100 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:border-indigo-500/40 dark:hover:bg-white/10"
+                className="group hover:border-primary/40 dark:hover:border-primary/40 inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-zinc-50/80 px-4 py-1.5 text-xs font-medium text-zinc-700 transition-all hover:bg-zinc-100 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
               >
-                <span className="font-mono text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
-                  PRO ALL-ACCESS
-                </span>
+                <span className="text-primary font-mono text-[10px] font-bold">PRO ALL-ACCESS</span>
                 <span className="h-3 w-px bg-zinc-300 dark:bg-white/20" />
                 <span>Explore Full Starter Kits & Marketing Blocks</span>
-                <ArrowRight className="h-3.5 w-3.5 text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-500" />
+                <ArrowRight className="group-hover:text-primary h-3.5 w-3.5 text-zinc-400 transition-transform group-hover:translate-x-0.5" />
               </a>
             </motion.div>
 
@@ -250,8 +245,10 @@ export const AiStartupTemplate = () => {
               <HeroActions className="mt-8 flex-col justify-center gap-3.5 sm:flex-row">
                 <a href="/#/docs" className="w-full sm:w-auto">
                   <Button
+                    variant="solid"
+                    color="primary"
                     size="lg"
-                    className="h-12 w-full rounded-xl bg-[#4F46E5] px-8 text-sm font-medium text-white shadow-xs transition-all hover:bg-[#4338CA] active:scale-[0.98] sm:w-auto"
+                    className="h-12 w-full rounded-xl px-8 text-sm font-medium sm:w-auto"
                   >
                     <span>Get started</span>
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -314,7 +311,7 @@ export const AiStartupTemplate = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="mb-12 max-w-2xl"
             >
-              <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+              <span className="text-primary font-mono text-xs font-bold tracking-[1.6px] uppercase">
                 ARCHITECTURE & ATOMS
               </span>
               <h2
@@ -364,7 +361,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/button"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                      className="group text-primary flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
                     >
                       Explore components{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -402,7 +399,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/installation"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                      className="group text-primary flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
                     >
                       View Docs{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -440,7 +437,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/marketing/hero"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                      className="group text-primary flex shrink-0 items-center gap-1.5 text-sm font-semibold transition-colors hover:opacity-80"
                     >
                       Browse Blocks{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -472,9 +469,7 @@ export const AiStartupTemplate = () => {
                         {/* Agent Bubble */}
                         <div className="rounded-2xl rounded-tr-sm border border-zinc-100 bg-zinc-50 p-4 shadow-sm dark:border-zinc-800/50 dark:bg-[#20202b]">
                           <div className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                            <span className="font-semibold text-blue-600 dark:text-blue-400">
-                              /ui{" "}
-                            </span>
+                            <span className="text-primary font-semibold">/ui </span>
                             <TypewriterText
                               text="scaffold a data-driven landing page template using "
                               delay={0.2}
@@ -498,7 +493,7 @@ export const AiStartupTemplate = () => {
                               <motion.div
                                 animate={{ opacity: [0.4, 1, 0.4] }}
                                 transition={{ repeat: Infinity, duration: 2 }}
-                                className="h-1.5 w-1.5 rounded-full bg-blue-500"
+                                className="bg-primary h-1.5 w-1.5 rounded-full"
                               />
                             </div>
                           </div>
@@ -526,7 +521,7 @@ export const AiStartupTemplate = () => {
                               </div>
                               <div className="mt-2 flex items-center justify-between text-sm text-zinc-700 dark:text-zinc-300">
                                 <div className="flex items-center gap-2 font-medium">
-                                  <Layers className="h-3.5 w-3.5 text-blue-500" /> Page Template
+                                  <Layers className="text-primary h-3.5 w-3.5" /> Page Template
                                 </div>
                                 <span className="text-xs text-zinc-500">Assembled</span>
                               </div>
@@ -554,9 +549,7 @@ export const AiStartupTemplate = () => {
                         {/* Agent Bubble */}
                         <div className="rounded-2xl rounded-tr-sm border border-zinc-100 bg-zinc-50 p-4 shadow-sm dark:border-zinc-800/50 dark:bg-[#20202b]">
                           <div className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                            <span className="font-semibold text-purple-600 dark:text-purple-400">
-                              /cli{" "}
-                            </span>
+                            <span className="text-primary font-semibold">/cli </span>
                             <TypewriterText
                               text="Initialize a new project and add the "
                               delay={0.2}
@@ -581,7 +574,7 @@ export const AiStartupTemplate = () => {
                               <motion.div
                                 animate={{ opacity: [0.4, 1, 0.4] }}
                                 transition={{ repeat: Infinity, duration: 2 }}
-                                className="h-1.5 w-1.5 rounded-full bg-blue-500"
+                                className="bg-primary h-1.5 w-1.5 rounded-full"
                               />
                             </div>
                           </div>
@@ -609,7 +602,7 @@ export const AiStartupTemplate = () => {
                               </div>
                               <div className="mt-2 flex items-center justify-between text-sm text-zinc-700 dark:text-zinc-300">
                                 <div className="flex items-center gap-2 font-medium">
-                                  <Code2 className="h-3.5 w-3.5 text-purple-500" /> Terminal
+                                  <Code2 className="text-primary h-3.5 w-3.5" /> Terminal
                                 </div>
                                 <span className="text-xs text-zinc-500">Setup Complete</span>
                               </div>
@@ -637,9 +630,7 @@ export const AiStartupTemplate = () => {
                         {/* Agent Bubble */}
                         <div className="rounded-2xl rounded-tr-sm border border-zinc-100 bg-zinc-50 p-4 shadow-sm dark:border-zinc-800/50 dark:bg-[#20202b]">
                           <div className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
-                            <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                              /ui{" "}
-                            </span>
+                            <span className="text-primary font-semibold">/ui </span>
                             <TypewriterText text="Generate a hero section using " delay={0.2} />
                             <motion.span
                               initial={{ opacity: 0 }}
@@ -661,7 +652,7 @@ export const AiStartupTemplate = () => {
                               <motion.div
                                 animate={{ opacity: [0.4, 1, 0.4] }}
                                 transition={{ repeat: Infinity, duration: 2 }}
-                                className="h-1.5 w-1.5 rounded-full bg-blue-500"
+                                className="bg-primary h-1.5 w-1.5 rounded-full"
                               />
                             </div>
                           </div>
@@ -689,7 +680,7 @@ export const AiStartupTemplate = () => {
                               </div>
                               <div className="mt-2 flex items-center justify-between text-sm text-zinc-700 dark:text-zinc-300">
                                 <div className="flex items-center gap-2 font-medium">
-                                  <Layout className="h-3.5 w-3.5 text-indigo-500" /> Hero Section
+                                  <Layout className="text-primary h-3.5 w-3.5" /> Hero Section
                                 </div>
                                 <span className="text-xs text-zinc-500">Added</span>
                               </div>
@@ -703,7 +694,7 @@ export const AiStartupTemplate = () => {
 
                 {/* Input Area */}
                 <div className="border-t border-zinc-100 bg-zinc-50/50 p-4 dark:border-white/5 dark:bg-black/10">
-                  <div className="flex w-full items-center justify-between rounded-xl border border-zinc-200 bg-white px-3 py-2.5 shadow-sm focus-within:ring-2 focus-within:ring-blue-500/20 dark:border-zinc-700/50 dark:bg-[#1a1a24]">
+                  <div className="focus-within:ring-primary/20 flex w-full items-center justify-between rounded-xl border border-zinc-200 bg-white px-3 py-2.5 shadow-sm focus-within:ring-2 dark:border-zinc-700/50 dark:bg-[#1a1a24]">
                     <span className="text-sm text-zinc-400 dark:text-zinc-500">
                       Add follow up...
                     </span>
@@ -738,7 +729,7 @@ export const AiStartupTemplate = () => {
               transition={{ duration: 0.65, ease: "easeOut" }}
             >
               <FeatureHeader>
-                <span className="mx-auto mb-4 inline-flex font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+                <span className="text-primary mx-auto mb-4 inline-flex font-mono text-xs font-bold tracking-[1.6px] uppercase">
                   ATOMS TO TEMPLATES
                 </span>
                 <FeatureTitle className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
@@ -757,9 +748,8 @@ export const AiStartupTemplate = () => {
 
             <BentoGrid className="relative mx-auto w-full gap-4 md:auto-rows-[26rem] md:grid-cols-3 xl:grid-cols-3">
               {/* Card 1: Atomic primitives */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 sm:p-8">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
                   <motion.div
                     animate={{ y: [-4, 4, -4] }}
                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
@@ -831,18 +821,16 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 2: Workflow Automation */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-3 sm:p-6">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(59,130,246,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_right,rgba(59,130,246,0.08),transparent_70%)]" />
-
                   <div className="relative flex w-full max-w-[300px] items-center sm:max-w-lg">
                     {/* Left Hub */}
-                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white/50 shadow-2xl backdrop-blur-md sm:h-20 sm:w-20 dark:border-white/10 dark:bg-white/5">
+                    <div className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white/50 shadow-sm backdrop-blur-md sm:h-20 sm:w-20 dark:border-white/10 dark:bg-white/5">
                       <div className="relative h-9 w-9 rounded-full bg-zinc-100 sm:h-12 sm:w-12 dark:bg-zinc-800">
                         <motion.div
                           animate={{ rotate: 360 }}
                           transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-                          className="absolute inset-0 rounded-full border-[5px] border-zinc-200 border-t-blue-500 border-r-blue-300 sm:border-[6px] dark:border-zinc-700 dark:border-t-blue-400 dark:border-r-blue-400/50"
+                          className="border-t-primary border-r-primary/50 dark:border-t-primary dark:border-r-primary/50 absolute inset-0 rounded-full border-[5px] border-zinc-200 sm:border-[6px] dark:border-zinc-700"
                         />
                       </div>
                     </div>
@@ -850,13 +838,13 @@ export const AiStartupTemplate = () => {
                     {/* Connecting Lines */}
                     <div className="absolute right-0 left-8 h-full sm:left-10">
                       {/* Horizontal main line */}
-                      <div className="absolute top-1/2 left-0 h-[1px] w-1/4 -translate-y-1/2 bg-gradient-to-r from-transparent to-blue-500/20" />
+                      <div className="to-primary/20 absolute top-1/2 left-0 h-[1px] w-1/4 -translate-y-1/2 bg-gradient-to-r from-transparent" />
                       {/* Top angled line */}
-                      <div className="absolute top-[25%] left-1/4 h-[1px] w-[20%] origin-left rotate-[-20deg] bg-blue-500/20" />
+                      <div className="bg-primary/20 absolute top-[25%] left-1/4 h-[1px] w-[20%] origin-left rotate-[-20deg]" />
                       {/* Middle horizontal line */}
-                      <div className="absolute top-1/2 left-1/4 h-[1px] w-[30%] -translate-y-1/2 bg-blue-500/20" />
+                      <div className="bg-primary/20 absolute top-1/2 left-1/4 h-[1px] w-[30%] -translate-y-1/2" />
                       {/* Bottom angled line */}
-                      <div className="absolute bottom-[25%] left-1/4 h-[1px] w-[20%] origin-left rotate-[20deg] bg-blue-500/20" />
+                      <div className="bg-primary/20 absolute bottom-[25%] left-1/4 h-[1px] w-[20%] origin-left rotate-[20deg]" />
                     </div>
 
                     {/* Pills — now hudbird section names */}
@@ -867,8 +855,8 @@ export const AiStartupTemplate = () => {
                         className="flex -translate-y-3 items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-3 py-1.5 pr-4 backdrop-blur-sm sm:-translate-y-4 sm:gap-3 sm:px-4 sm:py-2 sm:pr-6 dark:border-white/10 dark:bg-white/5"
                       >
                         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-100 sm:h-6 sm:w-6 dark:bg-white/10">
-                          <Layers size={10} className="text-blue-500 sm:hidden" />
-                          <Layers size={12} className="hidden text-blue-500 sm:block" />
+                          <Layers size={10} className="text-primary sm:hidden" />
+                          <Layers size={12} className="text-primary hidden sm:block" />
                         </div>
                         <span className="text-[9px] font-bold tracking-widest text-zinc-600 sm:text-[10px] dark:text-zinc-300">
                           HERO SECTIONS
@@ -881,8 +869,8 @@ export const AiStartupTemplate = () => {
                         className="ml-3 flex items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-3 py-1.5 pr-4 backdrop-blur-sm sm:ml-6 sm:gap-3 sm:px-4 sm:py-2 sm:pr-6 lg:ml-10 dark:border-white/10 dark:bg-white/5"
                       >
                         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-100 sm:h-6 sm:w-6 dark:bg-white/10">
-                          <LayoutDashboard size={10} className="text-blue-500 sm:hidden" />
-                          <LayoutDashboard size={12} className="hidden text-blue-500 sm:block" />
+                          <LayoutDashboard size={10} className="text-primary sm:hidden" />
+                          <LayoutDashboard size={12} className="text-primary hidden sm:block" />
                         </div>
                         <span className="text-[9px] font-bold tracking-widest text-zinc-600 sm:text-[10px] dark:text-zinc-300">
                           BENTO GRIDS
@@ -895,8 +883,8 @@ export const AiStartupTemplate = () => {
                         className="flex translate-y-3 items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-3 py-1.5 pr-4 backdrop-blur-sm sm:translate-y-4 sm:gap-3 sm:px-4 sm:py-2 sm:pr-6 dark:border-white/10 dark:bg-white/5"
                       >
                         <div className="flex h-5 w-5 items-center justify-center rounded-full bg-zinc-100 sm:h-6 sm:w-6 dark:bg-white/10">
-                          <BarChart3 size={10} className="text-blue-500 sm:hidden" />
-                          <BarChart3 size={12} className="hidden text-blue-500 sm:block" />
+                          <BarChart3 size={10} className="text-primary sm:hidden" />
+                          <BarChart3 size={12} className="text-primary hidden sm:block" />
                         </div>
                         <span className="text-[9px] font-bold tracking-widest text-zinc-600 sm:text-[10px] dark:text-zinc-300">
                           PRICING TABLES
@@ -923,15 +911,13 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 3: Directory you already know */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 sm:p-6">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(59,130,246,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_left,rgba(59,130,246,0.08),transparent_70%)]" />
-
                   {/* Directory flowchart — atoms → sections → templates */}
                   <div className="relative mt-2 flex w-full max-w-[420px] flex-col items-center gap-6 sm:gap-8">
                     {/* Top Row */}
                     <div className="relative flex w-full justify-center gap-3 sm:gap-6">
-                      <div className="absolute top-1/2 right-[12%] left-[12%] h-[1px] -translate-y-1/2 bg-blue-500/20" />
+                      <div className="absolute top-1/2 right-[12%] left-[12%] h-[1px] -translate-y-1/2 bg-zinc-200 dark:bg-white/10" />
 
                       {[
                         { title: "Atoms", count: "32", sub: "core/ui", Icon: Layers },
@@ -946,21 +932,21 @@ export const AiStartupTemplate = () => {
                       ].map((node, i) => (
                         <div
                           key={i}
-                          className="relative z-10 flex w-[110px] flex-col gap-2 rounded-2xl border border-zinc-200 bg-white/80 p-3 shadow-lg backdrop-blur-md sm:w-[128px] sm:p-4 dark:border-white/10 dark:bg-white/5"
+                          className="relative z-10 flex w-[110px] flex-col gap-2 rounded-2xl border border-zinc-200 bg-white/80 p-3 shadow-xs backdrop-blur-md sm:w-[128px] sm:p-4 dark:border-white/10 dark:bg-white/5"
                         >
                           {i > 0 && (
-                            <div className="absolute top-1/2 -left-3 h-1.5 w-1.5 -translate-y-1/2 rounded-full border border-blue-400 bg-white sm:-left-4 dark:border-blue-500 dark:bg-zinc-800" />
+                            <div className="border-primary dark:border-primary absolute top-1/2 -left-3 h-1.5 w-1.5 -translate-y-1/2 rounded-full border bg-white sm:-left-4 dark:bg-zinc-800" />
                           )}
                           {i < 2 && (
-                            <div className="absolute top-1/2 -right-3 h-1.5 w-1.5 -translate-y-1/2 rounded-full border border-blue-400 bg-white sm:-right-4 dark:border-blue-500 dark:bg-zinc-800" />
+                            <div className="border-primary dark:border-primary absolute top-1/2 -right-3 h-1.5 w-1.5 -translate-y-1/2 rounded-full border bg-white sm:-right-4 dark:bg-zinc-800" />
                           )}
                           {node.isCenter && (
-                            <div className="absolute -bottom-3 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full border border-blue-400 bg-white dark:border-blue-500 dark:bg-zinc-800" />
+                            <div className="border-primary dark:border-primary absolute -bottom-3 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full border bg-white dark:bg-zinc-800" />
                           )}
 
                           <div className="flex items-center gap-2">
                             <div className="flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 dark:border-white/20 dark:bg-white/5">
-                              <node.Icon size={12} className="text-blue-500" />
+                              <node.Icon size={12} className="text-primary" />
                             </div>
                             <span className="text-xs font-medium text-zinc-900 sm:text-sm dark:text-white">
                               {node.title}
@@ -978,10 +964,10 @@ export const AiStartupTemplate = () => {
                       ))}
                     </div>
 
-                    <div className="absolute top-[62px] left-1/2 h-6 w-[1px] -translate-x-1/2 bg-blue-500/20 sm:top-[68px]" />
-                    <div className="absolute top-[86px] right-[32%] left-[32%] h-[1px] bg-blue-500/20 sm:top-[92px]" />
-                    <div className="absolute top-[86px] left-[32%] h-4 w-[1px] bg-blue-500/20 sm:top-[92px]" />
-                    <div className="absolute top-[86px] right-[32%] h-4 w-[1px] bg-blue-500/20 sm:top-[92px]" />
+                    <div className="absolute top-[62px] left-1/2 h-6 w-[1px] -translate-x-1/2 bg-zinc-200 sm:top-[68px] dark:bg-white/10" />
+                    <div className="absolute top-[86px] right-[32%] left-[32%] h-[1px] bg-zinc-200 sm:top-[92px] dark:bg-white/10" />
+                    <div className="absolute top-[86px] left-[32%] h-4 w-[1px] bg-zinc-200 sm:top-[92px] dark:bg-white/10" />
+                    <div className="absolute top-[86px] right-[32%] h-4 w-[1px] bg-zinc-200 sm:top-[92px] dark:bg-white/10" />
 
                     {/* Bottom Row */}
                     <div className="relative flex w-full justify-center gap-8 sm:gap-12">
@@ -991,12 +977,12 @@ export const AiStartupTemplate = () => {
                       ].map((node) => (
                         <div
                           key={node.title}
-                          className="relative z-10 flex w-[110px] flex-col gap-2 rounded-2xl border border-zinc-200 bg-white/80 p-3 shadow-lg backdrop-blur-md sm:w-[128px] sm:p-4 dark:border-white/10 dark:bg-white/5"
+                          className="relative z-10 flex w-[110px] flex-col gap-2 rounded-2xl border border-zinc-200 bg-white/80 p-3 shadow-xs backdrop-blur-md sm:w-[128px] sm:p-4 dark:border-white/10 dark:bg-white/5"
                         >
-                          <div className="absolute -top-3 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full border border-blue-400 bg-white dark:border-blue-500 dark:bg-zinc-800" />
+                          <div className="border-primary dark:border-primary absolute -top-3 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full border bg-white dark:bg-zinc-800" />
                           <div className="flex items-center gap-2">
                             <div className="flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 bg-zinc-50 dark:border-white/20 dark:bg-white/5">
-                              <node.Icon size={12} className="text-blue-500" />
+                              <node.Icon size={12} className="text-primary" />
                             </div>
                             <span className="text-xs font-medium text-zinc-900 sm:text-sm dark:text-white">
                               {node.title}
@@ -1016,7 +1002,7 @@ export const AiStartupTemplate = () => {
 
                     {/* Realistic flow — dots follow the actual stroke via CSS motion path */}
                     <motion.div
-                      className="absolute top-[34px] left-1/2 -mt-1 -ml-1 h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.9),0_0_20px_rgba(59,130,246,0.35)] will-change-transform dark:bg-blue-400"
+                      className="bg-primary absolute top-[34px] left-1/2 -mt-1 -ml-1 h-2 w-2 rounded-full will-change-transform"
                       style={
                         {
                           offsetPath: "path('M 0 0 V 34 H -60 V 58')",
@@ -1036,7 +1022,7 @@ export const AiStartupTemplate = () => {
                       }}
                     />
                     <motion.div
-                      className="absolute top-[34px] left-1/2 -mt-1 -ml-1 h-2 w-2 rounded-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.9),0_0_20px_rgba(59,130,246,0.35)] will-change-transform dark:bg-blue-400"
+                      className="bg-primary absolute top-[34px] left-1/2 -mt-1 -ml-1 h-2 w-2 rounded-full will-change-transform"
                       style={
                         {
                           offsetPath: "path('M 0 0 V 34 H 60 V 58')",
@@ -1057,7 +1043,7 @@ export const AiStartupTemplate = () => {
                       }}
                     />
                     <motion.div
-                      className="absolute top-[68px] left-1/2 -mt-[3px] -ml-[3px] h-1.5 w-1.5 rounded-full bg-blue-500/50 sm:top-[72px] dark:bg-blue-400/50"
+                      className="bg-primary/50 absolute top-[68px] left-1/2 -mt-[3px] -ml-[3px] h-1.5 w-1.5 rounded-full sm:top-[72px]"
                       animate={{ scale: [0.9, 1.7, 0.9], opacity: [0.25, 0.6, 0.25] }}
                       transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
                     />
@@ -1089,15 +1075,11 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 4: Token-driven theming */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden pt-8">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(56,189,248,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_bottom,rgba(56,189,248,0.08),transparent_70%)]" />
-
                   <div className="relative flex flex-col items-center gap-4">
                     <div className="relative flex h-32 w-32 items-center justify-center">
-                      <div className="absolute inset-[-40px] bg-[radial-gradient(#00000022_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)] bg-[size:4px_4px] dark:bg-[radial-gradient(#ffffff22_1px,transparent_1px)]" />
-
-                      <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full border border-zinc-300 bg-zinc-50 shadow-[inset_0_-10px_20px_rgba(0,0,0,0.05)] dark:border-white/20 dark:bg-zinc-900 dark:shadow-[inset_0_-10px_20px_rgba(255,255,255,0.05)]">
+                      <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full border border-zinc-300 bg-zinc-50 shadow-inner dark:border-white/20 dark:bg-zinc-900">
                         <span className="font-mono text-[10px] font-bold tracking-widest text-zinc-500 dark:text-zinc-400">
                           @theme
                         </span>
@@ -1106,7 +1088,7 @@ export const AiStartupTemplate = () => {
                           transition={{ repeat: Infinity, duration: 6, ease: "linear" }}
                           className="absolute inset-[-1px] rounded-full"
                         >
-                          <div className="absolute top-2 right-2 h-0 w-0 rotate-[45deg] border-r-[4px] border-b-[6px] border-l-[4px] border-r-transparent border-b-blue-500 border-l-transparent drop-shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+                          <div className="border-b-primary absolute top-2 right-2 h-0 w-0 rotate-[45deg] border-r-[4px] border-b-[6px] border-l-[4px] border-r-transparent border-l-transparent" />
                         </motion.div>
                       </div>
 
@@ -1115,7 +1097,7 @@ export const AiStartupTemplate = () => {
                       <motion.div
                         animate={{ scale: [1, 1.08, 1], opacity: [0.5, 1, 0.5] }}
                         transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
-                        className="absolute inset-[-28px] rounded-full border border-blue-500/10 dark:border-blue-400/10"
+                        className="border-primary/20 absolute inset-[-28px] rounded-full border"
                       />
                     </div>
 
@@ -1152,7 +1134,7 @@ export const AiStartupTemplate = () => {
         <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-24 pb-32 font-sans transition-colors duration-500 sm:pt-32 sm:pb-40 dark:bg-[#161618]">
           {/* Top Header */}
           <div className="relative z-10 flex flex-col items-center px-4 text-center">
-            <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+            <span className="text-primary font-mono text-xs font-bold tracking-[1.6px] uppercase">
               KINETIC PHYSICS & AFFORDANCES
             </span>
             <motion.h2
@@ -1322,13 +1304,13 @@ export const AiStartupTemplate = () => {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+              <span className="text-primary font-mono text-xs font-bold tracking-[1.6px] uppercase">
                 GET STARTED
               </span>
               <h2 className="font-outfit mt-4 text-3xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
                 Start building with
                 <br />
-                <span className="text-indigo-600 dark:text-indigo-400">hudbird-ui</span> today.
+                <span className="text-primary">hudbird-ui</span> today.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-zinc-500 dark:text-[#E5E5E5]/70">
                 The fastest way to ship production-ready React interfaces. Beautiful components,
@@ -1336,8 +1318,13 @@ export const AiStartupTemplate = () => {
               </p>
               <div className="mt-8">
                 <a href="/#/installation">
-                  <Button className="rounded-xl bg-[#4F46E5] px-6 py-2.5 text-sm font-medium text-white shadow-xs transition-all hover:bg-[#4338CA] active:scale-[0.98]">
-                    <span className="relative z-10">Get started</span>
+                  <Button
+                    variant="solid"
+                    color="primary"
+                    size="lg"
+                    className="rounded-xl px-6 py-2.5 text-sm font-medium"
+                  >
+                    <span>Get started</span>
                   </Button>
                 </a>
               </div>

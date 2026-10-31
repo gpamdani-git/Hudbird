@@ -133,10 +133,7 @@ export const TerminalAnimation = () => {
   }, [step]);
 
   return (
-    <div className="relative w-full max-w-3xl overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white font-mono text-sm shadow-md backdrop-blur-sm dark:border-white/10 dark:bg-[#0a0f1c]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0.04)_1px,transparent_1px)] bg-[size:14px_14px] opacity-[0.04] dark:bg-[radial-gradient(circle,rgba(255,255,255,0.06)_1px,transparent_1px)] dark:opacity-[0.06]" />
-
+    <div className="relative w-full max-w-3xl overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white font-mono text-sm shadow-xs dark:border-white/10 dark:bg-[#161618]">
       <motion.div
         className="pointer-events-none absolute inset-x-0 top-0 z-20 h-px bg-gradient-to-r from-transparent via-zinc-300/60 to-transparent will-change-transform dark:via-white/15"
         initial={{ y: 0, opacity: 0 }}
@@ -149,27 +146,11 @@ export const TerminalAnimation = () => {
       <div className="pointer-events-none absolute bottom-3 left-3 z-10 h-5 w-5 border-b border-l border-zinc-200 dark:border-white/10" />
       <div className="pointer-events-none absolute right-3 bottom-3 z-10 h-5 w-5 border-r border-b border-zinc-200 dark:border-white/10" />
 
-      {/* Header — glass */}
-      <div className="relative z-10 flex items-center gap-2 border-b border-zinc-200/60 bg-white/70 px-4 py-3 backdrop-blur-md dark:border-white/10 dark:bg-white/5">
-        {/* Traffic lights with neon glow */}
-        <motion.div
-          className="h-3 w-3 rounded-full bg-red-500"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(239,68,68,0.6)" }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-yellow-400"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 2.3, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(250,204,21,0.6)" }}
-        />
-        <motion.div
-          className="h-3 w-3 rounded-full bg-emerald-400"
-          animate={{ opacity: [0.6, 1, 0.6] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          style={{ boxShadow: "0 0 6px rgba(52,211,153,0.6)" }}
-        />
+      {/* Header */}
+      <div className="relative z-10 flex items-center gap-2 border-b border-zinc-200/60 bg-zinc-50/70 px-4 py-3 dark:border-white/10 dark:bg-white/5">
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
+        <div className="h-2.5 w-2.5 rounded-full bg-zinc-300 dark:bg-zinc-700" />
         {/* Center HUD label */}
         <div className="ml-2 flex-1 text-center">
           <motion.span
@@ -268,13 +249,6 @@ export const TerminalAnimation = () => {
             </span>
           </motion.div>
         )}
-
-        {/* Bottom glow line */}
-        <motion.div
-          className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-blue-600/[0.04] to-transparent dark:from-blue-500/5"
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
-          transition={{ duration: 3, repeat: Infinity }}
-        />
       </div>
     </div>
   );
