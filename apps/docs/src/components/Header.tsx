@@ -115,16 +115,16 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
 
             {/* Mobile Logo Fallback */}
-            <Link to="/" className="group flex items-center gap-2.5 lg:hidden">
+            <Link to="/" className="group flex items-center gap-2 lg:hidden">
               <img
-                src="/assets/new-logo/hudbirdui-icon-blue.svg"
+                src="/assets/logo/hudbird-logo-black.png"
                 alt="Hudbird UI"
-                className="h-7 w-7 object-contain dark:hidden"
+                className="h-6 w-auto object-contain dark:hidden"
               />
               <img
-                src="/assets/new-logo/hudbirdui-icon-white.svg"
+                src="/assets/logo/hudbird-logo-white.png"
                 alt="Hudbird UI"
-                className="hidden h-7 w-7 object-contain dark:block"
+                className="hidden h-6 w-auto object-contain dark:block"
               />
             </Link>
 

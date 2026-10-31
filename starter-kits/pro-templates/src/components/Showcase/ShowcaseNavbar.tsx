@@ -176,22 +176,19 @@ export function ShowcaseNavbar() {
         className="relative flex w-full max-w-[1320px] items-center justify-between gap-2 rounded-full border border-black/[0.06] bg-white/95 px-4 py-2.5 shadow-[0_12px_36px_-8px_rgba(15,23,42,0.08)] backdrop-blur-2xl sm:px-5 dark:border-white/10 dark:bg-[#11131B]/95"
       >
         {/* Brand Logo (Single Line, Never Wraps) */}
-        <Link to="/" className="flex shrink-0 items-center gap-2.5 whitespace-nowrap">
+        <Link to="/" className="flex shrink-0 items-center gap-2 whitespace-nowrap">
           <img
-            src="/assets/new-logo/hudbirdui-icon-black.svg"
+            src="/assets/logo/hudbird-logo-black.png"
             alt="Hudbird UI"
-            className="h-7 w-7 shrink-0 dark:hidden"
+            className="h-6 w-auto object-contain dark:hidden"
           />
           <img
-            src="/assets/new-logo/hudbirdui-icon-white.svg"
+            src="/assets/logo/hudbird-logo-white.png"
             alt="Hudbird UI"
-            className="hidden h-7 w-7 shrink-0 dark:block"
+            className="hidden h-6 w-auto object-contain dark:block"
           />
-          <span className="font-heading flex items-center gap-2 text-base font-bold tracking-tight whitespace-nowrap text-zinc-900 sm:text-lg dark:text-white">
-            <span>HudbirdUI</span>
-            <span className="rounded-full bg-[#C8F560] px-2 py-0.5 text-[10px] leading-none font-bold whitespace-nowrap text-[#0D0F14]">
-              PRO 4.2
-            </span>
+          <span className="rounded-full bg-[#C8F560] px-2 py-0.5 text-[10px] leading-none font-bold whitespace-nowrap text-[#0D0F14]">
+            PRO 4.2
           </span>
         </Link>
 

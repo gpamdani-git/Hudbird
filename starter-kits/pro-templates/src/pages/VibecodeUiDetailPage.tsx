@@ -126,7 +126,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add ai-solutions",
@@ -211,7 +211,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add financial-management-platform",
@@ -286,7 +286,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add financial-management-platform",
@@ -361,7 +361,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add neural-network",
@@ -432,7 +432,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add analytics",
@@ -503,7 +503,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add automation-saas",
@@ -570,7 +570,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add cyber-security",
@@ -637,7 +637,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add forex-trading",
@@ -704,7 +704,7 @@ const COMPONENT_ITEMS_MAP: Record<string, ComponentDetailData> = {
     author: {
       name: "HudbirdUI",
       handle: "@hudbirdui",
-      avatar: "/assets/new-logo/hudbirdui-icon-black.svg",
+      avatar: "/assets/logo/hudbird-logo-black.png",
       verified: true,
     },
     cliCommand: "npx @hudbird/ui add digital-agency",
@@ -946,18 +946,15 @@ export function VibecodeUiDetailPage() {
               className="flex items-center gap-2 text-zinc-950 transition-opacity hover:opacity-80 dark:text-white"
             >
               <img
-                src="/assets/new-logo/hudbirdui-icon-black.svg"
+                src="/assets/logo/hudbird-logo-black.png"
                 alt="HudbirdUI"
-                className="h-6 w-6 dark:hidden"
+                className="h-6 w-auto object-contain dark:hidden"
               />
               <img
-                src="/assets/new-logo/hudbirdui-icon-white.svg"
+                src="/assets/logo/hudbird-logo-white.png"
                 alt="HudbirdUI"
-                className="hidden h-6 w-6 dark:block"
+                className="hidden h-6 w-auto object-contain dark:block"
               />
-              <span className="text-sm font-bold tracking-tight">
-                Hudbird<span className="font-normal text-zinc-400">.ui</span>
-              </span>
             </Link>
 
             <span className="text-zinc-300 dark:text-zinc-700">/</span>
@@ -1088,14 +1085,14 @@ export function VibecodeUiDetailPage() {
               <div className="flex flex-col gap-4 border-t border-black/[0.06] pt-5 sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08]">
                 <div className="flex items-center gap-2.5">
                   <img
-                    src="/assets/new-logo/hudbirdui-icon-black.svg"
+                    src="/assets/logo/hudbird-logo-black.png"
                     alt="HudbirdUI"
-                    className="h-6 w-6 rounded-full dark:hidden"
+                    className="h-5 w-auto object-contain dark:hidden"
                   />
                   <img
-                    src="/assets/new-logo/hudbirdui-icon-white.svg"
+                    src="/assets/logo/hudbird-logo-white.png"
                     alt="HudbirdUI"
-                    className="hidden h-6 w-6 rounded-full dark:block"
+                    className="hidden h-5 w-auto object-contain dark:block"
                   />
                   <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
                     HudbirdUI
@@ -1396,16 +1393,16 @@ export function VibecodeUiDetailPage() {
                     Developer
                   </span>
                   <div className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
+                    <span className="inline-flex h-10 w-auto shrink-0 items-center justify-center overflow-hidden px-2">
                       <img
-                        src="/assets/new-logo/hudbirdui-icon-black.svg"
+                        src="/assets/logo/hudbird-logo-black.png"
                         alt="HudbirdUI"
-                        className="h-7 w-7 dark:hidden"
+                        className="h-6 w-auto object-contain dark:hidden"
                       />
                       <img
-                        src="/assets/new-logo/hudbirdui-icon-white.svg"
+                        src="/assets/logo/hudbird-logo-white.png"
                         alt="HudbirdUI"
-                        className="hidden h-7 w-7 dark:block"
+                        className="hidden h-6 w-auto object-contain dark:block"
                       />
                     </span>
                     <div className="min-w-0">
@@ -1560,14 +1557,14 @@ export function VibecodeUiDetailPage() {
                     </div>
                     <div className="mt-4 flex items-center gap-2 border-t border-black/[0.06] pt-3 text-xs text-zinc-500 dark:border-white/[0.08] dark:text-zinc-400">
                       <img
-                        src="/assets/new-logo/hudbirdui-icon-black.svg"
+                        src="/assets/logo/hudbird-logo-black.png"
                         alt="HudbirdUI"
-                        className="h-3.5 w-3.5 dark:hidden"
+                        className="h-3.5 w-auto object-contain dark:hidden"
                       />
                       <img
-                        src="/assets/new-logo/hudbirdui-icon-white.svg"
+                        src="/assets/logo/hudbird-logo-white.png"
                         alt="HudbirdUI"
-                        className="hidden h-3.5 w-3.5 dark:block"
+                        className="hidden h-3.5 w-auto object-contain dark:block"
                       />
                       <span className="font-semibold text-zinc-800 dark:text-zinc-200">
                         HudbirdUI
@@ -1634,7 +1631,7 @@ export function VibecodeUiDetailPage() {
                 <div className="col-span-12 space-y-5 lg:col-span-4">
                   <Link to="/" className="inline-flex items-center gap-2.5">
                     <img
-                      src="/assets/new-logo/hudbirdui-logo-white.svg"
+                      src="/assets/logo/hudbird-logo-white.png"
                       alt="HudbirdUI"
                       className="h-6 w-auto"
                     />

@@ -118,12 +118,12 @@ export const AdminAppearance = () => {
               <div className="flex items-center gap-4">
                 <div className="border-border/40 bg-background flex h-8 w-8 items-center justify-center rounded border p-1">
                   <img
-                    src="/assets/new-logo/hudbirdui-icon-black.svg"
+                    src="/assets/logo/hudbird-logo-black.png"
                     alt="Favicon"
                     className="h-full w-full object-contain dark:hidden"
                   />
                   <img
-                    src="/assets/new-logo/hudbirdui-icon-white.svg"
+                    src="/assets/logo/hudbird-logo-white.png"
                     alt="Favicon"
                     className="hidden h-full w-full object-contain dark:block"
                   />

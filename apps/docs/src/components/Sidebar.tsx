@@ -73,30 +73,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white/60 to-transparent dark:from-white/5 dark:to-transparent" />
 
         {/* Header / Logo */}
-        <div className="relative z-10 mb-4 flex items-center justify-between px-1.5">
+        <div className="relative z-10 mb-4 flex items-center justify-between px-2 pt-1">
           <NavLink
             to="/"
-            className="flex items-center gap-3 overflow-hidden transition-opacity hover:opacity-80"
+            className="flex items-center gap-2 overflow-hidden transition-opacity hover:opacity-80"
           >
             <img
-              src="/assets/new-logo/hudbirdui-icon-black.svg"
+              src="/assets/logo/hudbird-logo-black.png"
               alt="Hudbird UI"
-              className="h-7 w-7 shrink-0 object-contain dark:hidden"
+              className="h-6 w-auto object-contain dark:hidden"
             />
             <img
-              src="/assets/new-logo/hudbirdui-icon-white.svg"
+              src="/assets/logo/hudbird-logo-white.png"
               alt="Hudbird UI"
-              className="hidden h-7 w-7 shrink-0 object-contain dark:block"
+              className="hidden h-6 w-auto object-contain dark:block"
             />
-
-            <div className="flex flex-col whitespace-nowrap">
-              <span className="text-[13px] font-bold tracking-tight text-zinc-900 dark:text-white">
-                Hudbird UI
-              </span>
-              <span className="text-[10px] font-medium text-zinc-500">
-                v{changelogData[0]?.version || "1.2.0"}
-              </span>
-            </div>
+            <span className="ml-1 rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-500 dark:bg-zinc-800/80 dark:text-zinc-400">
+              v{changelogData[0]?.version || "1.5.0"}
+            </span>
           </NavLink>
         </div>
 

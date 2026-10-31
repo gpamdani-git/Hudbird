@@ -202,18 +202,17 @@ export const AdminSidebar = ({
   return (
     <aside className="border-border/30 bg-card hidden w-[240px] shrink-0 flex-col border-r lg:flex">
       {/* Brand */}
-      <div className="border-border/30 flex h-14 items-center gap-2.5 border-b px-5">
+      <div className="border-border/30 flex h-14 items-center gap-2 border-b px-5">
         <img
-          src="/assets/new-logo/hudbirdui-icon-black.svg"
+          src="/assets/logo/hudbird-logo-black.png"
           alt="Hudbird CMS"
-          className="h-7 w-7 shrink-0 object-contain dark:hidden"
+          className="h-6 w-auto object-contain dark:hidden"
         />
         <img
-          src="/assets/new-logo/hudbirdui-icon-white.svg"
+          src="/assets/logo/hudbird-logo-white.png"
           alt="Hudbird CMS"
-          className="hidden h-7 w-7 shrink-0 object-contain dark:block"
+          className="hidden h-6 w-auto object-contain dark:block"
         />
-        <span className="text-[14px] font-bold tracking-tight">Hudbird CMS</span>
       </div>
 
       {/* Nav */}

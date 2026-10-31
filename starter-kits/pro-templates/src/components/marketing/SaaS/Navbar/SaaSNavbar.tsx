@@ -82,18 +82,15 @@ export const SaaSNavbar = () => {
           <NavbarBrand>
             <div className="flex items-center gap-2 pl-2">
               <img
-                src="/assets/new-logo/hudbirdui-icon-black.svg"
+                src="/assets/logo/hudbird-logo-black.png"
                 alt="Hudbird UI"
-                className="h-6 w-6 object-contain dark:hidden"
+                className="h-6 w-auto object-contain dark:hidden"
               />
               <img
-                src="/assets/new-logo/hudbirdui-icon-white.svg"
+                src="/assets/logo/hudbird-logo-white.png"
                 alt="Hudbird UI"
-                className="hidden h-6 w-6 object-contain dark:block"
+                className="hidden h-6 w-auto object-contain dark:block"
               />
-              <span className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-white">
-                Hudbird UI
-              </span>
             </div>
           </NavbarBrand>
 

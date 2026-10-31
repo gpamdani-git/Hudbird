@@ -1140,14 +1140,14 @@ export function VibecodeUiTheme() {
                   {/* Brand Row: HudbirdUI Logo + HudbirdUI · Code */}
                   <div className="mt-4 flex items-center gap-2 border-t border-black/[0.06] pt-3 text-xs text-zinc-500 dark:border-white/[0.08] dark:text-zinc-400">
                     <img
-                      src="/assets/new-logo/hudbirdui-icon-black.svg"
+                      src="/assets/logo/hudbird-logo-black.png"
                       alt="HudbirdUI"
-                      className="h-3.5 w-3.5 shrink-0 dark:hidden"
+                      className="h-3.5 w-auto shrink-0 object-contain dark:hidden"
                     />
                     <img
-                      src="/assets/new-logo/hudbirdui-icon-white.svg"
+                      src="/assets/logo/hudbird-logo-white.png"
                       alt="HudbirdUI"
-                      className="hidden h-3.5 w-3.5 shrink-0 dark:block"
+                      className="hidden h-3.5 w-auto shrink-0 object-contain dark:block"
                     />
                     <span className="font-semibold text-zinc-800 dark:text-zinc-200">
                       HudbirdUI
@@ -2129,7 +2129,7 @@ export function VibecodeUiTheme() {
               <div className="col-span-12 space-y-5 lg:col-span-4">
                 <Link to="/" className="inline-flex items-center gap-2.5">
                   <img
-                    src="/assets/new-logo/hudbirdui-logo-white.svg"
+                    src="/assets/logo/hudbird-logo-white.png"
                     alt="HudbirdUI"
                     className="h-6 w-auto"
                   />
