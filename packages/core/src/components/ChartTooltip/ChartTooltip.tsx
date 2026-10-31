@@ -31,12 +31,14 @@ export const ChartTooltip = React.forwardRef<HTMLDivElement, ChartTooltipProps>(
         <div
           ref={ref}
           className={cn(
-            "min-w-[10rem] rounded-xl border border-zinc-200/50 bg-white/80 p-3 shadow-lg backdrop-blur-md dark:border-zinc-800/50 dark:bg-zinc-950/80",
+            "min-w-[10rem] rounded-xl border border-zinc-200/80 bg-white/90 p-3 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-[#2E2F33] dark:bg-[#161618]/90 dark:shadow-black/40",
             className
           )}
         >
           {!hideLabel && (
-            <p className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{label}</p>
+            <p className="font-outfit mb-2 text-xs font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+              {label}
+            </p>
           )}
           <div className="space-y-1.5">
             {payload.map((item: any, idx: number) => (
@@ -58,7 +60,7 @@ export const ChartTooltip = React.forwardRef<HTMLDivElement, ChartTooltipProps>(
                   )}
                   <span className="text-sm text-zinc-600 dark:text-zinc-400">{item.name}</span>
                 </div>
-                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                <span className="font-outfit text-sm font-medium text-zinc-900 dark:text-zinc-100">
                   {valueFormatter ? valueFormatter(item.value) : item.value}
                 </span>
               </div>

@@ -45,11 +45,12 @@ export interface ComposedChartProps extends Omit<
 }
 
 const defaultColors = [
-  "var(--color-primary-500, #3b82f6)",
-  "var(--color-secondary-500, #a855f7)",
-  "var(--color-success-500, #22c55e)",
-  "var(--color-warning-500, #eab308)",
-  "var(--color-danger-500, #ef4444)",
+  "var(--color-primary-500, #4F46E5)",
+  "var(--color-cyan-500, #06B6D4)",
+  "var(--color-success-500, #10B981)",
+  "var(--color-warning-500, #F59E0B)",
+  "var(--color-danger-500, #F43F5E)",
+  "var(--color-secondary-500, #8B5CF6)",
 ];
 
 const ComposedChart = React.forwardRef<HTMLDivElement, ComposedChartProps>(
