@@ -332,7 +332,7 @@ export default function TemplatesDoc() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-start">
             <div className="max-w-2xl">
-              <h1 className="mb-4 text-4xl font-semibold tracking-tight text-zinc-900 md:text-5xl dark:text-white">
+              <h1 className="font-outfit mb-4 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl dark:text-white">
                 Templates
               </h1>
               <p className="text-lg text-zinc-600 dark:text-zinc-400">
@@ -364,7 +364,7 @@ export default function TemplatesDoc() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-zinc-900 dark:text-white">
+                  <h3 className="font-outfit font-medium text-zinc-900 dark:text-white">
                     Hudbird Pro Template Pass
                   </h3>
                   <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-bold text-blue-700 dark:bg-blue-900/60 dark:text-blue-300">
@@ -493,7 +493,7 @@ export default function TemplatesDoc() {
                 </div>
                 <div className="flex items-start justify-between px-1">
                   <div>
-                    <h3 className="cursor-pointer text-base font-semibold text-zinc-900 decoration-zinc-900/30 underline-offset-4 hover:underline dark:text-white dark:decoration-white/30">
+                    <h3 className="font-outfit cursor-pointer text-base font-medium text-zinc-900 decoration-zinc-900/30 underline-offset-4 hover:underline dark:text-white dark:decoration-white/30">
                       {template.name}
                     </h3>
                     <p className="mt-0.5 text-sm text-zinc-500">{template.author}</p>
@@ -510,7 +510,7 @@ export default function TemplatesDoc() {
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5">
               <Search className="h-8 w-8 text-zinc-400 dark:text-zinc-500" />
             </div>
-            <h3 className="mb-2 text-xl font-medium text-zinc-900 dark:text-white">
+            <h3 className="font-outfit mb-2 text-xl font-medium text-zinc-900 dark:text-white">
               No templates found
             </h3>
             <p className="mb-8 max-w-md text-center text-zinc-500 dark:text-zinc-400">

@@ -471,7 +471,9 @@ export function TemplateDetailDoc() {
 
           {/* Overview */}
           <div>
-            <h2 className="mb-4 text-2xl font-bold">Overview</h2>
+            <h2 className="font-outfit mb-4 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Overview
+            </h2>
             <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
               {template.description}
             </p>
@@ -484,7 +486,9 @@ export function TemplateDetailDoc() {
 
           {/* Features */}
           <div>
-            <h2 className="mb-6 text-2xl font-bold">What's included</h2>
+            <h2 className="font-outfit mb-6 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              What's included
+            </h2>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               {template.features.map((f, i) => (
                 <div
@@ -518,7 +522,9 @@ export function TemplateDetailDoc() {
           <div className="sticky top-28 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-zinc-900">
             {/* Name */}
             <div>
-              <h1 className="text-2xl font-bold">{template.name}</h1>
+              <h1 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                {template.name}
+              </h1>
               <p className="mt-1 text-sm text-zinc-500">
                 by{" "}
                 <span className="font-semibold text-zinc-900 dark:text-white">
@@ -652,11 +658,12 @@ export function TemplateDetailDoc() {
       {/* ── You May Also Like ── */}
       <section className="border-t border-zinc-200 bg-zinc-50 py-12 dark:border-white/5 dark:bg-[#050510]">
         <div className="mx-auto max-w-6xl px-6">
-          <h2 className="mb-6 text-lg font-bold">You may also like</h2>
+          <h2 className="font-outfit mb-6 text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
+            You may also like
+          </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {relatedTemplates.map((tid) => {
               const t = TEMPLATES_DATA[tid];
-              const [imgErr, setImgErr] = useState(false);
               return (
                 <button
                   key={tid}
@@ -664,18 +671,14 @@ export function TemplateDetailDoc() {
                   className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left transition-all hover:border-zinc-300 hover:shadow-lg dark:border-white/10 dark:bg-zinc-900 dark:hover:border-white/20"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-[#0a0a0b]">
-                    {imgErr ? (
-                      <div className="flex h-full w-full items-center justify-center">
-                        <Eye className="h-8 w-8 text-zinc-300 dark:text-zinc-700" />
-                      </div>
-                    ) : (
-                      <img
-                        src={t.images[0]}
-                        alt={t.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onError={() => setImgErr(true)}
-                      />
-                    )}
+                    <img
+                      src={t.images[0]}
+                      alt={t.name}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
                   </div>
                   <div className="flex items-start justify-between p-3">
                     <div className="flex flex-col gap-1">

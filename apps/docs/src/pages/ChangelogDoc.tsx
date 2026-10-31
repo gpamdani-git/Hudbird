@@ -1,5 +1,5 @@
 import React from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import changelogData from "../data/changelog.json";
 
 function renderChangelogContent(content: string) {
@@ -58,19 +58,14 @@ function renderChangelogContent(content: string) {
 
 export default function ChangelogDoc() {
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Title & Subtitle */}
-      <div className="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-            Changelog
-          </h1>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Latest updates, improvements, and new features in Hudbird UI.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="UPDATES"
+        title="Changelog"
+        badge="Releases"
+        description="Chronological record of releases, improvements, bug fixes, and design system updates across the Hudbird UI monorepo."
+      />
 
       <section className="space-y-12">
         {/* Dynamic Releases from Changesets */}
@@ -81,7 +76,7 @@ export default function ChangelogDoc() {
             className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
           >
             <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
-            <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+            <h2 className="font-outfit mb-2 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
               v{release.version}
             </h2>
             <p className="mb-6 text-sm text-zinc-500">{release.date}</p>
@@ -96,14 +91,14 @@ export default function ChangelogDoc() {
           className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
         >
           <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             v1.1.3 - UI Components & Dark Mode Enhancements
           </h2>
           <p className="mb-6 text-sm text-zinc-500">September 2026</p>
 
           <div className="space-y-6">
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-zinc-100">
                 Marketing Sections
               </h3>
               <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
@@ -149,7 +144,7 @@ export default function ChangelogDoc() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-zinc-100">
                 Documentation App
               </h3>
               <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
@@ -179,14 +174,14 @@ export default function ChangelogDoc() {
           className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
         >
           <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-zinc-300 ring-4 ring-white dark:bg-zinc-700 dark:ring-zinc-950" />
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             v1.1.2 - Tailwind CSS v4 Native Support
           </h2>
           <p className="mb-6 text-sm text-zinc-500">September 2026</p>
 
           <div className="space-y-6">
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-zinc-100">
                 CLI Enhancements
               </h3>
               <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
@@ -224,14 +219,14 @@ export default function ChangelogDoc() {
           className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
         >
           <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-zinc-950" />
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             v1.1.0 - CLI Improvements & New Schema
           </h2>
           <p className="mb-6 text-sm text-zinc-500">September 2026</p>
 
           <div className="space-y-6">
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-zinc-100">
                 CLI Enhancements
               </h3>
               <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
@@ -266,7 +261,7 @@ export default function ChangelogDoc() {
             </div>
 
             <div>
-              <h3 className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <h3 className="font-outfit mb-3 text-lg font-medium text-zinc-900 dark:text-zinc-100">
                 New Component Schema
               </h3>
               <ul className="list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
@@ -286,7 +281,7 @@ export default function ChangelogDoc() {
           className="relative scroll-mt-24 border-l border-zinc-200 pl-8 dark:border-zinc-800"
         >
           <div className="absolute top-1.5 left-[-5px] h-2.5 w-2.5 rounded-full bg-zinc-300 ring-4 ring-white dark:bg-zinc-700 dark:ring-zinc-950" />
-          <h2 className="mb-2 text-xl font-bold text-zinc-900 dark:text-zinc-50">
+          <h2 className="font-outfit mb-2 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
             v1.0.0 - Initial Release
           </h2>
           <p className="mb-6 text-sm text-zinc-500">August 2026</p>

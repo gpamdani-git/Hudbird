@@ -27,7 +27,7 @@ export const supportTocItems = [
 
 export default function SupportDoc() {
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* 1. Header & Requirements */}
       <div id="requirements" className="scroll-mt-24 space-y-12">
         <DocHeader
@@ -38,25 +38,28 @@ export default function SupportDoc() {
         />
 
         <div className="space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             System Requirements
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-            Ensure your development environment meets the minimum runtime and bundler specifications:
+            Ensure your development environment meets the minimum runtime and bundler
+            specifications:
           </p>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           {/* React Card */}
           <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-            <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-2">
+            <h3 className="font-outfit mb-2 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
               React Runtime
             </h3>
-            <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5] mb-6">
-              Hudbird UI requires <Strong className="text-zinc-900 dark:text-white">React 18</Strong> or <Strong className="text-zinc-900 dark:text-white">React 19</Strong>.
+            <p className="mb-6 text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
+              Hudbird UI requires{" "}
+              <Strong className="text-zinc-900 dark:text-white">React 18</Strong> or{" "}
+              <Strong className="text-zinc-900 dark:text-white">React 19</Strong>.
             </p>
             <div className="rounded-xl border border-zinc-200/70 bg-white p-4 dark:border-[#2e2f33] dark:bg-[#161618]">
-              <div className="flex items-center gap-2 font-medium text-xs text-zinc-900 dark:text-zinc-200 mb-1.5">
+              <div className="mb-1.5 flex items-center gap-2 text-xs font-medium text-zinc-900 dark:text-zinc-200">
                 <Info className="h-4 w-4 text-indigo-500" />
                 <span>React 19 Compatibility Note</span>
               </div>
@@ -64,42 +67,53 @@ export default function SupportDoc() {
                 While Hudbird UI fully supports React 19, select 3D libraries (like{" "}
                 <Code className="text-[11px]">@react-three/fiber</Code>) still enforce{" "}
                 <Code className="text-[11px]">peerDependencies</Code> for React 18. If you encounter{" "}
-                <Code className="text-[11px]">ERESOLVE</Code> conflicts during NPM install, refer to our FAQ below.
+                <Code className="text-[11px]">ERESOLVE</Code> conflicts during NPM install, refer to
+                our FAQ below.
               </p>
             </div>
           </div>
 
           {/* Tailwind CSS Card */}
           <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-            <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-2">
+            <h3 className="font-outfit mb-2 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
               Tailwind CSS Engine
             </h3>
-            <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5] mb-4">
-              Native architecture optimized for <Strong className="text-zinc-900 dark:text-white">Tailwind CSS v4</Strong>.
+            <p className="mb-4 text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
+              Native architecture optimized for{" "}
+              <Strong className="text-zinc-900 dark:text-white">Tailwind CSS v4</Strong>.
             </p>
             <p className="text-xs leading-relaxed text-zinc-600 dark:text-[#828282]">
-              The CLI automatically injects modern <Code className="text-[11px]">@theme</Code> blocks for v4 projects, while maintaining seamless backward compatibility for <Strong className="text-zinc-900 dark:text-zinc-200">Tailwind CSS v3</Strong> via standard presets.
+              The CLI automatically injects modern <Code className="text-[11px]">@theme</Code>{" "}
+              blocks for v4 projects, while maintaining seamless backward compatibility for{" "}
+              <Strong className="text-zinc-900 dark:text-zinc-200">Tailwind CSS v3</Strong> via
+              standard presets.
             </p>
           </div>
         </div>
 
         {/* Core Dependencies */}
         <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-          <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-4">
+          <h3 className="font-outfit mb-4 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
             Core Peer Dependencies
           </h3>
-          <div className="grid gap-3 sm:grid-cols-3 text-sm">
+          <div className="grid gap-3 text-sm sm:grid-cols-3">
             <div className="flex items-center gap-2.5 rounded-lg border border-zinc-200/60 bg-white p-3 dark:border-[#2e2f33] dark:bg-[#161618]">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-              <span><Strong className="text-zinc-900 dark:text-white">Framer Motion</Strong> v11+</span>
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
+              <span>
+                <Strong className="text-zinc-900 dark:text-white">Framer Motion</Strong> v11+
+              </span>
             </div>
             <div className="flex items-center gap-2.5 rounded-lg border border-zinc-200/60 bg-white p-3 dark:border-[#2e2f33] dark:bg-[#161618]">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-              <span><Strong className="text-zinc-900 dark:text-white">Lucide React</Strong> icons</span>
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
+              <span>
+                <Strong className="text-zinc-900 dark:text-white">Lucide React</Strong> icons
+              </span>
             </div>
             <div className="flex items-center gap-2.5 rounded-lg border border-zinc-200/60 bg-white p-3 dark:border-[#2e2f33] dark:bg-[#161618]">
-              <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-              <span><Strong className="text-zinc-900 dark:text-white">Radix UI</Strong> primitives</span>
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
+              <span>
+                <Strong className="text-zinc-900 dark:text-white">Radix UI</Strong> primitives
+              </span>
             </div>
           </div>
         </div>
@@ -107,16 +121,25 @@ export default function SupportDoc() {
 
       {/* 2. Frameworks */}
       <section id="frameworks" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Supported Frameworks
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-          Since Hudbird UI is distributed as local copy-pasteable React components rather than a black-box compiled library, it works seamlessly anywhere React and Tailwind CSS v4 run:
+          Since Hudbird UI is distributed as local copy-pasteable React components rather than a
+          black-box compiled library, it works seamlessly anywhere React and Tailwind CSS v4 run:
         </p>
-        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 pt-2">
-          {["Next.js (App & Pages Router)", "Vite (React & SSR)", "Remix / React Router v7", "Astro / Gatsby"].map((fw) => (
-            <div key={fw} className="flex items-center gap-2.5 rounded-xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-[#2e2f33] dark:bg-[#202124]">
-              <Check className="h-4 w-4 text-indigo-500 shrink-0" />
+        <div className="grid gap-3 pt-2 sm:grid-cols-2 md:grid-cols-4">
+          {[
+            "Next.js (App & Pages Router)",
+            "Vite (React & SSR)",
+            "Remix / React Router v7",
+            "Astro / Gatsby",
+          ].map((fw) => (
+            <div
+              key={fw}
+              className="flex items-center gap-2.5 rounded-xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-[#2e2f33] dark:bg-[#202124]"
+            >
+              <Check className="h-4 w-4 shrink-0 text-indigo-500" />
               <span className="text-sm font-medium text-zinc-800 dark:text-zinc-200">{fw}</span>
             </div>
           ))}
@@ -125,12 +148,13 @@ export default function SupportDoc() {
 
       {/* 3. CLI & Theme Setup Guide */}
       <section id="cli-guide" className="scroll-mt-24 space-y-8">
-        <div className="space-y-3 mb-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <div className="mb-6 space-y-3">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             CLI &amp; Theme Setup Guide
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-            Scaffold components, automate dependency resolution, and configure Tailwind CSS tokens using the smart developer CLI:
+            Scaffold components, automate dependency resolution, and configure Tailwind CSS tokens
+            using the smart developer CLI:
           </p>
         </div>
 
@@ -140,7 +164,9 @@ export default function SupportDoc() {
             1. Project Initialization
           </h3>
           <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-            Run the initialization command at your project root. The CLI automatically detects your package manager (<Code>npm</Code>, <Code>pnpm</Code>, <Code>yarn</Code>, or <Code>bun</Code>) and Tailwind engine version:
+            Run the initialization command at your project root. The CLI automatically detects your
+            package manager (<Code>npm</Code>, <Code>pnpm</Code>, <Code>yarn</Code>, or{" "}
+            <Code>bun</Code>) and Tailwind engine version:
           </p>
           <CodeBlock code="npx hudbird-ui@latest init" />
           <div className="space-y-2 rounded-xl border border-zinc-200/60 bg-white p-4 dark:border-[#2e2f33] dark:bg-[#161618]">
@@ -149,16 +175,24 @@ export default function SupportDoc() {
             </p>
             <ul className="list-disc space-y-1 pl-5 text-xs text-zinc-600 dark:text-[#828282]">
               <li>
-                Detects whether project uses <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v4</Strong> or <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v3</Strong>
+                Detects whether project uses{" "}
+                <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v4</Strong> or{" "}
+                <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v3</Strong>
               </li>
               <li>
-                For <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v4</Strong>: injects native <Code className="text-[11px]">@theme</Code> OKLCH variables into your CSS
+                For <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v4</Strong>:
+                injects native <Code className="text-[11px]">@theme</Code> OKLCH variables into your
+                CSS
               </li>
               <li>
-                For <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v3</Strong>: scaffolds <Code className="text-[11px]">hudbirdPreset.js</Code> and links it to <Code className="text-[11px]">tailwind.config.js</Code>
+                For <Strong className="text-zinc-800 dark:text-zinc-200">Tailwind v3</Strong>:
+                scaffolds <Code className="text-[11px]">hudbirdPreset.js</Code> and links it to{" "}
+                <Code className="text-[11px]">tailwind.config.js</Code>
               </li>
               <li>
-                Installs foundational primitives: <Code className="text-[11px]">clsx</Code>, <Code className="text-[11px]">tailwind-merge</Code>, <Code className="text-[11px]">class-variance-authority</Code>
+                Installs foundational primitives: <Code className="text-[11px]">clsx</Code>,{" "}
+                <Code className="text-[11px]">tailwind-merge</Code>,{" "}
+                <Code className="text-[11px]">class-variance-authority</Code>
               </li>
             </ul>
           </div>
@@ -170,18 +204,22 @@ export default function SupportDoc() {
             2. Adding Components
           </h3>
           <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-            Use the <Code>add</Code> command to install components individually or in batch. Files are copied directly into <Code>src/components/hudbird-ui/</Code> for 100% code ownership:
+            Use the <Code>add</Code> command to install components individually or in batch. Files
+            are copied directly into <Code>src/components/hudbird-ui/</Code> for 100% code
+            ownership:
           </p>
           <CodeBlock
             code={`# Add single component\nnpx hudbird-ui@latest add Button\n\n# Batch installation\nnpx hudbird-ui@latest add Button Input Select Badge Alert Pagination`}
           />
           <div className="rounded-xl border border-zinc-200/60 bg-white p-4 dark:border-[#2e2f33] dark:bg-[#161618]">
-            <div className="flex items-center gap-2 text-xs font-semibold text-zinc-900 dark:text-zinc-200 mb-1">
+            <div className="mb-1 flex items-center gap-2 text-xs font-semibold text-zinc-900 dark:text-zinc-200">
               <ShieldCheck className="h-4 w-4 text-indigo-500" />
               <span>Smart Overwrite Protection</span>
             </div>
             <p className="text-xs leading-relaxed text-zinc-600 dark:text-[#828282]">
-              If a component file already exists, the CLI will ask before overwriting. Answer <Code className="text-[11px]">N</Code> to preserve your modifications, or use the <Code className="text-[11px]">--overwrite</Code> flag to sync with upstream updates.
+              If a component file already exists, the CLI will ask before overwriting. Answer{" "}
+              <Code className="text-[11px]">N</Code> to preserve your modifications, or use the{" "}
+              <Code className="text-[11px]">--overwrite</Code> flag to sync with upstream updates.
             </p>
           </div>
         </div>
@@ -192,7 +230,8 @@ export default function SupportDoc() {
             3. Verifying Status &amp; Upstream Diffs
           </h3>
           <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-            Inspect the installation status of all 62 components in real-time and review modifications using the zero-dependency diff engine:
+            Inspect the installation status of all 62 components in real-time and review
+            modifications using the zero-dependency diff engine:
           </p>
           <CodeBlock
             code={`# Inspect local installation status\nnpx hudbird-ui@latest list\n\n# Compare local component modifications against registry\nnpx hudbird-ui@latest diff Button\n\n# Scan whole repository for modified components\nnpx hudbird-ui@latest diff`}
@@ -205,20 +244,25 @@ export default function SupportDoc() {
             4. Theme Customization via Theme Builder
           </h3>
           <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-            Navigate to the <Strong className="text-zinc-900 dark:text-white">Theme Builder</Strong> in the sidebar to access the live palette inspector. You can customize:
+            Navigate to the <Strong className="text-zinc-900 dark:text-white">Theme Builder</Strong>{" "}
+            in the sidebar to access the live palette inspector. You can customize:
           </p>
           <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-600 dark:text-[#828282]">
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Base Color</Strong> — Neutral scales (zinc, slate, neutral, gray)
+              <Strong className="text-zinc-800 dark:text-zinc-200">Base Color</Strong> — Neutral
+              scales (zinc, slate, neutral, gray)
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Primary Color</Strong> — Brand accent color with OKLCH precision
+              <Strong className="text-zinc-800 dark:text-zinc-200">Primary Color</Strong> — Brand
+              accent color with OKLCH precision
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Border Radius</Strong> — Global rounding curve tokens
+              <Strong className="text-zinc-800 dark:text-zinc-200">Border Radius</Strong> — Global
+              rounding curve tokens
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Typography</Strong> — Editorial font pairings (Outfit, Geist, Cabinet Grotesk)
+              <Strong className="text-zinc-800 dark:text-zinc-200">Typography</Strong> — Editorial
+              font pairings (Outfit, Geist, Cabinet Grotesk)
             </li>
           </ul>
           <p className="pt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
@@ -235,7 +279,8 @@ export default function SupportDoc() {
             5. Manual Dependency Resolution
           </h3>
           <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-            While the CLI resolves dependencies automatically on <Code>add</Code>, you can also install peer libraries manually:
+            While the CLI resolves dependencies automatically on <Code>add</Code>, you can also
+            install peer libraries manually:
           </p>
           <CodeBlock
             code={`# Core UI dependencies\nnpm install framer-motion lucide-react clsx tailwind-merge class-variance-authority\n\n# Radix primitives (for Dialog, Select, Tooltip)\nnpm install @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tooltip`}
@@ -244,8 +289,8 @@ export default function SupportDoc() {
 
         {/* Available components list */}
         <div className="rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
-          <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-            Daftar Komponen Tersedia
+          <h3 className="font-outfit mb-4 text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Available Components
           </h3>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
             {[
@@ -282,8 +327,8 @@ export default function SupportDoc() {
 
       {/* 4. FAQ */}
       <section id="faq" className="scroll-mt-24 space-y-8">
-        <div className="space-y-3 mb-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <div className="mb-6 space-y-3">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Frequently Asked Questions
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -293,55 +338,58 @@ export default function SupportDoc() {
 
         <div className="space-y-8">
           <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-            <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-3">
+            <h3 className="font-outfit mb-3 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
               Why do I encounter ERESOLVE / Peer Dependency errors when installing components?
             </h3>
-            <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5] mb-6">
-              When using NPM with React 19, strict peer dependency trees in third-party libraries (such as <Code>@react-three/fiber</Code>) can halt installation.
+            <p className="mb-6 text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
+              When using NPM with React 19, strict peer dependency trees in third-party libraries
+              (such as <Code>@react-three/fiber</Code>) can halt installation.
             </p>
 
             <div className="space-y-4">
-              <p className="text-xs font-semibold tracking-wider uppercase text-zinc-500 dark:text-[#828282]">
+              <p className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-[#828282]">
                 Recommended Resolution Steps:
               </p>
 
               {/* Solution 1 - Recommended */}
               <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/50 p-5 dark:border-emerald-900/40 dark:bg-emerald-950/20">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
-                  <span className="font-semibold text-sm text-emerald-900 dark:text-emerald-200">
+                <div className="mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
+                  <span className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">
                     Option 1: Pin React Version (Recommended)
                   </span>
                 </div>
-                <p className="text-xs text-emerald-800 dark:text-emerald-300 mb-3 leading-relaxed">
-                  Pinning with <Code className="text-[11px]">--save-exact</Code> prevents automated minor version bumps that trigger peer dependency mismatches:
+                <p className="mb-3 text-xs leading-relaxed text-emerald-800 dark:text-emerald-300">
+                  Pinning with <Code className="text-[11px]">--save-exact</Code> prevents automated
+                  minor version bumps that trigger peer dependency mismatches:
                 </p>
                 <CodeBlock code="npm install react@19.2.0 react-dom@19.2.0 --save-exact" />
               </div>
 
               {/* Solution 2 - pnpm */}
               <div className="rounded-xl border border-zinc-200/60 bg-white p-5 dark:border-[#2e2f33] dark:bg-[#161618]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Box className="h-4 w-4 text-indigo-500 shrink-0" />
-                  <span className="font-semibold text-sm text-zinc-900 dark:text-zinc-100">
+                <div className="mb-2 flex items-center gap-2">
+                  <Box className="h-4 w-4 shrink-0 text-indigo-500" />
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     Option 2: Switch to PNPM
                   </span>
                 </div>
-                <p className="text-xs text-zinc-600 dark:text-[#828282] mb-3 leading-relaxed">
-                  PNPM's isolated virtual store resolves non-breaking peer dependency mismatches automatically:
+                <p className="mb-3 text-xs leading-relaxed text-zinc-600 dark:text-[#828282]">
+                  PNPM's isolated virtual store resolves non-breaking peer dependency mismatches
+                  automatically:
                 </p>
                 <CodeBlock code="pnpm add @react-three/fiber @react-three/drei maath" />
               </div>
 
               {/* Solution 3 - legacy-peer-deps */}
               <div className="rounded-xl border border-zinc-200/60 bg-white p-5 dark:border-[#2e2f33] dark:bg-[#161618]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Terminal className="h-4 w-4 text-amber-500 shrink-0" />
-                  <span className="font-semibold text-sm text-zinc-900 dark:text-zinc-100">
+                <div className="mb-2 flex items-center gap-2">
+                  <Terminal className="h-4 w-4 shrink-0 text-amber-500" />
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     Option 3: Bypass with Legacy Peer Deps
                   </span>
                 </div>
-                <p className="text-xs text-zinc-600 dark:text-[#828282] mb-3 leading-relaxed">
+                <p className="mb-3 text-xs leading-relaxed text-zinc-600 dark:text-[#828282]">
                   Instructs NPM to proceed with installation despite version variance:
                 </p>
                 <CodeBlock code="npm install @react-three/fiber @react-three/drei maath --legacy-peer-deps" />
@@ -350,20 +398,27 @@ export default function SupportDoc() {
           </div>
 
           <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-            <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-2">
+            <h3 className="font-outfit mb-2 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
               Why did the CLI skip installing a component file?
             </h3>
             <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-              Hudbird UI enforces <Strong className="text-zinc-900 dark:text-white">Zero Unintended Overwrites</Strong>. When a component already exists in <Code>src/components/hudbird-ui</Code>, the CLI halts to protect your local customizations. Pass <Code className="text-[11px]">--overwrite</Code> to intentionally replace it with the latest registry version.
+              Hudbird UI enforces{" "}
+              <Strong className="text-zinc-900 dark:text-white">Zero Unintended Overwrites</Strong>.
+              When a component already exists in <Code>src/components/hudbird-ui</Code>, the CLI
+              halts to protect your local customizations. Pass{" "}
+              <Code className="text-[11px]">--overwrite</Code> to intentionally replace it with the
+              latest registry version.
             </p>
           </div>
 
           <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-            <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-2">
+            <h3 className="font-outfit mb-2 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
               Do I have to use the CLI to use Hudbird UI?
             </h3>
             <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">
-              No. Every component is completely copy-pasteable directly from the documentation or GitHub repository. The CLI simply automates peer dependency installation and path alias resolution.
+              No. Every component is completely copy-pasteable directly from the documentation or
+              GitHub repository. The CLI simply automates peer dependency installation and path
+              alias resolution.
             </p>
           </div>
         </div>
@@ -371,8 +426,8 @@ export default function SupportDoc() {
 
       {/* 5. Get Help & Report Bugs (Bento Layout, No 3-Cards Cliché, No Emojis) */}
       <section id="contact" className="scroll-mt-24 space-y-8">
-        <div className="space-y-3 mb-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <div className="mb-6 space-y-3">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Community &amp; Issue Reporting
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -383,16 +438,17 @@ export default function SupportDoc() {
         {/* Asymmetric 2-Column Bento Layout */}
         <div className="grid gap-6 md:grid-cols-12">
           {/* Main Community Card (Col span 7) */}
-          <div className="md:col-span-7 flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
+          <div className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 md:col-span-7 dark:border-[#2e2f33] dark:bg-[#202124]">
             <div>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
                 <MessageSquare className="h-5 w-5" />
               </div>
-              <h3 className="font-outfit text-2xl font-medium tracking-[-0.5px] text-zinc-900 dark:text-white mb-2">
+              <h3 className="font-outfit mb-2 text-2xl font-medium tracking-[-0.5px] text-zinc-900 dark:text-white">
                 Discord Community
               </h3>
-              <p className="text-[15px] leading-relaxed text-zinc-600 dark:text-[#828282] mb-6">
-                Join our developer server to share feedback, ask architecture questions, and preview upcoming component releases.
+              <p className="mb-6 text-[15px] leading-relaxed text-zinc-600 dark:text-[#828282]">
+                Join our developer server to share feedback, ask architecture questions, and preview
+                upcoming component releases.
               </p>
             </div>
             <a
@@ -407,16 +463,17 @@ export default function SupportDoc() {
           </div>
 
           {/* GitHub Issues & Bug Report Card (Col span 5) */}
-          <div className="md:col-span-5 flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
+          <div className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 md:col-span-5 dark:border-[#2e2f33] dark:bg-[#202124]">
             <div>
               <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-800 dark:bg-[#161618] dark:text-zinc-200">
                 <Bug className="h-5 w-5 text-indigo-500" />
               </div>
-              <h3 className="font-outfit text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white mb-2">
+              <h3 className="font-outfit mb-2 text-xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white">
                 Report an Issue
               </h3>
-              <p className="text-sm leading-relaxed text-zinc-600 dark:text-[#828282] mb-6">
-                Encountered unexpected behavior or visual clipping? Submit a structured bug report on GitHub.
+              <p className="mb-6 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
+                Encountered unexpected behavior or visual clipping? Submit a structured bug report
+                on GitHub.
               </p>
             </div>
             <a
