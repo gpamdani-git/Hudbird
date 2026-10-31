@@ -19,36 +19,21 @@ import {
 
 export default function CliDoc() {
   return (
-    <div className="mx-auto w-full pb-24">
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Hero Header */}
       <DocHeader
-        category="TOOLING"
+        category="Tooling"
         title="Hudbird UI CLI"
         badge="v1.4.0"
         description="The official developer command-line tool for scaffolding, batch-installing, and tracking upstream diffs across 62+ components with 100% local code ownership."
-        className="mb-10 max-w-4xl"
+        className="max-w-4xl"
       />
 
-      <div className="mb-8 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-          <Terminal className="h-3.5 w-3.5" />
-          CLI v1.4.0
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-          <Sparkles className="h-3.5 w-3.5" />
-          Zero External Dependencies
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
-          <Sliders className="h-3.5 w-3.5" />
-          components.json Standard
-        </span>
-      </div>
-
-      <div className="max-w-4xl space-y-24 sm:space-y-32 text-zinc-800 dark:text-zinc-200">
+      <div className="max-w-4xl space-y-24 text-zinc-800 sm:space-y-32 dark:text-zinc-200">
         {/* 1. Overview & Architecture */}
         <section id="overview" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Architecture & Core Features
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -131,8 +116,8 @@ export default function CliDoc() {
 
         {/* 2. Quickstart */}
         <section id="quickstart" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Quickstart Guide
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -142,14 +127,16 @@ export default function CliDoc() {
 
           <div className="space-y-4">
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-              <strong>Initialize configuration.</strong> Scaffold utility functions and inject Tailwind CSS tokens:
+              <strong>Initialize configuration.</strong> Scaffold utility functions and inject
+              Tailwind CSS tokens:
             </p>
             <CodeBlock language="bash" code="npx hudbird-ui@latest init" />
           </div>
 
           <div className="space-y-4">
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-              <strong>Add components.</strong> Install components individually, in batch, or using the interactive selector:
+              <strong>Add components.</strong> Install components individually, in batch, or using
+              the interactive selector:
             </p>
             <CodeBlock
               language="bash"
@@ -160,8 +147,8 @@ export default function CliDoc() {
 
         {/* 3. Configuration (components.json) */}
         <section id="configuration" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Configuration: components.json
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -171,7 +158,7 @@ export default function CliDoc() {
 
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             The{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               components.json
             </code>{" "}
             file configures your import aliases, CSS variable definitions, and Tailwind integration:
@@ -284,8 +271,8 @@ export default function CliDoc() {
 
         {/* 4. Command: init */}
         <section id="command-init" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Command: init
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -297,7 +284,7 @@ export default function CliDoc() {
 
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Running{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               init
             </code>{" "}
             executes an automated setup sequence:
@@ -381,8 +368,8 @@ export default function CliDoc() {
 
         {/* 5. Command: add */}
         <section id="command-add" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Command: add
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -469,8 +456,8 @@ export default function CliDoc() {
 
         {/* 6. Command: list */}
         <section id="command-list" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Command: list &amp; status
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -485,7 +472,7 @@ export default function CliDoc() {
 
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             The{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs font-mono dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
               list
             </code>{" "}
             command scans your local project against the 62 components in the official registry,
@@ -500,19 +487,19 @@ export default function CliDoc() {
             <div className="text-zinc-500">│</div>
             <div className="font-semibold text-zinc-300">◆ Primitives</div>
             <div className="pl-4 text-emerald-400">
-              ✔ Button <span className="text-[11px] text-zinc-500">(Slot)</span>
+              + Button <span className="text-[11px] text-zinc-500">(Slot)</span>
             </div>
-            <div className="pl-4 text-emerald-400">✔ Card</div>
-            <div className="pl-4 text-zinc-500">○ Avatar</div>
-            <div className="pl-4 text-zinc-500">○ Badge</div>
+            <div className="pl-4 text-emerald-400">+ Card</div>
+            <div className="pl-4 text-zinc-500">- Avatar</div>
+            <div className="pl-4 text-zinc-500">- Badge</div>
             <div className="text-zinc-500">│</div>
             <div className="font-semibold text-zinc-300">◆ Forms</div>
-            <div className="pl-4 text-emerald-400">✔ Input</div>
+            <div className="pl-4 text-emerald-400">+ Input</div>
             <div className="pl-4 text-emerald-400">
-              ✔ InputOTP <span className="text-[11px] text-zinc-500">(input-otp)</span>
+              + InputOTP <span className="text-[11px] text-zinc-500">(input-otp)</span>
             </div>
-            <div className="pl-4 text-zinc-500">○ Select</div>
-            <div className="pl-4 text-zinc-500">○ ComboBox</div>
+            <div className="pl-4 text-zinc-500">- Select</div>
+            <div className="pl-4 text-zinc-500">- ComboBox</div>
             <div className="text-zinc-500">│</div>
             <div className="text-zinc-400">└ 14 of 62 components installed in your project.</div>
           </div>
@@ -520,8 +507,8 @@ export default function CliDoc() {
 
         {/* 7. Command: diff */}
         <section id="command-diff" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Command: diff &amp; updates
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
@@ -559,8 +546,8 @@ export default function CliDoc() {
 
         {/* 8. Troubleshooting & FAQ */}
         <section id="troubleshooting" className="scroll-mt-24 space-y-8">
-          <div className="space-y-3 mb-6">
-            <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+          <div className="mb-6 space-y-3">
+            <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
               Troubleshooting &amp; Monorepos
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">

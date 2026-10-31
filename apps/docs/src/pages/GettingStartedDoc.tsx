@@ -1,19 +1,8 @@
 import React from "react";
-import { ComponentPreview } from "../components/ComponentPreview";
+import { DocHeader } from "../components/DocHeader";
 import { CodeBlock } from "../components/CodeBlock";
 import { CliCommandTabs } from "../components/CliCommandTabs";
-import {
-  Text,
-  Strong,
-  Code,
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@hudbird/ui";
-import { PageToolbar } from "../components/PageToolbar";
+import { Text, Strong, Code } from "@hudbird/ui";
 
 export const gettingStartedTocItems = [
   { id: "getting-started", title: "Getting started" },
@@ -26,37 +15,30 @@ export const gettingStartedTocItems = [
 
 export default function GettingStartedDoc() {
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* 1. Getting started */}
-      <div id="getting-started" className="scroll-mt-24">
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-          <div className="w-full min-w-0 flex-1 pr-4">
-            <div className="mb-6 text-[14px] font-extrabold tracking-[1.4px] text-indigo-600 uppercase dark:text-indigo-400">
-              ESSENTIALS
-            </div>
-            <h1 className="font-outfit mb-8 text-4xl sm:text-6xl lg:text-[72px] leading-[1.12] font-medium tracking-[-1.8px] sm:tracking-[-2.2px] text-zinc-900 dark:text-white">
-              Getting started
-            </h1>
-            <p className="mb-12 max-w-3xl text-lg sm:text-xl lg:text-2xl leading-[1.6] font-normal text-zinc-600 dark:text-[#828282]">
-              Fly through your development. Minimize the noise, keep the essence with kinetic
-              precision.
-            </p>
-          </div>
-          <PageToolbar />
-        </div>
+      <div id="getting-started" className="scroll-mt-24 space-y-12">
+        <DocHeader
+          category="Essentials"
+          title="Getting started"
+          badge="Essentials"
+          description="Fly through your development. Minimize the noise, keep the essence with kinetic precision."
+        />
 
         <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">
-          <h2 className="font-outfit text-2xl font-medium tracking-[-0.5px] text-zinc-900 dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             The Hudbird DNA
           </h2>
           <div className="space-y-4 text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-700 dark:text-[#e5e5e5]">
             <p>
-              <Strong className="text-zinc-900 dark:text-white">Precise Navigation.</Strong> Seperti burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library
-              ini menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang
+              <Strong className="text-zinc-900 dark:text-white">Precise Navigation.</Strong> Seperti
+              burung Hudhud yang terkenal dengan navigasinya yang luar biasa akurat, library ini
+              menawarkan komponen dengan struktur tata letak (layout) dan spacing Tailwind yang
               sangat presisi.
             </p>
             <p>
-              <Strong className="text-zinc-900 dark:text-white">Aesthetic Crown.</Strong> Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
+              <Strong className="text-zinc-900 dark:text-white">Aesthetic Crown.</Strong>{" "}
+              Terinspirasi dari mahkota khas Hudhud, komponen ini memberikan sentuhan akhir yang
               elegan dan premium meskipun mengusung tema minimalis.
             </p>
             <p>
@@ -70,14 +52,15 @@ export default function GettingStartedDoc() {
 
       {/* 2. New Project */}
       <section id="new-project" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           New Project Quickstart
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Start from scratch.</strong> If you don't have an existing project, generate a new Vite or Next.js app with Tailwind CSS already configured:
+          <strong>Start from scratch.</strong> If you don't have an existing project, generate a new
+          Vite or Next.js app with Tailwind CSS already configured:
         </p>
 
-        <h3 className="mt-6 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+        <h3 className="font-outfit mt-6 text-lg font-medium text-zinc-900 dark:text-white">
           For Vite (React):
         </h3>
         <CodeBlock
@@ -87,7 +70,7 @@ npm install -D tailwindcss @tailwindcss/vite
 npm run dev"
         />
 
-        <h3 className="mt-8 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+        <h3 className="font-outfit mt-8 text-lg font-medium text-zinc-900 dark:text-white">
           For Next.js:
         </h3>
         <CodeBlock
@@ -99,7 +82,7 @@ npm run dev"
 
       {/* 3. Existing Project */}
       <section id="existing-project" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Adding to an Existing Project
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -115,12 +98,12 @@ npm run dev"
 
       {/* 4. Smart CLI */}
       <section id="smart-cli" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Using the Smart CLI
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          Hudbird UI features an intelligent CLI designed to make adding components a breeze.
-          To add any component, simply run:
+          Hudbird UI features an intelligent CLI designed to make adding components a breeze. To add
+          any component, simply run:
         </p>
         <CliCommandTabs commandType="add" />
 
@@ -187,7 +170,7 @@ npm run dev"
 
       {/* 5. Client-side router integration */}
       <section id="router-integration" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Client-side router integration
         </h2>
         <Text>
@@ -216,31 +199,28 @@ export function App() {
 
       {/* 6. Setup font family */}
       <section id="setup-font" className="scroll-mt-24 space-y-4">
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">Optional: Setup Font</h2>
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Typography: Fonts & Pairing
+        </h2>
         <Text>
-          To achieve the exact typography aesthetic seen in our documentation, we recommend using{" "}
-          <Strong>Plus Jakarta Sans</Strong>. First, import the font in your main CSS or HTML file:
+          To achieve the exact Google Stitch editorial aesthetic specified in{" "}
+          <Strong>DESIGN.md</Strong>, we recommend using <Strong>Outfit</Strong> (Weight 500) for
+          Display/H1/H2 titles, and <Strong>Plus Jakarta Sans</Strong> for UI body text:
         </Text>
         <div className="mt-4">
           <CodeBlock
-            code={`@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');`}
+            code={`@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');`}
           />
         </div>
         <Text className="mt-4">
-          Then, configure it as your default sans font in <Code>tailwind.config.js</Code> (or CSS
-          via <Code>@theme</Code> for Tailwind v4):
+          Then, configure them in your Tailwind v4 CSS theme (<Code>@theme</Code>) or{" "}
+          <Code>tailwind.config.js</Code>:
         </Text>
         <div className="mt-4">
           <CodeBlock
-            code={`/** @type {import('tailwindcss').Config} */
-export default {
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-      },
-    },
-  },
+            code={`@theme {
+  --font-outfit: "Outfit", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
 }`}
           />
         </div>

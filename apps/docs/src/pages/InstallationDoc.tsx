@@ -4,9 +4,9 @@ import { CodeBlock } from "../components/CodeBlock";
 
 export default function InstallationDoc() {
   return (
-    <div className="mx-auto w-full pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
-        category="ESSENTIALS"
+        category="Essentials"
         title="Installation"
         badge="v2.0"
         description="Step-by-step tutorial on how to install and configure Hudbird UI in your React project with Tailwind CSS v4."
@@ -15,13 +15,15 @@ export default function InstallationDoc() {
       <div className="max-w-4xl space-y-24 sm:space-y-32">
         {/* Step 1 */}
         <section id="create-project" className="scroll-mt-24 space-y-6 sm:space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             1. Create a New React Project
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            <strong className="font-semibold text-zinc-900 dark:text-white">Start with Vite.</strong>{" "}
-            If you don&apos;t already have an existing React application, scaffold a clean TypeScript
-            workspace using the official template:
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              Start with Vite.
+            </strong>{" "}
+            If you don&apos;t already have an existing React application, scaffold a clean
+            TypeScript workspace using the official template:
           </p>
           <CodeBlock
             language="bash"
@@ -31,17 +33,24 @@ export default function InstallationDoc() {
 
         {/* Step 2 */}
         <section id="install-tailwind" className="scroll-mt-24 space-y-6 sm:space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             2. Install Tailwind CSS v4
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            <strong className="font-semibold text-zinc-900 dark:text-white">CSS-First Architecture.</strong>{" "}
-            Hudbird UI is engineered natively for Tailwind CSS v4. Install the core engine and the Vite plugin:
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              CSS-First Architecture.
+            </strong>{" "}
+            Hudbird UI is engineered natively for Tailwind CSS v4. Install the core engine and the
+            Vite plugin:
           </p>
           <CodeBlock language="bash" code="npm install tailwindcss @tailwindcss/vite" />
 
           <p className="pt-2 text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            Configure your <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">vite.config.ts</code> to enable the Tailwind plugin:
+            Configure your{" "}
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+              vite.config.ts
+            </code>{" "}
+            to enable the Tailwind plugin:
           </p>
           <CodeBlock
             language="typescript"
@@ -58,31 +67,41 @@ export default defineConfig({
 
         {/* Step 3 */}
         <section id="init-hudbird" className="scroll-mt-24 space-y-6 sm:space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             3. Initialize Hudbird UI
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            <strong className="font-semibold text-zinc-900 dark:text-white">Automated Scaffolding.</strong>{" "}
-            Run the CLI initialization command to automatically resolve peer dependencies, configure path aliases, and generate your <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">components.json</code> file:
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              Automated Scaffolding.
+            </strong>{" "}
+            Run the CLI initialization command to automatically resolve peer dependencies, configure
+            path aliases, and generate your{" "}
+            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+              components.json
+            </code>{" "}
+            file:
           </p>
           <CodeBlock language="bash" code="npx hudbird-ui@latest init" />
         </section>
 
         {/* Step 4 */}
         <section id="add-components" className="scroll-mt-24 space-y-6 sm:space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             4. Add Components
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            <strong className="font-semibold text-zinc-900 dark:text-white">On-Demand Registry.</strong>{" "}
-            Pull individual primitives or batch-install multiple components directly into your codebase with zero vendor lock-in:
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              On-Demand Registry.
+            </strong>{" "}
+            Pull individual primitives or batch-install multiple components directly into your
+            codebase with zero vendor lock-in:
           </p>
           <CodeBlock language="bash" code="npx hudbird-ui@latest add Button Alert" />
         </section>
 
         {/* Step 5 */}
         <section id="cli-reference" className="scroll-mt-24 space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             5. CLI Commands Reference
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
@@ -97,8 +116,8 @@ export default defineConfig({
                   Looking for the complete CLI manual?
                 </h3>
                 <p className="text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
-                  Read the full CLI documentation for multi-select prompts, --all flag, LCS diff engine,
-                  and components.json schema.
+                  Read the full CLI documentation for multi-select prompts, --all flag, LCS diff
+                  engine, and components.json schema.
                 </p>
               </div>
               <a
@@ -112,13 +131,20 @@ export default defineConfig({
 
           <div className="space-y-16 pt-6">
             <div className="space-y-4">
-              <h3 className="font-outfit text-2xl font-medium tracking-[-0.5px] leading-[1.3] text-zinc-900 dark:text-white">
+              <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                 List Available Components &amp; Status
               </h3>
               <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-                Inspect all 62 components categorized by domain with your local installation status (
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">✔ installed</code> vs{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">○ available</code>):
+                Inspect all 62 components categorized by domain with your local installation status
+                (
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+                  installed
+                </code>{" "}
+                vs{" "}
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+                  available
+                </code>
+                ):
               </p>
               <CodeBlock
                 language="bash"
@@ -127,7 +153,7 @@ export default defineConfig({
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-outfit text-2xl font-medium tracking-[-0.5px] leading-[1.3] text-zinc-900 dark:text-white">
+              <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                 Inspect Component Differences &amp; Upstream Updates
               </h3>
               <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
@@ -141,11 +167,12 @@ export default defineConfig({
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-outfit text-2xl font-medium tracking-[-0.5px] leading-[1.3] text-zinc-900 dark:text-white">
+              <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                 Batch Component Installation
               </h3>
               <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-                Install multiple components simultaneously or trigger the interactive keyboard selector:
+                Install multiple components simultaneously or trigger the interactive keyboard
+                selector:
               </p>
               <CodeBlock
                 language="bash"
@@ -154,12 +181,15 @@ export default defineConfig({
             </div>
 
             <div className="space-y-4">
-              <h3 className="font-outfit text-2xl font-medium tracking-[-0.5px] leading-[1.3] text-zinc-900 dark:text-white">
+              <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                 Configuration File (components.json)
               </h3>
               <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
                 Customize your import aliases, base color palette, and CSS variable integration in{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">components.json</code>:
+                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
+                  components.json
+                </code>
+                :
               </p>
               <CodeBlock
                 language="json"
@@ -184,11 +214,13 @@ export default defineConfig({
 
         {/* Step 6 */}
         <section id="use-components" className="scroll-mt-24 space-y-6 sm:space-y-8">
-          <h2 className="font-outfit text-3xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 sm:text-4xl dark:text-white">
+          <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             6. Use Components
           </h2>
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 sm:text-lg dark:text-[#E5E5E5]">
-            <strong className="font-semibold text-zinc-900 dark:text-white">Ready for Production.</strong>{" "}
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              Ready for Production.
+            </strong>{" "}
             Now import and compose any Hudbird UI component directly within your views:
           </p>
           <CodeBlock

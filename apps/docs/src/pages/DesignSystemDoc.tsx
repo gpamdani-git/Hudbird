@@ -21,7 +21,7 @@ import {
   Minimize2,
   RefreshCw,
 } from "lucide-react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { DEFAULT_DESIGN_MD_CONTENT } from "../data/designMdContent";
 
 interface ColorToken {
@@ -302,70 +302,52 @@ export default function DesignSystemDoc() {
   const charCount = useMemo(() => editorContent.length, [editorContent]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl pb-20">
-      <PageToolbar />
-
+    <div className="space-y-24 pb-24 sm:space-y-32">
       {/* Hero Header */}
-      <div className="mb-8">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-800/60 dark:bg-indigo-950/40 dark:text-indigo-300">
-            <Sparkles className="h-3.5 w-3.5" />
-            Google Stitch Semantic Design System
-          </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
-            <Code2 className="h-3.5 w-3.5" />
-            projects/hudbird-ui-kinetic
-          </span>
-        </div>
+      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <DocHeader
+          category="Design System"
+          title="DESIGN.md Specification & Studio"
+          badge="Stitch Spec"
+          description="The single source of truth for Hudbird UI according to the official Google Stitch Semantic Design System guidelines. Used by human engineers and autonomous AI agents to build anti-generic, kinetic interfaces."
+          className="flex-1"
+        />
 
-        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
-              DESIGN.md Specification &amp; Studio
-            </h1>
-            <p className="mt-2 max-w-3xl text-base text-zinc-600 dark:text-zinc-400">
-              The single source of truth for Hudbird UI according to the official Google Stitch
-              Semantic Design System guidelines. Used by human engineers and autonomous AI agents to
-              build anti-generic, kinetic interfaces.
-            </p>
-          </div>
+        {/* Quick Actions */}
+        <div className="flex shrink-0 items-center gap-2 pb-2">
+          <button
+            onClick={handleCopyMarkdown}
+            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-xs font-medium text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 active:scale-95 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+          >
+            {copiedFullMd ? (
+              <>
+                <Check className="h-3.5 w-3.5 text-emerald-500" />
+                <span>Copied .md</span>
+              </>
+            ) : (
+              <>
+                <Copy className="h-3.5 w-3.5 text-zinc-400" />
+                <span>Copy DESIGN.md</span>
+              </>
+            )}
+          </button>
 
-          {/* Quick Actions */}
-          <div className="flex shrink-0 items-center gap-2">
-            <button
-              onClick={handleCopyMarkdown}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-xs font-medium text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 active:scale-95 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
-            >
-              {copiedFullMd ? (
-                <>
-                  <Check className="h-3.5 w-3.5 text-emerald-500" />
-                  <span>Copied .md</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="h-3.5 w-3.5 text-zinc-400" />
-                  <span>Copy DESIGN.md</span>
-                </>
-              )}
-            </button>
-
-            <button
-              onClick={handleDownloadMarkdown}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-medium text-white shadow-sm transition-all hover:bg-indigo-500 active:scale-95"
-            >
-              {downloadedMd ? (
-                <>
-                  <Check className="h-3.5 w-3.5" />
-                  <span>Downloaded</span>
-                </>
-              ) : (
-                <>
-                  <Download className="h-3.5 w-3.5" />
-                  <span>Download File</span>
-                </>
-              )}
-            </button>
-          </div>
+          <button
+            onClick={handleDownloadMarkdown}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-medium text-white shadow-sm transition-all hover:bg-indigo-500 active:scale-95"
+          >
+            {downloadedMd ? (
+              <>
+                <Check className="h-3.5 w-3.5" />
+                <span>Downloaded</span>
+              </>
+            ) : (
+              <>
+                <Download className="h-3.5 w-3.5" />
+                <span>Download File</span>
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -455,7 +437,7 @@ export default function DesignSystemDoc() {
           <section id="visual-atmosphere" className="scroll-mt-24">
             <div className="mb-4 flex items-center justify-between">
               <div>
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                   1. Visual Theme &amp; Atmosphere
                 </h2>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -525,7 +507,7 @@ export default function DesignSystemDoc() {
           {/* 2. Color Palette & Roles */}
           <section id="color-palette" className="scroll-mt-24">
             <div className="mb-4">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+              <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                 2. Color Palette &amp; Functional Roles
               </h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -577,7 +559,7 @@ export default function DesignSystemDoc() {
           {/* 3. Typography Architecture */}
           <section id="typography-architecture" className="scroll-mt-24">
             <div className="mb-4">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+              <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                 3. Typography Architecture
               </h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -664,7 +646,7 @@ export default function DesignSystemDoc() {
           {/* 4. Component Stylings & Anatomy */}
           <section id="component-stylings" className="scroll-mt-24">
             <div className="mb-4">
-              <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+              <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                 4. Component Stylings &amp; Anatomy
               </h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -744,7 +726,7 @@ export default function DesignSystemDoc() {
             <div className="mb-4">
               <div className="flex items-center gap-2">
                 <ShieldAlert className="h-5 w-5 text-rose-500" />
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-white">
+                <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                   5. Anti-Patterns (Banned AI Clichés)
                 </h2>
               </div>
