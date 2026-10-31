@@ -3,6 +3,10 @@
     "motion": {
       "type": "http",
       "url": "https://mcp.motion.dev"
+    },
+    "cloudflare": {
+      "type": "http",
+      "url": "https://mcp.cloudflare.com/mcp"
     }
   }
 }

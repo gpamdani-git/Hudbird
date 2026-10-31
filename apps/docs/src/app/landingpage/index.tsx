@@ -119,12 +119,11 @@ import {
 } from "../../components/templates/TemplateThemeToggle";
 import { motion, AnimatePresence } from "framer-motion";
 import { StatsSection } from "./components/StatsSection";
+import { HeroComponentShowcase } from "./components/HeroComponentShowcase";
+import { TechStackCloud } from "./components/TechStackCloud";
 
 const MorphingUIHero = lazy(() =>
   import("./components/MorphingUIHero").then((m) => ({ default: m.MorphingUIHero }))
-);
-const AiOrbIllustration = lazy(() =>
-  import("./components/AiOrbIllustration").then((m) => ({ default: m.AiOrbIllustration }))
 );
 const TerminalAnimation = lazy(() =>
   import("./components/TerminalAnimation").then((m) => ({ default: m.TerminalAnimation }))
@@ -186,124 +185,102 @@ export const AiStartupTemplate = () => {
   return (
     <>
       <SEO />
-      <main className="flex min-h-screen w-full flex-col bg-white dark:bg-[#030712]">
+      <main className="flex min-h-screen w-full flex-col bg-white dark:bg-[#161618]">
         <SiteHeader />
 
         {/* <!-- Hero Section --> */}
-        <Hero id="hero" size="auto" className="relative overflow-hidden bg-white dark:bg-[#030712]">
-          {/* Animated Aurora Background */}
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <motion.div
-              className="absolute -top-[20%] -left-[10%] h-[50%] w-[50%] rounded-full bg-blue-500/20 mix-blend-normal blur-[140px] dark:bg-blue-600/25"
-              animate={{ x: [0, 50, 0], y: [0, 30, 0], scale: [1, 1.1, 1] }}
-              transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute top-[10%] -right-[20%] h-[60%] w-[40%] rounded-full bg-blue-400/15 mix-blend-normal blur-[140px] dark:bg-blue-500/20"
-              animate={{ x: [0, -40, 0], y: [0, -40, 0], scale: [1, 1.2, 1] }}
-              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <motion.div
-              className="absolute -bottom-[20%] left-[20%] h-[40%] w-[60%] rounded-full bg-blue-300/10 mix-blend-normal blur-[140px] dark:bg-blue-700/15"
-              animate={{ x: [0, 30, 0], y: [0, -30, 0], scale: [1, 1.1, 1] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            />
-          </div>
+        <Hero id="hero" size="auto" className="relative overflow-hidden bg-white dark:bg-[#161618]">
+          {/* Subtle Ambient Vignette */}
+          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/15 via-transparent to-transparent opacity-30 dark:opacity-20" />
 
-          <HeroBody align="center" className="relative z-10 mx-auto max-w-4xl pt-8 pb-20 sm:pt-8">
+          <HeroBody
+            align="center"
+            className="relative z-10 mx-auto max-w-5xl pt-8 pb-16 sm:pt-12 sm:pb-24"
+          >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.8 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               className="mb-8 flex justify-center"
             >
               <a
                 href="https://danihudbird.gumroad.com/l/hudbirdui-pro-allaccess"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-600 transition-all hover:bg-blue-500/20 dark:text-blue-400"
+                className="group inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-zinc-50/80 px-4 py-1.5 text-xs font-medium text-zinc-700 transition-all hover:border-indigo-500/40 hover:bg-zinc-100 active:scale-[0.98] dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:border-indigo-500/40 dark:hover:bg-white/10"
               >
-                <Sparkles className="h-4 w-4" />
-                <span>Hudbird Pro is here! Get All-Access Templates</span>
-                <ArrowRight className="h-4 w-4" />
+                <span className="font-mono text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
+                  PRO ALL-ACCESS
+                </span>
+                <span className="h-3 w-px bg-zinc-300 dark:bg-white/20" />
+                <span>Explore Full Starter Kits & Marketing Blocks</span>
+                <ArrowRight className="h-3.5 w-3.5 text-zinc-400 transition-transform group-hover:translate-x-0.5 group-hover:text-indigo-500" />
               </a>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <h1 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-7xl dark:text-white">
+              <h1 className="font-outfit text-4xl leading-[1.12] font-medium tracking-tight text-zinc-900 sm:text-6xl md:text-7xl dark:text-white">
                 Build Beautiful Interfaces
                 <br />
-                with hudbird-UI@latest.
+                with hudbird-ui.
               </h1>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
-              <HeroDescription className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-500 sm:mt-5 sm:text-lg dark:text-zinc-400">
-                A premium React component library. From atomic core components to full marketing
-                sections — ship pixel-perfect UIs in days, not months.
+              <HeroDescription className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-[#E5E5E5]/80">
+                A precision React component library built on Tailwind CSS v4 and tactile physics.
+                From atomic core primitives to full-page templates — ship pixel-perfect UIs with
+                zero design debt.
               </HeroDescription>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <HeroActions className="mt-6 flex-col justify-center gap-3 sm:mt-8 sm:flex-row">
+              <HeroActions className="mt-8 flex-col justify-center gap-3.5 sm:flex-row">
                 <a href="/#/docs" className="w-full sm:w-auto">
-                  <Button className="group relative h-12 w-full overflow-hidden rounded-xl bg-blue-500 px-8 font-semibold text-white shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all hover:bg-blue-600 hover:shadow-[0_0_40px_rgba(59,130,246,0.7)] sm:w-auto">
-                    <span className="relative z-10">Get started</span>
-                    <div className="absolute inset-0 rounded-xl border-t border-white/30" />
-                    <motion.div
-                      className="absolute inset-0 rounded-xl border-2 border-white/0"
-                      whileHover={{
-                        borderColor: [
-                          "rgba(255,255,255,0)",
-                          "rgba(255,255,255,0.6)",
-                          "rgba(255,255,255,0)",
-                        ],
-                      }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                    />
+                  <Button
+                    size="lg"
+                    className="h-12 w-full rounded-xl bg-[#4F46E5] px-8 text-sm font-medium text-white shadow-xs transition-all hover:bg-[#4338CA] active:scale-[0.98] sm:w-auto"
+                  >
+                    <span>Get started</span>
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
 
                 <a href="/#/blocks" className="w-full sm:w-auto">
                   <Button
                     variant="outline"
-                    className="group h-12 w-full rounded-xl border-zinc-200 bg-white/60 px-8 font-medium text-zinc-900 backdrop-blur-sm hover:bg-white sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                    size="lg"
+                    className="h-12 w-full rounded-xl border-zinc-200/80 bg-white/80 px-8 text-sm font-medium text-zinc-800 backdrop-blur-sm hover:bg-zinc-100 active:scale-[0.98] sm:w-auto dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                   >
-                    <div className="mr-2 flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/10">
-                      <PlayIcon className="h-3 w-3 text-zinc-900 dark:text-white" />
+                    <div className="mr-2 flex h-5 w-5 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/10">
+                      <PlayIcon className="h-2.5 w-2.5 translate-x-[1px] fill-current text-zinc-900 dark:text-white" />
                     </div>
-                    Browse block
+                    Browse blocks
                   </Button>
                 </a>
               </HeroActions>
             </motion.div>
 
-            {/* Interactive 3D Orb Component */}
+            {/* Interactive Component Showcase Centerpiece */}
             <motion.div
-              className="w-full sm:mt-24"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.8, duration: 1 }}
+              className="mt-16 w-full sm:mt-20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.7 }}
             >
-              <Suspense
-                fallback={
-                  <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
-                }
-              >
-                <AiOrbIllustration />
-              </Suspense>
+              <HeroComponentShowcase />
             </motion.div>
           </HeroBody>
         </Hero>
@@ -311,28 +288,8 @@ export const AiStartupTemplate = () => {
         {/* <!-- Stats Section --> */}
         <StatsSection />
 
-        {/* <!-- Logo Cloud --> */}
-        <section
-          id="logos"
-          className="border-y border-zinc-100 bg-zinc-50/60 dark:border-white/5 dark:bg-white/[0.02]"
-        >
-          <LogoCloud>
-            <LogoCloudTitle className="mb-8 text-[11px] font-semibold tracking-[0.18em] text-zinc-400 uppercase dark:text-zinc-600">
-              Trusted by teams at industry leaders
-            </LogoCloudTitle>
-            <LogoCloudTicker speed="normal">
-              {logos.map((logo, index) => (
-                <LogoCloudItem key={index} className="mx-10 w-28 shrink-0">
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="h-7 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-80 hover:grayscale-0 dark:opacity-30 dark:invert dark:hover:opacity-60"
-                  />
-                </LogoCloudItem>
-              ))}
-            </LogoCloudTicker>
-          </LogoCloud>
-        </section>
+        {/* <!-- Tech Stack Cloud (Real Ecosystem Proof) --> */}
+        <TechStackCloud />
         {/* <!-- Component Gallery (bento mosaic) — same container width as #components --> */}
         <div id="components">
           <Suspense
@@ -346,34 +303,29 @@ export const AiStartupTemplate = () => {
         {/* <!-- Agent Showcase Section --> */}
         <section
           id="features"
-          className="relative w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]"
+          className="relative w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#161618]"
         >
-          {/* Subtle blue gradient glow — matches hero */}
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute -top-[30%] -right-[10%] h-[60%] w-[50%] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
-            <div className="absolute -bottom-[20%] -left-[10%] h-[50%] w-[40%] rounded-full bg-blue-400/5 blur-[100px] dark:bg-blue-500/8" />
-          </div>
           <div className="relative z-10 mx-auto max-w-7xl space-y-14">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
               className="mb-12 max-w-2xl"
             >
-              <span className="mb-1 inline-flex items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-2 text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
-                Hudbird UI — Component Gallery
+              <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+                ARCHITECTURE & ATOMS
               </span>
-              <h1
+              <h2
                 id="gallery-title"
-                className="mt-4 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl dark:text-white"
+                className="font-outfit mt-3 text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-white"
               >
                 Fly through your development with your AI agent partner
-              </h1>
-              <p className="mt-4 mb-24 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              </h2>
+              <p className="mt-4 mb-16 text-sm leading-relaxed text-zinc-500 dark:text-[#E5E5E5]/70">
                 Atomic core components, molecule-level sections, and data-driven templates — the
-                building blocks behind every hudbird interface.
+                building blocks behind every Hudbird interface.
               </p>
             </motion.div>
 
@@ -385,12 +337,10 @@ export const AiStartupTemplate = () => {
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(0)}
                   viewport={{ amount: 0.5 }}
-                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#1C1C1F]"
                 >
-                  {/* Illustration Area — glass like Designed */}
+                  {/* Illustration Area */}
                   <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-
                     <Suspense
                       fallback={
                         <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
@@ -400,10 +350,10 @@ export const AiStartupTemplate = () => {
                     </Suspense>
                   </div>
 
-                  {/* Bottom Text — glass like Designed */}
+                  {/* Bottom Text */}
                   <div className="relative z-10 flex flex-col justify-between gap-6 border-t border-zinc-200/60 bg-white/70 p-8 backdrop-blur-md sm:flex-row sm:items-end lg:p-10 dark:border-white/10 dark:bg-white/5">
                     <div className="max-w-xl">
-                      <h3 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                      <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                         From Atoms to Full Templates
                       </h3>
                       <p className="mt-2.5 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -414,7 +364,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/button"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                     >
                       Explore components{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -426,12 +376,10 @@ export const AiStartupTemplate = () => {
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(1)}
                   viewport={{ amount: 0.5 }}
-                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#1C1C1F]"
                 >
-                  {/* Terminal Illustration Area — glass like Designed */}
+                  {/* Terminal Illustration Area */}
                   <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-
                     <Suspense
                       fallback={
                         <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
@@ -441,10 +389,10 @@ export const AiStartupTemplate = () => {
                     </Suspense>
                   </div>
 
-                  {/* Bottom Text — glass like Designed */}
+                  {/* Bottom Text */}
                   <div className="relative z-10 flex flex-col justify-between gap-6 border-t border-zinc-200/60 bg-white/70 p-8 backdrop-blur-md sm:flex-row sm:items-end lg:p-10 dark:border-white/10 dark:bg-white/5">
                     <div className="max-w-xl">
-                      <h3 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                      <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                         Smart CLI Initialization
                       </h3>
                       <p className="mt-2.5 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -454,7 +402,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/installation"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                     >
                       View Docs{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -466,13 +414,10 @@ export const AiStartupTemplate = () => {
                 <motion.div
                   onViewportEnter={() => setActiveAgentCard(2)}
                   viewport={{ amount: 0.5 }}
-                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#0a0f1c]"
+                  className="group relative flex min-h-[450px] w-[85vw] shrink-0 snap-center flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl sm:w-[600px] lg:h-[700px] lg:min-h-[600px] lg:w-auto dark:border-white/10 dark:bg-[#1C1C1F]"
                 >
-                  {/* Code Illustration Area — glass like Designed */}
+                  {/* Code Illustration Area */}
                   <div className="relative flex min-h-[250px] flex-1 items-center justify-center overflow-hidden p-6 sm:p-8 lg:min-h-[500px]">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.06),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
-
-                    {/* VSCode autocomplete typing illustration */}
                     <Suspense
                       fallback={
                         <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
@@ -482,10 +427,10 @@ export const AiStartupTemplate = () => {
                     </Suspense>
                   </div>
 
-                  {/* Bottom Text — glass like Designed */}
+                  {/* Bottom Text */}
                   <div className="relative z-10 flex flex-col justify-between gap-6 border-t border-zinc-200/60 bg-white/70 p-8 backdrop-blur-md sm:flex-row sm:items-end lg:p-10 dark:border-white/10 dark:bg-white/5">
                     <div className="max-w-xl">
-                      <h3 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-white">
+                      <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
                         Accelerate your development
                       </h3>
                       <p className="mt-2.5 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -495,7 +440,7 @@ export const AiStartupTemplate = () => {
                     </div>
                     <a
                       href="/#/marketing/hero"
-                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                      className="group flex shrink-0 items-center gap-1.5 text-sm font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
                     >
                       Browse Blocks{" "}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -505,7 +450,7 @@ export const AiStartupTemplate = () => {
               </div>
 
               {/* Right Agent Chat Card — sticky on desktop, full-width on mobile */}
-              <div className="sticky top-24 flex h-[450px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[550px] lg:h-[700px] dark:border-white/10 dark:bg-[#0f0f1a]">
+              <div className="sticky top-24 flex h-[450px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-white shadow-lg sm:h-[550px] lg:h-[700px] dark:border-white/10 dark:bg-[#1C1C1F]">
                 {/* Chat Area */}
                 <div className="pointer-events-none relative flex flex-1 flex-col overflow-hidden p-6">
                   <AnimatePresence mode="wait">
@@ -782,43 +727,37 @@ export const AiStartupTemplate = () => {
 
         {/* <!-- Built for Modern Web — Feature Bento --> */}
         <section
-          id="features"
-          className="relative w-full overflow-hidden bg-zinc-50 px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#080d1a]"
+          id="bento"
+          className="relative w-full overflow-hidden bg-zinc-50 px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#161618]"
         >
-          {/* Hero-matching aurora gradient */}
-          <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute -top-[10%] -left-[10%] h-[70%] w-[50%] rounded-full bg-blue-500/10 blur-[140px] dark:bg-blue-600/12" />
-            <div className="absolute -right-[10%] -bottom-[10%] h-[60%] w-[45%] rounded-full bg-blue-400/8 blur-[120px] dark:bg-blue-500/10" />
-          </div>
-
           <div className="relative z-10 mx-auto max-w-7xl space-y-16">
             <motion.div
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.65, ease: "easeOut" }}
             >
               <FeatureHeader>
-                <FeatureBadge className="mx-auto mb-8 inline-flex w-fit rounded-full border border-blue-500/20 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-600 dark:border-blue-400/20 dark:bg-blue-400/10 dark:text-blue-400">
-                  Hudbird UI — Atoms to Templates
-                </FeatureBadge>
-                <FeatureTitle className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-                  Designed for how products actually ship
+                <span className="mx-auto mb-4 inline-flex font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+                  ATOMS TO TEMPLATES
+                </span>
+                <FeatureTitle className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
+                  Designed for how modern products ship
                 </FeatureTitle>
-                <FeatureDescription className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+                <FeatureDescription className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-500 sm:text-base dark:text-[#E5E5E5]/70">
                   Stop rebuilding the same blocks. Start from type-safe atoms, compose
                   conversion-ready marketing sections, and ship full templates with one{" "}
                   <span className="font-mono text-sm font-medium text-zinc-900 dark:text-white">
                     pnpm dlx hudbird-ui init
                   </span>{" "}
-                  — Tailwind v4 and Motion included.
+                  — Tailwind v4 and spring physics included.
                 </FeatureDescription>
               </FeatureHeader>
             </motion.div>
 
             <BentoGrid className="relative mx-auto w-full gap-4 md:auto-rows-[26rem] md:grid-cols-3 xl:grid-cols-3">
               {/* Card 1: Atomic primitives */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#0a0f1c]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 sm:p-8">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.08),transparent_70%)]" />
                   <motion.div
@@ -892,7 +831,7 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 2: Workflow Automation */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#0a0f1c]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-3 sm:p-6">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(59,130,246,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_right,rgba(59,130,246,0.08),transparent_70%)]" />
 
@@ -984,7 +923,7 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 3: Directory you already know */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#0a0f1c]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-2 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 items-center justify-center overflow-hidden p-4 sm:p-6">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_left,rgba(59,130,246,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_left,rgba(59,130,246,0.08),transparent_70%)]" />
 
@@ -1150,7 +1089,7 @@ export const AiStartupTemplate = () => {
               </BentoCard>
 
               {/* Card 4: Token-driven theming */}
-              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#0a0f1c]">
+              <BentoCard className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-zinc-200/80 bg-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl md:col-span-1 dark:border-white/10 dark:bg-[#1C1C1F]">
                 <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden pt-8">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(56,189,248,0.05),transparent_70%)] dark:bg-[radial-gradient(circle_at_bottom,rgba(56,189,248,0.08),transparent_70%)]" />
 
@@ -1209,122 +1148,47 @@ export const AiStartupTemplate = () => {
           </div>
         </section>
 
-        {/* Reflect AI-style AI Feature Section */}
-        <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-32 pb-40 font-sans transition-colors duration-500 dark:bg-[#05050A]">
-          {/* Starry Background (subtle) */}
-          <div
-            className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-30"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at center, var(--tw-gradient-stops) 1px, transparent 1px)",
-              backgroundSize: "64px 64px",
-              maskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
-              WebkitMaskImage: "radial-gradient(ellipse at center, black 20%, transparent 80%)",
-            }}
-          >
-            <div
-              className="absolute inset-0 bg-[rgba(0,0,0,0.1)] dark:bg-[rgba(255,255,255,1)]"
-              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", opacity: 0.1 }}
-            />
-          </div>
-
+        {/* Kinetic Physics & Morphing Feature Section */}
+        <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-24 pb-32 font-sans transition-colors duration-500 sm:pt-32 sm:pb-40 dark:bg-[#161618]">
           {/* Top Header */}
           <div className="relative z-10 flex flex-col items-center px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mb-6 rounded-full border border-zinc-200 bg-white/50 px-3 py-1 text-xs font-medium text-zinc-600 backdrop-blur-md dark:border-white/10 dark:bg-white/5 dark:text-white/80"
-            >
-              Fluid Interactions
-            </motion.div>
+            <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+              KINETIC PHYSICS & AFFORDANCES
+            </span>
             <motion.h2
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-6 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl lg:text-6xl dark:text-white"
+              className="font-outfit mt-3 text-3xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-white"
             >
-              State-driven Morphing UI
+              State-Driven Morphing Interactions
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="max-w-2xl text-lg text-zinc-500 dark:text-white/60"
+              className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-500 sm:text-lg dark:text-[#E5E5E5]/70"
             >
-              Hudbird uses advanced spring physics and motion logic to create seamless,
-              <br className="hidden md:block" />
-              continuous micro-interactions for a premium user experience.
+              Hudbird pairs hardware-accelerated spring dynamics with tactile zero-latency feedback
+              for a frictionless experience.
             </motion.p>
           </div>
 
-          {/* 3D Grid & Beam Illustration */}
-          <div className="relative mt-24 flex h-[500px] w-full max-w-5xl flex-col items-center justify-start pt-16">
-            {/* Glowing Beam Source (Portal) */}
-            <div className="absolute top-[250px] z-0 h-[2px] w-[300px] rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-blue-500 shadow-[0_0_20px_10px_rgba(59,130,246,0.3),0_0_40px_5px_rgba(14,165,233,0.2)] dark:shadow-[0_0_40px_20px_rgba(59,130,246,0.5),0_0_60px_10px_rgba(14,165,233,0.3)]" />
-
-            {/* Vertical Upward Beam with blue edge */}
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              whileInView={{ opacity: 1, height: "400px" }}
-              transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-              viewport={{ once: true }}
-              className="absolute bottom-[calc(100%-250px)] left-1/2 z-0 w-[200px] -translate-x-1/2 bg-gradient-to-t from-blue-500/40 via-sky-500/10 to-transparent blur-[20px] dark:from-blue-500/80 dark:via-sky-500/20 dark:blur-[30px]"
-            />
-
-            {/* Perspective Grid Floor */}
-            <div
-              className="absolute top-[250px] left-1/2 z-0 h-[600px] w-[200vw] -translate-x-1/2 dark:hidden"
-              style={{
-                transform: "perspective(1000px) rotateX(70deg)",
-                transformOrigin: "top center",
-                backgroundSize: "60px 60px",
-                backgroundImage:
-                  "linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px)",
-                maskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
-                WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
-              }}
-            />
-            <div
-              className="absolute top-[250px] left-1/2 z-0 hidden h-[600px] w-[200vw] -translate-x-1/2 dark:block"
-              style={{
-                transform: "perspective(1000px) rotateX(70deg)",
-                transformOrigin: "top center",
-                backgroundSize: "60px 60px",
-                backgroundImage:
-                  "linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)",
-                maskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
-                WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 80%)",
-              }}
-            />
-
-            {/* Glowing floor reflection (blue) */}
-            <div
-              className="absolute top-[250px] left-1/2 z-0 h-[400px] w-[600px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.15)_0%,rgba(14,165,233,0.1)_40%,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.3)_0%,rgba(14,165,233,0.2)_40%,transparent_70%)]"
-              style={{
-                transform: "perspective(1000px) rotateX(70deg)",
-                transformOrigin: "top center",
-              }}
-            />
-
-            {/* Morphing UI Glass Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-              viewport={{ once: true, margin: "-50px" }}
-              className="relative z-10 -mt-8 flex w-full max-w-xl scale-110 justify-center sm:scale-125 md:-mt-16"
-            >
-              <Suspense
-                fallback={
-                  <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
-                }
-              >
-                <MorphingUIHero />
-              </Suspense>
-            </motion.div>
+          {/* Morphing UI Container in DoubleBezelCard */}
+          <div className="relative mt-12 flex w-full max-w-4xl flex-col items-center justify-center px-4 sm:mt-16 sm:px-6">
+            <div className="w-full rounded-2xl border border-zinc-200/80 bg-white/70 p-2 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-[#1C1C1F]">
+              <div className="relative flex min-h-[360px] w-full items-center justify-center overflow-hidden rounded-[14px] border border-zinc-200/60 bg-zinc-50/50 p-6 sm:p-12 dark:border-white/5 dark:bg-[#161618]">
+                <Suspense
+                  fallback={
+                    <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />
+                  }
+                >
+                  <MorphingUIHero />
+                </Suspense>
+              </div>
+            </div>
           </div>
 
           {/* Bottom Feature Grid */}
@@ -1408,7 +1272,7 @@ export const AiStartupTemplate = () => {
         </Suspense>
 
         {/* <!-- FAQ Section --> */}
-        <section id="faq" className="w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]">
+        <section id="faq" className="w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#161618]">
           <Faq
             variant="centered"
             faqs={[
@@ -1449,39 +1313,38 @@ export const AiStartupTemplate = () => {
         {/* <!-- CTA Section --> */}
         <section
           id="cta"
-          className="grid grid-cols-1 border border-zinc-100 bg-white lg:grid-cols-2 dark:border-white/5 dark:bg-[#030712]"
+          className="grid grid-cols-1 border-t border-zinc-200/80 bg-white lg:grid-cols-2 dark:border-white/5 dark:bg-[#161618]"
         >
-          <div className="flex flex-col justify-center p-12 lg:p-42">
+          <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-24">
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <span className="inline-flex w-fit items-center rounded-full border border-blue-500/20 bg-blue-500/10 px-3.5 py-1 text-xs font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
-                Get Started
+              <span className="font-mono text-xs font-bold tracking-[1.6px] text-indigo-600 uppercase dark:text-indigo-400">
+                GET STARTED
               </span>
-              <h2 className="font-outfit mt-6 text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
+              <h2 className="font-outfit mt-4 text-3xl font-medium tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
                 Start building with
                 <br />
-                <span className="text-blue-500">hudbird UI</span> today.
+                <span className="text-indigo-600 dark:text-indigo-400">hudbird-ui</span> today.
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-zinc-500 dark:text-zinc-400">
+              <p className="mt-4 text-base leading-relaxed text-zinc-500 dark:text-[#E5E5E5]/70">
                 The fastest way to ship production-ready React interfaces. Beautiful components,
-                powerful templates, zero design debt.
+                tactile physics, zero design debt.
               </p>
               <div className="mt-8">
                 <a href="/#/installation">
-                  <Button className="relative overflow-hidden rounded-xl bg-blue-500 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_20px_rgba(59,130,246,0.4)] transition-all hover:bg-blue-600 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)]">
+                  <Button className="rounded-xl bg-[#4F46E5] px-6 py-2.5 text-sm font-medium text-white shadow-xs transition-all hover:bg-[#4338CA] active:scale-[0.98]">
                     <span className="relative z-10">Get started</span>
-                    <div className="absolute inset-0 rounded-xl border-t border-white/20" />
                   </Button>
                 </a>
               </div>
             </motion.div>
           </div>
           {/* Right: Terminal Demo */}
-          <div className="flex min-h-[580px] items-center justify-center bg-white p-8 lg:p-12 dark:bg-[#030712]">
+          <div className="flex min-h-[500px] items-center justify-center bg-zinc-50/50 p-8 lg:p-12 dark:bg-[#1C1C1F]/60">
             <Suspense
               fallback={
                 <div className="h-64 w-full animate-pulse rounded-xl bg-zinc-100 dark:bg-zinc-900" />

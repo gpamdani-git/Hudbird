@@ -62,3 +62,4 @@
 - ❌ **No Cards-Inside-Cards-Inside-Cards:** Russian-doll container nesting without informational purpose is banned.
 - ❌ **No Pure Black (`#000000`):** Use Obsidian Charcoal (`#161618`) or Deep Void Slate (`#090D16`).
 - ❌ **No Generic 3-Equal Cards Rows:** Use asymmetric Bento Grids or 2-column alternating layouts.
+

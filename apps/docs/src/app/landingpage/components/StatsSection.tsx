@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
-import { Box, Layout, Component, BarChart3, Info } from "lucide-react";
+import { Box, Layout, Component, BarChart3 } from "lucide-react";
 
 function AnimatedCounter({
   from = 0,
@@ -41,70 +41,76 @@ function AnimatedCounter({
 
 export function StatsSection() {
   return (
-    <section className="relative z-10 mx-auto -mt-48 mb-24 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      {/* Glow background behind the stats card */}
-      <div className="pointer-events-none absolute inset-0 z-0 mx-auto max-w-5xl translate-y-8 rounded-[100px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-30 blur-3xl dark:opacity-20" />
-
+    <section className="relative z-10 mx-auto mt-16 mb-20 w-full max-w-7xl px-4 sm:mt-24 sm:mb-28 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 overflow-hidden rounded-3xl border border-zinc-200/50 bg-white/60 p-8 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0c]/60 dark:shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
+        className="relative z-10 overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-white/10 dark:bg-[#1C1C1F]"
       >
         <div className="grid grid-cols-2 gap-8 divide-x-0 divide-zinc-200/50 md:grid-cols-4 md:divide-x dark:divide-white/10">
           <div className="flex flex-col items-center justify-center px-4 text-center">
             <div className="mb-4 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-              <Box className="h-8 w-8" strokeWidth={1.2} />
+              <Box className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <h3 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <h3 className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
               <AnimatedCounter to={26} suffix="+" />
             </h3>
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">Core UI</p>
+            <p className="mt-1 text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
+              Core UI Primitives
+            </p>
           </div>
 
           <div className="flex flex-col items-center justify-center px-4 text-center">
             <div className="mb-4 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-              <Component className="h-8 w-8" strokeWidth={1.2} />
+              <Component className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <h3 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-              <AnimatedCounter to={12} suffix="+" />
+            <h3 className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+              <AnimatedCounter to={18} suffix="+" />
             </h3>
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">Sections</p>
+            <p className="mt-1 text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
+              Marketing Sections
+            </p>
           </div>
 
           <div className="flex flex-col items-center justify-center px-4 text-center">
             <div className="mb-4 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-              <BarChart3 className="h-8 w-8" strokeWidth={1.2} />
+              <BarChart3 className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <h3 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <h3 className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
               <AnimatedCounter to={8} suffix="" />
             </h3>
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">Chart Types</p>
+            <p className="mt-1 text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
+              Chart Types
+            </p>
           </div>
 
           <div className="flex flex-col items-center justify-center px-4 text-center">
             <div className="mb-4 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
-              <Layout className="h-8 w-8" strokeWidth={1.2} />
+              <Layout className="h-7 w-7" strokeWidth={1.5} />
             </div>
-            <h3 className="font-outfit text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            <h3 className="font-outfit text-3xl font-medium tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
               <AnimatedCounter to={40} suffix="+" />
             </h3>
-            <p className="mt-1 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-              Block Gallery
+            <p className="mt-1 text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
+              Block Layouts
             </p>
           </div>
         </div>
 
         {/* Note about free vs pro templates */}
         <div className="mt-8 flex items-center justify-center border-t border-zinc-200/50 pt-6 dark:border-white/5">
-          <p className="text-center text-sm font-medium text-zinc-500 dark:text-zinc-400">
+          <p className="text-center text-xs font-medium text-zinc-500 sm:text-sm dark:text-zinc-400">
             All core components and blocks are{" "}
-            <strong className="font-semibold text-zinc-900 dark:text-white">100% free</strong>.
-            <br className="sm:hidden" /> Support our work by purchasing the{" "}
+            <strong className="font-semibold text-zinc-900 dark:text-white">
+              100% free and open-source
+            </strong>
+            .
+            <br className="sm:hidden" /> Support our craft with the{" "}
             <a
               href="/#/templates"
-              className="font-semibold text-blue-500 transition-colors hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+              className="font-semibold text-indigo-600 transition-colors hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
             >
               Starter Kit Pro
             </a>{" "}
