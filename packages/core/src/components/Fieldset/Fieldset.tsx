@@ -4,7 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-export type FieldsetVariant = "flat" | "bordered" | "card";
+export type FieldsetVariant = "flat" | "bordered" | "card" | "inset-grouped";
 export type FieldsetLayout = "stacked" | "side-by-side" | "horizontal-labels";
 
 interface FieldsetContextValue {
@@ -28,8 +28,10 @@ const fieldsetVariants = cva("w-full transition-all duration-200", {
     variant: {
       flat: "p-0 border-0 bg-transparent",
       bordered:
-        "border border-zinc-200/80 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/30 rounded-2xl p-6 sm:p-7 shadow-xs",
-      card: "border border-zinc-200 dark:border-zinc-800 bg-zinc-50/60 dark:bg-zinc-900/60 rounded-2xl p-6 sm:p-7 shadow-sm",
+        "border border-zinc-200/80 dark:border-white/10 bg-white/50 dark:bg-[#1C1C1F]/50 rounded-2xl p-6 sm:p-7 shadow-xs backdrop-blur-sm",
+      card: "border border-zinc-200 dark:border-white/10 bg-zinc-50/60 dark:bg-[#1C1C1F] rounded-2xl p-6 sm:p-7 shadow-xs",
+      "inset-grouped":
+        "border border-black/5 dark:border-white/10 bg-white dark:bg-[#202124] rounded-2xl p-0 overflow-hidden shadow-2xs",
     },
     layout: {
       stacked: "flex flex-col gap-5",
@@ -135,13 +137,15 @@ export interface FieldsetContentProps extends React.HTMLAttributes<HTMLDivElemen
 
 const FieldsetContent = React.forwardRef<HTMLDivElement, FieldsetContentProps>(
   ({ className, children, ...props }, ref) => {
-    const { layout } = React.useContext(FieldsetContext);
+    const { layout, variant } = React.useContext(FieldsetContext);
+    const isInsetGrouped = variant === "inset-grouped";
 
     return (
       <div
         ref={ref}
         className={cn(
-          "flex w-full min-w-0 flex-col gap-4",
+          "flex w-full min-w-0 flex-col",
+          isInsetGrouped ? "divide-y divide-black/5 dark:divide-white/5" : "gap-4",
           layout === "side-by-side" && "lg:col-span-8",
           layout === "horizontal-labels" && "space-y-4",
           className
@@ -164,6 +168,39 @@ export interface FieldsetRowProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const FieldsetRow = React.forwardRef<HTMLDivElement, FieldsetRowProps>(
   ({ className, label, description, isInvalid = false, children, ...props }, ref) => {
+    const { variant } = React.useContext(FieldsetContext);
+    const isInsetGrouped = variant === "inset-grouped";
+
+    if (isInsetGrouped) {
+      return (
+        <div
+          ref={ref}
+          className={cn(
+            "flex w-full items-center justify-between gap-4 px-5 py-3.5 transition-colors",
+            className
+          )}
+          {...props}
+        >
+          {label && (
+            <div className="flex min-w-0 flex-1 flex-col justify-center">
+              <label
+                className={cn(
+                  "text-sm leading-snug font-medium text-zinc-900 dark:text-zinc-100",
+                  isInvalid && "text-rose-600 dark:text-rose-400"
+                )}
+              >
+                {label}
+              </label>
+              {description && (
+                <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{description}</p>
+              )}
+            </div>
+          )}
+          <div className="flex shrink-0 items-center">{children}</div>
+        </div>
+      );
+    }
+
     return (
       <div
         ref={ref}

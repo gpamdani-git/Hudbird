@@ -13,9 +13,9 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        shadow: "bg-card border border-border shadow-sm",
-        bordered: "bg-transparent border border-border shadow-none",
-        flat: "bg-muted/50 border border-transparent shadow-none",
+        shadow: "bg-card border border-border/80 shadow-xs dark:border-white/10 dark:bg-[#1C1C1F]",
+        bordered: "bg-transparent border border-border dark:border-white/10 shadow-none",
+        flat: "bg-muted/50 border border-transparent dark:bg-[#202124] shadow-none",
       },
       radius: {
         none: "rounded-none",
@@ -24,11 +24,11 @@ const cardVariants = cva(
         full: "rounded-3xl",
       },
       isHoverable: {
-        true: "hover:-translate-y-1 hover:shadow-md transition-all duration-300 ease-in-out cursor-pointer",
+        true: "hover:-translate-y-1 hover:shadow-md transition-all duration-200 ease-out cursor-pointer hover:border-black/15 dark:hover:border-white/20",
         false: "",
       },
       isPressable: {
-        true: "cursor-pointer active:scale-[0.98] transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        true: "cursor-pointer active:scale-[0.98] transition-all duration-150 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-[#161618]",
         false: "",
       },
     },
@@ -142,7 +142,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
         className={cn(
           "border-border/50 z-10 flex w-full shrink-0 items-center justify-between p-5 pt-0",
           isBlurred &&
-            "absolute inset-x-0 bottom-0 rounded-b-2xl border-t border-white/20 bg-white/70 pt-3.5 pb-3.5 backdrop-blur-md dark:border-zinc-700/30 dark:bg-zinc-900/70",
+            "absolute inset-x-0 bottom-0 rounded-b-2xl border-t border-black/5 bg-white/70 pt-3.5 pb-3.5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/70",
           className
         )}
         {...props}

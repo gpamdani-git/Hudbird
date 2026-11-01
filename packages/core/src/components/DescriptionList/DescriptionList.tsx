@@ -15,11 +15,11 @@ const DescriptionListContext = React.createContext<DescriptionListContextValue>(
   orientation: "horizontal",
 });
 
-const descriptionListVariants = cva("w-full divide-y divide-zinc-200/60 dark:divide-zinc-800/60", {
+const descriptionListVariants = cva("w-full divide-y divide-zinc-200/80 dark:divide-white/10", {
   variants: {
     variant: {
       flat: "bg-transparent",
-      card: "rounded-2xl border border-zinc-200/80 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 p-5 sm:p-6 shadow-2xs",
+      card: "rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#1C1C1F] p-5 sm:p-6 shadow-2xs",
     },
   },
   defaultVariants: {
