@@ -22,9 +22,15 @@
   --color-border: var(--border);
   --color-input: var(--input);
 
-  --font-sans: var(--theme-font-sans, "Inter"), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--theme-font-heading, "Outfit"), ui-sans-serif, system-ui, sans-serif;
-  --font-outfit: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    var(--theme-font-sans, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
+    sans-serif;
+  --font-heading:
+    var(--theme-font-heading, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
+    sans-serif;
+  --font-outfit:
+    var(--theme-font-heading, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
+    sans-serif;
 
   /* Semantic Fallback Mappings */
   --color-primary: var(--color-primary-600);
@@ -371,7 +377,7 @@
     margin-bottom: 16px;
   }
   .stitch-display {
-    font-family: var(--font-heading, "Outfit", sans-serif);
+    font-family: var(--font-heading, "Inter", -apple-system, BlinkMacSystemFont, sans-serif);
     font-size: clamp(2.5rem, 5.5vw, 4.5rem);
     font-weight: 500;
     line-height: 1.15;
