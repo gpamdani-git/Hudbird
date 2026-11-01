@@ -231,15 +231,12 @@ export const Header: React.FC<HeaderProps> = ({
 
               {/* 4. Appearance / Theme Switcher */}
               <DropdownSection title="Theme" showDivider>
-                <div className="flex items-center justify-between px-3 py-1.5 text-xs text-zinc-500 dark:text-zinc-400">
-                  <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-400">
-                    Mode
-                  </span>
-                  <div className="flex items-center rounded-lg border border-zinc-200/80 bg-zinc-100/80 p-0.5 dark:border-zinc-800/80 dark:bg-zinc-800/60">
+                <div className="px-2 py-1">
+                  <div className="flex w-full items-center rounded-lg border border-zinc-200/80 bg-zinc-100/80 p-0.5 dark:border-zinc-800/80 dark:bg-zinc-800/60">
                     <button
                       type="button"
                       onClick={() => setTheme("light")}
-                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
+                      className={`flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "light"
                           ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
                           : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
@@ -252,7 +249,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       type="button"
                       onClick={() => setTheme("dark")}
-                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
+                      className={`flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "dark"
                           ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
                           : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
@@ -265,7 +262,7 @@ export const Header: React.FC<HeaderProps> = ({
                     <button
                       type="button"
                       onClick={() => setTheme("system")}
-                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
+                      className={`flex flex-1 items-center justify-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "system"
                           ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
                           : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
