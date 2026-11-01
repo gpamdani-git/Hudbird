@@ -10,11 +10,19 @@ import {
   ExternalLink,
   LifeBuoy,
   FileText,
+  LayoutTemplate,
 } from "lucide-react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  DropdownSection,
+} from "@hudbird/ui";
 import { navigationData } from "../navData";
 import { GithubIcon, DiscordIcon } from "./SocialIcons";
+import { GlobalSearch } from "./GlobalSearch";
 
 interface HeaderProps {
   onToggleMobileSidebar?: () => void;
@@ -96,166 +104,101 @@ export const Header: React.FC<HeaderProps> = ({
   }, [theme]);
 
   return (
-    <div className="pointer-events-none sticky top-3 z-40 mx-auto mt-3 w-[calc(100%-24px)] transition-all duration-300">
-      <header className="pointer-events-auto w-full rounded-xl bg-white/80 backdrop-blur-3xl transition-colors duration-300 dark:bg-[#161618]/90">
-        <div className="relative z-10 flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6">
-          {/* Left: Toggles & Breadcrumbs */}
-          <div className="flex shrink-0 items-center gap-3">
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={onToggleMobileSidebar}
-              className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:hidden dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
-              aria-label="Open sidebar"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
+    <header className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-3xl transition-colors duration-300 dark:bg-[#161618]/90">
+      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8 lg:px-12">
+        {/* Left: Toggles & Breadcrumbs */}
+        <div className="flex shrink-0 items-center gap-3">
+          {/* Mobile Hamburger Toggle */}
+          <button
+            onClick={onToggleMobileSidebar}
+            className="-ml-1.5 rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:hidden dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
+            aria-label="Open sidebar"
+          >
+            <Menu className="h-5 w-5" />
+          </button>
 
-            {/* Desktop Sidebar Toggle */}
-            <button
-              onClick={onToggleDesktopSidebar}
-              className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:flex dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
-              aria-label="Toggle sidebar"
-            >
-              <PanelLeft className="h-4 w-4" />
-            </button>
+          {/* Desktop Sidebar Toggle */}
+          <button
+            onClick={onToggleDesktopSidebar}
+            className="-ml-1.5 hidden rounded-md p-1.5 text-zinc-600 transition-colors hover:bg-black/5 hover:text-zinc-900 lg:flex dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-zinc-100"
+            aria-label="Toggle sidebar"
+          >
+            <PanelLeft className="h-4 w-4" />
+          </button>
 
-            {/* Mobile Logo Fallback */}
-            <Link to="/" className="group flex items-center gap-2 lg:hidden">
-              <img
-                src="/assets/logo/hudbird-logo-black.png"
-                alt="Hudbird UI"
-                className="h-6 w-auto object-contain dark:hidden"
-              />
-              <img
-                src="/assets/logo/hudbird-logo-white.png"
-                alt="Hudbird UI"
-                className="hidden h-6 w-auto object-contain dark:block"
-              />
-            </Link>
+          {/* Mobile Logo Fallback */}
+          <Link to="/" className="group flex items-center gap-2 lg:hidden">
+            <img
+              src="/assets/logo/hudbird-logo-black.png"
+              alt="Hudbird UI"
+              className="h-6 w-auto object-contain dark:hidden"
+            />
+            <img
+              src="/assets/logo/hudbird-logo-white.png"
+              alt="Hudbird UI"
+              className="hidden h-6 w-auto object-contain dark:block"
+            />
+          </Link>
 
-            {/* Desktop Breadcrumbs */}
-            <div className="ml-1 hidden items-center gap-2 text-[13px] font-medium lg:flex">
-              {parentGroup && (
-                <>
-                  <span className="text-zinc-500 dark:text-zinc-400">{parentGroup}</span>
-                  <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
-                </>
-              )}
-              {currentItem ? (
-                <span className="text-zinc-900 dark:text-zinc-100">{currentItem}</span>
-              ) : (
-                <span className="text-zinc-900 dark:text-zinc-100">Docs</span>
-              )}
-            </div>
+          {/* Desktop Breadcrumbs */}
+          <div className="ml-1 hidden items-center gap-2 text-[13px] font-medium lg:flex">
+            {parentGroup && (
+              <>
+                <span className="text-zinc-500 dark:text-zinc-400">{parentGroup}</span>
+                <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
+              </>
+            )}
+            {currentItem ? (
+              <span className="text-zinc-900 dark:text-zinc-100">{currentItem}</span>
+            ) : (
+              <span className="text-zinc-900 dark:text-zinc-100">Docs</span>
+            )}
           </div>
+        </div>
 
-          {/* Right: Actions (Templates, Theme, Three-Dots Menu) */}
-          <div className="flex shrink-0 items-center gap-2 text-sm font-medium sm:gap-3">
-            {/* Subtle Templates PRO Pill */}
-            <button
-              type="button"
-              onClick={() => {
-                const url = import.meta.env.DEV
-                  ? "http://localhost:5174/"
-                  : "https://starterkit-pro.vercel.app/";
-                window.open(url, "_blank");
-              }}
-              className="flex items-center gap-1.5 rounded-full border border-black/10 bg-black/5 px-2.5 py-1 text-xs font-medium text-zinc-700 transition-all hover:bg-black/10 active:scale-95 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
-              title="Explore PRO Templates"
+        {/* Right: Search & Grouped Three-Dots Menu */}
+        <div className="flex shrink-0 items-center gap-2 text-sm font-medium sm:gap-3">
+          {/* Global Search Bar */}
+          <GlobalSearch />
+
+          {/* Three-Dots Menu (Ecosystem, Resources, Community, Appearance) */}
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger
+              className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+              title="More options"
+              aria-label="More options"
             >
-              <span>Templates</span>
-              <span className="py-0.2 rounded-full bg-zinc-200/80 px-1.5 text-[9px] font-semibold text-zinc-800 dark:bg-white/15 dark:text-zinc-200">
-                PRO
-              </span>
-            </button>
-
-            {/* Segmented Switch UI: Light | Dark | System */}
-            <div
-              role="radiogroup"
-              aria-label="Theme mode switcher"
-              className="hidden items-center rounded-xl border border-zinc-200/50 bg-white/50 p-0.5 sm:flex dark:border-zinc-800/50 dark:bg-zinc-900/50"
-            >
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "light"}
-                onClick={() => setTheme("light")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                  theme === "light"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="Light mode"
-              >
-                <Sun className={`h-3 w-3 ${theme === "light" ? "text-amber-500" : ""}`} />
-                <span>Light</span>
-              </button>
-
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "dark"}
-                onClick={() => setTheme("dark")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                  theme === "dark"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="Dark mode"
-              >
-                <Moon
-                  className={`h-3 w-3 ${theme === "dark" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                />
-                <span>Dark</span>
-              </button>
-
-              <button
-                type="button"
-                role="radio"
-                aria-checked={theme === "system"}
-                onClick={() => setTheme("system")}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-[11px] font-medium transition-all ${
-                  theme === "system"
-                    ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                    : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                }`}
-                title="System preference"
-              >
-                <Monitor
-                  className={`h-3 w-3 ${theme === "system" ? "text-indigo-500 dark:text-indigo-400" : ""}`}
-                />
-                <span>System</span>
-              </button>
-            </div>
-
-            {/* Three-Dots Menu (Gestalt grouped secondary items) */}
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger
-                className="flex h-8 w-8 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
-                title="More options"
-                aria-label="More options"
-              >
-                <MoreHorizontal className="h-4 w-4" />
-              </DropdownTrigger>
-              <DropdownMenu className="min-w-[190px]">
+              <MoreHorizontal className="h-4 w-4" />
+            </DropdownTrigger>
+            <DropdownMenu className="min-w-[220px]">
+              {/* 1. Ecosystem / Tools */}
+              <DropdownSection title="Ecosystem">
+                <DropdownItem
+                  startContent={<LayoutTemplate className="h-4 w-4 text-indigo-500" />}
+                  endContent={
+                    <span className="rounded bg-indigo-500/10 px-1.5 py-0.5 font-mono text-[9px] font-semibold text-indigo-600 dark:text-indigo-400">
+                      PRO
+                    </span>
+                  }
+                  onClick={() => {
+                    const url = import.meta.env.DEV
+                      ? "http://localhost:5174/"
+                      : "https://starterkit-pro.vercel.app/";
+                    window.open(url, "_blank");
+                  }}
+                >
+                  Templates
+                </DropdownItem>
                 <DropdownItem
                   startContent={<ExternalLink className="h-4 w-4" />}
                   onClick={() => window.open("https://hudbird-editor.vercel.app/", "_blank")}
                 >
-                  Builder
+                  Visual Builder
                 </DropdownItem>
-                <DropdownItem
-                  startContent={<DiscordIcon className="h-4 w-4 text-[#5865F2]" />}
-                  onClick={() => window.open("https://discord.gg/NPBspwkXke", "_blank")}
-                >
-                  Discord Community
-                </DropdownItem>
-                <DropdownItem
-                  startContent={<GithubIcon className="h-4 w-4" />}
-                  onClick={() => window.open("https://github.com/gpamdani-git/Hudbird", "_blank")}
-                >
-                  GitHub Repository
-                </DropdownItem>
+              </DropdownSection>
+
+              {/* 2. Documentation & Resources */}
+              <DropdownSection title="Documentation" showDivider>
                 <DropdownItem
                   startContent={<FileText className="h-4 w-4" />}
                   onClick={() => navigate("/changelog")}
@@ -268,55 +211,79 @@ export const Header: React.FC<HeaderProps> = ({
                 >
                   Support & FAQ
                 </DropdownItem>
+              </DropdownSection>
 
-                {/* Mobile-only quick theme toggle */}
-                <div className="my-1 border-t border-zinc-200 sm:hidden dark:border-zinc-800" />
-                <div className="flex items-center justify-between px-3 py-1.5 text-xs text-zinc-500 sm:hidden dark:text-zinc-400">
-                  <span>Theme</span>
-                  <div className="flex gap-1">
+              {/* 3. Community & Source */}
+              <DropdownSection title="Community" showDivider>
+                <DropdownItem
+                  startContent={<GithubIcon className="h-4 w-4" />}
+                  onClick={() => window.open("https://github.com/gpamdani-git/Hudbird", "_blank")}
+                >
+                  GitHub Repository
+                </DropdownItem>
+                <DropdownItem
+                  startContent={<DiscordIcon className="h-4 w-4 text-[#5865F2]" />}
+                  onClick={() => window.open("https://discord.gg/NPBspwkXke", "_blank")}
+                >
+                  Discord Community
+                </DropdownItem>
+              </DropdownSection>
+
+              {/* 4. Appearance / Theme Switcher */}
+              <DropdownSection title="Theme" showDivider>
+                <div className="flex items-center justify-between px-3 py-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+                  <span className="text-[11px] font-medium text-zinc-600 dark:text-zinc-400">
+                    Mode
+                  </span>
+                  <div className="flex items-center rounded-lg border border-zinc-200/80 bg-zinc-100/80 p-0.5 dark:border-zinc-800/80 dark:bg-zinc-800/60">
                     <button
                       type="button"
                       onClick={() => setTheme("light")}
-                      className={`rounded p-1 ${
+                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "light"
-                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
-                          : ""
+                          ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
+                          : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                       }`}
-                      title="Light"
+                      title="Light mode"
                     >
-                      <Sun className="h-3.5 w-3.5" />
+                      <Sun className={`h-3 w-3 ${theme === "light" ? "text-amber-500" : ""}`} />
+                      <span>Light</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setTheme("dark")}
-                      className={`rounded p-1 ${
+                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "dark"
-                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
-                          : ""
+                          ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
+                          : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                       }`}
-                      title="Dark"
+                      title="Dark mode"
                     >
-                      <Moon className="h-3.5 w-3.5" />
+                      <Moon className={`h-3 w-3 ${theme === "dark" ? "text-indigo-400" : ""}`} />
+                      <span>Dark</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setTheme("system")}
-                      className={`rounded p-1 ${
+                      className={`flex items-center gap-1 rounded-md px-2 py-1 text-[11px] font-medium transition-all ${
                         theme === "system"
-                          ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white"
-                          : ""
+                          ? "bg-white font-semibold text-zinc-900 shadow-2xs dark:bg-zinc-700 dark:text-white"
+                          : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
                       }`}
-                      title="System"
+                      title="System preference"
                     >
-                      <Monitor className="h-3.5 w-3.5" />
+                      <Monitor
+                        className={`h-3 w-3 ${theme === "system" ? "text-indigo-400" : ""}`}
+                      />
+                      <span>System</span>
                     </button>
                   </div>
                 </div>
-              </DropdownMenu>
-            </Dropdown>
-          </div>
+              </DropdownSection>
+            </DropdownMenu>
+          </Dropdown>
         </div>
-      </header>
-    </div>
+      </div>
+    </header>
   );
 };

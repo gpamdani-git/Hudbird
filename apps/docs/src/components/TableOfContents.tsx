@@ -84,7 +84,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
           {item.title}
         </a>
         {item.children && item.children.length > 0 && (
-          <ul className="ml-2 space-y-0.5 border-l border-black/5 pt-0.5 pl-2 dark:border-white/5">
+          <ul className="space-y-0.5 pt-0.5 pl-3">
             {item.children.map((child) => renderItem(child, true))}
           </ul>
         )}
@@ -97,9 +97,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
       <h4 className="mb-3 text-[11px] font-bold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
         On This Page
       </h4>
-      <ul className="ml-1 space-y-1 border-l border-black/5 pl-2 text-sm dark:border-white/5">
-        {items.map((item) => renderItem(item, false))}
-      </ul>
+      <ul className="space-y-1 text-sm">{items.map((item) => renderItem(item, false))}</ul>
 
       {/* Subtle Support section */}
       <div className="mt-8 rounded-xl border border-black/5 bg-black/[0.02] p-3.5 dark:border-white/5 dark:bg-white/[0.02]">

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { navigationData } from "../navData";
 import { motion, AnimatePresence } from "framer-motion";
-import { GlobalSearch } from "./GlobalSearch";
-import changelogData from "../data/changelog.json";
 import { cn } from "@hudbird/ui";
 
 interface SidebarProps {
@@ -55,7 +53,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
       <aside
         className={`fixed top-3 bottom-3 left-3 z-50 flex w-64 flex-col overflow-hidden rounded-xl bg-white/80 px-3 py-4 backdrop-blur-3xl dark:bg-[#161618]/90 ${transformClasses} transition-transform duration-300 ease-in-out`}
       >
-        {/* Header / Logo */}
+        {/* Header / Logo (clean, without version badge) */}
         <div className="relative z-10 mb-4 flex items-center justify-between px-2 pt-1">
           <NavLink
             to="/"
@@ -71,15 +69,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
               alt="Hudbird UI"
               className="hidden h-6 w-auto object-contain dark:block"
             />
-            <span className="ml-1 rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-500 dark:bg-zinc-800/80 dark:text-zinc-400">
-              v{changelogData[0]?.version || "1.5.0"}
-            </span>
           </NavLink>
-        </div>
-
-        {/* Global Search (clean borderless & shadowless) */}
-        <div className="relative z-10 mb-4 px-1">
-          <GlobalSearch isMini={isMini} className="w-full justify-center" />
         </div>
 
         {/* Navigation Groups */}
@@ -105,7 +95,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                   />
                 </button>
 
-                {/* Sub-menu with Nested Indentation (Gestalt Proximity & Common Region) */}
+                {/* Sub-menu with Nested Indentation (No border line) */}
                 <AnimatePresence initial={false}>
                   {!isCollapsed && (
                     <motion.div
@@ -115,7 +105,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                       transition={{ duration: 0.18, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <ul className="relative ml-2 space-y-0.5 border-l border-black/5 pt-0.5 pl-2 dark:border-white/5">
+                      <ul className="relative space-y-0.5 pt-0.5 pl-2.5">
                         {group.items.map((item) => (
                           <li key={item.path}>
                             <NavLink
@@ -134,11 +124,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                               title={item.name}
                             >
                               <span className="truncate">{item.name}</span>
-                              {item.variants !== undefined && (
-                                <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-600">
-                                  {item.variants}
-                                </span>
-                              )}
                             </NavLink>
                           </li>
                         ))}
@@ -150,7 +135,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
             );
           })}
 
-          {/* Position 6: Templates Pro Button */}
+          {/* Position 6: Templates Pro Button (No icon) */}
           <div className="pt-2 pb-4">
             <button
               type="button"
@@ -160,12 +145,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                   : "https://starterkit-pro.vercel.app/";
                 window.open(url, "_blank");
               }}
-              className="group flex w-full items-center justify-between rounded-xl border border-zinc-200/80 bg-zinc-100/70 px-3 py-2 text-xs font-bold text-zinc-800 transition-all duration-150 hover:-translate-y-0.5 hover:bg-zinc-200/70 hover:shadow-xs active:translate-y-0 active:scale-[0.98] dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:bg-zinc-800"
+              className="group flex w-full items-center justify-between rounded-xl border border-zinc-200/80 bg-zinc-100/70 px-3.5 py-2 text-xs font-bold text-zinc-800 transition-all duration-150 hover:-translate-y-0.5 hover:bg-zinc-200/70 hover:shadow-xs active:translate-y-0 active:scale-[0.98] dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-amber-500 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-12" />
-                <span className="font-bold">Templates Pro</span>
-              </div>
+              <span className="font-bold">Templates Pro</span>
               <span className="rounded-md bg-zinc-200/80 px-1.5 py-0.5 text-[9px] font-bold text-zinc-800 dark:bg-white/15 dark:text-zinc-200">
                 PRO
               </span>
