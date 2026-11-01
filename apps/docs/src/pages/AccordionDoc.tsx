@@ -149,7 +149,7 @@ export default function AccordionDoc() {
               >
                 Our component library is compiled directly from source without bloated runtimes,
                 leveraging pure Tailwind utilities, Class Variance Authority for deterministic
-                styling, and seamless dark mode tokens.
+                styling, and dark mode tokens.
               </AccordionItem>
               <AccordionItem
                 itemKey="2"
@@ -512,8 +512,8 @@ export default function Example() {
                 <AccordionItem
                   itemKey="d2"
                   isDisabled
-                  title="Disabled Premium Feature"
-                  subtitle="Upgrade required to unlock this section"
+                  title="Disabled Feature"
+                  subtitle="Upgrade required to access this section"
                 >
                   This content is locked and cannot be expanded.
                 </AccordionItem>

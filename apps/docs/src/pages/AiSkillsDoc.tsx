@@ -193,11 +193,11 @@ export default function AiSkillsDoc() {
                 <Zap className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                10x Prototyping Velocity
+                Faster Component Prototyping
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Zero documentation context switching. You don't need to manually check prop names or
-                import paths—simply prompt your idea and get production-ready code in seconds.
+                Generate components directly with verified imports and exact prop names, without
+                manually checking API tables.
               </p>
             </div>
 
@@ -207,11 +207,11 @@ export default function AiSkillsDoc() {
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                100% Zero-Hallucination
+                Accurate Props and Imports
               </h3>
               <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Locks your model's vocabulary to authentic CVA variants, subcomponents, and color
-                tokens. Eliminates broken imports and non-existent props.
+                Constrains model code generation to authentic CVA variants, compound components, and
+                token palettes. Eliminates invalid imports and unsupported props.
               </p>
             </div>
 

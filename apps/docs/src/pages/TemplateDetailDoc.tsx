@@ -95,7 +95,7 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
     description:
       "A financial application template engineered for trust and clarity. Features complex data visualizations and secure transaction flows.",
     longDescription:
-      "Every element is tuned for financial-grade polish — from WCAG-compliant contrast to subtle motion cues.",
+      "Designed for financial applications with WCAG-compliant contrast and subtle motion cues.",
     features: [
       "Dynamic Dashboard Layouts",
       "Interactive Financial Charts",
@@ -115,9 +115,9 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
     images: ["/assets/templates/ai-startup.webp", "/assets/templates/ai-startup-light.webp"],
     previewUrl: "/#/templates/ai-startup",
     description:
-      "Position your AI product as the future with deep spatial design, glowing accents, and fluid bento-grid layouts.",
+      "Layouts for AI product landing pages, featuring chat interface cards, prompt inputs, and bento grid sections.",
     longDescription:
-      "Built for the next wave of AI-native products with chat interface mockups, terminal illustrations, and animated gradient glows.",
+      "Built for AI developer tools and apps, with chat interface mockups, terminal previews, and gradient accents.",
     features: [
       "Bento Grid Showcases",
       "Animated Gradient Glows",
@@ -207,7 +207,7 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
     description:
       "An elegant template designed for premium hospitality brands with large-scale photography and serene spacing.",
     longDescription:
-      "Every pixel breathes calm sophistication, guiding guests toward booking with a seamless experience.",
+      "Designed for hotel and resort websites, with room galleries, amenity grids, and date picker flows.",
     features: [
       "Full-Screen Hero Media",
       "Elegant Date Pickers",
@@ -227,9 +227,9 @@ const TEMPLATES_DATA: Record<string, TemplateData> = {
     images: ["/assets/templates/admin-cms.webp", "/assets/templates/admin-cms-light.webp"],
     previewUrl: "/#/templates/admin-cms",
     description:
-      "A comprehensive control center. Dense but highly scannable interface with robust tables and real-time metrics.",
+      "A data-dense dashboard layout with sortable tables, filter toolbars, and metric summary cards.",
     longDescription:
-      "Collapsible sidebar, sortable tables, complex validation — all out of the box.",
+      "Includes collapsible sidebar navigation, sortable tables, and multi-field form validation.",
     features: [
       "Data-Dense Table Layouts",
       "Advanced Analytics Cards",
@@ -582,7 +582,7 @@ export function TemplateDetailDoc() {
                     rel="noreferrer"
                     className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 font-bold text-white shadow-lg transition-all hover:bg-zinc-800 active:scale-[0.97] dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
                   >
-                    <ShoppingCart className="h-5 w-5" /> Get Pro Access — {template.price}
+                    <ShoppingCart className="h-5 w-5" /> Get Pro Access ({template.price})
                   </a>
                   <p className="text-center text-xs text-zinc-500">
                     Secure checkout via Gumroad. Instant download.

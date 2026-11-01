@@ -896,8 +896,8 @@ export default function InfiniteFeed() {
           </h3>
           <p className="text-sm text-zinc-600 dark:text-zinc-400">
             Customize the loader slot with custom skeleton placeholders or tailored UI spinners, and
-            tune the <code className="font-mono text-xs">rootMargin="150px"</code> to pre-fetch
-            records seamlessly before the user reaches the absolute bottom.
+            tune the <code className="font-mono text-xs">rootMargin="150px"</code> to fetch the next
+            page of records before the user reaches the end of the viewport.
           </p>
 
           <CodeBlock

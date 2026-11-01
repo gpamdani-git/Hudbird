@@ -157,17 +157,17 @@ export default function RadioGroupDoc() {
               <Radio
                 value="starter"
                 label="Starter Plan"
-                description="$9/month — Up to 5 team members"
+                description="$9/month (up to 5 team members)"
               />
               <Radio
                 value="pro"
                 label="Pro Unlimited"
-                description="$29/month — Unlimited projects and priority support"
+                description="$29/month (unlimited projects and priority support)"
               />
               <Radio
                 value="enterprise"
                 label="Enterprise"
-                description="Custom pricing — Dedicated server and SLA"
+                description="Custom pricing (dedicated server and SLA)"
               />
             </RadioGroup>
           </div>
@@ -188,8 +188,8 @@ export default function Example() {
       onValueChange={setPlan}
       color="primary"
     >
-      <Radio value="starter" label="Starter Plan" description="$9/month — Up to 5 members" />
-      <Radio value="pro" label="Pro Unlimited" description="$29/month — Unlimited projects" />
+      <Radio value="starter" label="Starter Plan" description="$9/month (up to 5 members)" />
+      <Radio value="pro" label="Pro Unlimited" description="$29/month (unlimited projects)" />
       <Radio value="enterprise" label="Enterprise" description="Custom pricing" />
     </RadioGroup>
   );

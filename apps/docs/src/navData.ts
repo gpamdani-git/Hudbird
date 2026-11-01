@@ -8,12 +8,13 @@ export interface NavItem {
 }
 
 export interface NavGroup {
-  title?: string; // Optional for root level like Getting Started
+  title?: string; // Group title
   items: NavItem[];
 }
+
 export const navigationData: NavGroup[] = [
   {
-    title: "Get Started",
+    title: "Getting started",
     items: [
       { name: "Getting started", path: "/docs" },
       { name: "Tutorial Install Guide", path: "/installation" },
@@ -35,34 +36,7 @@ export const navigationData: NavGroup[] = [
     ],
   },
   {
-    title: "Marketing Sections",
-    items: [
-      { name: "Hero Section", path: "/marketing/hero", variants: 3 },
-      { name: "Bento Grid", path: "/marketing/bento-grid", variants: 1 },
-      { name: "Logo Clouds", path: "/marketing/logo-clouds", variants: 2 },
-      { name: "FAQ", path: "/marketing/faq", variants: 2 },
-      { name: "Feature Sections", path: "/marketing/feature-sections", variants: 2 },
-      { name: "Testimonials", path: "/marketing/testimonials", variants: 2 },
-      { name: "Pricing", path: "/marketing/pricing", variants: 1 },
-      { name: "Call to Action", path: "/marketing/cta", variants: 2 },
-      { name: "Footer", path: "/marketing/footer", variants: 2 },
-    ],
-  },
-  {
-    title: "Charts",
-    items: [
-      { name: "Area Chart", path: "/area-chart", variants: 3 },
-      { name: "Bar Chart", path: "/bar-chart", variants: 4 },
-      { name: "Line Chart", path: "/line-chart", variants: 4 },
-      { name: "Pie Chart", path: "/pie-chart", variants: 7 },
-      { name: "Composed Chart", path: "/composed-chart", variants: 4 },
-      { name: "Radar Chart", path: "/radar-chart", variants: 4, isNew: true },
-      { name: "Radial Chart", path: "/radial-chart", variants: 4, isNew: true },
-      { name: "Chart Tooltip", path: "/chart-tooltip", variants: 1 },
-    ],
-  },
-  {
-    title: "Components",
+    title: "Core Components",
     items: [
       { name: "Accordion", path: "/accordion", variants: 7 },
       { name: "Alert", path: "/alert", variants: 4 },
@@ -100,6 +74,33 @@ export const navigationData: NavGroup[] = [
       { name: "Textarea", path: "/textarea", variants: 3 },
       { name: "Toast", path: "/toast", variants: 4, isNew: true },
       { name: "Tooltip", path: "/tooltip", variants: 7 },
+    ],
+  },
+  {
+    title: "Charts",
+    items: [
+      { name: "Area Chart", path: "/area-chart", variants: 3 },
+      { name: "Bar Chart", path: "/bar-chart", variants: 4 },
+      { name: "Line Chart", path: "/line-chart", variants: 4 },
+      { name: "Pie Chart", path: "/pie-chart", variants: 7 },
+      { name: "Composed Chart", path: "/composed-chart", variants: 4 },
+      { name: "Radar Chart", path: "/radar-chart", variants: 4, isNew: true },
+      { name: "Radial Chart", path: "/radial-chart", variants: 4, isNew: true },
+      { name: "Chart Tooltip", path: "/chart-tooltip", variants: 1 },
+    ],
+  },
+  {
+    title: "Marketing Sections",
+    items: [
+      { name: "Hero Section", path: "/marketing/hero", variants: 3 },
+      { name: "Bento Grid", path: "/marketing/bento-grid", variants: 1 },
+      { name: "Logo Clouds", path: "/marketing/logo-clouds", variants: 2 },
+      { name: "FAQ", path: "/marketing/faq", variants: 2 },
+      { name: "Feature Sections", path: "/marketing/feature-sections", variants: 2 },
+      { name: "Testimonials", path: "/marketing/testimonials", variants: 2 },
+      { name: "Pricing", path: "/marketing/pricing", variants: 1 },
+      { name: "Call to Action", path: "/marketing/cta", variants: 2 },
+      { name: "Footer", path: "/marketing/footer", variants: 2 },
     ],
   },
 ];

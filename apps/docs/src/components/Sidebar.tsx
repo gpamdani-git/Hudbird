@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { ChevronDown, LifeBuoy } from "lucide-react";
+import { ChevronDown, Sparkles } from "lucide-react";
 import { navigationData } from "../navData";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlobalSearch } from "./GlobalSearch";
 import changelogData from "../data/changelog.json";
-import { DiscordIcon } from "./SocialIcons";
 import { cn } from "@hudbird/ui";
 
 interface SidebarProps {
@@ -78,7 +77,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
           </NavLink>
         </div>
 
-        {/* Global Search */}
+        {/* Global Search (clean borderless & shadowless) */}
         <div className="relative z-10 mb-4 px-1">
           <GlobalSearch isMini={isMini} className="w-full justify-center" />
         </div>
@@ -90,28 +89,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
             const isCollapsed = Boolean(collapsedGroups[groupTitle]);
 
             return (
-              <div key={groupIdx} className="mb-4">
-                {/* Divider if not the first group */}
-                {groupIdx > 0 && (
-                  <div className="mr-2 mb-3 ml-2 border-t border-black/5 dark:border-white/5" />
-                )}
-
-                {/* Collapsible Group Header */}
+              <div key={groupIdx} className="group/section mb-3.5">
+                {/* Collapsible Group Header - Bold uppercase */}
                 <button
                   type="button"
                   onClick={() => toggleGroup(groupTitle)}
-                  className="group flex w-full items-center justify-between rounded-md px-2.5 py-1.5 text-left text-[11px] font-semibold tracking-wider text-zinc-400 uppercase transition-colors hover:text-zinc-700 dark:text-zinc-500 dark:hover:text-zinc-300"
+                  className="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-[11px] font-bold tracking-wider text-zinc-400 uppercase transition-colors group-hover/section:text-zinc-700 hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-zinc-300 dark:hover:!text-white"
                 >
                   <span className="truncate">{groupTitle}</span>
                   <ChevronDown
                     className={cn(
-                      "h-3.5 w-3.5 shrink-0 text-zinc-400/80 transition-transform duration-200 group-hover:text-zinc-600 dark:text-zinc-600 dark:group-hover:text-zinc-400",
+                      "h-3.5 w-3.5 shrink-0 text-zinc-400/80 transition-transform duration-200 group-hover/section:text-zinc-600 dark:text-zinc-600 dark:group-hover/section:text-zinc-400",
                       isCollapsed ? "-rotate-90" : "rotate-0"
                     )}
                   />
                 </button>
 
-                {/* Group Items */}
+                {/* Sub-menu with Nested Indentation (Gestalt Proximity & Common Region) */}
                 <AnimatePresence initial={false}>
                   {!isCollapsed && (
                     <motion.div
@@ -121,7 +115,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                       transition={{ duration: 0.18, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <ul className="relative space-y-0.5 pt-0.5">
+                      <ul className="relative ml-2 space-y-0.5 border-l border-black/5 pt-0.5 pl-2 dark:border-white/5">
                         {group.items.map((item) => (
                           <li key={item.path}>
                             <NavLink
@@ -131,36 +125,19 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                               }}
                               className={({ isActive }) =>
                                 cn(
-                                  "group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-150 outline-none",
+                                  "group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-150 outline-none select-none",
                                   isActive
-                                    ? "bg-zinc-100 font-medium text-zinc-900 shadow-xs dark:bg-white/10 dark:text-white"
-                                    : "font-normal text-zinc-500 hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400/80 dark:hover:bg-white/5 dark:hover:text-white"
+                                    ? "bg-zinc-100 font-bold text-zinc-900 shadow-xs dark:bg-white/10 dark:text-white"
+                                    : "font-semibold text-zinc-400 hover:bg-black/5 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:hover:bg-white/5 dark:hover:font-bold dark:hover:!text-white"
                                 )
                               }
                               title={item.name}
                             >
-                              {({ isActive }) => (
-                                <>
-                                  <span className="truncate">{item.name}</span>
-
-                                  {!isMini && item.variants !== undefined && (
-                                    <span
-                                      className={cn(
-                                        "rounded px-1.5 py-0.5 font-mono text-[9px] font-medium transition-opacity duration-150",
-                                        isActive
-                                          ? "bg-zinc-200/80 text-zinc-800 dark:bg-white/10 dark:text-zinc-300"
-                                          : "bg-black/5 text-zinc-400 opacity-60 group-hover:opacity-100 dark:bg-white/5 dark:text-zinc-500"
-                                      )}
-                                    >
-                                      {item.variants}
-                                    </span>
-                                  )}
-                                  {!isMini && item.isNew && item.variants === undefined && (
-                                    <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-medium text-emerald-600 dark:text-emerald-400">
-                                      New
-                                    </span>
-                                  )}
-                                </>
+                              <span className="truncate">{item.name}</span>
+                              {item.variants !== undefined && (
+                                <span className="font-mono text-[10px] text-zinc-400 dark:text-zinc-600">
+                                  {item.variants}
+                                </span>
                               )}
                             </NavLink>
                           </li>
@@ -173,64 +150,26 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
             );
           })}
 
-          {/* Divider */}
-          <div className="mr-2 mb-3 ml-2 border-t border-black/5 dark:border-white/5" />
-
-          {/* Community Section */}
-          <div className="mb-2">
+          {/* Position 6: Templates Pro Button */}
+          <div className="pt-2 pb-4">
             <button
               type="button"
-              onClick={() => toggleGroup("Community")}
-              className="group flex w-full items-center justify-between rounded-md px-2.5 py-1.5 text-left text-[11px] font-semibold tracking-wider text-zinc-400 uppercase transition-colors hover:text-zinc-700 dark:text-zinc-500 dark:hover:text-zinc-300"
+              onClick={() => {
+                const url = import.meta.env.DEV
+                  ? "http://localhost:5174/"
+                  : "https://starterkit-pro.vercel.app/";
+                window.open(url, "_blank");
+              }}
+              className="group flex w-full items-center justify-between rounded-xl border border-zinc-200/80 bg-zinc-100/70 px-3 py-2 text-xs font-bold text-zinc-800 transition-all duration-150 hover:-translate-y-0.5 hover:bg-zinc-200/70 hover:shadow-xs active:translate-y-0 active:scale-[0.98] dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-200 dark:hover:bg-zinc-800"
             >
-              <span>Community</span>
-              <ChevronDown
-                className={cn(
-                  "h-3.5 w-3.5 shrink-0 text-zinc-400/80 transition-transform duration-200 group-hover:text-zinc-600 dark:text-zinc-600 dark:group-hover:text-zinc-400",
-                  collapsedGroups["Community"] ? "-rotate-90" : "rotate-0"
-                )}
-              />
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-amber-500 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-12" />
+                <span className="font-bold">Templates Pro</span>
+              </div>
+              <span className="rounded-md bg-zinc-200/80 px-1.5 py-0.5 text-[9px] font-bold text-zinc-800 dark:bg-white/15 dark:text-zinc-200">
+                PRO
+              </span>
             </button>
-            <AnimatePresence initial={false}>
-              {!collapsedGroups["Community"] && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.18, ease: "easeInOut" }}
-                  className="overflow-hidden"
-                >
-                  <ul className="relative space-y-0.5 pt-0.5">
-                    <li>
-                      <a
-                        href="https://discord.gg/NPBspwkXke"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] font-normal text-zinc-500 transition-all duration-150 outline-none hover:bg-black/5 hover:text-[#5865F2] dark:text-zinc-400/80 dark:hover:bg-white/5 dark:hover:text-[#5865F2]"
-                      >
-                        <div className="flex items-center gap-2 overflow-hidden">
-                          <DiscordIcon className="h-3.5 w-3.5 shrink-0 text-[#5865F2]" />
-                          <span className="truncate">Discord Community</span>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://github.com/gpamdani-git/Hudbird/discussions"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] font-normal text-zinc-500 transition-all duration-150 outline-none hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400/80 dark:hover:bg-white/5 dark:hover:text-white"
-                      >
-                        <div className="flex items-center gap-2 overflow-hidden">
-                          <LifeBuoy className="h-3.5 w-3.5 shrink-0" />
-                          <span className="truncate">GitHub Discussions</span>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </aside>

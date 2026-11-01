@@ -272,8 +272,8 @@ function Example() {
           note={
             <span>
               <strong className="font-semibold text-zinc-900 dark:text-zinc-100">Button</strong>{" "}
-              supports standard HTML button and anchor attributes, accessible focus rings, and
-              seamless slot management for icons.
+              supports standard HTML button and anchor attributes, accessible focus rings, and slot
+              management for leading and trailing icons.
             </span>
           }
           rows={apiRows}

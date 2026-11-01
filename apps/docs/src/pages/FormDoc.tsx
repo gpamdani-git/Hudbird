@@ -487,7 +487,7 @@ export default function AccountForm() {
           Component API
         </h2>
         <ApiTable
-          note="Form components seamlessly coordinate unique React useId() hooks across labels, inputs, descriptions, and error spans, ensuring 100% WCAG 2.1 AA compliance."
+          note="Form components bind unique React useId() hooks across labels, inputs, descriptions, and error messages for WCAG 2.1 AA accessibility."
           rows={apiRows}
         />
       </section>

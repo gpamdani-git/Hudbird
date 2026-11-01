@@ -102,7 +102,7 @@ export default function CtaDoc() {
                     </span>
                   }
                   title="Ready to Take Control of Your Health?"
-                  description="Get expert care for weight loss, sexual health, wellness, and more — all from the comfort of home, no insurance needed."
+                  description="Online care for wellness, nutrition, and personal health consultations from home without requiring insurance."
                   primaryAction={{
                     label: "Start Now",
                     href: "#",

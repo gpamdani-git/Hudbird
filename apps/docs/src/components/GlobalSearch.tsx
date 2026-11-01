@@ -213,24 +213,24 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "", isMi
     <>
       {/* 1. Header Search Bar Trigger Button */}
       <div className={`relative flex items-center ${className}`}>
-        {/* Desktop / Tablet Trigger Button */}
+        {/* Desktop / Tablet Trigger Button (Borderless & Shadowless) */}
         <button
           type="button"
           id="global-search-bar"
           onClick={() => setIsOpen(true)}
           aria-label="Search documentation"
-          className={`group hidden h-9 cursor-pointer items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-3 text-xs text-zinc-400 shadow-2xs transition-all select-none hover:border-zinc-300 hover:bg-zinc-100/80 hover:text-zinc-600 sm:flex dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#828282] dark:hover:border-zinc-700 dark:hover:bg-[#202124] dark:hover:text-[#E5E5E5] ${
+          className={`group hidden h-9 cursor-pointer items-center justify-between rounded-xl bg-black/5 px-3 text-xs text-zinc-500 transition-all select-none hover:bg-black/10 hover:text-zinc-800 sm:flex dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white ${
             isMini ? "w-9 justify-center px-0" : "w-48 md:w-64 lg:w-72 xl:w-80"
           }`}
         >
           <div className="flex items-center gap-2.5 truncate">
-            <Search className="h-3.5 w-3.5 shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-600 dark:text-[#828282] dark:group-hover:text-white" />
+            <Search className="h-3.5 w-3.5 shrink-0 text-zinc-400 transition-colors group-hover:text-zinc-700 dark:text-zinc-500 dark:group-hover:text-white" />
             {!isMini && <span className="truncate">Search documentation...</span>}
           </div>
 
           {!isMini && (
             <div className="flex items-center gap-1">
-              <kbd className="inline-flex items-center rounded border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 shadow-2xs transition-colors group-hover:border-zinc-300 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#828282] dark:group-hover:border-zinc-600">
+              <kbd className="inline-flex items-center rounded bg-black/5 px-1.5 py-0.5 font-mono text-[10px] font-medium text-zinc-500 transition-colors dark:bg-white/10 dark:text-zinc-400">
                 {isMac ? "⌘" : "Ctrl+"}K
               </kbd>
             </div>

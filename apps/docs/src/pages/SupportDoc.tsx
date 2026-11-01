@@ -84,7 +84,7 @@ export default function SupportDoc() {
             </p>
             <p className="text-xs leading-relaxed text-zinc-600 dark:text-[#828282]">
               The CLI automatically injects modern <Code className="text-[11px]">@theme</Code>{" "}
-              blocks for v4 projects, while maintaining seamless backward compatibility for{" "}
+              blocks for v4 projects, while maintaining backward compatibility for{" "}
               <Strong className="text-zinc-900 dark:text-zinc-200">Tailwind CSS v3</Strong> via
               standard presets.
             </p>
@@ -126,7 +126,8 @@ export default function SupportDoc() {
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
           Since Hudbird UI is distributed as local copy-pasteable React components rather than a
-          black-box compiled library, it works seamlessly anywhere React and Tailwind CSS v4 run:
+          black-box compiled package, it runs in any application environment with React and Tailwind
+          CSS:
         </p>
         <div className="grid gap-3 pt-2 sm:grid-cols-2 md:grid-cols-4">
           {[
@@ -249,20 +250,20 @@ export default function SupportDoc() {
           </p>
           <ul className="list-disc space-y-1.5 pl-5 text-sm text-zinc-600 dark:text-[#828282]">
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Base Color</Strong> — Neutral
+              <Strong className="text-zinc-800 dark:text-zinc-200">Base Color</Strong>: Neutral
               scales (zinc, slate, neutral, gray)
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Primary Color</Strong> — Brand
+              <Strong className="text-zinc-800 dark:text-zinc-200">Primary Color</Strong>: Brand
               accent color with OKLCH precision
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Border Radius</Strong> — Global
+              <Strong className="text-zinc-800 dark:text-zinc-200">Border Radius</Strong>: Global
               rounding curve tokens
             </li>
             <li>
-              <Strong className="text-zinc-800 dark:text-zinc-200">Typography</Strong> — Editorial
-              font pairings (Outfit, Geist, Cabinet Grotesk)
+              <Strong className="text-zinc-800 dark:text-zinc-200">Typography</Strong>: Font
+              pairings (Outfit, Geist, Cabinet Grotesk)
             </li>
           </ul>
           <p className="pt-2 text-[15px] leading-relaxed text-zinc-600 dark:text-[#E5E5E5]">

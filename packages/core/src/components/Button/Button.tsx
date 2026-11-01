@@ -42,7 +42,7 @@ export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonRadius = "none" | "md" | "lg" | "full";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-medium tracking-tight whitespace-nowrap select-none transition-all duration-200 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none disabled:active:scale-100",
+  "inline-flex items-center justify-center font-medium tracking-tight whitespace-nowrap select-none transition-all duration-150 ease-out hover:-translate-y-[0.5px] active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none disabled:active:scale-100 disabled:hover:translate-y-0",
   {
     variants: {
       variant: {

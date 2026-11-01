@@ -22,7 +22,7 @@ export default function GettingStartedDoc() {
           category="Essentials"
           title="Getting started"
           badge="Essentials"
-          description="Fly through your development. Minimize the noise, keep the essence with kinetic precision."
+          description="Install and configure Hudbird UI in your React project with Tailwind CSS and Framer Motion."
         />
 
         <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 sm:p-8 dark:border-[#2e2f33] dark:bg-[#202124]">

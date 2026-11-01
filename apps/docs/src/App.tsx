@@ -233,7 +233,7 @@ export default function App() {
             />
 
             <div
-              className={`flex w-full justify-center ${!isWideLayoutPage ? "mx-auto max-w-7xl gap-12 px-4 py-8 sm:px-8 lg:px-12" : ""}`}
+              className={`mx-auto flex w-full max-w-7xl justify-center px-4 pt-8 pb-16 sm:px-8 lg:px-12 ${!isWideLayoutPage ? "gap-12" : ""}`}
             >
               {/* Center Main Content Container */}
               <div className={`relative w-full max-w-full min-w-0 flex-1`}>

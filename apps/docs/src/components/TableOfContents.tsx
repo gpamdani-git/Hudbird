@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Coffee } from "lucide-react";
-import { GithubIcon, DiscordIcon } from "./SocialIcons";
 
 export interface TocItem {
   id: string;
@@ -71,22 +69,22 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
     const isActive = activeId === item.id;
 
     return (
-      <li key={item.id} className="space-y-1.5">
+      <li key={item.id} className="space-y-1">
         <a
           href={`#${item.id}`}
           onClick={(e) => scrollToSection(e, item.id)}
-          className={`block py-1 text-sm transition-colors ${
-            isChild ? "border-l border-zinc-200 pl-4 dark:border-zinc-800" : ""
+          className={`block py-1 text-[13px] transition-all duration-150 select-none ${
+            isChild ? "pl-2" : ""
           } ${
             isActive
-              ? `font-medium text-zinc-900 dark:text-zinc-50 ${isChild ? "!border-zinc-900 dark:!border-zinc-100" : ""}`
-              : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
+              ? "font-bold text-zinc-950 dark:text-white"
+              : "font-semibold text-zinc-400 hover:font-bold hover:text-zinc-950 dark:text-zinc-500 dark:hover:font-bold dark:hover:text-white"
           }`}
         >
           {item.title}
         </a>
         {item.children && item.children.length > 0 && (
-          <ul className="space-y-2 pt-1">
+          <ul className="ml-2 space-y-0.5 border-l border-black/5 pt-0.5 pl-2 dark:border-white/5">
             {item.children.map((child) => renderItem(child, true))}
           </ul>
         )}
@@ -96,22 +94,27 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
 
   return (
     <nav aria-label="Table of contents" className="w-full">
-      <h4 className="mb-4 text-sm font-medium text-zinc-900 dark:text-zinc-100">On This Page</h4>
-      <ul className="space-y-2.5 text-sm">{items.map((item) => renderItem(item, false))}</ul>
+      <h4 className="mb-3 text-[11px] font-bold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+        On This Page
+      </h4>
+      <ul className="ml-1 space-y-1 border-l border-black/5 pl-2 text-sm dark:border-white/5">
+        {items.map((item) => renderItem(item, false))}
+      </ul>
 
-      <div className="mt-8 rounded-xl border border-zinc-200 p-4 dark:border-[#2e2f33] dark:bg-[#202124]/40">
-        <h5 className="mb-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      {/* Subtle Support section */}
+      <div className="mt-8 rounded-xl border border-black/5 bg-black/[0.02] p-3.5 dark:border-white/5 dark:bg-white/[0.02]">
+        <h5 className="mb-1 text-xs font-bold text-zinc-900 dark:text-zinc-100">
           Support Hudbird UI
         </h5>
-        <p className="mb-4 text-xs leading-relaxed text-zinc-500 dark:text-[#828282]">
-          Help us improve the library by reporting bugs or requesting new features on GitHub.
+        <p className="mb-3 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+          Report bugs or request new features on GitHub.
         </p>
         <div className="flex items-center gap-2">
           <a
             href="https://github.com/gpamdani-git/Hudbird/issues"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-8 flex-1 items-center justify-center rounded-md border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-900 shadow-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-[#2e2f33] dark:bg-[#202124] dark:text-zinc-100 dark:hover:bg-[#2e2f33]"
+            className="inline-flex h-7 flex-1 items-center justify-center rounded-lg border border-black/10 bg-white px-2.5 text-[11px] font-semibold text-zinc-800 transition-all hover:-translate-y-0.5 hover:bg-zinc-50 active:translate-y-0 active:scale-[0.98] dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             Open Issue
           </a>
@@ -119,28 +122,9 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
             href="https://discord.gg/NPBspwkXke"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-600 shadow-sm transition-colors hover:bg-indigo-50 hover:text-[#5865F2] dark:border-[#2e2f33] dark:bg-[#202124] dark:text-zinc-400 dark:hover:bg-indigo-500/10 dark:hover:text-[#5865F2]"
-            title="Join Discord Community"
+            className="inline-flex h-7 flex-1 items-center justify-center rounded-lg border border-black/10 bg-white px-2.5 text-[11px] font-semibold text-[#5865F2] transition-all hover:-translate-y-0.5 hover:bg-zinc-50 active:translate-y-0 active:scale-[0.98] dark:border-white/10 dark:bg-zinc-800 dark:hover:bg-zinc-700"
           >
-            <DiscordIcon className="h-4 w-4" />
-          </a>
-          <a
-            href="https://github.com/gpamdani-git/Hudbird"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-600 shadow-sm transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100"
-            title="GitHub Repository"
-          >
-            <GithubIcon className="h-4 w-4" />
-          </a>
-          <a
-            href="https://www.buymeacoffee.com/daniakbar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-zinc-200 bg-white text-zinc-600 shadow-sm transition-colors hover:bg-amber-50 hover:text-amber-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-400 dark:hover:bg-amber-500/10 dark:hover:text-amber-500"
-            title="Buy me a coffee"
-          >
-            <Coffee className="h-4 w-4" />
+            Discord
           </a>
         </div>
       </div>

@@ -18,27 +18,27 @@ export const DocHeader: React.FC<DocHeaderProps> = ({
 }) => {
   return (
     <div
-      className={`mb-16 flex flex-col items-start justify-between gap-8 sm:mb-24 sm:flex-row sm:items-start lg:mb-28 ${className}`}
+      className={`mb-8 flex flex-col items-start justify-between gap-6 sm:mb-10 sm:flex-row sm:items-start ${className}`}
     >
       <div className="w-full min-w-0 flex-1">
         {(category || badge) && (
-          <div className="mb-6 flex flex-wrap items-center gap-3 sm:mb-8">
+          <div className="mb-3 flex flex-wrap items-center gap-2.5">
             {category && (
-              <span className="text-xs font-extrabold tracking-[1.6px] text-indigo-600 uppercase sm:text-[13px] dark:text-indigo-400">
+              <span className="text-xs font-bold tracking-[1.5px] text-zinc-400 uppercase dark:text-zinc-500">
                 {category}
               </span>
             )}
             {badge && (
-              <span className="rounded-full border border-indigo-500/25 bg-indigo-500/10 px-2.5 py-0.5 font-mono text-[11px] font-semibold text-indigo-600 dark:text-indigo-400">
+              <span className="rounded-full bg-black/5 px-2.5 py-0.5 font-mono text-[10px] font-semibold text-zinc-700 dark:bg-white/10 dark:text-zinc-300">
                 {badge}
               </span>
             )}
           </div>
         )}
-        <h1 className="font-outfit text-4xl font-medium tracking-[-1.8px] leading-[1.12] text-zinc-900 sm:text-6xl sm:tracking-[-2.2px] lg:text-[72px] dark:text-white mb-6 sm:mb-8">
+        <h1 className="font-outfit mb-3 text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl dark:text-white">
           {title}
         </h1>
-        <div className="max-w-3xl text-lg font-normal leading-[1.6] tracking-[-0.16px] text-zinc-600 sm:text-xl lg:text-2xl dark:text-[#828282]">
+        <div className="max-w-2xl text-base leading-relaxed font-normal text-zinc-600 sm:text-lg dark:text-zinc-400">
           {description}
         </div>
       </div>

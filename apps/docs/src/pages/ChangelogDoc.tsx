@@ -133,8 +133,8 @@ export default function ChangelogDoc() {
                 </li>
                 <li>
                   <strong className="text-zinc-900 dark:text-zinc-100">Split Screen Hero:</strong>{" "}
-                  Added crossfade transitions for seamless toggling between dark and light mode
-                  images, eliminating harsh lazy-loading jumps.
+                  Added crossfade transitions between dark and light mode images, eliminating harsh
+                  lazy-loading jumps.
                 </li>
                 <li>
                   <strong className="text-zinc-900 dark:text-zinc-100">Hero Overlays:</strong>{" "}
@@ -153,7 +153,7 @@ export default function ChangelogDoc() {
                   <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
                     transition-colors duration-300
                   </code>
-                  ) across the entire documentation site for seamless theme toggling.
+                  ) across the entire documentation site for smooth theme switching.
                 </li>
                 <li>
                   Fixed{" "}

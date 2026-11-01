@@ -137,7 +137,7 @@ export default function NavbarDoc() {
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'transparent'
           </code>{" "}
-          (seamless background), or{" "}
+          (flat background), or{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'floating-full'
           </code>{" "}

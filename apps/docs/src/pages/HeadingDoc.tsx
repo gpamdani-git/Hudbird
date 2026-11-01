@@ -184,8 +184,7 @@ export default function HeadingDoc() {
           <div className="w-full max-w-2xl space-y-4 py-6">
             <Heading as="h1">Design systems engineered for craft.</Heading>
             <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-              Every detail is calibrated for visual rhythm, mathematical spacing, and seamless dark
-              mode fidelity.
+              Calibrated for optical hierarchy, responsive scaling, and dark mode contrast.
             </p>
           </div>
         </ComponentPreview>

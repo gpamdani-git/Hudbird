@@ -161,12 +161,22 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             <button
               onClick={handleCopy}
               aria-label="Copy code"
-              className="text-zinc-500 transition-colors hover:text-zinc-900 dark:text-[#828282] dark:hover:text-white"
+              className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold transition-all duration-150 active:scale-90 ${
+                copied
+                  ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400"
+                  : "text-zinc-500 hover:-translate-y-0.5 hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
+              }`}
             >
               {copied ? (
-                <Check className="h-4 w-4 text-emerald-500" />
+                <>
+                  <Check className="animate-in zoom-in-75 h-3.5 w-3.5 text-emerald-500 duration-150" />
+                  <span>Copied!</span>
+                </>
               ) : (
-                <Copy className="h-4 w-4" />
+                <>
+                  <Copy className="h-3.5 w-3.5" />
+                  <span>Copy</span>
+                </>
               )}
             </button>
           </div>
@@ -186,9 +196,23 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           <button
             onClick={handleCopy}
             aria-label="Copy code"
-            className="rounded-lg border border-zinc-200/80 bg-white/80 p-1.5 text-zinc-400 opacity-0 shadow-xs backdrop-blur-sm transition-opacity group-hover:opacity-100 hover:text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124]/90 dark:text-[#828282] dark:hover:text-white"
+            className={`flex items-center gap-1.5 rounded-lg border border-zinc-200/80 bg-white/90 px-2 py-1 text-xs font-semibold opacity-0 shadow-xs backdrop-blur-sm transition-all duration-150 group-hover:opacity-100 hover:-translate-y-0.5 active:scale-90 dark:border-white/10 dark:bg-[#202124]/90 ${
+              copied
+                ? "text-emerald-500"
+                : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white"
+            }`}
           >
-            {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
+            {copied ? (
+              <>
+                <Check className="animate-in zoom-in-75 h-3.5 w-3.5 text-emerald-500 duration-150" />
+                <span>Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="h-3.5 w-3.5" />
+                <span>Copy</span>
+              </>
+            )}
           </button>
         </div>
       )}

@@ -349,7 +349,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                       Analyzes All Data
                     </Text>
                     <Text variant="muted" className="mt-1 text-sm leading-relaxed">
-                      Sales engagement and product usage to score every lead seamlessly.
+                      Evaluates sales engagement and product usage to rank inbound leads.
                     </Text>
                   </div>
                 </BentoCard>
