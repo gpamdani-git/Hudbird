@@ -9,7 +9,7 @@ export type AvatarRadius = "none" | "md" | "lg" | "full";
 export type AvatarColor = "default" | "primary" | "success" | "danger";
 
 const avatarVariants = cva(
-  "relative inline-flex shrink-0 items-center justify-center overflow-hidden select-none font-semibold tracking-tight transition-all duration-200 ring-1 ring-zinc-950/5 dark:ring-white/10",
+  "relative inline-flex shrink-0 items-center justify-center overflow-hidden select-none font-semibold tracking-tight transition-all duration-200 ring-1 ring-black/[0.08] dark:ring-white/15",
   {
     variants: {
       size: {
@@ -25,7 +25,7 @@ const avatarVariants = cva(
         full: "rounded-full",
       },
       color: {
-        default: "bg-zinc-200 text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400",
+        default: "bg-zinc-100 text-zinc-700 dark:bg-[#202124] dark:text-zinc-300",
         primary: "bg-primary text-primary-foreground",
         success: "bg-emerald-600 text-white dark:bg-emerald-500",
         danger: "bg-rose-600 text-white dark:bg-rose-500",

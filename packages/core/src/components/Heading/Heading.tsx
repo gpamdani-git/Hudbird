@@ -12,13 +12,13 @@ export type HeadingColor = "default" | "muted" | "primary" | "stitch" | "brand";
 const headingVariants = cva("font-display transition-colors duration-150 leading-tight", {
   variants: {
     size: {
-      display: "text-4xl sm:text-5xl lg:text-7xl font-medium tracking-[-1.8px] leading-[1.15]",
-      h1: "text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.2]",
-      h2: "text-2xl sm:text-3xl font-semibold tracking-[-0.3px] leading-[1.33]",
-      h3: "text-xl sm:text-2xl font-medium tracking-[-0.3px] leading-[1.4]",
-      h4: "text-lg font-semibold",
-      h5: "text-base font-semibold",
-      h6: "text-sm font-medium",
+      display: "text-4xl sm:text-5xl lg:text-7xl font-medium tracking-[-1.8px] leading-[1.08]",
+      h1: "text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight sm:tracking-[-1px] leading-[1.15]",
+      h2: "text-2xl sm:text-3xl font-semibold tracking-[-0.5px] leading-[1.25]",
+      h3: "text-xl sm:text-2xl font-semibold tracking-[-0.3px] leading-[1.3]",
+      h4: "text-lg font-semibold tracking-tight leading-[1.35]",
+      h5: "text-base font-semibold leading-snug",
+      h6: "text-sm font-semibold uppercase tracking-wider",
       inherit: "text-inherit font-inherit",
     },
     tracking: {
@@ -29,14 +29,14 @@ const headingVariants = cva("font-display transition-colors duration-150 leading
       wide: "tracking-wide",
     },
     color: {
-      default: "text-zinc-900 dark:text-white",
-      muted: "text-zinc-500 dark:text-[#828282]",
+      default: "text-zinc-950 dark:text-zinc-50",
+      muted: "text-zinc-500 dark:text-zinc-400",
       primary: "text-primary",
       stitch: "text-indigo-600 dark:text-indigo-400",
       brand: "text-indigo-600 dark:text-indigo-400",
     },
     withDivider: {
-      true: "pb-3 border-b border-zinc-200/80 dark:border-zinc-800/80 mb-4",
+      true: "pb-3.5 border-b border-black/[0.06] dark:border-white/[0.08] mb-4",
       false: "",
     },
   },

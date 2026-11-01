@@ -3,7 +3,7 @@ import { cn } from "../../utils/cn";
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className="w-full overflow-auto">
+    <div className="w-full overflow-auto rounded-2xl border border-black/[0.06] dark:border-white/[0.08]">
       <table
         ref={ref}
         className={cn("w-full caption-bottom text-left text-sm whitespace-nowrap", className)}
@@ -21,7 +21,7 @@ const TableHeader = React.forwardRef<
   <thead
     ref={ref}
     className={cn(
-      "border-b border-zinc-200 bg-zinc-50/40 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200",
+      "border-b border-black/[0.06] bg-zinc-50/80 text-[11px] font-semibold tracking-wider text-zinc-500 uppercase select-none dark:border-white/[0.08] dark:bg-[#202124]/90 dark:text-zinc-400",
       className
     )}
     {...props}
@@ -35,7 +35,7 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn("divide-y divide-zinc-200/70 dark:divide-zinc-800/70", className)}
+    className={cn("divide-y divide-black/[0.05] dark:divide-white/[0.06]", className)}
     {...props}
   />
 ));
@@ -48,7 +48,7 @@ const TableFooter = React.forwardRef<
   <tfoot
     ref={ref}
     className={cn(
-      "border-t border-zinc-200 bg-zinc-50/40 font-medium dark:border-zinc-800 dark:bg-zinc-900/80",
+      "border-t border-black/[0.06] bg-zinc-50/60 text-xs font-medium text-zinc-900 dark:border-white/[0.08] dark:bg-[#161618]/80 dark:text-zinc-100",
       className
     )}
     {...props}
@@ -60,7 +60,10 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
   ({ className, ...props }, ref) => (
     <tr
       ref={ref}
-      className={cn("transition-colors hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30", className)}
+      className={cn(
+        "transition-colors duration-150 hover:bg-black/[0.02] dark:hover:bg-white/[0.04]",
+        className
+      )}
       {...props}
     />
   )
@@ -73,7 +76,10 @@ const TableHead = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <th
     ref={ref}
-    className={cn("px-4 py-3 align-middle font-semibold [&:has([role=checkbox])]:pr-0", className)}
+    className={cn(
+      "px-4 py-3.5 align-middle font-semibold [&:has([role=checkbox])]:pr-0",
+      className
+    )}
     {...props}
   />
 ));
@@ -86,7 +92,7 @@ const TableCell = React.forwardRef<
   <td
     ref={ref}
     className={cn(
-      "px-4 py-3 align-middle text-zinc-700 dark:text-zinc-300 [&:has([role=checkbox])]:pr-0",
+      "px-4 py-3.5 align-middle text-sm leading-normal font-normal text-zinc-800 dark:text-zinc-200 [&:has([role=checkbox])]:pr-0",
       className
     )}
     {...props}
@@ -100,7 +106,7 @@ const TableCaption = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <caption
     ref={ref}
-    className={cn("mt-4 text-sm text-zinc-500 dark:text-zinc-400", className)}
+    className={cn("mt-4 text-xs font-medium text-zinc-500 dark:text-zinc-400", className)}
     {...props}
   />
 ));

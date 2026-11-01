@@ -29,9 +29,9 @@ const badgeVariants = cva(
         info: "",
       },
       size: {
-        sm: "px-1.5 py-0.5 text-[10px] font-bold min-w-4.5 h-4.5",
-        md: "px-2.5 py-0.5 text-xs font-semibold min-w-5 h-5",
-        lg: "px-3 py-1 text-sm font-medium min-w-6 h-6",
+        sm: "px-2 py-0.5 text-[10px] font-bold min-w-4.5 h-4.5 gap-1",
+        md: "px-2.5 py-0.5 text-xs font-semibold min-w-5 h-5 gap-1.5",
+        lg: "px-3 py-1 text-sm font-medium min-w-6 h-6 gap-2",
       },
     },
     compoundVariants: [
@@ -275,7 +275,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
         className={cn(
           badgeVariants({ variant, color, size }),
           isFloating && [
-            "ring-background absolute z-10 box-border ring-2",
+            "absolute z-10 box-border ring-2 ring-white dark:ring-[#161618]",
             placementStyles[placement],
             isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
           ],
