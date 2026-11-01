@@ -117,7 +117,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
             disabled={isDisabled}
             onClick={handleToggle}
             className={cn(
-              "focus-visible:ring-ring focus-visible:ring-offset-background flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg text-left transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none",
+              "focus-visible:ring-ring focus-visible:ring-offset-background flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg text-left transition-all duration-150 select-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.995]",
               isCompact ? "px-3 py-2.5" : "px-4 py-4",
               classNames?.trigger
             )}
@@ -149,7 +149,7 @@ export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps
               <span
                 aria-hidden="true"
                 className={cn(
-                  "text-muted-foreground shrink-0 transition-transform duration-200 ease-out",
+                  "text-muted-foreground shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
                   isOpen ? "text-foreground rotate-180" : "",
                   classNames?.indicator
                 )}

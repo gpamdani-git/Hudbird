@@ -2,9 +2,9 @@
 import calendarCode from "../../../../packages/core/src/components/Calendar/Calendar.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import { Calendar, DatePicker, DateRangePicker, type DateRange } from "@hudbird/ui";
-import { Sparkles, CalendarDays, Clock, Zap, ShieldCheck } from "lucide-react";
+import { CalendarDays, Clock, Zap } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -108,63 +108,48 @@ export default function CalendarDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* Header */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl">
-              Calendar & DatePicker
-            </h1>
-            <span className="inline-flex items-center gap-1 rounded-full border border-blue-500/20 bg-blue-500/10 px-2.5 py-0.5 text-xs font-medium text-blue-500">
-              <Sparkles className="h-3 w-3" />
-              Expanded in v1.5
-            </span>
-          </div>
-          <p className="text-muted-foreground text-base">
-            Zero-dependency, high-performance calendar and date picker suite featuring fast
-            month/year selectors, live range preview, quick presets, and integrated time selection.
-          </p>
-        </div>
-        <div className="flex w-full shrink-0 justify-end sm:w-auto">
-          <PageToolbar />
-        </div>
-      </div>
+      <DocHeader
+        category="Components"
+        title="Calendar"
+        badge="Core"
+        description="Zero-dependency, high-performance calendar and date picker suite featuring fast month/year selectors, live range preview, quick presets, and integrated time selection."
+      />
 
       {/* Installation */}
-      <section id="installation" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Installation</h2>
-        <InstallationTabs componentName="Calendar" code={calendarCode} fileName="Calendar.tsx" />
+      <section id="installation" className="scroll-mt-24 space-y-6">
+        <InstallationTabs componentName="calendar" manualCode={calendarCode} />
       </section>
 
-      {/* Feature Badges Highlight */}
+      {/* Feature Highlights */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div className="border-border bg-card space-y-1 rounded-xl border p-4 shadow-2xs">
-          <div className="flex items-center gap-2 text-sm font-semibold text-blue-500">
-            <Zap className="h-4 w-4" /> Fast Month & Year Switcher
+        <div className="border-border bg-card space-y-2 rounded-2xl border p-5 shadow-2xs">
+          <div className="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white">
+            <Zap className="h-4 w-4 text-indigo-500" /> Fast Month & Year Switcher
           </div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-xs leading-relaxed">
             Click the Month/Year header to open an interactive 12-month grid or decade selector with{" "}
             <code className="text-foreground">&lt;&lt;</code> and{" "}
             <code className="text-foreground">&gt;&gt;</code> year jumps.
           </p>
         </div>
 
-        <div className="border-border bg-card space-y-1 rounded-xl border p-4 shadow-2xs">
-          <div className="flex items-center gap-2 text-sm font-semibold text-purple-500">
-            <CalendarDays className="h-4 w-4" /> Live Range Preview
+        <div className="border-border bg-card space-y-2 rounded-2xl border p-5 shadow-2xs">
+          <div className="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white">
+            <CalendarDays className="h-4 w-4 text-indigo-500" /> Live Range Preview
           </div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-xs leading-relaxed">
             Select a start date, hover over candidate end dates, and watch the interactive range
-            highlight dynamically adjust.
+            highlight dynamically adjust with fluid state updates.
           </p>
         </div>
 
-        <div className="border-border bg-card space-y-1 rounded-xl border p-4 shadow-2xs">
-          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-500">
-            <Clock className="h-4 w-4" /> Time Picker & Presets
+        <div className="border-border bg-card space-y-2 rounded-2xl border p-5 shadow-2xs">
+          <div className="flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white">
+            <Clock className="h-4 w-4 text-indigo-500" /> Time Picker & Presets
           </div>
-          <p className="text-muted-foreground text-xs">
+          <p className="text-muted-foreground text-xs leading-relaxed">
             Combine date picking with precise hour/minute selection and one-click shortcuts for
             Today, Tomorrow, and Last 30 Days.
           </p>
@@ -172,12 +157,12 @@ export default function CalendarDoc() {
       </div>
 
       {/* Basic Calendar & Fast Switcher */}
-      <section id="basic-calendar" className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-foreground text-xl font-semibold tracking-tight">
+      <section id="basic-calendar" className="scroll-mt-24 space-y-6">
+        <div className="space-y-2">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Basic Calendar & Fast Switcher
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Click on <strong>"May 2026"</strong> to switch instantly to month or decade view, or use
             the double arrows (<code className="text-foreground">&lt;&lt;</code> /{" "}
             <code className="text-foreground">&gt;&gt;</code>) to jump full years.
@@ -207,12 +192,12 @@ export default function CalendarDoc() {
       </section>
 
       {/* Date Range Picker with Presets */}
-      <section id="range-selection" className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-foreground text-xl font-semibold tracking-tight">
+      <section id="range-selection" className="scroll-mt-24 space-y-6">
+        <div className="space-y-2">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Date Range Picker with Presets
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Use <code className="text-foreground">&lt;DateRangePicker /&gt;</code> or{" "}
             <code className="text-foreground">&lt;DatePicker mode="range" /&gt;</code> with default
             or custom preset shortcuts and dynamic hover spans.
@@ -254,12 +239,12 @@ const [range, setRange] = useState<DateRange>({
       </section>
 
       {/* Date & Time Picker */}
-      <section id="date-time-picker" className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-foreground text-xl font-semibold tracking-tight">
+      <section id="date-time-picker" className="scroll-mt-24 space-y-6">
+        <div className="space-y-2">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Date & Time Picker
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Pass <code className="text-foreground">showTime={true}</code> to enable integrated hour
             and minute selection.
           </p>
@@ -291,12 +276,12 @@ const [range, setRange] = useState<DateRange>({
       </section>
 
       {/* Constraints & Disabled Days */}
-      <section id="date-constraints" className="space-y-4">
-        <div className="space-y-1">
-          <h2 className="text-foreground text-xl font-semibold tracking-tight">
+      <section id="date-constraints" className="scroll-mt-24 space-y-6">
+        <div className="space-y-2">
+          <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
             Constraints & Disabled Days
           </h2>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Disable past days, future days, or weekends with zero configuration.
           </p>
         </div>
@@ -326,8 +311,10 @@ const [range, setRange] = useState<DateRange>({
       </section>
 
       {/* Color Themes */}
-      <section id="color-themes" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Color Themes</h2>
+      <section id="color-themes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Color Themes
+        </h2>
         <ComponentPreview>
           <div className="flex flex-wrap justify-center gap-6">
             <Calendar size="sm" color="success" defaultValue={new Date()} />
@@ -337,8 +324,10 @@ const [range, setRange] = useState<DateRange>({
       </section>
 
       {/* Component API */}
-      <section id="component-api" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Component API</h2>
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Component API
+        </h2>
         <ApiTable rows={apiRows} />
       </section>
     </div>

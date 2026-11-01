@@ -2,7 +2,7 @@
 import commandCode from "../../../../packages/core/src/components/Command/Command.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Command,
   CommandDialog,
@@ -14,16 +14,7 @@ import {
   CommandShortcut,
   Button,
 } from "@hudbird/ui";
-import {
-  Search,
-  Calculator,
-  Calendar,
-  Smile,
-  User,
-  CreditCard,
-  Settings,
-  Terminal,
-} from "lucide-react";
+import { Calendar, User, CreditCard, Settings, Terminal, FileCode } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -85,31 +76,20 @@ export default function CommandDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* Header */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Command
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Fast, accessible command menu palette (Cmd+K) supporting real-time filtering, group
-            categorization, and full keyboard navigation.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Command"
+        badge="Core"
+        description="Fast, accessible command menu palette (Cmd+K) supporting real-time filtering, group categorization, and full keyboard navigation."
+      />
 
       {/* Main Preview */}
-      <section className="space-y-4">
+      <section id="inline-palette" className="scroll-mt-24 space-y-6">
         <ComponentPreview>
           <div className="w-full max-w-lg">
-            <Command className="rounded-xl border border-zinc-200 shadow-md dark:border-zinc-800">
+            <Command className="rounded-2xl border border-zinc-200 shadow-sm dark:border-zinc-800">
               <CommandInput placeholder="Type a command or search..." />
               <CommandList>
                 <CommandEmpty>No results found.</CommandEmpty>
@@ -118,13 +98,9 @@ export default function CommandDoc() {
                     <Calendar className="mr-2 h-4 w-4" />
                     <span>Calendar</span>
                   </CommandItem>
-                  <CommandItem onSelect={() => setSelectedAction("Search Emoji")}>
-                    <Smile className="mr-2 h-4 w-4" />
-                    <span>Search Emoji</span>
-                  </CommandItem>
-                  <CommandItem onSelect={() => setSelectedAction("Calculator")}>
-                    <Calculator className="mr-2 h-4 w-4" />
-                    <span>Calculator</span>
+                  <CommandItem onSelect={() => setSelectedAction("Code Snippets")}>
+                    <FileCode className="mr-2 h-4 w-4" />
+                    <span>Code Snippets</span>
                   </CommandItem>
                 </CommandGroup>
                 <CommandGroup heading="Settings">
@@ -170,14 +146,13 @@ export default function CommandDoc() {
 
 export function CommandMenu() {
   return (
-    <Command className="rounded-xl border shadow-md">
+    <Command className="rounded-2xl border shadow-sm">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>Calendar</CommandItem>
-          <CommandItem>Search Emoji</CommandItem>
-          <CommandItem>Calculator</CommandItem>
+          <CommandItem>Code Snippets</CommandItem>
         </CommandGroup>
         <CommandGroup heading="Settings">
           <CommandItem>
@@ -193,13 +168,13 @@ export function CommandMenu() {
       </section>
 
       {/* Installation */}
-      <div id="installation" className="scroll-mt-24 space-y-4">
+      <section id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs componentName="command" manualCode={commandCode} />
-      </div>
+      </section>
 
       {/* Component API */}
-      <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -215,21 +190,21 @@ export function CommandMenu() {
       </section>
 
       {/* Examples */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
-        <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Examples
-          </h2>
-        </div>
+      <section id="examples" className="scroll-mt-24 space-y-16">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Examples
+        </h2>
 
         {/* Modal Dialog */}
-        <div id="modal-dialog" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Modal command dialog
-          </h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Launch as an overlay dialog with background blur:
-          </p>
+        <div id="modal-dialog" className="scroll-mt-24 space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Modal command dialog
+            </h3>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              Launch as an overlay dialog with background blur:
+            </p>
+          </div>
 
           <ComponentPreview>
             <div className="flex items-center justify-center py-6">

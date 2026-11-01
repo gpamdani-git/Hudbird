@@ -3,7 +3,6 @@ import areaChartCode from "../../../../packages/core/src/components/AreaChart/Ar
 import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
 import { ArrowUp, ArrowDown } from "lucide-react";
-import { PageToolbar } from "../components/PageToolbar";
 import { DocHeader } from "../components/DocHeader";
 import { AreaChart, Card, Tabs, Tab } from "@hudbird/ui";
 import { ComponentPreview } from "../components/ComponentPreview";
@@ -156,7 +155,7 @@ export default function AreaChartDoc() {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* Title & Subtitle */}
       <DocHeader
         category="CHARTS"
@@ -174,11 +173,16 @@ export default function AreaChartDoc() {
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Area chart is built on top of the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">recharts</code> library, eliminating boilerplate and providing built-in responsive containers and theme tokens:
+          <strong>Abstracted layer.</strong> Area chart is built on top of the{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            recharts
+          </code>{" "}
+          library, eliminating boilerplate and providing built-in responsive containers and theme
+          tokens:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -595,11 +599,15 @@ export default function App() {
       </section>
 
       <section id="css-classes" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           CSS Classes
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Root container customization.</strong> The chart components accept a <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop passed directly to the root wrapper:
+          <strong>Root container customization.</strong> The chart components accept a{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop passed directly to the root wrapper:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -615,11 +623,20 @@ export default function App() {
       </section>
 
       <section id="element-classes" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Element Classes
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>SVG element targeting.</strong> Recharts generates semantic SVG DOM nodes. Style them globally by targeting CSS classes like <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-cartesian-grid-horizontal line</code> or <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-tooltip-wrapper</code> in your global stylesheet:
+          <strong>SVG element targeting.</strong> Recharts generates semantic SVG DOM nodes. Style
+          them globally by targeting CSS classes like{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-cartesian-grid-horizontal line
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-tooltip-wrapper
+          </code>{" "}
+          in your global stylesheet:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock

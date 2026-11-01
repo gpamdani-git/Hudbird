@@ -390,7 +390,7 @@ export const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
           }
         }}
         className={cn(
-          "relative flex cursor-pointer items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm transition-colors outline-none select-none",
+          "relative flex cursor-pointer items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm transition-all duration-150 outline-none select-none active:scale-[0.99]",
           isSelected
             ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
             : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/60",

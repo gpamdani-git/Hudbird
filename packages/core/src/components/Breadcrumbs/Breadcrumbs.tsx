@@ -208,12 +208,12 @@ export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProp
         ref={ref}
         aria-current={isCurrent ? "page" : undefined}
         className={cn(
-          "inline-flex items-center transition-colors duration-150",
+          "inline-flex items-center transition-all duration-150",
           isCurrent
             ? "cursor-default font-semibold text-zinc-900 dark:text-zinc-50"
             : disabled
               ? "pointer-events-none cursor-not-allowed text-zinc-400 dark:text-zinc-600"
-              : "cursor-pointer text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100",
+              : "cursor-pointer text-zinc-600 hover:text-zinc-900 active:scale-[0.98] dark:text-zinc-400 dark:hover:text-zinc-100",
           className
         )}
         {...props}

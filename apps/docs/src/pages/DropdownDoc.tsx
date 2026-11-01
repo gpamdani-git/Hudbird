@@ -2,7 +2,7 @@
 import dropdownCode from "../../../../packages/core/src/components/Dropdown/Dropdown.tsx?raw";
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
-import { PageToolbar } from "../components/PageToolbar";
+import { DocHeader } from "../components/DocHeader";
 import {
   Dropdown,
   DropdownTrigger,
@@ -59,19 +59,15 @@ export default function DropdownDoc() {
   const [selectedPlacement, setSelectedPlacement] = useState<DropdownPlacement>("bottom-start");
 
   const placements: { id: DropdownPlacement; label: string; icon: React.ReactNode }[] = [
-    {
-      id: "bottom-start",
-      label: "Bottom Start (Default)",
-      icon: <ArrowDown className="h-3.5 w-3.5" />,
-    },
-    { id: "bottom", label: "Bottom Center", icon: <ArrowDown className="h-3.5 w-3.5" /> },
-    { id: "bottom-end", label: "Bottom End", icon: <ArrowDown className="h-3.5 w-3.5" /> },
-    { id: "top-start", label: "Top Start", icon: <ArrowUp className="h-3.5 w-3.5" /> },
-    { id: "top", label: "Top Center", icon: <ArrowUp className="h-3.5 w-3.5" /> },
-    { id: "top-end", label: "Top End", icon: <ArrowUp className="h-3.5 w-3.5" /> },
-    { id: "left", label: "Left", icon: <ArrowLeft className="h-3.5 w-3.5" /> },
-    { id: "right", label: "Right", icon: <ArrowRight className="h-3.5 w-3.5" /> },
-    { id: "center", label: "Center", icon: <Focus className="h-3.5 w-3.5" /> },
+    { id: "bottom-start", label: "Bottom Start", icon: <ArrowDown className="h-3 w-3" /> },
+    { id: "bottom", label: "Bottom Center", icon: <ArrowDown className="h-3 w-3" /> },
+    { id: "bottom-end", label: "Bottom End", icon: <ArrowDown className="h-3 w-3" /> },
+    { id: "top-start", label: "Top Start", icon: <ArrowUp className="h-3 w-3" /> },
+    { id: "top", label: "Top Center", icon: <ArrowUp className="h-3 w-3" /> },
+    { id: "top-end", label: "Top End", icon: <ArrowUp className="h-3 w-3" /> },
+    { id: "left", label: "Left", icon: <ArrowLeft className="h-3 w-3" /> },
+    { id: "right", label: "Right", icon: <ArrowRight className="h-3 w-3" /> },
+    { id: "center", label: "Center (Modal)", icon: <Focus className="h-3 w-3" /> },
   ];
 
   const apiRows: ApiPropRow[] = [
@@ -171,28 +167,17 @@ export default function DropdownDoc() {
   ];
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       {/* Title & Introduction */}
-      <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="w-full min-w-0 flex-1 pr-4">
-          <div className="mb-3 flex items-center gap-3">
-            <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-              Dropdown
-            </h1>
-            <span className="rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2 py-0.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-              Component
-            </span>
-          </div>
-          <p className="pr-8 text-base text-zinc-600 dark:text-zinc-400">
-            Versatile popover menus for triggering contextual actions with customizable placement
-            positions (Center, Top, Bottom, Left, Right), high elevation, and automatic dismiss.
-          </p>
-        </div>
-        <PageToolbar />
-      </div>
+      <DocHeader
+        category="Components"
+        title="Dropdown"
+        badge="Core"
+        description="Versatile popover menus for triggering contextual actions with customizable placement positions (Center, Top, Bottom, Left, Right), high elevation, and automatic dismiss."
+      />
 
       {/* Hero Preview & Code */}
-      <section className="space-y-4">
+      <section className="scroll-mt-24 space-y-6">
         <ComponentPreview>
           <div className="flex flex-col items-center justify-start py-6">
             <Dropdown>
@@ -245,8 +230,9 @@ export default function DropdownDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
-import { Edit, Copy, Share2, Trash2, ChevronDown } from 'lucide-react'
+          code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import { Button } from "@hudbird/ui";
+import { Edit, Copy, Share2, Trash2, ChevronDown } from 'lucide-react';
 
 function Example() {
   return (
@@ -257,7 +243,6 @@ function Example() {
           <ChevronDown className="w-4 h-4" />
         </Button>
       </DropdownTrigger>
-
       <DropdownMenu>
         <DropdownItem startContent={<Edit className="w-4 h-4" />} endContent="⌘E">
           Edit Page
@@ -273,17 +258,19 @@ function Example() {
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }`}
         />
       </section>
-      <div id="installation" className="scroll-mt-24 space-y-4">
+
+      {/* Installation */}
+      <section id="installation" className="scroll-mt-24 space-y-6">
         <InstallationTabs componentName="dropdown" manualCode={dropdownCode} />
-      </div>
+      </section>
 
       {/* Component API */}
-      <section id="component-api" className="scroll-mt-24 space-y-4">
-        <h2 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+      <section id="component-api" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Component API
         </h2>
         <ApiTable
@@ -317,22 +304,22 @@ function Example() {
       </section>
 
       {/* Examples Header */}
-      <section id="examples" className="scroll-mt-24 space-y-14">
-        <div>
-          <h2 className="mb-2 text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Examples
-          </h2>
-        </div>
+      <section id="examples" className="scroll-mt-24 space-y-16">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Examples
+        </h2>
 
         {/* 1. Basic Dropdown Menu */}
-        <div id="basic-dropdown" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Basic Dropdown Menu
-          </h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            A simple action menu triggered from a standard outline button (placed snuggly directly
-            underneath):
-          </p>
+        <div id="basic-dropdown" className="scroll-mt-24 space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Basic Dropdown Menu
+            </h3>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              A simple action menu triggered from a standard outline button (placed snuggly directly
+              underneath):
+            </p>
+          </div>
 
           <ComponentPreview>
             <div className="flex justify-center py-4">
@@ -357,7 +344,8 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import { Button } from "@hudbird/ui";
 
 function Example() {
   return (
@@ -371,19 +359,21 @@ function Example() {
         <DropdownItem>Export as JSON</DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }`}
           />
         </div>
 
         {/* 2. Interactive Position Placements */}
-        <div id="position-placements" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Interactive Positions (Center, Left, Right, Top, Bottom)
-          </h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Select a position to test how the dropdown popover aligns relative to its trigger:
-          </p>
+        <div id="position-placements" className="scroll-mt-24 space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Interactive Positions (Center, Left, Right, Top, Bottom)
+            </h3>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              Select a position to test how the dropdown popover aligns relative to its trigger:
+            </p>
+          </div>
 
           {/* Position Selector Buttons */}
           <div className="flex flex-wrap items-center gap-2">
@@ -392,9 +382,9 @@ function Example() {
                 key={pos.id}
                 type="button"
                 onClick={() => setSelectedPlacement(pos.id)}
-                className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all duration-150 ${
+                className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all duration-150 active:scale-95 ${
                   selectedPlacement === pos.id
-                    ? "border-indigo-600 bg-indigo-600 text-white shadow-sm"
+                    ? "border-indigo-600 bg-indigo-600 text-white shadow-xs"
                     : "border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 }`}
               >
@@ -437,7 +427,8 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import { Button } from "@hudbird/ui";
 
 {/* Configured for: "${selectedPlacement}" */}
 <Dropdown placement="${selectedPlacement}">
@@ -454,21 +445,23 @@ function Example() {
         </div>
 
         {/* 3. Dropdown with Icons (startContent) */}
-        <div id="with-icons" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Dropdown with Icons (startContent)
-          </h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Improve visual recognition by passing icon elements into{" "}
-            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              startContent
-            </code>{" "}
-            and keyboard shortcuts to{" "}
-            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              endContent
-            </code>
-            :
-          </p>
+        <div id="with-icons" className="scroll-mt-24 space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Dropdown with Icons (startContent)
+            </h3>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              Improve visual recognition by passing icon elements into{" "}
+              <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+                startContent
+              </code>{" "}
+              and keyboard shortcuts to{" "}
+              <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+                endContent
+              </code>
+              :
+            </p>
+          </div>
 
           <ComponentPreview>
             <div className="flex justify-center py-4">
@@ -502,8 +495,9 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
-import { FilePlus, FolderPlus, ExternalLink } from 'lucide-react'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import { Button } from "@hudbird/ui";
+import { FilePlus, FolderPlus, ExternalLink } from 'lucide-react';
 
 function Example() {
   return (
@@ -523,24 +517,26 @@ function Example() {
         </DropdownItem>
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }`}
           />
         </div>
 
         {/* 4. Advanced Menu (Sections & Danger Variant) */}
-        <div id="sections-and-danger" className="scroll-mt-24 space-y-4">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-            Advanced Menu (Sections & Danger Variant)
-          </h3>
-          <p className="text-sm text-zinc-600 dark:text-zinc-400">
-            Organize complex menus into categorized sections with headers and distinctive
-            destructive actions using{" "}
-            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              variant="danger"
-            </code>
-            :
-          </p>
+        <div id="sections-and-danger" className="scroll-mt-24 space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+              Advanced Menu (Sections & Danger Variant)
+            </h3>
+            <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+              Organize complex menus into categorized sections with headers and distinctive
+              destructive actions using{" "}
+              <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+                variant="danger"
+              </code>
+              :
+            </p>
+          </div>
 
           <ComponentPreview>
             <div className="flex justify-center py-6">
@@ -586,8 +582,9 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@/components/hudbird-ui/Dropdown";\nimport { Button } from "@/components/hudbird-ui/Button";
-import { User, Settings, Shield, LogOut } from 'lucide-react'
+            code={`import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection } from "@hudbird/ui";
+import { Button } from "@hudbird/ui";
+import { User, Settings, Shield, LogOut } from 'lucide-react';
 
 function Example() {
   return (
@@ -619,7 +616,7 @@ function Example() {
         </DropdownSection>
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }`}
           />
         </div>
