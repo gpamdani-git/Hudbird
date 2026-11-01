@@ -78,7 +78,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
           } ${
             isActive
               ? "font-bold text-zinc-950 dark:text-white"
-              : "font-semibold text-zinc-400 hover:font-bold hover:text-zinc-950 dark:text-zinc-500 dark:hover:font-bold dark:hover:text-white"
+              : "font-semibold text-zinc-400 group-hover/toc:text-zinc-600 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/toc:text-zinc-300 dark:hover:font-bold dark:hover:!text-white"
           }`}
         >
           {item.title}
@@ -93,8 +93,8 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
   };
 
   return (
-    <nav aria-label="Table of contents" className="w-full">
-      <h4 className="mb-3 text-[11px] font-bold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+    <nav aria-label="Table of contents" className="group/toc w-full">
+      <h4 className="mb-3 text-[11px] font-bold tracking-wider text-zinc-400 uppercase transition-colors group-hover/toc:text-zinc-950 dark:text-zinc-500 dark:group-hover/toc:text-white">
         On This Page
       </h4>
       <ul className="space-y-1 text-sm">{items.map((item) => renderItem(item, false))}</ul>

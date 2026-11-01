@@ -84,16 +84,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
 
             return (
               <div key={groupIdx} className="group/section mb-3.5">
-                {/* Collapsible Group Header - Bold uppercase */}
+                {/* Collapsible Group Header - Bold uppercase with Group-Hover Highlighting */}
                 <button
                   type="button"
                   onClick={() => toggleGroup(groupTitle)}
-                  className="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-[11px] font-bold tracking-wider text-zinc-400 uppercase transition-colors group-hover/section:text-zinc-700 hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-zinc-300 dark:hover:!text-white"
+                  className="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-[11px] font-bold tracking-wider text-zinc-400 uppercase transition-colors group-hover/section:text-zinc-950 hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-white dark:hover:!text-white"
                 >
                   <span className="truncate">{groupTitle}</span>
                   <ChevronDown
                     className={cn(
-                      "h-3.5 w-3.5 shrink-0 text-zinc-400/80 transition-transform duration-200 group-hover/section:text-zinc-600 dark:text-zinc-600 dark:group-hover/section:text-zinc-400",
+                      "h-3.5 w-3.5 shrink-0 text-zinc-400/80 transition-transform duration-200 group-hover/section:text-zinc-700 dark:text-zinc-600 dark:group-hover/section:text-zinc-300",
                       isCollapsed ? "-rotate-90" : "rotate-0"
                     )}
                   />
@@ -121,8 +121,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                                 cn(
                                   "group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-150 outline-none select-none",
                                   isActive
-                                    ? "bg-zinc-100 font-bold text-zinc-900 shadow-xs dark:bg-white/10 dark:text-white"
-                                    : "font-semibold text-zinc-400 hover:bg-black/5 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:hover:bg-white/5 dark:hover:font-bold dark:hover:!text-white"
+                                    ? "bg-zinc-100 font-bold text-zinc-950 shadow-xs dark:bg-white/10 dark:text-white"
+                                    : "font-semibold text-zinc-400 group-hover/section:text-zinc-600 hover:bg-black/5 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-zinc-300 dark:hover:bg-white/5 dark:hover:font-bold dark:hover:!text-white"
                                 )
                               }
                               title={item.name}
