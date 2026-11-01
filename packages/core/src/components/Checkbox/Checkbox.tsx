@@ -8,7 +8,7 @@ export type CheckboxColor = "primary" | "success" | "danger";
 export type CheckboxSize = "sm" | "md" | "lg";
 
 const checkboxControlVariants = cva(
-  "inline-flex items-center justify-center shrink-0 border transition-all duration-200 ease-in-out select-none active:scale-[0.98] focus-within:ring-2 focus-within:ring-offset-2",
+  "inline-flex items-center justify-center shrink-0 border transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] select-none active:scale-[0.98] focus-within:ring-2 focus-within:ring-offset-2",
   {
     variants: {
       size: {
@@ -17,14 +17,14 @@ const checkboxControlVariants = cva(
         lg: "h-6 w-6 rounded-lg",
       },
       color: {
-        primary: "focus-within:ring-primary focus-within:ring-offset-background",
-        success: "focus-within:ring-success focus-within:ring-offset-background",
-        danger: "focus-within:ring-destructive focus-within:ring-offset-background",
+        primary: "focus-within:ring-indigo-500/30 dark:focus-within:ring-offset-[#161618]",
+        success: "focus-within:ring-emerald-500/30 dark:focus-within:ring-offset-[#161618]",
+        danger: "focus-within:ring-rose-500/30 dark:focus-within:ring-offset-[#161618]",
       },
       isChecked: {
         true: "",
         false:
-          "bg-white border-zinc-300 hover:border-zinc-400 dark:bg-zinc-900 dark:border-zinc-700 dark:hover:border-zinc-600 shadow-2xs",
+          "bg-white border-zinc-300 hover:border-zinc-400 dark:bg-[#202124] dark:border-white/15 dark:hover:border-white/25 shadow-2xs",
       },
       isInvalid: {
         true: "border-rose-500 dark:border-rose-400 ring-1 ring-rose-500/20",
@@ -184,7 +184,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           {/* Animated SVG Checkmark */}
           <svg
             className={cn(
-              "transform fill-none stroke-current stroke-[3] transition-all duration-200 ease-in-out",
+              "transform fill-none stroke-current stroke-[3] transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]",
               size === "sm" && "h-2.5 w-2.5",
               size === "md" && "h-3 w-3",
               size === "lg" && "h-3.5 w-3.5",

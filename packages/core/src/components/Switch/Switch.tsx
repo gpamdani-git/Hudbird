@@ -9,7 +9,7 @@ export type SwitchColor = "primary" | "success" | "danger" | "warning";
 export type SwitchSize = "sm" | "md" | "lg";
 
 const switchTrackVariants = cva(
-  "inline-flex shrink-0 items-center rounded-full border-2 border-transparent transition-all duration-200 ease-in-out cursor-pointer active:scale-[0.98]",
+  "inline-flex shrink-0 items-center rounded-full border border-black/5 dark:border-white/10 transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer active:scale-[0.98]",
   {
     variants: {
       size: {
@@ -25,7 +25,7 @@ const switchTrackVariants = cva(
       },
       isChecked: {
         true: "",
-        false: "bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600",
+        false: "bg-zinc-200/90 dark:bg-[#202124] hover:bg-zinc-300/80 dark:hover:bg-[#28292d]",
       },
       disabled: {
         true: "cursor-not-allowed opacity-50 hover:bg-zinc-200 dark:hover:bg-zinc-700",
@@ -64,7 +64,7 @@ const switchTrackVariants = cva(
 );
 
 const switchThumbVariants = cva(
-  "pointer-events-none inline-block transform rounded-full bg-white shadow-sm ring-0 transition duration-200 ease-in-out",
+  "pointer-events-none inline-block transform rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.25)] ring-0 transition-all duration-250 ease-[cubic-bezier(0.16,1,0.3,1)] group-active:scale-x-110",
   {
     variants: {
       size: {
@@ -195,11 +195,11 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               disabled,
             }),
             description ? "mt-0.5" : "",
-            "dark:peer-focus-visible:ring-offset-background peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2",
-            color === "primary" && "peer-focus-visible:ring-primary",
-            color === "success" && "peer-focus-visible:ring-success",
-            color === "danger" && "peer-focus-visible:ring-destructive",
-            color === "warning" && "peer-focus-visible:ring-warning"
+            "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 dark:peer-focus-visible:ring-offset-[#161618]",
+            color === "primary" && "peer-focus-visible:ring-indigo-500/30",
+            color === "success" && "peer-focus-visible:ring-emerald-500/30",
+            color === "danger" && "peer-focus-visible:ring-rose-500/30",
+            color === "warning" && "peer-focus-visible:ring-amber-500/30"
           )}
           aria-hidden="true"
         >

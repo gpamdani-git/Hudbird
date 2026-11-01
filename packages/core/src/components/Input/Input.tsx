@@ -15,16 +15,16 @@ const inputWrapperVariants = cva(
   {
     variants: {
       variant: {
-        flat: "bg-muted hover:bg-muted/80 focus-within:bg-background border border-transparent focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
+        flat: "bg-zinc-100/90 hover:bg-zinc-200/70 focus-within:bg-white dark:bg-[#202124] dark:hover:bg-[#26272b] dark:focus-within:bg-[#161618] border border-black/5 dark:border-white/10 focus-within:border-indigo-500/60 dark:focus-within:border-indigo-400/60 focus-within:ring-2 focus-within:ring-indigo-500/20 dark:focus-within:ring-indigo-400/20 shadow-2xs",
         bordered:
-          "bg-transparent border border-border hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
+          "bg-transparent border border-zinc-200 dark:border-white/10 hover:border-zinc-300 dark:hover:border-white/20 focus-within:border-indigo-500/60 dark:focus-within:border-indigo-400/60 focus-within:ring-2 focus-within:ring-indigo-500/20 dark:focus-within:ring-indigo-400/20 shadow-2xs",
         underlined:
-          "bg-transparent rounded-none border-0 border-b-2 border-border hover:border-foreground/30 focus-within:border-ring px-0.5",
+          "bg-transparent rounded-none border-0 border-b-2 border-zinc-200 dark:border-white/10 hover:border-zinc-400 dark:hover:border-white/25 focus-within:border-indigo-500 dark:focus-within:border-indigo-400 px-0.5",
       },
       size: {
         sm: "min-h-8 text-xs px-2.5 gap-1.5",
-        md: "min-h-10 text-sm px-3 gap-2",
-        lg: "min-h-12 text-base px-3.5 gap-2.5",
+        md: "min-h-9 text-sm px-3.5 gap-2",
+        lg: "min-h-11 text-base px-4 gap-2.5",
       },
       radius: {
         none: "rounded-none",
@@ -33,7 +33,7 @@ const inputWrapperVariants = cva(
         full: "rounded-full",
       },
       isInvalid: {
-        true: "!border-rose-600 focus-within:!border-rose-600 focus-within:!ring-rose-600/20",
+        true: "!border-rose-500 focus-within:!border-rose-500 focus-within:!ring-rose-500/20",
         false: "",
       },
       isDisabled: {
@@ -53,17 +53,17 @@ const inputWrapperVariants = cva(
       {
         labelPlacement: "inside",
         size: "sm",
-        className: "min-h-12 py-1 px-3",
+        className: "min-h-11 py-1 px-3",
       },
       {
         labelPlacement: "inside",
         size: "md",
-        className: "min-h-14 py-1.5 px-3.5",
+        className: "min-h-13 py-1.5 px-3.5",
       },
       {
         labelPlacement: "inside",
         size: "lg",
-        className: "min-h-16 py-2 px-4",
+        className: "min-h-15 py-2 px-4",
       },
     ],
     defaultVariants: {
@@ -176,8 +176,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && labelPlacement === "outside" && (
           <label
             className={cn(
-              "mb-1.5 text-xs font-semibold transition-colors select-none",
-              isInvalid ? "text-rose-600" : "text-foreground",
+              "mb-1.5 text-xs font-semibold tracking-tight text-zinc-800 transition-colors select-none dark:text-zinc-200",
+              isInvalid ? "text-rose-600 dark:text-rose-400" : "text-foreground",
               resolvedDisabled && "cursor-not-allowed opacity-50"
             )}
           >
@@ -248,7 +248,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               aria-label="Clear input value"
               tabIndex={-1}
               onClick={handleClearClick}
-              className="text-muted-foreground hover:bg-muted-foreground/10 hover:text-foreground shrink-0 cursor-pointer rounded-lg p-1 transition-all active:scale-90"
+              className="shrink-0 cursor-pointer rounded-lg p-1 text-zinc-400 transition-all hover:bg-black/5 hover:text-zinc-700 active:scale-90 dark:text-zinc-500 dark:hover:bg-white/10 dark:hover:text-zinc-200"
             >
               <svg
                 className="h-3.5 w-3.5"

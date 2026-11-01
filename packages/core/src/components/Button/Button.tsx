@@ -57,35 +57,35 @@ const buttonVariants = cva(
         plain: "bg-transparent hover:bg-zinc-950/5 dark:hover:bg-white/5",
       },
       color: {
-        primary: "focus-visible:ring-primary dark:focus-visible:ring-offset-zinc-950",
-        secondary: "focus-visible:ring-secondary dark:focus-visible:ring-offset-zinc-950",
-        success: "focus-visible:ring-success dark:focus-visible:ring-offset-zinc-950",
-        warning: "focus-visible:ring-warning dark:focus-visible:ring-offset-zinc-950",
-        danger: "focus-visible:ring-destructive dark:focus-visible:ring-offset-zinc-950",
-        info: "focus-visible:ring-info dark:focus-visible:ring-offset-zinc-950",
-        dark: "focus-visible:ring-zinc-950 dark:focus-visible:ring-offset-zinc-950",
-        zinc: "focus-visible:ring-zinc-500 dark:focus-visible:ring-offset-zinc-950",
-        white: "focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-zinc-950",
-        light: "focus-visible:ring-zinc-400 dark:focus-visible:ring-offset-zinc-950",
-        "dark/zinc": "focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-950",
-        "dark/white": "focus-visible:ring-zinc-900 dark:focus-visible:ring-offset-zinc-950",
-        red: "focus-visible:ring-red-500",
-        orange: "focus-visible:ring-orange-500",
-        amber: "focus-visible:ring-amber-500",
-        yellow: "focus-visible:ring-yellow-500",
-        lime: "focus-visible:ring-lime-500",
-        green: "focus-visible:ring-green-500",
-        emerald: "focus-visible:ring-emerald-500",
-        teal: "focus-visible:ring-teal-500",
-        cyan: "focus-visible:ring-cyan-500",
-        sky: "focus-visible:ring-sky-500",
-        blue: "focus-visible:ring-blue-500",
-        indigo: "focus-visible:ring-indigo-500",
-        violet: "focus-visible:ring-violet-500",
-        purple: "focus-visible:ring-purple-500",
-        fuchsia: "focus-visible:ring-fuchsia-500",
-        pink: "focus-visible:ring-pink-500",
-        rose: "focus-visible:ring-rose-500",
+        primary: "focus-visible:ring-primary/40 dark:focus-visible:ring-offset-[#161618]",
+        secondary: "focus-visible:ring-secondary/40 dark:focus-visible:ring-offset-[#161618]",
+        success: "focus-visible:ring-emerald-500/40 dark:focus-visible:ring-offset-[#161618]",
+        warning: "focus-visible:ring-amber-500/40 dark:focus-visible:ring-offset-[#161618]",
+        danger: "focus-visible:ring-rose-500/40 dark:focus-visible:ring-offset-[#161618]",
+        info: "focus-visible:ring-sky-500/40 dark:focus-visible:ring-offset-[#161618]",
+        dark: "focus-visible:ring-zinc-950/40 dark:focus-visible:ring-offset-[#161618]",
+        zinc: "focus-visible:ring-zinc-500/40 dark:focus-visible:ring-offset-[#161618]",
+        white: "focus-visible:ring-zinc-400/40 dark:focus-visible:ring-offset-[#161618]",
+        light: "focus-visible:ring-zinc-400/40 dark:focus-visible:ring-offset-[#161618]",
+        "dark/zinc": "focus-visible:ring-zinc-900/40 dark:focus-visible:ring-offset-[#161618]",
+        "dark/white": "focus-visible:ring-zinc-900/40 dark:focus-visible:ring-offset-[#161618]",
+        red: "focus-visible:ring-red-500/40 dark:focus-visible:ring-offset-[#161618]",
+        orange: "focus-visible:ring-orange-500/40 dark:focus-visible:ring-offset-[#161618]",
+        amber: "focus-visible:ring-amber-500/40 dark:focus-visible:ring-offset-[#161618]",
+        yellow: "focus-visible:ring-yellow-500/40 dark:focus-visible:ring-offset-[#161618]",
+        lime: "focus-visible:ring-lime-500/40 dark:focus-visible:ring-offset-[#161618]",
+        green: "focus-visible:ring-green-500/40 dark:focus-visible:ring-offset-[#161618]",
+        emerald: "focus-visible:ring-emerald-500/40 dark:focus-visible:ring-offset-[#161618]",
+        teal: "focus-visible:ring-teal-500/40 dark:focus-visible:ring-offset-[#161618]",
+        cyan: "focus-visible:ring-cyan-500/40 dark:focus-visible:ring-offset-[#161618]",
+        sky: "focus-visible:ring-sky-500/40 dark:focus-visible:ring-offset-[#161618]",
+        blue: "focus-visible:ring-blue-500/40 dark:focus-visible:ring-offset-[#161618]",
+        indigo: "focus-visible:ring-indigo-500/40 dark:focus-visible:ring-offset-[#161618]",
+        violet: "focus-visible:ring-violet-500/40 dark:focus-visible:ring-offset-[#161618]",
+        purple: "focus-visible:ring-purple-500/40 dark:focus-visible:ring-offset-[#161618]",
+        fuchsia: "focus-visible:ring-fuchsia-500/40 dark:focus-visible:ring-offset-[#161618]",
+        pink: "focus-visible:ring-pink-500/40 dark:focus-visible:ring-offset-[#161618]",
+        rose: "focus-visible:ring-rose-500/40 dark:focus-visible:ring-offset-[#161618]",
       },
       size: {
         sm: "h-8 px-3 text-xs gap-1.5",
@@ -589,8 +589,19 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       )
     ) : (
       <>
-        {isLoading ? spinner : startContent}
-        {children}
+        {isLoading && (
+          <span className="animate-in fade-in mr-1 -ml-0.5 inline-flex shrink-0 items-center duration-150">
+            {spinner}
+          </span>
+        )}
+        {!isLoading && startContent && (
+          <span className="inline-flex shrink-0 items-center" aria-hidden="true">
+            {startContent}
+          </span>
+        )}
+        <span className={cn(isLoading && !startContent && "transition-opacity duration-150")}>
+          {children}
+        </span>
         {endContent && (
           <span className="ml-0.5 inline-flex shrink-0 items-center" aria-hidden="true">
             {endContent}
