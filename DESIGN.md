@@ -262,23 +262,213 @@ The Button architecture is governed by strict visual perception science, Gestalt
   - Focus state: `2px` focus ring with `2px` offset (`focus-visible:ring-2 focus-visible:ring-offset-2`).
   - Kinetic spring easing: `ease-[cubic-bezier(0.16,1,0.3,1)]`.
 
-### 4.2 Cards & Double-Bezel Containers
+### 4.2 Input & Textarea
 
-- **DoubleBezelCard:** Signature Hudbird container styling. Composed of an outer 1px border (`rgba(255, 255, 255, 0.08)`), an inner surface fill (`#161618` / `#202124`), and an interior 1px highlight perimeter (`rgba(255, 255, 255, 0.04)`), creating tangible bevel depth without heavy shadows.
-- **Corner Roundness:** Generous `1.25rem` (20px) to `1.75rem` (28px).
-- **Elevation & Shadow:** Zero heavy drop shadows. Layering is conveyed through subtle tone shifts and translucent borders.
+- **Standard 44px Touch Baseline:** All primary inputs conform strictly to `h-11` (44px) standard height (`h-9` for compact sm, `h-13` for spacious lg) with minimum Apple HIG 44px touch targets.
+- **Anisotropic Input Padding:** Horizontal padding strictly exceeds vertical clearance: `px-4` (16px) for md, `px-3` (12px) for sm, and `px-5` (20px) for lg.
+- **Optical Icon Frames:** Fixed `w-5 h-5` bounding wrappers for `startContent` (prefix) and `endContent` (suffix) icons, eliminating layout jitter when icons are present.
+- **Obsidian Dark Surfaces:** Dark mode input fields use Obsidian `#161618` canvas with hairline specular borders (`border-black/[0.08] dark:border-white/[0.08]`).
+- **Specular Focus Physics:** 2px ring in Electric Indigo (`focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-transparent`) with zero layout shift. Calibrated error states project glowing rose aura (`!border-rose-500/80 !ring-rose-500/20`).
+- **Textarea Elevation:** Multi-line textareas enforce a `min-h-[120px]` reading channel with anisotropic padding `py-3 px-4` (12px Y, 16px X) and concentric `rounded-xl` corners.
 
-### 4.3 Form Inputs & Controls
+### 4.3 InputOTP (One-Time Password)
 
-- **Structure:** Label positioned strictly above the input (`text-xs font-medium uppercase tracking-wider text-muted-foreground mb-1.5`).
-- **Input Field:** Solid background (`rgba(255,255,255,0.03)` dark / `#FFFFFF` light), 1px Whisper Border.
-- **Focus State:** 2px ring in Electric Indigo (`#4F46E5`) with zero pixel blur offset. No floating animated placeholders.
-- **Validation:** Inline warning/error message rendered immediately below the input field with accompanying status icon.
+- **Discrete Cell Geometry:** Individual slot cells conform to `w-11 h-12` (44px × 48px) with concentric `rounded-xl` corners and centered tabular-nums typography (`text-lg font-semibold`).
+- **Gestalt Law of Proximity:** Cell gaps strictly set to `gap-2` to `gap-3`; group separators (dots or dashes) are framed with optical vertical center alignment.
+- **Active Focus Ring:** Active slot displays a vibrant specular border and glow without any dimensional displacement.
+- **Obsidian Dark Fill:** Cell backgrounds use Obsidian `#161618` with hairline specular borders (`border-black/[0.08] dark:border-white/[0.08]`).
 
-### 4.4 Skeletons & Empty States
+### 4.4 Switch & Checkbox
 
-- **Skeletal Loaders:** Geometric shimmer masks reflecting the exact layout and aspect ratio of destination components. Never use generic circular spinners for content cards.
-- **Empty States:** Composed architectural blueprints with contextual actionable primary buttons, not isolated "No data found" text strings.
+- **Switch Fluid Physics:** Apple iOS fluid track `w-11 h-6` (44px × 24px) paired with a concentric sliding thumb `w-5 h-5` (20px) on a 2px track inset. Spring physics `ease-[cubic-bezier(0.16,1,0.3,1)]`.
+- **Checkbox Geometry:** `w-5 h-5` (20px × 20px) control box with concentric `rounded-md` (6px) corners. Centered optical checkmark with micro-scale spring entrance (`scale: [0, 1]`).
+- **Ergonomic Touch Targets:** Outer interactive hit area padded to minimum `44px × 44px` via transparent flex wrapper or pseudo-elements to comply with Fitts's Law.
+- **Dark Mode Fill:** Inactive track/box uses Obsidian `#202124` with hairline specular border; active state illuminates in vibrant primary accent.
+
+### 4.5 RadioGroup & Radio
+
+- **Radio Disc Anatomy:** Outer ring `w-5 h-5` (20px) with concentric inner indicator dot `w-2.5 h-2.5` (10px).
+- **Obsidian Base:** Inactive state utilizes Obsidian `#161618` with hairline specular border. Active indicator expands smoothly via spring animation.
+- **Gestalt Proximity Spacing:** Internal distance between radio indicator and text label is locked to `gap-3` (12px), while list rows maintain `space-y-3` (12px) separation.
+
+### 4.6 Slider
+
+- **Micro-Groove Track:** Subtle optical bevel groove track `h-2 rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] dark:bg-[#202124]`.
+- **Active Progress Fill:** Vibrant primary gradient fill indicating current value smoothly across the track.
+- **Tactile Thumb Disc:** Tactile specular disc `w-5 h-5` (20px) with `shadow-md border border-white/20`. Grab feedback expands thumb by 25% (`active:scale-125`) for tactile confirmation.
+
+### 4.7 Select
+
+- **Trigger Baseline:** Conforms strictly to `h-11` (44px) Apple HIG touch target with anisotropic padding `px-4` and fixed `w-5 h-5` Chevron frame.
+- **Apple Frosted Glass Popover:** Dropdown list floats in `backdrop-blur-2xl bg-white/95 dark:bg-[#161618]/95 border border-black/[0.08] dark:border-white/[0.08] shadow-2xl rounded-2xl p-1.5`.
+- **Option Hierarchy:** Items feature anisotropic padding `py-2.5 px-3.5`, concentric `rounded-xl`, specular hover highlight, and optical checkmark placement.
+
+### 4.8 ComboBox (Autocomplete Search & Select)
+
+- **Search-Enabled Trigger:** 44px height baseline with integrated search input and fixed `w-5 h-5` magnifying glass icon.
+- **Floating Panel:** Frosted floating Obsidian panel with keyboard up/down focus highlight and instant zero-latency filtering.
+- **Empty & Loading States:** Dedicated micro-copy with comfortable anisotropic padding `py-4 px-3`.
+
+### 4.9 Calendar & DatePicker
+
+- **Container Architecture:** Obsidian `#161618` card surface with hairline specular border and `rounded-2xl` corners.
+- **Touch Navigation Chevrons:** Minimum 40px touch navigation targets for previous/next month triggers with optical center compensation.
+- **Day Cell Targets:** Minimum `w-10 h-10` (40px × 40px) date cells with concentric `rounded-xl` hover wells.
+- **Range Selection Pill:** Apple fluid capsule pill highlight spanning selected date clusters with seamless boundary radiuses.
+
+### 4.10 Card & DoubleBezelCard
+
+- **Signature Double Bezel:** Composed of an outer 1px hairline border (`border-black/[0.08] dark:border-white/[0.08]`), inner surface fill (`#161618` / `#202124`), and interior 1px highlight perimeter, creating tangible bevel depth without heavy shadows.
+- **Concentric Radii Formula:**
+  $$R_{\text{inner}} = R_{\text{outer}} - \text{padding}$$
+  Outer cards: `rounded-2xl` (20px) or `rounded-3xl` (24px) paired with nested items `rounded-xl` (12px).
+- **Anisotropic Card Padding:** Vertical `py-5 sm:py-6` (20px–24px) paired with horizontal `px-6 sm:px-8` (24px–32px) for expansive, relaxed reading channels.
+
+### 4.11 Fieldset & Form
+
+- **Section Spacing:** Generous whitespace rhythm `space-y-6 sm:space-y-8` (24px–32px) between logical form groups.
+- **Field Spacing:** Consistent `space-y-5 sm:space-y-6` between individual input rows to prevent visual crowding.
+- **Legend Hierarchy:** Clean uppercase typography with tracking `tracking-wider text-xs font-semibold text-zinc-400`.
+
+### 4.12 DescriptionList
+
+- **Apple System Preferences Layout:** Alternating or hairline-divided rows with minimum `44px` vertical clearance.
+- **Anisotropic Cell Padding:** `py-3.5 px-4` (14px Y, 16px X).
+- **Key-Value Balance:** Balanced grid layout (35% label / 65% value) for clear reading scans.
+
+### 4.13 Dialog (Modal)
+
+- **Backdrop Diffusion:** Heavy ambient blur `backdrop-blur-md bg-black/60`.
+- **Frosted Modal Surface:** `backdrop-blur-2xl bg-white/95 dark:bg-[#161618]/95 border border-black/[0.08] dark:border-white/[0.08] shadow-2xl rounded-2xl`.
+- **Concentric Inner Padding:** `p-6 sm:p-8` providing ample cognitive separation.
+- **Tactile Close Trigger:** Fixed in `w-8 h-8` optical frame with tactile press feedback `active:scale-90`.
+
+### 4.14 Sheet (Drawer / Slide-Over)
+
+- **Kinetic Slide Transition:** Fluid spring slide-in from screen edge `ease-[cubic-bezier(0.16,1,0.3,1)]`.
+- **Frosted Obsidian Canvas:** Full-height panel with hairline specular boundary border and deep diffused shadow.
+- **Spacious Content Padding:** `p-6 sm:p-8` with dedicated header and footer action bars.
+
+### 4.15 Dropdown (DropdownMenu)
+
+- **Frosted Glass Floating Menu:** `backdrop-blur-2xl bg-white/95 dark:bg-[#161618]/95 border border-black/[0.08] dark:border-white/[0.08] shadow-xl rounded-2xl p-1.5`.
+- **Anisotropic Item Padding:** `py-2.5 px-3.5` (10px Y, 14px X) with concentric `rounded-xl`.
+- **Micro-Press Feedback:** `hover:bg-zinc-100 dark:hover:bg-[#202124] active:scale-[0.98]`.
+- **Hairline Separators:** `h-px bg-zinc-200 dark:bg-white/[0.06] my-1.5`.
+
+### 4.16 Popover
+
+- **Floating Inset Surface:** Anchored to trigger element, padded with `p-4 sm:p-5`, featuring hairline specular border and diffused shadow.
+
+### 4.17 Command (Palette / Spotlight Search)
+
+- **Command Dialog Frame:** `max-w-2xl w-full backdrop-blur-2xl bg-white/95 dark:bg-[#161618]/95 rounded-2xl shadow-2xl border border-black/[0.08] dark:border-white/[0.08]`.
+- **Search Header:** `h-14 px-4` with fixed `w-5 h-5` search icon and subtle `<Kbd>` Esc badge.
+- **Group Labels:** `px-3 py-2 text-xs font-semibold text-zinc-400 uppercase tracking-wider`.
+- **Item Ergonomics:** `py-3 px-3.5 rounded-xl` with smooth keyboard arrow highlight.
+
+### 4.18 Tooltip
+
+- **Apple HUD Dark Frosted Capsule:** `backdrop-blur-xl bg-zinc-900/95 dark:bg-[#161618]/95 border border-white/10 text-white dark:text-zinc-100 shadow-xl shadow-black/20`.
+- **2:1 Anisotropic Padding:** `py-1.5 px-3` (6px Y, 12px X) with `rounded-lg` (8px).
+
+### 4.19 Alert
+
+- **Prohibition of Heavy Borders:** Raw `border-2` is strictly prohibited.
+- **Specular Hairline & Translucent Fill:** Hairline border `border border-black/[0.08] dark:border-white/[0.08]` with calibrated translucent status tint.
+- **Anisotropic Container Padding:** `py-4 px-5` (16px Y, 20px X).
+- **Non-Shrinking Icon Frame:** Fixed `w-5 h-5 shrink-0 mt-0.5` wrapper ensuring icon geometry never distorts.
+- **Tactile Close Trigger:** `w-7 h-7 rounded-lg active:scale-90`.
+
+### 4.20 Toast & Toaster
+
+- **Apple Dynamic Island Floating Architecture:** `backdrop-blur-2xl bg-white/95 dark:bg-[#161618]/95 border border-black/[0.08] dark:border-white/[0.08] shadow-2xl rounded-2xl`.
+- **Anisotropic Content Padding:** `py-3.5 px-5`.
+- **Tactile Action Button:** Compact high-contrast action button with micro-press `active:scale-95`.
+
+### 4.21 Progress
+
+- **Micro-Groove Optical Bevel Track:** `h-2.5 rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)] dark:bg-[#202124]`.
+- **Smooth Kinetic Indicator:** Fluid spring physics `duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]` without abrupt step jumps.
+
+### 4.22 Skeleton
+
+- **Obsidian Shimmer Base:** Obsidian base `#1a1a1c` with animated shimmer wave linear gradient `from-transparent via-white/10 to-transparent`.
+- **Shape Fidelity:** Geometric mirrors of exact component shapes (no generic circles for cards or tables).
+
+### 4.23 Heading & Display Typography
+
+- **Negative Tracking Kerning:** Negative kerning `-0.8px` to `-1.8px` (`tracking-tight` to `tracking-tighter`) for display titles.
+- **Editorial Medium Weight:** Strictly `font-medium` (500) to `font-semibold` (600) — avoiding overly blocky heavy bold.
+
+### 4.24 Text & Micro-Primitives (Kbd, Blockquote, Mark, Code)
+
+- **Prose Breathing Room:** `leading-[1.75]` line-height, capped at `65ch` width.
+- **`<Kbd>` Anatomy:** Keycap pill with 3D bottom bevel `border border-b-2 border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[11px] font-mono`.
+- **`<Blockquote>` Styling:** Left specular hairline accent `border-l-2 border-primary/60 pl-4 py-1 italic`.
+- **`<Mark>` Accent:** High-contrast translucent highlight with rounded edges `px-1 py-0.5 rounded bg-primary/15 text-primary`.
+
+### 4.25 Badge
+
+- **Micro-Capsule Metrics:** Optical letter-spacing (`tracking-wider text-[11px] font-semibold uppercase`).
+- **3:1 Anisotropic Padding:** `py-1 px-3` (4px Y, 12px X).
+- **Status Dot Frame:** `w-1.5 h-1.5 rounded-full mr-1.5`.
+
+### 4.26 Avatar & AvatarGroup
+
+- **Standard Dimensions:** `sm` (32px), `md` (40px), `lg` (48px), `xl` (56px).
+- **Specular Group Rings:** `ring-2 ring-background` in groups with `-space-x-3` overlap.
+- **Status Presence Dot:** `w-3 h-3 ring-2 ring-background` positioned in lower-right quadrant.
+
+### 4.27 Table
+
+- **Density Modes:** Compact `py-2.5 px-4`, Normal `py-4 px-6`, Relaxed `py-5 px-8` (anisotropic cell ratio $\ge 1.5:1$).
+- **Hairline Row Dividers:** `border-b border-zinc-200 dark:border-white/[0.06]`.
+- **Zebra Striping:** Subtle `#1a1a1d` dark fill on alternating rows.
+- **Hover Wash:** Specular row wash `hover:bg-zinc-500/5 dark:hover:bg-white/[0.03]`.
+
+### 4.28 Tabs
+
+- **Segmented Control Well:** Inset track `bg-zinc-100 dark:bg-[#161618] p-1 rounded-xl border border-black/[0.05] dark:border-white/[0.05]`.
+- **Concentric Active Thumb:** Concentric `rounded-lg bg-white dark:bg-[#28292d] shadow-sm text-foreground` with spring slide layout animation (`layoutId="activeTab"`).
+- **Anisotropic Tab Padding:** `py-2 px-4`.
+
+### 4.29 Breadcrumbs
+
+- **Chevron Optical Compensation:** Subtle optical shift `translate-x-[0.5px] text-zinc-400`.
+- **Touch Target Channels:** Minimum 40px touch channel on touch screens.
+
+### 4.30 Pagination
+
+- **Page Button Targets:** Conforming to Button tokens `h-10 min-w-10 px-3 text-sm rounded-xl` with minimum 40px touch targets.
+- **Active Page Accent:** Solid or frosted highlight well with tactile press feedback.
+
+### 4.31 Accordion
+
+- **Trigger Row Clearance:** `h-13 px-5` (52px minimum touch clearance) with spring rotating chevron `duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]`.
+- **Panel Anisotropic Padding:** `pt-2 pb-5 px-5`.
+
+### 4.32 Navbar
+
+- **Height Clearance:** `h-16 sm:h-18` (64px–72px).
+- **Frosted Glass Header:** `backdrop-blur-xl bg-white/80 dark:bg-[#161618]/80 border-b border-black/[0.08] dark:border-white/[0.08] sticky top-0 z-50`.
+- **Channel Padding:** `px-6 sm:px-8 lg:px-12`.
+
+### 4.33 Sidebar
+
+- **Navigation Rail Width:** `w-64 sm:w-72` (256px–288px).
+- **Obsidian Surface:** Obsidian `#161618` canvas with hairline right border `border-r border-black/[0.08] dark:border-white/[0.08]`.
+- **Nav Item Geometry:** 40px–44px height, anisotropic padding `py-2.5 px-4`, concentric `rounded-xl`.
+
+### 4.34 Divider
+
+- **Hairline Stroke:** 1px stroke `bg-zinc-200 dark:bg-white/[0.08]`.
+- **Label Capsule:** Anisotropic badge pill `px-3 py-1 text-xs` centered with optical precision.
+
+### 4.35 IconBox & HudbirdIcon
+
+- **IconBox Optical Container:** Fixed frame `w-10 h-10` or `w-12 h-12` with concentric `rounded-xl` and subtle frosted fill.
+- **HudbirdIcon Primitive:** Standardized SVG vector primitive rendering the signature bird/letter-h geometry at crisp vector viewBox scales (`w-5 h-5` to `w-10 h-10`).
 
 ---
 
