@@ -23,6 +23,7 @@ import {
 import { navigationData } from "../navData";
 import { GithubIcon, DiscordIcon } from "./SocialIcons";
 import { GlobalSearch } from "./GlobalSearch";
+import { HudbirdIcon } from "./HudbirdLogo";
 
 interface HeaderProps {
   onToggleMobileSidebar?: () => void;
@@ -126,18 +127,12 @@ export const Header: React.FC<HeaderProps> = ({
             <PanelLeft className="h-4 w-4" />
           </button>
 
-          {/* Mobile Logo Fallback */}
+          {/* Mobile Logo with Icon Mark */}
           <Link to="/" className="group flex items-center gap-2 lg:hidden">
-            <img
-              src="/assets/logo/hudbird-logo-black.png"
-              alt="Hudbird UI"
-              className="h-6 w-auto object-contain dark:hidden"
-            />
-            <img
-              src="/assets/logo/hudbird-logo-white.png"
-              alt="Hudbird UI"
-              className="hidden h-6 w-auto object-contain dark:block"
-            />
+            <HudbirdIcon className="h-5 w-auto text-zinc-950 transition-transform group-hover:scale-105 dark:text-white" />
+            <span className="text-base font-bold tracking-tight text-zinc-950 dark:text-white">
+              hudbird
+            </span>
           </Link>
 
           {/* Desktop Breadcrumbs */}

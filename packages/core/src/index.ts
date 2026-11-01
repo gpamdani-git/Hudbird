@@ -54,3 +54,4 @@ export * from "./components/IconBox";
 export * from "./components/EditorialImage";
 export * from "./components/SplitTextReveal";
 export * from "./components/StickyStack";
+export * from "./components/HudbirdIcon";

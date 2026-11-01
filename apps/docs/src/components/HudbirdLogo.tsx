@@ -1,15 +1,34 @@
 import React from "react";
 
-export const HudbirdLogo = ({ className = "w-7 h-7" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
-    <path
-      d="M21.5,10.2 C20.8,10.8 19.9,11.2 19,11.4 C19.1,10.5 19.8,9.7 20.8,9.2 C20.1,9.6 19.3,9.8 18.5,10 C17.8,9.2 16.8,8.8 15.6,8.8 C13.5,8.8 11.7,10.6 11.7,12.8 C11.7,13.1 11.7,13.4 11.8,13.7 C8.6,13.5 5.7,12 3.8,9.6 C3.4,10.2 3.2,10.9 3.2,11.6 C3.2,13 3.9,14.2 5,14.9 C4.3,14.9 3.7,14.7 3.2,14.4 C3.2,14.4 3.2,14.5 3.2,14.5 C3.2,16.4 4.5,18 6.4,18.4 C6,18.5 5.7,18.5 5.4,18.5 C5.1,18.5 4.9,18.5 4.6,18.4 C5.1,20 6.6,21.1 8.3,21.2 C7,22.2 5.3,22.8 3.5,22.8 C3.1,22.8 2.8,22.8 2.5,22.7 C4.3,23.9 6.4,24.5 8.7,24.5 C16.1,24.5 20.1,18.4 20.1,13.1 C20.1,12.9 20.1,12.7 20.1,12.6 C20.9,12 21.6,11.2 22.2,10.3 C21.4,10.6 20.6,10.8 19.8,10.9 C20.6,10.4 21.2,9.6 21.5,10.2 Z"
-      transform="translate(0, -2) scale(0.95)"
-    />
+export interface HudbirdIconProps extends React.SVGProps<SVGSVGElement> {
+  className?: string;
+  size?: number | string;
+}
 
-    {/* Hoopoe crest abstract addition */}
-    <path d="M12.5,2 C13,4 14.5,6.5 15.6,8.8 C14,7 13.2,5 12.5,2 Z" fillOpacity="0.8" />
-    <path d="M9.5,3 C10.5,5 12,7 13.5,9 C11.5,7 10.2,5.5 9.5,3 Z" fillOpacity="0.6" />
-    <path d="M6.5,5 C8,6.5 10,8 11.5,9.5 C9.5,7.5 7.5,6 6.5,5 Z" fillOpacity="0.4" />
-  </svg>
-);
+/**
+ * Official Hudbird brandmark "h" icon.
+ * Vector-accurate, responsive, and adheres to currentColor.
+ */
+export const HudbirdIcon: React.FC<HudbirdIconProps> = ({
+  className = "w-6 h-6",
+  size,
+  style,
+  ...props
+}) => {
+  const sizeStyles = size ? { width: size, height: size, ...style } : style;
+
+  return (
+    <svg
+      viewBox="0 0 81 123"
+      fill="currentColor"
+      className={className}
+      style={sizeStyles}
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M 11.5,0 A 11.5,11.5 0 0,1 23,11.5 L 23,44 C 25,38 36,35 48,35 C 64,35 80.5,45 80.5,65 L 80.5,111.5 A 11.25,11.25 0 0,1 58,111.5 L 58,65 C 58,57 50,53.5 40.5,53.5 C 31,53.5 23,58 23,67 L 23,111.5 A 11.5,11.5 0 0,1 0,111.5 L 0,11.5 A 11.5,11.5 0 0,1 11.5,0 Z" />
+    </svg>
+  );
+};
+
+export const HudbirdLogo: React.FC<HudbirdIconProps> = HudbirdIcon;
