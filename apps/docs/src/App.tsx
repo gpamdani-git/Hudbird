@@ -62,6 +62,7 @@ const BreadcrumbsDoc = lazy(() => import("./pages/BreadcrumbsDoc"));
 const CalendarDoc = lazy(() => import("./pages/CalendarDoc"));
 const FormDoc = lazy(() => import("./pages/FormDoc"));
 const InputOTPDoc = lazy(() => import("./pages/InputOTPDoc"));
+const IconBoxDoc = lazy(() => import("./pages/IconBoxDoc"));
 
 const SupportDoc = lazy(() => import("./pages/SupportDoc"));
 const ChangelogDoc = lazy(() => import("./pages/ChangelogDoc"));
@@ -71,6 +72,7 @@ const InstallationDoc = lazy(() => import("./pages/InstallationDoc"));
 const CliDoc = lazy(() => import("./pages/CliDoc"));
 const AiSkillsDoc = lazy(() => import("./pages/AiSkillsDoc"));
 const DesignSystemDoc = lazy(() => import("./pages/DesignSystemDoc"));
+const IconsDoc = lazy(() => import("./pages/IconsDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
@@ -249,6 +251,7 @@ export default function App() {
                     <Route path="/cli" element={<CliDoc />} />
                     <Route path="/ai-skills" element={<AiSkillsDoc />} />
                     <Route path="/design-system" element={<DesignSystemDoc />} />
+                    <Route path="/icons" element={<IconsDoc />} />
                     <Route path="/button" element={<ButtonDoc />} />
                     <Route path="/input" element={<InputDoc />} />
                     <Route path="/card" element={<CardDoc />} />
@@ -264,9 +267,14 @@ export default function App() {
                     <Route path="/dropdown" element={<DropdownDoc />} />
                     <Route path="/fieldset" element={<FieldsetDoc />} />
                     <Route path="/heading" element={<HeadingDoc />} />
+                    <Route path="/icon-box" element={<IconBoxDoc />} />
                     <Route path="/navbar" element={<NavbarDoc />} />
                     <Route path="/pagination" element={<PaginationDoc />} />
                     <Route path="/select" element={<SelectDoc />} />
+                    <Route
+                      path="/sidebar"
+                      element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                    />
                     <Route
                       path="/layouts/sidebar"
                       element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}

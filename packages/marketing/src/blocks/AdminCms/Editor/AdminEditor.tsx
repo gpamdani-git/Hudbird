@@ -142,12 +142,16 @@ export const AdminEditor = ({
       {/* Editor Toolbar */}
       <div className="border-border/30 flex shrink-0 flex-col gap-3 border-b pb-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
-          <button
+          <Button
+            isIconOnly
+            variant="outline"
+            size="sm"
             onClick={onBack}
-            className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
+            aria-label="Back"
+            className="border-border/40 bg-card h-8 w-8 min-w-8"
           >
             <ArrowLeft className="h-4 w-4" />
-          </button>
+          </Button>
           <div>
             <div className="flex items-center gap-2">
               <span className="text-sm font-semibold">
@@ -210,54 +214,113 @@ export const AdminEditor = ({
               <>
                 {/* WYSIWYG Formatting Toolbar */}
                 <div className="border-border/40 bg-background/80 sticky top-0 z-10 -mx-4 mb-6 flex flex-wrap items-center gap-1 rounded-xl border px-4 py-2 shadow-sm backdrop-blur-xl">
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Bold className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Italic className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Underline className="h-4 w-4" />
-                  </button>
+                  </Button>
                   <div className="bg-border/50 mx-1 h-4 w-px" />
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Link className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Quote className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Code className="h-4 w-4" />
-                  </button>
+                  </Button>
                   <div className="bg-border/50 mx-1 h-4 w-px" />
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Heading1 className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <Heading2 className="h-4 w-4" />
-                  </button>
+                  </Button>
                   <div className="bg-border/50 mx-1 h-4 w-px" />
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <List className="h-4 w-4" />
-                  </button>
-                  <button className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors">
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
+                    className="text-muted-foreground hover:bg-muted/50 hover:text-foreground h-8 w-8 min-w-8"
+                  >
                     <ListOrdered className="h-4 w-4" />
-                  </button>
+                  </Button>
                   <div className="bg-border/50 mx-1 h-4 w-px" />
-                  <button
+                  <Button
+                    isIconOnly
+                    variant="ghost"
+                    size="sm"
                     onClick={() => setShowMediaModal(true)}
-                    className="text-muted-foreground hover:bg-primary hover:text-primary-foreground flex h-8 w-8 items-center justify-center rounded-md transition-colors"
+                    className="text-muted-foreground hover:bg-primary hover:text-primary-foreground h-8 w-8 min-w-8"
                     title="Insert from Media Library"
                   >
                     <ImageIcon className="h-4 w-4" />
-                  </button>
+                  </Button>
                 </div>
 
                 {/* Rich Text Editor Area */}
                 <div className="group relative">
-                  <button className="text-muted-foreground/40 hover:bg-muted/50 hover:text-foreground absolute top-0.5 -left-12 flex h-6 w-6 items-center justify-center rounded-md opacity-0 transition-opacity group-hover:opacity-100">
+                  <Button
+                    isIconOnly
+                    size="sm"
+                    variant="ghost"
+                    aria-label="Add block"
+                    className="text-muted-foreground/40 hover:bg-muted/50 hover:text-foreground absolute top-0.5 -left-12 h-6 w-6 min-w-6 rounded-md opacity-0 transition-opacity group-hover:opacity-100"
+                  >
                     <Plus className="h-4 w-4" />
-                  </button>
+                  </Button>
                   <div
                     className="text-muted-foreground min-h-[400px] w-full text-[17px] leading-[1.7] outline-none"
                     contentEditable
@@ -450,13 +513,14 @@ export const AdminEditor = ({
                       </div>
                     )}
 
-                    <button
+                    <Button
+                      variant="bordered"
                       onClick={() => setShowBlockModal(true)}
-                      className="border-border/60 text-muted-foreground hover:bg-muted/30 hover:text-foreground hover:border-primary/40 mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-dashed py-4 transition-all"
+                      startContent={<Plus className="h-4 w-4" />}
+                      className="border-border/60 text-muted-foreground hover:bg-muted/30 hover:text-foreground hover:border-primary/40 mt-4 flex h-auto w-full items-center justify-center gap-2 rounded-xl border-dashed py-4 text-sm font-medium transition-all"
                     >
-                      <Plus className="h-4 w-4" />
-                      <span className="text-sm font-medium">Add New Block</span>
-                    </button>
+                      Add New Block
+                    </Button>
                   </Reorder.Group>
                 )}
               </div>
@@ -469,27 +533,33 @@ export const AdminEditor = ({
           <div className="custom-scrollbar animate-in slide-in-from-right-4 w-[300px] shrink-0 overflow-y-auto pr-2 duration-300">
             <Card className="border-border/40 bg-card flex h-full flex-col overflow-hidden">
               <div className="border-border/30 bg-muted/20 flex items-center border-b">
-                <button
+                <Button
+                  variant="light"
+                  size="sm"
                   onClick={() => setActiveTab("document")}
-                  className={`flex-1 py-2.5 text-[12px] font-medium transition-colors ${activeTab === "document" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
+                  className={`flex-1 rounded-none py-2.5 text-[12px] font-medium transition-colors ${activeTab === "document" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
                 >
                   Document
-                </button>
+                </Button>
                 {type === "page" && (
-                  <button
+                  <Button
+                    variant="light"
+                    size="sm"
                     onClick={() => setActiveTab("block")}
-                    className={`flex-1 py-2.5 text-[12px] font-medium transition-colors ${activeTab === "block" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
+                    className={`flex-1 rounded-none py-2.5 text-[12px] font-medium transition-colors ${activeTab === "block" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     Block Settings
-                  </button>
+                  </Button>
                 )}
                 {type === "post" && (
-                  <button
+                  <Button
+                    variant="light"
+                    size="sm"
                     onClick={() => setActiveTab("block")}
-                    className={`flex-1 py-2.5 text-[12px] font-medium transition-colors ${activeTab === "block" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
+                    className={`flex-1 rounded-none py-2.5 text-[12px] font-medium transition-colors ${activeTab === "block" ? "border-primary text-foreground bg-card border-b-2" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     Text Format
-                  </button>
+                  </Button>
                 )}
               </div>
 
@@ -558,9 +628,13 @@ export const AdminEditor = ({
                             <span className="text-foreground text-[13px] font-medium">Design</span>
                           </label>
                         </div>
-                        <button className="text-primary mt-2 block text-[12px] hover:underline">
+                        <Button
+                          variant="light"
+                          size="sm"
+                          className="text-primary mt-2 h-auto p-0 text-[12px] font-medium hover:underline"
+                        >
                           Add new category
-                        </button>
+                        </Button>
                       </div>
                     ) : (
                       <div className="border-border/30 space-y-3 border-t pt-4">
@@ -658,10 +732,34 @@ export const AdminEditor = ({
                               Background Color
                             </span>
                             <div className="flex gap-2">
-                              <button className="bg-background border-border/40 ring-primary ring-offset-card h-6 w-6 rounded-full border shadow-sm ring-2 ring-offset-2"></button>
-                              <button className="bg-muted border-border/40 h-6 w-6 rounded-full border transition-transform hover:scale-110"></button>
-                              <button className="bg-primary/10 border-primary/20 h-6 w-6 rounded-full border transition-transform hover:scale-110"></button>
-                              <button className="bg-foreground border-border/40 h-6 w-6 rounded-full border transition-transform hover:scale-110"></button>
+                              <Button
+                                isIconOnly
+                                radius="full"
+                                size="sm"
+                                aria-label="Default color"
+                                className="bg-background border-border/40 ring-primary ring-offset-card h-6 w-6 min-w-6 border shadow-sm ring-2 ring-offset-2"
+                              />
+                              <Button
+                                isIconOnly
+                                radius="full"
+                                size="sm"
+                                aria-label="Muted color"
+                                className="bg-muted border-border/40 h-6 w-6 min-w-6 border transition-transform hover:scale-110"
+                              />
+                              <Button
+                                isIconOnly
+                                radius="full"
+                                size="sm"
+                                aria-label="Primary color"
+                                className="bg-primary/10 border-primary/20 h-6 w-6 min-w-6 border transition-transform hover:scale-110"
+                              />
+                              <Button
+                                isIconOnly
+                                radius="full"
+                                size="sm"
+                                aria-label="Foreground color"
+                                className="bg-foreground border-border/40 h-6 w-6 min-w-6 border transition-transform hover:scale-110"
+                              />
                             </div>
                           </div>
 
@@ -671,12 +769,15 @@ export const AdminEditor = ({
                             </span>
                             <div className="flex gap-1">
                               {["None", "SM", "MD", "LG", "XL"].map((s, i) => (
-                                <button
+                                <Button
                                   key={s}
-                                  className={`h-7 flex-1 rounded border text-[11px] ${i === 3 ? "bg-primary/10 border-primary text-primary" : "bg-background border-border/40 hover:bg-muted text-muted-foreground"}`}
+                                  variant={i === 3 ? "solid" : "bordered"}
+                                  color={i === 3 ? "primary" : "secondary"}
+                                  size="sm"
+                                  className="h-7 min-w-0 flex-1 px-1 text-[11px]"
                                 >
                                   {s}
-                                </button>
+                                </Button>
                               ))}
                             </div>
                           </div>
@@ -687,12 +788,15 @@ export const AdminEditor = ({
                             </span>
                             <div className="flex gap-1">
                               {["None", "SM", "MD", "LG", "XL"].map((s, i) => (
-                                <button
+                                <Button
                                   key={s}
-                                  className={`h-7 flex-1 rounded border text-[11px] ${i === 3 ? "bg-primary/10 border-primary text-primary" : "bg-background border-border/40 hover:bg-muted text-muted-foreground"}`}
+                                  variant={i === 3 ? "solid" : "bordered"}
+                                  color={i === 3 ? "primary" : "secondary"}
+                                  size="sm"
+                                  className="h-7 min-w-0 flex-1 px-1 text-[11px]"
                                 >
                                   {s}
-                                </button>
+                                </Button>
                               ))}
                             </div>
                           </div>

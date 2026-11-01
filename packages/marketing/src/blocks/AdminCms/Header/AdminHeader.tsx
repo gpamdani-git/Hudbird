@@ -199,35 +199,41 @@ export const AdminHeader = ({
                 <p className="text-muted-foreground mt-0.5 text-[11px]">admin@hudbird.com</p>
               </div>
               <div className="space-y-0.5 p-2">
-                <button
+                <Button
+                  variant="light"
+                  size="sm"
                   onClick={() => {
                     setIsUserOpen(false);
                     onNavigate?.("profile");
                   }}
-                  className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors"
+                  className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-auto w-full items-center justify-start gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors"
                 >
                   <User className="h-4 w-4" /> My Profile
-                </button>
-                <button
+                </Button>
+                <Button
+                  variant="light"
+                  size="sm"
                   onClick={() => {
                     setIsUserOpen(false);
                     onNavigate?.("settings");
                   }}
-                  className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors"
+                  className="text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-auto w-full items-center justify-start gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium transition-colors"
                 >
                   <Settings className="h-4 w-4" /> Account Settings
-                </button>
+                </Button>
               </div>
               <div className="border-border/30 border-t p-2">
-                <button
+                <Button
+                  variant="light"
+                  size="sm"
                   onClick={() => {
                     setIsUserOpen(false);
                     setIsLogoutModalOpen(true);
                   }}
-                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium text-rose-500 transition-colors hover:bg-rose-500/10"
+                  className="flex h-auto w-full items-center justify-start gap-2.5 rounded-lg px-3 py-2 text-[13px] font-medium text-rose-500 transition-colors hover:bg-rose-500/10"
                 >
                   <LogOut className="h-4 w-4" /> Sign Out
-                </button>
+                </Button>
               </div>
             </motion.div>
           )}

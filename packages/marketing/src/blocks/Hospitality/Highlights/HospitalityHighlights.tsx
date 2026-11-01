@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@hudbird/ui";
 import { SmoothStackingWrapper } from "../../../components/SmoothStackingWrapper";
 import {
   motion,
@@ -44,10 +45,10 @@ const HOTEL_IMAGES = [
 ];
 
 const POOLS_IMAGES = [
-  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1582610116397-edb318620f90?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1563911302283-d2bc129e7570?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1538964173425-93884d739596?q=80&w=800&auto=format&fit=crop",
+  "https://images.pexels.com/photos/221457/pexels-photo-221457.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/189296/pexels-photo-189296.jpeg?auto=compress&cs=tinysrgb&w=800",
 ];
 
 const HOTEL_TABS = ["VILLAS", "SEGARA", "RESORT", "RIMBA"];
@@ -320,8 +321,10 @@ export function HospitalityHighlights() {
             {/* Tab Navigation */}
             <div className="mb-20 flex flex-wrap justify-center gap-6 md:gap-12">
               {HOTEL_TABS.map((tab, i) => (
-                <button
+                <Button
                   key={tab}
+                  variant="light"
+                  size="sm"
                   onClick={() => {
                     setActiveMenuTab(i);
                     document
@@ -336,7 +339,7 @@ export function HospitalityHighlights() {
                     <span className="font-serif text-[8px]">{tab.charAt(0)}</span>
                   </div>
                   {tab}
-                </button>
+                </Button>
               ))}
             </div>
 
@@ -603,22 +606,28 @@ export function HospitalityHighlights() {
             <div className="mt-8 text-xs text-[#b3ac9f]">✧</div>
 
             <div className="mt-16 flex w-full flex-col items-center justify-between gap-8 border-t border-dotted border-[#b3ac9f] pt-6 md:flex-row md:gap-12">
-              <button className="group relative flex w-full flex-1 items-center justify-between px-2 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]">
+              <Button
+                variant="light"
+                className="group relative flex h-auto w-full flex-1 cursor-pointer items-center justify-between rounded-none px-3.5 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]"
+              >
                 Overview
                 <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#4a4a4a] transition-colors group-hover:border-[#2a2a2a]">
                   <ChevronRight className="h-3 w-3" />
                 </div>
                 <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#2a2a2a]/20" />
                 <div className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#2a2a2a] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              </button>
-              <button className="group relative flex w-full flex-1 items-center justify-between px-2 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]">
+              </Button>
+              <Button
+                variant="light"
+                className="group relative flex h-auto w-full flex-1 cursor-pointer items-center justify-between rounded-none px-3.5 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]"
+              >
                 Pools & Beaches
                 <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#4a4a4a] transition-colors group-hover:border-[#2a2a2a]">
                   <ChevronRight className="h-3 w-3" />
                 </div>
                 <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#2a2a2a]/20" />
                 <div className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#2a2a2a] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              </button>
+              </Button>
             </div>
           </div>
         </motion.section>

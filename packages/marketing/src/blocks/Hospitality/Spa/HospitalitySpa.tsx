@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@hudbird/ui";
 import { SmoothStackingWrapper } from "../../../components/SmoothStackingWrapper";
 import {
   motion,
@@ -308,22 +309,28 @@ export function HospitalitySpa() {
             <div className="mt-8 text-xs text-[#b3ac9f]">✧</div>
 
             <div className="mt-16 flex w-full flex-col items-center justify-between gap-8 border-t border-dotted border-[#b3ac9f] pt-6 md:flex-row md:gap-12">
-              <button className="group relative flex w-full flex-1 items-center justify-between px-2 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]">
+              <Button
+                variant="light"
+                className="group relative flex h-auto w-full flex-1 cursor-pointer items-center justify-between rounded-none px-3.5 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]"
+              >
                 Overview
                 <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#4a4a4a] transition-colors group-hover:border-[#2a2a2a]">
                   <ChevronRight className="h-3 w-3" />
                 </div>
                 <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#2a2a2a]/20" />
                 <div className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#2a2a2a] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              </button>
-              <button className="group relative flex w-full flex-1 items-center justify-between px-2 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]">
+              </Button>
+              <Button
+                variant="light"
+                className="group relative flex h-auto w-full flex-1 cursor-pointer items-center justify-between rounded-none px-3.5 pb-4 text-sm font-semibold tracking-widest text-[#4a4a4a] transition-colors hover:text-[#2a2a2a]"
+              >
                 Treatments & Packages
                 <div className="flex h-5 w-5 items-center justify-center rounded-full border border-[#4a4a4a] transition-colors group-hover:border-[#2a2a2a]">
                   <ChevronRight className="h-3 w-3" />
                 </div>
                 <div className="absolute bottom-0 left-0 h-[1px] w-full bg-[#2a2a2a]/20" />
                 <div className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#2a2a2a] transition-transform duration-500 ease-out group-hover:scale-x-100" />
-              </button>
+              </Button>
             </div>
           </div>
         </motion.section>

@@ -72,8 +72,8 @@ export function Faq({
   items,
   className,
   variant = "side-by-side",
-  badgeClassName = "border-blue-200/50 bg-blue-50/50 text-blue-700 dark:border-blue-800/30 dark:bg-blue-900/20 dark:text-blue-400",
-  accentClassName = "text-blue-600 dark:text-blue-400",
+  badgeClassName = "border-primary/20 bg-primary/10 text-primary dark:border-primary/30 dark:bg-primary/20 dark:text-primary-foreground",
+  accentClassName = "text-primary dark:text-primary-foreground",
 }: FaqProps) {
   const faqs = propFaqs || items || DEFAULT_FAQS;
   if (variant === "centered") {
@@ -115,13 +115,13 @@ export function Faq({
                   title={faq.question}
                   classNames={{
                     trigger: cn(
-                      "group hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200"
+                      "group hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 py-3.5 px-3 -mx-3 min-h-[44px]"
                     ),
                     title: cn(
                       "font-outfit font-semibold text-base transition-colors",
                       `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
                     ),
-                    content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed",
+                    content: "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
                   }}
                 >
                   {faq.answer}
@@ -173,13 +173,13 @@ export function Faq({
                   title={faq.question}
                   classNames={{
                     trigger: cn(
-                      "group py-5 hover:bg-blue-50/50 dark:hover:bg-blue-950/30 rounded-xl transition-all duration-200 px-3 -mx-3"
+                      "group py-4 sm:py-5 min-h-[44px] hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 px-3 -mx-3"
                     ),
                     title: cn(
                       "font-outfit font-semibold text-base transition-colors",
                       `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
                     ),
-                    content: "text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
+                    content: "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
                   }}
                 >
                   {faq.answer}

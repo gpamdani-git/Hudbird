@@ -208,17 +208,16 @@ export default function SelectDoc() {
               <div className="flex items-center gap-1.5">
                 <span className="font-medium text-zinc-500">Variant:</span>
                 {(["flat", "bordered"] as SelectVariant[]).map((v) => (
-                  <button
+                  <Button
                     key={v}
+                    size="sm"
+                    variant={heroVariant === v ? "solid" : "flat"}
+                    color={heroVariant === v ? "primary" : "secondary"}
                     onClick={() => setHeroVariant(v)}
-                    className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
-                      heroVariant === v
-                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                    }`}
+                    className="capitalize"
                   >
                     {v}
-                  </button>
+                  </Button>
                 ))}
               </div>
 
@@ -228,17 +227,16 @@ export default function SelectDoc() {
               <div className="flex items-center gap-1.5">
                 <span className="font-medium text-zinc-500">Size:</span>
                 {(["sm", "md", "lg"] as SelectSize[]).map((s) => (
-                  <button
+                  <Button
                     key={s}
+                    size="sm"
+                    variant={heroSize === s ? "solid" : "flat"}
+                    color={heroSize === s ? "primary" : "secondary"}
                     onClick={() => setHeroSize(s)}
-                    className={`rounded-lg px-2.5 py-1 font-medium uppercase transition-all ${
-                      heroSize === s
-                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                    }`}
+                    className="uppercase"
                   >
                     {s}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

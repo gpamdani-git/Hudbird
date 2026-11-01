@@ -30,7 +30,7 @@ export const PrimaryColorPicker = () => {
               key={p.name}
               onClick={() => setPrimaryColor(p.color)}
               className={cn(
-                "flex items-center justify-center gap-2 rounded-lg border px-2 py-2 text-xs font-medium transition-all",
+                "flex items-center justify-center gap-2 rounded-lg border px-2.5 py-2.5 text-sm font-medium transition-all",
                 isActive
                   ? "border-primary bg-primary/10 text-primary ring-primary/20 ring-1"
                   : "border-border bg-card hover:bg-muted"
@@ -52,7 +52,7 @@ export const PrimaryColorPicker = () => {
         {/* Custom Color Input */}
         <div
           className={cn(
-            "group relative flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border px-2 py-2 text-xs font-medium transition-all",
+            "group relative flex cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border px-2.5 py-2.5 text-sm font-medium transition-all",
             !presets.some((p) => p.color === primaryColor)
               ? "border-primary bg-primary/10 text-primary ring-primary/20 ring-1"
               : "border-border bg-card hover:bg-muted"

@@ -126,7 +126,7 @@ export default function LineChartDoc() {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Line Chart"
@@ -143,11 +143,15 @@ export default function LineChartDoc() {
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Line chart provides an ergonomic wrapper over <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">recharts</code> with built-in dark mode palettes and kinetic hover points:
+          <strong>Abstracted layer.</strong> Line chart provides an ergonomic wrapper over{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            recharts
+          </code>{" "}
+          with built-in dark mode palettes and kinetic hover points:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -167,35 +171,35 @@ export default function App() {
         </div>
       </section>
 
-        <section id="basic" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Basic</h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart data={dummyData} index="date" categories={["Mobile"]} />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="basic" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Basic</h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart data={dummyData} index="date" categories={["Mobile"]} />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
     categories={["Mobile"]}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="step" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Step</h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart data={dummyData} index="date" categories={["Mobile"]} curveType="step" />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="step" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Step</h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart data={dummyData} index="date" categories={["Mobile"]} curveType="step" />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -203,45 +207,45 @@ export default function App() {
     curveType="step"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="multi-line" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Multi Line</h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart data={dummyData} index="date" categories={["Desktop", "Mobile"]} />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="multi-line" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Multi Line</h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart data={dummyData} index="date" categories={["Desktop", "Mobile"]} />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
     categories={["Desktop", "Mobile"]}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="dashed-comparison" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Dashed Comparison
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop", "Mobile"]}
-                strokeDasharray={["0", "5 5"]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="dashed-comparison" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Dashed Comparison
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop", "Mobile"]}
+              strokeDasharray={["0", "5 5"]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -249,32 +253,30 @@ export default function App() {
     strokeDasharray={["0", "5 5"]}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="kpi-with-chart" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            KPI With Chart
-          </h2>
-          <ComponentPreview>
-            <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-              <Card className="w-full p-6">
-                <div className="mb-4">
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Revenue</p>
-                  <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">$45,231</p>
-                </div>
-                <LineChart
-                  data={dummyData}
-                  index="date"
-                  categories={["Desktop"]}
-                  variant="sparkline"
-                />
-              </Card>
-            </div>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6 w-full max-w-sm">
+      <section id="kpi-with-chart" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">KPI With Chart</h2>
+        <ComponentPreview>
+          <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
+            <Card className="w-full p-6">
+              <div className="mb-4">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Revenue</p>
+                <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">$45,231</p>
+              </div>
+              <LineChart
+                data={dummyData}
+                index="date"
+                categories={["Desktop"]}
+                variant="sparkline"
+              />
+            </Card>
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6 w-full max-w-sm">
   <div className="mb-4">
     <p className="text-sm text-zinc-500 dark:text-zinc-400">Total Revenue</p>
     <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">$45,231</p>
@@ -286,26 +288,26 @@ export default function App() {
     variant="sparkline"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="multi-line-chart-colors" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Multi Line Chart Colors
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop", "Mobile"]}
-                colors={["var(--color-warning-500, #eab308)", "var(--color-danger-500, #ef4444)"]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="multi-line-chart-colors" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Multi Line Chart Colors
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop", "Mobile"]}
+              colors={["var(--color-warning-500, #eab308)", "var(--color-danger-500, #ef4444)"]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -313,34 +315,32 @@ export default function App() {
     colors={["var(--color-warning-500, #eab308)", "var(--color-danger-500, #ef4444)"]}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="portfolio" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Portfolio</h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <div className="mb-6 flex flex-col gap-1">
-                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
-                  Portfolio Value
-                </h3>
-                <p className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">$12,450.00</p>
-                <p className="text-success-500 text-sm">+2.5% from last month</p>
-              </div>
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop"]}
-                colors={["var(--color-success-500, #22c55e)"]}
-                showGridLines={false}
-                showYAxis={false}
-                showXAxis={false}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="portfolio" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Portfolio</h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <div className="mb-6 flex flex-col gap-1">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Portfolio Value</h3>
+              <p className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">$12,450.00</p>
+              <p className="text-success-500 text-sm">+2.5% from last month</p>
+            </div>
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop"]}
+              colors={["var(--color-success-500, #22c55e)"]}
+              showGridLines={false}
+              showYAxis={false}
+              showXAxis={false}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <div className="mb-6 flex flex-col gap-1">
     <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Portfolio Value</h3>
     <p className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">$12,450.00</p>
@@ -356,24 +356,19 @@ export default function App() {
     showXAxis={false}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="sparkline" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Sparkline</h2>
-          <ComponentPreview>
-            <Card className="w-72 p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop"]}
-                variant="sparkline"
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6 w-72">
+      <section id="sparkline" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Sparkline</h2>
+        <ComponentPreview>
+          <Card className="w-72 p-6">
+            <LineChart data={dummyData} index="date" categories={["Desktop"]} variant="sparkline" />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6 w-72">
   <LineChart
     data={dummyData}
     index="date"
@@ -381,37 +376,37 @@ export default function App() {
     variant="sparkline"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="stats-with-chart" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Stats With Chart
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <div>
-                  <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                    Total Users
-                  </h3>
-                  <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">1,234</p>
-                </div>
-                <div className="w-32">
-                  <LineChart
-                    data={dummyData}
-                    index="date"
-                    categories={["Desktop"]}
-                    variant="sparkline"
-                    showTooltip={false}
-                  />
-                </div>
+      <section id="stats-with-chart" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Stats With Chart
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <div className="mb-4 flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                  Total Users
+                </h3>
+                <p className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">1,234</p>
               </div>
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+              <div className="w-32">
+                <LineChart
+                  data={dummyData}
+                  index="date"
+                  categories={["Desktop"]}
+                  variant="sparkline"
+                  showTooltip={false}
+                />
+              </div>
+            </div>
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <div className="flex items-center justify-between mb-4">
     <div>
       <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Total Users</h3>
@@ -428,50 +423,58 @@ export default function App() {
     </div>
   </div>
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="with-custom-tooltip" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            With Custom Tooltip
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop"]}
-                customTooltip={({ payload, label, active }: any) => {
-                  if (active && payload && payload.length) {
-                    return (
-                      <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-                        <p className="mb-1 text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                          {label}
-                        </p>
+      <section id="with-custom-tooltip" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          With Custom Tooltip
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop"]}
+              customTooltip={({ payload, label, active }: any) => {
+                if (active && payload && payload.length) {
+                  return (
+                    <div className="min-w-[11rem] rounded-xl border border-zinc-200/90 bg-white/95 px-3.5 py-2.5 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-black/50">
+                      <p className="mb-2 border-b border-zinc-100 pb-1.5 text-xs font-semibold tracking-tight text-zinc-900 dark:border-white/[0.08] dark:text-zinc-100">
+                        {label}
+                      </p>
+                      <div className="space-y-1.5">
                         {payload.map((entry: any, index: number) => (
-                          <div key={index} className="flex items-center gap-2 text-sm">
-                            <div
-                              className="h-2 w-2 rounded-full"
-                              style={{ backgroundColor: entry.color }}
-                            />
-                            <span className="text-zinc-500 dark:text-zinc-400">{entry.name}:</span>
-                            <span className="font-medium text-zinc-900 dark:text-zinc-50">
+                          <div
+                            key={index}
+                            className="flex items-center justify-between gap-4 text-xs"
+                          >
+                            <div className="flex items-center gap-2">
+                              <div
+                                className="h-2 w-2 rounded-full"
+                                style={{ backgroundColor: entry.color }}
+                              />
+                              <span className="text-zinc-600 dark:text-zinc-400">
+                                {entry.name}:
+                              </span>
+                            </div>
+                            <span className="font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
                               {entry.value}
                             </span>
                           </div>
                         ))}
-                        <div className="mt-2 text-xs text-indigo-500">Custom Tooltip Demo</div>
                       </div>
-                    );
-                  }
-                  return null;
-                }}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -496,26 +499,26 @@ export default function App() {
     }}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="traffic-source" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Traffic Source (No Dots)
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop", "Mobile"]}
-                showDots={false}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="traffic-source" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Traffic Source (No Dots)
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop", "Mobile"]}
+              showDots={false}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -523,31 +526,26 @@ export default function App() {
     showDots={false}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="connecting-nulls" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Connecting Nulls
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            When <code>connectNulls</code> is set to true, the chart connects data points skipping
-            any missing/null values, as demonstrated with the missing <code>June</code> data point
-            in the Desktop category.
-          </p>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop"]}
-                connectNulls={true}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="p-6">
+      <section id="connecting-nulls" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Connecting Nulls
+        </h2>
+        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+          When <code>connectNulls</code> is set to true, the chart connects data points skipping any
+          missing/null values, as demonstrated with the missing <code>June</code> data point in the
+          Desktop category.
+        </p>
+        <ComponentPreview>
+          <Card className="w-full p-6">
+            <LineChart data={dummyData} index="date" categories={["Desktop"]} connectNulls={true} />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="p-6">
   <LineChart
     data={dummyData}
     index="date"
@@ -555,63 +553,73 @@ export default function App() {
     connectNulls={true}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="css-classes" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            CSS Classes
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>Responsive scaling.</strong> The LineChart component applies standard Tailwind classes for dark mode and dimensions. Internal Recharts components accept specific utility classes via the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop to ensure responsive container scaling.
-          </p>
-        </section>
+      <section id="css-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          CSS Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Responsive scaling.</strong> The LineChart component applies standard Tailwind
+          classes for dark mode and dimensions. Internal Recharts components accept specific utility
+          classes via the{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop to ensure responsive container scaling.
+        </p>
+      </section>
 
-        <section id="advanced-customization" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            Advanced Customization
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>Custom SVG &amp; tooltips.</strong> Inject custom SVG definitions via <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">children</code>, configure stroke styles, and render rich custom tooltips with live trend metrics.
-          </p>
-          <ComponentPreview>
-            <Card className="mx-auto w-full max-w-2xl p-4">
-              <LineChart
-                data={dummyData}
-                index="date"
-                categories={["Desktop"]}
-                colors={["url(#custom-gradient-line)"]}
-                strokeDasharray="5 5"
-                strokeWidth={3}
-                customTooltip={(props: any) => {
-                  if (!props.active || !props.payload || props.payload.length === 0) return null;
-                  const { value } = props.payload[0];
-                  return (
-                    <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
-                      <img
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                        alt="Avatar"
-                        className="h-10 w-10 rounded-full"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-zinc-300">Revenue</p>
-                        <p className="text-lg font-bold text-purple-400">${value}</p>
-                      </div>
+      <section id="advanced-customization" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Advanced Customization
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Custom SVG &amp; tooltips.</strong> Inject custom SVG definitions via{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            children
+          </code>
+          , configure stroke styles, and render rich custom tooltips with live trend metrics.
+        </p>
+        <ComponentPreview>
+          <Card className="mx-auto w-full max-w-2xl p-4">
+            <LineChart
+              data={dummyData}
+              index="date"
+              categories={["Desktop"]}
+              colors={["url(#custom-gradient-line)"]}
+              strokeDasharray="5 5"
+              strokeWidth={3}
+              customTooltip={(props: any) => {
+                if (!props.active || !props.payload || props.payload.length === 0) return null;
+                const { value } = props.payload[0];
+                return (
+                  <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
+                    <img
+                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                      alt="Avatar"
+                      className="h-10 w-10 rounded-full"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-zinc-300">Revenue</p>
+                      <p className="text-lg font-bold text-purple-400">${value}</p>
                     </div>
-                  );
-                }}
-              >
-                <defs>
-                  <linearGradient id="custom-gradient-line" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stopColor="#a855f7" />
-                    <stop offset="100%" stopColor="#ec4899" />
-                  </linearGradient>
-                </defs>
-              </LineChart>
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            code={`<LineChart
+                  </div>
+                );
+              }}
+            >
+              <defs>
+                <linearGradient id="custom-gradient-line" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stopColor="#a855f7" />
+                  <stop offset="100%" stopColor="#ec4899" />
+                </linearGradient>
+              </defs>
+            </LineChart>
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          code={`<LineChart
   data={dummyData}
   index="date"
   categories={["Desktop"]}
@@ -639,15 +647,15 @@ export default function App() {
     </linearGradient>
   </defs>
 </LineChart>`}
-          />
-        </section>
+        />
+      </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           API Reference
         </h2>
         <ApiTable rows={apiRows} />
-        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+        <h3 className="font-outfit pt-6 text-xl font-medium tracking-[-0.4px] text-zinc-900 sm:text-2xl dark:text-white">
           Recharts API Reference
         </h3>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -656,7 +664,7 @@ export default function App() {
             href="https://recharts.github.io/en-US/api/LineChart/"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
             https://recharts.github.io/en-US/api/LineChart/
           </a>

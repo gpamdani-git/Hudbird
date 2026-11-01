@@ -82,9 +82,11 @@ export default function ProgressDoc() {
       />
 
       {/* Installation */}
-      <section id="installation" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Installation</h2>
-        <InstallationTabs componentName="Progress" code={progressCode} fileName="Progress.tsx" />
+      <section id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
+        <InstallationTabs componentName="progress" manualCode={progressCode} />
       </section>
 
       {/* Interactive Controller */}

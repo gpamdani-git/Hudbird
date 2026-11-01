@@ -692,7 +692,7 @@ export function ClearableExample() {
               <select
                 value={custVariant}
                 onChange={(e) => setCustVariant(e.target.value as InputVariant)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="flat">Flat</option>
                 <option value="bordered">Bordered</option>
@@ -708,7 +708,7 @@ export function ClearableExample() {
               <select
                 value={custPlacement}
                 onChange={(e) => setCustPlacement(e.target.value as InputLabelPlacement)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="outside">Outside</option>
                 <option value="inside">Inside</option>
@@ -723,7 +723,7 @@ export function ClearableExample() {
               <select
                 value={custSize}
                 onChange={(e) => setCustSize(e.target.value as InputSize)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="sm">Small (sm)</option>
                 <option value="md">Medium (md)</option>
@@ -739,7 +739,7 @@ export function ClearableExample() {
               <select
                 value={custRadius}
                 onChange={(e) => setCustRadius(e.target.value as InputRadius)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="none">None</option>
                 <option value="md">Medium (md)</option>

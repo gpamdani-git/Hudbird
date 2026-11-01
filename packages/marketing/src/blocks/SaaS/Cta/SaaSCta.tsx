@@ -132,9 +132,14 @@ export const SaaSCta = () => (
           </p>
 
           {/* Primary Button */}
-          <button className="h-14 rounded-full bg-blue-600 px-8 text-lg font-medium text-white shadow-lg shadow-blue-500/25 transition-all hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-blue-500/40">
+          <Button
+            size="lg"
+            color="primary"
+            radius="full"
+            className="h-14 !bg-blue-600 px-8 text-lg font-medium !text-white shadow-lg shadow-blue-500/25 transition-all hover:-translate-y-0.5 hover:!bg-blue-700 hover:shadow-blue-500/40"
+          >
             Start 14-Day Free Trial
-          </button>
+          </Button>
         </div>
       </div>
     </section>

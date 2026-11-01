@@ -24,7 +24,7 @@ export const RadiusPicker = () => {
               title={`${r.value}rem`}
               onClick={() => setActiveRadius(r.value)}
               className={cn(
-                "rounded-lg border py-2 text-xs font-semibold transition-all",
+                "rounded-lg border py-2.5 text-sm font-semibold transition-all",
                 isActive
                   ? "border-primary bg-primary/10 text-primary ring-primary/20 ring-1"
                   : "border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground shadow-sm"

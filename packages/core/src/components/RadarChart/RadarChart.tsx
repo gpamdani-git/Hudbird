@@ -56,7 +56,7 @@ const RadarChart = React.forwardRef<HTMLDivElement, RadarChartProps>(
       gridType = "polygon",
       showRadiusAxis = false,
       customTooltip,
-      fillOpacity = 0.5,
+      fillOpacity = 0.25,
       children,
       className,
       ...props
@@ -75,7 +75,10 @@ const RadarChart = React.forwardRef<HTMLDivElement, RadarChartProps>(
         <ResponsiveContainer width="100%" height="100%">
           <RechartsRadarChart data={data} outerRadius="70%">
             {showGridLines && (
-              <PolarGrid gridType={gridType} className="stroke-zinc-200 dark:stroke-zinc-800" />
+              <PolarGrid
+                gridType={gridType}
+                className="stroke-zinc-200/80 dark:stroke-white/[0.08]"
+              />
             )}
             <PolarAngleAxis
               dataKey={index}
@@ -116,8 +119,11 @@ const RadarChart = React.forwardRef<HTMLDivElement, RadarChartProps>(
                 verticalAlign="bottom"
                 height={36}
                 iconType="circle"
+                wrapperStyle={{ fontSize: "13px", paddingTop: "16px" }}
                 formatter={(value) => (
-                  <span className="text-sm text-zinc-700 dark:text-zinc-300">{value}</span>
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                    {value}
+                  </span>
                 )}
               />
             )}

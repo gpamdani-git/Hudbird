@@ -163,14 +163,18 @@ const SingleToast: React.FC<SingleToastProps> = ({ toastItem }) => {
       role="status"
       aria-live="polite"
       className={cn(
-        "animate-in fade-in-0 slide-in-from-bottom-2 pointer-events-auto relative flex w-full max-w-sm items-start gap-3 rounded-2xl border border-zinc-200/80 bg-white/95 p-4 shadow-xl shadow-zinc-950/5 backdrop-blur-md transition-all duration-300 dark:border-zinc-800 dark:bg-zinc-900/95 dark:shadow-black/20",
-        type === "error" && "border-rose-200 dark:border-rose-900/40",
-        type === "success" && "border-emerald-200 dark:border-emerald-900/40",
-        type === "warning" && "border-amber-200 dark:border-amber-900/40",
+        "animate-in fade-in-0 slide-in-from-bottom-2 pointer-events-auto relative flex w-full max-w-sm items-start gap-3.5 rounded-2xl border border-black/[0.08] bg-white/95 px-5 py-3.5 shadow-2xl shadow-zinc-950/10 backdrop-blur-2xl transition-all duration-300 dark:border-white/[0.08] dark:bg-[#161618]/95 dark:shadow-black/60",
+        type === "error" && "border-rose-500/30 dark:border-rose-500/30",
+        type === "success" && "border-emerald-500/30 dark:border-emerald-500/30",
+        type === "warning" && "border-amber-500/30 dark:border-amber-500/30",
         className
       )}
     >
-      {displayIcon && <div className="mt-0.5 shrink-0">{displayIcon}</div>}
+      {displayIcon && (
+        <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
+          {displayIcon}
+        </div>
+      )}
 
       <div className="flex-1 space-y-1 text-left">
         {title && (
@@ -193,7 +197,7 @@ const SingleToast: React.FC<SingleToastProps> = ({ toastItem }) => {
                   action.onClick(e);
                   toast.dismiss(id);
                 }}
-                className="rounded-lg bg-zinc-900 px-2.5 py-1 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100"
+                className="rounded-lg bg-zinc-900 px-3 py-1.5 text-xs font-semibold text-white shadow-xs transition-all hover:bg-zinc-800 active:scale-95 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100"
               >
                 {action.label}
               </button>
@@ -205,7 +209,7 @@ const SingleToast: React.FC<SingleToastProps> = ({ toastItem }) => {
                   cancel.onClick(e);
                   toast.dismiss(id);
                 }}
-                className="rounded-lg border border-zinc-200 px-2.5 py-1 text-xs font-medium text-zinc-700 hover:bg-zinc-100 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                className="rounded-lg border border-black/[0.08] px-3 py-1.5 text-xs font-medium text-zinc-700 transition-all hover:bg-zinc-100 active:scale-95 dark:border-white/[0.08] dark:text-zinc-300 dark:hover:bg-zinc-800"
               >
                 {cancel.label}
               </button>
@@ -218,7 +222,7 @@ const SingleToast: React.FC<SingleToastProps> = ({ toastItem }) => {
         type="button"
         aria-label="Dismiss toast"
         onClick={() => toast.dismiss(id)}
-        className="-mt-1 -mr-1 rounded-lg p-1 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+        className="-mt-1 -mr-1 flex h-7 w-7 items-center justify-center rounded-lg text-zinc-400 transition-all hover:bg-zinc-100 hover:text-zinc-700 active:scale-90 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
       >
         <X className="h-4 w-4" />
       </button>

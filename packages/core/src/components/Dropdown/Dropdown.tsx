@@ -218,7 +218,7 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
 DropdownMenu.displayName = "DropdownMenu";
 
 const dropdownItemVariants = cva(
-  "relative flex items-center justify-between w-full px-3 py-2 text-sm rounded-xl cursor-pointer select-none transition-all duration-150 outline-none disabled:pointer-events-none disabled:opacity-50",
+  "relative flex items-center justify-between w-full px-3.5 py-2.5 text-sm rounded-xl cursor-pointer select-none transition-all duration-150 outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {

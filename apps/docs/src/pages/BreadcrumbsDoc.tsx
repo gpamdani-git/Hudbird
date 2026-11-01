@@ -17,6 +17,7 @@ export const breadcrumbsTocItems = [
     title: "Examples",
     children: [
       { id: "basic-breadcrumbs", title: "Basic Breadcrumbs" },
+      { id: "breadcrumbs-variants", title: "Variants (Light, Bordered, Solid)" },
       { id: "custom-separators", title: "Custom Separators" },
       { id: "size-variations", title: "Size Variations" },
       { id: "collapsed-items", title: "Collapsed Items (maxItems)" },
@@ -72,13 +73,11 @@ export default function BreadcrumbsDoc() {
       />
 
       {/* Installation */}
-      <section id="installation" className="space-y-4">
-        <h2 className="text-foreground text-xl font-semibold tracking-tight">Installation</h2>
-        <InstallationTabs
-          componentName="Breadcrumbs"
-          code={breadcrumbsCode}
-          fileName="Breadcrumbs.tsx"
-        />
+      <section id="installation" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Installation
+        </h2>
+        <InstallationTabs componentName="breadcrumbs" manualCode={breadcrumbsCode} />
       </section>
 
       {/* Basic Breadcrumbs */}
@@ -87,14 +86,12 @@ export default function BreadcrumbsDoc() {
           Basic Breadcrumbs
         </h2>
         <ComponentPreview>
-          <div className="p-4">
-            <Breadcrumbs>
-              <BreadcrumbItem href="#home">Home</BreadcrumbItem>
-              <BreadcrumbItem href="#dashboard">Dashboard</BreadcrumbItem>
-              <BreadcrumbItem href="#settings">Settings</BreadcrumbItem>
-              <BreadcrumbItem isCurrent>Security</BreadcrumbItem>
-            </Breadcrumbs>
-          </div>
+          <Breadcrumbs>
+            <BreadcrumbItem href="#home">Home</BreadcrumbItem>
+            <BreadcrumbItem href="#dashboard">Dashboard</BreadcrumbItem>
+            <BreadcrumbItem href="#settings">Settings</BreadcrumbItem>
+            <BreadcrumbItem isCurrent>Security</BreadcrumbItem>
+          </Breadcrumbs>
         </ComponentPreview>
         <CodeBlock
           language="tsx"
@@ -107,13 +104,77 @@ export default function BreadcrumbsDoc() {
         />
       </section>
 
+      {/* Variants */}
+      <section id="breadcrumbs-variants" className="space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
+          Variants (Light, Bordered, Solid)
+        </h2>
+        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+          Choose between minimal light paths, frosted glass bordered capsules, or solid surfaces:
+        </p>
+        <ComponentPreview>
+          <div className="space-y-6">
+            <div>
+              <p className="mb-2 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
+                Light (Default)
+              </p>
+              <Breadcrumbs variant="light">
+                <BreadcrumbItem href="#">Home</BreadcrumbItem>
+                <BreadcrumbItem href="#">Projects</BreadcrumbItem>
+                <BreadcrumbItem isCurrent>Dashboard</BreadcrumbItem>
+              </Breadcrumbs>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
+                Bordered (Frosted Capsule)
+              </p>
+              <Breadcrumbs variant="bordered">
+                <BreadcrumbItem href="#">Home</BreadcrumbItem>
+                <BreadcrumbItem href="#">Workspace</BreadcrumbItem>
+                <BreadcrumbItem isCurrent>Settings</BreadcrumbItem>
+              </Breadcrumbs>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-semibold tracking-wider text-zinc-400 uppercase">
+                Solid
+              </p>
+              <Breadcrumbs variant="solid">
+                <BreadcrumbItem href="#">Home</BreadcrumbItem>
+                <BreadcrumbItem href="#">Billing</BreadcrumbItem>
+                <BreadcrumbItem isCurrent>Invoices</BreadcrumbItem>
+              </Breadcrumbs>
+            </div>
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`{/* 1. Light (Default) */}
+<Breadcrumbs variant="light">
+  <BreadcrumbItem href="#">Home</BreadcrumbItem>
+  <BreadcrumbItem isCurrent>Dashboard</BreadcrumbItem>
+</Breadcrumbs>
+
+{/* 2. Bordered (Frosted Capsule) */}
+<Breadcrumbs variant="bordered">
+  <BreadcrumbItem href="#">Home</BreadcrumbItem>
+  <BreadcrumbItem isCurrent>Settings</BreadcrumbItem>
+</Breadcrumbs>
+
+{/* 3. Solid */}
+<Breadcrumbs variant="solid">
+  <BreadcrumbItem href="#">Home</BreadcrumbItem>
+  <BreadcrumbItem isCurrent>Invoices</BreadcrumbItem>
+</Breadcrumbs>`}
+        />
+      </section>
+
       {/* Custom Separator */}
       <section id="custom-separators" className="space-y-4">
         <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
           Custom Separators
         </h2>
         <ComponentPreview>
-          <div className="space-y-6 p-4">
+          <div className="space-y-6">
             <div>
               <p className="text-muted-foreground mb-2 text-xs">Slash Separator</p>
               <Breadcrumbs separator={<Slash className="h-3.5 w-3.5 rotate-[-20deg]" />}>
@@ -140,7 +201,7 @@ export default function BreadcrumbsDoc() {
           Size Variations
         </h2>
         <ComponentPreview>
-          <div className="space-y-4 p-4">
+          <div className="space-y-4">
             <Breadcrumbs size="sm">
               <BreadcrumbItem href="#">Small</BreadcrumbItem>
               <BreadcrumbItem href="#">Breadcrumb</BreadcrumbItem>
@@ -166,15 +227,13 @@ export default function BreadcrumbsDoc() {
           Collapsed Items (maxItems)
         </h2>
         <ComponentPreview>
-          <div className="p-4">
-            <Breadcrumbs maxItems={3} itemsBeforeCollapse={1} itemsAfterCollapse={1}>
-              <BreadcrumbItem href="#">Workspace</BreadcrumbItem>
-              <BreadcrumbItem href="#">Projects</BreadcrumbItem>
-              <BreadcrumbItem href="#">Design System</BreadcrumbItem>
-              <BreadcrumbItem href="#">Components</BreadcrumbItem>
-              <BreadcrumbItem isCurrent>Breadcrumbs</BreadcrumbItem>
-            </Breadcrumbs>
-          </div>
+          <Breadcrumbs maxItems={3} itemsBeforeCollapse={1} itemsAfterCollapse={1}>
+            <BreadcrumbItem href="#">Workspace</BreadcrumbItem>
+            <BreadcrumbItem href="#">Projects</BreadcrumbItem>
+            <BreadcrumbItem href="#">Design System</BreadcrumbItem>
+            <BreadcrumbItem href="#">Components</BreadcrumbItem>
+            <BreadcrumbItem isCurrent>Breadcrumbs</BreadcrumbItem>
+          </Breadcrumbs>
         </ComponentPreview>
         <CodeBlock
           language="tsx"
@@ -194,19 +253,17 @@ export default function BreadcrumbsDoc() {
           With Icons
         </h2>
         <ComponentPreview>
-          <div className="p-4">
-            <Breadcrumbs>
-              <BreadcrumbItem href="#" startContent={<Home className="h-4 w-4" />}>
-                Home
-              </BreadcrumbItem>
-              <BreadcrumbItem href="#" startContent={<Folder className="h-4 w-4" />}>
-                Documents
-              </BreadcrumbItem>
-              <BreadcrumbItem isCurrent startContent={<FileText className="h-4 w-4" />}>
-                Specifications.pdf
-              </BreadcrumbItem>
-            </Breadcrumbs>
-          </div>
+          <Breadcrumbs>
+            <BreadcrumbItem href="#" startContent={<Home className="h-4 w-4" />}>
+              Home
+            </BreadcrumbItem>
+            <BreadcrumbItem href="#" startContent={<Folder className="h-4 w-4" />}>
+              Documents
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent startContent={<FileText className="h-4 w-4" />}>
+              Specifications.pdf
+            </BreadcrumbItem>
+          </Breadcrumbs>
         </ComponentPreview>
       </section>
 

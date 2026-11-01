@@ -409,7 +409,7 @@ function Example() {
                     <span className="truncate font-mono text-xs text-indigo-600 dark:text-indigo-400">
                       https://app.design-system.io/v2
                     </span>
-                    <Button size="sm" variant="outline" className="h-7 shrink-0 px-2.5 text-xs">
+                    <Button size="sm" variant="outline" className="h-8 shrink-0 px-3.5 text-xs">
                       Visit Link
                     </Button>
                   </DescriptionListValue>
@@ -433,7 +433,7 @@ function Example() {
                     <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
                       sk_live_••••••••••••9821
                     </span>
-                    <Button size="sm" variant="outline" className="h-7 shrink-0 px-2.5 text-xs">
+                    <Button size="sm" variant="outline" className="h-8 shrink-0 px-3.5 text-xs">
                       Reveal Key
                     </Button>
                   </DescriptionListValue>

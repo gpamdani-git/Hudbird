@@ -154,12 +154,9 @@ export const FintechHero = () => (
               className="w-full flex-1 bg-transparent text-sm text-zinc-900 placeholder-zinc-400 outline-none dark:text-white dark:placeholder-zinc-500"
               required
             />
-            <button
-              type="button"
-              className="shrink-0 rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-            >
+            <Button type="button" radius="full" color="primary" size="sm" className="shrink-0">
               Get started
-            </button>
+            </Button>
           </form>
         </motion.div>
       </div>
@@ -238,9 +235,9 @@ export const FintechHero = () => (
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button className="flex items-center gap-1.5 rounded-md bg-zinc-900 px-4 py-2 text-sm text-white hover:bg-zinc-800 dark:bg-white/10 dark:hover:bg-white/20">
-                    <ArrowRight className="h-3 w-3" /> Send Money
-                  </button>
+                  <Button size="sm" startContent={<ArrowRight className="h-3 w-3" />}>
+                    Send Money
+                  </Button>
                 </div>
               </div>
 

@@ -110,12 +110,12 @@ const RadialChart = React.forwardRef<HTMLDivElement, RadialChartProps>(
                 verticalAlign="bottom"
                 height={36}
                 iconType="circle"
-                wrapperStyle={{ paddingTop: "12px" }}
+                wrapperStyle={{ paddingTop: "16px", fontSize: "13px" }}
                 formatter={(value, entry, idx) => {
                   const item = processedData[idx];
                   const label = item ? item[index] || item.name : value;
                   return (
-                    <span className="ml-1.5 inline-block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    <span className="ml-1.5 inline-block text-xs font-medium text-zinc-600 dark:text-zinc-400">
                       {label}
                     </span>
                   );
@@ -126,7 +126,7 @@ const RadialChart = React.forwardRef<HTMLDivElement, RadialChartProps>(
             {categories.map((category) => (
               <RadialBar
                 key={category}
-                background={{ className: "fill-zinc-100 dark:fill-zinc-800" }}
+                background={{ className: "fill-zinc-100 dark:fill-white/[0.04]" }}
                 dataKey={category}
                 cornerRadius={9999}
                 isAnimationActive={false}

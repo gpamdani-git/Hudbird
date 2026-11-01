@@ -9,7 +9,7 @@ export type ProgressSize = "sm" | "md" | "lg";
 export type ProgressRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const progressTrackVariants = cva(
-  "w-full bg-zinc-100 dark:bg-zinc-800/80 overflow-hidden relative",
+  "w-full bg-zinc-200/60 dark:bg-[#202124] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] border border-black/[0.04] dark:border-white/[0.06] overflow-hidden relative",
   {
     variants: {
       size: {
@@ -32,31 +32,34 @@ export const progressTrackVariants = cva(
   }
 );
 
-export const progressIndicatorVariants = cva("h-full transition-all duration-300 ease-out", {
-  variants: {
-    color: {
-      default: "bg-zinc-700 dark:bg-zinc-300",
-      primary: "bg-indigo-600 dark:bg-indigo-500",
-      secondary: "bg-purple-600 dark:bg-purple-500",
-      success: "bg-emerald-600 dark:bg-emerald-500",
-      warning: "bg-amber-500 dark:bg-amber-400",
-      danger: "bg-rose-600 dark:bg-rose-500",
+export const progressIndicatorVariants = cva(
+  "h-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+  {
+    variants: {
+      color: {
+        default: "bg-zinc-700 dark:bg-zinc-300",
+        primary: "bg-indigo-600 dark:bg-indigo-500",
+        secondary: "bg-purple-600 dark:bg-purple-500",
+        success: "bg-emerald-600 dark:bg-emerald-500",
+        warning: "bg-amber-500 dark:bg-amber-400",
+        danger: "bg-rose-600 dark:bg-rose-500",
+      },
+      isStriped: {
+        true: "bg-[linear-gradient(45deg,rgba(255,255,255,0.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem]",
+        false: "",
+      },
+      isIndeterminate: {
+        true: "w-full origin-left animate-[progress-indeterminate_1.5s_infinite_linear]",
+        false: "",
+      },
     },
-    isStriped: {
-      true: "bg-[linear-gradient(45deg,rgba(255,255,255,0.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem]",
-      false: "",
+    defaultVariants: {
+      color: "primary",
+      isStriped: false,
+      isIndeterminate: false,
     },
-    isIndeterminate: {
-      true: "w-full origin-left animate-[progress-indeterminate_1.5s_infinite_linear]",
-      false: "",
-    },
-  },
-  defaultVariants: {
-    color: "primary",
-    isStriped: false,
-    isIndeterminate: false,
-  },
-});
+  }
+);
 
 export interface ProgressProps
   extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof progressTrackVariants> {
@@ -236,7 +239,7 @@ export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgress
             r={radius}
             fill="transparent"
             strokeWidth={strokeWidth}
-            className="stroke-zinc-100 dark:stroke-zinc-800"
+            className="stroke-zinc-200/60 dark:stroke-[#202124]"
           />
           {/* Active indicator */}
           <circle

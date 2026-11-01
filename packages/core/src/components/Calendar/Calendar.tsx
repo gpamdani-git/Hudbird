@@ -167,8 +167,8 @@ const rangeBetweenColorMap: Record<CalendarColor, string> = {
 
 const cellSizeMap: Record<CalendarSize, string> = {
   sm: "w-8 h-8 text-xs",
-  md: "w-9 h-9 text-sm",
-  lg: "w-11 h-11 text-base",
+  md: "w-10 h-10 text-sm",
+  lg: "w-12 h-12 text-base",
 };
 
 export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
@@ -526,20 +526,20 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
         role="region"
         aria-label={props["aria-label"] || "Calendar"}
         className={cn(
-          "border-border bg-card text-card-foreground inline-block rounded-2xl border p-4 shadow-sm select-none",
+          "text-card-foreground inline-block rounded-2xl border border-black/[0.08] bg-white p-4 shadow-xl shadow-black/5 select-none dark:border-white/[0.08] dark:bg-[#161618] dark:shadow-black/40",
           className
         )}
         {...props}
       >
         {/* Optional Presets Header Bar */}
         {presets && presets.length > 0 && (
-          <div className="border-border/80 mb-3 flex flex-wrap items-center gap-1.5 border-b pb-3">
+          <div className="mb-3 flex flex-wrap items-center gap-1.5 border-b border-black/[0.08] pb-3 dark:border-white/[0.08]">
             {presets.map((preset, idx) => (
               <button
                 key={idx}
                 type="button"
                 onClick={() => handlePresetClick(preset)}
-                className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-lg px-2.5 py-1 text-xs font-medium transition-all"
+                className="text-muted-foreground hover:text-foreground cursor-pointer rounded-lg px-2.5 py-1 text-xs font-medium transition-all hover:bg-zinc-100 dark:hover:bg-[#202124]"
               >
                 {preset.label}
               </button>
@@ -557,9 +557,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 onClick={prevYear}
                 aria-label="Previous year"
                 title="Previous year"
-                className="border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground focus:ring-ring flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border bg-transparent transition focus:ring-1 focus:outline-none"
+                className="text-muted-foreground hover:text-foreground focus:ring-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-black/[0.08] bg-transparent transition hover:bg-zinc-100 focus:ring-1 focus:outline-none active:scale-95 dark:border-white/[0.08] dark:hover:bg-[#202124]"
               >
-                <ChevronsLeft className="h-3.5 w-3.5" />
+                <ChevronsLeft className="h-4 w-4" />
               </button>
             )}
             <button
@@ -574,9 +574,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                     ? "Previous year"
                     : "Previous decade"
               }
-              className="border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground focus:ring-ring flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border bg-transparent transition focus:ring-1 focus:outline-none"
+              className="text-muted-foreground hover:text-foreground focus:ring-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-black/[0.08] bg-transparent transition hover:bg-zinc-100 focus:ring-1 focus:outline-none active:scale-95 dark:border-white/[0.08] dark:hover:bg-[#202124]"
             >
-              <ChevronLeft className="h-3.5 w-3.5" />
+              <ChevronLeft className="h-4 w-4" />
             </button>
           </div>
 
@@ -587,10 +587,10 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 type="button"
                 onClick={() => setViewMode("month")}
                 aria-label="Switch to month picker"
-                className="group text-foreground hover:bg-muted flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1 text-sm font-semibold tracking-tight transition-colors"
+                className="group text-foreground flex cursor-pointer items-center gap-1 rounded-xl px-2.5 py-1 text-sm font-semibold tracking-tight transition-colors hover:bg-zinc-100 dark:hover:bg-[#202124]"
               >
                 <span>{monthYearTitle}</span>
-                <ChevronDown className="text-muted-foreground h-3 w-3 transition-transform group-hover:rotate-180" />
+                <ChevronDown className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
               </button>
             )}
 
@@ -599,10 +599,10 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 type="button"
                 onClick={() => setViewMode("year")}
                 aria-label="Switch to year picker"
-                className="group text-foreground hover:bg-muted flex cursor-pointer items-center gap-1 rounded-lg px-2 py-1 text-sm font-semibold tracking-tight transition-colors"
+                className="group text-foreground flex cursor-pointer items-center gap-1 rounded-xl px-2.5 py-1 text-sm font-semibold tracking-tight transition-colors hover:bg-zinc-100 dark:hover:bg-[#202124]"
               >
                 <span>{viewDate.getFullYear()}</span>
-                <ChevronDown className="text-muted-foreground h-3 w-3 transition-transform group-hover:rotate-180" />
+                <ChevronDown className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
               </button>
             )}
 
@@ -619,7 +619,7 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
               <button
                 type="button"
                 onClick={goToToday}
-                className="text-muted-foreground hover:bg-muted hover:text-foreground cursor-pointer rounded-md px-2 py-0.5 text-xs font-medium transition"
+                className="text-muted-foreground hover:text-foreground cursor-pointer rounded-lg px-2.5 py-1 text-xs font-medium transition hover:bg-zinc-100 dark:hover:bg-[#202124]"
               >
                 Today
               </button>
@@ -637,9 +637,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                     ? "Next year"
                     : "Next decade"
               }
-              className="border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground focus:ring-ring flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border bg-transparent transition focus:ring-1 focus:outline-none"
+              className="text-muted-foreground hover:text-foreground focus:ring-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-black/[0.08] bg-transparent transition hover:bg-zinc-100 focus:ring-1 focus:outline-none active:scale-95 dark:border-white/[0.08] dark:hover:bg-[#202124]"
             >
-              <ChevronRight className="h-3.5 w-3.5" />
+              <ChevronRight className="h-4 w-4" />
             </button>
 
             {showYearNavigation && viewMode === "day" && (
@@ -648,9 +648,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(
                 onClick={nextYear}
                 aria-label="Next year"
                 title="Next year"
-                className="border-border/60 text-muted-foreground hover:bg-muted hover:text-foreground focus:ring-ring flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border bg-transparent transition focus:ring-1 focus:outline-none"
+                className="text-muted-foreground hover:text-foreground focus:ring-ring flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-black/[0.08] bg-transparent transition hover:bg-zinc-100 focus:ring-1 focus:outline-none active:scale-95 dark:border-white/[0.08] dark:hover:bg-[#202124]"
               >
-                <ChevronsRight className="h-3.5 w-3.5" />
+                <ChevronsRight className="h-4 w-4" />
               </button>
             )}
           </div>

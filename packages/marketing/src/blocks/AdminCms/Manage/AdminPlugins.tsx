@@ -116,12 +116,16 @@ export const AdminPlugins = () => {
         className="flex flex-col gap-6 pb-10"
       >
         <div className="flex items-center gap-3">
-          <button
+          <Button
+            isIconOnly
+            variant="outline"
+            size="sm"
             onClick={() => setIsAddingPlugin(false)}
-            className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
+            aria-label="Back to plugins"
+            className="border-border/40 bg-card h-8 w-8 min-w-8"
           >
             <ArrowLeft className="h-4 w-4" />
-          </button>
+          </Button>
           <div>
             <h2 className="text-lg font-bold tracking-tight">Add New Plugin</h2>
             <p className="text-muted-foreground mt-0.5 text-[13px]">
@@ -243,13 +247,22 @@ export const AdminPlugins = () => {
                     <div className="text-muted-foreground max-w-[400px] truncate">
                       {plugin.desc}
                     </div>
-                    <div className="mt-2 flex items-center gap-4">
-                      <button className="text-primary text-[12px] hover:underline">
+                    <div className="mt-2 flex items-center gap-3">
+                      <Button
+                        variant="light"
+                        size="sm"
+                        className="text-primary h-auto p-0 text-[12px] font-medium hover:underline"
+                      >
                         View details
-                      </button>
-                      <button className="text-primary text-[12px] hover:underline">
+                      </Button>
+                      <span className="text-muted-foreground/40 text-xs">·</span>
+                      <Button
+                        variant="light"
+                        size="sm"
+                        className="text-primary h-auto p-0 text-[12px] font-medium hover:underline"
+                      >
                         Documentation
-                      </button>
+                      </Button>
                     </div>
                   </td>
                   <td className="px-5 py-4 align-top">
@@ -263,18 +276,33 @@ export const AdminPlugins = () => {
                   <td className="px-5 py-4 text-right align-top">
                     <div className="flex items-center justify-end gap-3">
                       {plugin.status === "Inactive" ? (
-                        <button className="text-primary flex items-center gap-1 text-[13px] font-medium hover:underline">
-                          <CheckCircle2 className="h-3.5 w-3.5" /> Activate
-                        </button>
+                        <Button
+                          variant="light"
+                          size="sm"
+                          startContent={<CheckCircle2 className="h-3.5 w-3.5" />}
+                          className="text-primary h-auto p-0 text-[13px] font-medium hover:underline"
+                        >
+                          Activate
+                        </Button>
                       ) : (
-                        <button className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-[13px] font-medium hover:underline">
-                          <XCircle className="h-3.5 w-3.5" /> Deactivate
-                        </button>
+                        <Button
+                          variant="light"
+                          size="sm"
+                          startContent={<XCircle className="h-3.5 w-3.5" />}
+                          className="text-muted-foreground hover:text-foreground h-auto p-0 text-[13px] font-medium hover:underline"
+                        >
+                          Deactivate
+                        </Button>
                       )}
                       {plugin.status === "Inactive" && (
-                        <button className="flex items-center gap-1 text-[13px] font-medium text-rose-500 hover:underline">
-                          <Trash className="h-3.5 w-3.5" /> Delete
-                        </button>
+                        <Button
+                          variant="light"
+                          size="sm"
+                          startContent={<Trash className="h-3.5 w-3.5" />}
+                          className="h-auto p-0 text-[13px] font-medium text-rose-500 hover:underline"
+                        >
+                          Delete
+                        </Button>
                       )}
                     </div>
                   </td>

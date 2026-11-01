@@ -313,17 +313,16 @@ export default function PaginationDoc() {
               <div className="flex items-center gap-1.5">
                 <span className="font-medium text-zinc-500">Variant:</span>
                 {(["solid", "bordered", "flat", "light"] as PaginationVariant[]).map((v) => (
-                  <button
+                  <Button
                     key={v}
+                    size="sm"
+                    variant={selectedVariant === v ? "solid" : "flat"}
+                    color={selectedVariant === v ? "primary" : "secondary"}
                     onClick={() => setSelectedVariant(v)}
-                    className={`rounded-lg px-2.5 py-1 font-medium transition-all ${
-                      selectedVariant === v
-                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                    }`}
+                    className="capitalize"
                   >
                     {v}
-                  </button>
+                  </Button>
                 ))}
               </div>
 
@@ -333,17 +332,16 @@ export default function PaginationDoc() {
               <div className="flex items-center gap-1.5">
                 <span className="font-medium text-zinc-500">Color:</span>
                 {(["primary", "success", "danger", "dark"] as PaginationColor[]).map((c) => (
-                  <button
+                  <Button
                     key={c}
+                    size="sm"
+                    variant={selectedColor === c ? "solid" : "flat"}
+                    color={selectedColor === c ? "primary" : "secondary"}
                     onClick={() => setSelectedColor(c)}
-                    className={`rounded-lg px-2.5 py-1 font-medium capitalize transition-all ${
-                      selectedColor === c
-                        ? "border border-zinc-200 bg-white text-zinc-950 shadow-xs dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
-                        : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                    }`}
+                    className="capitalize"
                   >
                     {c}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

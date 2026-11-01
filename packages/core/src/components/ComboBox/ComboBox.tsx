@@ -19,13 +19,13 @@ const comboBoxInputVariants = cva(
     variants: {
       variant: {
         bordered:
-          "bg-background border border-border hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
-        flat: "bg-muted border border-transparent hover:bg-muted/80 focus-within:bg-background focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20",
+          "bg-background dark:bg-[#161618] border border-black/[0.08] dark:border-white/[0.08] hover:border-foreground/30 focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20 shadow-2xs",
+        flat: "bg-muted dark:bg-[#161618] border border-transparent hover:bg-muted/80 focus-within:bg-background focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/20",
       },
       size: {
-        sm: "min-h-8 text-xs py-1 px-2.5",
-        md: "min-h-10 text-sm py-1.5 px-3",
-        lg: "min-h-12 text-base py-2 px-3.5",
+        sm: "min-h-9 text-xs py-1 px-3",
+        md: "min-h-11 text-sm py-2 px-4",
+        lg: "min-h-13 text-base py-2.5 px-5",
       },
       isInvalid: {
         true: "!border-rose-600 !ring-rose-600/20",
@@ -351,7 +351,7 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
 
         {/* Floating Dropdown Overlay */}
         {isOpen && !disabled && (
-          <div className="animate-in fade-in-0 zoom-in-95 border-border/80 bg-popover text-popover-foreground absolute top-full left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border p-1.5 shadow-xl backdrop-blur-md duration-150">
+          <div className="animate-in fade-in-0 zoom-in-95 text-popover-foreground absolute top-full left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-black/[0.08] bg-white/95 p-1.5 shadow-2xl shadow-black/10 backdrop-blur-2xl duration-150 outline-none dark:border-white/[0.08] dark:bg-[#161618]/95 dark:shadow-black/60">
             {filteredOptions.length > 0 ? (
               <ul className="space-y-0.5" role="listbox">
                 {filteredOptions.map((opt) => {
@@ -366,10 +366,10 @@ const ComboBox = React.forwardRef<HTMLDivElement, ComboBoxProps>(
                       aria-selected={isSelected}
                       onClick={() => handleSelectOption(opt)}
                       className={cn(
-                        "flex cursor-pointer items-center justify-between rounded-xl px-3 py-2 text-sm transition-all duration-150 select-none",
+                        "flex cursor-pointer items-center justify-between rounded-xl px-3.5 py-2.5 text-sm transition-all duration-150 select-none active:scale-[0.98]",
                         isSelected
-                          ? "bg-accent text-accent-foreground font-medium"
-                          : "text-popover-foreground hover:bg-accent hover:text-accent-foreground",
+                          ? "text-foreground bg-zinc-100 font-semibold dark:bg-[#202124]"
+                          : "text-popover-foreground hover:text-foreground hover:bg-zinc-100 dark:hover:bg-[#202124]",
                         opt.disabled && "pointer-events-none cursor-not-allowed opacity-40"
                       )}
                     >

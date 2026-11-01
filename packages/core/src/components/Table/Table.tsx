@@ -140,9 +140,9 @@ const TableRow = React.forwardRef<HTMLTableRowElement, TableRowProps>(
 TableRow.displayName = "TableRow";
 
 const densityHeadStyles: Record<TableDensity, string> = {
-  compact: "px-3 py-2 text-[10px]",
-  normal: "px-4 py-3.5 text-[11px]",
-  relaxed: "px-5 py-4.5 text-xs",
+  compact: "px-3.5 py-2 text-[10px]",
+  normal: "px-5 py-3.5 text-[11px]",
+  relaxed: "px-6 py-4.5 text-xs",
 };
 
 export interface TableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {}
@@ -167,9 +167,9 @@ const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(
 TableHead.displayName = "TableHead";
 
 const densityCellStyles: Record<TableDensity, string> = {
-  compact: "px-3 py-2 text-xs",
-  normal: "px-4 py-3.5 text-sm",
-  relaxed: "px-5 py-4.5 text-sm sm:text-base",
+  compact: "px-3.5 py-2 text-xs",
+  normal: "px-5 py-3.5 text-sm",
+  relaxed: "px-6 py-4.5 text-sm sm:text-base",
 };
 
 export interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {}

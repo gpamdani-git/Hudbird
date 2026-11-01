@@ -149,9 +149,12 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 </div>
               )}
               {deviceMode !== "desktop" && (
-                <button
+                <Button
+                  isIconOnly
+                  variant="ghost"
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="hover:bg-muted/50 flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5 rounded-lg border-none bg-transparent transition-colors"
+                  aria-label="Toggle menu"
+                  className="hover:bg-muted/50 flex h-10 w-10 min-w-10 flex-col items-center justify-center gap-1.5 rounded-lg border-none bg-transparent"
                 >
                   <div
                     className={`bg-foreground h-0.5 w-5 rounded-full transition-transform ${mobileMenuOpen ? "translate-y-2 rotate-45" : ""}`}
@@ -162,7 +165,7 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                   <div
                     className={`bg-foreground h-0.5 w-5 rounded-full transition-transform ${mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`}
                   ></div>
-                </button>
+                </Button>
               )}
             </div>
           </div>
@@ -369,12 +372,16 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
           className="flex max-w-5xl flex-col gap-6 pb-10"
         >
           <div className="border-border/30 flex items-center gap-3 border-b pb-4">
-            <button
+            <Button
+              isIconOnly
+              variant="outline"
+              size="sm"
               onClick={() => setSelectedThemeId(null)}
-              className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 w-8 items-center justify-center rounded-lg border transition-colors"
+              aria-label="Back"
+              className="border-border/40 bg-card h-8 w-8 min-w-8"
             >
               <ArrowLeft className="h-4 w-4" />
-            </button>
+            </Button>
             <div>
               <div className="flex items-center gap-3">
                 <h2 className="text-xl font-bold tracking-tight">{selectedTheme.name}</h2>
@@ -541,10 +548,12 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 Global Site Parts
               </h3>
               {SITE_PARTS.map((part) => (
-                <button
+                <Button
                   key={part.id}
+                  variant={activePartId === part.id ? "solid" : "light"}
+                  color={activePartId === part.id ? "primary" : "secondary"}
                   onClick={() => setActivePartId(part.id)}
-                  className={`flex w-full flex-col items-start rounded-lg px-3 py-2.5 text-left transition-colors ${
+                  className={`flex h-auto w-full flex-col items-start justify-start rounded-lg px-3 py-2.5 text-left transition-colors ${
                     activePartId === part.id
                       ? "bg-primary text-primary-foreground shadow-sm"
                       : "hover:bg-muted/50 text-foreground"
@@ -561,7 +570,7 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                   >
                     {part.type}
                   </div>
-                </button>
+                </Button>
               ))}
             </div>
           </Card>
@@ -699,13 +708,15 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 </label>
                 <div className="bg-muted/50 border-border/40 grid grid-cols-3 gap-1 rounded-lg border p-1">
                   {["Standard", "Centered", "Floating"].map((mode) => (
-                    <button
+                    <Button
                       key={mode}
+                      variant={headerLayout === mode ? "solid" : "light"}
+                      size="sm"
                       onClick={() => setHeaderLayout(mode)}
-                      className={`rounded-md py-1.5 text-[11px] font-medium transition-colors ${headerLayout === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                      className={`h-7 rounded-md py-1 text-[11px] font-medium transition-colors ${headerLayout === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                     >
                       {mode}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -714,18 +725,26 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
               <div className="border-border/40 space-y-3 border-t pt-2">
                 <label className="text-foreground text-[13px] font-semibold">Logo Type</label>
                 <div className="flex gap-2">
-                  <button
+                  <Button
+                    variant={headerLogoType === "Text" ? "solid" : "bordered"}
+                    color={headerLogoType === "Text" ? "primary" : "secondary"}
+                    size="sm"
                     onClick={() => setHeaderLogoType("Text")}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-lg border py-2 text-[12px] font-medium transition-colors ${headerLogoType === "Text" ? "border-primary bg-primary/5 text-primary" : "border-border/60 text-muted-foreground"}`}
+                    startContent={<Type className="h-3.5 w-3.5" />}
+                    className="flex-1 py-2 text-[12px] font-medium"
                   >
-                    <Type className="h-3.5 w-3.5" /> Text
-                  </button>
-                  <button
+                    Text
+                  </Button>
+                  <Button
+                    variant={headerLogoType === "Image" ? "solid" : "bordered"}
+                    color={headerLogoType === "Image" ? "primary" : "secondary"}
+                    size="sm"
                     onClick={() => setHeaderLogoType("Image")}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-lg border py-2 text-[12px] font-medium transition-colors ${headerLogoType === "Image" ? "border-primary bg-primary/5 text-primary" : "border-border/60 text-muted-foreground"}`}
+                    startContent={<ImageIcon className="h-3.5 w-3.5" />}
+                    className="flex-1 py-2 text-[12px] font-medium"
                   >
-                    <ImageIcon className="h-3.5 w-3.5" /> Image
-                  </button>
+                    Image
+                  </Button>
                 </div>
 
                 {headerLogoType === "Text" ? (
@@ -755,9 +774,15 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                       <div className="bg-muted/30 border-border/40 flex-1 rounded-md border px-3 py-1.5 text-[12px]">
                         {link.trim()}
                       </div>
-                      <button className="border-border/40 text-muted-foreground hover:bg-destructive hover:text-destructive-foreground hover:border-destructive flex h-7 w-7 items-center justify-center rounded border transition-colors">
+                      <Button
+                        isIconOnly
+                        variant="ghost"
+                        size="sm"
+                        aria-label="Remove link"
+                        className="border-border/40 text-muted-foreground hover:bg-destructive hover:text-destructive-foreground hover:border-destructive h-7 w-7 min-w-7 rounded border"
+                      >
                         <Minus className="h-3 w-3" />
-                      </button>
+                      </Button>
                     </div>
                   ))}
                   <Button
@@ -793,13 +818,15 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 </label>
                 <div className="bg-muted/50 border-border/40 grid grid-cols-2 gap-1 rounded-lg border p-1">
                   {["Standard", "Minimal"].map((mode) => (
-                    <button
+                    <Button
                       key={mode}
+                      variant={footerLayout === mode ? "solid" : "light"}
+                      size="sm"
                       onClick={() => setFooterLayout(mode)}
-                      className={`rounded-md py-1.5 text-[12px] font-medium transition-colors ${footerLayout === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                      className={`h-7 rounded-md py-1 text-[12px] font-medium transition-colors ${footerLayout === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                     >
                       {mode}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -810,13 +837,15 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                 </label>
                 <div className="bg-muted/50 border-border/40 grid grid-cols-2 gap-1 rounded-lg border p-1">
                   {["Light", "Dark"].map((mode) => (
-                    <button
+                    <Button
                       key={mode}
+                      variant={footerTheme === mode ? "solid" : "light"}
+                      size="sm"
                       onClick={() => setFooterTheme(mode)}
-                      className={`rounded-md py-1.5 text-[12px] font-medium transition-colors ${footerTheme === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
+                      className={`h-7 rounded-md py-1 text-[12px] font-medium transition-colors ${footerTheme === mode ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
                     >
                       {mode}
-                    </button>
+                    </Button>
                   ))}
                 </div>
               </div>
@@ -874,15 +903,19 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                           }}
                           className="flex-1 bg-transparent text-[13px] font-bold outline-none"
                         />
-                        <button
+                        <Button
+                          isIconOnly
+                          variant="ghost"
+                          size="sm"
                           onClick={() => {
                             const newData = footerColsData.filter((_, idx) => idx !== i);
                             setFooterColsData(newData);
                           }}
-                          className="text-muted-foreground hover:bg-destructive hover:text-destructive-foreground flex h-6 w-6 shrink-0 items-center justify-center rounded transition-colors"
+                          aria-label="Delete column"
+                          className="text-muted-foreground hover:bg-destructive hover:text-destructive-foreground h-6 w-6 min-w-6 rounded"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
-                        </button>
+                        </Button>
                       </div>
 
                       {/* Links List */}
@@ -900,16 +933,20 @@ export const AdminSiteBuilder = ({ onNavigate }: { onNavigate?: (page: string) =
                               }}
                               className="text-muted-foreground focus:border-border/60 -ml-1 flex-1 rounded border border-transparent bg-transparent px-1 text-[12px] transition-colors outline-none"
                             />
-                            <button
+                            <Button
+                              isIconOnly
+                              variant="ghost"
+                              size="sm"
                               onClick={() => {
                                 const newData = [...footerColsData];
                                 newData[i].links.splice(j, 1);
                                 setFooterColsData(newData);
                               }}
-                              className="text-muted-foreground/60 hover:text-destructive flex h-5 w-5 shrink-0 items-center justify-center rounded transition-colors"
+                              aria-label="Remove link"
+                              className="text-muted-foreground/60 hover:text-destructive h-5 w-5 min-w-5 rounded"
                             >
                               <Minus className="h-3 w-3" />
-                            </button>
+                            </Button>
                           </div>
                         ))}
                         <Button

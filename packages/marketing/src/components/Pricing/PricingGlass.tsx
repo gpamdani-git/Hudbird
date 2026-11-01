@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { Check } from "lucide-react";
+import { Badge, Button } from "@hudbird/ui";
 
 export interface PricingGlassTier {
   name: string;
@@ -57,10 +58,10 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
       onToggleAnnual,
       annualLabel = "Annually",
       monthlyLabel = "Monthly",
-      popularCardClassName = "border-blue-500/30 bg-blue-50/40 dark:border-blue-500/30 dark:bg-blue-500/10 dark:shadow-[0_8px_30px_rgba(59,130,246,0.2)]",
-      popularBadgeClassName = "bg-blue-500/10 text-blue-600 ring-blue-500/20 dark:bg-blue-500/20 dark:text-blue-300",
-      popularCheckClassName = "text-blue-600 dark:text-blue-400",
-      popularCtaClassName = "bg-blue-600 text-white hover:bg-blue-500 focus-visible:outline-blue-600",
+      popularCardClassName = "border-primary/30 bg-primary/5 dark:border-primary/30 dark:bg-primary/10 dark:shadow-[0_8px_30px_rgba(79,70,229,0.15)]",
+      popularBadgeClassName = "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground",
+      popularCheckClassName = "text-primary dark:text-primary-foreground",
+      popularCtaClassName = "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary",
       ...props
     },
     ref
@@ -95,43 +96,25 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-10 flex justify-center"
             >
-              <div className="relative flex items-center rounded-full border border-zinc-200/50 bg-white/50 p-1 shadow-sm backdrop-blur-xl dark:border-zinc-800/50 dark:bg-black/50">
-                <button
-                  type="button"
+              <div className="relative flex items-center gap-1 rounded-full border border-zinc-200/50 bg-white/50 p-1 shadow-sm backdrop-blur-xl dark:border-zinc-800/50 dark:bg-black/50">
+                <Button
+                  size="sm"
+                  variant={!isAnnual ? "solid" : "light"}
+                  radius="full"
                   onClick={() => onToggleAnnual(false)}
-                  className={cn(
-                    "relative w-32 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                    !isAnnual
-                      ? "text-zinc-900 dark:text-white"
-                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-                  )}
+                  className="w-32"
                 >
-                  {!isAnnual && (
-                    <motion.div
-                      layoutId="pricing-toggle-glass"
-                      className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-zinc-800"
-                    />
-                  )}
-                  <span className="relative z-10">{monthlyLabel}</span>
-                </button>
-                <button
-                  type="button"
+                  {monthlyLabel}
+                </Button>
+                <Button
+                  size="sm"
+                  variant={isAnnual ? "solid" : "light"}
+                  radius="full"
                   onClick={() => onToggleAnnual(true)}
-                  className={cn(
-                    "relative w-32 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                    isAnnual
-                      ? "text-zinc-900 dark:text-white"
-                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-                  )}
+                  className="w-32"
                 >
-                  {isAnnual && (
-                    <motion.div
-                      layoutId="pricing-toggle-glass"
-                      className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-zinc-800"
-                    />
-                  )}
-                  <span className="relative z-10">{annualLabel}</span>
-                </button>
+                  {annualLabel}
+                </Button>
               </div>
             </motion.div>
           )}
@@ -153,13 +136,15 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
               >
                 {/* Popular Badge */}
                 {tier.popular && (
-                  <div
-                    className={cn(
-                      "absolute top-6 right-6 rounded-full px-3 py-1 text-xs font-semibold ring-1 ring-inset",
-                      popularBadgeClassName
-                    )}
-                  >
-                    Most Popular
+                  <div className="absolute top-6 right-6">
+                    <Badge
+                      variant="soft"
+                      color="primary"
+                      size="sm"
+                      className={cn("font-semibold", popularBadgeClassName)}
+                    >
+                      Most Popular
+                    </Badge>
                   </div>
                 )}
 
@@ -193,17 +178,15 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
                   </ul>
                 </div>
 
-                <a
+                <Button
                   href={tier.href || "#"}
-                  className={cn(
-                    "mt-10 block rounded-full px-4 py-2.5 text-center text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
-                    tier.popular
-                      ? popularCtaClassName
-                      : "bg-white/50 text-zinc-900 ring-1 ring-zinc-200/50 ring-inset hover:bg-white/80 hover:ring-zinc-300/50 dark:bg-white/10 dark:text-white dark:ring-white/10 dark:hover:bg-white/20 dark:hover:ring-white/20"
-                  )}
+                  radius="full"
+                  variant={tier.popular ? "solid" : "bordered"}
+                  color={tier.popular ? "primary" : "secondary"}
+                  className={cn("mt-10 w-full", tier.popular ? popularCtaClassName : "")}
                 >
                   {tier.buttonLabel}
-                </a>
+                </Button>
               </motion.div>
             ))}
           </div>

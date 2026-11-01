@@ -220,7 +220,7 @@ export const IdeCodeBlock: React.FC<IdeCodeBlockProps> = ({
                 onClick={handleCopy}
                 aria-label="Copy code"
                 title="Copy code"
-                className="flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                className="flex h-7 items-center gap-1.5 rounded-lg px-3 text-xs font-medium text-zinc-500 transition-colors hover:bg-zinc-200 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
               >
                 {copied ? (
                   <Check className="h-3.5 w-3.5 text-emerald-500" />

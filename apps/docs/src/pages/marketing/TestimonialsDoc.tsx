@@ -142,9 +142,9 @@ export default function TestimonialsDoc({ onOpenSidebar }: { onOpenSidebar?: () 
         </MarketingPreview>
 
         <MarketingPreview title="Glassmorphic Testimonials" code={testimonialGlassCode}>
-          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
-            <div className="absolute top-0 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
-            <div className="absolute right-1/4 bottom-0 h-[500px] w-[500px] translate-x-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
+          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
+            <div className="bg-primary/10 absolute top-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full blur-[100px]" />
+            <div className="bg-primary/5 absolute right-1/4 bottom-0 h-80 w-80 translate-x-1/2 rounded-full blur-[100px]" />
             <TestimonialGlass testimonials={DEFAULT_TESTIMONIALS} />
           </div>
         </MarketingPreview>

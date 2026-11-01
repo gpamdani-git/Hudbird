@@ -13,9 +13,11 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        shadow: "bg-card border border-border/80 shadow-xs dark:border-white/10 dark:bg-[#1C1C1F]",
-        bordered: "bg-transparent border border-border dark:border-white/10 shadow-none",
-        flat: "bg-muted/50 border border-transparent dark:bg-[#202124] shadow-none",
+        shadow:
+          "bg-white dark:bg-[#161618] border border-zinc-200/90 dark:border-white/[0.08] shadow-[0_4px_16px_-4px_rgba(0,0,0,0.06),0_1px_3px_-1px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_-6px_rgba(0,0,0,0.08)] transition-all duration-200",
+        bordered:
+          "bg-white/80 dark:bg-[#161618]/80 backdrop-blur-xl border border-zinc-200/90 dark:border-white/[0.08] shadow-xs",
+        flat: "bg-zinc-100/80 dark:bg-[#1e1e22] border border-black/[0.04] dark:border-white/[0.04] shadow-none",
       },
       radius: {
         none: "rounded-none",
@@ -98,7 +100,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
       <div
         ref={ref}
         className={cn(
-          "text-card-foreground z-10 flex w-full shrink-0 items-center justify-start gap-3 p-5 font-semibold",
+          "z-10 flex w-full shrink-0 items-center justify-between gap-3 px-6 pt-6 pb-2 font-semibold tracking-tight text-zinc-950 dark:text-zinc-50",
           className
         )}
         {...props}
@@ -118,7 +120,7 @@ const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
       <div
         ref={ref}
         className={cn(
-          "text-muted-foreground relative h-auto w-full flex-1 overflow-visible p-5 pt-0 text-left text-sm leading-relaxed font-normal break-words",
+          "relative h-auto w-full flex-1 overflow-visible px-6 py-4 text-left text-sm leading-relaxed font-normal break-words text-zinc-600 dark:text-zinc-400",
           className
         )}
         {...props}
@@ -140,9 +142,9 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
       <div
         ref={ref}
         className={cn(
-          "border-border/50 z-10 flex w-full shrink-0 items-center justify-between p-5 pt-0",
+          "z-10 flex w-full shrink-0 items-center justify-between px-6 pt-2 pb-6 text-xs font-medium text-zinc-500 dark:text-zinc-400",
           isBlurred &&
-            "absolute inset-x-0 bottom-0 rounded-b-2xl border-t border-black/5 bg-white/70 pt-3.5 pb-3.5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/70",
+            "absolute inset-x-0 bottom-0 rounded-b-2xl border-t border-black/[0.08] bg-white/70 px-6 py-3.5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/70",
           className
         )}
         {...props}

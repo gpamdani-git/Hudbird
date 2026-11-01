@@ -4,6 +4,7 @@ import { DocHeader } from "../components/DocHeader";
 import {
   Sidebar,
   SidebarHeader,
+  SidebarBrand,
   SidebarToggle,
   SidebarContent,
   SidebarNav,
@@ -28,6 +29,10 @@ import {
   FileText,
   Menu,
   ChevronRight,
+  Bot,
+  Sparkles,
+  SlidersHorizontal,
+  Compass,
 } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
@@ -40,15 +45,28 @@ export const sidebarTocItems = [
   {
     id: "examples",
     title: "Examples",
-    children: [{ id: "flat-variant", title: "Flat variant" }],
+    children: [
+      { id: "standard-left", title: "Standard Left Sidebar" },
+      { id: "flat-variant", title: "Flat variant" },
+      { id: "right-sidebar", title: "Right Inspector / AI Panel" },
+      { id: "bottom-dock", title: "macOS Floating Bottom Dock" },
+      { id: "floating-variant", title: "Inset Floating Rounded Sidebar" },
+    ],
   },
 ];
 
 const sidebarApiProps: ApiPropRow[] = [
   {
+    prop: "position",
+    defaultVal: '"left"',
+    description:
+      'Placement direction of the sidebar: "left" (standard navigation), "right" (inspector/assistant panel), or "bottom" (macOS-style floating dock).',
+  },
+  {
     prop: "variant",
     defaultVal: '"flat"',
-    description: 'Visual style variant of the sidebar. Can be "flat" or "bordered".',
+    description:
+      'Visual style variant: "flat", "bordered", "floating" (inset rounded card with shadow), or "dock" (macOS pill dock with backdrop blur).',
   },
   {
     prop: "size",
@@ -204,7 +222,7 @@ export default function FlatSidebar() {
 
         <SidebarContent>
           <div className="px-3 mb-2">
-            <div className="flex items-center gap-2 px-2.5 py-1.5 bg-zinc-200/50 rounded-full text-zinc-500">
+            <div className="flex h-8 items-center gap-2 px-3.5 bg-zinc-200/50 rounded-full text-zinc-500">
               <Search size={14} />
               <span className="text-xs">Search...</span>
             </div>
@@ -523,7 +541,7 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
 
                   <SidebarContent>
                     <div className="mb-2 px-3 pt-2">
-                      <div className="flex items-center gap-2 rounded-full bg-zinc-200/50 px-2.5 py-1.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
+                      <div className="flex h-8 items-center gap-2 rounded-full bg-zinc-200/50 px-3.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
                         <Search size={14} className="shrink-0" />
                         <span className="overflow-hidden text-xs whitespace-nowrap transition-all group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
                           Search...
@@ -582,6 +600,227 @@ export default function SidebarDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
             </div>
           </ComponentPreview>
           <CodeBlock code={codeFlat} />
+        </div>
+
+        {/* 3. Right Inspector / AI Assistant Sidebar */}
+        <div id="right-sidebar" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Right Inspector & AI Assistant Panel
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Configure{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              position="right"
+            </code>{" "}
+            for canvas properties, context drawers, or AI copilot panels:
+          </p>
+
+          <ComponentPreview>
+            <div className="relative flex h-[420px] w-full max-w-3xl overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-50 dark:border-white/[0.08] dark:bg-[#161618]">
+              <main className="flex-1 p-6">
+                <h4 className="font-semibold text-zinc-900 dark:text-white">Canvas Editor</h4>
+                <p className="mt-1 text-xs text-zinc-500">
+                  Select an element to view inspector tools on the right panel.
+                </p>
+              </main>
+
+              <Sidebar position="right" variant="bordered" size="sm">
+                <SidebarHeader>
+                  <SidebarBrand
+                    icon={<Bot size={16} className="text-primary" />}
+                    title="Inspector"
+                  />
+                  <SidebarToggle />
+                </SidebarHeader>
+
+                <SidebarContent>
+                  <SidebarNav title="Copilot">
+                    <SidebarItem icon={<Bot size={16} />} isActive label="AI Assistant">
+                      AI Assistant
+                    </SidebarItem>
+                    <SidebarItem icon={<Sparkles size={16} />} label="Auto Prompt">
+                      Auto Prompt
+                    </SidebarItem>
+                  </SidebarNav>
+
+                  <SidebarNav title="Parameters">
+                    <SidebarItem icon={<SlidersHorizontal size={16} />} label="Styling">
+                      Styling
+                    </SidebarItem>
+                    <SidebarItem icon={<Settings size={16} />} label="Configs">
+                      Configs
+                    </SidebarItem>
+                  </SidebarNav>
+                </SidebarContent>
+              </Sidebar>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Sidebar, SidebarHeader, SidebarContent, SidebarNav, SidebarItem, SidebarToggle } from "@hudbird/ui";
+import { Bot, Sparkles, SlidersHorizontal, Settings } from "lucide-react";
+
+export function RightInspector() {
+  return (
+    <div className="flex h-screen">
+      <main className="flex-1 p-6">Main Content</main>
+      
+      {/* Right-Hand Sidebar */}
+      <Sidebar position="right" variant="bordered" size="sm">
+        <SidebarHeader>
+          <SidebarBrand icon={<Bot size={16} className="text-primary" />} title="Inspector" />
+          <SidebarToggle />
+        </SidebarHeader>
+
+        <SidebarContent>
+          <SidebarNav title="Copilot">
+            <SidebarItem icon={<Bot size={16} />} isActive label="AI Assistant">AI Assistant</SidebarItem>
+            <SidebarItem icon={<Sparkles size={16} />} label="Auto Prompt">Auto Prompt</SidebarItem>
+          </SidebarNav>
+        </SidebarContent>
+      </Sidebar>
+    </div>
+  );
+}`}
+          />
+        </div>
+
+        {/* 4. macOS Floating Bottom Dock */}
+        <div id="bottom-dock" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            macOS Floating Bottom Dock
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              position="bottom" variant="dock"
+            </code>{" "}
+            to render an Apple macOS-inspired floating action dock with micro-tooltips:
+          </p>
+
+          <ComponentPreview>
+            <div className="relative flex h-[340px] w-full max-w-2xl flex-col items-center justify-end rounded-2xl border border-zinc-200/80 bg-gradient-to-t from-zinc-200/60 via-zinc-100 to-white p-6 dark:border-white/[0.08] dark:from-[#121214] dark:via-[#161618] dark:to-[#1a1a1c]">
+              <div className="absolute top-6 text-center">
+                <span className="bg-brand-500/10 text-brand-600 dark:text-brand-300 rounded-full px-3 py-1 text-xs font-medium">
+                  macOS Style Navigation
+                </span>
+                <p className="mt-2 text-xs text-zinc-500">
+                  Hover over any dock item to reveal optical top tooltips
+                </p>
+              </div>
+
+              {/* Bottom Dock */}
+              <Sidebar position="bottom" variant="dock">
+                <SidebarContent>
+                  <SidebarNav>
+                    <SidebarItem icon={<Home size={18} />} isActive label="Home" />
+                    <SidebarItem icon={<Compass size={18} />} label="Explore" />
+                    <SidebarItem icon={<Inbox size={18} />} label="Messages" />
+                    <SidebarItem icon={<Sparkles size={18} />} label="AI Studio" />
+                    <SidebarItem icon={<Settings size={18} />} label="Preferences" />
+                  </SidebarNav>
+                </SidebarContent>
+              </Sidebar>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Sidebar, SidebarContent, SidebarNav, SidebarItem } from "@hudbird/ui";
+import { Home, Compass, Inbox, Sparkles, Settings } from "lucide-react";
+
+export function FloatingDock() {
+  return (
+    <Sidebar position="bottom" variant="dock">
+      <SidebarContent>
+        <SidebarNav>
+          <SidebarItem icon={<Home size={18} />} isActive label="Home" />
+          <SidebarItem icon={<Compass size={18} />} label="Explore" />
+          <SidebarItem icon={<Inbox size={18} />} label="Messages" />
+          <SidebarItem icon={<Sparkles size={18} />} label="AI Studio" />
+          <SidebarItem icon={<Settings size={18} />} label="Preferences" />
+        </SidebarNav>
+      </SidebarContent>
+    </Sidebar>
+  );
+}`}
+          />
+        </div>
+
+        {/* 5. Inset Floating Rounded Sidebar */}
+        <div id="floating-variant" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Inset Floating Rounded Sidebar
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+              variant="floating"
+            </code>{" "}
+            to decouple the sidebar from screen edges into a rounded floating card:
+          </p>
+
+          <ComponentPreview>
+            <div className="relative flex h-[400px] w-full max-w-3xl overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#121214]">
+              <Sidebar variant="floating" size="sm">
+                <SidebarHeader>
+                  <SidebarBrand
+                    icon={<Sparkles size={16} className="text-brand-500" />}
+                    title="Space X"
+                  />
+                  <SidebarToggle />
+                </SidebarHeader>
+
+                <SidebarContent>
+                  <SidebarNav>
+                    <SidebarItem icon={<Home size={16} />} isActive label="Overview">
+                      Overview
+                    </SidebarItem>
+                    <SidebarItem icon={<Radio size={16} />} label="Telemetry">
+                      Telemetry
+                    </SidebarItem>
+                    <SidebarItem icon={<Settings size={16} />} label="Engines">
+                      Engines
+                    </SidebarItem>
+                  </SidebarNav>
+                </SidebarContent>
+              </Sidebar>
+
+              <main className="flex-1 p-6">
+                <h4 className="font-semibold text-zinc-900 dark:text-white">
+                  Telemetry Mission Control
+                </h4>
+                <p className="mt-1 text-xs text-zinc-500">
+                  Floating sidebar detached from viewport with smooth rounded corners.
+                </p>
+              </main>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Sidebar, SidebarHeader, SidebarContent, SidebarNav, SidebarItem, SidebarToggle } from "@hudbird/ui";
+import { Home, Radio, Settings } from "lucide-react";
+
+export function FloatingSidebarDemo() {
+  return (
+    <div className="flex h-screen bg-zinc-100 dark:bg-zinc-950">
+      <Sidebar variant="floating" size="sm">
+        <SidebarHeader>
+          <SidebarBrand icon={<Sparkles size={16} className="text-brand-500" />} title="Space X" />
+          <SidebarToggle />
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarNav>
+            <SidebarItem icon={<Home size={16} />} isActive label="Overview">Overview</SidebarItem>
+            <SidebarItem icon={<Radio size={16} />} label="Telemetry">Telemetry</SidebarItem>
+            <SidebarItem icon={<Settings size={16} />} label="Engines">Engines</SidebarItem>
+          </SidebarNav>
+        </SidebarContent>
+      </Sidebar>
+      <main className="flex-1 p-6">Content</main>
+    </div>
+  );
+}`}
+          />
         </div>
       </section>
     </div>

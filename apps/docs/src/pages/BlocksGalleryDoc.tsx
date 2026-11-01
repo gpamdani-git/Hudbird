@@ -1,9 +1,8 @@
 import React, { useState, Suspense, useEffect, useRef } from "react";
 import { BLOCKS_DATA } from "../data/blocks";
 import { MarketingPreview } from "../components/MarketingPreview";
-import { Button } from "@hudbird/ui";
-import { Code, Eye, Search } from "lucide-react";
-import { DocLoadingSkeleton } from "../components/DocLoadingSkeleton";
+import { Button, Input } from "@hudbird/ui";
+import { Search } from "lucide-react";
 
 export default function BlocksGalleryDoc() {
   const categories = ["All", ...Object.keys(BLOCKS_DATA).sort()];
@@ -22,48 +21,56 @@ export default function BlocksGalleryDoc() {
   );
 
   return (
-    <div className="mx-auto min-h-screen w-full bg-white text-zinc-900 dark:bg-[#0a0a0b] dark:text-white">
+    <div className="mx-auto min-h-screen w-full bg-white text-zinc-900 dark:bg-[#161618] dark:text-white">
       {/* Header */}
-      <div className="w-full border-b border-zinc-200 bg-zinc-50/50 pt-24 pb-12 dark:border-white/5 dark:bg-[#0a0a0b]">
+      <div className="w-full border-b border-zinc-200 bg-zinc-50/50 pt-24 pb-12 dark:border-white/[0.08] dark:bg-[#161618]">
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
             <div>
-              <h1 className="font-outfit mb-4 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl dark:text-white">
+              <h1 className="font-outfit mb-4 text-4xl leading-[1.12] font-bold tracking-[-1.8px] text-zinc-950 sm:mb-6 sm:text-6xl sm:tracking-[-2.2px] lg:text-[72px] dark:text-white">
                 Blocks Gallery
               </h1>
-              <p className="max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-                Mix and match individual sections from our templates. Perfect for building custom
-                pages faster with pre-designed Lego blocks.
+              <p className="max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg dark:text-zinc-400">
+                Independent marketing sections from our production templates. Composable building
+                blocks engineered with clean semantic HTML and zero bloat.
               </p>
             </div>
 
             {/* Search */}
-            <div className="relative w-full shrink-0 sm:w-72">
-              <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-zinc-400" />
-              <input
-                type="text"
+            <div className="w-full shrink-0 sm:w-72">
+              <Input
                 placeholder="Search blocks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full rounded-full border border-zinc-200 bg-white py-2 pr-4 pl-9 text-sm focus:ring-2 focus:ring-zinc-900 focus:outline-none dark:border-white/10 dark:bg-white/5 dark:text-white dark:focus:ring-white/20"
+                startContent={<Search className="h-4 w-4 text-zinc-400" />}
+                radius="full"
+                size="sm"
+                aria-label="Search blocks"
               />
             </div>
           </div>
 
           <div className="mt-8 flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
-                  activeCategory === cat
-                    ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-black"
-                    : "border border-zinc-200 bg-white text-zinc-600 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <Button
+                  key={cat}
+                  size="sm"
+                  radius="full"
+                  variant={isActive ? "solid" : "bordered"}
+                  color={isActive ? "default" : "secondary"}
+                  className={
+                    isActive
+                      ? "font-semibold shadow-xs dark:bg-white dark:text-zinc-950"
+                      : "border-black/[0.08] text-zinc-600 hover:text-zinc-950 dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white"
+                  }
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                </Button>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -73,15 +80,15 @@ export default function BlocksGalleryDoc() {
         <div className="mb-8">
           <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             {activeCategory} Blocks{" "}
-            <span className="text-lg text-zinc-400">({filteredBlocks.length})</span>
+            <span className="text-base font-normal text-zinc-400">({filteredBlocks.length})</span>
           </h2>
-          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
-            Note: Components like Navbar or absolute positioned elements might overlap. Please use
-            the "Mobile/Tablet" viewport toggle to isolate them in an iframe.
+          <p className="mt-1.5 text-sm text-zinc-500 sm:text-base dark:text-zinc-400">
+            Isolated block instances. Use the viewport toggles to inspect responsiveness across
+            desktop, tablet, and mobile.
           </p>
         </div>
 
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-14">
           {filteredBlocks.length > 0 ? (
             filteredBlocks.map((block, idx) => (
               <LazyBlock
@@ -91,7 +98,7 @@ export default function BlocksGalleryDoc() {
               />
             ))
           ) : (
-            <div className="py-20 text-center text-zinc-500">
+            <div className="py-20 text-center text-sm text-zinc-500">
               No blocks found matching "{searchQuery}"
             </div>
           )}
@@ -110,11 +117,10 @@ function LazyBlock({ block, activeCategory }: { block: any; activeCategory: stri
       ([entry]) => {
         if (entry.isIntersecting) {
           setHasLoaded(true);
-          // Once it has loaded, we can disconnect the observer
           if (ref.current) observer.unobserve(ref.current);
         }
       },
-      { rootMargin: "600px" } // Load early before scrolling into view
+      { rootMargin: "600px" }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -139,26 +145,18 @@ function LazyBlock({ block, activeCategory }: { block: any; activeCategory: stri
         containIntrinsicSize: heightStr,
       }}
     >
-      <div className="mb-3 flex items-center justify-between">
-        <div>
-          <h3 className="font-outfit text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
-            {block.name}
-          </h3>
-          <p className="text-xs text-zinc-500">From {block.template} Template</p>
-        </div>
-      </div>
-
       {hasLoaded ? (
         <Suspense
           fallback={
             <div
-              className="w-full animate-pulse rounded-2xl bg-zinc-100 dark:bg-white/5"
+              className="w-full rounded-2xl bg-zinc-100 dark:bg-white/[0.04]"
               style={{ height: heightStr }}
             />
           }
         >
           <MarketingPreview
             title={block.name}
+            subtitle={`Template: ${block.template}`}
             code={block.code}
             minHeight={
               activeCategory === "Navbar" || block.name.includes("Navbar")
@@ -174,14 +172,11 @@ function LazyBlock({ block, activeCategory }: { block: any; activeCategory: stri
         </Suspense>
       ) : (
         <div
-          className="flex w-full items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-50 dark:border-zinc-800/80 dark:bg-[#0a0a0a]"
+          className="flex w-full items-center justify-center rounded-2xl border border-black/[0.06] bg-zinc-50 dark:border-white/[0.08] dark:bg-[#161618]"
           style={{ height: heightStr }}
         >
-          <div className="flex animate-pulse flex-col items-center gap-4">
-            <div className="h-8 w-8 text-zinc-300 dark:text-zinc-700">
-              <Eye />
-            </div>
-            <div className="text-sm font-medium text-zinc-400">Scrolling into view...</div>
+          <div className="flex flex-col items-center gap-2 text-zinc-400">
+            <span className="font-mono text-xs tracking-wider uppercase">Loading block</span>
           </div>
         </div>
       )}

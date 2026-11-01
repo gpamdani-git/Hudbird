@@ -50,9 +50,9 @@ function Example() {
     <PricingSection variant="subtle">
       <PricingHeader>
         <PricingBadge>Pricing</PricingBadge>
-        <PricingTitle>Pricing that grows with you</PricingTitle>
+        <PricingTitle>Simple, predictable pricing</PricingTitle>
         <PricingDescription>
-          Choose an affordable plan that's packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
+          Flexible plans for independent builders, scaling startups, and larger engineering teams.
         </PricingDescription>
         <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
       </PricingHeader>
@@ -187,10 +187,10 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           <PricingSection variant="subtle">
             <PricingHeader>
               <PricingBadge>Pricing</PricingBadge>
-              <PricingTitle>Pricing that grows with you</PricingTitle>
+              <PricingTitle>Simple, predictable pricing</PricingTitle>
               <PricingDescription>
-                Choose an affordable plan that's packed with the best features for engaging your
-                audience, creating customer loyalty, and driving sales.
+                Flexible plans for independent builders, scaling startups, and larger engineering
+                teams.
               </PricingDescription>
               <PricingToggle isAnnual={isAnnual} onChange={setIsAnnual} />
             </PricingHeader>
@@ -208,7 +208,7 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                     period={isAnnual ? "/year" : "/month"}
                   />
                 </PricingTierHeader>
-                <Button variant="outline" className="mt-2 w-full">
+                <Button variant="outline" size="lg" className="mt-2 w-full">
                   Buy plan
                 </Button>
                 <PricingTierFeatures>
@@ -234,7 +234,8 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                 </PricingTierHeader>
                 <Button
                   color="primary"
-                  className="mt-2 w-full ring-1 ring-white/20 hover:ring-white/40"
+                  size="lg"
+                  className="mt-2 w-full shadow-lg ring-1 ring-white/20 hover:ring-white/40"
                 >
                   Buy plan
                 </Button>
@@ -259,7 +260,7 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
                     period={isAnnual ? "/year" : "/month"}
                   />
                 </PricingTierHeader>
-                <Button variant="outline" className="mt-2 w-full">
+                <Button variant="outline" size="lg" className="mt-2 w-full">
                   Buy plan
                 </Button>
                 <PricingTierFeatures>
@@ -282,9 +283,9 @@ export default function PricingDoc({ onOpenSidebar }: { onOpenSidebar?: () => vo
           Glassmorphic Pricing
         </h3>
         <MarketingPreview>
-          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-            <div className="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
-            <div className="absolute right-1/4 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
+          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 dark:from-zinc-950 dark:to-indigo-950/20">
+            <div className="bg-primary/10 absolute top-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full blur-[90px]" />
+            <div className="bg-primary/5 absolute right-1/4 bottom-0 h-80 w-80 translate-x-1/2 rounded-full blur-[90px]" />
 
             <PricingGlass
               isAnnual={isAnnual}

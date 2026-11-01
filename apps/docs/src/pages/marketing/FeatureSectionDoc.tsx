@@ -1,4 +1,5 @@
 import React from "react";
+import { Badge } from "@hudbird/ui";
 import { DocHeader } from "../../components/DocHeader";
 import featureCode from "../../../../../packages/marketing/src/components/FeatureSection/Feature.tsx?raw";
 import featureGlassCode from "../../../../../packages/marketing/src/components/FeatureSection/FeatureGlass.tsx?raw";
@@ -208,9 +209,9 @@ function Example() {
     <FeatureSection variant="subtle">
       <FeatureHeader>
         <FeatureBadge>Workflow</FeatureBadge>
-        <FeatureTitle>Supercharge your development</FeatureTitle>
+        <FeatureTitle>Built for production velocity</FeatureTitle>
         <FeatureDescription>
-          Streamline your workflow with tools designed for modern development teams.
+          Automate builds, inspect pull requests with preview URLs, and monitor web vitals directly from one workflow.
         </FeatureDescription>
       </FeatureHeader>
       
@@ -292,7 +293,7 @@ export const ProStyleVisualEditor = () => (
           className="absolute z-10 w-64 p-6 bg-zinc-900/90 backdrop-blur-xl rounded-3xl border border-zinc-700 shadow-2xl"
         >
           <div className="flex justify-between items-center mb-6">
-            <span className="text-[10px] uppercase font-bold tracking-wider text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">MAU JAN 2023</span>
+            <Badge variant="soft" color="indigo" size="sm">MAU JAN 2023</Badge>
             <span className="text-xs text-zinc-500">Last 28 days</span>
           </div>
           <div className="text-5xl font-light text-white mb-2">52k</div>
@@ -485,9 +486,10 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
           <FeatureSection variant="subtle">
             <FeatureHeader>
               <FeatureBadge>Workflow</FeatureBadge>
-              <FeatureTitle>Supercharge your development</FeatureTitle>
+              <FeatureTitle>Built for production velocity</FeatureTitle>
               <FeatureDescription>
-                Streamline your workflow with tools designed for modern development teams.
+                Automate builds, inspect pull requests with preview URLs, and monitor web vitals
+                directly from one workflow.
               </FeatureDescription>
             </FeatureHeader>
 
@@ -581,7 +583,7 @@ export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: (
                   {
                     title: "Cloud Native",
                     description:
-                      "Seamlessly deploy and scale with native support for major cloud providers.",
+                      "Deploy to Vercel, Netlify, or AWS with zero configuration changes.",
                     icon: <Cloud size={20} />,
                   },
                 ]}

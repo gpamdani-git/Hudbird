@@ -381,7 +381,7 @@ export default function Example() {
                 content={
                   <div className="flex items-center gap-3 p-1">
                     <Avatar
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                      src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                       name="Sarah Doe"
                       size="sm"
                     />

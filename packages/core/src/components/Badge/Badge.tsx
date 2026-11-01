@@ -8,6 +8,7 @@ export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "default";
 export type BadgeColor = "primary" | "secondary" | "success" | "warning" | "danger" | "info";
 export type BadgeSize = "sm" | "md" | "lg";
 export type BadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
+export type BadgeShape = "circle" | "rectangle";
 
 const badgeVariants = cva(
   "inline-flex items-center justify-center rounded-full font-medium tracking-tight whitespace-nowrap select-none transition-colors duration-150",
@@ -29,9 +30,13 @@ const badgeVariants = cva(
         info: "",
       },
       size: {
-        sm: "px-2 py-0.5 text-[10px] font-bold min-w-4.5 h-4.5 gap-1",
-        md: "px-2.5 py-0.5 text-xs font-semibold min-w-5 h-5 gap-1.5",
-        lg: "px-3 py-1 text-sm font-medium min-w-6 h-6 gap-2",
+        dot: "p-0 min-h-0 min-w-0 h-2.5 w-2.5 aspect-square rounded-full shrink-0",
+        "dot-sm": "p-0 min-h-0 min-w-0 h-2 w-2 aspect-square rounded-full shrink-0",
+        "dot-md": "p-0 min-h-0 min-w-0 h-2.5 w-2.5 aspect-square rounded-full shrink-0",
+        "dot-lg": "p-0 min-h-0 min-w-0 h-3.5 w-3.5 aspect-square rounded-full shrink-0",
+        sm: "px-2.5 py-0.5 text-[10px] font-semibold min-h-5 gap-1",
+        md: "px-3.5 py-1 text-xs font-semibold min-h-6 gap-1.5",
+        lg: "px-4.5 py-1.5 text-sm font-medium min-h-7 gap-2",
       },
     },
     compoundVariants: [
@@ -217,11 +222,19 @@ const badgeVariants = cva(
 );
 
 // Floating badge placement classes
-const placementStyles: Record<BadgePlacement, string> = {
-  "top-right": "top-0 right-0 translate-x-1/2 -translate-y-1/2",
-  "top-left": "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
-  "bottom-right": "bottom-0 right-0 translate-x-1/2 translate-y-1/2",
-  "bottom-left": "bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
+const placementStyles: Record<BadgeShape, Record<BadgePlacement, string>> = {
+  rectangle: {
+    "top-right": "top-0 right-0 translate-x-1/2 -translate-y-1/2",
+    "top-left": "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
+    "bottom-right": "bottom-0 right-0 translate-x-1/2 translate-y-1/2",
+    "bottom-left": "bottom-0 left-0 -translate-x-1/2 translate-y-1/2",
+  },
+  circle: {
+    "top-right": "top-[6%] right-[6%] translate-x-1/2 -translate-y-1/2",
+    "top-left": "top-[6%] left-[6%] -translate-x-1/2 -translate-y-1/2",
+    "bottom-right": "bottom-[6%] right-[6%] translate-x-1/2 translate-y-1/2",
+    "bottom-left": "bottom-[6%] left-[6%] -translate-x-1/2 translate-y-1/2",
+  },
 };
 
 export interface BadgeProps
@@ -238,6 +251,12 @@ export interface BadgeProps
    * @default "top-right"
    */
   placement?: BadgePlacement;
+  /**
+   * Target shape of wrapped element to optimize corner offsets.
+   * Use "circle" for rounded-full elements like Avatars.
+   * @default "rectangle"
+   */
+  shape?: BadgeShape;
   /**
    * Shows a small indicator dot without text content when true.
    * @default false
@@ -259,6 +278,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       size = "md",
       content,
       placement = "top-right",
+      shape = "rectangle",
       isDot = false,
       isInvisible = false,
       children,
@@ -266,18 +286,21 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     },
     ref
   ) => {
-    // Mode 1: Floating Badge wrapping child elements (Avatar, Button, Icon, etc.)
+    // Mode 1: Floating Badge wrapping child elements (Avatar, Button, Icon, e.g.)
     const isFloating = children !== undefined && (content !== undefined || isDot);
+    const resolvedSize = isDot
+      ? ((size === "sm" ? "dot-sm" : size === "lg" ? "dot-lg" : "dot-md") as any)
+      : size;
 
     const badgeContent = (
       <span
         ref={ref}
         className={cn(
-          badgeVariants({ variant, color, size }),
+          badgeVariants({ variant, color, size: resolvedSize }),
+          isDot && "block aspect-square !min-h-0 !min-w-0 !p-0 !leading-none",
           isFloating && [
             "absolute z-10 box-border ring-2 ring-white dark:ring-[#161618]",
-            placementStyles[placement],
-            isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
+            placementStyles[shape][placement],
           ],
           isInvisible && "hidden",
           className
@@ -302,8 +325,8 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       <span
         ref={ref}
         className={cn(
-          badgeVariants({ variant, color, size }),
-          isDot && "h-2.5 w-2.5 min-w-0 rounded-full p-0 px-0 py-0",
+          badgeVariants({ variant, color, size: resolvedSize }),
+          isDot && "block aspect-square !min-h-0 !min-w-0 !p-0 !leading-none",
           isInvisible && "hidden",
           className
         )}

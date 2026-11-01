@@ -34,11 +34,11 @@ export const BentoGridGlass = React.forwardRef<HTMLElement, BentoGridGlassProps>
     {
       className,
       badge,
-      title = "Powerful features in a beautiful package",
-      description = "Everything you need to build your next project, organized exactly how you need it.",
+      title = "Engineered for speed, composability, and scale",
+      description = "Everything you need to build production interfaces, organized around your component system.",
       items,
-      glowClassName = "bg-blue-500/10 dark:bg-blue-500/20",
-      iconClassName = "bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300",
+      glowClassName = "bg-primary/10 dark:bg-primary/20",
+      iconClassName = "bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-foreground",
       ...props
     },
     ref

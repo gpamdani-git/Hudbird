@@ -1,5 +1,6 @@
 import React from "react";
 import { Search, SlidersHorizontal, ChevronDown } from "lucide-react";
+import { Button } from "@hudbird/ui";
 
 export const AdminToolbar = () => {
   return (
@@ -16,18 +17,30 @@ export const AdminToolbar = () => {
 
       {/* Filters */}
       <div className="flex items-center gap-2">
-        <button className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 items-center gap-1.5 rounded-lg border px-3 text-[12px] font-medium transition-colors">
+        <Button
+          variant="outline"
+          size="sm"
+          endContent={<ChevronDown className="h-3 w-3 opacity-50" />}
+          className="border-border/40 bg-card text-[12px] font-medium"
+        >
           All Categories
-          <ChevronDown className="h-3 w-3 opacity-50" />
-        </button>
-        <button className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 items-center gap-1.5 rounded-lg border px-3 text-[12px] font-medium transition-colors">
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          endContent={<ChevronDown className="h-3 w-3 opacity-50" />}
+          className="border-border/40 bg-card text-[12px] font-medium"
+        >
           Status
-          <ChevronDown className="h-3 w-3 opacity-50" />
-        </button>
-        <button className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 items-center gap-1.5 rounded-lg border px-3 text-[12px] font-medium transition-colors">
-          <SlidersHorizontal className="h-3 w-3" />
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          startContent={<SlidersHorizontal className="h-3 w-3" />}
+          className="border-border/40 bg-card text-[12px] font-medium"
+        >
           Filters
-        </button>
+        </Button>
       </div>
     </div>
   );

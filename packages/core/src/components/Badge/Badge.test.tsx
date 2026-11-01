@@ -60,4 +60,16 @@ describe("Badge component", () => {
     expect(screen.getByRole("button", { name: /notifications/i })).toBeInTheDocument();
     expect(screen.getByText("5")).toBeInTheDocument();
   });
+
+  it("renders a circular dot indicator when isDot is true", () => {
+    const { container } = render(
+      <Badge isDot color="success" placement="bottom-right" shape="circle">
+        <div data-testid="avatar">Avatar</div>
+      </Badge>
+    );
+    const dot = container.querySelector("span.aspect-square");
+    expect(dot).toBeInTheDocument();
+    expect(dot).toHaveClass("aspect-square", "rounded-full");
+    expect(dot).toHaveClass("bottom-[6%]", "right-[6%]");
+  });
 });

@@ -136,9 +136,14 @@ export const EcommerceCta = () => (
           </p>
 
           {/* Primary Button */}
-          <button className="h-14 rounded-full bg-indigo-600 px-8 text-lg font-medium text-white shadow-lg shadow-indigo-500/25 transition-all hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-indigo-500/40">
+          <Button
+            size="lg"
+            radius="full"
+            color="primary"
+            className="h-14 px-8 text-lg font-medium shadow-lg shadow-indigo-500/25"
+          >
             Install Plugin
-          </button>
+          </Button>
         </div>
       </div>
     </section>

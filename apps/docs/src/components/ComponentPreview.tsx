@@ -13,6 +13,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@hudbird/ui";
 import { IframePreview } from "./IframePreview";
 
 export type ViewportMode = "desktop" | "tablet" | "mobile";
@@ -84,45 +85,51 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
       {/* Left: Viewport Mode Switcher */}
       <div className="flex items-center gap-1">
         <div className="flex rounded-lg border border-zinc-200 bg-white p-0.5 shadow-xs dark:border-[#2e2f33] dark:bg-[#161618]">
-          <button
+          <Button
             type="button"
+            size="sm"
+            variant={viewport === "desktop" ? "solid" : "light"}
             onClick={() => setViewport("desktop")}
-            className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
+            startContent={<Monitor size={13} />}
+            className={`h-7 px-2.5 text-xs font-medium ${
               viewport === "desktop"
                 ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Desktop View (Full Width)"
           >
-            <Monitor size={13} />
             <span className="hidden sm:inline">Desktop</span>
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            size="sm"
+            variant={viewport === "tablet" ? "solid" : "light"}
             onClick={() => setViewport("tablet")}
-            className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
+            startContent={<Tablet size={13} />}
+            className={`h-7 px-2.5 text-xs font-medium ${
               viewport === "tablet"
                 ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Tablet View (768px)"
           >
-            <Tablet size={13} />
             <span className="hidden sm:inline">Tablet</span>
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            size="sm"
+            variant={viewport === "mobile" ? "solid" : "light"}
             onClick={() => setViewport("mobile")}
-            className={`flex items-center gap-1.5 rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
+            startContent={<Smartphone size={13} />}
+            className={`h-7 px-2.5 text-xs font-medium ${
               viewport === "mobile"
                 ? "bg-zinc-900 text-white shadow-xs dark:border dark:border-[#2e2f33] dark:bg-[#202124] dark:text-indigo-400"
                 : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
             }`}
             title="Mobile View (390px)"
           >
-            <Smartphone size={13} />
             <span className="hidden sm:inline">Mobile</span>
-          </button>
+          </Button>
         </div>
 
         <span className="ml-2 hidden font-mono text-[11px] text-zinc-400 md:inline-block dark:text-zinc-500">
@@ -132,21 +139,24 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 
       {/* Right Actions */}
       <div className="flex items-center gap-1.5">
-        <button
+        <Button
           type="button"
+          isIconOnly
+          size="sm"
+          variant="outline"
           onClick={() => setKey((prev) => prev + 1)}
-          className="flex h-7 w-7 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-600 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-[#828282] dark:hover:bg-[#202124] dark:hover:text-white"
+          className="h-7 w-7 min-w-7 border-zinc-200 bg-white text-zinc-600 shadow-xs hover:bg-zinc-100 hover:text-zinc-900 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-[#828282] dark:hover:bg-[#202124] dark:hover:text-white"
           title="Reset / Remount Component Preview"
         >
           <RotateCcw size={12} />
-        </button>
+        </Button>
 
         {demoUrl && (
           <a
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 flex h-7 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white"
+            className="ml-2 flex h-7 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white"
             title="Open demo in new tab"
           >
             <span>Open in new tab</span>
@@ -154,27 +164,31 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
           </a>
         )}
         {allowFullscreen && !inModal && (
-          <button
+          <Button
             type="button"
+            size="sm"
+            variant="outline"
             onClick={() => setIsFullscreen(true)}
-            className="flex h-7 items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-700 shadow-xs transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white"
+            startContent={<Maximize2 size={12} />}
+            className="h-7 border-zinc-200 bg-white px-2.5 text-xs font-medium text-zinc-700 shadow-xs hover:bg-zinc-100 hover:text-zinc-950 dark:border-[#2e2f33] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white"
             title="Open in Fullscreen Preview Canvas"
           >
-            <Maximize2 size={12} />
             <span>Fullscreen</span>
-          </button>
+          </Button>
         )}
 
         {inModal && (
-          <button
+          <Button
             type="button"
+            size="sm"
+            variant="solid"
             onClick={() => setIsFullscreen(false)}
-            className="flex h-7 items-center gap-1 rounded-lg bg-zinc-900 px-2.5 text-xs font-medium text-white shadow-xs transition-opacity hover:opacity-90 dark:bg-white dark:text-zinc-900"
+            startContent={<Minimize2 size={12} />}
+            className="h-7 bg-zinc-900 px-3 text-xs font-medium text-white shadow-xs hover:opacity-90 dark:bg-white dark:text-zinc-900"
             title="Exit Fullscreen Preview"
           >
-            <Minimize2 size={12} />
             <span>Exit Fullscreen</span>
-          </button>
+          </Button>
         )}
       </div>
     </div>
@@ -257,14 +271,17 @@ export const ComponentPreview: React.FC<ComponentPreviewProps> = ({
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <button
+                  <Button
                     type="button"
+                    isIconOnly
+                    size="sm"
+                    variant="outline"
                     onClick={() => setIsFullscreen(false)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
+                    className="h-8 w-8 min-w-8 border-zinc-200 bg-white text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
                     aria-label="Close fullscreen modal"
                   >
                     <X size={16} />
-                  </button>
+                  </Button>
                 </div>
               </div>
 

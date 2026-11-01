@@ -154,7 +154,7 @@ export default function AvatarDoc() {
         <ComponentPreview>
           <div className="flex items-center gap-4">
             <Avatar
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+              src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
               name="Sarah Jenkins"
               size="lg"
             />
@@ -171,7 +171,7 @@ function Example() {
   return (
     <div className="flex items-center gap-4">
       <Avatar
-        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb"
+        src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
         name="Sarah Jenkins"
         size="lg"
       />
@@ -228,19 +228,19 @@ function Example() {
           <ComponentPreview>
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Avatar
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 alt="Sarah"
               />
               <Avatar
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 alt="David"
               />
               <Avatar
-                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 alt="Emily"
               />
               <Avatar
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 alt="Michael"
               />
             </div>
@@ -252,8 +252,8 @@ function Example() {
 function Example() {
   return (
     <div className="flex items-center gap-4">
-      <Avatar src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Sarah" />
-      <Avatar src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" alt="David" />
+      <Avatar src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256" alt="Sarah" />
+      <Avatar src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256" alt="David" />
     </div>
   )
 }`}
@@ -331,28 +331,28 @@ function Example() {
             <div className="flex items-end gap-5">
               <div className="flex flex-col items-center gap-2">
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="sm"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">sm (32px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="md"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">md (40px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="lg"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">lg (48px)</span>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="xl"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">xl (56px)</span>
@@ -395,7 +395,7 @@ function Example() {
                 <Avatar
                   radius="none"
                   size="lg"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">none</span>
               </div>
@@ -403,7 +403,7 @@ function Example() {
                 <Avatar
                   radius="md"
                   size="lg"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">md (12px)</span>
               </div>
@@ -411,7 +411,7 @@ function Example() {
                 <Avatar
                   radius="lg"
                   size="lg"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">lg (16px)</span>
               </div>
@@ -419,7 +419,7 @@ function Example() {
                 <Avatar
                   radius="full"
                   size="lg"
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                 />
                 <span className="font-mono text-[11px] text-zinc-500">full</span>
               </div>
@@ -455,15 +455,15 @@ function Example() {
             <div className="flex items-center -space-x-3">
               <Avatar
                 className="ring-2 ring-white dark:ring-zinc-950"
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
               />
               <Avatar
                 className="ring-2 ring-white dark:ring-zinc-950"
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
               />
               <Avatar
                 className="ring-2 ring-white dark:ring-zinc-950"
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&h=256&q=80"
+                src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
               />
               <Avatar className="bg-zinc-100 text-xs font-medium text-zinc-800 ring-2 ring-white dark:bg-zinc-800 dark:text-zinc-200 dark:ring-zinc-950">
                 +5

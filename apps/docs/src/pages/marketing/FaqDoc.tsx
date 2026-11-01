@@ -51,13 +51,13 @@ export default function FaqDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }
     {
       prop: "badgeClassName",
       type: "string",
-      defaultVal: '"border-blue-200/50 bg-blue-50/50 text-blue-700 ..."',
+      defaultVal: '"border-primary/20 bg-primary/10 text-primary ..."',
       description: "Override the label badge border, background, and text color classes.",
     },
     {
       prop: "accentClassName",
       type: "string",
-      defaultVal: '"text-blue-600 dark:text-blue-400"',
+      defaultVal: '"text-primary dark:text-primary-foreground"',
       description: "Override the accordion item accent color on hover and expanded state.",
     },
   ];
@@ -319,9 +319,9 @@ export default function FaqDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }
         </MarketingPreview>
 
         <MarketingPreview title="Glassmorphic FAQ" code={faqGlassCode}>
-          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
-            <div className="absolute top-0 left-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]" />
-            <div className="absolute right-1/4 bottom-0 h-[500px] w-[500px] translate-x-1/2 rounded-full bg-cyan-500/20 blur-[120px]" />
+          <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 pb-12 dark:from-zinc-950 dark:to-indigo-950/20">
+            <div className="bg-primary/10 absolute top-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full blur-[100px]" />
+            <div className="bg-primary/5 absolute right-1/4 bottom-0 h-80 w-80 translate-x-1/2 rounded-full blur-[100px]" />
             <FaqGlass
               faqs={[
                 {

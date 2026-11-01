@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   FolderGit2,
   Layers,
-  Sparkles,
   GitCompare,
   ArrowRight,
   ShieldCheck,
@@ -24,7 +23,6 @@ export default function CliDoc() {
       <DocHeader
         category="Tooling"
         title="Hudbird UI CLI"
-        badge="v1.4.0"
         description="The official developer command-line tool for scaffolding, batch-installing, and tracking upstream diffs across 62+ components with 100% local code ownership."
         className="max-w-4xl"
       />
@@ -42,14 +40,14 @@ export default function CliDoc() {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <FolderGit2 className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-white">
+                <FolderGit2 className="h-4 w-4 opacity-70" />
                 Local Code Ownership
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Components live directly inside your project directory (e.g.{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   src/components/hudbird-ui
                 </code>
                 ). You have complete freedom to modify, style, or extend every line of code without
@@ -57,53 +55,53 @@ export default function CliDoc() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Layers className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-white">
+                <Layers className="h-4 w-4 opacity-70" />
                 Recursive Dependency Graph
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 When you install complex components (like{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   Dialog
                 </code>{" "}
                 or{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   DatePicker
                 </code>
                 ), the CLI automatically resolves sub-components (
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   Slot
                 </code>
                 ,{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   utils/cn.ts
                 </code>
-                ) and installs missing NPM packages.
+                ) and installs missing dependencies.
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <Sliders className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-white">
+                <Sliders className="h-4 w-4 opacity-70" />
                 Standard components.json
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-[#828282]">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Respects your custom path aliases (
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   @/components/ui
                 </code>{" "}
                 vs{" "}
-                <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
                   @/components/hudbird-ui
                 </code>
                 ), base palette, and Tailwind CSS engine version (v4 or v3).
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 dark:border-zinc-800 dark:bg-zinc-900/50">
-              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-zinc-100">
-                <GitCompare className="h-4 w-4 text-purple-500" />
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="flex items-center gap-2.5 font-semibold text-zinc-900 dark:text-white">
+                <GitCompare className="h-4 w-4 opacity-70" />
                 Zero-Dependency LCS Diff
               </div>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -182,85 +180,93 @@ export default function CliDoc() {
 }`}
           />
 
-          <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
+          <div className="overflow-x-auto rounded-2xl border border-zinc-200/80 bg-white shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
             <table className="w-full text-left text-sm">
-              <thead className="border-b border-zinc-200 bg-zinc-50 text-xs font-semibold text-zinc-700 uppercase dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300">
+              <thead className="border-b border-zinc-200/80 bg-zinc-50/50 text-xs font-semibold tracking-wider text-zinc-700 uppercase dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-zinc-300">
                 <tr>
-                  <th className="px-4 py-3">Property</th>
-                  <th className="px-4 py-3">Type</th>
-                  <th className="px-4 py-3">Default</th>
-                  <th className="px-4 py-3">Description</th>
+                  <th className="px-4 py-3.5">Property</th>
+                  <th className="px-4 py-3.5">Type</th>
+                  <th className="px-4 py-3.5">Default</th>
+                  <th className="px-4 py-3.5">Description</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-200 text-zinc-600 dark:divide-zinc-800 dark:text-zinc-400">
+              <tbody className="divide-y divide-zinc-200/80 text-zinc-600 dark:divide-white/[0.08] dark:text-zinc-400">
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     $schema
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">-</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">-</td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     JSON schema validation URL for IDE autocompletion.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     style
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">"default"</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">
+                    "default"
+                  </td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Design style preset for component templates.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     tailwind.version
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">4 | 3</td>
-                  <td className="px-4 py-3 text-xs">4</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">4 | 3</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">4</td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Tailwind CSS version. v4 utilizes @theme and OKLCH color palettes.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     tailwind.css
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">"src/index.css"</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">
+                    "src/index.css"
+                  </td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Path to your main stylesheet where variables and presets are injected.
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     tailwind.baseColor
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">"zinc"</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">"zinc"</td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Neutral base color scale ("zinc", "slate", "gray", "neutral", "stone").
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     aliases.components
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">"@/components/hudbird-ui"</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">
+                    "@/components/hudbird-ui"
+                  </td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Import path alias for generated component files. Can be customized to
                     "@/components/ui".
                   </td>
                 </tr>
                 <tr>
-                  <td className="px-4 py-3 font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <td className="px-4 py-3 font-mono text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                     aliases.utils
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs">string</td>
-                  <td className="px-4 py-3 text-xs">"@/components/hudbird-ui/utils"</td>
-                  <td className="px-4 py-3 text-xs">
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">string</td>
+                  <td className="px-4 py-3 font-mono text-xs text-zinc-500 sm:text-sm">
+                    "@/components/hudbird-ui/utils"
+                  </td>
+                  <td className="px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                     Import path alias for the cn() utility helper.
                   </td>
                 </tr>
@@ -284,82 +290,96 @@ export default function CliDoc() {
 
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             Running{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+            <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
               init
             </code>{" "}
             executes an automated setup sequence:
           </p>
 
-          <div className="space-y-2 rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 text-sm dark:border-zinc-800 dark:bg-zinc-900/40">
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-              <span>
-                <strong>Framework & Package Manager Detection:</strong> Identifies npm, pnpm, yarn,
-                or bun automatically.
-              </span>
+          <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 text-sm dark:border-white/[0.08] dark:bg-[#161618]">
+            <div>
+              <strong className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-white">
+                1. Package Manager Detection:
+              </strong>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                Identifies npm, pnpm, yarn, or bun automatically from project lockfiles.
+              </p>
             </div>
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-              <span>
-                <strong>Tailwind CSS Adaptation:</strong> Injects{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">@theme</code>{" "}
+            <div>
+              <strong className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-white">
+                2. Tailwind CSS Adaptation:
+              </strong>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                Injects{" "}
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                  @theme
+                </code>{" "}
                 OKLCH variables into your CSS file for Tailwind v4, or creates{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   hudbirdPreset.js
                 </code>{" "}
                 for Tailwind v3.
-              </span>
+              </p>
             </div>
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-              <span>
-                <strong>Utility Scaffolding:</strong> Generates{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">cn.ts</code>{" "}
+            <div>
+              <strong className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-white">
+                3. Utility Scaffolding:
+              </strong>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                Generates{" "}
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                  cn.ts
+                </code>{" "}
                 with clsx and tailwind-merge inside your configured utils directory.
-              </span>
+              </p>
             </div>
-            <div className="flex items-start gap-2.5">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-              <span>
-                <strong>Dependency Installation:</strong> Installs core peer dependencies:{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">clsx</code>,{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+            <div>
+              <strong className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-white">
+                4. Core Dependency Installation:
+              </strong>
+              <p className="mt-1 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                Installs required peer dependencies:{" "}
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                  clsx
+                </code>
+                ,{" "}
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   tailwind-merge
                 </code>
                 ,{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   framer-motion
                 </code>
                 ,{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   lucide-react
                 </code>
                 , and{" "}
-                <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   class-variance-authority
                 </code>
                 .
-              </span>
+              </p>
             </div>
           </div>
 
-          <h4 className="pt-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            Flags & Options:
+          <h4 className="pt-2 text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
+            Flags &amp; Options:
           </h4>
-          <div className="grid gap-2 text-xs">
-            <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-2.5 dark:border-zinc-800">
-              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+          <div className="grid gap-2.5 text-sm">
+            <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <code className="font-mono text-sm font-semibold text-zinc-900 dark:text-white">
                 -y, --yes
               </code>
-              <span className="text-zinc-600 dark:text-zinc-400">
+              <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 Skip interactive prompt questions and use default project settings.
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-2.5 dark:border-zinc-800">
-              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+            <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <code className="font-mono text-sm font-semibold text-zinc-900 dark:text-white">
                 -h, --help
               </code>
-              <span className="text-zinc-600 dark:text-zinc-400">
+              <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 Display CLI help documentation and available options.
               </span>
             </div>
@@ -423,31 +443,31 @@ export default function CliDoc() {
             </div>
           </div>
 
-          <h4 className="pt-2 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-            Flags & Options:
+          <h4 className="pt-2 text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
+            Flags &amp; Options:
           </h4>
-          <div className="grid gap-2 text-xs">
-            <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-2.5 dark:border-zinc-800">
-              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+          <div className="grid gap-2.5 text-sm">
+            <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <code className="font-mono text-sm font-semibold text-zinc-900 dark:text-white">
                 --all
               </code>
-              <span className="text-zinc-600 dark:text-zinc-400">
+              <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 Install all 62 components currently published in the registry.
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-2.5 dark:border-zinc-800">
-              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+            <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <code className="font-mono text-sm font-semibold text-zinc-900 dark:text-white">
                 -o, --overwrite
               </code>
-              <span className="text-zinc-600 dark:text-zinc-400">
+              <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 Overwrite existing component files without asking for confirmation.
               </span>
             </div>
-            <div className="flex items-center gap-3 rounded-lg border border-zinc-200 p-2.5 dark:border-zinc-800">
-              <code className="font-mono font-bold text-indigo-600 dark:text-indigo-400">
+            <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <code className="font-mono text-sm font-semibold text-zinc-900 dark:text-white">
                 -y, --yes
               </code>
-              <span className="text-zinc-600 dark:text-zinc-400">
+              <span className="text-sm text-zinc-600 dark:text-zinc-300">
                 Bypass confirmation prompts and accept defaults automatically.
               </span>
             </div>
@@ -472,14 +492,14 @@ export default function CliDoc() {
 
           <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
             The{" "}
-            <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 font-mono text-xs dark:border dark:border-[#2E2F33] dark:bg-[#161618] dark:text-[#E5E5E5]">
+            <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
               list
             </code>{" "}
             command scans your local project against the 62 components in the official registry,
             displaying real-time indicators:
           </p>
 
-          <div className="overflow-x-auto rounded-xl border border-zinc-800 bg-zinc-950 p-4 font-mono text-xs text-zinc-200 shadow-xl">
+          <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#121214] p-5 font-mono text-xs text-zinc-200 shadow-xl sm:text-sm">
             <div className="mb-2 text-zinc-400"># Terminal output preview:</div>
             <div className="font-bold text-indigo-400">
               ┌ Hudbird UI Registry (62 components available)
@@ -487,7 +507,7 @@ export default function CliDoc() {
             <div className="text-zinc-500">│</div>
             <div className="font-semibold text-zinc-300">◆ Primitives</div>
             <div className="pl-4 text-emerald-400">
-              + Button <span className="text-[11px] text-zinc-500">(Slot)</span>
+              + Button <span className="text-xs text-zinc-500">(Slot)</span>
             </div>
             <div className="pl-4 text-emerald-400">+ Card</div>
             <div className="pl-4 text-zinc-500">- Avatar</div>
@@ -496,7 +516,7 @@ export default function CliDoc() {
             <div className="font-semibold text-zinc-300">◆ Forms</div>
             <div className="pl-4 text-emerald-400">+ Input</div>
             <div className="pl-4 text-emerald-400">
-              + InputOTP <span className="text-[11px] text-zinc-500">(input-otp)</span>
+              + InputOTP <span className="text-xs text-zinc-500">(input-otp)</span>
             </div>
             <div className="pl-4 text-zinc-500">- Select</div>
             <div className="pl-4 text-zinc-500">- ComboBox</div>
@@ -526,17 +546,19 @@ export default function CliDoc() {
           </p>
           <CodeBlock language="bash" code="npx hudbird-ui@latest diff" />
 
-          <div className="rounded-xl border border-zinc-200 bg-zinc-50/50 p-5 text-sm dark:border-zinc-800 dark:bg-zinc-900/40">
-            <h4 className="flex items-center gap-2 font-semibold text-zinc-900 dark:text-zinc-100">
-              <ShieldCheck className="h-4 w-4 text-emerald-500" />
+          <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 text-sm dark:border-white/[0.08] dark:bg-[#161618]">
+            <h4 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+              <ShieldCheck className="h-5 w-5 text-emerald-500" />
               Safe Upgrades Without Unintended Overwrites
             </h4>
-            <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
               Because you own the component code in your repository,{" "}
-              <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">diff</code> lets
-              you see exactly what upstream bugfixes or enhancements were made. You can choose to
-              selectively merge them or run{" "}
-              <code className="rounded bg-zinc-200 px-1 text-xs dark:bg-zinc-800">
+              <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                diff
+              </code>{" "}
+              lets you see exactly what upstream bugfixes or enhancements were made. You can choose
+              to selectively merge them or run{" "}
+              <code className="rounded-md bg-zinc-200/70 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                 npx hudbird-ui add Button --overwrite
               </code>{" "}
               when you want to take the upstream version cleanly.
@@ -556,26 +578,26 @@ export default function CliDoc() {
           </div>
 
           <div className="space-y-4">
-            <div className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
-              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <h4 className="text-base font-semibold text-zinc-900 dark:text-white">
                 How do I configure import path aliases in TypeScript?
               </h4>
-              <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                 Ensure your{" "}
-                <code className="rounded bg-zinc-200/60 px-1 py-0.5 dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   tsconfig.json
                 </code>{" "}
                 or{" "}
-                <code className="rounded bg-zinc-200/60 px-1 py-0.5 dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   tsconfig.app.json
                 </code>{" "}
                 includes the path mapping matching your{" "}
-                <code className="rounded bg-zinc-200/60 px-1 py-0.5 dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   components.json
                 </code>{" "}
                 aliases:
               </p>
-              <div className="mt-2">
+              <div className="mt-3">
                 <CodeBlock
                   language="json"
                   code={`{
@@ -590,18 +612,18 @@ export default function CliDoc() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-zinc-200 p-5 dark:border-zinc-800">
-              <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+            <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+              <h4 className="text-base font-semibold text-zinc-900 dark:text-white">
                 Can I use the CLI in PNPM / Turbo monorepos?
               </h4>
-              <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                 Yes! Simply navigate to the target app or package directory (e.g.{" "}
-                <code className="rounded bg-zinc-200/60 px-1 py-0.5 dark:bg-zinc-800">
+                <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
                   apps/web
                 </code>
                 ) before running the command, or execute through pnpm filter:
               </p>
-              <div className="mt-2">
+              <div className="mt-3">
                 <CodeBlock
                   language="bash"
                   code="pnpm --filter web dlx hudbird-ui add Button Card"

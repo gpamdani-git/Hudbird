@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { Monitor, Tablet, Smartphone, Copy, Check, ChevronDown } from "lucide-react";
+import { Monitor, Tablet, Smartphone } from "lucide-react";
+import { Tabs, Tab, Button } from "@hudbird/ui";
 import { IdeCodeBlock } from "./IdeCodeBlock";
 import { IframePreview } from "./IframePreview";
 
 export type ViewportMode = "desktop" | "tablet" | "mobile";
 
 interface MarketingPreviewProps {
-  title?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
   children: React.ReactNode;
   code?: string;
   codeHtml?: string;
@@ -18,6 +20,7 @@ interface MarketingPreviewProps {
 
 export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
   title = "Simple centered",
+  subtitle,
   children,
   code,
   codeHtml,
@@ -39,87 +42,100 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
     <div className="my-8 flex w-full flex-col gap-4">
       {/* Header Controls */}
       <div className="flex w-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-        <div className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">{title}</div>
+        <div>
+          {title && (
+            <div className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+              {title}
+            </div>
+          )}
+          {subtitle && (
+            <div className="mt-0.5 text-sm text-zinc-500 dark:text-zinc-400">{subtitle}</div>
+          )}
+        </div>
 
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+        <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
           {/* Preview / Code Toggle */}
-          <div className="flex rounded-full bg-zinc-100 p-0.5 dark:bg-zinc-800/50">
-            <button
-              onClick={() => setActiveTab("preview")}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                activeTab === "preview"
-                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
-            >
-              Preview
-            </button>
-            <button
-              onClick={() => setActiveTab("code")}
-              className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
-                activeTab === "code"
-                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-700 dark:text-white"
-                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-              }`}
-            >
-              Code
-            </button>
-          </div>
+          <Tabs
+            size="sm"
+            variant="solid"
+            radius="md"
+            selectedKey={activeTab}
+            onSelectionChange={(k) => setActiveTab(k as "preview" | "code")}
+          >
+            <Tab tabKey="preview" title="Preview" />
+            <Tab tabKey="code" title="Code" />
+          </Tabs>
 
-          <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
+          <div className="h-4 w-px bg-zinc-200 dark:bg-white/[0.08]" />
 
           {/* Viewport Toggles */}
-          <div className="flex items-center gap-1">
-            <button
+          <div className="flex items-center gap-1 rounded-xl border border-black/[0.06] bg-zinc-100/80 p-0.5 dark:border-white/[0.08] dark:bg-[#161618]">
+            <Button
+              size="sm"
+              isIconOnly
+              radius="md"
+              variant={viewport === "desktop" && activeTab === "preview" ? "solid" : "light"}
+              color={viewport === "desktop" && activeTab === "preview" ? "default" : "secondary"}
+              className={
+                viewport === "desktop" && activeTab === "preview"
+                  ? "shadow-xs dark:bg-[#28292d] dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              }
               onClick={() => {
                 setActiveTab("preview");
                 setViewport("desktop");
               }}
-              className={`rounded-md p-1.5 transition-colors ${
-                viewport === "desktop" && activeTab === "preview"
-                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
-              }`}
+              aria-label="Desktop viewport"
             >
-              <Monitor size={16} />
-            </button>
-            <button
+              <Monitor className="h-4 w-4" />
+            </Button>
+            <Button
+              size="sm"
+              isIconOnly
+              radius="md"
+              variant={viewport === "tablet" && activeTab === "preview" ? "solid" : "light"}
+              color={viewport === "tablet" && activeTab === "preview" ? "default" : "secondary"}
+              className={
+                viewport === "tablet" && activeTab === "preview"
+                  ? "shadow-xs dark:bg-[#28292d] dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              }
               onClick={() => {
                 setActiveTab("preview");
                 setViewport("tablet");
               }}
-              className={`rounded-md p-1.5 transition-colors ${
-                viewport === "tablet" && activeTab === "preview"
-                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
-              }`}
+              aria-label="Tablet viewport"
             >
-              <Tablet size={16} />
-            </button>
-            <button
+              <Tablet className="h-4 w-4" />
+            </Button>
+            <Button
+              size="sm"
+              isIconOnly
+              radius="md"
+              variant={viewport === "mobile" && activeTab === "preview" ? "solid" : "light"}
+              color={viewport === "mobile" && activeTab === "preview" ? "default" : "secondary"}
+              className={
+                viewport === "mobile" && activeTab === "preview"
+                  ? "shadow-xs dark:bg-[#28292d] dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+              }
               onClick={() => {
                 setActiveTab("preview");
                 setViewport("mobile");
               }}
-              className={`rounded-md p-1.5 transition-colors ${
-                viewport === "mobile" && activeTab === "preview"
-                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white"
-                  : "text-zinc-400 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-300"
-              }`}
+              aria-label="Mobile viewport"
             >
-              <Smartphone size={16} />
-            </button>
+              <Smartphone className="h-4 w-4" />
+            </Button>
           </div>
-
-          <div className="h-4 w-px bg-zinc-200 dark:bg-zinc-800" />
         </div>
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-xs dark:border-zinc-800/80 dark:bg-[#0a0a0a]">
+      <div className="relative w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-zinc-50 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
         {activeTab === "preview" ? (
           <div
-            className="flex w-full items-center justify-center bg-zinc-100 dark:bg-[#050505]"
+            className="flex w-full items-center justify-center bg-zinc-100/60 dark:bg-[#121214]"
             style={{ minHeight: `${minHeight}px` }}
           >
             <div
@@ -128,7 +144,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
             >
               {viewport === "desktop" ? (
                 <div
-                  className={`relative isolate w-full bg-white dark:bg-zinc-950 ${trapFixed ? "overflow-hidden" : ""}`}
+                  className={`relative isolate w-full bg-white dark:bg-[#161618] ${trapFixed ? "overflow-hidden" : ""}`}
                   style={
                     trapFixed
                       ? { transform: "translateZ(0)", minHeight: `${minHeight}px` }
@@ -138,7 +154,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
                   {children}
                 </div>
               ) : (
-                <div className="relative my-8 h-full w-full overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800/50">
+                <div className="relative my-8 h-full w-full overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-xl dark:border-white/[0.08] dark:bg-[#161618]">
                   <IframePreview minHeight={800}>{children}</IframePreview>
                 </div>
               )}
@@ -146,7 +162,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
           </div>
         ) : (
           <div
-            className="w-full bg-zinc-50 dark:bg-[#0d1117]"
+            className="w-full bg-zinc-50 dark:bg-[#121214]"
             style={{ minHeight: `${minHeight}px` }}
           >
             <IdeCodeBlock

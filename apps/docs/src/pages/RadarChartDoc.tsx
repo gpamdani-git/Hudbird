@@ -79,7 +79,7 @@ const apiProps: ApiPropRow[] = [
 
 export default function RadarChartDoc() {
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Radar Chart"
@@ -88,18 +88,19 @@ export default function RadarChartDoc() {
       />
 
       <section id="installation" className="scroll-mt-24 space-y-6">
-        <InstallationTabs
-          componentName="radar-chart"
-          dependencies="recharts clsx tailwind-merge"
-        />
+        <InstallationTabs componentName="radar-chart" dependencies="recharts clsx tailwind-merge" />
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Radar chart abstracts polygon geometries from <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">recharts</code> with automated polar angle calculations and theme tokens:
+          <strong>Abstracted layer.</strong> Radar chart abstracts polygon geometries from{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            recharts
+          </code>{" "}
+          with automated polar angle calculations and theme tokens:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -119,98 +120,110 @@ export default function App() {
       </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Component API
         </h2>
         <ApiTable title="RadarChart Props" rows={apiProps} />
       </section>
 
       <section id="examples" className="scroll-mt-24 space-y-16">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Examples
         </h2>
 
-          <div id="basic" className="mb-10 scroll-mt-20">
-            <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Basic Radar Chart
-            </h3>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-xl p-4">
-                <RadarChart data={data} index="subject" categories={["A"]} />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`<Card className="p-4 w-full max-w-xl mx-auto">
+        <div id="basic" className="mb-10 scroll-mt-20">
+          <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Basic Radar Chart
+          </h3>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-xl border border-zinc-200/80 p-4 dark:border-white/[0.08] dark:bg-[#161618]">
+              <RadarChart data={data} index="subject" categories={["A"]} />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`<Card className="p-4 w-full max-w-xl mx-auto">
   <RadarChart
     data={data}
     index="subject"
     categories={["A"]}
   />
 </Card>`}
-            />
-          </div>
+          />
+        </div>
 
-          <div id="multiple" className="mb-10 scroll-mt-20">
-            <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Multiple Categories & Circle Grid
-            </h3>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-xl p-4">
-                <RadarChart
-                  data={data}
-                  index="subject"
-                  categories={["A", "B"]}
-                  gridType="circle"
-                  colors={["#3b82f6", "#ef4444"]}
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`<RadarChart
+        <div id="multiple" className="mb-10 scroll-mt-20">
+          <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Multiple Categories & Circle Grid
+          </h3>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-xl border border-zinc-200/80 p-4 dark:border-white/[0.08] dark:bg-[#161618]">
+              <RadarChart
+                data={data}
+                index="subject"
+                categories={["A", "B"]}
+                gridType="circle"
+                colors={["#3b82f6", "#ef4444"]}
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`<RadarChart
   data={data}
   index="subject"
   categories={["A", "B"]}
   gridType="circle"
   colors={["#3b82f6", "#ef4444"]}
 />`}
-            />
-          </div>
+          />
+        </div>
 
-          <div id="custom-tooltip" className="mb-10 scroll-mt-20">
-            <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Custom Tooltip
-            </h3>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-xl p-4">
-                <RadarChart
-                  data={data}
-                  index="subject"
-                  categories={["A", "B"]}
-                  customTooltip={(props: any) => {
-                    if (!props.active || !props.payload || props.payload.length === 0) return null;
-                    const { payload, label } = props;
-                    return (
-                      <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-md dark:border-zinc-800 dark:bg-zinc-950">
-                        <p className="mb-2 font-medium text-zinc-900 dark:text-zinc-100">{label}</p>
+        <div id="custom-tooltip" className="mb-10 scroll-mt-20">
+          <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Custom Tooltip
+          </h3>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-xl border border-zinc-200/80 p-4 dark:border-white/[0.08] dark:bg-[#161618]">
+              <RadarChart
+                data={data}
+                index="subject"
+                categories={["A", "B"]}
+                customTooltip={(props: any) => {
+                  if (!props.active || !props.payload || props.payload.length === 0) return null;
+                  const { payload, label } = props;
+                  return (
+                    <div className="min-w-[10rem] rounded-xl border border-zinc-200/90 bg-white/95 px-3.5 py-2.5 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-black/50">
+                      <p className="mb-2 border-b border-zinc-100 pb-1.5 text-xs font-semibold tracking-tight text-zinc-900 dark:border-white/[0.08] dark:text-zinc-100">
+                        {label}
+                      </p>
+                      <div className="space-y-1.5">
                         {payload.map((entry: any, index: number) => (
-                          <div key={index} className="flex items-center gap-2">
-                            <span
-                              className="h-2 w-2 rounded-full"
-                              style={{ backgroundColor: entry.color }}
-                            />
-                            <span className="text-zinc-600 dark:text-zinc-400">
-                              {entry.name}: {entry.value}
+                          <div
+                            key={index}
+                            className="flex items-center justify-between gap-4 text-xs"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span
+                                className="h-2 w-2 rounded-full"
+                                style={{ backgroundColor: entry.color }}
+                              />
+                              <span className="text-zinc-600 dark:text-zinc-400">
+                                {entry.name}:
+                              </span>
+                            </div>
+                            <span className="font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
+                              {entry.value}
                             </span>
                           </div>
                         ))}
                       </div>
-                    );
-                  }}
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`<RadarChart
+                    </div>
+                  );
+                }}
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`<RadarChart
   data={data}
   index="subject"
   categories={["A", "B"]}
@@ -218,37 +231,37 @@ export default function App() {
     // Custom JSX return
   }}
 />`}
-            />
-          </div>
+          />
+        </div>
 
-          <div id="advanced-customization" className="mb-10 scroll-mt-20">
-            <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Advanced Customization
-            </h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              Inject SVG gradients or definitions using the <code>children</code> prop and map them
-              with <code>colors</code>.
-            </p>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-xl p-4">
-                <RadarChart
-                  data={data}
-                  index="subject"
-                  categories={["A"]}
-                  colors={["url(#radar-gradient)"]}
-                  fillOpacity={0.8}
-                >
-                  <defs>
-                    <linearGradient id="radar-gradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0.2} />
-                    </linearGradient>
-                  </defs>
-                </RadarChart>
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`<RadarChart
+        <div id="advanced-customization" className="mb-10 scroll-mt-20">
+          <h3 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Advanced Customization
+          </h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            Inject SVG gradients or definitions using the <code>children</code> prop and map them
+            with <code>colors</code>.
+          </p>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-xl border border-zinc-200/80 p-4 dark:border-white/[0.08] dark:bg-[#161618]">
+              <RadarChart
+                data={data}
+                index="subject"
+                categories={["A"]}
+                colors={["url(#radar-gradient)"]}
+                fillOpacity={0.8}
+              >
+                <defs>
+                  <linearGradient id="radar-gradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.2} />
+                  </linearGradient>
+                </defs>
+              </RadarChart>
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`<RadarChart
   data={data}
   index="subject"
   categories={["A"]}
@@ -262,16 +275,22 @@ export default function App() {
     </linearGradient>
   </defs>
 </RadarChart>`}
-            />
-          </div>
-        </section>
+          />
+        </div>
+      </section>
 
       <section id="css-classes" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           CSS Classes
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Root container customization.</strong> The RadarChart component accepts standard Tailwind classes for height and width, and renders inside a standard wrapper that accepts a <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop:
+          <strong>Root container customization.</strong> The RadarChart component accepts standard
+          Tailwind classes for height and width, and renders inside a standard wrapper that accepts
+          a{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -287,11 +306,20 @@ export default function App() {
       </section>
 
       <section id="element-classes" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Element Classes
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>SVG element targeting.</strong> Target specific Recharts internal SVG nodes via standard class names for global styling overrides (e.g. <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-polar-grid-angle</code> or <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-radar-polygon</code>):
+          <strong>SVG element targeting.</strong> Target specific Recharts internal SVG nodes via
+          standard class names for global styling overrides (e.g.{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-polar-grid-angle
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-radar-polygon
+          </code>
+          ):
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -309,11 +337,20 @@ export default function App() {
       </section>
 
       <section id="recharts-theming" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Recharts Theming
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Autonomous theme synchronization.</strong> RadarChart automatically adapts to light and dark themes using Tailwind's <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">dark:</code> scheme and standard semantic variables (<code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">var(--color-primary-500)</code>).
+          <strong>Autonomous theme synchronization.</strong> RadarChart automatically adapts to
+          light and dark themes using Tailwind's{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            dark:
+          </code>{" "}
+          scheme and standard semantic variables (
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            var(--color-primary-500)
+          </code>
+          ).
         </p>
       </section>
     </div>

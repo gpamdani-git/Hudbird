@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { Card, Avatar } from "@hudbird/ui";
+import { Card, Avatar, Badge } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Play } from "lucide-react";
 
@@ -40,7 +40,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     id: "f1",
     featured: true,
     featuredImage:
-      "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?auto=format&fit=crop&q=80&w=400&h=500",
+      "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800",
     featuredTitle: "How Puno Automated 80% of Lead Handling",
     author: "",
     role: "",
@@ -51,7 +51,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "David Lee",
     role: "Founder, Atodio Studio",
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "We were spending hours on repetitive tasks. Their automation system saved us 30+ hours per week and dramatically improved our sales performance.",
   },
@@ -60,7 +60,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Michael Tran",
     role: "Founder & CEO, Skyline Realty Group",
     avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "We reduced admin work by nearly 50% and doubled our qualified appointment bookings. The ROI was faster than we expected — and the system continues to scale with us.",
   },
@@ -69,7 +69,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Daniel Kim",
     role: "Founder, ScaleLabs Education",
     avatar:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "Our enrollment process used to require manual follow-ups and spreadsheet tracking. Now, AI handles lead qualification, scheduling, reminders, and CRM updates automatically.\n\nWe've increased enrollment conversion by 35% in just one quarter.",
   },
@@ -78,7 +78,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Sarah Mitchell",
     role: "COO, BrightPath SaaS",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "We struggled with inconsistent lead follow-ups and slow response times. Their AI automation blueprint gave us clarity first, then execution.\n\nNow, our CRM runs intelligently, leads are scored automatically, and follow-ups happen without manual effort. We've increased demo bookings by 40% while reducing operational friction.",
   },
@@ -86,7 +86,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     id: "f2",
     featured: true,
     featuredImage:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400&h=500",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800",
     featuredTitle: "Scaling SaaS Operations with AI Automation",
     author: "",
     role: "",
@@ -97,7 +97,7 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Alex Johnson",
     role: "Head of Operations, Finovate Consulting",
     avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "Security and compliance were major concerns for us. They designed an automation architecture that was not only efficient but enterprise-grade secure.",
   },
@@ -106,16 +106,16 @@ export const DEFAULT_TESTIMONIALS: Testimonial[] = [
     author: "Jonathan Reed",
     role: "Managing Director, Nexora Digital Agency",
     avatar:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "We were scaling fast but drowning in manual workflows. Their automation system connected our CRM, email marketing, and reporting into one intelligent flow.\n\nThe result? 30+ hours saved per week and complete visibility across our pipeline.",
   },
   {
     id: "7",
     author: "Laura Martinez",
-    role: "CMO, Elevate Commerce Co.",
+    role: "Head of Marketing, Apex Commerce",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
+      "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=150&h=150",
     content:
       "Marketing automation always felt fragmented — too many tools, not enough cohesion.\n\nThey unified everything into one intelligent ecosystem. Campaign triggers, abandoned cart flows, segmentation — all automated with precision.",
   },
@@ -177,7 +177,7 @@ export const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) =
   }
 
   return (
-    <Card className="group flex h-full w-full flex-col border-zinc-200/50 bg-white/60 p-6 backdrop-blur-xl transition-shadow hover:shadow-lg lg:p-8 dark:border-zinc-800/50 dark:bg-zinc-900/60 dark:hover:shadow-none">
+    <Card className="group flex h-full w-full flex-col border-zinc-200/80 bg-white/80 p-6 backdrop-blur-xl transition-all hover:shadow-lg lg:p-8 dark:border-white/[0.08] dark:bg-[#161618] dark:hover:border-white/20">
       <div className="mb-4 text-zinc-400 dark:text-zinc-600">
         <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
@@ -207,8 +207,8 @@ export function Testimonials({
   description = "",
   testimonials = DEFAULT_TESTIMONIALS,
   className,
-  glowClassName = "bg-blue-500/30",
-  dotClassName = "bg-blue-500",
+  glowClassName = "bg-primary/10 dark:bg-primary/15",
+  dotClassName = "bg-primary",
 }: TestimonialsProps) {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -239,22 +239,26 @@ export function Testimonials({
       className={cn("relative overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
     >
       {/* Aesthetic Background Blobs */}
-      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-30 dark:opacity-20">
+      <div className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center opacity-40 dark:opacity-20">
         <div
           className={cn(
-            "absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-multiply blur-3xl dark:mix-blend-screen",
+            "absolute top-1/2 left-1/2 aspect-square w-full max-w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl",
             glowClassName
           )}
         />
-        <div className="absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full bg-purple-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
+        <div className="bg-primary/10 dark:bg-primary/5 absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full blur-3xl" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-16 max-w-2xl text-center sm:mb-20">
-          <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
-            <span className={cn("mr-2 flex h-1.5 w-1.5 rounded-full", dotClassName)}></span>
-            007 TESTIMONIAL
-          </div>
+          <Badge
+            variant="outline"
+            size="sm"
+            className="mb-6 inline-flex items-center gap-1.5 text-xs font-semibold"
+          >
+            <span className={cn("h-1.5 w-1.5 rounded-full", dotClassName)} />
+            TESTIMONIALS
+          </Badge>
           <h2 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-white">
             {title}
           </h2>

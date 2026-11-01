@@ -62,7 +62,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
       variant = "default",
       layout = "horizontal",
       customTooltip,
-      barRadius = 4,
+      barRadius = 6,
       children,
       className,
       ...props
@@ -99,7 +99,7 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                 vertical={isVertical}
                 horizontal={!isVertical}
                 stroke="currentColor"
-                className="text-zinc-200 dark:text-zinc-800"
+                className="text-zinc-200/80 dark:text-white/[0.08]"
               />
             )}
 
@@ -129,7 +129,10 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
 
             {showTooltip && (
               <Tooltip
-                cursor={{ fill: "currentColor", opacity: 0.05 }}
+                cursor={{
+                  fill: "currentColor",
+                  className: "text-zinc-200/40 dark:text-white/[0.04]",
+                }}
                 content={
                   customTooltip ? customTooltip : <ChartTooltip valueFormatter={valueFormatter} />
                 }
@@ -141,7 +144,12 @@ const BarChart = React.forwardRef<HTMLDivElement, BarChartProps>(
                 verticalAlign="bottom"
                 height={36}
                 iconType="circle"
-                wrapperStyle={{ fontSize: "14px", paddingTop: "20px" }}
+                wrapperStyle={{ fontSize: "13px", paddingTop: "20px" }}
+                formatter={(value) => (
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                    {value}
+                  </span>
+                )}
               />
             )}
 

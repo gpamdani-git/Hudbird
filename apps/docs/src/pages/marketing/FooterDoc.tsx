@@ -99,9 +99,9 @@ export default function FooterDoc() {
             <MarketingPreview>
               <div className="w-full rounded-2xl bg-white dark:bg-zinc-950">
                 <FooterMega
-                  logo={<Droplets className="h-8 w-8 text-indigo-600 dark:text-indigo-500" />}
+                  logo={<Droplets className="text-primary h-8 w-8" />}
                   brandName="Hudbird UI"
-                  description="Making the world a better place through constructing elegant hierarchies."
+                  description="An accessible, component-driven React design system built for speed, contrast, and responsive layout polish."
                   linkGroups={MEGA_LINK_GROUPS}
                   socials={SOCIALS}
                   copyright="&copy; 2026 Hudbird UI, Inc. All rights reserved."
@@ -117,20 +117,20 @@ export default function FooterDoc() {
               Glassmorphic Footer
             </h3>
             <MarketingPreview>
-              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-                {/* Add some ambient glowing orbs behind the glass */}
-                <div className="absolute top-1/2 left-1/4 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 blur-[80px]" />
-                <div className="absolute top-1/2 right-1/4 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/20 blur-[80px]" />
+              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 dark:from-zinc-950 dark:to-indigo-950/20">
+                {/* Ambient illumination */}
+                <div className="bg-primary/10 absolute top-1/2 left-1/4 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]" />
+                <div className="bg-primary/5 absolute top-1/2 right-1/4 h-64 w-64 translate-x-1/2 -translate-y-1/2 rounded-full blur-[80px]" />
 
                 <FooterGlass
                   logo={<Droplets className="h-8 w-8 text-zinc-900 dark:text-white" />}
-                  brandName="Nietzsche"
-                  newsletterTitle="Sign up to receive health tips."
-                  newsletterDisclaimer="By subscribing you agree to with our Privacy Policy and provide consent to receive updates from our company."
-                  newsletterPlaceholder="Enter you email"
-                  newsletterButtonText="Submit"
+                  brandName="Hudbird UI"
+                  newsletterTitle="Get updates on new releases."
+                  newsletterDisclaimer="By subscribing you agree to our Privacy Policy and provide consent to receive component updates."
+                  newsletterPlaceholder="Enter your email"
+                  newsletterButtonText="Subscribe"
                   linkGroups={MEGA_LINK_GROUPS}
-                  copyright="&copy; 2026 joey med, All rights reserved."
+                  copyright="&copy; 2026 Hudbird UI, Inc. All rights reserved."
                   onSubscribe={(email) => alert("Subscribed: " + email)}
                 />
               </div>

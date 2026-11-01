@@ -90,7 +90,7 @@ export const FintechNavbar = () => (
       <Navbar
         styleVariant="floating-full"
         position="static"
-        className="!mt-0 !max-w-3xl !border-zinc-200/80 !bg-white/80 !px-2 !shadow-2xl !backdrop-blur-2xl transition-colors duration-500 dark:!border-white/10 dark:!bg-[#12141d]/85 [&>div:first-child]:!h-[56px] [&>div:first-child]:!px-2"
+        className="!mt-0 !max-w-3xl !border-zinc-200/80 !bg-white/80 !px-4 !shadow-2xl !backdrop-blur-2xl transition-colors duration-500 dark:!border-white/10 dark:!bg-[#161618]/90 [&>div:first-child]:!h-[56px] [&>div:first-child]:!px-4"
       >
         <NavbarBrand>
           <div className="flex items-center gap-2 pl-2">
@@ -115,9 +115,9 @@ export const FintechNavbar = () => (
         </NavbarContent>
 
         <NavbarContent justify="end">
-          <button className="hidden rounded-full bg-emerald-600 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 md:inline-flex dark:bg-emerald-600 dark:hover:bg-emerald-500">
+          <Button size="sm" color="success" radius="full" className="hidden md:inline-flex">
             Sign up
-          </button>
+          </Button>
         </NavbarContent>
 
         <NavbarMenuToggle />
@@ -132,9 +132,9 @@ export const FintechNavbar = () => (
           <NavbarMenuItem>Resources</NavbarMenuItem>
           <NavbarMenuItem>Pricing</NavbarMenuItem>
           <div className="mt-4 flex flex-col gap-2">
-            <button className="rounded-full bg-emerald-600 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700 dark:bg-emerald-600 dark:hover:bg-emerald-500">
+            <Button color="success" radius="full" size="sm">
               Sign up
-            </button>
+            </Button>
           </div>
         </NavbarMenu>
       </Navbar>

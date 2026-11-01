@@ -1859,14 +1859,17 @@ export const CtaTerminalDemo = () => {
             </div>
 
             {/* Package manager tabs */}
-            <div className="flex border-b border-zinc-800 bg-zinc-950/50">
+            <div className="flex gap-1 border-b border-zinc-800 bg-zinc-950/50 p-1">
               {["pnpm", "npm", "yarn", "bun"].map((pm, i) => (
-                <button
+                <Button
                   key={pm}
-                  className={`px-4 py-2 text-xs font-medium transition-colors ${i === 0 ? "rounded-sm bg-zinc-700 text-white" : "text-zinc-500 hover:text-zinc-300"}`}
+                  size="sm"
+                  variant={i === 0 ? "solid" : "light"}
+                  color="secondary"
+                  className={i === 0 ? "bg-zinc-700 text-white" : "text-zinc-400"}
                 >
                   {pm}
-                </button>
+                </Button>
               ))}
             </div>
 

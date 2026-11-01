@@ -23,6 +23,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ProPricingModal } from "../components/ProPricingModal";
+import { Badge, Button, Card } from "@hudbird/ui";
 
 /* ═══════════════════════════════════════════════
    Template Data
@@ -260,17 +261,19 @@ function CliInstallTabs({ templateId }: { templateId: string }) {
     <div className="flex flex-col gap-2">
       <div className="flex gap-1 rounded-lg bg-zinc-100 p-0.5 dark:bg-white/5">
         {managers.map((m, i) => (
-          <button
+          <Button
             key={m.name}
+            size="sm"
+            variant={active === i ? "solid" : "light"}
             onClick={() => setActive(i)}
-            className={`flex-1 rounded-md px-3 py-1.5 text-xs font-semibold transition-all ${
+            className={`flex-1 rounded-md px-3 py-1.5 text-xs font-semibold ${
               active === i
                 ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-white"
                 : "text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200"
             }`}
           >
             {m.name}
-          </button>
+          </Button>
         ))}
       </div>
       <div className="flex w-full items-center justify-between rounded-xl border border-zinc-200 bg-zinc-50 p-1 dark:border-white/10 dark:bg-black/30">
@@ -280,21 +283,24 @@ function CliInstallTabs({ templateId }: { templateId: string }) {
             {managers[active].cmd}
           </code>
         </div>
-        <button
+        <Button
+          size="sm"
+          isIconOnly
+          variant="light"
           onClick={() => {
             navigator.clipboard.writeText(managers[active].cmd);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
           }}
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-zinc-500 shadow-sm transition-all hover:bg-zinc-100 hover:text-zinc-900 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
-          title="Copy command"
+          aria-label="Copy command"
+          className="h-9 w-9 min-w-9 rounded-lg bg-white text-zinc-500 shadow-sm hover:bg-zinc-100 hover:text-zinc-900 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
         >
           {copied ? (
-            <CheckCircle2 className="h-4 w-4 text-green-500" />
+            <CheckCircle2 className="h-4 w-4 text-emerald-500" />
           ) : (
             <Copy className="h-4 w-4" />
           )}
-        </button>
+        </Button>
       </div>
     </div>
   );
@@ -364,18 +370,28 @@ function ImageGallery({
         {/* Nav arrows */}
         {images.length > 1 && (
           <>
-            <button
+            <Button
+              isIconOnly
+              size="sm"
+              radius="full"
+              variant="flat"
               onClick={() => goTo(activeIdx - 1)}
-              className="absolute top-1/2 left-3 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white/80 backdrop-blur-sm transition-all hover:bg-black/70"
+              aria-label="Previous image"
+              className="absolute top-1/2 left-3 h-8 w-8 min-w-8 -translate-y-1/2 bg-black/50 text-white/80 backdrop-blur-sm hover:bg-black/70"
             >
               <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
+            </Button>
+            <Button
+              isIconOnly
+              size="sm"
+              radius="full"
+              variant="flat"
               onClick={() => goTo(activeIdx + 1)}
-              className="absolute top-1/2 right-3 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white/80 backdrop-blur-sm transition-all hover:bg-black/70"
+              aria-label="Next image"
+              className="absolute top-1/2 right-3 h-8 w-8 min-w-8 -translate-y-1/2 bg-black/50 text-white/80 backdrop-blur-sm hover:bg-black/70"
             >
               <ChevronRight className="h-4 w-4" />
-            </button>
+            </Button>
           </>
         )}
 
@@ -440,22 +456,23 @@ export function TemplateDetailDoc() {
     <div className="mx-auto w-full">
       {/* Breadcrumb */}
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-        <button
+        <Button
+          variant="light"
+          size="sm"
           onClick={() => navigate("/templates")}
-          className="flex items-center text-sm font-medium text-zinc-500 transition-colors hover:text-zinc-900 dark:hover:text-white"
+          startContent={<ArrowLeft className="h-4 w-4" />}
+          className="text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
         >
-          <ArrowLeft className="mr-2 h-4 w-4" />
           Back to templates
-        </button>
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-bold ${
-            isFree
-              ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-              : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-          }`}
+        </Button>
+        <Badge
+          variant="flat"
+          color={isFree ? "success" : "warning"}
+          size="sm"
+          className="font-bold"
         >
           {isFree ? "Free & Open Source" : "Pro Template"}
-        </span>
+        </Badge>
       </div>
 
       {/* Main Grid */}
@@ -540,9 +557,9 @@ export function TemplateDetailDoc() {
                   <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">
                     Free
                   </span>
-                  <span className="rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                  <Badge variant="soft" color="success" size="sm">
                     Open Source
-                  </span>
+                  </Badge>
                 </div>
               ) : (
                 <div className="flex items-baseline gap-2">
@@ -564,12 +581,14 @@ export function TemplateDetailDoc() {
               {isFree ? (
                 <>
                   <CliInstallTabs templateId={id || "ai-startup"} />
-                  <button
+                  <Button
+                    size="lg"
                     onClick={() => navigate("/blocks")}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 font-bold text-white shadow-lg transition-all hover:bg-zinc-800 active:scale-[0.97] dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+                    startContent={<Download className="h-4 w-4" />}
+                    className="w-full font-bold shadow-lg"
                   >
-                    <Download className="h-4 w-4" /> Browse Components
-                  </button>
+                    Browse Components
+                  </Button>
                   <p className="text-center text-xs text-zinc-500">
                     Free forever. No account required.
                   </p>
@@ -612,12 +631,15 @@ export function TemplateDetailDoc() {
                     <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
                       All templates & commercial license.
                     </p>
-                    <button
+                    <Button
+                      variant="light"
+                      size="sm"
                       onClick={() => setIsProModalOpen(true)}
-                      className="mt-2 flex items-center gap-1 text-xs font-bold text-amber-600 transition-colors hover:text-amber-700 dark:text-amber-400"
+                      endContent={<ArrowRight className="h-3.5 w-3.5" />}
+                      className="mt-2 h-auto p-0 text-xs font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400"
                     >
-                      View Pro Pricing <ArrowRight className="h-3.5 w-3.5" />
-                    </button>
+                      View Pro Pricing
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -665,10 +687,11 @@ export function TemplateDetailDoc() {
             {relatedTemplates.map((tid) => {
               const t = TEMPLATES_DATA[tid];
               return (
-                <button
+                <Card
                   key={tid}
+                  isPressable
                   onClick={() => navigate(`/templates/${tid}/detail`)}
-                  className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white text-left transition-all hover:border-zinc-300 hover:shadow-lg dark:border-white/10 dark:bg-zinc-900 dark:hover:border-white/20"
+                  className="group flex flex-col overflow-hidden text-left"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-zinc-100 dark:bg-[#0a0a0b]">
                     <img
@@ -685,13 +708,15 @@ export function TemplateDetailDoc() {
                       <span className="text-sm font-semibold">{t.name}</span>
                       <span className="text-xs text-zinc-500">{t.author}</span>
                     </div>
-                    <span
-                      className={`rounded-md px-2 py-1 text-xs font-semibold ${t.price.toLowerCase() === "free" ? "bg-zinc-100 text-zinc-900 dark:bg-white/10 dark:text-white" : "bg-blue-500/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400"}`}
+                    <Badge
+                      variant="soft"
+                      size="sm"
+                      color={t.price.toLowerCase() === "free" ? "dark" : "primary"}
                     >
                       {t.price}
-                    </span>
+                    </Badge>
                   </div>
-                </button>
+                </Card>
               );
             })}
           </div>

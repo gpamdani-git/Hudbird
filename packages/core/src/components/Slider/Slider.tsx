@@ -9,7 +9,7 @@ export type SliderColor = "primary" | "success" | "danger" | "warning";
 export type SliderSize = "sm" | "md" | "lg";
 
 const trackVariants = cva(
-  "relative w-full rounded-full bg-zinc-200 dark:bg-zinc-800 cursor-pointer select-none transition-colors",
+  "relative w-full rounded-full bg-zinc-200/80 dark:bg-[#202124] shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] border border-black/[0.04] dark:border-white/[0.06] cursor-pointer select-none transition-colors",
   {
     variants: {
       size: {
@@ -39,7 +39,7 @@ const rangeVariants = cva("absolute h-full rounded-full transition-all duration-
 });
 
 const thumbVariants = cva(
-  "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full border-2 border-white bg-white shadow-md transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-110 cursor-grab active:cursor-grabbing dark:border-zinc-900",
+  "absolute top-1/2 -translate-y-1/2 -translate-x-1/2 rounded-full border border-black/10 dark:border-white/20 bg-white dark:bg-zinc-100 shadow-lg shadow-black/20 transition-transform duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-125 cursor-grab active:cursor-grabbing",
   {
     variants: {
       size: {

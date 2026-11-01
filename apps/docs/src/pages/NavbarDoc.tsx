@@ -611,7 +611,7 @@ export default function StandardNavbarExample() {
                         size="sm"
                         color="indigo"
                         variant="solid"
-                        className="h-7 px-2.5 text-xs"
+                        className="h-8 px-3.5 text-xs font-medium"
                       >
                         Join
                       </Button>
@@ -747,7 +747,7 @@ export default function StandardNavbarExample() {
                         size="sm"
                         color="indigo"
                         variant="solid"
-                        className="h-7 px-2.5 text-xs"
+                        className="h-8 px-3.5 text-xs font-medium"
                       >
                         Inquire
                       </Button>
@@ -904,7 +904,7 @@ export default function StandardNavbarExample() {
                         size="sm"
                         color="indigo"
                         variant="solid"
-                        className="h-7 px-2.5 text-xs"
+                        className="h-8 px-3.5 text-xs font-medium"
                       >
                         Shop
                       </Button>
@@ -1065,7 +1065,7 @@ export default function StandardNavbarExample() {
                         size="sm"
                         color="indigo"
                         variant="solid"
-                        className="h-7 px-2.5 text-xs"
+                        className="h-8 px-3.5 text-xs font-medium"
                       >
                         Inquire
                       </Button>
@@ -1637,7 +1637,7 @@ export default function StandardNavbarExample() {
                     <NavbarItem>
                       <div className="flex shrink-0 cursor-pointer items-center gap-3">
                         <Avatar
-                          src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                          src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                           alt="Sarah Miller"
                           size="sm"
                           radius="full"
@@ -1697,7 +1697,7 @@ export default function StandardNavbarExample() {
               <select
                 value={playStyleVariant}
                 onChange={(e) => setPlayStyleVariant(e.target.value as NavbarStyleVariant)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="glassmorphism">Glassmorphism</option>
                 <option value="transparent">Transparent</option>
@@ -1713,7 +1713,7 @@ export default function StandardNavbarExample() {
               <select
                 value={playMobileVariant}
                 onChange={(e) => setPlayMobileVariant(e.target.value as NavbarMobileMenuVariant)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="top">Top (Slide Down)</option>
                 <option value="left">Left (Side Drawer)</option>
@@ -1730,7 +1730,7 @@ export default function StandardNavbarExample() {
               <select
                 value={playLogoPos}
                 onChange={(e) => setPlayLogoPos(e.target.value as NavbarLogoPosition)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="left">Left (Standard)</option>
                 <option value="center">Center (Split Navigation)</option>
@@ -1746,7 +1746,7 @@ export default function StandardNavbarExample() {
               <select
                 value={playMaxWidth}
                 onChange={(e) => setPlayMaxWidth(e.target.value as NavbarMaxWidth)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="full">Full Width</option>
                 <option value="2xl">2XL (1536px)</option>

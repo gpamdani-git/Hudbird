@@ -15,7 +15,7 @@ export interface LogoCloudGlassProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const LogoCloudGlass = React.forwardRef<HTMLElement, LogoCloudGlassProps>(
-  ({ className, title = "Trusted by the world's most innovative teams", logos, ...props }, ref) => {
+  ({ className, title = "Integrated across modern web frameworks", logos, ...props }, ref) => {
     return (
       <section ref={ref} className={cn("relative py-16 sm:py-24", className)} {...props}>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -14,9 +14,9 @@ const paginationItemVariants = cva(
   {
     variants: {
       size: {
-        sm: "h-8 min-w-8 text-xs px-2",
-        md: "h-9 min-w-9 text-sm px-2.5",
-        lg: "h-11 min-w-11 text-base px-3.5",
+        sm: "h-9 min-w-9 text-xs px-2.5",
+        md: "h-11 min-w-11 text-sm px-3.5",
+        lg: "h-13 min-w-13 text-base px-4",
       },
       radius: {
         none: "rounded-none",

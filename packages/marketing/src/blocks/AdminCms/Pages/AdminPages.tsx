@@ -9,6 +9,7 @@ import {
   TableHead,
   TableCell,
   Badge,
+  Button,
 } from "@hudbird/ui";
 import { motion } from "framer-motion";
 import { ConfirmModal } from "../Components/ConfirmModal";
@@ -93,14 +94,22 @@ export const AdminPages = ({ onEdit }: { onEdit?: () => void }) => {
           />
         </div>
         <div className="flex items-center gap-2">
-          <button className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 items-center gap-1.5 rounded-lg border px-3 text-[12px] font-medium transition-colors">
+          <Button
+            variant="outline"
+            size="sm"
+            endContent={<ChevronDown className="h-3 w-3 opacity-50" />}
+            className="border-border/40 bg-card text-[12px] font-medium"
+          >
             Status
-            <ChevronDown className="h-3 w-3 opacity-50" />
-          </button>
-          <button className="border-border/40 bg-card text-muted-foreground hover:bg-muted/50 hover:text-foreground flex h-8 items-center gap-1.5 rounded-lg border px-3 text-[12px] font-medium transition-colors">
-            <SlidersHorizontal className="h-3 w-3" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            startContent={<SlidersHorizontal className="h-3 w-3" />}
+            className="border-border/40 bg-card text-[12px] font-medium"
+          >
             Filters
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -176,29 +185,38 @@ export const AdminPages = ({ onEdit }: { onEdit?: () => void }) => {
                   </TableCell>
                   <TableCell className="pr-4 text-right">
                     <div className="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                      <button
+                      <Button
+                        isIconOnly
+                        size="sm"
+                        variant="ghost"
                         onClick={onEdit}
-                        className="text-muted-foreground hover:bg-muted/60 hover:text-foreground flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                        className="text-muted-foreground hover:bg-muted/60 hover:text-foreground h-7 w-7 min-w-7 rounded-md"
                         title="Edit"
                       >
                         <Edit className="h-3.5 w-3.5" />
-                      </button>
-                      <button
-                        className="text-muted-foreground hover:bg-muted/60 hover:text-foreground flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                      </Button>
+                      <Button
+                        isIconOnly
+                        size="sm"
+                        variant="ghost"
+                        className="text-muted-foreground hover:bg-muted/60 hover:text-foreground h-7 w-7 min-w-7 rounded-md"
                         title="View"
                       >
                         <Eye className="h-3.5 w-3.5" />
-                      </button>
-                      <button
+                      </Button>
+                      <Button
+                        isIconOnly
+                        size="sm"
+                        variant="ghost"
                         onClick={() => {
                           setItemToDelete(page.id);
                           setIsDeleteModalOpen(true);
                         }}
-                        className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                        className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive h-7 w-7 min-w-7 rounded-md"
                         title="Delete"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
-                      </button>
+                      </Button>
                     </div>
                   </TableCell>
                 </TableRow>

@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 export type DividerOrientation = "horizontal" | "vertical";
-export type DividerVariant = "solid" | "dashed";
+export type DividerVariant = "solid" | "dashed" | "dotted" | "gradient";
 export type DividerContentPosition = "left" | "center" | "right";
 
 const dividerVariants = cva("shrink-0", {
@@ -17,6 +17,8 @@ const dividerVariants = cva("shrink-0", {
     variant: {
       solid: "",
       dashed: "",
+      dotted: "",
+      gradient: "",
     },
   },
   defaultVariants: {
@@ -30,6 +32,7 @@ export interface DividerProps
   orientation?: DividerOrientation;
   variant?: DividerVariant;
   contentPosition?: DividerContentPosition;
+  icon?: React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -40,20 +43,34 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
       orientation = "horizontal",
       variant = "solid",
       contentPosition = "center",
+      icon,
       children,
       ...props
     },
     ref
   ) => {
+    const hasContent = Boolean(children || icon);
+
     // If divider has children/content (only applicable in horizontal layout)
-    if (children && orientation === "horizontal") {
+    if (hasContent && orientation === "horizontal") {
       const isLeft = contentPosition === "left";
       const isRight = contentPosition === "right";
 
-      const lineStyle =
-        variant === "dashed"
-          ? "border-b border-dashed border-zinc-200 dark:border-zinc-800"
-          : "h-[1px] bg-zinc-200/70 dark:bg-zinc-800/70";
+      const getLineStyle = (side: "left" | "right") => {
+        switch (variant) {
+          case "dashed":
+            return "border-b border-dashed border-zinc-200 dark:border-white/[0.08]";
+          case "dotted":
+            return "border-b border-dotted border-zinc-300 dark:border-white/[0.15]";
+          case "gradient":
+            return side === "left"
+              ? "h-[1px] bg-gradient-to-r from-transparent to-zinc-300 dark:to-white/20"
+              : "h-[1px] bg-gradient-to-r from-zinc-300 dark:from-white/20 to-transparent";
+          case "solid":
+          default:
+            return "h-[1px] bg-zinc-200/80 dark:bg-white/[0.08]";
+        }
+      };
 
       return (
         <div
@@ -64,21 +81,48 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
           {...props}
         >
           {/* Left line */}
-          <div className={cn(lineStyle, isLeft ? "w-8 shrink-0" : isRight ? "flex-1" : "flex-1")} />
+          <div
+            className={cn(
+              getLineStyle("left"),
+              isLeft ? "w-8 shrink-0" : isRight ? "flex-1" : "flex-1"
+            )}
+          />
 
           {/* Content */}
-          <span className="shrink-0 px-3 text-xs font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+          <span className="inline-flex shrink-0 items-center gap-2 px-3 text-xs font-medium tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+            {icon && (
+              <span className="inline-flex shrink-0 items-center justify-center">{icon}</span>
+            )}
             {children}
           </span>
 
           {/* Right line */}
-          <div className={cn(lineStyle, isRight ? "w-8 shrink-0" : isLeft ? "flex-1" : "flex-1")} />
+          <div
+            className={cn(
+              getLineStyle("right"),
+              isRight ? "w-8 shrink-0" : isLeft ? "flex-1" : "flex-1"
+            )}
+          />
         </div>
       );
     }
 
     // Standard simple divider
     if (orientation === "vertical") {
+      const verticalVariantClasses = () => {
+        switch (variant) {
+          case "dashed":
+            return "border-l border-dashed border-zinc-200 bg-transparent dark:border-white/[0.08]";
+          case "dotted":
+            return "border-l border-dotted border-zinc-300 bg-transparent dark:border-white/[0.15]";
+          case "gradient":
+            return "bg-gradient-to-b from-transparent via-zinc-300 dark:via-white/20 to-transparent";
+          case "solid":
+          default:
+            return "bg-zinc-200/80 dark:bg-white/[0.08]";
+        }
+      };
+
       return (
         <div
           ref={ref}
@@ -86,15 +130,27 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
           aria-orientation="vertical"
           className={cn(
             dividerVariants({ orientation, variant }),
-            variant === "dashed"
-              ? "border-l border-dashed border-zinc-200 bg-transparent dark:border-zinc-800"
-              : "bg-zinc-200/70 dark:bg-zinc-800/70",
+            verticalVariantClasses(),
             className
           )}
           {...props}
         />
       );
     }
+
+    const horizontalVariantClasses = () => {
+      switch (variant) {
+        case "dashed":
+          return "my-3 h-0 border-b border-dashed border-zinc-200 bg-transparent dark:border-white/[0.08]";
+        case "dotted":
+          return "my-3 h-0 border-b border-dotted border-zinc-300 bg-transparent dark:border-white/[0.15]";
+        case "gradient":
+          return "my-3 h-[1px] bg-gradient-to-r from-transparent via-zinc-300 dark:via-white/20 to-transparent";
+        case "solid":
+        default:
+          return "my-3 h-[1px] bg-zinc-200/80 dark:bg-white/[0.08]";
+      }
+    };
 
     return (
       <div
@@ -103,9 +159,7 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
         aria-orientation="horizontal"
         className={cn(
           dividerVariants({ orientation, variant }),
-          variant === "dashed"
-            ? "my-3 h-0 border-b border-dashed border-zinc-200 bg-transparent dark:border-zinc-800"
-            : "my-3 h-[1px] bg-zinc-200/70 dark:bg-zinc-800/70",
+          horizontalVariantClasses(),
           className
         )}
         {...props}

@@ -8,11 +8,11 @@ import { AccordionContext, type AccordionVariant, AccordionItem } from "./Accord
 export const accordionVariants = cva("w-full transition-all duration-200", {
   variants: {
     variant: {
-      light: "border-t border-black/[0.06] dark:border-white/[0.08]",
+      light: "divide-y divide-zinc-200/80 dark:divide-white/[0.08]",
       bordered:
-        "border border-black/[0.06] dark:border-white/[0.08] rounded-2xl overflow-hidden bg-white/70 dark:bg-[#161618]/70 backdrop-blur-xl shadow-xs divide-y divide-black/[0.06] dark:divide-white/[0.08]",
-      shadow: "space-y-2.5",
-      splitted: "space-y-3",
+        "border border-zinc-200/90 dark:border-white/[0.08] rounded-2xl overflow-hidden bg-white/80 dark:bg-[#161618]/80 backdrop-blur-xl shadow-xs divide-y divide-zinc-200/70 dark:divide-white/[0.06]",
+      shadow: "space-y-3.5",
+      splitted: "space-y-3.5",
     },
   },
   defaultVariants: {

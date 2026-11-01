@@ -3,7 +3,7 @@ import { useThemeEditor } from "./ThemeEditorContext";
 import { ThemeExportDialog } from "./ActionMenu";
 import { baseColors } from "../../lib/themes";
 import { parseOklch, oklchToHex, hexToOklch } from "../../lib/colorUtils";
-import { Button, Badge } from "@hudbird/ui";
+import { Button, Badge, Tabs, Tab } from "@hudbird/ui";
 import { Sparkles, Download, Copy, Check, Code, Palette, SlidersHorizontal } from "lucide-react";
 
 export const PRIMARY_PRESETS = [
@@ -69,24 +69,24 @@ export const ThemeSyncBar: React.FC = () => {
   return (
     <div
       data-theme-sync-bar
-      className="mb-6 rounded-2xl border border-zinc-200/80 bg-white/70 p-4 shadow-sm backdrop-blur-xl transition-all sm:p-5 dark:border-zinc-800/80 dark:bg-zinc-900/70"
+      className="mb-6 rounded-2xl border border-zinc-200/80 bg-white p-4 shadow-xs backdrop-blur-xl transition-all sm:p-5 dark:border-white/[0.08] dark:bg-[#161618]"
     >
       {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/60 pb-3.5 dark:border-zinc-800/60">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/60 pb-3.5 dark:border-white/[0.08]">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
             <Palette className="h-4 w-4" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+              <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                 Theme Token Sync &amp; Exporter
               </h3>
               <Badge variant="soft" color="primary" size="sm">
                 Tailwind v4 &amp; Figma DTCG
               </Badge>
             </div>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            <p className="text-sm text-zinc-500 dark:text-zinc-400">
               Select your color palette and dimensions below to preview changes live and export sync
               tokens.
             </p>
@@ -96,42 +96,38 @@ export const ThemeSyncBar: React.FC = () => {
         {/* Quick Action Export Buttons */}
         <div className="flex items-center gap-2">
           <Button
-            variant="outline"
+            variant="bordered"
+            color="secondary"
             size="sm"
+            radius="md"
             onClick={handleCopyTailwind}
-            className="h-8 cursor-pointer gap-1.5 text-xs shadow-2xs"
             title="Copy Tailwind CSS v4 @theme directive block"
           >
             {copiedTailwind ? (
               <Check className="h-3.5 w-3.5 text-emerald-500" />
             ) : (
-              <Sparkles className="h-3.5 w-3.5 text-indigo-500" />
+              <Copy className="h-3.5 w-3.5 opacity-70" />
             )}
             <span>{copiedTailwind ? "Copied @theme!" : "Copy @theme"}</span>
           </Button>
 
           <Button
-            variant="outline"
+            variant="bordered"
+            color="secondary"
             size="sm"
+            radius="md"
             onClick={handleDownloadFigma}
-            className="h-8 cursor-pointer gap-1.5 text-xs shadow-2xs"
             title="Download Figma Tokens Studio DTCG specification JSON"
           >
             {downloadedFigma ? (
               <Check className="h-3.5 w-3.5 text-emerald-500" />
             ) : (
-              <Download className="h-3.5 w-3.5 text-purple-500" />
+              <Download className="h-3.5 w-3.5 opacity-70" />
             )}
             <span>{downloadedFigma ? "Downloaded!" : "Figma JSON"}</span>
           </Button>
 
-          <Button
-            variant="solid"
-            color="dark"
-            size="sm"
-            onClick={() => setIsExportModalOpen(true)}
-            className="h-8 cursor-pointer gap-1.5 text-xs shadow-xs"
-          >
+          <Button color="primary" size="sm" radius="md" onClick={() => setIsExportModalOpen(true)}>
             <Code className="h-3.5 w-3.5" />
             <span>Export Tokens</span>
           </Button>
@@ -206,24 +202,18 @@ export const ThemeSyncBar: React.FC = () => {
           <label className="text-[11px] font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
             Neutral Base
           </label>
-          <div className="inline-flex rounded-lg border border-zinc-200/80 bg-zinc-100/60 p-0.5 dark:border-zinc-800/80 dark:bg-zinc-900/60">
-            {(Object.keys(baseColors) as Array<keyof typeof baseColors>).map((key) => {
-              const isActive = activeBase === key;
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  onClick={() => setActiveBase(key)}
-                  className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
-                    isActive
-                      ? "bg-white font-semibold text-zinc-950 shadow-2xs dark:bg-zinc-800 dark:text-white"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                  }`}
-                >
-                  {baseColors[key].name}
-                </button>
-              );
-            })}
+          <div className="scrollbar-none overflow-x-auto">
+            <Tabs
+              size="sm"
+              variant="solid"
+              radius="md"
+              selectedKey={activeBase}
+              onSelectionChange={(k) => setActiveBase(k as any)}
+            >
+              {(Object.keys(baseColors) as Array<keyof typeof baseColors>).map((key) => (
+                <Tab key={key} tabKey={key} title={baseColors[key].name} />
+              ))}
+            </Tabs>
           </div>
         </div>
 
@@ -232,25 +222,18 @@ export const ThemeSyncBar: React.FC = () => {
           <label className="text-[11px] font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
             Radius
           </label>
-          <div className="inline-flex rounded-lg border border-zinc-200/80 bg-zinc-100/60 p-0.5 dark:border-zinc-800/80 dark:bg-zinc-900/60">
-            {RADIUS_PRESETS.map((r) => {
-              const isActive = activeRadius === r.value;
-              return (
-                <button
-                  key={r.value}
-                  type="button"
-                  onClick={() => setActiveRadius(r.value)}
-                  className={`cursor-pointer rounded-md px-2.5 py-1 text-xs font-medium transition-all ${
-                    isActive
-                      ? "bg-white font-semibold text-zinc-950 shadow-2xs dark:bg-zinc-800 dark:text-white"
-                      : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200"
-                  }`}
-                  title={`${r.value}rem`}
-                >
-                  {r.label}
-                </button>
-              );
-            })}
+          <div className="scrollbar-none overflow-x-auto">
+            <Tabs
+              size="sm"
+              variant="solid"
+              radius="md"
+              selectedKey={String(activeRadius)}
+              onSelectionChange={(k) => setActiveRadius(Number(k))}
+            >
+              {RADIUS_PRESETS.map((r) => (
+                <Tab key={r.value} tabKey={String(r.value)} title={r.label} />
+              ))}
+            </Tabs>
           </div>
         </div>
       </div>

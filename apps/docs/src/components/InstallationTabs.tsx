@@ -70,10 +70,6 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
 
   return (
     <div className="my-8">
-      <h3 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-white">
-        Installation
-      </h3>
-
       {/* Tabs: Command vs Manual */}
       <div className="mb-4 flex items-center gap-6 border-b border-black/5 dark:border-white/5">
         <button
@@ -109,7 +105,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
                 <button
                   key={pm}
                   onClick={() => setPkgManager(pm)}
-                  className={`rounded-md px-2.5 py-1 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
+                  className={`h-7 rounded-md px-3 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
                     pkgManager === pm
                       ? "bg-white text-zinc-950 shadow-xs dark:bg-white/15 dark:text-white"
                       : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
@@ -125,7 +121,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
               type="button"
               onClick={handleCopyCommand}
               aria-label="Copy installation command"
-              className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-all duration-150 active:scale-90 ${
+              className={`flex h-7 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-150 active:scale-90 ${
                 copiedCommand
                   ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400"
                   : "bg-black/5 text-zinc-600 hover:-translate-y-0.5 hover:bg-black/10 hover:text-zinc-950 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
@@ -170,7 +166,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
                     <button
                       key={pm}
                       onClick={() => setPkgManager(pm)}
-                      className={`rounded-md px-2.5 py-1 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
+                      className={`h-7 rounded-md px-3 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
                         pkgManager === pm
                           ? "bg-white text-zinc-950 shadow-xs dark:bg-white/15 dark:text-white"
                           : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
@@ -185,7 +181,7 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
                   type="button"
                   onClick={handleCopyDeps}
                   aria-label="Copy dependencies command"
-                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-all duration-150 active:scale-90 ${
+                  className={`flex h-7 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-150 active:scale-90 ${
                     copiedDeps
                       ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400"
                       : "bg-black/5 text-zinc-600 hover:-translate-y-0.5 hover:bg-black/10 hover:text-zinc-950 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"

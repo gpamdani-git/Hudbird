@@ -96,7 +96,7 @@ export default function ComposedChartDoc() {
     {
       prop: "barRadius",
       type: "number | [number, number, number, number]",
-      default: "4",
+      default: "6",
       description: "Border radius for the bars in the chart.",
     },
     {
@@ -108,7 +108,7 @@ export default function ComposedChartDoc() {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Composed Chart"
@@ -125,11 +125,12 @@ export default function ComposedChartDoc() {
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Composed chart synchronizes multi-series geometries (bars, lines, areas) into an unified coordinate system:
+          <strong>Abstracted layer.</strong> Composed chart synchronizes multi-series geometries
+          (bars, lines, areas) into an unified coordinate system:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -152,26 +153,26 @@ export default function App() {
         </div>
       </section>
 
-        <section id="stacked-bar-with-line" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Stacked Bar With Line
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <ComposedChart
-                data={dummyData}
-                index="date"
-                series={[
-                  { category: "Desktop", type: "bar", stackId: "a" },
-                  { category: "Mobile", type: "bar", stackId: "a" },
-                  { category: "Desktop", type: "line" },
-                ]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<ComposedChart
+      <section id="stacked-bar-with-line" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Stacked Bar With Line
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <ComposedChart
+              data={dummyData}
+              index="date"
+              series={[
+                { category: "Desktop", type: "bar", stackId: "a" },
+                { category: "Mobile", type: "bar", stackId: "a" },
+                { category: "Desktop", type: "line" },
+              ]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<ComposedChart
   data={dummyData}
   index="date"
   series={[
@@ -180,28 +181,26 @@ export default function App() {
     { category: "Desktop", type: "line" }
   ]}
 />`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="area-with-line" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Area with Line
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <ComposedChart
-                data={dummyData}
-                index="date"
-                series={[
-                  { category: "Desktop", type: "area" },
-                  { category: "Mobile", type: "line" },
-                ]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<ComposedChart
+      <section id="area-with-line" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Area with Line</h2>
+        <ComponentPreview>
+          <Card className="w-full border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <ComposedChart
+              data={dummyData}
+              index="date"
+              series={[
+                { category: "Desktop", type: "area" },
+                { category: "Mobile", type: "line" },
+              ]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<ComposedChart
   data={dummyData}
   index="date"
   series={[
@@ -209,28 +208,26 @@ export default function App() {
     { category: "Mobile", type: "line" }
   ]}
 />`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="bar-with-area" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Bar With Area
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <ComposedChart
-                data={dummyData}
-                index="date"
-                series={[
-                  { category: "Desktop", type: "bar" },
-                  { category: "Mobile", type: "area" },
-                ]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<ComposedChart
+      <section id="bar-with-area" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Bar With Area</h2>
+        <ComponentPreview>
+          <Card className="w-full border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <ComposedChart
+              data={dummyData}
+              index="date"
+              series={[
+                { category: "Desktop", type: "bar" },
+                { category: "Mobile", type: "area" },
+              ]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<ComposedChart
   data={dummyData}
   index="date"
   series={[
@@ -238,27 +235,27 @@ export default function App() {
     { category: "Mobile", type: "area" }
   ]}
 />`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="multi-type" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Multi-type</h2>
-          <ComponentPreview>
-            <Card className="w-full p-6">
-              <ComposedChart
-                data={dummyData}
-                index="date"
-                series={[
-                  { category: "Desktop", type: "bar" },
-                  { category: "Mobile", type: "area" },
-                  { category: "Desktop", type: "line", color: "var(--color-warning-500, #eab308)" },
-                ]}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<ComposedChart
+      <section id="multi-type" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Multi-type</h2>
+        <ComponentPreview>
+          <Card className="w-full border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <ComposedChart
+              data={dummyData}
+              index="date"
+              series={[
+                { category: "Desktop", type: "bar" },
+                { category: "Mobile", type: "area" },
+                { category: "Desktop", type: "line", color: "var(--color-warning-500, #eab308)" },
+              ]}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<ComposedChart
   data={dummyData}
   index="date"
   series={[
@@ -267,15 +264,21 @@ export default function App() {
     { category: "Desktop", type: "line", color: "var(--color-warning-500, #eab308)" }
   ]}
 />`}
-          />
-        </section>
+        />
+      </section>
 
       <section id="css-classes" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           CSS Classes
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Root container customization.</strong> The ComposedChart component applies standard Tailwind classes for height and width, and renders inside a standard wrapper that accepts a <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop:
+          <strong>Root container customization.</strong> The ComposedChart component applies
+          standard Tailwind classes for height and width, and renders inside a standard wrapper that
+          accepts a{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -294,11 +297,15 @@ export default function App() {
       </section>
 
       <section id="advanced-customization" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Advanced Customization
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>SVG gradient injection.</strong> Inject custom SVG gradients via <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">children</code>, configure stroke styles, and render custom tooltips with avatars:
+          <strong>SVG gradient injection.</strong> Inject custom SVG gradients via{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            children
+          </code>
+          , configure stroke styles, and render custom tooltips with avatars:
         </p>
         <ComponentPreview>
           <Card className="mx-auto w-full max-w-2xl p-4">
@@ -380,11 +387,11 @@ export default function App() {
       </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           API Reference
         </h2>
         <ApiTable rows={apiRows} />
-        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+        <h3 className="font-outfit pt-6 text-xl font-medium tracking-[-0.4px] text-zinc-900 sm:text-2xl dark:text-white">
           Recharts API Reference
         </h3>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -393,7 +400,7 @@ export default function App() {
             href="https://recharts.github.io/en-US/api/ComposedChart/"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
             https://recharts.github.io/en-US/api/ComposedChart/
           </a>

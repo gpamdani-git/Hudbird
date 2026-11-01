@@ -159,10 +159,10 @@ export default function CardDoc() {
         <ComponentPreview>
           <div className="w-full max-w-sm py-4">
             <Card variant="shadow" isHoverable>
-              <CardHeader className="justify-between">
+              <CardHeader>
                 <div className="flex items-center gap-3">
                   <Avatar
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+                    src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                     alt="Sophia Chen"
                     size="md"
                     radius="full"
@@ -189,7 +189,7 @@ export default function CardDoc() {
                   Tailwind CSS, and Class Variance Authority.
                 </p>
               </CardBody>
-              <CardFooter className="justify-between pt-2">
+              <CardFooter>
                 <div className="flex items-center gap-4 text-xs font-medium text-zinc-500 dark:text-zinc-400">
                   <span>
                     <strong className="font-semibold text-zinc-900 dark:text-zinc-100">1.4k</strong>{" "}
@@ -218,7 +218,7 @@ export default function Example() {
       <CardHeader className="justify-between">
         <div className="flex items-center gap-3">
           <Avatar
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150"
+            src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
             alt="Sophia Chen"
             size="md"
             radius="full"
@@ -406,7 +406,7 @@ export default function Example() {
             <div className="grid w-full max-w-2xl grid-cols-1 gap-6 py-4 sm:grid-cols-2">
               {/* Hoverable Card */}
               <Card variant="shadow" isHoverable className="group">
-                <CardHeader className="justify-between">
+                <CardHeader>
                   <div className="rounded-xl bg-indigo-50 p-2.5 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
                     <Sparkles size={18} />
                   </div>
@@ -439,7 +439,7 @@ export default function Example() {
                 onClick={() => setClickCounter((c) => c + 1)}
                 className="group"
               >
-                <CardHeader className="justify-between">
+                <CardHeader>
                   <div className="rounded-xl bg-emerald-50 p-2.5 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
                     <TrendingUp size={18} />
                   </div>
@@ -456,7 +456,7 @@ export default function Example() {
                     keyboard accessibility.
                   </p>
                 </CardBody>
-                <CardFooter className="justify-between">
+                <CardFooter>
                   <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
                     Clicks: <strong className="font-bold">{clickCounter}</strong>
                   </span>
@@ -515,10 +515,10 @@ export function InteractiveCardsExample() {
             <div className="w-full max-w-md py-4">
               <Card variant="shadow" className="overflow-hidden">
                 {/* Header */}
-                <CardHeader className="justify-between pb-3">
+                <CardHeader>
                   <div className="flex items-center gap-3">
                     <Avatar
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80"
+                      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                       alt="Alex Rivera"
                       size="md"
                       radius="full"
@@ -537,24 +537,26 @@ export function InteractiveCardsExample() {
                       </span>
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="cursor-pointer rounded-lg p-1.5 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-zinc-200"
+                  <Button
+                    size="sm"
+                    isIconOnly
+                    variant="light"
+                    color="secondary"
                     aria-label="Options"
                   >
                     <MoreVertical size={16} />
-                  </button>
+                  </Button>
                 </CardHeader>
 
                 {/* Body */}
-                <CardBody className="space-y-3 pb-4">
+                <CardBody className="space-y-3">
                   <p className="text-sm text-zinc-700 dark:text-zinc-300">
                     Just wrapped up the newly engineered component system with native dark mode
                     support and micro-interactions! Take a look at the preview layout below:
                   </p>
                   <div className="relative aspect-video overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
                     <img
-                      src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
+                      src="https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=800"
                       alt="Modern Abstract Wave"
                       className="h-full w-full object-cover"
                       referrerPolicy="no-referrer"
@@ -563,41 +565,33 @@ export function InteractiveCardsExample() {
                 </CardBody>
 
                 {/* Footer */}
-                <CardFooter className="justify-between border-t border-zinc-100 pt-3 dark:border-zinc-800/80">
-                  <div className="flex items-center gap-1">
-                    <button
-                      type="button"
+                <CardFooter className="border-t border-zinc-100 dark:border-zinc-800/80">
+                  <div className="flex items-center gap-1.5">
+                    <Button
+                      size="sm"
+                      variant={isLiked ? "solid" : "light"}
+                      color={isLiked ? "danger" : "secondary"}
                       onClick={() => setIsLiked(!isLiked)}
-                      className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors ${
-                        isLiked
-                          ? "bg-rose-50 text-rose-600 dark:bg-rose-950/40"
-                          : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
-                      }`}
                     >
                       <Heart size={14} className={isLiked ? "fill-current" : ""} />
                       <span>{isLiked ? "343" : "342"}</span>
-                    </button>
-                    <button
-                      type="button"
-                      className="flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
-                    >
+                    </Button>
+                    <Button size="sm" variant="light" color="secondary">
                       <Share2 size={14} />
                       <span>Share</span>
-                    </button>
+                    </Button>
                   </div>
 
-                  <button
-                    type="button"
+                  <Button
+                    size="sm"
+                    isIconOnly
+                    variant={isBookmarked ? "solid" : "light"}
+                    color={isBookmarked ? "primary" : "secondary"}
                     onClick={() => setIsBookmarked(!isBookmarked)}
-                    className={`cursor-pointer rounded-lg p-1.5 text-xs font-semibold transition-colors ${
-                      isBookmarked
-                        ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40"
-                        : "text-zinc-400 hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-800 dark:hover:text-zinc-100"
-                    }`}
                     aria-label="Bookmark"
                   >
                     <Bookmark size={15} className={isBookmarked ? "fill-current" : ""} />
-                  </button>
+                  </Button>
                 </CardFooter>
               </Card>
             </div>
@@ -612,7 +606,7 @@ export function RichContentCard() {
     <Card variant="shadow" className="max-w-md">
       <CardHeader className="justify-between">
         <div className="flex items-center gap-3">
-          <Avatar src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150" />
+          <Avatar src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256" />
           <div>
             <span className="font-bold text-sm">Alex Rivera</span>
             <span className="text-xs text-zinc-500 block">Senior Product Designer</span>
@@ -623,7 +617,7 @@ export function RichContentCard() {
 
       <CardBody className="space-y-3">
         <p className="text-sm">Just wrapped up the newly engineered component system!</p>
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" className="rounded-xl aspect-video object-cover" />
+        <img src="https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=800" className="rounded-xl aspect-video object-cover" />
       </CardBody>
 
       <CardFooter className="justify-between border-t border-zinc-100 dark:border-zinc-800 pt-3">
@@ -657,7 +651,7 @@ export function RichContentCard() {
               {/* Music Album Card */}
               <Card variant="shadow" isHoverable className="group relative h-80 w-full">
                 <img
-                  src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80"
+                  src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Soundtrack Cover"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -668,7 +662,7 @@ export function RichContentCard() {
                     <span>Now Playing</span>
                   </span>
                 </div>
-                <CardFooter isBlurred className="justify-between px-4 py-3">
+                <CardFooter isBlurred>
                   <div className="flex flex-col text-left">
                     <span className="text-xs font-semibold tracking-wider text-zinc-600 uppercase dark:text-zinc-300">
                       Midnight Symphony
@@ -677,7 +671,14 @@ export function RichContentCard() {
                       Acoustic Horizon • 3:45
                     </span>
                   </div>
-                  <Button size="sm" color="indigo" variant="solid" className="rounded-full !px-3">
+                  <Button
+                    size="sm"
+                    color="indigo"
+                    variant="solid"
+                    isIconOnly
+                    radius="full"
+                    aria-label="Play Track"
+                  >
                     <Play size={14} className="fill-current" />
                   </Button>
                 </CardFooter>
@@ -686,7 +687,7 @@ export function RichContentCard() {
               {/* Gallery Highlight Card */}
               <Card variant="shadow" isHoverable className="group relative h-80 w-full">
                 <img
-                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&auto=format&fit=crop&q=80"
+                  src="https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="Yosemite Valley"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   referrerPolicy="no-referrer"
@@ -697,7 +698,7 @@ export function RichContentCard() {
                     <span>Nature Ambient</span>
                   </span>
                 </div>
-                <CardFooter isBlurred className="justify-between px-4 py-3">
+                <CardFooter isBlurred>
                   <div className="flex flex-col text-left">
                     <span className="text-xs font-semibold tracking-wider text-zinc-600 uppercase dark:text-zinc-300">
                       Yosemite Valley
@@ -722,7 +723,7 @@ export function ImageCoverCard() {
   return (
     <Card variant="shadow" isHoverable className="h-80 relative group">
       <img
-        src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600"
+        src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=600"
         alt="Soundtrack"
         className="w-full h-full object-cover group-hover:scale-105 transition-transform"
       />
@@ -762,7 +763,7 @@ export function ImageCoverCard() {
               <select
                 value={custVariant}
                 onChange={(e) => setCustVariant(e.target.value as CardVariant)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="shadow">Shadow (Elevated)</option>
                 <option value="bordered">Bordered (Outline)</option>
@@ -778,7 +779,7 @@ export function ImageCoverCard() {
               <select
                 value={custRadius}
                 onChange={(e) => setCustRadius(e.target.value as CardRadius)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="none">None (rounded-none)</option>
                 <option value="md">Medium (rounded-xl / 12px)</option>
@@ -815,7 +816,7 @@ export function ImageCoverCard() {
                 isHoverable={custIsHoverable}
                 isPressable={custIsPressable}
               >
-                <CardHeader className="justify-between">
+                <CardHeader>
                   <div className="flex items-center gap-2.5">
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/10 text-xs font-bold text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400">
                       UI
@@ -850,7 +851,7 @@ export function ImageCoverCard() {
                     .
                   </p>
                 </CardBody>
-                <CardFooter className="justify-between">
+                <CardFooter>
                   <span className="text-xs text-zinc-400">@hudbird/ui</span>
                   <Button size="sm" color="indigo" variant="flat">
                     Action

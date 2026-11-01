@@ -52,9 +52,9 @@ export const tabTriggerVariants = cva(
   {
     variants: {
       size: {
-        sm: "px-2.5 py-1 text-xs gap-1.5 min-h-7",
-        md: "px-3.5 py-1.5 text-sm gap-2 min-h-9",
-        lg: "px-4.5 py-2 text-base gap-2.5 min-h-11",
+        sm: "px-4 py-1 text-xs gap-1.5 min-h-8",
+        md: "px-5 py-1.5 text-sm gap-2 min-h-9",
+        lg: "px-6 py-2 text-base gap-2.5 min-h-11",
       },
       radius: {
         none: "rounded-none",
@@ -335,7 +335,7 @@ export const TabPanel = React.forwardRef<HTMLDivElement, TabPanelProps>(
     const panelId = tabKey || customId || "";
     const isSelected = selectedKey === panelId;
 
-    if (!isSelected) return null;
+    if (!isSelected || children == null) return null;
 
     return (
       <div
@@ -388,7 +388,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       defaultSelectedKey,
       onSelectionChange,
       variant = "solid",
-      color = "primary",
+      color = "default",
       size = "md",
       radius = "md",
       fullWidth = false,
@@ -448,7 +448,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         selectedKey: currentKey,
         setSelectedKey: handleSelect,
         variant: variant || "solid",
-        color: color || "primary",
+        color: color || "default",
         size: size || "md",
         radius: radius || "md",
         isDisabled: Boolean(isDisabled),

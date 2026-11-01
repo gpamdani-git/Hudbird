@@ -134,9 +134,14 @@ export const FintechCta = () => (
           </p>
 
           {/* Primary Button */}
-          <button className="h-14 rounded-full bg-emerald-600 px-8 text-lg font-medium text-white shadow-lg shadow-emerald-500/25 transition-all hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-emerald-500/40">
+          <Button
+            size="lg"
+            radius="full"
+            color="success"
+            className="h-14 px-8 text-lg font-medium shadow-lg shadow-emerald-500/25"
+          >
             Open a Free Account
-          </button>
+          </Button>
         </div>
       </div>
     </section>

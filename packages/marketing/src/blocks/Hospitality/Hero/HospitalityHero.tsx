@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Button } from "@hudbird/ui";
 import { SmoothStackingWrapper } from "../../../components/SmoothStackingWrapper";
 import {
   motion,
@@ -125,13 +126,16 @@ export function HospitalityHero({
           transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
           className="pointer-events-auto absolute top-0 z-50 flex w-full items-center justify-between px-6 py-8 text-white drop-shadow-md md:px-12"
         >
-          <button
+          <Button
+            isIconOnly
+            variant="light"
             onClick={() => setIsMenuOpen(true)}
-            className="group z-50 flex h-8 w-12 flex-col items-start justify-center gap-2 focus:outline-none"
+            className="group z-50 flex h-8 w-12 flex-col items-start justify-center gap-2 bg-transparent hover:bg-transparent"
+            aria-label="Open menu"
           >
             <span className="block h-[1px] w-8 bg-white transition-all duration-300 group-hover:w-12" />
             <span className="block h-[1px] w-12 bg-white" />
-          </button>
+          </Button>
 
           <div className="pointer-events-none absolute top-8 right-0 left-0 flex flex-col items-center justify-center text-center">
             <h1 className="font-serif text-xl tracking-[0.2em] text-white md:text-2xl">
@@ -142,19 +146,23 @@ export function HospitalityHero({
             </p>
           </div>
 
-          <div className="z-50 hidden items-center gap-8 md:flex">
-            <button
+          <div className="z-50 hidden items-center gap-4 md:flex">
+            <Button
+              variant="light"
+              size="sm"
               onClick={onBookRoom}
-              className="text-xs font-medium tracking-[0.15em] text-white uppercase transition-opacity hover:opacity-70"
+              className="text-xs font-medium tracking-[0.15em] text-white uppercase hover:text-white/80"
             >
               BOOK ROOM
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="light"
+              size="sm"
               onClick={onBookTable}
-              className="text-xs font-medium tracking-[0.15em] text-white uppercase transition-opacity hover:opacity-70"
+              className="text-xs font-medium tracking-[0.15em] text-white uppercase hover:text-white/80"
             >
               BOOK TABLE
-            </button>
+            </Button>
           </div>
         </motion.header>
 
@@ -371,24 +379,35 @@ export function HospitalityHero({
               className="pointer-events-auto fixed inset-0 z-[60] flex h-full w-full flex-col bg-[#1A1C1D] text-white"
             >
               <header className="flex w-full items-center justify-between px-6 py-8 md:px-12">
-                <button
+                <Button
+                  isIconOnly
+                  variant="light"
                   onClick={() => setIsMenuOpen(false)}
-                  className="group relative flex h-10 w-10 items-center justify-center focus:outline-none"
+                  className="group relative flex h-10 w-10 items-center justify-center bg-transparent hover:bg-transparent"
+                  aria-label="Close menu"
                 >
                   <span className="absolute h-[1px] w-8 rotate-45 bg-white transition-transform group-hover:rotate-90" />
                   <span className="absolute h-[1px] w-8 -rotate-45 bg-white transition-transform group-hover:rotate-0" />
-                </button>
+                </Button>
                 <div className="absolute top-8 left-1/2 -translate-x-1/2 text-center">
                   <h1 className="font-serif text-xl tracking-[0.2em] md:text-2xl">{logoText}</h1>
                   <p className="text-[10px] tracking-[0.3em] uppercase opacity-70">{subTitle}</p>
                 </div>
-                <div className="hidden items-center gap-8 md:flex">
-                  <button className="text-xs font-medium tracking-[0.15em] uppercase transition-opacity hover:opacity-70">
+                <div className="hidden items-center gap-4 md:flex">
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="text-xs font-medium tracking-[0.15em] text-white uppercase hover:text-white/80"
+                  >
                     BOOK ROOM
-                  </button>
-                  <button className="text-xs font-medium tracking-[0.15em] uppercase transition-opacity hover:opacity-70">
+                  </Button>
+                  <Button
+                    variant="light"
+                    size="sm"
+                    className="text-xs font-medium tracking-[0.15em] text-white uppercase hover:text-white/80"
+                  >
                     BOOK TABLE
-                  </button>
+                  </Button>
                 </div>
               </header>
 

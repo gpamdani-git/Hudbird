@@ -4,6 +4,7 @@ import { InstallationTabs } from "../components/InstallationTabs";
 import React from "react";
 import { DocHeader } from "../components/DocHeader";
 import { Divider, Button, Input } from "@hudbird/ui";
+import { Sparkles, Star, ShieldCheck, Terminal } from "lucide-react";
 import { ComponentPreview } from "../components/ComponentPreview";
 import { CodeBlock } from "../components/CodeBlock";
 import { ApiTable, type ApiPropRow } from "../components/ApiTable";
@@ -19,6 +20,9 @@ export const dividerTocItems = [
       { id: "vertical-divider", title: "Vertical Divider in Navigation" },
       { id: "divider-with-content", title: "Divider with Content (OR / Sign-in)" },
       { id: "dashed-variant", title: "Dashed Variant in Receipt / Invoice" },
+      { id: "dotted-variant", title: "Dotted Precision Variant" },
+      { id: "gradient-variant", title: "Apple Specular Gradient" },
+      { id: "icon-divider", title: "Divider with Icon Anchor" },
     ],
   },
 ];
@@ -48,17 +52,31 @@ export default function DividerDoc() {
       defaultVal: "'solid'",
       description: (
         <span>
-          Stroke style:{" "}
+          Visual stroke style:{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'solid'
           </code>{" "}
-          (continuous thin stroke) or{" "}
+          (continuous thin hairline),{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'dashed'
           </code>{" "}
-          (minimalist dashed pattern).
+          (minimalist dashed pattern),{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'dotted'
+          </code>{" "}
+          (precision dotted line), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'gradient'
+          </code>{" "}
+          (Apple-style specular gradient fading softly at both outer edges).
         </span>
       ),
+    },
+    {
+      prop: "icon",
+      defaultVal: "undefined",
+      description:
+        "Optional React icon node rendered at the center or anchor position inside the separator.",
     },
     {
       prop: "contentPosition",
@@ -440,6 +458,147 @@ function Example() {
     </div>
   )
 }`}
+          />
+        </div>
+
+        {/* 5. Dotted Precision Variant */}
+        <div id="dotted-variant" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Dotted Precision Variant
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Use{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="dotted"
+            </code>{" "}
+            for fine technical specifications, audit logs, and micro-delimiters:
+          </p>
+
+          <ComponentPreview>
+            <div className="w-full max-w-sm space-y-3 rounded-2xl border border-zinc-200/80 bg-white p-5 dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-zinc-500">API Latency</span>
+                <span className="font-mono text-zinc-900 dark:text-white">24ms</span>
+              </div>
+              <Divider variant="dotted" />
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-zinc-500">Payload Compression</span>
+                <span className="font-mono text-emerald-600 dark:text-emerald-400">Brotli 11</span>
+              </div>
+              <Divider variant="dotted" />
+              <div className="flex items-center justify-between text-xs">
+                <span className="text-zinc-500">Edge Cache TTL</span>
+                <span className="font-mono text-zinc-900 dark:text-white">86,400s</span>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
+
+<div className="space-y-3">
+  <div className="flex justify-between text-xs">
+    <span>API Latency</span>
+    <span>24ms</span>
+  </div>
+  <Divider variant="dotted" />
+  <div className="flex justify-between text-xs">
+    <span>Payload Compression</span>
+    <span>Brotli 11</span>
+  </div>
+</div>`}
+          />
+        </div>
+
+        {/* 6. Apple Specular Gradient Variant */}
+        <div id="gradient-variant" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Apple Specular Gradient
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Render an ultra-clean specular line that softly fades out towards both edges using{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              variant="gradient"
+            </code>
+            :
+          </p>
+
+          <ComponentPreview>
+            <div className="w-full max-w-lg space-y-6 py-6 text-center">
+              <div className="space-y-1">
+                <h4 className="text-base font-semibold text-zinc-900 dark:text-white">
+                  Next-Gen Architecture
+                </h4>
+                <p className="text-xs text-zinc-500">
+                  Designed with Apple HIG & Anisotropic vision padding.
+                </p>
+              </div>
+
+              <Divider variant="gradient" />
+
+              <div className="flex items-center justify-center gap-6 text-xs text-zinc-500">
+                <span>99.99% Uptime</span>
+                <span>•</span>
+                <span>Zero Latency</span>
+                <span>•</span>
+                <span>SOC-2 Certified</span>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
+
+{/* Soft edge-fading gradient divider */}
+<Divider variant="gradient" />`}
+          />
+        </div>
+
+        {/* 7. Divider with Icon Anchor */}
+        <div id="icon-divider" className="scroll-mt-24 space-y-4">
+          <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+            Divider with Icon Anchor
+          </h3>
+          <p className="text-sm text-zinc-600 dark:text-zinc-400">
+            Anchor an icon directly into the separator line with the{" "}
+            <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
+              icon
+            </code>{" "}
+            prop:
+          </p>
+
+          <ComponentPreview>
+            <div className="w-full max-w-md space-y-6 py-4">
+              <Divider icon={<Sparkles className="h-4 w-4 text-amber-500" />}>
+                Featured Capabilities
+              </Divider>
+
+              <Divider
+                variant="gradient"
+                icon={<ShieldCheck className="h-4 w-4 text-emerald-500" />}
+              >
+                Encrypted Vault
+              </Divider>
+
+              <Divider variant="dashed" icon={<Terminal className="text-brand-500 h-4 w-4" />}>
+                Terminal Logs
+              </Divider>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`import { Divider } from "@/components/hudbird-ui/Divider";
+import { Sparkles, ShieldCheck } from "lucide-react";
+
+{/* Icon with text label */}
+<Divider icon={<Sparkles className="w-4 h-4 text-amber-500" />}>
+  Featured Capabilities
+</Divider>
+
+{/* Gradient stroke with icon */}
+<Divider variant="gradient" icon={<ShieldCheck className="w-4 h-4 text-emerald-500" />}>
+  Encrypted Vault
+</Divider>`}
           />
         </div>
       </section>

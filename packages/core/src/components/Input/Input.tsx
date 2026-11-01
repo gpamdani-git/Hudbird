@@ -22,9 +22,9 @@ const inputWrapperVariants = cva(
           "bg-transparent rounded-none border-0 border-b-2 border-zinc-200 dark:border-white/10 hover:border-zinc-400 dark:hover:border-white/25 focus-within:border-indigo-500 dark:focus-within:border-indigo-400 px-0.5",
       },
       size: {
-        sm: "min-h-8 text-xs px-2.5 gap-1.5",
-        md: "min-h-9 text-sm px-3.5 gap-2",
-        lg: "min-h-11 text-base px-4 gap-2.5",
+        sm: "min-h-9 text-xs px-3.5 gap-2",
+        md: "min-h-11 text-sm px-4 gap-2.5",
+        lg: "min-h-13 text-base px-5 gap-3",
       },
       radius: {
         none: "rounded-none",
@@ -53,17 +53,32 @@ const inputWrapperVariants = cva(
       {
         labelPlacement: "inside",
         size: "sm",
-        className: "min-h-11 py-1 px-3",
+        className: "min-h-12 py-1.5 px-3.5",
       },
       {
         labelPlacement: "inside",
         size: "md",
-        className: "min-h-13 py-1.5 px-3.5",
+        className: "min-h-14 py-2 px-4",
       },
       {
         labelPlacement: "inside",
         size: "lg",
-        className: "min-h-15 py-2 px-4",
+        className: "min-h-16 py-2.5 px-5",
+      },
+      {
+        radius: "full",
+        size: "sm",
+        className: "px-4.5",
+      },
+      {
+        radius: "full",
+        size: "md",
+        className: "px-5.5",
+      },
+      {
+        radius: "full",
+        size: "lg",
+        className: "px-6.5",
       },
     ],
     defaultVariants: {
@@ -224,7 +239,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                 onChange={handleInputChange}
                 disabled={resolvedDisabled}
                 aria-invalid={isInvalid ? "true" : undefined}
-                className="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent p-0 leading-tight font-normal outline-none disabled:cursor-not-allowed"
+                className="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent p-0 leading-tight font-normal text-inherit outline-none disabled:cursor-not-allowed"
                 {...props}
               />
             </div>
@@ -236,7 +251,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               onChange={handleInputChange}
               disabled={resolvedDisabled}
               aria-invalid={isInvalid ? "true" : undefined}
-              className="text-foreground placeholder:text-muted-foreground h-full w-full border-none bg-transparent font-normal outline-none disabled:cursor-not-allowed"
+              className="text-foreground placeholder:text-muted-foreground h-full w-full border-none bg-transparent font-normal text-inherit outline-none disabled:cursor-not-allowed"
               {...props}
             />
           )}

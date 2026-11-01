@@ -201,7 +201,7 @@ export default function BarChartDoc() {
   }, [activeTab]);
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Bar Chart"
@@ -218,11 +218,16 @@ export default function BarChartDoc() {
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Bar chart is built on top of the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">recharts</code> library, eliminating boilerplate with built-in theme integration and responsive containers:
+          <strong>Abstracted layer.</strong> Bar chart is built on top of the{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            recharts
+          </code>{" "}
+          library, eliminating boilerplate with built-in theme integration and responsive
+          containers:
         </p>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
           <CodeBlock
@@ -244,42 +249,42 @@ export default function App() {
       </section>
 
       <section id="examples" className="scroll-mt-24 space-y-16">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Examples
         </h2>
 
-          {/* Horizontal Stacked */}
-          <div id="horizontal-stacked" className="mb-10 scroll-mt-24">
-            <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Horizontal Stacked
-            </h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              A horizontal bar chart with stacked series, often used to display breakdowns across
-              categories.
-            </p>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-2xl border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
-                <div className="mb-4">
-                  <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                    Avg. Energy Activity
-                  </h4>
-                  <p className="mt-1 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-                    580/280 <span className="text-sm font-normal text-zinc-500">kcal</span>
-                  </p>
-                </div>
-                <BarChart
-                  data={horizontalStackedData}
-                  index="day"
-                  categories={["Low", "Medium", "High"]}
-                  layout="vertical"
-                  type="stacked"
-                  colors={["#0032a8", "#0066f5", "#42a5f5"]}
-                  className="h-[300px]"
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`import { BarChart, Card } from "@hudbird/ui";
+        {/* Horizontal Stacked */}
+        <div id="horizontal-stacked" className="mb-10 scroll-mt-24">
+          <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Horizontal Stacked
+          </h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            A horizontal bar chart with stacked series, often used to display breakdowns across
+            categories.
+          </p>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-2xl border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="mb-4">
+                <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                  Avg. Energy Activity
+                </h4>
+                <p className="mt-1 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  580/280 <span className="text-sm font-normal text-zinc-500">kcal</span>
+                </p>
+              </div>
+              <BarChart
+                data={horizontalStackedData}
+                index="day"
+                categories={["Low", "Medium", "High"]}
+                layout="vertical"
+                type="stacked"
+                colors={["#0032a8", "#0066f5", "#42a5f5"]}
+                className="h-[300px]"
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { BarChart, Card } from "@hudbird/ui";
 
 const data = [ { day: "Mon", Low: 120, Medium: 250, High: 150 }, /* ... */ ];
 
@@ -304,35 +309,35 @@ export function HorizontalStackedExample() {
     </Card>
   );
 }`}
-            />
-          </div>
+          />
+        </div>
 
-          {/* Stacked */}
-          <div id="stacked" className="mb-10 scroll-mt-24">
-            <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">Stacked</h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              Vertical stacked bar chart for showing part-to-whole relationships over time.
-            </p>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-2xl border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
-                <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                    Revenue by Plan
-                  </h4>
-                </div>
-                <BarChart
-                  data={stackedData}
-                  index="quarter"
-                  categories={["Enterprise", "Pro", "Starter"]}
-                  type="stacked"
-                  colors={["#42a5f5", "#0066f5", "#0032a8"]}
-                  valueFormatter={(v) => `$${v / 1000}k`}
-                  className="h-[300px]"
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`import { BarChart, Card } from "@hudbird/ui";
+        {/* Stacked */}
+        <div id="stacked" className="mb-10 scroll-mt-24">
+          <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">Stacked</h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            Vertical stacked bar chart for showing part-to-whole relationships over time.
+          </p>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-2xl border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="mb-4">
+                <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  Revenue by Plan
+                </h4>
+              </div>
+              <BarChart
+                data={stackedData}
+                index="quarter"
+                categories={["Enterprise", "Pro", "Starter"]}
+                type="stacked"
+                colors={["#42a5f5", "#0066f5", "#0032a8"]}
+                valueFormatter={(v) => `$${v / 1000}k`}
+                className="h-[300px]"
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { BarChart, Card } from "@hudbird/ui";
 
 const data = [ { quarter: "Q1", Starter: 4000, Pro: 12000, Enterprise: 24000 }, /* ... */ ];
 
@@ -352,34 +357,34 @@ export function StackedExample() {
     </Card>
   );
 }`}
-            />
-          </div>
+          />
+        </div>
 
-          {/* Grouped */}
-          <div id="grouped" className="mb-10 scroll-mt-24">
-            <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">Grouped</h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              Standard grouped bar chart for comparing multiple categories side by side.
-            </p>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-2xl border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
-                <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                    Revenue by Channel
-                  </h4>
-                </div>
-                <BarChart
-                  data={groupedData}
-                  index="month"
-                  categories={["Online", "Retail", "Direct"]}
-                  colors={["#42a5f5", "#0066f5", "#0032a8"]}
-                  valueFormatter={(v) => `$${v / 1000}k`}
-                  className="h-[300px]"
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`import { BarChart, Card } from "@hudbird/ui";
+        {/* Grouped */}
+        <div id="grouped" className="mb-10 scroll-mt-24">
+          <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">Grouped</h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            Standard grouped bar chart for comparing multiple categories side by side.
+          </p>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-2xl border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="mb-4">
+                <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  Revenue by Channel
+                </h4>
+              </div>
+              <BarChart
+                data={groupedData}
+                index="month"
+                categories={["Online", "Retail", "Direct"]}
+                colors={["#42a5f5", "#0066f5", "#0032a8"]}
+                valueFormatter={(v) => `$${v / 1000}k`}
+                className="h-[300px]"
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { BarChart, Card } from "@hudbird/ui";
 
 const data = [ { month: "Jan", Online: 4000, Retail: 3200, Direct: 3800 }, /* ... */ ];
 
@@ -398,75 +403,80 @@ export function GroupedExample() {
     </Card>
   );
 }`}
-            />
-          </div>
+          />
+        </div>
 
-          {/* Custom Tooltip */}
-          <div id="custom-tooltip" className="mb-10 scroll-mt-24">
-            <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Custom Tooltip
-            </h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              Override the default Recharts tooltip by passing a custom React component to{" "}
-              <code>customTooltip</code>.
-            </p>
-            <ComponentPreview>
-              <Card className="mx-auto w-full max-w-2xl border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
-                <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                    Revenue by Channel
-                  </h4>
-                </div>
-                <BarChart
-                  data={groupedData}
-                  index="month"
-                  categories={["Online", "Retail", "Direct"]}
-                  colors={["#42a5f5", "#0066f5", "#0032a8"]}
-                  valueFormatter={(v) => `$${v / 1000}k`}
-                  className="h-[300px]"
-                  customTooltip={({ active, payload, label }: any) => {
-                    if (active && payload && payload.length) {
-                      const total = payload.reduce((acc: number, curr: any) => acc + curr.value, 0);
+        {/* Custom Tooltip */}
+        <div id="custom-tooltip" className="mb-10 scroll-mt-24">
+          <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Custom Tooltip
+          </h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            Override the default Recharts tooltip by passing a custom React component to{" "}
+            <code>customTooltip</code>.
+          </p>
+          <ComponentPreview>
+            <Card className="mx-auto w-full max-w-2xl border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
+              <div className="mb-4">
+                <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  Revenue by Channel
+                </h4>
+              </div>
+              <BarChart
+                data={groupedData}
+                index="month"
+                categories={["Online", "Retail", "Direct"]}
+                colors={["#42a5f5", "#0066f5", "#0032a8"]}
+                valueFormatter={(v) => `$${v / 1000}k`}
+                className="h-[300px]"
+                customTooltip={({ active, payload, label }: any) => {
+                  if (active && payload && payload.length) {
+                    const total = payload.reduce((acc: number, curr: any) => acc + curr.value, 0);
 
-                      return (
-                        <div className="w-48 rounded-xl border border-zinc-200 bg-white p-4 shadow-xl dark:border-zinc-800 dark:bg-zinc-950">
-                          <p className="mb-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                            {label}
-                          </p>
-                          <div className="space-y-2">
-                            {payload.map((item: any, idx: number) => (
-                              <div key={idx} className="flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                  <div
-                                    className="h-2 w-2 rounded-full"
-                                    style={{ backgroundColor: item.color }}
-                                  />
-                                  <span className="text-sm text-zinc-600 dark:text-zinc-400">
-                                    {item.name}
-                                  </span>
-                                </div>
-                                <span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
-                                  ${item.value.toLocaleString()}
+                    return (
+                      <div className="min-w-[12rem] rounded-xl border border-zinc-200/90 bg-white/95 px-3.5 py-2.5 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-black/50">
+                        <p className="mb-2 border-b border-zinc-100 pb-1.5 text-xs font-semibold tracking-tight text-zinc-900 dark:border-white/[0.08] dark:text-zinc-100">
+                          {label}
+                        </p>
+                        <div className="space-y-1.5">
+                          {payload.map((item: any, idx: number) => (
+                            <div
+                              key={idx}
+                              className="flex items-center justify-between gap-4 text-xs"
+                            >
+                              <div className="flex items-center gap-2">
+                                <div
+                                  className="h-2 w-2 rounded-full"
+                                  style={{ backgroundColor: item.color }}
+                                />
+                                <span className="text-zinc-600 dark:text-zinc-400">
+                                  {item.name}
                                 </span>
                               </div>
-                            ))}
-                          </div>
-                          <div className="mt-3 flex items-center justify-between border-t border-zinc-200 pt-3 dark:border-zinc-800">
-                            <span className="text-sm text-zinc-600 dark:text-zinc-400">Total</span>
-                            <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                              ${total.toLocaleString()}
-                            </span>
-                          </div>
+                              <span className="font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
+                                ${item.value.toLocaleString()}
+                              </span>
+                            </div>
+                          ))}
                         </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`import { BarChart, Card } from "@hudbird/ui";
+                        <div className="mt-2.5 flex items-center justify-between border-t border-zinc-100 pt-2 text-xs dark:border-white/[0.08]">
+                          <span className="font-medium text-zinc-500 dark:text-zinc-400">
+                            Total
+                          </span>
+                          <span className="font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
+                            ${total.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import { BarChart, Card } from "@hudbird/ui";
 
 const data = [ { month: "Jan", Online: 4000, Retail: 3200, Direct: 3800 }, /* ... */ ];
 
@@ -511,52 +521,52 @@ export function CustomTooltipExample() {
     </Card>
   );
 }`}
-            />
-          </div>
+          />
+        </div>
 
-          {/* Time Aggregation */}
-          <div id="time-aggregation" className="mb-10 scroll-mt-24">
-            <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-              Time Aggregation (Day/Week/Month/Year)
-            </h3>
-            <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-              Use a <code>Tabs</code> component to switch between different data sets for dynamic
-              views.
-            </p>
-            <ComponentPreview>
-              <Card className="border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
-                <div className="mb-6 flex items-center justify-between pr-4">
-                  <div>
-                    <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                      Traffic Overview
-                    </h4>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                      Showing page views across different timeframes.
-                    </p>
-                  </div>
-                  <Tabs
-                    selectedKey={activeTab}
-                    onSelectionChange={(val: any) => setActiveTab(val)}
-                    className="w-[270px]"
-                  >
-                    <Tab key="day" title="Day" />
-                    <Tab key="week" title="Week" />
-                    <Tab key="month" title="Month" />
-                    <Tab key="year" title="Year" />
-                  </Tabs>
+        {/* Time Aggregation */}
+        <div id="time-aggregation" className="mb-10 scroll-mt-24">
+          <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+            Time Aggregation (Day/Week/Month/Year)
+          </h3>
+          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+            Use a <code>Tabs</code> component to switch between different data sets for dynamic
+            views.
+          </p>
+          <ComponentPreview>
+            <Card className="border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
+              <div className="mb-6 flex items-center justify-between pr-4">
+                <div>
+                  <h4 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                    Traffic Overview
+                  </h4>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                    Showing page views across different timeframes.
+                  </p>
                 </div>
-                <BarChart
-                  key={activeTab}
-                  data={activeData}
-                  index="time"
-                  categories={["value"]}
-                  colors={["#a855f7"]}
-                  valueFormatter={(value) => `${value} views`}
-                />
-              </Card>
-            </ComponentPreview>
-            <CodeBlock
-              code={`import * as React from "react";
+                <Tabs
+                  selectedKey={activeTab}
+                  onSelectionChange={(val: any) => setActiveTab(val)}
+                  className="w-[270px]"
+                >
+                  <Tab key="day" title="Day" />
+                  <Tab key="week" title="Week" />
+                  <Tab key="month" title="Month" />
+                  <Tab key="year" title="Year" />
+                </Tabs>
+              </div>
+              <BarChart
+                key={activeTab}
+                data={activeData}
+                index="time"
+                categories={["value"]}
+                colors={["#a855f7"]}
+                valueFormatter={(value) => `${value} views`}
+              />
+            </Card>
+          </ComponentPreview>
+          <CodeBlock
+            code={`import * as React from "react";
 import { BarChart, Card, Tabs, Tab } from "@hudbird/ui";
 
 const dataDay = [ { time: "00:00", value: 120 }, { time: "04:00", value: 180 }, /* ... */ ];
@@ -601,83 +611,100 @@ export function TimeAggregationExample() {
     </Card>
   );
 }`}
-            />
-          </div>
-        </section>
+          />
+        </div>
+      </section>
 
-        <section id="css-classes" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            CSS Classes
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>Wrapper overrides.</strong> Customize container dimensions and padding using the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop. By default, <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">variant="sparkline"</code> sets the height to 120px, and the standard variant sets it to 350px.
-          </p>
-        </section>
+      <section id="css-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          CSS Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Wrapper overrides.</strong> Customize container dimensions and padding using the{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop. By default,{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            variant="sparkline"
+          </code>{" "}
+          sets the height to 120px, and the standard variant sets it to 350px.
+        </p>
+      </section>
 
-        <section id="element-classes" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            Element Classes
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>SVG DOM targeting.</strong> Recharts exposes specific class names that you can style with global CSS for custom fills and hover states: <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-bar-rectangle</code>, <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">.recharts-cartesian-axis-tick-value</code>.
-          </p>
-        </section>
+      <section id="element-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Element Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>SVG DOM targeting.</strong> Recharts exposes specific class names that you can
+          style with global CSS for custom fills and hover states:{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-bar-rectangle
+          </code>
+          ,{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            .recharts-cartesian-axis-tick-value
+          </code>
+          .
+        </p>
+      </section>
 
-        <section id="recharts-theming" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Recharts Theming
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            This component maps nicely to Tailwind dark mode (<code>dark:text-zinc-400</code>,
-            etc.). You can pass standard hex colors, or use CSS variables defined in your global CSS
-            to automatically adapt to dark/light themes.
-          </p>
-        </section>
+      <section id="recharts-theming" className="mb-12 scroll-mt-20">
+        <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Recharts Theming
+        </h2>
+        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+          This component maps nicely to Tailwind dark mode (<code>dark:text-zinc-400</code>, etc.).
+          You can pass standard hex colors, or use CSS variables defined in your global CSS to
+          automatically adapt to dark/light themes.
+        </p>
+      </section>
 
-        <section id="advanced-customization" className="mb-12 scroll-mt-20">
-          <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Advanced Customization
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            You can inject custom SVG gradients via <code>children</code> and use completely custom
-            tooltips with images.
-          </p>
-          <ComponentPreview>
-            <Card className="mx-auto w-full max-w-2xl p-4">
-              <BarChart
-                data={dataMonth}
-                index="time"
-                categories={["value"]}
-                colors={["url(#custom-gradient-bar)"]}
-                customTooltip={(props: any) => {
-                  if (!props.active || !props.payload || props.payload.length === 0) return null;
-                  const { value } = props.payload[0];
-                  return (
-                    <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
-                      <img
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                        alt="Avatar"
-                        className="h-10 w-10 rounded-full"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-zinc-300">Revenue</p>
-                        <p className="text-lg font-bold text-emerald-400">${value}</p>
-                      </div>
+      <section id="advanced-customization" className="mb-12 scroll-mt-20">
+        <h2 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Advanced Customization
+        </h2>
+        <p className="mb-4 text-zinc-600 dark:text-zinc-400">
+          You can inject custom SVG gradients via <code>children</code> and use completely custom
+          tooltips with images.
+        </p>
+        <ComponentPreview>
+          <Card className="mx-auto w-full max-w-2xl p-4">
+            <BarChart
+              data={dataMonth}
+              index="time"
+              categories={["value"]}
+              colors={["url(#custom-gradient-bar)"]}
+              customTooltip={(props: any) => {
+                if (!props.active || !props.payload || props.payload.length === 0) return null;
+                const { value } = props.payload[0];
+                return (
+                  <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
+                    <img
+                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                      alt="Avatar"
+                      className="h-10 w-10 rounded-full"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-zinc-300">Revenue</p>
+                      <p className="text-lg font-bold text-emerald-400">${value}</p>
                     </div>
-                  );
-                }}
-              >
-                <defs>
-                  <linearGradient id="custom-gradient-bar" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.2} />
-                  </linearGradient>
-                </defs>
-              </BarChart>
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            code={`<BarChart
+                  </div>
+                );
+              }}
+            >
+              <defs>
+                <linearGradient id="custom-gradient-bar" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
+                  <stop offset="95%" stopColor="#10b981" stopOpacity={0.2} />
+                </linearGradient>
+              </defs>
+            </BarChart>
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          code={`<BarChart
   data={dataMonth}
   index="time"
   categories={["value"]}
@@ -703,15 +730,15 @@ export function TimeAggregationExample() {
     </linearGradient>
   </defs>
 </BarChart>`}
-          />
-        </section>
+        />
+      </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Component API
         </h2>
         <ApiTable rows={apiRows} />
-        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+        <h3 className="font-outfit pt-6 text-xl font-medium tracking-[-0.4px] text-zinc-900 sm:text-2xl dark:text-white">
           API Reference
         </h3>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -720,7 +747,7 @@ export function TimeAggregationExample() {
             href="https://recharts.org/en-US/api/BarChart"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
             https://recharts.org/en-US/api/BarChart
           </a>

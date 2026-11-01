@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
+import { Button } from "@hudbird/ui";
 
 export interface FooterGlassProps extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
@@ -51,7 +52,7 @@ export const FooterGlass = React.forwardRef<HTMLElement, FooterGlassProps>(
           transition={{ duration: 0.5 }}
           className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-          <div className="overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-2xl sm:p-12 dark:border-white/10 dark:bg-black/20 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
+          <div className="overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] backdrop-blur-2xl sm:p-12 dark:border-white/[0.08] dark:bg-[#161618]/70 dark:shadow-[0_8px_30px_rgb(0,0,0,0.5)]">
             <div className="flex flex-col justify-between gap-12 lg:flex-row">
               {/* Left Column: Brand & Newsletter */}
               <div className="w-full max-w-sm">
@@ -70,7 +71,7 @@ export const FooterGlass = React.forwardRef<HTMLElement, FooterGlassProps>(
                   </h3>
                   <form
                     onSubmit={handleSubmit}
-                    className="mt-4 flex rounded-full border border-zinc-200/50 bg-white/50 p-1 backdrop-blur-md dark:border-zinc-800/50 dark:bg-black/50"
+                    className="mt-4 flex rounded-full border border-zinc-200/50 bg-white/50 p-1 backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.04]"
                   >
                     <input
                       name="email"
@@ -80,12 +81,15 @@ export const FooterGlass = React.forwardRef<HTMLElement, FooterGlassProps>(
                       className="w-full min-w-0 bg-transparent px-4 py-2 text-sm text-zinc-900 outline-none placeholder:text-zinc-500 dark:text-white dark:placeholder:text-zinc-400"
                       aria-label="Email address"
                     />
-                    <button
+                    <Button
                       type="submit"
-                      className="shrink-0 rounded-full bg-zinc-900 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-100"
+                      size="sm"
+                      radius="full"
+                      color="primary"
+                      className="shrink-0"
                     >
                       {newsletterButtonText}
-                    </button>
+                    </Button>
                   </form>
                   {newsletterDisclaimer && (
                     <p className="mt-4 text-[10px] leading-relaxed text-zinc-500 dark:text-zinc-400">

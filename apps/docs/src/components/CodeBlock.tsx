@@ -161,7 +161,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             <button
               onClick={handleCopy}
               aria-label="Copy code"
-              className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-semibold transition-all duration-150 active:scale-90 ${
+              className={`flex h-7 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-150 active:scale-90 ${
                 copied
                   ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400"
                   : "text-zinc-500 hover:-translate-y-0.5 hover:bg-black/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"

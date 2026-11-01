@@ -169,8 +169,9 @@ export const PieChart = React.forwardRef<HTMLDivElement, PieChartProps>(
                 verticalAlign="bottom"
                 height={36}
                 iconType="circle"
+                wrapperStyle={{ fontSize: "13px", paddingTop: "16px" }}
                 formatter={(value) => (
-                  <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
                     {value}
                   </span>
                 )}
@@ -193,7 +194,9 @@ export const PieChart = React.forwardRef<HTMLDivElement, PieChartProps>(
                   cy="50%"
                   innerRadius={rInner}
                   outerRadius={rOuter}
-                  stroke="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  className="text-white dark:text-[#161618]"
                   label={
                     showLabel
                       ? {

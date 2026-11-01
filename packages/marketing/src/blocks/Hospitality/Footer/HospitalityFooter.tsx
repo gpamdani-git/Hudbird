@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@hudbird/ui";
 import {
   ChevronRight,
   PlayCircle,
@@ -216,12 +217,22 @@ export function HospitalityFooter() {
 
           <div className="flex flex-col items-start gap-4 md:items-end">
             <span className="text-xs tracking-wider text-white/50">Language</span>
-            <div className="flex flex-wrap gap-4 text-xs tracking-widest text-white/40">
-              <button className="text-white">English</button>
-              <button className="transition-colors hover:text-white">简体中文</button>
-              <button className="transition-colors hover:text-white">繁體中文</button>
-              <button className="transition-colors hover:text-white">日本語</button>
-              <button className="transition-colors hover:text-white">한국어</button>
+            <div className="flex flex-wrap gap-2 text-xs tracking-widest">
+              <Button size="sm" variant="light" className="text-white">
+                English
+              </Button>
+              <Button size="sm" variant="light" className="text-white/60 hover:text-white">
+                简体中文
+              </Button>
+              <Button size="sm" variant="light" className="text-white/60 hover:text-white">
+                繁體中文
+              </Button>
+              <Button size="sm" variant="light" className="text-white/60 hover:text-white">
+                日本語
+              </Button>
+              <Button size="sm" variant="light" className="text-white/60 hover:text-white">
+                한국어
+              </Button>
             </div>
           </div>
         </div>
@@ -263,9 +274,13 @@ export function HospitalityFooter() {
       </div>
 
       {/* Floating Action Button */}
-      <button className="fixed right-8 bottom-8 z-50 flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-[#5A524A] text-white shadow-xl transition-transform hover:scale-105">
+      <Button
+        isIconOnly
+        className="fixed right-8 bottom-8 z-50 flex h-14 w-14 rounded-xl border border-white/10 bg-[#5A524A] text-white shadow-xl transition-transform hover:scale-105"
+        aria-label="More options"
+      >
         <MoreHorizontal className="h-6 w-6" />
-      </button>
+      </Button>
     </footer>
   );
 }

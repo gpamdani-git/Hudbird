@@ -95,7 +95,9 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
                 {primaryAction && (
                   <Button
                     variant="solid"
-                    color={primaryAction.color || "indigo"}
+                    size="lg"
+                    radius="full"
+                    color={primaryAction.color || "primary"}
                     className={cn("w-full sm:w-auto", primaryAction.className)}
                     onClick={primaryAction.onClick}
                     {...(primaryAction.href ? { href: primaryAction.href, as: "a" } : {})}
@@ -106,7 +108,9 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
                 {secondaryAction && (
                   <Button
                     variant="outline"
-                    color={secondaryAction.color || "zinc"}
+                    size="lg"
+                    radius="full"
+                    color={secondaryAction.color || "secondary"}
                     className={cn("w-full sm:w-auto", secondaryAction.className)}
                     onClick={secondaryAction.onClick}
                     {...(secondaryAction.href ? { href: secondaryAction.href, as: "a" } : {})}

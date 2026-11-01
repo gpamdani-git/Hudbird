@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@hudbird/ui";
 import {
   motion,
   AnimatePresence,
@@ -160,7 +161,7 @@ export function HospitalityCuratedJourneys() {
                 endless joys await your perfect journey.
               </p>
 
-              <button className="group relative z-10 flex h-12 items-center justify-center overflow-hidden bg-[#736B60] px-8 text-xs font-medium tracking-widest text-white transition-all hover:bg-[#5A524A]">
+              <Button className="group relative z-10 flex h-12 items-center justify-center overflow-hidden rounded-none bg-[#736B60] px-8 text-xs font-medium tracking-widest text-white transition-all hover:bg-[#5A524A]">
                 <span className="relative z-10 flex items-center">
                   See the itineraries
                   <motion.span
@@ -171,7 +172,7 @@ export function HospitalityCuratedJourneys() {
                     →
                   </motion.span>
                 </span>
-              </button>
+              </Button>
             </div>
           </div>
         </motion.div>

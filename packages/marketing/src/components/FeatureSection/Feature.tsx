@@ -59,7 +59,7 @@ const FeatureBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<H
       <h2
         ref={ref}
         className={cn(
-          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-blue-600 dark:text-blue-400",
+          "text-primary dark:text-primary-foreground mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold",
           className
         )}
         {...props}
@@ -151,7 +151,7 @@ const FeatureIcon = React.forwardRef<HTMLDivElement, FeatureIconProps>(
         className={cn(
           "mb-6 flex h-10 w-10 items-center justify-center rounded-lg",
           iconClassName ??
-            "bg-blue-600 text-white ring-1 ring-blue-500/30 dark:bg-blue-500/20 dark:text-blue-400",
+            "bg-primary text-primary-foreground ring-primary/30 dark:bg-primary/20 dark:text-primary-foreground ring-1",
           className
         )}
         {...props}

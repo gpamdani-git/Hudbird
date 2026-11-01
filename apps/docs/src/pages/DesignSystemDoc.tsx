@@ -22,6 +22,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { DocHeader } from "../components/DocHeader";
+import { Button, Tabs, Tab, Input } from "@hudbird/ui";
 import { DEFAULT_DESIGN_MD_CONTENT } from "../data/designMdContent";
 
 interface ColorToken {
@@ -315,9 +316,12 @@ export default function DesignSystemDoc() {
 
         {/* Quick Actions */}
         <div className="flex shrink-0 items-center gap-2 pb-2">
-          <button
+          <Button
+            size="sm"
+            variant="bordered"
+            color="secondary"
+            radius="md"
             onClick={handleCopyMarkdown}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-2 text-xs font-medium text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 active:scale-95 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
           >
             {copiedFullMd ? (
               <>
@@ -330,12 +334,9 @@ export default function DesignSystemDoc() {
                 <span>Copy DESIGN.md</span>
               </>
             )}
-          </button>
+          </Button>
 
-          <button
-            onClick={handleDownloadMarkdown}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-indigo-600 px-3.5 py-2 text-xs font-medium text-white shadow-sm transition-all hover:bg-indigo-500 active:scale-95"
-          >
+          <Button size="sm" color="primary" radius="md" onClick={handleDownloadMarkdown}>
             {downloadedMd ? (
               <>
                 <Check className="h-3.5 w-3.5" />
@@ -347,42 +348,25 @@ export default function DesignSystemDoc() {
                 <span>Download File</span>
               </>
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
       {/* Main Mode Tabs Switch */}
-      <div className="mb-8 flex items-center justify-between border-b border-zinc-200 pb-3 dark:border-zinc-800">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setActiveTab("visual")}
-            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-              activeTab === "visual"
-                ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900"
-                : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white"
-            }`}
-          >
-            <Eye className="h-4 w-4" />
-            <span>Interactive Visualizer</span>
-          </button>
-          <button
-            onClick={() => setActiveTab("editor")}
-            className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-all ${
-              activeTab === "editor"
-                ? "bg-zinc-900 text-white shadow-sm dark:bg-white dark:text-zinc-900"
-                : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white"
-            }`}
-          >
-            <Code2 className="h-4 w-4" />
-            <span>Live Markdown Editor</span>
-            {isSavedLocally && (
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-            )}
-          </button>
-        </div>
+      <div className="mb-8 flex items-center justify-between border-b border-zinc-200/80 pb-3 dark:border-white/[0.08]">
+        <Tabs
+          size="sm"
+          variant="solid"
+          radius="md"
+          selectedKey={activeTab}
+          onSelectionChange={(k) => setActiveTab(k as any)}
+        >
+          <Tab tabKey="visual" title="Interactive Visualizer" />
+          <Tab tabKey="editor" title="Live Markdown Editor" />
+        </Tabs>
 
         <div className="hidden text-xs text-zinc-500 sm:block dark:text-zinc-400">
-          Source: <code className="font-mono text-indigo-600 dark:text-indigo-400">DESIGN.md</code>
+          Source: <code className="font-mono text-indigo-500">DESIGN.md</code>
         </div>
       </div>
 
@@ -390,7 +374,7 @@ export default function DesignSystemDoc() {
       {activeTab === "visual" && (
         <div className="space-y-12">
           {/* Google Stitch Validation Status Panel */}
-          <div className="rounded-2xl border border-emerald-200/80 bg-gradient-to-r from-emerald-50/60 via-white to-indigo-50/40 p-5 shadow-sm dark:border-emerald-900/60 dark:from-emerald-950/20 dark:via-zinc-900/40 dark:to-indigo-950/20">
+          <div className="rounded-2xl border border-emerald-500/20 bg-white p-6 shadow-xs dark:border-emerald-500/20 dark:bg-[#161618]">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-600/20">
@@ -447,58 +431,60 @@ export default function DesignSystemDoc() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <div className="rounded-xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-white p-5 shadow-sm dark:border-zinc-800/80 dark:from-zinc-900/40 dark:to-zinc-950">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                     Density Spectrum
                   </span>
-                  <span className="rounded-md bg-indigo-100 px-2 py-0.5 text-xs font-bold text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">
+                  <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-semibold text-zinc-800 dark:bg-white/10 dark:text-zinc-200">
                     5 / 10
                   </span>
                 </div>
                 <div className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">
                   Balanced SaaS
                 </div>
-                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                   Generous structural whitespace paired with high-density data readouts and compact
                   tabular grids.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-white p-5 shadow-sm dark:border-zinc-800/80 dark:from-zinc-900/40 dark:to-zinc-950">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                     Variance Spectrum
                   </span>
-                  <span className="rounded-md bg-cyan-100 px-2 py-0.5 text-xs font-bold text-cyan-800 dark:bg-cyan-950 dark:text-cyan-300">
+                  <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-semibold text-zinc-800 dark:bg-white/10 dark:text-zinc-200">
                     8 / 10
                   </span>
                 </div>
                 <div className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">
                   Offset Asymmetric
                 </div>
-                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                   Zero uniform 3-card templates. Dynamic bento hierarchies, staggered narrative
                   blocks, and split-screen composition.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-zinc-200/80 bg-gradient-to-br from-zinc-50 to-white p-5 shadow-sm dark:border-zinc-800/80 dark:from-zinc-900/40 dark:to-zinc-950">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                     Motion Spectrum
                   </span>
-                  <span className="rounded-md bg-emerald-100 px-2 py-0.5 text-xs font-bold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs font-semibold text-zinc-800 dark:bg-white/10 dark:text-zinc-200">
                     8 / 10
                   </span>
                 </div>
                 <div className="mt-3 text-lg font-bold text-zinc-900 dark:text-white">
                   Kinetic Physics
                 </div>
-                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                   Physical spring feedback (
-                  <code className="font-mono text-[11px]">stiffness: 100</code>), tactile
-                  compression, and perpetual ambient micro-interactions.
+                  <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs text-zinc-800 dark:bg-white/10 dark:text-zinc-200">
+                    stiffness: 100
+                  </code>
+                  ), tactile micro-motion, compression, and perpetual ambient micro-interactions.
                 </p>
               </div>
             </div>
@@ -521,7 +507,7 @@ export default function DesignSystemDoc() {
                 <div
                   key={token.name}
                   onClick={() => handleCopyHex(token.hex)}
-                  className="group relative flex cursor-pointer items-start gap-3.5 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm transition-all hover:border-indigo-400 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:border-indigo-500/50"
+                  className="group relative flex cursor-pointer items-start gap-3.5 rounded-2xl border border-zinc-200/80 bg-white p-4 shadow-xs transition-all hover:border-zinc-400 dark:border-white/[0.08] dark:bg-[#161618] dark:hover:border-white/20"
                 >
                   <div
                     className={`h-11 w-11 shrink-0 rounded-lg shadow-inner ${
@@ -569,56 +555,63 @@ export default function DesignSystemDoc() {
             </div>
 
             {/* Interactive Live Specimen Tester */}
-            <div className="mb-6 rounded-xl border border-zinc-200 bg-zinc-50/60 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
+            <div className="mb-6 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-4 dark:border-white/[0.08] dark:bg-[#161618]">
               <label className="text-xs font-semibold tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
                 Live Type Specimen Tester
               </label>
-              <input
-                type="text"
-                value={customSpecimen}
-                onChange={(e) => setCustomSpecimen(e.target.value)}
-                placeholder="Type anything to test the font pairing..."
-                className="mt-2 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white"
-              />
+              <div className="mt-2">
+                <Input
+                  value={customSpecimen}
+                  onChange={(e) => setCustomSpecimen(e.target.value)}
+                  placeholder="Type anything to test the font pairing..."
+                  size="sm"
+                  radius="md"
+                  aria-label="Font specimen tester"
+                />
+              </div>
             </div>
 
             <div className="space-y-4">
               {/* Display Heading */}
-              <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-zinc-800">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-white/[0.08]">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-indigo-600 uppercase dark:text-indigo-400">
+                    <span className="font-mono text-xs font-bold text-zinc-900 uppercase dark:text-white">
                       Display &amp; Headings
                     </span>
-                    <span className="text-xs text-zinc-500">• Outfit (Semi-Bold / Bold)</span>
+                    <span className="text-xs text-zinc-500 sm:text-sm">
+                      • Outfit (Semi-Bold / Bold)
+                    </span>
                   </div>
-                  <span className="font-mono text-xs text-zinc-400">tracking: -0.035em</span>
+                  <span className="font-mono text-xs text-zinc-400 sm:text-sm">
+                    tracking: -0.035em
+                  </span>
                 </div>
                 <div className="mt-4 font-[Outfit] text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
                   {customSpecimen}
                 </div>
-                <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+                <p className="mt-2 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                   Used for hero headlines, major section banners, and modal titles. Never wraps
                   beyond 3 lines.
                 </p>
               </div>
 
               {/* Body & UI Controls */}
-              <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-zinc-800">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-white/[0.08]">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-cyan-600 uppercase dark:text-cyan-400">
+                    <span className="font-mono text-xs font-bold text-zinc-900 uppercase dark:text-white">
                       Body &amp; UI Controls
                     </span>
-                    <span className="text-xs text-zinc-500">
+                    <span className="text-xs text-zinc-500 sm:text-sm">
                       • Plus Jakarta Sans / Geist (Regular / Medium)
                     </span>
                   </div>
-                  <span className="font-mono text-xs text-zinc-400">
+                  <span className="font-mono text-xs text-zinc-400 sm:text-sm">
                     line-height: 1.65 (max 65ch)
                   </span>
                 </div>
-                <div className="mt-4 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                <div className="mt-4 text-sm leading-relaxed text-zinc-700 sm:text-base dark:text-zinc-300">
                   {customSpecimen}. High-agency engineering workflows designed for immediate
                   clarity. Form inputs, component labels, and explanatory documentation follow
                   comfortable relaxed leading to maintain optimal reading velocity.
@@ -626,17 +619,19 @@ export default function DesignSystemDoc() {
               </div>
 
               {/* Monospace Precision */}
-              <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/50">
-                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-zinc-800">
+              <div className="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
+                <div className="flex items-center justify-between border-b border-zinc-100 pb-3 dark:border-white/[0.08]">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-emerald-600 uppercase dark:text-emerald-400">
+                    <span className="font-mono text-xs font-bold text-zinc-900 uppercase dark:text-white">
                       Telemetry &amp; Code
                     </span>
-                    <span className="text-xs text-zinc-500">• JetBrains Mono (500)</span>
+                    <span className="text-xs text-zinc-500 sm:text-sm">• JetBrains Mono (500)</span>
                   </div>
-                  <span className="font-mono text-xs text-zinc-400">tabular-nums: true</span>
+                  <span className="font-mono text-xs text-zinc-400 sm:text-sm">
+                    tabular-nums: true
+                  </span>
                 </div>
-                <div className="mt-4 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                <div className="mt-4 font-mono text-sm leading-relaxed text-zinc-800 dark:text-zinc-200">
                   $ npx hudbird-ui add kinetic-button --variant=magnetic --fps=120
                 </div>
               </div>
@@ -656,64 +651,64 @@ export default function DesignSystemDoc() {
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
               {/* Double Bezel Card Demo */}
-              <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/20">
-                <div className="mb-3 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+              <div className="relative rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+                <div className="mb-3 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                   Signature DoubleBezelCard Architecture
                 </div>
 
                 {/* Simulated Double Bezel Card */}
-                <div className="relative overflow-hidden rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-all hover:border-indigo-300 dark:border-white/10 dark:bg-[#0F172A] dark:shadow-2xl">
+                <div className="relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs transition-all hover:border-zinc-400 dark:border-white/[0.08] dark:bg-[#161618]">
                   {/* Inner highlight perimeter */}
                   <div className="pointer-events-none absolute inset-[1px] rounded-[15px] border border-black/[0.04] dark:border-white/[0.06]" />
 
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full border border-indigo-200 bg-indigo-50 px-2.5 py-0.5 text-[11px] font-semibold text-indigo-700 dark:border-indigo-800/60 dark:bg-indigo-950/40 dark:text-indigo-300">
+                    <span className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-0.5 text-xs font-semibold text-zinc-800 dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-200">
                       Telemetry Node
                     </span>
                     <span className="font-mono text-xs text-zinc-400">v1.2.4</span>
                   </div>
 
-                  <div className="mt-4 text-base font-semibold text-zinc-900 dark:text-white">
+                  <div className="mt-4 text-base font-semibold text-zinc-900 sm:text-lg dark:text-white">
                     Double-Bezel Glass Containment
                   </div>
-                  <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
                     Dual 1px hairline borders convey physical elevation and optical depth without
                     muddy outer drop-shadows.
                   </p>
 
-                  <div className="mt-4 flex items-center gap-2 border-t border-zinc-100 pt-3 dark:border-zinc-800/60">
-                    <div className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                    <span className="text-[11px] text-zinc-500">Sub-system Active</span>
+                  <div className="mt-4 flex items-center gap-2 border-t border-zinc-100 pt-3 dark:border-white/[0.08]">
+                    <div className="h-2 w-2 rounded-full bg-emerald-500" />
+                    <span className="text-xs text-zinc-500">System Ready</span>
                   </div>
                 </div>
               </div>
 
               {/* Kinetic Button & Spring Physics Playground */}
-              <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-zinc-800 dark:bg-zinc-900/20">
+              <div className="relative rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+                  <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                     Interactive Spring Physics
                   </span>
-                  <span className="font-mono text-xs text-indigo-600 dark:text-indigo-400">
+                  <span className="font-mono text-xs text-zinc-500 sm:text-sm">
                     stiffness: 100 | damping: 20
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-300 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-200 bg-white p-8 dark:border-white/[0.08] dark:bg-white/[0.02]">
                   <motion.button
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.96, y: 1 }}
+                    whileHover={{ scale: 1.02, y: -1 }}
+                    whileTap={{ scale: 0.97, y: 1 }}
                     transition={{ type: "spring", stiffness: 100, damping: 20 }}
                     onClick={() => setSpringCount((c) => c + 1)}
-                    className="relative inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-colors hover:bg-indigo-500 active:bg-indigo-700"
+                    className="relative inline-flex cursor-pointer items-center gap-2 rounded-xl bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 active:bg-zinc-950 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
                   >
                     <Zap className="h-4 w-4" />
                     <span>Kinetic Spring Press</span>
-                    <span className="ml-1 rounded-full bg-indigo-800 px-2 py-0.5 text-xs font-bold">
+                    <span className="ml-1 rounded-full bg-white/20 px-2 py-0.5 text-xs font-bold dark:bg-black/10">
                       {springCount}
                     </span>
                   </motion.button>
-                  <p className="mt-3 text-center text-xs text-zinc-500 dark:text-zinc-400">
+                  <p className="mt-3 text-center text-sm text-zinc-600 dark:text-zinc-400">
                     Click to feel weighted physical depression and spring return.
                   </p>
                 </div>
@@ -739,14 +734,16 @@ export default function DesignSystemDoc() {
               {ANTI_PATTERNS.map((item) => (
                 <div
                   key={item.rule}
-                  className="rounded-xl border border-rose-200/60 bg-rose-50/30 p-4 dark:border-rose-950/60 dark:bg-rose-950/10"
+                  className="rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]"
                 >
-                  <div className="flex items-center gap-2 font-semibold text-rose-700 dark:text-rose-400">
-                    <span className="text-xs">✕</span>
-                    <span className="text-sm">{item.rule}</span>
+                  <div className="flex items-center gap-2 font-semibold text-zinc-900 dark:text-white">
+                    <span className="text-xs text-rose-500">✕</span>
+                    <span className="text-sm font-semibold sm:text-base">{item.rule}</span>
                   </div>
-                  <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">{item.desc}</p>
-                  <div className="mt-3 space-y-1 rounded-lg bg-white/70 p-2.5 font-mono text-[11px] dark:bg-black/40">
+                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                    {item.desc}
+                  </p>
+                  <div className="mt-3 space-y-1.5 rounded-xl bg-zinc-50 p-3.5 font-mono text-xs leading-relaxed sm:text-[13px] dark:bg-white/[0.04]">
                     <div className="text-rose-600 dark:text-rose-400">
                       <span className="font-bold">Banned:</span> {item.banned}
                     </div>
@@ -782,39 +779,42 @@ export default function DesignSystemDoc() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
+              <Button
+                size="sm"
+                variant="bordered"
+                color="secondary"
+                radius="md"
                 onClick={handleResetToDefault}
-                className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2.5 py-1.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
                 title="Reset editor to default system specifications"
               >
-                <RotateCcw className="h-3 w-3" />
-                <span>Reset Default</span>
-              </button>
+                <RotateCcw className="h-3.5 w-3.5 opacity-60" />
+                <span>Reset</span>
+              </Button>
 
-              <button
+              <Button
+                size="sm"
+                variant="bordered"
+                color="secondary"
+                radius="md"
                 onClick={handleCopyMarkdown}
-                className="inline-flex items-center gap-1 rounded-lg border border-zinc-200 bg-white px-2.5 py-1.5 text-xs font-medium text-zinc-700 transition hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
               >
                 {copiedFullMd ? (
                   <>
-                    <Check className="h-3 w-3 text-emerald-500" />
+                    <Check className="h-3.5 w-3.5 text-emerald-500" />
                     <span>Copied</span>
                   </>
                 ) : (
                   <>
-                    <Copy className="h-3 w-3" />
+                    <Copy className="h-3.5 w-3.5 opacity-60" />
                     <span>Copy</span>
                   </>
                 )}
-              </button>
+              </Button>
 
-              <button
-                onClick={handleDownloadMarkdown}
-                className="inline-flex items-center gap-1 rounded-lg bg-indigo-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-indigo-500"
-              >
-                <Download className="h-3 w-3" />
+              <Button size="sm" color="primary" radius="md" onClick={handleDownloadMarkdown}>
+                <Download className="h-3.5 w-3.5" />
                 <span>Download</span>
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -822,7 +822,7 @@ export default function DesignSystemDoc() {
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {/* Editor Pane */}
             <div className="relative flex flex-col rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
-              <div className="border-b border-zinc-200 bg-zinc-50 px-4 py-2 text-xs font-semibold text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+              <div className="border-b border-zinc-200 bg-zinc-50 px-4 py-2.5 text-xs font-semibold text-zinc-600 sm:text-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
                 Markdown Source (Editable)
               </div>
               <textarea
@@ -830,16 +830,16 @@ export default function DesignSystemDoc() {
                 onChange={(e) => setEditorContent(e.target.value)}
                 rows={28}
                 spellCheck={false}
-                className="w-full resize-y rounded-b-xl bg-transparent p-4 font-mono text-xs leading-relaxed text-zinc-800 focus:outline-none dark:text-zinc-200"
+                className="w-full resize-y rounded-b-xl bg-transparent p-4 font-mono text-xs leading-relaxed text-zinc-800 focus:outline-none sm:text-sm dark:text-zinc-200"
               />
             </div>
 
             {/* Live Rendered Markdown Document Pane */}
             <div className="flex flex-col rounded-xl border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/30">
-              <div className="border-b border-zinc-200 bg-zinc-100/70 px-4 py-2 text-xs font-semibold text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
+              <div className="border-b border-zinc-200 bg-zinc-100/70 px-4 py-2.5 text-xs font-semibold text-zinc-600 sm:text-sm dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
                 Live Document Render
               </div>
-              <div className="max-h-[640px] overflow-y-auto p-6 font-sans text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+              <div className="max-h-[640px] overflow-y-auto p-6 font-sans text-sm leading-relaxed text-zinc-700 sm:text-[15px] dark:text-zinc-300">
                 <div className="space-y-4">
                   {editorContent.split("\n\n").map((block, idx) => {
                     if (block.startsWith("# ")) {

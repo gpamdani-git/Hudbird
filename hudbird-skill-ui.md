@@ -266,18 +266,81 @@ Jika padding $\ge R_{\text{outer}}$, gunakan $R_{\text{inner}} = \text{round}(R_
 - **Surface:** Frosted glass `backdrop-blur-xl bg-white/80 dark:bg-[#161618]/80 border-b border-black/[0.08] dark:border-white/[0.08] sticky top-0 z-50`.
 - **Channel Padding:** `px-6 sm:px-8 lg:px-12`.
 
-### 2.33 Sidebar
+### 2.33 Sidebar & Dock Systems
 
-- **Rail Width:** `w-64 sm:w-72` (256px–288px).
-- **Obsidian Surface:** `#161618` dengan hairline right border `border-r border-black/[0.08] dark:border-white/[0.08]`.
+- **Multi-Position:** Mendukung `position="left"` (nav rail standar), `position="right"` (inspector / AI copilot panel), dan `position="bottom"` (macOS floating dock).
+- **Surface Variants:** `flat` (frosted glass), `bordered` (hairline border), `floating` (inset rounded-3xl floating card), dan `dock` (macOS floating pill bar).
 - **Nav Items:** 40px–44px height, anisotropic padding `py-2.5 px-4`, concentric `rounded-xl`.
+- **Directional Tooltips:** Auto-align ke arah berlawanan (kanan untuk left rail, kiri untuk right rail, atas untuk bottom dock).
 
 ### 2.34 Divider
 
-- **Hairline Stroke:** 1px `bg-zinc-200 dark:bg-white/[0.08]`.
-- **Label Badge:** Capsule `px-3 py-1 text-xs` centered secara presisi.
+- **Stroke Styles:** Mendukung `solid` (1px hairline), `dashed` (minimalist receipt voucher), `dotted` (precision technical micro-dots), dan `gradient` (Apple specular linear fade).
+- **Content & Icon Slots:** Label capsule dengan opsional slot `icon` (`icon={<Sparkles />}`) untuk pembatas section.
+- **Bi-Directional:** Bekerja penuh pada orientasi `horizontal` dan `vertical`.
 
 ### 2.35 IconBox & HudbirdIcon
 
-- **IconBox:** Frame optik `w-10 h-10` atau `w-12 h-12` dengan concentric `rounded-xl`.
+- **IconBox:** 5 varian terkalibrasi (`default`, `brand`, `glass`, `subtle`, `solid`) pada 3 skala geometri (`sm`: 36px, `md`: 48px, `lg`: 56px).
+- **Specular Backlight Halo:** `showGlow={true}` memancarkan ambient blur halo halus saat hover.
 - **HudbirdIcon:** Standardized SVG vector primitive rendering the signature bird/letter-h geometry at crisp vector viewBox scales (`w-5 h-5` to `w-10 h-10`).
+
+### 2.36 Icons & Lucide React Directory
+
+- **Standar Ikonografi:** Hudbird UI secara resmi menggunakan **Lucide React** (ISC License) sebagai pustaka ikon open-source utama dengan 1.400+ ikon berbasis stroke yang konsisten.
+- **12 Kategori Fungsional:** Ikon dikelompokkan dan difilter langsung di halaman (_in-place_, tanpa manipulasi rute/URL):
+  1. _Navigation & Wayfinding:_ `Home`, `Compass`, `Menu`, `Layers`, `Grid`, `Map`, `Sidebar`.
+  2. _Actions & Controls:_ `Plus`, `Trash2`, `Edit3`, `Copy`, `Share2`, `Download`, `Filter`.
+  3. _Arrows & Directions:_ `ArrowRight`, `ChevronDown`, `Move`, `Maximize2`.
+  4. _Communication & Messaging:_ `Mail`, `MessageSquare`, `Send`, `Bell`, `Phone`, `Inbox`.
+  5. _Users, Accounts & Security:_ `User`, `Shield`, `Key`, `Fingerprint`, `Lock`, `Unlock`.
+  6. _Commerce & Finance:_ `ShoppingCart`, `CreditCard`, `DollarSign`, `Wallet`, `Receipt`.
+  7. _Files, Folders & Documents:_ `FileText`, `FolderKanban`, `Archive`, `Paperclip`.
+  8. _Devices, System & Hardware:_ `Laptop`, `Cpu`, `Database`, `Server`, `Terminal`, `Wifi`.
+  9. _Analytics & Data Metrics:_ `BarChart3`, `LineChart`, `Activity`, `TrendingUp`, `Gauge`.
+  10. _Status, Alerts & Feedback:_ `CheckCircle2`, `AlertTriangle`, `Info`, `Eye`, `HelpCircle`.
+  11. _Media & Multimedia:_ `Play`, `Volume2`, `Camera`, `Video`, `Image`, `Music`.
+  12. _Delight, Accents & General:_ `Sparkles`, `Flame`, `Zap`, `Heart`, `Star`, `Award`.
+- **Filtering & DX:** Filter kategori dinamis dalam status state React, live multi-keyword search, salin kode komponen 1-klik, serta atribusi resmi kredit open source Lucide React.
+
+---
+
+## 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)
+
+Untuk mencegah pembuatan komponen yang melenceng dari standar premium Hudbird UI (seperti kasus box emas, icon tanpa konteks, kartu warna-warni, atau container yang dipaksakan melebar):
+
+### 3.1 Larangan Kartu & Ikon Warna-Warni Acak (Banned Rainbow Slop & Multi-Colored Icon Cards)
+
+- **Pantangan Keras:** Dilarang memberi background warna-warni sembarangan (emas/kuning, ungu neon, hijau mencolok) pada icon container atau kartu informasi tanpa alasan hierarki fungsional yang eksplisit.
+- **Standar Palet Terkendali:** Gunakan basis Obsidian monokromatik (`#161618` di dark mode, `zinc-50` / `white` di light mode) dengan garis batas rambut (_hairline_ 1px `border-zinc-200/80 dark:border-white/[0.08]`).
+- **Aksen Tunggal:** Hanya diperbolehkan satu aksen fungsional yang terkalibrasi (misal status emerald untuk aktif, atau brand indigo untuk sorotan utama), bukan karnaval warna.
+- **IconBox & Card:** Wajib selalu merujuk pada varian resmi (`variant="default" | "brand" | "glass" | "subtle" | "solid"`).
+
+### 3.2 Larangan Ikon AI Tanpa Konteks Nyata (Banned Gratuitous AI / Sparkle Icons)
+
+- **Pantangan Keras:** Dilarang memasang ikon `Sparkles`, `Wand2`, atau `Bot` pada kartu, badge, atau header dokumentasi jika komponen/fitur tersebut **bukanlah fitur generative AI / LLM**.
+- **Kesesuaian Mental Model (Hukum Jakob):**
+  - Untuk atribusi open-source / pustaka ikon: Gunakan logo SVG resmi (misal logo asli segitiga/heksagonal Lucide), bukan bintang emas AI.
+  - Untuk dokumentasi / file: Gunakan ikon `FileText` atau `Layers`.
+  - Untuk CLI / Terminal: Gunakan `Terminal` atau `ChevronRight`.
+  - Untuk navigasi: Gunakan `Compass` atau `Navigation`.
+  - Ikon harus selalu memiliki makna semantik yang langsung dipahami pengguna.
+
+### 3.3 Larangan Memaksakan Container Melebar untuk Konten Panjang (Channel Containment & Single-Column Discipline)
+
+- **Pantangan Keras:** Dilarang memaksakan grid 2-kolom berdampingan atau container kartu yang stretched horizontal jika teks deskripsi atau penjelasannya panjang. Hal ini membuat teks terhimpit secara vertikal dan merusak kenyamanan membaca.
+- **Disiplin 1-Kolom Membaca:** Konten deskripsi panjang wajib mengalir ke bawah dalam 1-kolom natural dengan batasan lebar membaca maksimal $65\text{ch}$ atau $768\text{px}$ (`max-w-3xl` / prose reading channel).
+- **Hirarki Vertikal:** Judul di atas $\rightarrow$ badge/kredensial lisensi $\rightarrow$ deskripsi 1-kolom $\rightarrow$ deretan tombol aksi / perintah install di bawahnya. Berikan ruang bernapas vertikal (_monumental vertical rhythm_ minimal 16px hingga 24px).
+
+### 3.4 Penerapan Fundamental Hukum UI/UX Pada Komponen
+
+1. **Hukum Fitts (_Fitts’s Law_) & Ergonomi Sentuh:**
+   - Semua tombol dan kontrol sentuh harus menyediakan target bidik yang nyaman: minimum 44px tinggi untuk tombol utama (`h-11`), dan minimum 36px untuk compact toolbar (`h-9`).
+   - Padding horizontal ($X$) wajib selalu lebih besar dibanding padding vertikal ($Y$) dengan rasio minimal 1.5 : 1 hingga 2.5 : 1. Dilarang keras menggunakan padding sempit seperti `px-2` atau `px-2.5` pada tombol interaktif!
+2. **Hukum Hick (_Hick’s Law_) & Navigasi Terfokus:**
+   - Hindari overload opsi. Dalam pengelompokan ikon atau filter, gunakan kategori fungsional yang padat (misal 12 domain terarah) dan tampilkan secara instan di tempat (_in-place reactive filtering_), bukan melompat ke hash URL lain atau memaksa pengguna berpindah halaman.
+3. **Hukum Kedekatan & Wilayah Bersama Gestalt (_Common Region & Proximity_):**
+   - Jarak antar elemen terkait (misal icon dengan label teks) harus jauh lebih rapat (`gap-1.5` atau `gap-2`) dibanding jarak ke batas kontainer luar.
+   - Hindari anti-pattern _cards-inside-cards-inside-cards_ (kartu di dalam kartu di dalam kartu). Satu container surface elegan dengan hairline border sudah cukup.
+4. **Hukum Jakob (_Jakob’s Law_) & Ekspektasi DX:**
+   - Susun elemen sesuai mental model developer modern: pencarian di posisi teratas, opsi filter langsung di bawahnya, tombol toggle mode di kanan atas, dan tombol salin 1-klik untuk instalasi dependensi.

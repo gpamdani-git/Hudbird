@@ -103,18 +103,16 @@ export default function DoubleBezelCardDoc() {
               Variant:
             </span>
             {(["default", "glass", "solid", "highlight"] as const).map((v) => (
-              <button
+              <Button
                 key={v}
-                type="button"
+                size="sm"
+                variant={selectedVariant === v ? "solid" : "flat"}
+                color={selectedVariant === v ? "primary" : "secondary"}
                 onClick={() => setSelectedVariant(v)}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium capitalize transition-all ${
-                  selectedVariant === v
-                    ? "bg-zinc-900 text-white shadow-xs dark:bg-white dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-white/10"
-                }`}
+                className="capitalize"
               >
                 {v}
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -125,18 +123,16 @@ export default function DoubleBezelCardDoc() {
               Padding:
             </span>
             {(["sm", "md", "lg"] as const).map((p) => (
-              <button
+              <Button
                 key={p}
-                type="button"
+                size="sm"
+                variant={selectedPadding === p ? "solid" : "flat"}
+                color={selectedPadding === p ? "primary" : "secondary"}
                 onClick={() => setSelectedPadding(p)}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium uppercase transition-all ${
-                  selectedPadding === p
-                    ? "bg-zinc-900 text-white shadow-xs dark:bg-white dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-white/10"
-                }`}
+                className="uppercase"
               >
                 {p}
-              </button>
+              </Button>
             ))}
           </div>
 

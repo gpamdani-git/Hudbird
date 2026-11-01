@@ -158,13 +158,22 @@ export const AdminUsers = () => {
                     {user.lastActive}
                   </td>
                   <td className="px-5 py-3 text-right align-middle">
-                    <div className="flex items-center justify-end gap-2 opacity-0 transition-opacity group-hover:opacity-100">
-                      <button className="text-primary text-[12px] font-medium hover:underline">
+                    <div className="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                      <Button
+                        variant="light"
+                        size="sm"
+                        className="text-primary h-auto p-0 text-[12px] font-medium hover:underline"
+                      >
                         Edit
-                      </button>
-                      <button className="text-[12px] font-medium text-rose-500 hover:underline">
+                      </Button>
+                      <span className="text-muted-foreground/40 text-xs">·</span>
+                      <Button
+                        variant="light"
+                        size="sm"
+                        className="h-auto p-0 text-[12px] font-medium text-rose-500 hover:underline"
+                      >
                         Suspend
-                      </button>
+                      </Button>
                     </div>
                   </td>
                 </tr>

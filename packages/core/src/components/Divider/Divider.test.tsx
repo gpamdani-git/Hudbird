@@ -20,4 +20,18 @@ describe("Divider component", () => {
     const divider = screen.getByRole("separator");
     expect(divider).toHaveAttribute("aria-orientation", "vertical");
   });
+
+  it("supports dotted and gradient variants", () => {
+    const { rerender } = render(<Divider variant="dotted" data-testid="div-dotted" />);
+    expect(screen.getByTestId("div-dotted")).toBeInTheDocument();
+
+    rerender(<Divider variant="gradient" data-testid="div-gradient" />);
+    expect(screen.getByTestId("div-gradient")).toBeInTheDocument();
+  });
+
+  it("supports icon slot in separator", () => {
+    render(<Divider icon={<span data-testid="test-icon">✦</span>}>Featured</Divider>);
+    expect(screen.getByTestId("test-icon")).toBeInTheDocument();
+    expect(screen.getByText("Featured")).toBeInTheDocument();
+  });
 });

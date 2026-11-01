@@ -454,21 +454,65 @@ The Button architecture is governed by strict visual perception science, Gestalt
 - **Frosted Glass Header:** `backdrop-blur-xl bg-white/80 dark:bg-[#161618]/80 border-b border-black/[0.08] dark:border-white/[0.08] sticky top-0 z-50`.
 - **Channel Padding:** `px-6 sm:px-8 lg:px-12`.
 
-### 4.33 Sidebar
+### 4.33 Sidebar & Dock Systems
 
-- **Navigation Rail Width:** `w-64 sm:w-72` (256px–288px).
-- **Obsidian Surface:** Obsidian `#161618` canvas with hairline right border `border-r border-black/[0.08] dark:border-white/[0.08]`.
-- **Nav Item Geometry:** 40px–44px height, anisotropic padding `py-2.5 px-4`, concentric `rounded-xl`.
+- **Multi-Position Layout:** Supports `position="left"` (standard rail), `position="right"` (inspector, properties, or AI assistant panel), and `position="bottom"` (macOS-style floating dock).
+- **Surface Variants:** `flat` (frosted glass), `bordered` (crisp hairline border), `floating` (inset rounded-3xl floating card), and `dock` (macOS floating capsule with ambient backdrop blur).
+- **Navigation Geometry:** 40px–44px height, anisotropic padding `py-2.5 px-4`, concentric `rounded-xl`.
+- **Directional Tooltips:** Auto-aligns floating tooltips to the opposite edge: rightwards for left sidebar, leftwards for right sidebar, and upwards for bottom dock.
 
 ### 4.34 Divider
 
-- **Hairline Stroke:** 1px stroke `bg-zinc-200 dark:bg-white/[0.08]`.
-- **Label Capsule:** Anisotropic badge pill `px-3 py-1 text-xs` centered with optical precision.
+- **Stroke Styles:** Supports `solid` (1px hairline), `dashed` (minimalist receipt voucher), `dotted` (precision technical micro-dots), and `gradient` (Apple specular linear fade from transparent to center highlight).
+- **Content & Icon Slots:** Central label capsule with optional `icon` slot anchor (`icon={<Sparkles />}`) for elevated section partitioning.
+- **Bi-Directional Support:** Native support for both `horizontal` and `vertical` orientations across all 4 stroke variants.
 
 ### 4.35 IconBox & HudbirdIcon
 
-- **IconBox Optical Container:** Fixed frame `w-10 h-10` or `w-12 h-12` with concentric `rounded-xl` and subtle frosted fill.
+- **IconBox Optical Container:** 5 calibrated visual variants (`default`, `brand`, `glass`, `subtle`, `solid`) across 3 geometric scales (`sm`: 36px, `md`: 48px, `lg`: 56px).
+- **Specular Backlight Halo:** Optional `showGlow={true}` illuminates a soft ambient blur halo upon hover.
 - **HudbirdIcon Primitive:** Standardized SVG vector primitive rendering the signature bird/letter-h geometry at crisp vector viewBox scales (`w-5 h-5` to `w-10 h-10`).
+
+### 4.36 Icons & Lucide React Directory
+
+- **Iconography Standard:** Hudbird UI natively embraces **Lucide React** (ISC License) as its open-source iconography foundation, providing 1,400+ stroke-balanced, clean vector icons.
+- **12 Functional Groupings:** Icons are categorized and filtered in-place across 12 practical application domains:
+  1. _Navigation & Wayfinding:_ `Home`, `Compass`, `Menu`, `Layers`, `Grid`, `Map`, `Sidebar`, `PanelLeft`.
+  2. _Actions & Controls:_ `Plus`, `Trash2`, `Edit3`, `Copy`, `Share2`, `Download`, `Filter`, `SlidersHorizontal`.
+  3. _Arrows & Directions:_ `ArrowRight`, `ChevronDown`, `Move`, `Maximize2`, `ArrowUpRight`.
+  4. _Communication & Messaging:_ `Mail`, `MessageSquare`, `Send`, `Bell`, `Phone`, `Inbox`.
+  5. _Users, Accounts & Security:_ `User`, `Shield`, `Key`, `Fingerprint`, `Lock`, `Unlock`.
+  6. _Commerce & Finance:_ `ShoppingCart`, `CreditCard`, `DollarSign`, `Wallet`, `Receipt`.
+  7. _Files, Folders & Documents:_ `FileText`, `FolderKanban`, `Archive`, `Paperclip`, `BookOpen`.
+  8. _Devices, System & Hardware:_ `Laptop`, `Cpu`, `Database`, `Server`, `Terminal`, `Wifi`.
+  9. _Analytics & Data Metrics:_ `BarChart3`, `LineChart`, `Activity`, `TrendingUp`, `Gauge`.
+  10. _Status, Alerts & Feedback:_ `CheckCircle2`, `AlertTriangle`, `Info`, `Eye`, `HelpCircle`.
+  11. _Media & Multimedia:_ `Play`, `Volume2`, `Camera`, `Video`, `Image`, `Music`.
+  12. _Delight, Accents & General:_ `Sparkles`, `Flame`, `Zap`, `Heart`, `Star`, `Award`.
+- **Filtering & DX:** Interactive in-place category filtering (no route/hash navigation jumps), real-time cross-category search, 1-click React component snippet copy, and official Lucide React credit attribution.
+
+### 4.37 Strict Anti-Slop & Universal Cognitive Guardrails
+
+To prevent regression into templated AI-slop, gaudy accents, and cramped layouts, all component implementations must strictly obey the following guardrails:
+
+- **Banned Rainbow Slop & Multi-Colored Cards:**
+  - Never apply arbitrary multicolored backgrounds (e.g. gold, yellow, neon purple, or bright cyan containers) to iconography cards or information panels without clear functional necessity.
+  - Surfaces must stay grounded in the monochromatic Obsidian hierarchy: Obsidian Charcoal (`#161618`) in dark mode, crisp neutral (`white` / `zinc-50`) in light mode, with hairline specular borders (`border-zinc-200/80 dark:border-white/[0.08]`).
+  - Reserve color strictly for purposeful, semantic indicators (e.g. Emerald for active status, Brand Indigo for primary callouts).
+
+- **Banned Gratuitous AI & Sparkle Icons:**
+  - Never inject `Sparkles`, `Wand2`, or `Bot` icons into banners, badges, or headers that do **not** involve generative AI or machine learning models.
+  - Adhere to Jakob's Law (User Mental Models): represent open-source registries with their official brand SVG (e.g. Lucide vector mark), file systems with document icons, and CLI tools with terminal glyphs.
+
+- **Channel Containment & Single-Column Reading Discipline:**
+  - Never force a horizontal 2-column layout or stretched container when copy/description text is detailed or lengthy. Horizontal squeezing creates severe vertical line wraps that induce cognitive reading fatigue.
+  - Lengthy explanatory text must flow naturally downward in a **single-column prose channel** capped at `65ch` / `768px` (`max-w-3xl`).
+  - Structure hero/header metadata with clean vertical stacking: Title $\rightarrow$ License/Category Badge $\rightarrow$ Single-column description $\rightarrow$ Action row (CLI copy buttons, external links).
+
+- **Enforced UX Law Fundamentals:**
+  - **Fitts's Law:** Touch targets must maintain standard 44px baselines (`h-11` standard, `h-9` compact). Banned cramped `px-2` or `px-2.5` padding on buttons; anisotropic ratio $X:Y \ge 1.5:1$ is mandatory.
+  - **Hick's Law:** Minimize decision fatigue. Provide clear, in-place functional category filters without disruptive page reloads or hash jumps.
+  - **Gestalt Common Region & Proximity:** Keep inner icon-to-label gaps tight (`gap-1.5` to `gap-2`) relative to outer container bounds. Avoid the _cards-inside-cards-inside-cards_ nesting anti-pattern.
 
 ---
 

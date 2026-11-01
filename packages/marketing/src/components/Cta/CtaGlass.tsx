@@ -84,7 +84,7 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
                     <Button
                       size="lg"
                       variant="solid"
-                      color="zinc"
+                      color="primary"
                       onClick={primaryAction.onClick}
                       {...(primaryAction.href ? { href: primaryAction.href } : {})}
                       className="w-full sm:w-auto"
@@ -96,7 +96,7 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
                     <Button
                       size="lg"
                       variant="outline"
-                      color="zinc"
+                      color="secondary"
                       onClick={secondaryAction.onClick}
                       {...(secondaryAction.href ? { href: secondaryAction.href } : {})}
                       className="w-full bg-white/50 backdrop-blur-md sm:w-auto dark:bg-black/50"

@@ -52,7 +52,7 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
         <div ref={ref} className={cn(heroVariants({ size }), className)} {...props}>
           {withBlobs && (
             <>
-              {/* Top aesthetic blur */}
+              {/* Top ambient illumination (calibrated to Hudbird brand indigo tokens) */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -62,11 +62,11 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
                     clipPath:
                       "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
                   }}
-                  className="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] dark:opacity-20"
+                  className="from-primary/20 via-primary/10 dark:from-primary/15 dark:via-primary/5 relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr to-transparent opacity-50 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem] dark:to-transparent dark:opacity-30"
                 />
               </div>
 
-              {/* Bottom aesthetic blur */}
+              {/* Bottom ambient illumination */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
@@ -76,7 +76,7 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
                     clipPath:
                       "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
                   }}
-                  className="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem] dark:opacity-20"
+                  className="from-primary/15 via-primary/5 dark:from-primary/10 dark:via-primary/5 relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr to-transparent opacity-40 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem] dark:to-transparent dark:opacity-20"
                 />
               </div>
             </>
@@ -119,14 +119,17 @@ const HeroHeader = React.forwardRef<HTMLElement, HeroHeaderProps>(
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">{logo}</div>
           <div className="flex lg:hidden">
-            <button
+            <Button
               type="button"
+              variant="light"
+              isIconOnly
+              size="sm"
               onClick={() => setMobileMenuOpen(true)}
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-opacity hover:opacity-80"
+              aria-label="Open main menu"
+              className="-m-2.5 text-zinc-700 dark:text-zinc-300"
             >
-              <span className="sr-only">Open main menu</span>
               <Menu className="h-6 w-6" aria-hidden="true" />
-            </button>
+            </Button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {links?.map((item) =>
@@ -192,14 +195,17 @@ const HeroHeader = React.forwardRef<HTMLElement, HeroHeaderProps>(
                   <span className="sr-only">Your Company</span>
                   {logo}
                 </div>
-                <button
+                <Button
                   type="button"
+                  variant="light"
+                  isIconOnly
+                  size="sm"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="-m-2.5 rounded-md p-2.5 text-zinc-700 hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white"
+                  aria-label="Close menu"
+                  className="-m-2.5 text-zinc-700 dark:text-zinc-300"
                 >
-                  <span className="sr-only">Close menu</span>
                   <X className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </Button>
               </div>
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-zinc-500/10 dark:divide-white/10">
@@ -215,7 +221,7 @@ const HeroHeader = React.forwardRef<HTMLElement, HeroHeaderProps>(
                               <a
                                 key={subItem.label}
                                 href={subItem.href}
-                                className="block rounded-lg px-3 py-2 text-sm leading-6 font-medium text-zinc-600 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-zinc-900/50"
+                                className="flex min-h-[44px] items-center rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-100/70 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-100"
                               >
                                 {subItem.label}
                               </a>
@@ -226,7 +232,7 @@ const HeroHeader = React.forwardRef<HTMLElement, HeroHeaderProps>(
                         <a
                           key={item.label}
                           href={item.href}
-                          className="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 font-semibold text-zinc-900 hover:bg-zinc-50 dark:text-zinc-100 dark:hover:bg-zinc-900/50"
+                          className="-mx-3 flex min-h-[44px] items-center rounded-lg px-3 py-2 text-base font-semibold text-zinc-900 transition-colors hover:bg-zinc-100/70 dark:text-zinc-100 dark:hover:bg-zinc-900/50"
                         >
                           {item.label}
                         </a>
@@ -366,7 +372,7 @@ const HeroBadge = React.forwardRef<HTMLDivElement, HeroBadgeProps>(
           <Comp
             ref={ref}
             className={cn(
-              "relative cursor-pointer rounded-full px-3 py-1 text-sm leading-6 text-zinc-600 ring-1 ring-zinc-900/10 backdrop-blur-sm transition-all hover:ring-zinc-900/20 dark:text-zinc-300 dark:ring-white/10 dark:hover:ring-white/20",
+              "relative cursor-pointer rounded-full px-3.5 py-1 text-xs leading-6 font-medium text-zinc-600 ring-1 ring-zinc-900/10 backdrop-blur-sm transition-all hover:ring-zinc-900/20 sm:text-sm dark:bg-white/[0.02] dark:text-zinc-300 dark:ring-white/[0.08] dark:hover:ring-white/20",
               className
             )}
             {...props}
@@ -431,7 +437,10 @@ const HeroActions = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.4, type: "spring", bounce: 0 }}
         ref={ref}
-        className={cn("mt-10 flex items-center gap-x-6", className)}
+        className={cn(
+          "mt-10 flex w-full flex-col items-stretch gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-x-6",
+          className
+        )}
         {...(props as any)}
       />
     );

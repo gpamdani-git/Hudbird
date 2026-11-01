@@ -204,19 +204,24 @@ export const AdminCategories = () => {
                           {cat.name}
                         </div>
                         {/* Inline Actions (visible on hover) */}
-                        <div className="mt-1.5 flex h-5 items-center gap-3 opacity-0 transition-opacity group-hover:opacity-100">
-                          <button
+                        <div className="mt-1.5 flex h-5 items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                          <Button
+                            variant="light"
+                            size="sm"
                             onClick={() => handleEdit(cat)}
-                            className="text-primary text-[12px] font-medium hover:underline"
+                            className="text-primary h-auto p-0 text-[12px] font-medium hover:underline"
                           >
                             Edit
-                          </button>
-                          <button
+                          </Button>
+                          <span className="text-muted-foreground/40 text-xs">·</span>
+                          <Button
+                            variant="light"
+                            size="sm"
                             onClick={() => handleDelete(cat.id)}
-                            className="text-[12px] font-medium text-red-500 hover:underline"
+                            className="h-auto p-0 text-[12px] font-medium text-rose-500 hover:underline"
                           >
                             Delete
-                          </button>
+                          </Button>
                         </div>
                       </td>
                       <td className="text-muted-foreground max-w-[250px] truncate px-4 py-3 align-top">

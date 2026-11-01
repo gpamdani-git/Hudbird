@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Badge, Button, Tabs, Tab, Card, CardHeader, CardBody } from "@hudbird/ui";
 import { DocHeader } from "../components/DocHeader";
 import { CodeBlock } from "../components/CodeBlock";
 import { HUDBIRD_SKILL_CONTENT } from "../data/hudbirdSkillContent";
 import {
   Bot,
-  Sparkles,
+  Palette,
   Terminal,
   CheckCircle2,
   Layers,
@@ -72,25 +73,9 @@ export default function AiSkillsDoc() {
       <DocHeader
         category="INTEGRATION"
         title="AI Agent Skills & DX"
-        badge="v1.5"
         description="Supercharge your favorite AI coding assistant (Claude Code, OpenAI Codex, Antigravity, Cursor, or Windsurf) with native knowledge of Hudbird UI. Build production-grade interfaces using verified components, exact props, and battle-tested prompts."
         className="mb-8 max-w-4xl"
       />
-
-      <div className="mb-8 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
-          <Bot className="h-3.5 w-3.5" />
-          AI Skills v1.5
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-          <ShieldCheck className="h-3.5 w-3.5" />
-          Zero-Hallucination Guarantee
-        </span>
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-100 px-3 py-1 text-xs font-semibold text-zinc-700 dark:border-[#2E2F33] dark:bg-[#202124] dark:text-[#E5E5E5]">
-          <Cpu className="h-3.5 w-3.5" />
-          Claude • Codex • Antigravity • Cursor
-        </span>
-      </div>
 
       <div className="max-w-4xl space-y-24 text-zinc-800 sm:space-y-32 dark:text-zinc-200">
         {/* 1. Overview & Zero-Hallucination */}
@@ -100,180 +85,159 @@ export default function AiSkillsDoc() {
               Why Use Hudbird UI Skills?
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              Turn your AI from a generic code guesser into a specialized Hudbird UI architect.
+              Turn generic code generation into a specialized design-system architect that respects
+              your tokens and component contracts.
             </p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border border-rose-200/80 bg-rose-50/40 p-5 dark:border-rose-900/30 dark:bg-rose-950/20">
-              <div className="flex items-center gap-2 font-semibold text-rose-700 dark:text-rose-400">
-                <XCircle className="h-4 w-4 shrink-0 text-rose-500" />
-                <span>Without AI Skill (Hallucinations)</span>
-              </div>
-              <ul className="mt-3 space-y-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                <li className="flex items-start gap-1.5">
-                  <span className="font-bold text-rose-500">•</span>
-                  <span>
+            <Card variant="shadow">
+              <CardHeader>
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-rose-50 text-rose-600 dark:bg-rose-500/15 dark:text-rose-400">
+                    <XCircle className="h-4 w-4" />
+                  </span>
+                  <h3 className="text-base font-semibold tracking-tight text-zinc-900 sm:text-lg dark:text-white">
+                    Without Skill (Default Model Guessing)
+                  </h3>
+                </div>
+              </CardHeader>
+              <CardBody>
+                <ul className="space-y-3 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                  <li>
                     Invents non-existent props or variants (e.g.{" "}
-                    <code>variant="gradient-glow"</code>).
-                  </span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <span className="font-bold text-rose-500">•</span>
-                  <span>
-                    Writes raw unmaintainable CSS strings instead of leveraging built-in components.
-                  </span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <span className="font-bold text-rose-500">•</span>
-                  <span>Forgets dark mode classes or produces broken layout contrast.</span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <span className="font-bold text-rose-500">•</span>
-                  <span>
-                    Doesn't know how to run <code>npx hudbird-ui add</code> to install dependencies.
-                  </span>
-                </li>
-              </ul>
-            </div>
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      variant="gradient-glow"
+                    </code>
+                    ).
+                  </li>
+                  <li>Writes raw ad-hoc CSS strings instead of leveraging built-in primitives.</li>
+                  <li>Omits dark mode classes, producing unreadable contrast in dark themes.</li>
+                  <li>
+                    Unaware of local CLI installation commands (
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      npx hudbird-ui add
+                    </code>
+                    ).
+                  </li>
+                </ul>
+              </CardBody>
+            </Card>
 
-            <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/40 p-5 dark:border-emerald-900/30 dark:bg-emerald-950/20">
-              <div className="flex items-center gap-2 font-semibold text-emerald-700 dark:dark:text-emerald-400">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-500" />
-                <span>With Hudbird UI Skill (Real Works)</span>
-              </div>
-              <ul className="mt-3 space-y-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                <li className="flex items-start gap-1.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>
-                    Knows all <strong>60+ official components</strong> and their exact CVA variants.
+            <Card variant="shadow">
+              <CardHeader>
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
+                    <CheckCircle2 className="h-4 w-4" />
                   </span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>
-                    Uses signature blocks: <code>DoubleBezelCard</code>, <code>KineticButton</code>,{" "}
-                    <code>SplitTextReveal</code>.
-                  </span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>
-                    Automatically executes CLI install commands and configures{" "}
-                    <code>components.json</code>.
-                  </span>
-                </li>
-                <li className="flex items-start gap-1.5">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                  <span>
-                    Guarantees 100% paired dark mode classes and accessible ARIA attributes.
-                  </span>
-                </li>
-              </ul>
-            </div>
+                  <h3 className="text-base font-semibold tracking-tight text-zinc-900 sm:text-lg dark:text-white">
+                    With Hudbird UI Skill (Enforced Contract)
+                  </h3>
+                </div>
+              </CardHeader>
+              <CardBody>
+                <ul className="space-y-3 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                  <li>
+                    Strictly constrained to 60+ verified components and authentic CVA variants.
+                  </li>
+                  <li>
+                    Correctly imports signature primitives:{" "}
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      DoubleBezelCard
+                    </code>
+                    ,{" "}
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      KineticButton
+                    </code>
+                    ,{" "}
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      Tabs
+                    </code>
+                    .
+                  </li>
+                  <li>Enforces 100% paired dark mode classes on every container.</li>
+                  <li>Automatically identifies missing components and runs CLI commands.</li>
+                </ul>
+              </CardBody>
+            </Card>
           </div>
         </section>
 
-        {/* 2. Key Advantages & Superpowers */}
+        {/* 2. Key Advantages & Architecture */}
         <section id="advantages" className="scroll-mt-24 space-y-8">
           <div className="mb-6 space-y-3">
             <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
-              Key Superpowers &amp; Advantages
+              Core Capabilities
             </h2>
             <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#828282]">
-              How the Hudbird UI Skill accelerates developer experience and turns natural language
-              into production code.
+              How the skill instructs models to produce production-grade interfaces.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Advantage 1 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-indigo-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400">
-                <Zap className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Faster Component Prototyping
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Generate components directly with verified imports and exact prop names, without
-                manually checking API tables.
-              </p>
-            </div>
+          <div className="space-y-4">
+            {/* Flagship Card */}
+            <Card variant="shadow">
+              <CardBody className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900 sm:text-lg dark:text-white">
+                      Strict Component Contracts & Verified API
+                    </h3>
+                    <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                      Zero hallucinations on imports, CVA variants, and prop names
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                  The skill provides complete type signatures for all 62+ primitives, eliminating
+                  common LLM errors like inventing props or mixing up compound component slots.
+                  Models generate code that compiles cleanly on first run.
+                </p>
+              </CardBody>
+            </Card>
 
-            {/* Advantage 2 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-emerald-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/60 dark:text-emerald-400">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Accurate Props and Imports
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Constrains model code generation to authentic CVA variants, compound components, and
-                token palettes. Eliminates invalid imports and unsupported props.
-              </p>
-            </div>
+            {/* 2 Side-by-Side Cards */}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Card variant="shadow">
+                <CardBody className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+                      <Palette className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-white">
+                      Automated Dark Mode & Geometry
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                    Enforces paired light and dark classes with Obsidian (#161618) canvas and
+                    concentric padding (R_inner = R_outer - p) across all generated containers.
+                  </p>
+                </CardBody>
+              </Card>
 
-            {/* Advantage 3 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-amber-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/60 dark:text-amber-400">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Automated Dark Mode & Glassmorphism
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Guarantees paired light/dark classes (
-                <code className="font-mono text-[11px]">bg-white dark:bg-zinc-950</code>) and
-                architectural backdrop blurs on every generated container.
-              </p>
-            </div>
-
-            {/* Advantage 4 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-purple-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-purple-50 text-purple-600 dark:bg-purple-950/60 dark:text-purple-400">
-                <Workflow className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Kinetic Motion Out-of-the-Box
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Naturally implements signature components like{" "}
-                <code className="font-mono text-[11px]">KineticButton</code>,{" "}
-                <code className="font-mono text-[11px]">SplitTextReveal</code>, and{" "}
-                <code className="font-mono text-[11px]">StickyStack</code> without manual Framer
-                Motion hooks.
-              </p>
-            </div>
-
-            {/* Advantage 5 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-cyan-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-50 text-cyan-600 dark:bg-cyan-950/60 dark:text-cyan-400">
-                <Terminal className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                Integrated CLI Scaffolding
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                The AI automatically instructs (or executes directly in terminal agents) the
-                required <code className="font-mono text-[11px]">npx hudbird-ui add</code> commands
-                with recursive sub-dependencies.
-              </p>
-            </div>
-
-            {/* Advantage 6 */}
-            <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-xs transition-all hover:border-rose-500/40 hover:shadow-md dark:border-[#2E2F33] dark:bg-[#202124]">
-              <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-rose-50 text-rose-600 dark:bg-rose-950/60 dark:text-rose-400">
-                <Layers className="h-5 w-5" />
-              </div>
-              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                8 Vertical Niche Blocks Ready
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                Understands prebuilt blocks for SaaS, Fintech, ModernApp, Agency, Ecommerce,
-                Hospitality, AiStartup, and AdminCms to compose entire pages instantly.
-              </p>
+              <Card variant="shadow">
+                <CardBody className="p-6">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+                      <Terminal className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-white">
+                      CLI Scaffolding Awareness
+                    </h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-[15px] dark:text-zinc-300">
+                    The model knows how to inspect{" "}
+                    <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10 dark:text-zinc-200">
+                      components.json
+                    </code>{" "}
+                    and trigger recursive installation of missing components and peer dependencies
+                    automatically.
+                  </p>
+                </CardBody>
+              </Card>
             </div>
           </div>
         </section>
@@ -290,13 +254,17 @@ export default function AiSkillsDoc() {
             </p>
           </div>
 
-          <div className="relative rounded-xl border border-zinc-200 bg-zinc-950 p-4 font-mono text-sm text-zinc-100 dark:border-[#2E2F33]">
+          <div className="relative rounded-2xl border border-zinc-200/80 bg-zinc-950 p-4 font-mono text-sm text-zinc-100 dark:border-white/[0.08]">
             <div className="flex items-center justify-between gap-4">
               <span className="overflow-x-auto text-xs select-all sm:text-sm">{curlCommand}</span>
-              <button
+              <Button
                 type="button"
+                size="sm"
+                variant="bordered"
+                color="secondary"
+                radius="md"
                 onClick={handleCopyCurl}
-                className="inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-semibold text-zinc-200 transition-colors hover:bg-zinc-700"
+                className="shrink-0"
               >
                 {copiedCurl ? (
                   <>
@@ -309,7 +277,7 @@ export default function AiSkillsDoc() {
                     Copy
                   </>
                 )}
-              </button>
+              </Button>
             </div>
           </div>
 
@@ -317,10 +285,13 @@ export default function AiSkillsDoc() {
             <span className="text-xs text-zinc-500 dark:text-zinc-400">
               Prefer manual file setup?
             </span>
-            <button
+            <Button
               type="button"
+              size="sm"
+              variant="bordered"
+              color="secondary"
+              radius="md"
               onClick={handleDownloadSkill}
-              className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-xs font-semibold text-zinc-800 shadow-xs transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
             >
               {downloadedSkill ? (
                 <>
@@ -329,11 +300,11 @@ export default function AiSkillsDoc() {
                 </>
               ) : (
                 <>
-                  <Download className="h-3.5 w-3.5 text-indigo-500" />
+                  <Download className="h-3.5 w-3.5 opacity-70" />
                   Download SKILL.md directly
                 </>
               )}
-            </button>
+            </Button>
           </div>
         </section>
 
@@ -349,44 +320,35 @@ export default function AiSkillsDoc() {
           </div>
 
           {/* Model Switcher Tabs */}
-          <div className="flex flex-wrap gap-2 border-b border-zinc-200 pb-3 dark:border-[#2E2F33]">
-            {[
-              { id: "claude", label: "Claude Code / CLI" },
-              { id: "antigravity", label: "Google Antigravity" },
-              { id: "cursor", label: "Cursor IDE" },
-              { id: "windsurf", label: "Windsurf Cascade" },
-              { id: "codex", label: "OpenAI Codex / ChatGPT" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveAgentTab(tab.id as any)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all ${
-                  activeAgentTab === tab.id
-                    ? "bg-indigo-600 text-white shadow-xs"
-                    : "bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-400 dark:hover:bg-zinc-700"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+          <Tabs
+            size="sm"
+            variant="solid"
+            radius="md"
+            selectedKey={activeAgentTab}
+            onSelectionChange={(k) => setActiveAgentTab(k as any)}
+          >
+            <Tab tabKey="claude" title="Claude Code / CLI" />
+            <Tab tabKey="antigravity" title="Google Antigravity" />
+            <Tab tabKey="cursor" title="Cursor IDE" />
+            <Tab tabKey="windsurf" title="Windsurf Cascade" />
+            <Tab tabKey="codex" title="OpenAI Codex / ChatGPT" />
+          </Tabs>
 
           {/* Tab Content: Claude Code */}
           {activeAgentTab === "claude" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-500/10 text-xs font-bold text-amber-600">
+            <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+              <h3 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-900 dark:bg-white/10 dark:text-white">
                   C
                 </span>
                 Anthropic Claude Code Configuration
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                 Claude Code automatically detects project instructions in <code>CLAUDE.md</code> or
                 agent skills in <code>.agents/skills/</code>.
               </p>
               <div className="space-y-2">
-                <span className="text-xs font-semibold text-zinc-500 uppercase">
+                <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                   Method 1: Project Skill (Recommended)
                 </span>
                 <CodeBlock
@@ -401,7 +363,7 @@ claude`}
                 />
               </div>
               <div className="space-y-2">
-                <span className="text-xs font-semibold text-zinc-500 uppercase">
+                <span className="text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                   Method 2: Reference in CLAUDE.md
                 </span>
                 <CodeBlock
@@ -420,14 +382,14 @@ This project uses **Hudbird UI**. Whenever building UI, pages, or components:
 
           {/* Tab Content: Google Antigravity */}
           {activeAgentTab === "antigravity" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-500/10 text-xs font-bold text-blue-600">
+            <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+              <h3 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-900 dark:bg-white/10 dark:text-white">
                   A
                 </span>
                 Google Antigravity Agent Configuration
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                 Google Antigravity natively loads skills with YAML frontmatter located in{" "}
                 <code>.agents/skills/&lt;skill-name&gt;/SKILL.md</code>.
               </p>
@@ -445,14 +407,14 @@ curl -sSL https://hudbird.vercel.app/skills/hudbird-ui.md -o .agents/skills/hudb
 
           {/* Tab Content: Cursor */}
           {activeAgentTab === "cursor" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-500/10 text-xs font-bold text-indigo-600">
+            <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+              <h3 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-900 dark:bg-white/10 dark:text-white">
                   CR
                 </span>
                 Cursor IDE Rules (.cursorrules or .cursor/rules/)
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                 In Cursor, create <code>.cursorrules</code> or{" "}
                 <code>.cursor/rules/hudbird.mdc</code> to teach Cursor Composer and Chat:
               </p>
@@ -475,14 +437,14 @@ When asked to build or refactor frontend components or pages:
 
           {/* Tab Content: Windsurf */}
           {activeAgentTab === "windsurf" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-teal-500/10 text-xs font-bold text-teal-600">
+            <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+              <h3 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-900 dark:bg-white/10 dark:text-white">
                   W
                 </span>
                 Windsurf (Codeium Cascade) Configuration
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                 Create a <code>.windsurfrules</code> file in your repository root:
               </p>
               <CodeBlock
@@ -499,14 +461,14 @@ When asked to build or refactor frontend components or pages:
 
           {/* Tab Content: Codex / ChatGPT */}
           {activeAgentTab === "codex" && (
-            <div className="space-y-4 rounded-xl border border-zinc-200 bg-zinc-50/50 p-6 dark:border-[#2E2F33] dark:bg-[#202124]">
-              <h3 className="flex items-center gap-2 text-base font-bold text-zinc-900 dark:text-zinc-100">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-500/10 text-xs font-bold text-green-600">
+            <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/50 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+              <h3 className="flex items-center gap-2 text-base font-semibold text-zinc-900 dark:text-white">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-100 text-xs font-bold text-zinc-900 dark:bg-white/10 dark:text-white">
                   O
                 </span>
                 OpenAI Codex & ChatGPT Custom Instructions
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                 Paste the following snippet into your project's custom instructions or prompt
                 system:
               </p>
@@ -535,29 +497,31 @@ Ensure clean TypeScript types and paired Tailwind dark mode classes.`}
           </div>
 
           {/* Prompt 1 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
+          <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
             <div className="flex items-center justify-between">
-              <span className="rounded-md bg-indigo-50 px-2.5 py-1 text-xs font-bold text-indigo-700 dark:bg-indigo-950/50 dark:text-indigo-300">
+              <Badge variant="soft" color="secondary" size="sm">
                 Prompt 1: Dark Mode SaaS Hero Section
+              </Badge>
+              <span className="text-xs text-zinc-400 sm:text-sm">
+                Tested on Claude 3.5 Sonnet &amp; GPT-4o
               </span>
-              <span className="text-xs text-zinc-400">Tested on Claude 3.5 Sonnet & GPT-4o</span>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                 Prompt to give your AI:
               </div>
-              <div className="rounded-lg bg-zinc-100 p-3.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-200">
-                "Create a high-converting SaaS Hero section using Hudbird UI. Include decorative
-                backdrop blobs, a badge with an announcement, a bold title with SplitTextReveal
-                scroll animation, and a KineticButton primary CTA alongside a secondary outline
-                Button. Ensure full dark mode support."
+              <div className="rounded-xl bg-zinc-100 p-4 font-mono text-sm leading-relaxed text-zinc-800 dark:bg-white/[0.04] dark:text-zinc-200">
+                "Create an editorial SaaS Hero section using Hudbird UI. Include a clean navigation
+                bar, a high-contrast title with SplitTextReveal animation, a descriptive paragraph,
+                a KineticButton primary CTA, and a secondary outline Button. Ensure full Obsidian
+                #161618 dark mode parity."
               </div>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
-                AI Execution & Output (Real Working Code):
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
+                AI Execution &amp; Output (Verified Working Code):
               </div>
               <CodeBlock
                 language="tsx"
@@ -568,7 +532,6 @@ import {
   HeroHeader,
   HeroBody,
   HeroContent,
-  HeroBadge,
   HeroTitle,
   HeroDescription,
   HeroActions,
@@ -576,46 +539,39 @@ import {
 import { KineticButton } from "@/components/hudbird-ui/KineticButton";
 import { Button } from "@/components/hudbird-ui/Button";
 import { SplitTextReveal } from "@/components/hudbird-ui/SplitTextReveal";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function SaaSMarketingHero() {
   return (
-    <Hero size="full" withBlobs className="border-b border-zinc-200 dark:border-[#2E2F33]">
+    <Hero size="full" className="border-b border-zinc-200/80 dark:border-white/[0.08]">
       <HeroHeader
         logo={<span className="text-xl font-bold tracking-tight text-zinc-900 dark:text-white">Hudbird</span>}
         links={[
-          { label: "Features", href: "#features" },
-          { label: "Pricing", href: "#pricing" },
+          { label: "Components", href: "#components" },
+          { label: "Documentation", href: "#docs" },
         ]}
-        action={<Button variant="solid" color="primary">Sign In</Button>}
+        action={<Button variant="solid" color="primary">Get Started</Button>}
       />
       <HeroBody variant="centered">
         <HeroContent align="center">
-          <HeroBadge>
-            <span className="flex items-center gap-1.5 text-xs font-medium">
-              <Sparkles className="h-3.5 w-3.5 text-indigo-500" />
-              Introducing Hudbird UI 1.5
-            </span>
-          </HeroBadge>
-          
           <HeroTitle>
             <SplitTextReveal
               as="h1"
               text="Engineered for software that demands attention"
-              className="text-4xl sm:text-6xl font-black text-zinc-900 dark:text-white"
+              className="text-4xl sm:text-6xl font-bold text-zinc-900 dark:text-white tracking-tight"
             />
           </HeroTitle>
 
           <HeroDescription>
-            Stop settling for generic templates. Craft signature web applications with architectural double-bezel cards and tactile micro-motion.
+            High-agency UI components with verified CVA variants, hardware-accelerated micro-motion, and local code ownership.
           </HeroDescription>
 
           <HeroActions>
-            <KineticButton variant="primary" size="lg" href="/dashboard">
-              Start Free Trial
+            <KineticButton variant="primary" size="lg" href="/docs">
+              Browse Components
             </KineticButton>
             <Button variant="outline" size="lg" endContent={<ArrowRight className="h-4 w-4" />}>
-              Documentation
+              Read Specification
             </Button>
           </HeroActions>
         </HeroContent>
@@ -628,28 +584,31 @@ export function SaaSMarketingHero() {
           </div>
 
           {/* Prompt 2 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
+          <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
             <div className="flex items-center justify-between">
-              <span className="rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-300">
-                Prompt 2: Bento Grid Feature Showcase with DoubleBezelCard
+              <Badge variant="soft" color="secondary" size="sm">
+                Prompt 2: Asymmetric Bento Feature Showcase
+              </Badge>
+              <span className="text-xs text-zinc-400 sm:text-sm">
+                Tested on Gemini 1.5 Pro &amp; Claude 3.5
               </span>
-              <span className="text-xs text-zinc-400">Tested on Gemini 1.5 Pro & Claude 3.5</span>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                 Prompt to give your AI:
               </div>
-              <div className="rounded-lg bg-zinc-100 p-3.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-200">
-                "Build a feature section using Hudbird UI's BentoGrid and BentoCard components.
-                Place a DoubleBezelCard with glass variant and architectural corner crosshairs
-                inside the main 2-column card. Add Lucide icons and clean subheadings."
+              <div className="rounded-xl bg-zinc-100 p-4 font-mono text-sm leading-relaxed text-zinc-800 dark:bg-white/[0.04] dark:text-zinc-200">
+                "Build an asymmetric feature section using Hudbird UI's BentoGrid and BentoCard
+                components. Place a DoubleBezelCard with hairline borders and corner crosshairs
+                inside the main 2-column card. Add clean subheadings and Obsidian #161618 dark
+                mode."
               </div>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
-                AI Execution & Output (Real Working Code):
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
+                AI Execution &amp; Output (Verified Working Code):
               </div>
               <CodeBlock
                 language="tsx"
@@ -658,37 +617,39 @@ export function SaaSMarketingHero() {
 import { BentoGrid, BentoCard, BentoCardContent } from "@/components/hudbird-ui/BentoGrid";
 import { DoubleBezelCard } from "@/components/hudbird-ui/DoubleBezelCard";
 import { Badge } from "@/components/hudbird-ui/Badge";
-import { Zap, ShieldCheck, Cpu } from "lucide-react";
+import { ShieldCheck, Cpu, Terminal } from "lucide-react";
 
 export function ProductFeatures() {
   return (
     <section className="py-20 px-6 max-w-7xl mx-auto">
-      <div className="mb-12 text-center">
-        <Badge variant="flat" color="primary">Core Architecture</Badge>
-        <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-50">
-          Engineered for Maximum Reliability
+      <div className="mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+          System Architecture
         </h2>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+          Core primitives calibrated for enterprise design systems.
+        </p>
       </div>
 
       <BentoGrid>
-        {/* Large Highlight Card with DoubleBezelCard */}
+        {/* Flagship Highlight Card */}
         <BentoCard className="md:col-span-2">
           <BentoCardContent className="p-4 sm:p-6">
             <DoubleBezelCard
-              variant="glass"
+              variant="default"
               showCrosshairs
               isHoverable
               padding="lg"
               className="h-full"
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-                <Zap className="h-6 w-6" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+                <ShieldCheck className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+              <h3 className="mt-4 text-xl font-bold text-zinc-900 dark:text-white">
                 Dual-Tier Architectural Chassis
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                Double-bezel aesthetics with SVG alignment crosshairs create an instant high-tech, futuristic hardware vibe.
+                Double-bezel aesthetics with SVG alignment crosshairs create optical depth without muddy drop shadows.
               </p>
             </DoubleBezelCard>
           </BentoCardContent>
@@ -696,26 +657,13 @@ export function ProductFeatures() {
 
         {/* Card 2 */}
         <BentoCard>
-          <BentoCardContent className="p-8 flex flex-col justify-between">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-              <ShieldCheck className="h-5 w-5" />
+          <BentoCardContent className="p-6 flex flex-col justify-between">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+              <Terminal className="h-5 w-5" />
             </div>
             <div>
-              <h4 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Zero Runtime Slop</h4>
-              <p className="mt-2 text-sm text-zinc-500">Pure Tailwind CSS classes with full tree-shaking support.</p>
-            </div>
-          </BentoCardContent>
-        </BentoCard>
-
-        {/* Card 3 */}
-        <BentoCard>
-          <BentoCardContent className="p-8 flex flex-col justify-between">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
-              <Cpu className="h-5 w-5" />
-            </div>
-            <div>
-              <h4 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">Micro-Interactions</h4>
-              <p className="mt-2 text-sm text-zinc-500">Framer Motion physics integrated natively into every interaction.</p>
+              <h4 className="text-lg font-bold text-zinc-900 dark:text-white">Zero Runtime Lock-In</h4>
+              <p className="mt-1 text-sm text-zinc-500">Pure Tailwind CSS with full local ownership.</p>
             </div>
           </BentoCardContent>
         </BentoCard>
@@ -728,80 +676,78 @@ export function ProductFeatures() {
           </div>
 
           {/* Prompt 3 */}
-          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-[#2E2F33] dark:bg-[#202124]">
+          <div className="space-y-4 rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
             <div className="flex items-center justify-between">
-              <span className="rounded-md bg-purple-50 px-2.5 py-1 text-xs font-bold text-purple-700 dark:bg-purple-950/50 dark:text-purple-300">
-                Prompt 3: Analytics Dashboard with Charts & Table
+              <Badge variant="soft" color="secondary" size="sm">
+                Prompt 3: Build &amp; Telemetry Dashboard
+              </Badge>
+              <span className="text-xs text-zinc-400 sm:text-sm">
+                Tested on Claude 3.5 Sonnet &amp; Windsurf
               </span>
-              <span className="text-xs text-zinc-400">Tested on Claude 3.5 Sonnet & Windsurf</span>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
                 Prompt to give your AI:
               </div>
-              <div className="rounded-lg bg-zinc-100 p-3.5 font-mono text-xs text-zinc-800 dark:bg-zinc-800/80 dark:text-zinc-200">
-                "Build a modern SaaS metrics dashboard with Hudbird UI. Display 4 metric cards using
-                DoubleBezelCard with status badges, an AreaChart showing monthly revenue, and a data
-                Table displaying recent transactions with color badges."
+              <div className="rounded-xl bg-zinc-100 p-4 font-mono text-sm leading-relaxed text-zinc-800 dark:bg-white/[0.04] dark:text-zinc-200">
+                "Build a build and deployment telemetry monitor with Hudbird UI. Display 3 status
+                cards using DoubleBezelCard with verified status indicators, an AreaChart showing
+                build duration trends, and real-time service health."
               </div>
             </div>
 
             <div>
-              <div className="mb-1 text-xs font-semibold tracking-wider text-zinc-500 uppercase">
-                AI Execution & Output (Real Working Code):
+              <div className="mb-1.5 text-xs font-semibold tracking-wider text-zinc-500 uppercase sm:text-sm">
+                AI Execution &amp; Output (Verified Working Code):
               </div>
               <CodeBlock
                 language="tsx"
-                filename="DashboardMetrics.tsx"
+                filename="BuildTelemetry.tsx"
                 code={`import React from "react";
 import { DoubleBezelCard } from "@/components/hudbird-ui/DoubleBezelCard";
 import { AreaChart } from "@/components/hudbird-ui/AreaChart";
 import { Badge } from "@/components/hudbird-ui/Badge";
-import { DollarSign, Users, ShoppingCart, Activity } from "lucide-react";
+import { Cpu, Terminal, Activity } from "lucide-react";
 
-const chartData = [
-  { month: "Jan", revenue: 4500 },
-  { month: "Feb", revenue: 5200 },
-  { month: "Mar", revenue: 6800 },
-  { month: "Apr", revenue: 8900 },
-  { month: "May", revenue: 12400 },
+const buildTelemetryData = [
+  { commit: "c1a2", durationMs: 420 },
+  { commit: "f9b3", durationMs: 380 },
+  { commit: "8e01", durationMs: 405 },
+  { commit: "2d54", durationMs: 350 },
+  { commit: "6a90", durationMs: 310 },
 ];
 
-export function AnalyticsOverview() {
+export function BuildTelemetryOverview() {
   return (
-    <div className="space-y-8 p-6">
-      {/* 4 Metric Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="space-y-6 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
-          { label: "Total Revenue", val: "$48,290", change: "+14.2%", icon: DollarSign },
-          { label: "Active Users", val: "12,450", change: "+8.1%", icon: Users },
-          { label: "New Orders", val: "1,204", change: "+23.5%", icon: ShoppingCart },
-          { label: "Server Health", val: "99.99%", change: "Optimal", icon: Activity },
+          { label: "Build Pipeline", val: "Passing", status: "success" as const, icon: Terminal },
+          { label: "Average Duration", val: "350ms", status: "success" as const, icon: Cpu },
+          { label: "Bundle Tree-Shaking", val: "100%", status: "success" as const, icon: Activity },
         ].map((item, idx) => (
-          <DoubleBezelCard key={idx} variant="glass" showCrosshairs isHoverable padding="sm">
+          <DoubleBezelCard key={idx} variant="default" padding="sm">
             <div className="flex items-center justify-between text-zinc-500">
-              <span className="text-xs font-medium uppercase">{item.label}</span>
-              <item.icon className="h-4 w-4 text-zinc-400" />
+              <span className="text-xs sm:text-sm font-medium uppercase tracking-wider">{item.label}</span>
+              <item.icon className="h-4 w-4" />
             </div>
             <div className="mt-3 flex items-baseline justify-between">
-              <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">{item.val}</span>
-              <Badge variant="flat" color="success">{item.change}</Badge>
+              <span className="text-2xl font-bold text-zinc-900 dark:text-white">{item.val}</span>
+              <Badge variant="soft" color={item.status}>{item.val}</Badge>
             </div>
           </DoubleBezelCard>
         ))}
       </div>
 
-      {/* Main Chart */}
       <DoubleBezelCard variant="default" padding="lg">
-        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Revenue Velocity</h3>
-        <p className="text-xs text-zinc-500 mb-6">Gross monthly subscription volume (USD)</p>
+        <h3 className="text-base font-semibold text-zinc-900 dark:text-white">Build Duration History</h3>
+        <p className="text-sm text-zinc-500 mb-4">Compilation time in milliseconds across recent commits</p>
         <AreaChart
-          data={chartData}
-          categories={["revenue"]}
-          index="month"
-          colors={["indigo"]}
-          className="h-72 w-full"
+          data={buildTelemetryData}
+          categories={["durationMs"]}
+          index="commit"
+          className="h-64 w-full"
         />
       </DoubleBezelCard>
     </div>
@@ -825,10 +771,12 @@ export function AnalyticsOverview() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3">
-            <button
+            <Button
               type="button"
+              size="md"
+              color="primary"
+              radius="full"
               onClick={handleDownloadSkill}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-indigo-500"
             >
               {downloadedSkill ? (
                 <>
@@ -841,12 +789,15 @@ export function AnalyticsOverview() {
                   <span>Download SKILL.md</span>
                 </>
               )}
-            </button>
+            </Button>
 
-            <button
+            <Button
               type="button"
+              size="md"
+              variant="bordered"
+              color="secondary"
+              radius="full"
               onClick={handleCopySkill}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-xs font-semibold text-zinc-700 shadow-xs transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-zinc-700"
             >
               {copiedSkill ? (
                 <>
@@ -859,14 +810,14 @@ export function AnalyticsOverview() {
                   <span>Copy Full SKILL.md</span>
                 </>
               )}
-            </button>
+            </Button>
 
             <div className="ml-auto flex items-center gap-3">
               <a
                 href="https://raw.githubusercontent.com/gpamdani-git/Hudbird/main/.agents/skills/hudbird-ui/SKILL.md"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
               >
                 <span>GitHub Raw</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -877,7 +828,7 @@ export function AnalyticsOverview() {
                 download="SKILL.md"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
               >
                 <span>Direct Raw</span>
                 <ExternalLink className="h-3.5 w-3.5" />
@@ -886,10 +837,11 @@ export function AnalyticsOverview() {
           </div>
 
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs text-zinc-500">
-              <span>Preview & Direct Copy:</span>
+            <div className="flex items-center justify-between text-sm text-zinc-500">
+              <span>Preview &amp; Direct Copy:</span>
               <span>
-                Project Target: <code>.agents/skills/hudbird-ui/SKILL.md</code>
+                Project Target:{" "}
+                <code className="font-mono text-xs">.agents/skills/hudbird-ui/SKILL.md</code>
               </span>
             </div>
             <CodeBlock

@@ -128,6 +128,23 @@ export default function BadgeDoc() {
       ),
     },
     {
+      prop: "shape",
+      defaultVal: "'rectangle'",
+      description: (
+        <span>
+          Shape of the wrapped target element:{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'rectangle'
+          </code>{" "}
+          or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'circle'
+          </code>{" "}
+          (optimizes corner offsets for round avatars).
+        </span>
+      ),
+    },
+    {
       prop: "isDot",
       defaultVal: "false",
       description: "Renders as a compact status indicator dot without text content.",
@@ -173,16 +190,15 @@ export default function BadgeDoc() {
 
             {/* Floating on Avatar & Button */}
             <div className="flex items-center gap-5">
-              <Badge content="5" color="danger" size="sm">
+              <Badge content="5" color="danger" size="sm" shape="circle">
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="md"
                 />
               </Badge>
 
               <Badge content="99+" color="primary" size="sm">
-                <Button variant="outline" size="sm" className="px-3">
-                  <Mail className="mr-1.5 h-4 w-4" />
+                <Button variant="outline" size="sm" startContent={<Mail className="h-4 w-4" />}>
                   Inbox
                 </Button>
               </Badge>
@@ -191,7 +207,9 @@ export default function BadgeDoc() {
         </ComponentPreview>
 
         <CodeBlock
-          code={`import { Badge } from "@/components/hudbird-ui/Badge";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Button } from "@/components/hudbird-ui/Button";
+          code={`import { Badge } from "@/components/hudbird-ui/Badge";
+import { Avatar } from "@/components/hudbird-ui/Avatar";
+import { Button } from "@/components/hudbird-ui/Button";
 
 function Example() {
   return (
@@ -202,7 +220,7 @@ function Example() {
 
       {/* Floating on Avatar & Button */}
       <Badge content="5" color="danger" size="sm">
-        <Avatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" />
+        <Avatar src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256" />
       </Badge>
 
       <Badge content="99+" color="primary" size="sm">
@@ -441,24 +459,24 @@ function Example() {
                 isInvisible={counter === 0}
                 color="danger"
                 size="sm"
+                shape="circle"
               >
                 <Avatar
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&h=256&q=80"
+                  src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                   size="lg"
                 />
               </Badge>
 
               {/* Shopping Cart Button */}
               <Badge content={counter > 0 ? counter : undefined} color="primary" size="sm">
-                <Button variant="outline" className="gap-2">
-                  <ShoppingCart className="h-4 w-4" />
+                <Button variant="outline" startContent={<ShoppingCart className="h-4 w-4" />}>
                   Cart
                 </Button>
               </Badge>
 
               {/* Icon-Only Button */}
               <Badge content="12" color="danger" size="sm">
-                <Button variant="outline" className="h-10 w-10 p-0">
+                <Button variant="outline" isIconOnly aria-label="Notifications">
                   <Bell className="h-4 w-4" />
                 </Button>
               </Badge>
@@ -469,6 +487,7 @@ function Example() {
                 color="success"
                 size="sm"
                 placement="bottom-right"
+                shape="circle"
               >
                 <Avatar name="Alex Rivera" color="primary" size="lg" />
               </Badge>
@@ -476,7 +495,9 @@ function Example() {
           </ComponentPreview>
 
           <CodeBlock
-            code={`import { Badge } from "@/components/hudbird-ui/Badge";\nimport { Avatar } from "@/components/hudbird-ui/Avatar";\nimport { Button } from "@/components/hudbird-ui/Button";
+            code={`import { Badge } from "@/components/hudbird-ui/Badge";
+import { Avatar } from "@/components/hudbird-ui/Avatar";
+import { Button } from "@/components/hudbird-ui/Button";
 import { ShoppingCart, Bell, Check } from 'lucide-react'
 
 function Example() {
@@ -484,7 +505,7 @@ function Example() {
     <div className="flex items-center gap-8">
       {/* Avatar notification */}
       <Badge content="3" color="danger" size="sm">
-        <Avatar src="https://images.unsplash.com/photo-1534528741775-53994a69daeb" size="lg" />
+        <Avatar src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256" size="lg" />
       </Badge>
 
       {/* Button badge */}
@@ -526,9 +547,9 @@ function Example() {
             <div className="flex items-center gap-8">
               {/* Online Avatar */}
               <div className="flex flex-col items-center gap-2">
-                <Badge isDot color="success" placement="bottom-right">
+                <Badge isDot color="success" placement="bottom-right" shape="circle">
                   <Avatar
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&h=256&q=80"
+                    src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                     size="md"
                   />
                 </Badge>
@@ -537,9 +558,9 @@ function Example() {
 
               {/* Busy Avatar */}
               <div className="flex flex-col items-center gap-2">
-                <Badge isDot color="danger" placement="bottom-right">
+                <Badge isDot color="danger" placement="bottom-right" shape="circle">
                   <Avatar
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&h=256&q=80"
+                    src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                     size="md"
                   />
                 </Badge>
@@ -548,9 +569,9 @@ function Example() {
 
               {/* Away Avatar */}
               <div className="flex flex-col items-center gap-2">
-                <Badge isDot color="warning" placement="bottom-right">
+                <Badge isDot color="warning" placement="bottom-right" shape="circle">
                   <Avatar
-                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=256&h=256&q=80"
+                    src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=256&h=256"
                     size="md"
                   />
                 </Badge>
@@ -560,7 +581,7 @@ function Example() {
               {/* Notifications Indicator on Icon */}
               <div className="flex flex-col items-center gap-2">
                 <Badge isDot color="primary" placement="top-right">
-                  <Button variant="plain" size="sm" className="h-9 w-9 p-0">
+                  <Button variant="plain" size="sm" isIconOnly aria-label="Notifications">
                     <Bell className="h-5 w-5 text-zinc-600 dark:text-zinc-300" />
                   </Button>
                 </Badge>

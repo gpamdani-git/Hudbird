@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 
 export function AgencyFooter() {
@@ -32,7 +33,13 @@ export function AgencyFooter() {
               placeholder="name@email.com"
               className="flex-1 bg-transparent text-sm text-[#F4F2ED] placeholder-[#8E8A83] outline-none"
             />
-            <button className="flex h-8 w-8 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-[#FF5A00]/90">
+            <Button
+              size="sm"
+              isIconOnly
+              radius="full"
+              aria-label="Submit newsletter"
+              className="h-8 w-8 min-w-8 bg-black text-white hover:bg-[#FF5A00]/90"
+            >
               <svg
                 width="14"
                 height="14"
@@ -48,7 +55,7 @@ export function AgencyFooter() {
                   strokeLinejoin="round"
                 />
               </svg>
-            </button>
+            </Button>
           </div>
         </div>
 

@@ -9,15 +9,15 @@ export type AlertVariant = "solid" | "flat" | "soft" | "bordered" | "outline";
 export type AlertColor = "primary" | "secondary" | "success" | "danger" | "warning" | "info";
 
 const alertVariants = cva(
-  "relative flex w-full items-start gap-3.5 p-4 rounded-2xl text-sm transition-all duration-200",
+  "relative flex w-full items-start gap-3.5 py-4 px-5 rounded-2xl text-sm transition-all duration-200",
   {
     variants: {
       variant: {
         solid: "shadow-xs text-white",
         flat: "shadow-none",
         soft: "shadow-none",
-        bordered: "border-2 bg-transparent",
-        outline: "border-2 bg-transparent",
+        bordered: "border bg-transparent",
+        outline: "border bg-transparent",
       },
       color: {
         primary: "",
@@ -66,37 +66,37 @@ const alertVariants = cva(
         variant: ["flat", "soft"],
         color: "primary",
         className:
-          "bg-primary-50 text-primary-700 border border-primary-200 dark:bg-primary-500/15 dark:text-primary-400 dark:border-primary-500/20",
+          "bg-indigo-50/70 text-zinc-900 border border-indigo-200/80 dark:bg-indigo-950/20 dark:text-zinc-100 dark:border-indigo-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "secondary",
         className:
-          "bg-secondary-50 text-secondary-700 border border-secondary-200 dark:bg-secondary-500/15 dark:text-secondary-400 dark:border-secondary-500/20",
+          "bg-zinc-100/70 text-zinc-900 border border-zinc-200/80 dark:bg-zinc-800/30 dark:text-zinc-100 dark:border-zinc-700/30",
       },
       {
         variant: ["flat", "soft"],
         color: "success",
         className:
-          "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:border-emerald-500/20",
+          "bg-emerald-50/70 text-zinc-900 border border-emerald-200/80 dark:bg-emerald-950/20 dark:text-zinc-100 dark:border-emerald-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "danger",
         className:
-          "bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:border-rose-500/20",
+          "bg-rose-50/70 text-zinc-900 border border-rose-200/80 dark:bg-rose-950/20 dark:text-zinc-100 dark:border-rose-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "warning",
         className:
-          "bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:border-amber-500/20",
+          "bg-amber-50/70 text-zinc-900 border border-amber-200/80 dark:bg-amber-950/20 dark:text-zinc-100 dark:border-amber-500/20",
       },
       {
         variant: ["flat", "soft"],
         color: "info",
         className:
-          "bg-sky-50 text-sky-700 border border-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:border-sky-500/20",
+          "bg-sky-50/70 text-zinc-900 border border-sky-200/80 dark:bg-sky-950/20 dark:text-zinc-100 dark:border-sky-500/20",
       },
 
       // Bordered Variants
@@ -104,34 +104,37 @@ const alertVariants = cva(
         variant: ["bordered", "outline"],
         color: "primary",
         className:
-          "border-primary-600 text-primary-700 dark:border-primary-500 dark:text-primary-400",
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-indigo-500/30 text-zinc-900 dark:border-indigo-500/30 dark:text-zinc-100 shadow-2xs",
       },
       {
         variant: ["bordered", "outline"],
         color: "secondary",
         className:
-          "border-secondary-600 text-secondary-700 dark:border-secondary-500 dark:text-secondary-400",
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-zinc-300/80 text-zinc-900 dark:border-zinc-700/60 dark:text-zinc-100 shadow-2xs",
       },
       {
         variant: ["bordered", "outline"],
         color: "success",
         className:
-          "border-emerald-600 text-emerald-700 dark:border-emerald-500 dark:text-emerald-400",
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-emerald-500/30 text-zinc-900 dark:border-emerald-500/30 dark:text-zinc-100 shadow-2xs",
       },
       {
         variant: ["bordered", "outline"],
         color: "danger",
-        className: "border-rose-600 text-rose-700 dark:border-rose-500 dark:text-rose-400",
+        className:
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-rose-500/30 text-zinc-900 dark:border-rose-500/30 dark:text-zinc-100 shadow-2xs",
       },
       {
         variant: ["bordered", "outline"],
         color: "warning",
-        className: "border-amber-500 text-amber-700 dark:border-amber-400 dark:text-amber-400",
+        className:
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-amber-500/40 text-zinc-900 dark:border-amber-500/30 dark:text-zinc-100 shadow-2xs",
       },
       {
         variant: ["bordered", "outline"],
         color: "info",
-        className: "border-sky-600 text-sky-700 dark:border-sky-500 dark:text-sky-400",
+        className:
+          "bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md border border-sky-500/30 text-zinc-900 dark:border-sky-500/30 dark:text-zinc-100 shadow-2xs",
       },
     ],
     defaultVariants: {
@@ -140,6 +143,29 @@ const alertVariants = cva(
     },
   }
 );
+
+const iconContainerMap: Record<AlertColor, string> = {
+  primary:
+    "bg-indigo-100/90 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400 ring-1 ring-indigo-500/25",
+  secondary:
+    "bg-zinc-200/80 text-zinc-700 dark:bg-white/10 dark:text-zinc-300 ring-1 ring-zinc-500/20",
+  success:
+    "bg-emerald-100/90 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 ring-1 ring-emerald-500/25",
+  danger:
+    "bg-rose-100/90 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 ring-1 ring-rose-500/25",
+  warning:
+    "bg-amber-100/90 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400 ring-1 ring-amber-500/25",
+  info: "bg-sky-100/90 text-sky-600 dark:bg-sky-500/20 dark:text-sky-400 ring-1 ring-sky-500/25",
+};
+
+const iconColorMap: Record<AlertColor, string> = {
+  primary: "text-indigo-600 dark:text-indigo-400",
+  secondary: "text-zinc-600 dark:text-zinc-400",
+  success: "text-emerald-600 dark:text-emerald-400",
+  danger: "text-rose-600 dark:text-rose-400",
+  warning: "text-amber-600 dark:text-amber-400",
+  info: "text-sky-600 dark:text-sky-400",
+};
 
 export interface AlertProps
   extends
@@ -185,7 +211,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         }
         return "text-white/80 hover:text-white hover:bg-white/20 dark:hover:bg-white/15";
       }
-      return "text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200/50 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-zinc-800/50";
+      return "text-zinc-500 hover:text-zinc-900 hover:bg-black/5 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/10";
     };
 
     return (
@@ -197,21 +223,62 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       >
         {/* Left Icon Slot */}
         {icon && (
-          <div className="shrink-0 pt-0.5" aria-hidden="true">
+          <div
+            className={cn(
+              "flex h-8 w-8 shrink-0 items-center justify-center rounded-xl transition-all duration-200",
+              variant === "solid"
+                ? color === "warning"
+                  ? "bg-zinc-950/15 text-zinc-950"
+                  : "bg-white/20 text-white"
+                : iconContainerMap[color]
+            )}
+            aria-hidden="true"
+          >
             {icon}
           </div>
         )}
 
         {/* Center Content Area */}
         <div className="min-w-0 flex-1 space-y-1">
-          {title && <h5 className="leading-tight font-semibold tracking-tight">{title}</h5>}
+          {title && (
+            <h5
+              className={cn(
+                "text-sm leading-snug font-semibold tracking-tight",
+                variant === "solid"
+                  ? color === "warning"
+                    ? "text-zinc-950"
+                    : "text-white"
+                  : "text-zinc-950 dark:text-zinc-50"
+              )}
+            >
+              {title}
+            </h5>
+          )}
           {description && (
-            <div className="text-xs leading-relaxed font-normal opacity-90 sm:text-sm">
+            <div
+              className={cn(
+                "text-xs leading-relaxed font-normal sm:text-sm",
+                variant === "solid"
+                  ? color === "warning"
+                    ? "text-zinc-950/80"
+                    : "text-white/85"
+                  : "text-zinc-600 dark:text-zinc-400"
+              )}
+            >
               {description}
             </div>
           )}
           {children && (
-            <div className="text-xs leading-relaxed font-normal opacity-90 sm:text-sm">
+            <div
+              className={cn(
+                "text-xs leading-relaxed font-normal sm:text-sm",
+                variant === "solid"
+                  ? color === "warning"
+                    ? "text-zinc-950/80"
+                    : "text-white/85"
+                  : "text-zinc-600 dark:text-zinc-400"
+              )}
+            >
               {children}
             </div>
           )}
@@ -224,7 +291,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
             onClick={handleClose}
             aria-label="Close alert"
             className={cn(
-              "-mt-1.5 -mr-1.5 shrink-0 rounded-xl p-1 transition-all focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:outline-none active:scale-95 dark:focus-visible:ring-zinc-300",
+              "-mt-1 -mr-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg transition-all focus-visible:ring-2 focus-visible:ring-zinc-950 focus-visible:outline-none active:scale-90 dark:focus-visible:ring-zinc-300",
               getCloseButtonClass()
             )}
           >

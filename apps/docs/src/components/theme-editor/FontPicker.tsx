@@ -12,7 +12,7 @@ export const FontPicker = () => {
       <h4 className="text-foreground text-xs font-semibold tracking-wider uppercase">Typography</h4>
 
       <div className="space-y-2">
-        <label className="text-muted-foreground text-xs">Heading Font</label>
+        <label className="text-foreground text-sm font-medium">Heading Font</label>
         <Select value={activeFontHeading} onValueChange={setActiveFontHeading}>
           {typographyPresets.heading.map((font) => (
             <SelectItem key={font} value={font}>
@@ -22,7 +22,7 @@ export const FontPicker = () => {
         </Select>
       </div>
       <div className="space-y-2">
-        <label className="text-muted-foreground text-xs">Body Font</label>
+        <label className="text-foreground text-sm font-medium">Body Font</label>
         <Select value={activeFontSans} onValueChange={setActiveFontSans}>
           {typographyPresets.sans.map((font) => (
             <SelectItem key={font} value={font}>

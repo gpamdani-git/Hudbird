@@ -152,7 +152,10 @@ export const FooterMega = React.forwardRef<HTMLElement, FooterMegaProps>(
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                     {newsletterDescription}
                   </p>
-                  <form onSubmit={handleSubmit} className="mt-4 flex max-w-md gap-2">
+                  <form
+                    onSubmit={handleSubmit}
+                    className="mt-4 flex max-w-md flex-col gap-2 sm:flex-row"
+                  >
                     <Input
                       name="email"
                       type="email"
@@ -161,7 +164,7 @@ export const FooterMega = React.forwardRef<HTMLElement, FooterMegaProps>(
                       className="w-full"
                       aria-label="Email address"
                     />
-                    <Button type="submit" variant="solid" color="zinc" className="shrink-0">
+                    <Button type="submit" variant="solid" color="primary" className="shrink-0">
                       {newsletterButtonText}
                     </Button>
                   </form>

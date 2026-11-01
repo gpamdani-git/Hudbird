@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Input, Button, Checkbox } from "@hudbird/ui";
+import { Input, Button, Checkbox, Divider } from "@hudbird/ui";
 import { Loader2 } from "lucide-react";
 
 const containerVariants = {
@@ -33,7 +33,7 @@ export default function AuthLayoutDemo() {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-zinc-50 py-12 font-sans sm:px-6 lg:px-8 dark:bg-zinc-950">
+    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-zinc-50 py-12 font-sans sm:px-6 lg:px-8 dark:bg-[#121214]">
       {/* Premium Ambient Background */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <motion.div
@@ -103,7 +103,7 @@ export default function AuthLayoutDemo() {
         animate="visible"
         className="relative z-10 mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]"
       >
-        <div className="border border-zinc-200/50 bg-white/70 px-6 py-10 shadow-2xl shadow-zinc-200/40 backdrop-blur-xl sm:rounded-2xl sm:px-12 dark:border-white/5 dark:bg-zinc-900/70 dark:shadow-black/50">
+        <div className="border border-zinc-200/80 bg-white/90 p-8 shadow-2xl backdrop-blur-xl sm:rounded-3xl sm:p-12 dark:border-white/[0.08] dark:bg-[#161618]/90 dark:shadow-black/50">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <motion.div variants={itemVariants} className="space-y-2">
               <label
@@ -164,7 +164,10 @@ export default function AuthLayoutDemo() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                size="lg"
+                radius="full"
+                color="primary"
+                className="w-full"
               >
                 {isLoading ? (
                   <>
@@ -178,26 +181,19 @@ export default function AuthLayoutDemo() {
             </motion.div>
           </form>
 
-          <motion.div variants={itemVariants} className="mt-10">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                <div className="w-full border-t border-zinc-200 dark:border-white/10" />
-              </div>
-              <div className="relative flex justify-center text-sm leading-6 font-medium">
-                <span className="bg-white px-4 text-zinc-500 dark:bg-zinc-900 dark:text-zinc-400">
-                  Or continue with
-                </span>
-              </div>
-            </div>
+          <motion.div variants={itemVariants} className="mt-8 space-y-6">
+            <Divider>Or continue with</Divider>
 
-            <div className="mt-6 grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
               <Button
                 type="button"
-                variant="outline"
-                color="zinc"
-                className="w-full gap-3 bg-white/50 dark:bg-black/20"
+                variant="bordered"
+                color="secondary"
+                radius="full"
+                size="md"
+                className="w-full gap-2.5"
               >
-                <svg className="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24">
+                <svg className="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24">
                   <path
                     d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z"
                     fill="#EA4335"
@@ -219,11 +215,13 @@ export default function AuthLayoutDemo() {
               </Button>
               <Button
                 type="button"
-                variant="outline"
-                color="zinc"
-                className="w-full gap-3 bg-white/50 dark:bg-black/20"
+                variant="bordered"
+                color="secondary"
+                radius="full"
+                size="md"
+                className="w-full gap-2.5"
               >
-                <svg className="h-5 w-5 fill-current" aria-hidden="true" viewBox="0 0 24 24">
+                <svg className="h-4 w-4 fill-current" aria-hidden="true" viewBox="0 0 24 24">
                   <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                 </svg>
                 GitHub

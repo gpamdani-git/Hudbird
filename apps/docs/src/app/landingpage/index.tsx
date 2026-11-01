@@ -827,15 +827,10 @@ export const AiStartupTemplate = () => {
                     className="relative w-full max-w-[200px] space-y-2.5 sm:max-w-[220px] sm:space-y-3"
                   >
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <Button size="sm" color="dark" radius="full" className="h-7 px-3 text-xs">
+                      <Button size="sm" color="dark" radius="full">
                         Button
                       </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        radius="full"
-                        className="h-7 px-3 text-xs"
-                      >
+                      <Button size="sm" variant="outline" radius="full">
                         Outline
                       </Button>
                       <Badge size="sm" color="primary">

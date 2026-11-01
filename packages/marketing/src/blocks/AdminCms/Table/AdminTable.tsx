@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import {
   Card,
   Badge,
+  Button,
   Table,
   TableHeader,
   TableBody,
@@ -136,10 +137,14 @@ export const AdminTable = ({ onEdit }: { onEdit?: () => void }) => {
                 <CheckboxCell checked={selected.size === TABLE_DATA.length} onChange={toggleAll} />
               </TableHead>
               <TableHead>
-                <button className="text-muted-foreground/60 flex items-center gap-1 text-[11px] font-semibold tracking-wider uppercase">
+                <Button
+                  variant="light"
+                  size="sm"
+                  endContent={<ArrowUpDown className="h-3 w-3 opacity-40" />}
+                  className="text-muted-foreground/60 h-auto p-0 text-[11px] font-semibold tracking-wider uppercase hover:bg-transparent"
+                >
                   Title
-                  <ArrowUpDown className="h-3 w-3 opacity-40" />
-                </button>
+                </Button>
               </TableHead>
               <TableHead>
                 <span className="text-muted-foreground/60 text-[11px] font-semibold tracking-wider uppercase">
@@ -197,25 +202,34 @@ export const AdminTable = ({ onEdit }: { onEdit?: () => void }) => {
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center justify-end gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                    <button
+                    <Button
+                      isIconOnly
+                      size="sm"
+                      variant="ghost"
                       onClick={onEdit}
-                      className="text-muted-foreground hover:bg-muted/60 hover:text-foreground flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                      className="text-muted-foreground hover:bg-muted/60 hover:text-foreground h-7 w-7 min-w-7 rounded-md"
                       title="Edit"
                     >
                       <Edit className="h-3.5 w-3.5" />
-                    </button>
-                    <button
-                      className="text-muted-foreground hover:bg-muted/60 hover:text-foreground flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                    </Button>
+                    <Button
+                      isIconOnly
+                      size="sm"
+                      variant="ghost"
+                      className="text-muted-foreground hover:bg-muted/60 hover:text-foreground h-7 w-7 min-w-7 rounded-md"
                       title="View"
                     >
                       <Eye className="h-3.5 w-3.5" />
-                    </button>
-                    <button
-                      className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive flex h-7 w-7 items-center justify-center rounded-md transition-colors"
+                    </Button>
+                    <Button
+                      isIconOnly
+                      size="sm"
+                      variant="ghost"
+                      className="text-muted-foreground hover:bg-destructive/10 hover:text-destructive h-7 w-7 min-w-7 rounded-md"
                       title="Delete"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
-                    </button>
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>

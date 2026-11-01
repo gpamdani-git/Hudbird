@@ -26,6 +26,7 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Button,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -263,12 +264,14 @@ export const ModernAppHero = () => (
                 className="w-full flex-1 bg-transparent text-sm text-zinc-900 placeholder-zinc-400 outline-none dark:text-white dark:placeholder-zinc-500"
                 required
               />
-              <button
+              <Button
                 type="button"
-                className="shrink-0 rounded-full bg-rose-600 px-8 py-3 text-sm font-semibold text-white shadow-[0_0_20px_rgba(225,29,72,0.4)] transition hover:bg-rose-500"
+                color="danger"
+                radius="full"
+                className="shrink-0 font-semibold shadow-[0_0_20px_rgba(225,29,72,0.4)]"
               >
                 Hire your AI
-              </button>
+              </Button>
             </form>
           </motion.div>
         </div>
@@ -374,19 +377,33 @@ export const ModernAppHero = () => (
                         className="w-full bg-transparent text-sm text-zinc-900 placeholder-zinc-500 outline-none dark:text-white dark:placeholder-zinc-400"
                       />
                       <div className="mt-6 flex items-center justify-between sm:mt-8">
-                        <div className="flex items-center gap-4 sm:gap-6">
-                          <button className="flex items-center gap-2 text-xs font-medium text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
-                            <Paperclip className="h-4 w-4" />{" "}
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <Button
+                            size="sm"
+                            variant="light"
+                            startContent={<Paperclip className="h-4 w-4" />}
+                            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                          >
                             <span className="hidden sm:inline">Import file</span>
-                          </button>
-                          <button className="flex items-center gap-2 text-xs font-medium text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
-                            <Wrench className="h-4 w-4" />{" "}
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="light"
+                            startContent={<Wrench className="h-4 w-4" />}
+                            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                          >
                             <span className="hidden sm:inline">Tools</span>
-                          </button>
+                          </Button>
                         </div>
-                        <button className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-600 text-white shadow-[0_0_15px_rgba(225,29,72,0.4)] transition hover:bg-rose-500">
+                        <Button
+                          isIconOnly
+                          size="sm"
+                          radius="full"
+                          color="danger"
+                          className="shadow-[0_0_15px_rgba(225,29,72,0.4)]"
+                        >
                           <ArrowUp className="h-4 w-4" />
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </motion.div>

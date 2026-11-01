@@ -79,7 +79,7 @@ export default function ChartTooltipDoc() {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Chart Tooltip"
@@ -96,17 +96,17 @@ export default function ChartTooltipDoc() {
       </section>
 
       <section id="usage" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Usage
         </h2>
-          <ComponentPreview>
-            <div className="flex w-full justify-center px-4 py-8">
-              <ChartTooltip active={true} label="Jan" payload={dummyPayload} />
-            </div>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+        <ComponentPreview>
+          <div className="flex w-full justify-center px-4 py-8">
+            <ChartTooltip active={true} label="Jan" payload={dummyPayload} />
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`import { AreaChart, Area, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { ChartTooltip } from "@hudbird/ui/components/ChartTooltip";
 
 export default function Usage() {
@@ -126,101 +126,100 @@ export default function Usage() {
     </ResponsiveContainer>
   );
 }`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="indicators" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Indicators</h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            You can customize the indicator style by passing the <code>indicator</code> prop.
-            Options are <code>"dot"</code> (default), <code>"line"</code>, or <code>"dashed"</code>.
-          </p>
-          <ComponentPreview>
-            <div className="flex w-full flex-col flex-wrap justify-center gap-6 px-4 py-8 md:flex-row">
-              <ChartTooltip
-                active={true}
-                label="Jan (dot)"
-                payload={dummyPayload}
-                indicator="dot"
-              />
-              <ChartTooltip
-                active={true}
-                label="Jan (line)"
-                payload={dummyPayload}
-                indicator="line"
-              />
-              <ChartTooltip
-                active={true}
-                label="Jan (dashed)"
-                payload={dummyPayload}
-                indicator="dashed"
-              />
-            </div>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Tooltip content={<ChartTooltip indicator="line" />} />
+      <section id="indicators" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          Indicators
+        </h2>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          You can customize the indicator style by passing the <code>indicator</code> prop. Options
+          are <code>"dot"</code> (default), <code>"line"</code>, or <code>"dashed"</code>.
+        </p>
+        <ComponentPreview>
+          <div className="flex w-full flex-col flex-wrap justify-center gap-6 px-4 py-8 md:flex-row">
+            <ChartTooltip active={true} label="Jan (dot)" payload={dummyPayload} indicator="dot" />
+            <ChartTooltip
+              active={true}
+              label="Jan (line)"
+              payload={dummyPayload}
+              indicator="line"
+            />
+            <ChartTooltip
+              active={true}
+              label="Jan (dashed)"
+              payload={dummyPayload}
+              indicator="dashed"
+            />
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Tooltip content={<ChartTooltip indicator="line" />} />
 <Tooltip content={<ChartTooltip indicator="dashed" />} />`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="hide-label" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Hide Label</h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            Pass <code>hideLabel</code> to remove the main label (e.g. the X-axis value) from the
-            tooltip header.
-          </p>
-          <ComponentPreview>
-            <div className="flex w-full justify-center px-4 py-8">
-              <ChartTooltip active={true} label="Jan" payload={dummyPayload} hideLabel />
-            </div>
-          </ComponentPreview>
-          <CodeBlock language="tsx" code={`<Tooltip content={<ChartTooltip hideLabel />} />`} />
-        </section>
+      <section id="hide-label" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          Hide Label
+        </h2>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Pass <code>hideLabel</code> to remove the main label (e.g. the X-axis value) from the
+          tooltip header.
+        </p>
+        <ComponentPreview>
+          <div className="flex w-full justify-center px-4 py-8">
+            <ChartTooltip active={true} label="Jan" payload={dummyPayload} hideLabel />
+          </div>
+        </ComponentPreview>
+        <CodeBlock language="tsx" code={`<Tooltip content={<ChartTooltip hideLabel />} />`} />
+      </section>
 
-        <section id="hide-indicator" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Hide Indicator
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            Pass <code>hideIndicator</code> to remove the color badge next to the item name.
-          </p>
-          <ComponentPreview>
-            <div className="flex w-full justify-center px-4 py-8">
-              <ChartTooltip active={true} label="Jan" payload={dummyPayload} hideIndicator />
-            </div>
-          </ComponentPreview>
-          <CodeBlock language="tsx" code={`<Tooltip content={<ChartTooltip hideIndicator />} />`} />
-        </section>
+      <section id="hide-indicator" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          Hide Indicator
+        </h2>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Pass <code>hideIndicator</code> to remove the color badge next to the item name.
+        </p>
+        <ComponentPreview>
+          <div className="flex w-full justify-center px-4 py-8">
+            <ChartTooltip active={true} label="Jan" payload={dummyPayload} hideIndicator />
+          </div>
+        </ComponentPreview>
+        <CodeBlock language="tsx" code={`<Tooltip content={<ChartTooltip hideIndicator />} />`} />
+      </section>
 
-        <section id="value-formatter" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Value Formatter
-          </h2>
-          <p className="mb-4 text-zinc-600 dark:text-zinc-400">
-            Use <code>valueFormatter</code> to format numeric values (e.g., as currency or adding
-            units).
-          </p>
-          <ComponentPreview>
-            <div className="flex w-full justify-center px-4 py-8">
-              <ChartTooltip
-                active={true}
-                label="Jan"
-                payload={dummyPayload}
-                valueFormatter={(val) => "$" + val.toLocaleString()}
-              />
-            </div>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Tooltip 
+      <section id="value-formatter" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          Value Formatter
+        </h2>
+        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          Use <code>valueFormatter</code> to format numeric values (e.g., as currency or adding
+          units).
+        </p>
+        <ComponentPreview>
+          <div className="flex w-full justify-center px-4 py-8">
+            <ChartTooltip
+              active={true}
+              label="Jan"
+              payload={dummyPayload}
+              valueFormatter={(val) => "$" + val.toLocaleString()}
+            />
+          </div>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Tooltip 
   content={<ChartTooltip valueFormatter={(val) => "$" + val.toLocaleString()} />} 
 />`}
-          />
-        </section>
+        />
+      </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
@@ -235,11 +234,11 @@ import { ChartTooltip } from "@hudbird/ui/components/ChartTooltip";
       </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Component API
         </h2>
         <ApiTable rows={apiRows} />
-        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+        <h3 className="font-outfit pt-6 text-xl font-medium tracking-[-0.4px] text-zinc-900 sm:text-2xl dark:text-white">
           API Reference
         </h3>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -248,7 +247,7 @@ import { ChartTooltip } from "@hudbird/ui/components/ChartTooltip";
             href="https://recharts.org/en-US/api/Tooltip"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
             https://recharts.org/en-US/api/Tooltip
           </a>

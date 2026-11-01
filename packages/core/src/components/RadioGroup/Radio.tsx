@@ -43,7 +43,7 @@ export const radioCircleVariants = cva(
       isChecked: {
         true: "",
         false:
-          "bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 hover:border-zinc-400 dark:hover:border-zinc-600",
+          "bg-white dark:bg-[#161618] border-black/[0.15] dark:border-white/[0.15] hover:border-black/30 dark:hover:border-white/30",
       },
       isInvalid: {
         true: "!border-rose-500 dark:!border-rose-400",
@@ -91,9 +91,9 @@ export const radioCircleVariants = cva(
 export const radioDotVariants = cva("rounded-full transition-transform duration-150 ease-out", {
   variants: {
     size: {
-      sm: "h-1.5 w-1.5",
-      md: "h-2 w-2",
-      lg: "h-2.5 w-2.5",
+      sm: "h-2 w-2",
+      md: "h-2.5 w-2.5",
+      lg: "h-3 w-3",
     },
     color: {
       default: "bg-white dark:bg-zinc-950",
@@ -177,10 +177,10 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           isDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
           isCard
             ? cn(
-                "rounded-xl border p-4 transition-all duration-200",
+                "rounded-2xl border px-5 py-3.5 transition-all duration-200 active:scale-[0.99]",
                 isChecked
                   ? "border-primary bg-primary/10 ring-primary/30 ring-1"
-                  : "border-zinc-200 bg-white hover:border-zinc-300 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-zinc-700"
+                  : "border-black/[0.08] bg-white hover:border-black/20 dark:border-white/[0.08] dark:bg-[#161618] dark:hover:border-white/20"
               )
             : "gap-3",
           classNames?.base,

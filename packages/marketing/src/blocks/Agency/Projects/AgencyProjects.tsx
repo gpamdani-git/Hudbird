@@ -27,7 +27,7 @@ export const DEFAULT_AGENCY_PROJECTS: Project[] = [
     client: "Neuralyx",
     scope: ["Web Design", "Framer Developer"],
     image:
-      "https://images.unsplash.com/photo-1678911820864-e2c567c655d7?q=80&w=1000&auto=format&fit=crop",
+      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1000",
     images: [],
   },
   {
@@ -38,7 +38,7 @@ export const DEFAULT_AGENCY_PROJECTS: Project[] = [
     client: "Lumina",
     scope: ["UX Design", "Frontend"],
     image:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1000&auto=format&fit=crop",
+      "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1000",
     images: [],
   },
 ];

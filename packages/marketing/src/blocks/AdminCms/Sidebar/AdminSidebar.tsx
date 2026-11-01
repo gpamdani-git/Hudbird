@@ -15,7 +15,7 @@ import {
   LogOut,
   LineChart,
 } from "lucide-react";
-import { Avatar } from "@hudbird/ui";
+import { Avatar, Button } from "@hudbird/ui";
 import { ConfirmModal } from "../Components/ConfirmModal";
 
 export type AdminPage =
@@ -125,7 +125,9 @@ const SidebarSection = ({
 
           return (
             <div key={item.label}>
-              <button
+              <Button
+                variant="light"
+                size="sm"
                 onClick={() => {
                   if (hasChildren) {
                     setExpandedItem(isExpanded ? null : item.label);
@@ -133,7 +135,7 @@ const SidebarSection = ({
                     onPageChange(item.pageKey);
                   }
                 }}
-                className={`group flex w-full items-center gap-2 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all duration-150 ${
+                className={`group flex h-auto w-full items-center justify-start gap-2 rounded-lg px-3 py-[7px] text-[13px] font-medium transition-all duration-150 ${
                   isParentActive || isActive
                     ? "bg-primary/10 text-primary dark:bg-primary/15"
                     : "text-muted-foreground hover:bg-muted/60 hover:text-foreground"
@@ -148,26 +150,28 @@ const SidebarSection = ({
                     }`}
                   />
                 )}
-              </button>
+              </Button>
 
               {hasChildren && isExpanded && (
                 <div className="border-border/30 mt-0.5 ml-[18px] space-y-px border-l pb-1 pl-3">
                   {item.children!.map((child) => {
                     const isActive = child.pageKey === activePage;
                     return (
-                      <button
+                      <Button
                         key={child.label}
+                        variant="light"
+                        size="sm"
                         onClick={() => {
                           if (child.pageKey) onPageChange(child.pageKey);
                         }}
-                        className={`block w-full rounded-md px-2 py-[5px] text-left text-[12px] transition-colors ${
+                        className={`block h-auto w-full justify-start rounded-md px-2 py-[5px] text-left text-[12px] font-normal transition-colors ${
                           isActive
                             ? "text-primary bg-primary/5 font-semibold"
                             : "text-muted-foreground/60 hover:text-foreground hover:bg-muted/50"
                         }`}
                       >
                         {child.label}
-                      </button>
+                      </Button>
                     );
                   })}
                 </div>

@@ -50,4 +50,31 @@ describe("Sidebar component", () => {
     fireEvent.click(trigger);
     expect(handleCollapseChange).toHaveBeenCalledWith(true);
   });
+
+  it("supports position right and bottom dock variants", () => {
+    const { rerender } = render(
+      <Sidebar position="right" variant="floating" data-testid="right-sidebar">
+        <SidebarContent>
+          <SidebarNav>
+            <SidebarItem href="/inspector">Inspector</SidebarItem>
+          </SidebarNav>
+        </SidebarContent>
+      </Sidebar>
+    );
+
+    expect(screen.getByTestId("right-sidebar")).toBeInTheDocument();
+    expect(screen.getByText("Inspector")).toBeInTheDocument();
+
+    rerender(
+      <Sidebar position="bottom" variant="dock" data-testid="dock-sidebar">
+        <SidebarContent>
+          <SidebarNav>
+            <SidebarItem href="/home" label="Home" />
+          </SidebarNav>
+        </SidebarContent>
+      </Sidebar>
+    );
+
+    expect(screen.getByTestId("dock-sidebar")).toBeInTheDocument();
+  });
 });

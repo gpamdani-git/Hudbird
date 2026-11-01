@@ -11,12 +11,12 @@ export type TooltipSize = "sm" | "md" | "lg";
 export type TooltipRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const tooltipVariants = cva(
-  "z-50 px-3 py-1.5 font-medium leading-tight shadow-md select-none pointer-events-none transition-all duration-150 ease-out whitespace-nowrap",
+  "z-50 font-medium leading-tight shadow-xl shadow-black/20 select-none pointer-events-none transition-all duration-150 ease-out whitespace-nowrap backdrop-blur-xl",
   {
     variants: {
       color: {
         default:
-          "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-950 border border-zinc-800 dark:border-zinc-200",
+          "bg-zinc-900/95 text-white dark:bg-[#161618]/95 dark:text-zinc-100 border border-white/10 shadow-xl shadow-black/20",
         foreground:
           "bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 border border-zinc-900 dark:border-zinc-100",
         primary: "bg-primary text-primary-foreground",
@@ -26,15 +26,15 @@ export const tooltipVariants = cva(
         danger: "bg-rose-600 text-white dark:bg-rose-500",
       },
       size: {
-        sm: "text-[11px] px-2 py-0.5 min-h-6",
-        md: "text-xs px-2.5 py-1 min-h-7",
-        lg: "text-sm px-3.5 py-1.5 min-h-8",
+        sm: "text-[11px] px-2.5 py-1 min-h-6",
+        md: "text-xs px-3.5 py-1.5 min-h-7",
+        lg: "text-sm px-4.5 py-2 min-h-8",
       },
       radius: {
         none: "rounded-none",
         sm: "rounded-sm",
-        md: "rounded-md",
-        lg: "rounded-lg",
+        md: "rounded-xl",
+        lg: "rounded-2xl",
         full: "rounded-full",
       },
     },
@@ -48,7 +48,7 @@ export const tooltipVariants = cva(
 
 // Matching arrow styles for each color
 const arrowColorStyles: Record<TooltipColor, string> = {
-  default: "bg-zinc-900 dark:bg-zinc-100 border-zinc-800 dark:border-zinc-200",
+  default: "bg-zinc-900/95 dark:bg-[#161618]/95 border-white/10",
   foreground: "bg-zinc-950 dark:bg-white border-zinc-900 dark:border-zinc-100",
   primary: "bg-primary",
   secondary: "bg-purple-600 dark:bg-purple-500",

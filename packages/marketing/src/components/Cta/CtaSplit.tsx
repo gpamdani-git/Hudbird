@@ -101,7 +101,9 @@ export const CtaSplit = React.forwardRef<HTMLElement, CtaSplitProps>(
                   {primaryAction && (
                     <Button
                       variant="solid"
-                      color="indigo"
+                      size="lg"
+                      radius="full"
+                      color="primary"
                       className="w-full sm:w-auto"
                       onClick={primaryAction.onClick}
                       {...(primaryAction.href ? { href: primaryAction.href, as: "a" } : {})}
@@ -112,7 +114,9 @@ export const CtaSplit = React.forwardRef<HTMLElement, CtaSplitProps>(
                   {secondaryAction && (
                     <Button
                       variant="outline"
-                      color="zinc"
+                      size="lg"
+                      radius="full"
+                      color="secondary"
                       className="w-full sm:w-auto"
                       onClick={secondaryAction.onClick}
                       {...(secondaryAction.href ? { href: secondaryAction.href, as: "a" } : {})}

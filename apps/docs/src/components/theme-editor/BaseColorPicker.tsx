@@ -19,7 +19,7 @@ export const BaseColorPicker = () => {
               key={key}
               onClick={() => setActiveBase(key)}
               className={cn(
-                "rounded-lg border py-2.5 text-xs font-semibold shadow-sm transition-all",
+                "rounded-lg border py-2.5 text-sm font-semibold shadow-sm transition-all",
                 isActive
                   ? "border-zinc-950 bg-zinc-950 text-white shadow-sm dark:border-white dark:bg-white dark:text-zinc-950"
                   : "border-border bg-card hover:bg-muted text-muted-foreground hover:text-foreground"

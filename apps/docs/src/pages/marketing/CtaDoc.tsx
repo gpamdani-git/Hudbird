@@ -39,18 +39,18 @@ export default function CtaDoc() {
             <MarketingPreview>
               <CtaCentered
                 badge={
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-600 ring-1 ring-indigo-500/20 ring-inset dark:bg-indigo-500/10 dark:text-indigo-400 dark:ring-indigo-500/30">
-                    <Sparkles className="h-4 w-4" /> Version 2.0 is out
+                  <span className="bg-primary/10 text-primary ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:ring-primary/30 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium ring-1 ring-inset">
+                    <Sparkles className="h-4 w-4" /> Version 2.0 release
                   </span>
                 }
-                title="Boost your productivity. Start using our app today."
-                description="Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur commodo do ea."
+                title="Ship faster with accessible, high-performance UI."
+                description="Production-ready React components built with TypeScript, Tailwind CSS, and Framer Motion."
                 primaryAction={{
                   label: "Get started",
                   onClick: () => alert("Get started clicked"),
                 }}
                 secondaryAction={{
-                  label: "Learn more",
+                  label: "Read documentation",
                   href: "#",
                 }}
               />
@@ -65,19 +65,19 @@ export default function CtaDoc() {
             <MarketingPreview>
               <CtaSplit
                 badge={
-                  <span className="inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-600 ring-1 ring-indigo-500/20 ring-inset dark:bg-indigo-500/10 dark:text-indigo-400 dark:ring-indigo-500/30">
-                    Ready to start?
+                  <span className="bg-primary/10 text-primary ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:ring-primary/30 inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ring-1 ring-inset">
+                    CLI Available
                   </span>
                 }
-                title="Join thousands of developers."
-                description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam."
-                imageSrc="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2850&q=80"
+                title="Built for modern React engineering teams."
+                description="Install individual components directly into your codebase. Zero lock-in, customizable tokens, and clean dependencies."
+                imageSrc="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1600"
                 primaryAction={{
-                  label: "Get started",
+                  label: "Explore components",
                   href: "#",
                 }}
                 secondaryAction={{
-                  label: "Learn more",
+                  label: "CLI installation",
                   href: "#",
                 }}
               />
@@ -90,25 +90,25 @@ export default function CtaDoc() {
               Glassmorphic CTA
             </h3>
             <MarketingPreview>
-              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-                {/* Add ambient glowing orbs */}
-                <div className="absolute top-0 left-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
-                <div className="absolute right-1/4 bottom-0 h-96 w-96 translate-x-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
+              <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 dark:from-zinc-950 dark:to-indigo-950/20">
+                {/* Ambient illumination */}
+                <div className="bg-primary/10 absolute top-0 left-1/4 h-80 w-80 -translate-x-1/2 rounded-full blur-[90px]" />
+                <div className="bg-primary/5 absolute right-1/4 bottom-0 h-80 w-80 translate-x-1/2 rounded-full blur-[90px]" />
 
                 <CtaGlass
                   badge={
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-white/50 px-3 py-1 text-sm font-medium text-indigo-900 ring-1 ring-indigo-500/20 backdrop-blur-md ring-inset dark:bg-indigo-500/10 dark:text-indigo-200 dark:ring-indigo-500/30">
-                      <Sparkles className="h-4 w-4" /> Ready to take control?
+                    <span className="text-primary ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:ring-primary/30 inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 text-sm font-medium ring-1 backdrop-blur-md ring-inset">
+                      <Sparkles className="h-4 w-4" /> Ready to ship?
                     </span>
                   }
-                  title="Ready to Take Control of Your Health?"
-                  description="Online care for wellness, nutrition, and personal health consultations from home without requiring insurance."
+                  title="Build your next project with Hudbird UI"
+                  description="Pre-built marketing sections, dashboard templates, and 30+ accessible core primitives."
                   primaryAction={{
-                    label: "Start Now",
+                    label: "Get started",
                     href: "#",
                   }}
                   secondaryAction={{
-                    label: "Contact Us",
+                    label: "View templates",
                     href: "#",
                   }}
                 />
@@ -200,16 +200,16 @@ const centeredCode = `import { CtaCentered } from "@/components/hudbird-ui/Cta";
 export default function Example() {
   return (
     <CtaCentered
-      badge={<span className="...">Version 2.0 is out</span>}
-      title="Boost your productivity. Start using our app today."
-      description="Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam."
+      badge={<span className="...">Version 2.0 release</span>}
+      title="Ship faster with accessible, high-performance UI."
+      description="Production-ready React components built with TypeScript, Tailwind CSS, and Framer Motion."
       primaryAction={{
         label: "Get started",
         href: "/signup",
       }}
       secondaryAction={{
-        label: "Learn more",
-        href: "/about",
+        label: "Read documentation",
+        href: "/docs",
       }}
     />
   )
@@ -220,8 +220,8 @@ const splitCode = `import { CtaSplit } from "@/components/hudbird-ui/Cta";
 export default function Example() {
   return (
     <CtaSplit
-      title="Join thousands of developers."
-      description="Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis."
+      title="Built for modern React engineering teams."
+      description="Install individual components directly into your codebase. Zero lock-in, customizable tokens, and clean dependencies."
       imageSrc="/images/cta-graphic.jpg"
       primaryAction={{
         label: "Get started",

@@ -1,6 +1,6 @@
 import React from "react";
 import { User, Mail, Shield, Camera, Save } from "lucide-react";
-import { Button, Card, Avatar } from "@hudbird/ui";
+import { Button, Card, Avatar, Badge } from "@hudbird/ui";
 import { motion } from "framer-motion";
 
 const fadeUp = {
@@ -29,9 +29,16 @@ export const AdminProfile = () => {
               size="xl"
               className="border-card h-24 w-24 border-4 text-2xl shadow-sm"
             />
-            <button className="bg-background border-border/40 text-muted-foreground hover:text-foreground hover:border-primary absolute right-0 bottom-0 flex h-8 w-8 items-center justify-center rounded-full border shadow-sm transition-colors group-hover:scale-105">
+            <Button
+              isIconOnly
+              variant="outline"
+              size="sm"
+              radius="full"
+              aria-label="Change photo"
+              className="bg-background border-border/40 text-muted-foreground hover:text-foreground hover:border-primary absolute right-0 bottom-0 h-8 w-8 min-w-8 shadow-sm transition-transform group-hover:scale-105"
+            >
               <Camera className="h-3.5 w-3.5" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -39,9 +46,14 @@ export const AdminProfile = () => {
           <h2 className="text-foreground text-xl font-bold tracking-tight">Admin User</h2>
           <p className="text-muted-foreground mt-0.5 text-[13px]">Super Administrator</p>
           <div className="mt-4 flex items-center justify-center gap-4 sm:justify-start">
-            <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-500/10 px-2.5 py-1 text-[12px] font-medium text-emerald-500">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> Active Status
-            </span>
+            <Badge
+              isDot
+              color="success"
+              size="sm"
+              className="gap-1.5 px-2.5 py-1 text-[12px] font-medium"
+            >
+              Active Status
+            </Badge>
           </div>
         </div>
       </Card>

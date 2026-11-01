@@ -26,7 +26,7 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
       description,
       actions,
       illustration,
-      glowClassName = "bg-blue-500/20",
+      glowClassName = "bg-primary/15 dark:bg-primary/10",
       ...props
     },
     ref
@@ -35,21 +35,21 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
       <section
         ref={ref}
         className={cn(
-          "relative flex min-h-[100dvh] items-center overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 pt-24 pb-16 sm:pt-32 dark:from-zinc-950 dark:to-indigo-950/20",
+          "relative flex min-h-auto items-center overflow-hidden bg-gradient-to-br from-zinc-50 via-zinc-100/50 to-indigo-50/30 pt-20 pb-16 sm:pt-28 lg:min-h-[100dvh] lg:pt-32 dark:from-zinc-950 dark:via-zinc-950 dark:to-indigo-950/20",
           className
         )}
         {...props}
       >
-        {/* Background ambient orbs */}
+        {/* Background ambient illumination */}
         <div
           className={cn(
-            "pointer-events-none absolute top-1/4 left-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-[150px]",
+            "pointer-events-none absolute top-1/4 left-1/4 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-60 blur-[140px]",
             glowClassName
           )}
         />
-        <div className="pointer-events-none absolute right-1/4 bottom-1/4 h-[600px] w-[600px] translate-x-1/2 translate-y-1/2 rounded-full bg-cyan-500/20 opacity-70 blur-[150px]" />
+        <div className="bg-primary/10 dark:bg-primary/5 pointer-events-none absolute right-1/4 bottom-1/4 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full opacity-50 blur-[140px]" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:px-8">
+        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-6 lg:flex-row lg:gap-16 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
           >
             {badge && (
               <div className="mb-6 flex justify-center lg:justify-start">
-                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/40 px-3 py-1 text-sm font-medium text-zinc-900 shadow-sm ring-1 ring-white/50 backdrop-blur-md ring-inset dark:bg-zinc-900/40 dark:text-zinc-100 dark:ring-white/10">
+                <div className="inline-flex items-center gap-1.5 rounded-full bg-white/70 px-3 py-1 text-sm font-medium text-zinc-900 shadow-xs ring-1 ring-zinc-200/80 backdrop-blur-md dark:bg-zinc-900/60 dark:text-zinc-100 dark:ring-white/10">
                   {badge}
                 </div>
               </div>
@@ -68,7 +68,7 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
             </h1>
             <p className="mt-6 text-lg leading-8 text-zinc-600 dark:text-zinc-400">{description}</p>
             {actions && (
-              <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+              <div className="mt-10 flex w-full flex-col items-stretch justify-center gap-4 sm:w-auto sm:flex-row sm:items-center sm:gap-x-6 lg:justify-start">
                 {actions}
               </div>
             )}

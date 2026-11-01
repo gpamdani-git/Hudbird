@@ -108,7 +108,7 @@ export default function PieChartDoc() {
   ];
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-32">
+    <div className="space-y-24 pb-32 sm:space-y-32">
       <DocHeader
         category="CHARTS"
         title="Pie Chart"
@@ -125,15 +125,16 @@ export default function PieChartDoc() {
       </section>
 
       <section id="anatomy" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           Anatomy
         </h2>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-          <strong>Abstracted layer.</strong> Pie and Donut charts provide clean SVG rendering with centered KPI labels and automated legend bindings:
+          <strong>Abstracted layer.</strong> Pie and Donut charts provide clean SVG rendering with
+          centered KPI labels and automated legend bindings:
         </p>
-          <CodeBlock
-            language="tsx"
-            code={`import { PieChart } from "@hudbird/ui";
+        <CodeBlock
+          language="tsx"
+          code={`import { PieChart } from "@hudbird/ui";
 
 export default function App() {
   return (
@@ -144,22 +145,22 @@ export default function App() {
     />
   );
 }`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="usage" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Usage</h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Browser Usage
-              </h3>
-              <PieChart data={browserData} index="browser" category="visitors" />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="usage" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Usage</h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Browser Usage
+            </h3>
+            <PieChart data={browserData} index="browser" category="visitors" />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Browser Usage</h3>
   <PieChart
     data={browserData}
@@ -167,50 +168,50 @@ export default function App() {
     category="visitors"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="custom-tooltip" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Custom Tooltip
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Market Share
-              </h3>
-              <PieChart
-                data={browserData}
-                index="browser"
-                category="visitors"
-                customTooltip={({ payload, active }: any) => {
-                  if (active && payload && payload.length) {
-                    const data = payload[0].payload;
-                    const total = browserData.reduce((acc, curr) => acc + curr.visitors, 0);
-                    const percentage = ((data.visitors / total) * 100).toFixed(1);
-                    return (
-                      <div className="flex items-center gap-2 rounded-lg border border-zinc-200 bg-white px-3 py-2 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-                        <div
-                          className="h-2 w-2 rounded-full"
-                          style={{ backgroundColor: payload[0].payload.fill }}
-                        />
-                        <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                          {data.browser}
-                        </span>
-                        <span className="text-sm font-bold text-zinc-900 dark:text-zinc-50">
-                          {percentage}%
-                        </span>
-                      </div>
-                    );
-                  }
-                  return null;
-                }}
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="custom-tooltip" className="scroll-mt-24 space-y-4">
+        <h2 className="font-outfit text-2xl font-medium tracking-[-0.6px] text-zinc-900 sm:text-3xl dark:text-white">
+          Custom Tooltip
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
+            <h3 className="mb-4 text-base font-semibold text-zinc-900 dark:text-zinc-100">
+              Market Share
+            </h3>
+            <PieChart
+              data={browserData}
+              index="browser"
+              category="visitors"
+              customTooltip={({ payload, active }: any) => {
+                if (active && payload && payload.length) {
+                  const data = payload[0].payload;
+                  const total = browserData.reduce((acc, curr) => acc + curr.visitors, 0);
+                  const percentage = ((data.visitors / total) * 100).toFixed(1);
+                  return (
+                    <div className="flex items-center gap-2.5 rounded-xl border border-zinc-200/90 bg-white/95 px-3.5 py-2 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-black/50">
+                      <div
+                        className="h-2 w-2 rounded-full"
+                        style={{ backgroundColor: payload[0].payload.fill }}
+                      />
+                      <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                        {data.browser}
+                      </span>
+                      <span className="text-xs font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
+                        {percentage}%
+                      </span>
+                    </div>
+                  );
+                }
+                return null;
+              }}
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Market Share</h3>
   <PieChart
     data={browserData}
@@ -233,22 +234,22 @@ export default function App() {
     }}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="donut" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Donut</h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Traffic Sources
-              </h3>
-              <PieChart data={trafficData} index="source" category="value" variant="donut" />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="donut" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Donut</h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Traffic Sources
+            </h3>
+            <PieChart data={trafficData} index="source" category="value" variant="donut" />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Traffic Sources</h3>
   <PieChart
     data={trafficData}
@@ -257,35 +258,35 @@ export default function App() {
     variant="donut"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="donut-with-content" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Donut With Content
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Connected Devices
-              </h3>
-              <PieChart
-                data={deviceData}
-                index="device"
-                category="visitors"
-                variant="donut"
-                donutContent={
-                  <div className="flex flex-col items-center justify-center text-center">
-                    <span className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">4.5K</span>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-400">Devices</span>
-                  </div>
-                }
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="donut-with-content" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Donut With Content
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Connected Devices
+            </h3>
+            <PieChart
+              data={deviceData}
+              index="device"
+              category="visitors"
+              variant="donut"
+              donutContent={
+                <div className="flex flex-col items-center justify-center text-center">
+                  <span className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">4.5K</span>
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400">Devices</span>
+                </div>
+              }
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Connected Devices</h3>
   <PieChart
     data={deviceData}
@@ -300,38 +301,36 @@ export default function App() {
     }
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="donut-with-label" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Donut With Label
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <div className="mb-4">
-                <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                  Storage Usage
-                </h3>
-                <p className="text-sm text-zinc-500">100 GB of 128 GB used</p>
-              </div>
-              <PieChart
-                data={storageData}
-                index="category"
-                category="usage"
-                variant="donut"
-                donutContent={
-                  <div className="flex flex-col items-center justify-center text-center">
-                    <span className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">100</span>
-                    <span className="text-sm text-zinc-500 dark:text-zinc-400">GB used</span>
-                  </div>
-                }
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="donut-with-label" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Donut With Label
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">Storage Usage</h3>
+              <p className="text-sm text-zinc-500">100 GB of 128 GB used</p>
+            </div>
+            <PieChart
+              data={storageData}
+              index="category"
+              category="usage"
+              variant="donut"
+              donutContent={
+                <div className="flex flex-col items-center justify-center text-center">
+                  <span className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">100</span>
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400">GB used</span>
+                </div>
+              }
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <div className="mb-4">
     <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">Storage Usage</h3>
     <p className="text-sm text-zinc-500">100 GB of 128 GB used</p>
@@ -349,22 +348,22 @@ export default function App() {
     }
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="nested-donut" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Nested Donut</h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Engagement Metrics
-              </h3>
-              <PieChart data={nestedData} index="label" categories={["group1", "group2"]} />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="nested-donut" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">Nested Donut</h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Engagement Metrics
+            </h3>
+            <PieChart data={nestedData} index="label" categories={["group1", "group2"]} />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Engagement Metrics</h3>
   <PieChart
     data={nestedData}
@@ -372,30 +371,30 @@ export default function App() {
     categories={["group1", "group2"]}
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="donut-with-breakdown" className="mb-12 scroll-mt-20">
-          <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Donut With Breakdown
-          </h2>
-          <ComponentPreview>
-            <Card className="w-full max-w-md p-6">
-              <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Traffic Source
-              </h3>
-              <PieChart
-                data={trafficData}
-                index="source"
-                category="value"
-                variant="donut"
-                innerRadius="75%"
-              />
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            language="tsx"
-            code={`<Card className="max-w-md p-6">
+      <section id="donut-with-breakdown" className="mb-12 scroll-mt-20">
+        <h2 className="mb-6 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+          Donut With Breakdown
+        </h2>
+        <ComponentPreview>
+          <Card className="w-full max-w-md p-6">
+            <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              Traffic Source
+            </h3>
+            <PieChart
+              data={trafficData}
+              index="source"
+              category="value"
+              variant="donut"
+              innerRadius="75%"
+            />
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          language="tsx"
+          code={`<Card className="max-w-md p-6">
   <h3 className="mb-4 text-lg font-bold text-zinc-900 dark:text-zinc-100">Traffic Source</h3>
   <PieChart
     data={trafficData}
@@ -405,83 +404,93 @@ export default function App() {
     innerRadius="75%"
   />
 </Card>`}
-          />
-        </section>
+        />
+      </section>
 
-        <section id="css-classes" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            CSS Classes
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>Container styling.</strong> The PieChart component applies standard Tailwind classes for height and width, rendering clean SVG elements via Recharts. Customize the container's appearance using the <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">className</code> prop.
-          </p>
-        </section>
+      <section id="css-classes" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          CSS Classes
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Container styling.</strong> The PieChart component applies standard Tailwind
+          classes for height and width, rendering clean SVG elements via Recharts. Customize the
+          container's appearance using the{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            className
+          </code>{" "}
+          prop.
+        </p>
+      </section>
 
-        <section id="advanced-customization" className="scroll-mt-24 space-y-6">
-          <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
-            Advanced Customization
-          </h2>
-          <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
-            <strong>Custom tooltips &amp; SVG.</strong> Inject custom SVG definitions via <code className="rounded bg-zinc-100 px-1.5 py-0.5 text-xs font-mono dark:bg-zinc-800">children</code>, configure segment stroke radiuses, and render rich custom HTML tooltips.
-          </p>
-          <ComponentPreview>
-            <Card className="mx-auto w-full max-w-2xl p-4">
-              <PieChart
-                data={browserData}
-                index="browser"
-                category="visitors"
-                colors={[
-                  "url(#custom-gradient-pie-1)",
-                  "url(#custom-gradient-pie-2)",
-                  "url(#custom-gradient-pie-3)",
-                  "url(#custom-gradient-pie-4)",
-                  "url(#custom-gradient-pie-5)",
-                ]}
-                customTooltip={(props: any) => {
-                  if (!props.active || !props.payload || props.payload.length === 0) return null;
-                  const { name, value } = props.payload[0];
-                  return (
-                    <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
-                      <img
-                        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-                        alt="Avatar"
-                        className="h-10 w-10 rounded-full"
-                      />
-                      <div>
-                        <p className="text-sm font-medium text-zinc-300">{name}</p>
-                        <p className="text-lg font-bold text-sky-400">{value} visitors</p>
-                      </div>
+      <section id="advanced-customization" className="scroll-mt-24 space-y-6">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
+          Advanced Customization
+        </h2>
+        <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
+          <strong>Custom tooltips &amp; SVG.</strong> Inject custom SVG definitions via{" "}
+          <code className="rounded bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-zinc-800">
+            children
+          </code>
+          , configure segment stroke radiuses, and render rich custom HTML tooltips.
+        </p>
+        <ComponentPreview>
+          <Card className="mx-auto w-full max-w-2xl p-4">
+            <PieChart
+              data={browserData}
+              index="browser"
+              category="visitors"
+              colors={[
+                "url(#custom-gradient-pie-1)",
+                "url(#custom-gradient-pie-2)",
+                "url(#custom-gradient-pie-3)",
+                "url(#custom-gradient-pie-4)",
+                "url(#custom-gradient-pie-5)",
+              ]}
+              customTooltip={(props: any) => {
+                if (!props.active || !props.payload || props.payload.length === 0) return null;
+                const { name, value } = props.payload[0];
+                return (
+                  <div className="flex items-center gap-3 rounded-lg border border-zinc-800 bg-zinc-950 p-3 shadow-xl">
+                    <img
+                      src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                      alt="Avatar"
+                      className="h-10 w-10 rounded-full"
+                    />
+                    <div>
+                      <p className="text-sm font-medium text-zinc-300">{name}</p>
+                      <p className="text-lg font-bold text-sky-400">{value} visitors</p>
                     </div>
-                  );
-                }}
-              >
-                <defs>
-                  <linearGradient id="custom-gradient-pie-1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#38bdf8" />
-                    <stop offset="100%" stopColor="#0284c7" />
-                  </linearGradient>
-                  <linearGradient id="custom-gradient-pie-2" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#f472b6" />
-                    <stop offset="100%" stopColor="#be185d" />
-                  </linearGradient>
-                  <linearGradient id="custom-gradient-pie-3" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#34d399" />
-                    <stop offset="100%" stopColor="#059669" />
-                  </linearGradient>
-                  <linearGradient id="custom-gradient-pie-4" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#fbbf24" />
-                    <stop offset="100%" stopColor="#d97706" />
-                  </linearGradient>
-                  <linearGradient id="custom-gradient-pie-5" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#a78bfa" />
-                    <stop offset="100%" stopColor="#6d28d9" />
-                  </linearGradient>
-                </defs>
-              </PieChart>
-            </Card>
-          </ComponentPreview>
-          <CodeBlock
-            code={`<PieChart
+                  </div>
+                );
+              }}
+            >
+              <defs>
+                <linearGradient id="custom-gradient-pie-1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#38bdf8" />
+                  <stop offset="100%" stopColor="#0284c7" />
+                </linearGradient>
+                <linearGradient id="custom-gradient-pie-2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#f472b6" />
+                  <stop offset="100%" stopColor="#be185d" />
+                </linearGradient>
+                <linearGradient id="custom-gradient-pie-3" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#34d399" />
+                  <stop offset="100%" stopColor="#059669" />
+                </linearGradient>
+                <linearGradient id="custom-gradient-pie-4" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#fbbf24" />
+                  <stop offset="100%" stopColor="#d97706" />
+                </linearGradient>
+                <linearGradient id="custom-gradient-pie-5" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#a78bfa" />
+                  <stop offset="100%" stopColor="#6d28d9" />
+                </linearGradient>
+              </defs>
+            </PieChart>
+          </Card>
+        </ComponentPreview>
+        <CodeBlock
+          code={`<PieChart
   data={browserData}
   index="browser"
   category="visitors"
@@ -510,15 +519,15 @@ export default function App() {
     {/* ... gradients 1 to 5 ... */}
   </defs>
 </PieChart>`}
-          />
-        </section>
+        />
+      </section>
 
       <section id="component-api" className="scroll-mt-24 space-y-6">
-        <h2 className="font-outfit text-3xl sm:text-4xl font-medium tracking-[-0.8px] leading-[1.22] text-zinc-900 dark:text-white">
+        <h2 className="font-outfit text-3xl leading-[1.22] font-medium tracking-[-0.8px] text-zinc-900 sm:text-4xl dark:text-white">
           API Reference
         </h2>
         <ApiTable rows={apiRows} />
-        <h3 className="font-outfit text-xl sm:text-2xl font-medium tracking-[-0.4px] text-zinc-900 dark:text-white pt-6">
+        <h3 className="font-outfit pt-6 text-xl font-medium tracking-[-0.4px] text-zinc-900 sm:text-2xl dark:text-white">
           Recharts API Reference
         </h3>
         <p className="text-[17px] leading-[1.75] tracking-[-0.16px] text-zinc-600 dark:text-[#E5E5E5]">
@@ -527,7 +536,7 @@ export default function App() {
             href="https://recharts.github.io/en-US/api/PieChart/"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:underline"
+            className="text-indigo-600 hover:underline dark:text-indigo-400"
           >
             https://recharts.github.io/en-US/api/PieChart/
           </a>

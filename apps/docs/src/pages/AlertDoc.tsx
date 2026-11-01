@@ -116,7 +116,7 @@ export default function AlertDoc() {
         <ComponentPreview>
           <div className="w-full max-w-xl">
             <Alert
-              icon={<Info className="h-5 w-5 text-indigo-500" />}
+              icon={<Info className="h-5 w-5" />}
               title="System update scheduled"
               description="A new maintenance release will be deployed tonight at 02:00 UTC."
             />

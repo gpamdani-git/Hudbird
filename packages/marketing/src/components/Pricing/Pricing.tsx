@@ -5,6 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
+import { Badge, Switch, Button } from "@hudbird/ui";
 
 // ---------------------------------------------------------------------------
 // PricingSection
@@ -66,17 +67,25 @@ PricingHeader.displayName = "Pricing.Header";
 // PricingBadge
 // ---------------------------------------------------------------------------
 
-const PricingBadge = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
-  ({ className, ...props }, ref) => {
+export interface PricingBadgeProps extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "color"> {
+  color?: "primary" | "secondary" | "success" | "warning" | "danger" | "info";
+}
+
+const PricingBadge = React.forwardRef<HTMLHeadingElement, PricingBadgeProps>(
+  ({ className, children, color = "primary", ...props }, ref) => {
     return (
-      <h2
-        ref={ref}
-        className={cn(
-          "mx-auto inline-flex w-fit rounded-full px-4 py-1.5 text-base leading-7 font-semibold text-blue-600 dark:text-blue-400",
-          className
-        )}
-        {...props}
-      />
+      <div className="flex justify-center">
+        <Badge
+          ref={ref as any}
+          variant="soft"
+          color={color}
+          size="md"
+          className={cn("mx-auto inline-flex w-fit font-semibold", className)}
+          {...(props as any)}
+        >
+          {children}
+        </Badge>
+      </div>
     );
   }
 );
@@ -148,8 +157,8 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
       isAnnual = false,
       onChange,
       discountLabel = "Save 20%",
-      toggleActiveClassName = "bg-blue-600",
-      discountClassName = "bg-blue-50 text-blue-600 ring-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400",
+      toggleActiveClassName = "bg-primary",
+      discountClassName = "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground",
       ...props
     },
     ref
@@ -168,25 +177,13 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
         >
           {monthlyLabel}
         </span>
-        <button
-          type="button"
-          onClick={() => onChange?.(!isAnnual)}
-          className={cn(
-            "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:ring-2 focus:ring-offset-2 focus:outline-none",
-            isAnnual ? toggleActiveClassName : "bg-zinc-200 dark:bg-zinc-700"
-          )}
-          role="switch"
-          aria-checked={isAnnual}
-        >
-          <span className="sr-only">Toggle billing period</span>
-          <span
-            aria-hidden="true"
-            className={cn(
-              "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-sm ring-1 ring-zinc-900/5 transition duration-200 ease-in-out",
-              isAnnual ? "translate-x-5" : "translate-x-0"
-            )}
-          />
-        </button>
+        <Switch
+          size="sm"
+          color="primary"
+          checked={isAnnual}
+          onChange={() => onChange?.(!isAnnual)}
+          aria-label="Toggle billing period"
+        />
         <div className="flex items-center gap-2">
           <span
             className={cn(
@@ -197,14 +194,9 @@ const PricingToggle = React.forwardRef<HTMLDivElement, PricingToggleProps>(
             {annualLabel}
           </span>
           {discountLabel && (
-            <span
-              className={cn(
-                "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ring-1 ring-inset",
-                discountClassName
-              )}
-            >
+            <Badge variant="soft" color="primary" size="sm" className={discountClassName}>
               {discountLabel}
-            </span>
+            </Badge>
           )}
         </div>
       </div>
@@ -265,24 +257,24 @@ const PricingTier = React.forwardRef<HTMLDivElement, PricingTierProps>(
         transition={{ duration: 0.5, delay: index * 0.1 }}
         ref={ref}
         className={cn(
-          "relative rounded-3xl p-8 ring-1",
+          "relative rounded-3xl p-6 ring-1 transition-all sm:p-8",
           popular
-            ? "bg-zinc-900 shadow-2xl ring-zinc-900 xl:scale-105 dark:bg-white/5 dark:ring-white/20"
-            : "bg-white ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800",
+            ? "dark:ring-primary/40 bg-zinc-900 shadow-2xl ring-zinc-900 xl:scale-105 dark:bg-[#1d1d20] dark:shadow-[0_0_50px_rgba(79,70,229,0.15)]"
+            : "bg-white ring-zinc-200/80 dark:bg-[#161618] dark:ring-white/[0.08]",
           className
         )}
         {...(props as any)}
       >
         {popular && (
           <div className="absolute inset-x-0 -top-4 flex justify-center">
-            <span
-              className={cn(
-                "rounded-full px-4 py-1 text-sm leading-6 font-semibold shadow-sm ring-1 ring-inset",
-                popularBadgeClassName
-              )}
+            <Badge
+              variant="solid"
+              color="primary"
+              size="md"
+              className={cn("font-semibold shadow-sm", popularBadgeClassName)}
             >
               {popularLabel}
-            </span>
+            </Badge>
           </div>
         )}
         {children}
@@ -316,7 +308,9 @@ const PricingTierName = React.forwardRef<
       ref={ref}
       className={cn(
         "text-lg leading-8 font-semibold",
-        popular ? "text-white dark:text-blue-400" : "text-blue-600 dark:text-blue-400",
+        popular
+          ? "dark:text-primary-foreground text-white"
+          : "text-primary dark:text-primary-foreground",
         className
       )}
       {...props}
@@ -437,7 +431,10 @@ const PricingTierFeature = React.forwardRef<HTMLLIElement, PricingTierFeaturePro
             "h-6 w-5 flex-none",
             // If checkClassName is explicitly provided, it wins.
             // Otherwise fall back to popular vs. default colours.
-            checkClassName ?? (popular ? "text-blue-400" : "text-blue-600 dark:text-blue-400")
+            checkClassName ??
+              (popular
+                ? "text-primary-foreground dark:text-primary"
+                : "text-primary dark:text-primary-foreground")
           )}
           aria-hidden="true"
         />

@@ -42,14 +42,14 @@ export const breadcrumbsVariants = cva("flex flex-wrap items-center", {
     variant: {
       light: "bg-transparent p-0",
       bordered:
-        "border border-black/[0.06] bg-white/80 dark:border-white/[0.08] dark:bg-[#161618]/80 rounded-xl px-3.5 py-1.5 shadow-2xs backdrop-blur-md",
+        "border border-black/[0.08] bg-white/70 dark:border-white/[0.08] dark:bg-[#161618]/70 rounded-2xl px-4 py-1.5 shadow-2xs backdrop-blur-xl",
       solid:
-        "bg-zinc-100/90 dark:bg-[#202124] border border-black/[0.04] dark:border-white/[0.06] rounded-xl px-3.5 py-1.5 text-zinc-800 dark:text-zinc-200",
+        "bg-zinc-100/90 dark:bg-[#1f1f23] border border-black/[0.04] dark:border-white/[0.06] rounded-2xl px-4 py-1.5 text-zinc-800 dark:text-zinc-200",
     },
     size: {
-      sm: "text-xs gap-1.5",
-      md: "text-[13px] gap-2",
-      lg: "text-sm gap-2.5",
+      sm: "text-xs gap-1",
+      md: "text-sm gap-1.5",
+      lg: "text-base gap-2",
     },
   },
   defaultVariants: {
@@ -212,7 +212,7 @@ export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProp
         ref={ref}
         aria-current={isCurrent ? "page" : undefined}
         className={cn(
-          "inline-flex items-center transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]",
+          "inline-flex items-center transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] select-none",
           isCurrent
             ? "cursor-default font-semibold text-zinc-950 dark:text-zinc-50"
             : disabled
@@ -227,7 +227,7 @@ export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProp
             href={href}
             onClick={handleClick}
             className={cn(
-              "inline-flex items-center rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
+              "inline-flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors outline-none hover:bg-black/[0.04] focus-visible:ring-2 focus-visible:ring-indigo-500 dark:hover:bg-white/[0.06]",
               underlineClasses
             )}
           >
@@ -238,7 +238,11 @@ export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProp
             aria-current={isCurrent ? "page" : undefined}
             onClick={handleClick}
             className={cn(
-              "inline-flex items-center rounded-sm outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
+              "inline-flex items-center gap-1.5 rounded-lg px-2 py-1 outline-none focus-visible:ring-2 focus-visible:ring-indigo-500",
+              isCurrent && "font-semibold text-zinc-950 dark:text-zinc-50",
+              !isCurrent &&
+                !disabled &&
+                "transition-colors hover:bg-black/[0.04] dark:hover:bg-white/[0.06]",
               underlineClasses
             )}
           >

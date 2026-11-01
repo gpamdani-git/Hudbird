@@ -169,7 +169,7 @@ export const InputOTP = React.forwardRef<HTMLDivElement, InputOTPProps>(
             }
           }}
           className={cn(
-            "relative inline-flex cursor-text items-center gap-2 select-none",
+            "relative inline-flex cursor-text items-center gap-2.5 select-none",
             disabled && "cursor-not-allowed opacity-50",
             className
           )}
@@ -220,7 +220,7 @@ export const InputOTPGroup = React.forwardRef<HTMLDivElement, InputOTPGroupProps
       <div
         ref={ref}
         className={cn(
-          "border-border bg-background divide-border flex items-center divide-x overflow-hidden border shadow-2xs transition-all duration-150",
+          "flex items-center divide-x divide-black/[0.08] overflow-hidden border border-black/[0.08] bg-white shadow-xs transition-all duration-150 dark:divide-white/[0.08] dark:border-white/[0.08] dark:bg-[#161618]",
           groupRadiusStyles[effectiveRadius],
           className
         )}
@@ -241,9 +241,9 @@ export interface InputOTPSlotProps extends React.HTMLAttributes<HTMLDivElement> 
 }
 
 const slotSizeStyles: Record<InputOTPSize, string> = {
-  sm: "w-8 h-9 text-sm",
-  md: "w-10 h-12 text-base",
-  lg: "w-12 h-14 text-lg",
+  sm: "w-9 h-10 text-sm",
+  md: "w-11 h-12 text-base",
+  lg: "w-13 h-14 text-lg",
 };
 
 export const InputOTPSlot = React.forwardRef<HTMLDivElement, InputOTPSlotProps>(

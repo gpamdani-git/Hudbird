@@ -102,7 +102,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                 strokeDasharray="3 3"
                 vertical={false}
                 stroke="currentColor"
-                className="text-zinc-200 dark:text-zinc-800"
+                className="text-zinc-200/80 dark:text-white/[0.08]"
               />
             )}
 
@@ -141,7 +141,12 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
                 verticalAlign="bottom"
                 height={36}
                 iconType="circle"
-                wrapperStyle={{ fontSize: "14px", paddingTop: "20px" }}
+                wrapperStyle={{ fontSize: "13px", paddingTop: "20px" }}
+                formatter={(value) => (
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                    {value}
+                  </span>
+                )}
               />
             )}
 

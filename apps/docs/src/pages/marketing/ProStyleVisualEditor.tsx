@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Badge } from "@hudbird/ui";
 
 export const ProStyleVisualEditor = () => (
   <section className="relative w-full overflow-hidden rounded-2xl border border-blue-900/30 bg-[#0B1120] py-24 font-sans sm:py-32">
@@ -87,9 +88,9 @@ export const ProStyleVisualEditor = () => (
           className="absolute z-10 w-64 rounded-3xl border border-zinc-700 bg-zinc-900/90 p-6 shadow-2xl backdrop-blur-xl"
         >
           <div className="mb-6 flex items-center justify-between">
-            <span className="rounded bg-indigo-500/10 px-2 py-1 text-[10px] font-bold tracking-wider text-indigo-400 uppercase">
+            <Badge variant="soft" color="indigo" size="sm">
               MAU JAN 2023
-            </span>
+            </Badge>
             <span className="text-xs text-zinc-500">Last 28 days</span>
           </div>
           <div className="mb-2 text-5xl font-light text-white">52k</div>

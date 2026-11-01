@@ -221,18 +221,16 @@ export default function TableDoc() {
               Variant:
             </span>
             {(["default", "striped", "borderless"] as const).map((v) => (
-              <button
+              <Button
                 key={v}
-                type="button"
+                size="sm"
+                variant={variant === v ? "solid" : "flat"}
+                color={variant === v ? "primary" : "secondary"}
                 onClick={() => setVariant(v)}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium capitalize transition-all ${
-                  variant === v
-                    ? "bg-zinc-900 text-white shadow-xs dark:bg-white dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-white/10"
-                }`}
+                className="capitalize"
               >
                 {v}
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -243,18 +241,16 @@ export default function TableDoc() {
               Density:
             </span>
             {(["compact", "normal", "relaxed"] as const).map((d) => (
-              <button
+              <Button
                 key={d}
-                type="button"
+                size="sm"
+                variant={density === d ? "solid" : "flat"}
+                color={density === d ? "primary" : "secondary"}
                 onClick={() => setDensity(d)}
-                className={`rounded-lg px-2.5 py-1 text-xs font-medium capitalize transition-all ${
-                  density === d
-                    ? "bg-zinc-900 text-white shadow-xs dark:bg-white dark:text-zinc-900"
-                    : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-white/10"
-                }`}
+                className="capitalize"
               >
                 {d}
-              </button>
+              </Button>
             ))}
           </div>
 
@@ -416,7 +412,7 @@ export default function Example() {
                       setStatusFilter(st);
                       setCurrentPage(1);
                     }}
-                    className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${
+                    className={`h-8 cursor-pointer rounded-lg px-3.5 text-xs font-medium transition-all ${
                       statusFilter === st
                         ? "bg-zinc-900 text-white shadow-xs dark:bg-white dark:text-zinc-900"
                         : "text-zinc-600 hover:bg-zinc-200/60 dark:text-zinc-400 dark:hover:bg-white/10"

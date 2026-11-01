@@ -7,6 +7,7 @@ import {
   SidebarNav,
   SidebarItem,
   SidebarFooter,
+  Avatar,
 } from "@hudbird/ui";
 import {
   Home,
@@ -33,11 +34,11 @@ export default function SidebarFlatDemo() {
             </h1>
             <hr className="mb-6 w-full border-t border-zinc-950/10 dark:border-white/10" />
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
             </div>
-            <div className="mt-6 h-64 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+            <div className="mt-6 h-64 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
           </div>
         );
       case "Inbox":
@@ -48,9 +49,9 @@ export default function SidebarFlatDemo() {
             </h1>
             <hr className="mb-6 w-full border-t border-zinc-950/10 dark:border-white/10" />
             <div className="space-y-4">
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
             </div>
           </div>
         );
@@ -92,7 +93,7 @@ export default function SidebarFlatDemo() {
 
           <SidebarContent>
             <div className="mb-2 px-3 pt-2">
-              <div className="flex items-center gap-2 rounded-full bg-zinc-200/50 px-2.5 py-1.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
+              <div className="flex h-8 items-center gap-2 rounded-full bg-zinc-200/50 px-3.5 text-zinc-500 transition-all group-aria-[expanded=false]:justify-center dark:bg-zinc-800/50">
                 <Search size={14} className="shrink-0" />
                 <span className="overflow-hidden text-xs whitespace-nowrap transition-all group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
                   Search...
@@ -202,7 +203,7 @@ export default function SidebarFlatDemo() {
 
           <SidebarFooter>
             <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 py-2 group-aria-[expanded=false]:justify-center">
-              <div className="h-8 w-8 shrink-0 rounded-full border-2 border-white bg-indigo-500 dark:border-zinc-900" />
+              <Avatar size="sm" src="https://i.pravatar.cc/150?img=47" alt="Jane Doe" />
               <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
                 <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                   Jane Doe
@@ -213,7 +214,7 @@ export default function SidebarFlatDemo() {
           </SidebarFooter>
         </Sidebar>
 
-        <main className="ml-4 flex-1 overflow-y-auto rounded-xl border border-zinc-200/50 bg-white shadow-sm dark:border-zinc-800/50 dark:bg-zinc-950">
+        <main className="ml-4 flex-1 overflow-y-auto rounded-2xl border border-zinc-200/80 bg-white shadow-sm dark:border-white/[0.08] dark:bg-[#121214]">
           {renderContent()}
         </main>
       </div>

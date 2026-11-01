@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 import { Magnetic } from "../../../components/Magnetic";
 
@@ -40,7 +41,10 @@ export function AgencyAbout() {
         </div>
 
         <div className="flex flex-col items-end justify-between gap-8 sm:flex-row sm:items-center md:justify-end">
-          <button className="flex items-center gap-4 text-2xl font-medium tracking-tight transition-all hover:italic md:text-3xl">
+          <Button
+            variant="light"
+            className="flex h-auto items-center gap-4 p-0 text-2xl font-medium tracking-tight text-[#282623] hover:bg-transparent hover:italic md:text-3xl"
+          >
             More about me
             <svg
               width="24"
@@ -58,11 +62,11 @@ export function AgencyAbout() {
                 strokeLinejoin="round"
               />
             </svg>
-          </button>
+          </Button>
 
           <div className="h-64 w-48 overflow-hidden bg-zinc-300 grayscale transition-all duration-500 hover:grayscale-0 md:h-80 md:w-64">
             <img
-              src="https://images.unsplash.com/photo-1618077360395-f3068be8e001?q=80&w=1500&auto=format&fit=crop"
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Portrait"
               className="h-full w-full object-cover"
             />

@@ -73,7 +73,7 @@ function Example() {
         </HeroBadge>
         <HeroTitle>Data to enrich your online business</HeroTitle>
         <HeroDescription className="max-w-xl mx-auto">
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
+          Track user journeys, monitor real-time conversions, and automate customer insights without engineering bottlenecks.
         </HeroDescription>
         <HeroActions className="justify-center">
           <Button color="primary">Get started <ArrowRight size={16} className="ml-1" /></Button>
@@ -114,7 +114,7 @@ function Example() {
               Deploy your next web application in minutes with our premium React components. Beautifully designed, accessible, and ready for production.
             </HeroDescription>
             <HeroActions>
-              <Button color="primary" className="flex items-center gap-1">Start building <ArrowRight size={16} /></Button>
+              <Button color="primary" endContent={<ArrowRight size={16} />}>Start building</Button>
             </HeroActions>
           </HeroContent>
           <HeroMedia className="relative flex items-center justify-center">
@@ -232,15 +232,15 @@ function Example() {
               Create breathtaking web experiences that engage users and drive conversions with our expertly crafted UI toolkit.
             </p>
             <div className="flex items-center gap-4">
-              <Button color="primary" className="flex items-center gap-1 shadow-lg shadow-primary/20">Get Started <ArrowRight size={16} /></Button>
-              <Button variant="light" className="font-semibold text-zinc-700 dark:text-zinc-300">View Demo</Button>
+              <Button color="primary" endContent={<ArrowRight size={16} />}>Get Started</Button>
+              <Button variant="light">View Demo</Button>
             </div>
           </HeroContent>
           <div className="mt-auto"></div>
         </div>
         <div className="relative w-full h-full min-h-[50vh] lg:min-h-screen border-l border-zinc-200 dark:border-zinc-800">
           <img 
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069" 
+            src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=2000" 
             alt="Office Minimalist" 
             className="absolute inset-0 w-full h-full object-cover" 
           />
@@ -269,7 +269,7 @@ function Example() {
         action={
           <div className="flex items-center gap-2">
             <a href="#" className="text-sm font-semibold text-zinc-900 dark:text-white px-3 py-1">Log in</a>
-            <Button size="sm" className="rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900">Sign Up</Button>
+            <Button size="sm" color="dark" radius="full">Sign Up</Button>
           </div>
         }
       />
@@ -534,15 +534,15 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               </HeroBadge>
               <HeroTitle>Data to enrich your online business</HeroTitle>
               <HeroDescription className="mx-auto max-w-xl">
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat
-                commodo. Elit sunt amet fugiat veniam occaecat.
+                Track user journeys, monitor real-time conversions, and automate customer insights
+                without engineering bottlenecks.
               </HeroDescription>
               <HeroActions className="justify-center">
-                <Button color="primary" className="flex items-center gap-1">
-                  Get started <ArrowRight size={16} />
+                <Button color="primary" endContent={<ArrowRight size={16} />}>
+                  Get started
                 </Button>
-                <Button variant="light" className="flex items-center gap-1">
-                  Learn more <ArrowRight size={16} />
+                <Button variant="light" endContent={<ArrowRight size={16} />}>
+                  Learn more
                 </Button>
               </HeroActions>
             </HeroBody>
@@ -601,8 +601,8 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                     Beautifully designed, accessible, and ready for production.
                   </HeroDescription>
                   <HeroActions>
-                    <Button color="primary" className="flex items-center gap-1">
-                      Start building <ArrowRight size={16} />
+                    <Button color="primary" endContent={<ArrowRight size={16} />}>
+                      Start building
                     </Button>
                   </HeroActions>
                 </HeroContent>
@@ -725,8 +725,8 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                 Three Fiber.
               </HeroDescription>
               <HeroActions className="justify-center">
-                <Button color="primary" className="flex items-center gap-1">
-                  Get started <ArrowRight size={16} />
+                <Button color="primary" endContent={<ArrowRight size={16} />}>
+                  Get started
                 </Button>
               </HeroActions>
             </HeroBody>
@@ -794,7 +794,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
               </div>
               <div className="relative h-full min-h-[50vh] w-full border-l border-zinc-200 lg:min-h-screen dark:border-zinc-800">
                 <img
-                  src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069"
+                  src="https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=2000"
                   alt="Office Minimalist"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -838,10 +838,7 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                   >
                     Log in
                   </a>
-                  <Button
-                    size="sm"
-                    className="rounded-full bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
-                  >
+                  <Button size="sm" color="dark" radius="full">
                     Sign Up
                   </Button>
                 </div>
@@ -866,21 +863,14 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                     </h2>
                   </div>
                   <div className="relative z-10 mt-12 sm:mt-0">
-                    <div className="inline-flex cursor-pointer items-center gap-3 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black shadow-lg transition-colors hover:bg-zinc-100">
-                      <span>Explore editor</span>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <path d="M16 10a4 4 0 0 1-8 0" />
-                      </svg>
-                    </div>
+                    <Button
+                      size="md"
+                      color="light"
+                      radius="xl"
+                      endContent={<ArrowRight size={16} />}
+                    >
+                      Explore editor
+                    </Button>
                   </div>
 
                   {/* Minimalist Editor Illustration */}
@@ -1072,14 +1062,24 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
                 </span>
               }
               title="Data to enrich your online business"
-              description="Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat."
+              description="Track user journeys, monitor real-time conversions, and automate customer insights without engineering bottlenecks."
               actions={
                 <>
-                  <Button color="primary">
-                    Get started <ArrowRight size={16} className="ml-1" />
+                  <Button
+                    size="lg"
+                    radius="full"
+                    color="primary"
+                    endContent={<ArrowRight size={16} />}
+                  >
+                    Get started
                   </Button>
-                  <Button variant="light">
-                    Learn more <ArrowRight size={16} className="ml-1" />
+                  <Button
+                    size="lg"
+                    radius="full"
+                    variant="light"
+                    endContent={<ArrowRight size={16} />}
+                  >
+                    Learn more
                   </Button>
                 </>
               }

@@ -87,7 +87,7 @@ const staticGridCode = `import { LogoCloud, LogoCloudTitle, LogoCloudGrid, LogoC
 function Example() {
   return (
     <LogoCloud>
-      <LogoCloudTitle>Trusted by the world's most innovative teams</LogoCloudTitle>
+      <LogoCloudTitle>Compatible with leading web stacks</LogoCloudTitle>
       <LogoCloudGrid>
         {logos.map((logo) => (
           <LogoCloudItem key={logo.name}>
@@ -104,7 +104,7 @@ const tickerCode = `import { LogoCloud, LogoCloudTitle, LogoCloudTicker, LogoClo
 function Example() {
   return (
     <LogoCloud>
-      <LogoCloudTitle>Join thousands of companies building with us</LogoCloudTitle>
+      <LogoCloudTitle>Integrated across modern frontend frameworks</LogoCloudTitle>
       <LogoCloudTicker speed="normal" direction="left">
         {logos.map((logo) => (
           <LogoCloudItem key={logo.name}>
@@ -160,7 +160,7 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
           minHeight={200}
         >
           <LogoCloud>
-            <LogoCloudTitle>Trusted by the world's most innovative teams</LogoCloudTitle>
+            <LogoCloudTitle>Compatible with leading web stacks</LogoCloudTitle>
             <LogoCloudGrid>
               {logos.map((logo, i) => (
                 <LogoCloudItem key={i}>{logo.svg}</LogoCloudItem>
@@ -176,7 +176,7 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
           minHeight={200}
         >
           <LogoCloud>
-            <LogoCloudTitle>Join thousands of companies building with us</LogoCloudTitle>
+            <LogoCloudTitle>Integrated across modern frontend frameworks</LogoCloudTitle>
             <LogoCloudTicker speed="normal">
               {logos.map((logo, i) => (
                 <LogoCloudItem key={i}>{logo.svg}</LogoCloudItem>
@@ -195,12 +195,12 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
             code={logoCloudGlassCode}
             minHeight={200}
           >
-            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-zinc-950 dark:to-indigo-950/20">
-              <div className="absolute top-1/2 left-1/4 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/30 blur-[100px]" />
-              <div className="absolute top-1/2 right-1/4 h-96 w-96 translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/30 blur-[100px]" />
+            <div className="relative w-full overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-50 to-indigo-50/30 dark:from-zinc-950 dark:to-indigo-950/20">
+              <div className="bg-primary/10 absolute top-1/2 left-1/4 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[90px]" />
+              <div className="bg-primary/5 absolute top-1/2 right-1/4 h-80 w-80 translate-x-1/2 -translate-y-1/2 rounded-full blur-[90px]" />
 
               <LogoCloudGlass
-                title="Trusted by the world's most innovative teams"
+                title="Integrated across modern web frameworks"
                 logos={[
                   { name: "React", url: "/assets/marketing-section/logo/react-dev-logo.png" },
                   {
@@ -243,7 +243,7 @@ export default function LogoCloudDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
               {
                 prop: "title",
                 type: "string",
-                defaultVal: '"Trusted by..."',
+                defaultVal: '"Integrated across..."',
                 description: "Optional heading text above the logos.",
               },
             ]}

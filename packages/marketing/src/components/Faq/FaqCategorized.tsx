@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Accordion, AccordionItem } from "@hudbird/ui";
+import { Accordion, AccordionItem, Badge, Button } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { FaqItem } from "./Faq";
 
@@ -32,7 +32,7 @@ export function FaqCategorized({
   title = "Frequently asked questions",
   categories,
   className,
-  accentClassName = "text-blue-600 dark:text-blue-400",
+  accentClassName = "text-primary dark:text-primary-foreground",
 }: FaqCategorizedProps) {
   const [activeCategoryId, setActiveCategoryId] = useState<string>(
     categories.length > 0 ? categories[0].id : ""
@@ -71,28 +71,16 @@ export function FaqCategorized({
               {categories.map((category) => {
                 const isActive = activeCategoryId === category.id;
                 return (
-                  <button
+                  <Button
                     key={category.id}
                     onClick={() => setActiveCategoryId(category.id)}
-                    className={cn(
-                      "flex w-auto shrink-0 items-center gap-3 rounded-lg px-4 py-3 text-left text-sm font-medium whitespace-nowrap transition-all lg:w-full",
-                      isActive
-                        ? cn("bg-blue-50/50 dark:bg-blue-500/10", accentClassName)
-                        : "text-zinc-500 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-200"
-                    )}
+                    variant={isActive ? "flat" : "light"}
+                    color={isActive ? "primary" : "secondary"}
+                    startContent={category.icon}
+                    className="w-auto justify-start text-sm font-medium lg:w-full"
                   >
-                    {category.icon && (
-                      <span
-                        className={cn(
-                          "shrink-0 transition-colors",
-                          isActive ? accentClassName : "text-zinc-400"
-                        )}
-                      >
-                        {category.icon}
-                      </span>
-                    )}
                     {category.label}
-                  </button>
+                  </Button>
                 );
               })}
             </div>

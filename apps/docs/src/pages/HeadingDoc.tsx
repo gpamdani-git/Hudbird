@@ -478,7 +478,7 @@ export default function ArticleSections() {
                   setSelectedTag(val);
                   setSelectedSize(val);
                 }}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="h1">h1</option>
                 <option value="h2">h2</option>
@@ -497,7 +497,7 @@ export default function ArticleSections() {
               <select
                 value={selectedSize}
                 onChange={(e) => setSelectedSize(e.target.value as HeadingSize)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="h1">h1 (4xl/5xl)</option>
                 <option value="h2">h2 (3xl)</option>
@@ -516,7 +516,7 @@ export default function ArticleSections() {
               <select
                 value={selectedColor}
                 onChange={(e) => setSelectedColor(e.target.value as HeadingColor)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="default">Default</option>
                 <option value="primary">Primary</option>
@@ -532,7 +532,7 @@ export default function ArticleSections() {
               <select
                 value={selectedTracking}
                 onChange={(e) => setSelectedTracking(e.target.value as HeadingTracking)}
-                className="h-9 w-full rounded-lg border border-zinc-300 bg-white px-2.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                className="h-9 w-full rounded-xl border border-zinc-200/90 bg-white px-3.5 text-xs font-medium text-zinc-900 outline-none focus:ring-2 focus:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-100"
               >
                 <option value="tighter">Tighter</option>
                 <option value="tight">Tight</option>

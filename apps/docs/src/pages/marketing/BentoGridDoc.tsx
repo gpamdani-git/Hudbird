@@ -111,7 +111,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
     </div>
     <BentoCardBody className="pt-2 flex flex-col gap-1 pb-1">
       <Text variant="strong" className="text-lg">Predictive Modeling</Text>
-      <Text variant="muted" className="text-sm leading-relaxed">Our proprietary models analyze thousands of behavioral signals.</Text>
+      <Text variant="muted" className="text-sm leading-relaxed">Evaluate visitor actions in real-time to identify high-intent conversion paths.</Text>
     </BentoCardBody>
   </BentoCard>
   {/* ... other 5 cards */}
@@ -152,7 +152,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
 
               <BentoGrid className="md:auto-rows-[22rem] md:grid-cols-4">
                 {/* Card 1: Predictive Modeling */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm md:col-span-2 dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 md:col-span-2 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 flex-col items-center justify-center gap-3 overflow-hidden rounded-xl border border-indigo-100/50 bg-indigo-50/50 dark:border-indigo-800/50 dark:bg-indigo-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent blur-2xl dark:from-indigo-700/30" />
                     {[
@@ -172,7 +172,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                             ease: "easeInOut",
                           },
                         }}
-                        className={`relative z-10 flex h-8 items-center justify-between rounded-full border border-zinc-100 bg-white px-2 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 ${item.width} max-w-[200px]`}
+                        className={`relative z-10 flex h-8 items-center justify-between rounded-full border border-zinc-100 bg-white px-3 shadow-sm dark:border-zinc-700 dark:bg-zinc-800 ${item.width} max-w-[200px]`}
                       >
                         <div className="flex items-center gap-2">
                           <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900">
@@ -193,13 +193,14 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                       Predictive Modeling
                     </Text>
                     <Text variant="muted" className="mt-1 text-sm leading-relaxed">
-                      Our proprietary models analyze thousands of behavioral signals for sales.
+                      Evaluate visitor actions in real-time to identify high-intent conversion
+                      paths.
                     </Text>
                   </div>
                 </BentoCard>
 
                 {/* Card 2: AI Marketing */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden rounded-xl border border-blue-100/50 bg-blue-50/50 dark:border-blue-800/50 dark:bg-blue-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-200/50 via-transparent to-transparent blur-2xl dark:from-blue-700/30" />
                     <div className="absolute h-36 w-36 rounded-full border border-blue-200 dark:border-blue-700/50" />
@@ -244,7 +245,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                 </BentoCard>
 
                 {/* Card 3: AI Sales Agent */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 flex-col items-center justify-center overflow-hidden rounded-xl border border-sky-100/50 bg-sky-50/50 p-4 dark:border-sky-800/50 dark:bg-sky-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-sky-200/50 via-transparent to-transparent blur-2xl dark:from-sky-700/30" />
                     <div className="relative z-10 flex w-full max-w-[200px] flex-col gap-3">
@@ -300,7 +301,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                 </BentoCard>
 
                 {/* Card 4: Analyzes All Website */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm md:col-span-1 dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 md:col-span-1 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden rounded-xl border border-cyan-100/50 bg-cyan-50/50 dark:border-cyan-800/50 dark:bg-cyan-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-cyan-200/50 via-transparent to-transparent blur-2xl dark:from-cyan-700/30" />
                     <svg
@@ -355,7 +356,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                 </BentoCard>
 
                 {/* Card 5: Engages via text */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm md:col-span-2 dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 md:col-span-2 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 items-center justify-center overflow-hidden rounded-xl border border-blue-100/50 bg-blue-50/50 p-4 dark:border-blue-800/50 dark:bg-blue-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,_var(--tw-gradient-stops))] from-blue-200/50 via-transparent to-transparent blur-2xl dark:from-blue-700/30" />
                     <motion.div
@@ -385,7 +386,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                 </BentoCard>
 
                 {/* Card 6: Actionable Insights */}
-                <BentoCard className="flex flex-col justify-between border border-zinc-200 bg-white p-2 shadow-sm dark:border-white/10 dark:bg-zinc-900">
+                <BentoCard className="flex flex-col justify-between rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-sm sm:p-4 dark:border-white/[0.08] dark:bg-[#161618]">
                   <div className="relative flex w-full flex-1 items-end justify-center overflow-hidden rounded-xl border border-indigo-100/50 bg-indigo-50/50 p-4 dark:border-indigo-800/50 dark:bg-indigo-900/20">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-200/50 via-transparent to-transparent blur-xl dark:from-indigo-700/30" />
 
@@ -433,7 +434,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
               <BentoGrid className="md:auto-rows-[24rem] md:grid-cols-3 xl:grid-cols-3">
                 {/* Card 1 */}
                 <BentoCard className="border-transparent md:col-span-2 dark:border-white/10">
-                  <BentoCardBackground src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200&keywords=photography,minimal" />
+                  <BentoCardBackground src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1200" />
                   <BentoCardContent>
                     <BentoCardFooter
                       isBlurred
@@ -451,7 +452,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
 
                 {/* Card 2 */}
                 <BentoCard className="border-transparent dark:border-white/10">
-                  <BentoCardBackground src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&q=80&w=1200&keywords=photography,minimal" />
+                  <BentoCardBackground src="https://images.pexels.com/photos/5473955/pexels-photo-5473955.jpeg?auto=compress&cs=tinysrgb&w=1200" />
                   <BentoCardContent>
                     <BentoCardFooter
                       isBlurred
@@ -537,7 +538,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
 
                 {/* Card 2: Image */}
                 <BentoCard className="border-transparent md:col-span-2 md:row-span-1 dark:border-white/10">
-                  <BentoCardBackground src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200&keywords=abstract,minimal,white" />
+                  <BentoCardBackground src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=1200" />
                   <div className="absolute inset-0 z-0 rounded-[inherit] bg-gradient-to-t from-black/80 to-transparent" />
                   <BentoCardContent className="justify-end p-6">
                     <div className="space-y-1">
@@ -600,7 +601,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
 
                 {/* Card 4: Image & Blurred Footer (Formerly Card 3) */}
                 <BentoCard className="border-transparent md:col-span-2 md:row-span-1 dark:border-white/10">
-                  <BentoCardBackground src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1200&keywords=architecture,minimal,monochrome" />
+                  <BentoCardBackground src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1200" />
                   <BentoCardContent>
                     <BentoCardFooter
                       isBlurred
@@ -638,7 +639,7 @@ export default function BentoGridDoc({ onOpenSidebar }: { onOpenSidebar?: () => 
                     className: "md:col-span-2",
                     title: "Predictive Modeling",
                     description:
-                      "Our proprietary models analyze thousands of behavioral signals to identify visitors who are ready to buy.",
+                      "Evaluate visitor actions in real-time to identify high-intent conversion paths.",
                     icon: <Zap size={20} />,
                   },
                   {

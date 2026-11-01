@@ -59,6 +59,10 @@
 
 - ❌ **No Emojis in Production UI:** (🚀, 💡, 🔥, ✨, ⚡). Use geometric Lucide SVG icons.
 - ❌ **No Rainbow Icon Badge Squares Next to Headings:** Headings assert authority through typography (`Outfit 500 font-medium tracking-[-0.8px]`) and whitespace alone.
+- ❌ **No Rainbow / Multicolored Icon Cards & Gold-Box Slop:** Never apply arbitrary multicolored or gold container boxes without clear functional semantics. Maintain monochromatic Obsidian hierarchy with single purposeful accent.
+- ❌ **No Gratuitous AI / Sparkle Icons:** Never insert `Sparkles`, `Wand2`, or `Bot` icons into non-AI components, headers, or registries. Adhere to Jakob's Law (mental models: official brand SVG, document glyphs, terminal glyphs).
+- ❌ **No Stretched 2-Column / Forced Wide Containers for Long Text:** Long descriptions must flow in a single vertical reading channel capped at `65ch` / `768px` (`max-w-3xl`) with monumental vertical rhythm. Never force long copy into cramped side-by-side columns.
+- ❌ **No Cramped Button Padding (`px-2`, `px-2.5`):** Always maintain anisotropic vision padding ($X:Y \ge 1.5:1$ to $2.5:1$) with minimum Apple HIG 44px standard height (`h-11`) or 36px compact (`h-9`).
 - ❌ **No Cards-Inside-Cards-Inside-Cards:** Russian-doll container nesting without informational purpose is banned.
 - ❌ **No Pure Black (`#000000`):** Use Obsidian Charcoal (`#161618`) or Deep Void Slate (`#090D16`).
 - ❌ **No Generic 3-Equal Cards Rows:** Use asymmetric Bento Grids or 2-column alternating layouts.

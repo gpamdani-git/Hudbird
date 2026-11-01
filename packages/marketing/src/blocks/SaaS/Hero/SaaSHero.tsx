@@ -45,6 +45,7 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Card,
   Text,
   Navbar,
   NavbarBrand,
@@ -151,12 +152,15 @@ export const SaaSHero = () => (
               className="w-full flex-1 bg-transparent text-sm text-zinc-900 placeholder-zinc-400 outline-none dark:text-white dark:placeholder-zinc-500"
               required
             />
-            <button
+            <Button
               type="button"
-              className="shrink-0 rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              size="sm"
+              radius="full"
+              color="primary"
+              className="shrink-0 font-semibold"
             >
               Get started
-            </button>
+            </Button>
           </form>
         </motion.div>
       </div>
@@ -237,12 +241,12 @@ export const SaaSHero = () => (
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button className="hidden rounded-md border border-zinc-200 px-3 py-1.5 text-sm text-zinc-600 sm:block dark:border-white/10 dark:text-zinc-300">
+                  <Button size="sm" variant="bordered" className="hidden sm:inline-flex">
                     Import
-                  </button>
-                  <button className="flex items-center gap-1.5 rounded-md bg-zinc-900 px-3 py-1.5 text-sm text-white dark:bg-white/10">
-                    <Star className="h-3 w-3" /> New Board
-                  </button>
+                  </Button>
+                  <Button size="sm" color="primary" startContent={<Star className="h-3 w-3" />}>
+                    New Board
+                  </Button>
                 </div>
               </div>
 

@@ -415,7 +415,7 @@ function StateContent({ stateKey }: { stateKey: string }) {
         <div className="flex h-full w-full flex-col justify-center p-6 text-white select-none">
           <div className="flex w-full items-center gap-4">
             <div className="h-12 w-12 shrink-0 overflow-hidden rounded-xl shadow-sm">
-              <div className="h-full w-full bg-[url('https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=150&auto=format&fit=crop')] bg-cover bg-center" />
+              <div className="h-full w-full bg-[url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&w=300')] bg-cover bg-center" />
             </div>
             <div className="flex flex-col">
               <span className="text-[16px] leading-tight font-semibold tracking-tight text-white/95">

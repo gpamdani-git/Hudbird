@@ -191,7 +191,7 @@ export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentPro
         role="dialog"
         aria-modal="true"
         className={cn(
-          "animate-in fade-in-0 zoom-in-95 absolute z-50 w-72 rounded-2xl border border-black/[0.08] bg-white/95 p-4 shadow-xl shadow-zinc-900/10 backdrop-blur-2xl transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]",
+          "animate-in fade-in-0 zoom-in-95 absolute z-50 w-72 rounded-2xl border border-black/[0.08] bg-white/95 p-4 shadow-xl shadow-zinc-900/10 backdrop-blur-2xl transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] sm:p-5 dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-[0_20px_50px_rgba(0,0,0,0.6)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]",
           placementClasses[placement],
           className
         )}

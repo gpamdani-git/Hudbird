@@ -254,7 +254,7 @@ export default function App() {
             You can override the default tooltip by passing a <code>customTooltip</code> prop.
           </p>
           <ComponentPreview>
-            <Card className="mx-auto w-full max-w-4xl p-6">
+            <Card className="mx-auto w-full max-w-4xl border border-zinc-200/80 p-6 dark:border-white/[0.08] dark:bg-[#161618]">
               <AreaChart
                 data={chartData}
                 index="month"
@@ -262,17 +262,21 @@ export default function App() {
                 customTooltip={({ active, payload, label }: any) => {
                   if (active && payload && payload.length) {
                     return (
-                      <div className="min-w-32 rounded-lg border border-zinc-800 bg-zinc-900 p-3 text-white shadow-xl">
-                        <p className="mb-2 border-b border-zinc-700 pb-2 text-sm font-bold">
+                      <div className="min-w-[10rem] rounded-xl border border-zinc-200/90 bg-white/95 px-3.5 py-2.5 shadow-xl shadow-black/5 backdrop-blur-xl dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-black/50">
+                        <p className="mb-2 border-b border-zinc-100 pb-1.5 text-xs font-semibold tracking-tight text-zinc-900 dark:border-white/[0.08] dark:text-zinc-100">
                           {label}
                         </p>
                         {payload.map((item: any, i: number) => (
                           <div
                             key={i}
-                            className="mt-1 flex items-center justify-between gap-4 text-sm"
+                            className="mt-1 flex items-center justify-between gap-4 text-xs"
                           >
-                            <span style={{ color: item.color }}>{item.name}</span>
-                            <span className="font-mono">{item.value}</span>
+                            <span style={{ color: item.color }} className="font-medium">
+                              {item.name}
+                            </span>
+                            <span className="font-semibold text-zinc-900 tabular-nums dark:text-zinc-100">
+                              {item.value}
+                            </span>
                           </div>
                         ))}
                       </div>
@@ -400,9 +404,9 @@ export default function App() {
             sparkline variant for metric dashboards.
           </p>
           <ComponentPreview>
-            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
               {/* Card 1 */}
-              <Card className="border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
+              <Card className="border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between gap-6">
                   <div className="flex-1">
                     <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
@@ -432,7 +436,7 @@ export default function App() {
               </Card>
 
               {/* Card 2 */}
-              <Card className="border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
+              <Card className="border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between gap-6">
                   <div className="flex-1">
                     <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
@@ -462,7 +466,7 @@ export default function App() {
               </Card>
 
               {/* Card 3 */}
-              <Card className="border border-zinc-200 p-6 shadow-sm dark:border-zinc-800">
+              <Card className="border border-zinc-200/80 p-6 shadow-sm dark:border-white/[0.08] dark:bg-[#161618]">
                 <div className="flex items-center justify-between gap-6">
                   <div className="flex-1">
                     <div className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
@@ -494,28 +498,28 @@ export default function App() {
           </ComponentPreview>
           <CodeBlock
             code={`<div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-  <Card className="p-4 border border-zinc-200 shadow-sm flex flex-col gap-4">
+  <Card className="p-6 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col gap-4">
     <div className="flex justify-between items-center">
       <span className="text-zinc-500 font-medium text-sm">Total Revenue</span>
-      <span className="text-green-500 text-xs font-semibold px-2 py-1 bg-green-100 rounded-md">+12.5%</span>
+      <Badge variant="soft" color="success">+12.5%</Badge>
     </div>
     <div className="text-3xl font-bold">$229,401</div>
     <AreaChart data={kpiData1} index="day" categories={["value"]} variant="sparkline" colors={["#3b82f6"]} />
   </Card>
   
-  <Card className="p-4 border border-zinc-200 shadow-sm flex flex-col gap-4">
+  <Card className="p-6 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col gap-4">
     <div className="flex justify-between items-center">
       <span className="text-zinc-500 font-medium text-sm">Bounce Rate</span>
-      <span className="text-red-500 text-xs font-semibold px-2 py-1 bg-red-100 rounded-md">+2.1%</span>
+      <Badge variant="soft" color="danger">+2.1%</Badge>
     </div>
     <div className="text-3xl font-bold">42.3%</div>
     <AreaChart data={kpiData2} index="day" categories={["value"]} variant="sparkline" colors={["#ef4444"]} />
   </Card>
 
-  <Card className="p-4 border border-zinc-200 shadow-sm flex flex-col gap-4">
+  <Card className="p-6 border border-zinc-200 dark:border-zinc-800 shadow-sm flex flex-col gap-4">
     <div className="flex justify-between items-center">
       <span className="text-zinc-500 font-medium text-sm">New Users</span>
-      <span className="text-green-500 text-xs font-semibold px-2 py-1 bg-green-100 rounded-md">+5.2%</span>
+      <Badge variant="soft" color="success">+5.2%</Badge>
     </div>
     <div className="text-3xl font-bold">98K</div>
     <AreaChart data={kpiData3} index="day" categories={["value"]} variant="sparkline" colors={["#22c55e"]} />

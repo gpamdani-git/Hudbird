@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@hudbird/ui";
 import {
   motion,
   AnimatePresence,
@@ -309,7 +310,11 @@ export function AccommodationSlider({
 
             {/* Right: Buttons */}
             <div className="flex w-full flex-col items-start gap-4 md:w-auto md:flex-row md:items-center md:gap-6">
-              <button className="flex w-full items-center justify-between border-b border-[#e3ded4] pb-3 text-sm text-[#4a4a4a] transition-opacity hover:opacity-70 md:w-auto md:justify-start md:gap-2 md:border-[#2a2a2a] md:pb-1">
+              <Button
+                variant="light"
+                size="sm"
+                className="flex h-auto w-full items-center justify-between rounded-none border-b border-[#e3ded4] px-0 pb-3 text-sm text-[#4a4a4a] transition-opacity hover:opacity-70 md:w-auto md:justify-start md:gap-2 md:border-[#2a2a2a] md:pb-1"
+              >
                 Overview
                 <span className="flex h-4 w-4 items-center justify-center rounded-full border border-current">
                   <svg
@@ -323,9 +328,13 @@ export function AccommodationSlider({
                     <path d="M5 3l14 9-14 9V3z" />
                   </svg>
                 </span>
-              </button>
+              </Button>
               <span className="hidden text-xs text-[#d3cec4] md:block">⋮</span>
-              <button className="flex w-full items-center justify-between border-b border-[#e3ded4] pb-3 text-sm text-[#4a4a4a] transition-opacity hover:opacity-70 md:w-auto md:justify-start md:gap-2 md:border-[#2a2a2a] md:pb-1">
+              <Button
+                variant="light"
+                size="sm"
+                className="flex h-auto w-full items-center justify-between rounded-none border-b border-[#e3ded4] px-0 pb-3 text-sm text-[#4a4a4a] transition-opacity hover:opacity-70 md:w-auto md:justify-start md:gap-2 md:border-[#2a2a2a] md:pb-1"
+              >
                 {roomTypeName}
                 <span className="flex h-4 w-4 items-center justify-center rounded-full border border-current">
                   <svg
@@ -339,7 +348,7 @@ export function AccommodationSlider({
                     <path d="M5 3l14 9-14 9V3z" />
                   </svg>
                 </span>
-              </button>
+              </Button>
             </div>
           </div>
         </div>

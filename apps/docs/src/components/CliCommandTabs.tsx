@@ -40,7 +40,7 @@ export const CliCommandTabs: React.FC<CliCommandTabsProps> = ({ commandType }) =
             <button
               key={pm}
               onClick={() => setPkgManager(pm)}
-              className={`rounded-md px-2.5 py-1 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
+              className={`h-7 rounded-md px-3 font-mono text-xs font-semibold transition-all duration-150 active:scale-95 ${
                 pkgManager === pm
                   ? "bg-white text-zinc-950 shadow-xs dark:bg-white/15 dark:text-white"
                   : "text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
@@ -55,7 +55,7 @@ export const CliCommandTabs: React.FC<CliCommandTabsProps> = ({ commandType }) =
           type="button"
           onClick={handleCopy}
           aria-label="Copy CLI command"
-          className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold transition-all duration-150 active:scale-90 ${
+          className={`flex h-7 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold transition-all duration-150 active:scale-90 ${
             copied
               ? "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400"
               : "bg-black/5 text-zinc-600 hover:-translate-y-0.5 hover:bg-black/10 hover:text-zinc-950 dark:bg-white/5 dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"

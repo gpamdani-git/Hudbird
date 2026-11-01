@@ -69,7 +69,7 @@ const ComposedChart = React.forwardRef<HTMLDivElement, ComposedChartProps>(
       layout = "horizontal",
       customTooltip,
       children,
-      barRadius = 4,
+      barRadius = 6,
       className,
       ...props
     },
@@ -98,7 +98,7 @@ const ComposedChart = React.forwardRef<HTMLDivElement, ComposedChartProps>(
                 vertical={!isVertical}
                 horizontal={isVertical || layout === "horizontal"}
                 stroke="currentColor"
-                className="text-zinc-200 dark:text-zinc-800"
+                className="text-zinc-200/80 dark:text-white/[0.08]"
               />
             )}
 
@@ -130,7 +130,10 @@ const ComposedChart = React.forwardRef<HTMLDivElement, ComposedChartProps>(
 
             {showTooltip && (
               <Tooltip
-                cursor={{ fill: "currentColor", opacity: 0.05 }}
+                cursor={{
+                  fill: "currentColor",
+                  className: "text-zinc-200/40 dark:text-white/[0.04]",
+                }}
                 content={
                   customTooltip ? customTooltip : <ChartTooltip valueFormatter={valueFormatter} />
                 }
@@ -144,8 +147,13 @@ const ComposedChart = React.forwardRef<HTMLDivElement, ComposedChartProps>(
                 iconType="circle"
                 wrapperStyle={{
                   paddingTop: "20px",
-                  fontSize: "14px",
+                  fontSize: "13px",
                 }}
+                formatter={(value) => (
+                  <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                    {value}
+                  </span>
+                )}
               />
             )}
 

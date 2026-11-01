@@ -7,6 +7,7 @@ import {
   SidebarNav,
   SidebarItem,
   SidebarFooter,
+  Avatar,
 } from "@hudbird/ui";
 import {
   Home,
@@ -33,11 +34,11 @@ export default function SidebarBorderedDemo() {
             </h1>
             <hr className="mb-6 w-full border-t border-zinc-950/10 dark:border-white/10" />
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-40 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-40 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
             </div>
-            <div className="mt-6 h-64 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+            <div className="mt-6 h-64 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
           </div>
         );
       case "Inbox":
@@ -48,9 +49,9 @@ export default function SidebarBorderedDemo() {
             </h1>
             <hr className="mb-6 w-full border-t border-zinc-950/10 dark:border-white/10" />
             <div className="space-y-4">
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
-              <div className="h-20 rounded-xl border border-zinc-200/50 bg-zinc-100 dark:border-zinc-800/50 dark:bg-zinc-900/80"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
+              <div className="h-20 rounded-2xl border border-zinc-200/80 bg-zinc-100 dark:border-white/[0.08] dark:bg-[#161618]"></div>
             </div>
           </div>
         );
@@ -204,15 +205,9 @@ export default function SidebarBorderedDemo() {
           </div>
         </SidebarContent>
 
-        <SidebarFooter className="border-t border-zinc-200 dark:border-zinc-800/50">
+        <SidebarFooter className="border-t border-zinc-200/80 dark:border-white/[0.08]">
           <div className="flex cursor-pointer items-center gap-3 overflow-hidden px-1 py-1 group-aria-[expanded=false]:justify-center">
-            <div className="h-8 w-8 shrink-0 overflow-hidden rounded-lg border border-zinc-300 bg-zinc-200 dark:border-zinc-700 dark:bg-zinc-800">
-              <img
-                src="https://i.pravatar.cc/150?img=47"
-                alt="Avatar"
-                className="h-full w-full object-cover"
-              />
-            </div>
+            <Avatar size="sm" src="https://i.pravatar.cc/150?img=47" alt="Erica" />
             <div className="flex flex-col truncate transition-all duration-300 group-aria-[expanded=false]:w-0 group-aria-[expanded=false]:opacity-0">
               <span className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                 Erica
@@ -223,7 +218,7 @@ export default function SidebarBorderedDemo() {
         </SidebarFooter>
       </Sidebar>
 
-      <main className="flex-1 overflow-y-auto bg-white dark:bg-zinc-950">{renderContent()}</main>
+      <main className="flex-1 overflow-y-auto bg-white dark:bg-[#121214]">{renderContent()}</main>
     </div>
   );
 }

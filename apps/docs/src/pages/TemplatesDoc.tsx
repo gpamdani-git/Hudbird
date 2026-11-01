@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@hudbird/ui";
+import { Button, Badge, Tabs, Tab } from "@hudbird/ui";
 import { Eye, Search, Filter, Code, Sparkles, ArrowRight } from "lucide-react";
 import { TemplateCodeModal } from "../components/TemplateCodeModal";
 import { ProPricingModal } from "../components/ProPricingModal";
@@ -417,56 +417,64 @@ export default function TemplatesDoc() {
       {/* Main Content Area */}
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Filters Bar */}
-        <div className="mb-8 flex items-center justify-between">
-          <div className="flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-100 p-1 dark:border-white/5 dark:bg-white/5">
-            {(["Trending", "Best", "Recent"] as const).map((f) => (
-              <button
-                key={f}
-                onClick={() => setFilter(f)}
-                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${filter === f ? "bg-white text-zinc-900 shadow-sm dark:bg-white/10 dark:text-white" : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white"}`}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-          <div className="flex gap-3">
-            <button className="flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
-              Price <Filter className="h-3 w-3" />
-            </button>
-            <button className="flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10">
-              Style <Filter className="h-3 w-3" />
-            </button>
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+          <Tabs
+            size="sm"
+            variant="solid"
+            radius="full"
+            selectedKey={filter}
+            onSelectionChange={(k) => setFilter(k as "Trending" | "Best" | "Recent")}
+          >
+            <Tab tabKey="Trending" title="Trending" />
+            <Tab tabKey="Best" title="Best" />
+            <Tab tabKey="Recent" title="Recent" />
+          </Tabs>
+          <div className="flex items-center gap-2.5">
+            <Button size="sm" variant="bordered" radius="full" color="secondary">
+              <span>Price</span>
+              <Filter className="h-3 w-3 opacity-60" />
+            </Button>
+            <Button size="sm" variant="bordered" radius="full" color="secondary">
+              <span>Style</span>
+              <Filter className="h-3 w-3 opacity-60" />
+            </Button>
           </div>
         </div>
 
         {/* Selected Filter Labels */}
         {(activeCategory || searchQuery) && (
-          <div className="mb-8 flex items-center gap-3">
+          <div className="mb-8 flex flex-wrap items-center gap-3">
             <span className="text-sm text-zinc-500 dark:text-zinc-400">Showing results for:</span>
             {searchQuery && (
-              <span className="flex items-center gap-2 rounded-full bg-zinc-100 px-3 py-1.5 text-xs text-zinc-700 dark:bg-white/10 dark:text-white">
-                "{searchQuery}"
+              <Badge size="md" variant="flat" color="secondary" className="gap-2">
+                <span>"{searchQuery}"</span>
                 <button
+                  type="button"
                   onClick={() => setSearchQuery("")}
-                  className="hover:text-red-500 dark:hover:text-red-400"
+                  className="cursor-pointer hover:text-rose-500 dark:hover:text-rose-400"
+                  aria-label="Clear search"
                 >
                   &times;
                 </button>
-              </span>
+              </Badge>
             )}
             {activeCategory && (
-              <span className="flex items-center gap-2 rounded-full bg-zinc-100 px-3 py-1.5 text-xs text-zinc-700 dark:bg-white/10 dark:text-white">
-                {activeCategory} {activeSubCategory ? `> ${activeSubCategory}` : ""}
+              <Badge size="md" variant="flat" color="secondary" className="gap-2">
+                <span>
+                  {activeCategory} {activeSubCategory ? `> ${activeSubCategory}` : ""}
+                </span>
                 <button
+                  type="button"
                   onClick={() => {
                     setActiveCategory(null);
                     setActiveSubCategory(null);
                   }}
-                  className="hover:text-red-500 dark:hover:text-red-400"
+                  className="cursor-pointer hover:text-rose-500 dark:hover:text-rose-400"
+                  aria-label="Clear category"
                 >
                   &times;
                 </button>
-              </span>
+              </Badge>
             )}
           </div>
         )}
@@ -498,9 +506,13 @@ export default function TemplatesDoc() {
                     </h3>
                     <p className="mt-0.5 text-sm text-zinc-500">{template.author}</p>
                   </div>
-                  <div className="rounded-md bg-zinc-100 px-2.5 py-1 text-xs font-semibold text-zinc-900 dark:bg-white/10 dark:text-white">
+                  <Badge
+                    variant="soft"
+                    size="sm"
+                    color={template.price.toLowerCase() === "free" ? "dark" : "primary"}
+                  >
                     {template.price}
-                  </div>
+                  </Badge>
                 </div>
               </div>
             ))}

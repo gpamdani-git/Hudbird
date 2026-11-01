@@ -32,11 +32,11 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
     {
       className,
       badge,
-      title = "Everything you need.",
-      description = "A complete toolkit to build better, faster, and more beautifully.",
+      title = "Everything you need to ship faster",
+      description = "A complete component system designed for accessibility, velocity, and visual polish.",
       features,
-      glowClassName = "bg-blue-500/10 dark:bg-blue-500/20",
-      iconClassName = "bg-blue-600/10 text-blue-600 ring-blue-600/20 dark:bg-blue-500/20 dark:text-blue-300 dark:ring-blue-500/30",
+      glowClassName = "bg-primary/10 dark:bg-primary/20",
+      iconClassName = "bg-primary/10 text-primary ring-1 ring-primary/20 dark:bg-primary/20 dark:text-primary-foreground dark:ring-primary/30",
       ...props
     },
     ref

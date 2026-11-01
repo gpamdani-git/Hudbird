@@ -27,14 +27,14 @@ export const selectTriggerVariants = cva(
   {
     variants: {
       variant: {
-        flat: "bg-muted text-foreground hover:bg-muted/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        flat: "bg-muted/80 text-foreground hover:bg-muted dark:bg-[#161618] border border-black/[0.04] dark:border-white/[0.06] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         bordered:
-          "bg-transparent border border-border text-foreground hover:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "bg-transparent border border-black/[0.08] dark:border-white/[0.08] text-foreground hover:border-foreground/30 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       },
       size: {
         sm: "h-9 px-3.5 text-xs gap-2",
-        md: "h-10 px-4 text-sm gap-2.5",
-        lg: "h-12 px-5 text-base gap-3",
+        md: "h-11 px-4 text-sm gap-2.5",
+        lg: "h-13 px-5 text-base gap-3",
       },
       radius: {
         none: "rounded-none",
@@ -250,14 +250,18 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
                 {selectedLabel || placeholder}
               </span>
 
-              <ChevronDown
-                className={cn(
-                  "text-muted-foreground ml-2 shrink-0 transition-transform duration-200",
-                  size === "sm" ? "h-3.5 w-3.5" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
-                  isOpen && "text-foreground rotate-180"
-                )}
+              <div
+                className="ml-2 flex h-5 w-5 shrink-0 items-center justify-center"
                 aria-hidden="true"
-              />
+              >
+                <ChevronDown
+                  className={cn(
+                    "text-muted-foreground transition-transform duration-200",
+                    size === "sm" ? "h-3.5 w-3.5" : size === "lg" ? "h-5 w-5" : "h-4 w-4",
+                    isOpen && "text-foreground rotate-180"
+                  )}
+                />
+              </div>
             </button>
 
             {/* Dropdown List Overlay */}
@@ -265,7 +269,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
               <div
                 role="listbox"
                 tabIndex={-1}
-                className="animate-in fade-in-0 zoom-in-95 border-border/60 bg-popover text-popover-foreground absolute right-0 left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border p-1.5 shadow-xl duration-100 outline-none"
+                className="animate-in fade-in-0 zoom-in-95 text-popover-foreground absolute right-0 left-0 z-50 mt-2 max-h-60 w-full overflow-y-auto rounded-2xl border border-black/[0.08] bg-white/95 p-1.5 shadow-2xl shadow-black/10 backdrop-blur-2xl duration-100 outline-none dark:border-white/[0.08] dark:bg-[#161618]/95 dark:shadow-black/60"
               >
                 {children}
               </div>
@@ -322,15 +326,15 @@ export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         className={cn(
-          "flex cursor-pointer items-center justify-between rounded-xl transition-all outline-none select-none",
+          "flex cursor-pointer items-center justify-between rounded-xl transition-all outline-none select-none active:scale-[0.98]",
           size === "sm"
-            ? "px-2.5 py-1.5 text-xs"
+            ? "px-3 py-1.5 text-xs"
             : size === "lg"
-              ? "px-3.5 py-2.5 text-base"
-              : "px-3 py-2 text-sm",
-          "hover:bg-accent focus-visible:bg-accent hover:text-accent-foreground focus-visible:text-accent-foreground",
+              ? "px-4 py-3 text-base"
+              : "px-3.5 py-2.5 text-sm",
+          "hover:text-accent-foreground focus-visible:text-accent-foreground hover:bg-zinc-100 focus-visible:bg-zinc-100 dark:hover:bg-[#202124] dark:focus-visible:bg-[#202124]",
           isSelected
-            ? "bg-accent text-accent-foreground font-semibold"
+            ? "text-foreground bg-zinc-100 font-semibold dark:bg-[#202124]"
             : "text-popover-foreground font-normal",
           disabled &&
             "text-muted-foreground cursor-not-allowed opacity-40 hover:bg-transparent dark:hover:bg-transparent",

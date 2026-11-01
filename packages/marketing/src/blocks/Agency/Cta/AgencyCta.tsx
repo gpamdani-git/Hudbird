@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Button } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 
 export function AgencyCta() {
@@ -64,9 +65,13 @@ export function AgencyCta() {
         />
 
         <div className="relative z-10 mt-20 md:mt-32">
-          <button className="border border-[#F4F2ED] bg-black px-8 py-4 text-xs font-bold tracking-widest text-[#F4F2ED] uppercase transition-colors hover:bg-[#F4F2ED] hover:text-black">
+          <Button
+            variant="bordered"
+            radius="none"
+            className="h-auto border-[#F4F2ED] bg-black px-8 py-4 text-xs font-bold tracking-widest text-[#F4F2ED] uppercase hover:bg-[#F4F2ED] hover:text-black"
+          >
             START A PROJECT
-          </button>
+          </Button>
         </div>
       </div>
 

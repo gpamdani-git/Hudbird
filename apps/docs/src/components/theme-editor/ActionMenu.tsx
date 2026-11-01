@@ -3,6 +3,8 @@ import { useThemeEditor } from "./ThemeEditorContext";
 import { Copy, Terminal, Check, Code, Download, Sparkles, Sliders, Palette } from "lucide-react";
 import {
   Button,
+  Tabs,
+  Tab,
   Dialog,
   DialogContent,
   DialogHeader,
@@ -64,58 +66,35 @@ export const ThemeExportDialog = () => {
         </DialogHeader>
 
         {/* Segmented Navigation Tabs */}
-        <div className="flex flex-wrap items-center gap-1 rounded-xl border border-zinc-200 bg-zinc-100/80 p-1 dark:border-zinc-800 dark:bg-zinc-900/80">
-          <button
-            type="button"
-            onClick={() => setActiveTab("tailwind")}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-              activeTab === "tailwind"
-                ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            }`}
+        <div className="scrollbar-none overflow-x-auto pb-1">
+          <Tabs
+            size="sm"
+            variant="solid"
+            radius="md"
+            selectedKey={activeTab}
+            onSelectionChange={(k) => setActiveTab(k as ExportTab)}
           >
-            <Sparkles className="h-3.5 w-3.5 text-indigo-500" />
-            Tailwind v4 (@theme)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab("figma")}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-              activeTab === "figma"
-                ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            }`}
-          >
-            <Palette className="h-3.5 w-3.5 text-purple-500" />
-            Figma Tokens Studio (JSON)
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab("css")}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-              activeTab === "css"
-                ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            }`}
-          >
-            <Code className="h-3.5 w-3.5 text-emerald-500" />
-            CSS :root Variables
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveTab("components-json")}
-            className={`flex cursor-pointer items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
-              activeTab === "components-json"
-                ? "bg-white font-semibold text-zinc-900 shadow-xs dark:bg-zinc-800 dark:text-white"
-                : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-            }`}
-          >
-            <Sliders className="h-3.5 w-3.5 text-amber-500" />
-            components.json
-          </button>
+            <Tab
+              tabKey="tailwind"
+              title="Tailwind v4 (@theme)"
+              icon={<Palette className="h-3.5 w-3.5 opacity-70" />}
+            />
+            <Tab
+              tabKey="figma"
+              title="Figma Tokens Studio"
+              icon={<Sliders className="h-3.5 w-3.5 opacity-70" />}
+            />
+            <Tab
+              tabKey="css"
+              title="CSS :root Variables"
+              icon={<Code className="h-3.5 w-3.5 opacity-70" />}
+            />
+            <Tab
+              tabKey="components-json"
+              title="components.json"
+              icon={<Terminal className="h-3.5 w-3.5 opacity-70" />}
+            />
+          </Tabs>
         </div>
 
         <div className="custom-scrollbar flex max-h-[55vh] flex-col gap-4 overflow-y-auto pr-1">
@@ -124,30 +103,32 @@ export const ThemeExportDialog = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
+                  <h4 className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
                     Tailwind CSS v4 Native @theme Directive
                   </h4>
-                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
-                    Paste directly into your <code className="text-xs">src/index.css</code> beneath{" "}
-                    <code className="text-xs">@import "tailwindcss";</code>
+                  <p className="text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
+                    Paste directly into your{" "}
+                    <code className="font-mono text-xs">src/index.css</code> beneath{" "}
+                    <code className="font-mono text-xs">@import "tailwindcss";</code>
                   </p>
                 </div>
                 <Button
-                  variant="ghost"
+                  variant="bordered"
+                  color="secondary"
                   size="sm"
+                  radius="md"
                   onClick={() => handleCopy(getTailwindV4ThemeString(), "tailwind")}
-                  className="h-7 cursor-pointer text-xs"
                 >
                   {copied.tailwind ? (
-                    <Check className="mr-1 h-3 w-3 text-emerald-500" />
+                    <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" />
                   ) : (
-                    <Copy className="mr-1 h-3 w-3" />
+                    <Copy className="mr-1.5 h-3.5 w-3.5 opacity-70" />
                   )}
                   {copied.tailwind ? "Copied @theme!" : "Copy @theme"}
                 </Button>
               </div>
               <div className="relative">
-                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 dark:border-zinc-800">
+                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 sm:text-sm dark:border-zinc-800">
                   <code>{getTailwindV4ThemeString()}</code>
                 </pre>
               </div>
@@ -159,40 +140,42 @@ export const ThemeExportDialog = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
+                  <h4 className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
                     Figma Tokens Studio (DTCG Specification)
                   </h4>
-                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                  <p className="text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
                     Compatible with Figma Tokens Studio plugin &amp; design system sync pipelines.
                   </p>
                 </div>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <Button
-                    variant="outline"
+                    variant="bordered"
+                    color="secondary"
                     size="sm"
+                    radius="md"
                     onClick={handleDownloadFigmaJson}
-                    className="h-7 cursor-pointer text-xs"
                   >
-                    <Download className="mr-1 h-3 w-3" />
-                    Download tokens.json
+                    <Download className="mr-1.5 h-3.5 w-3.5 opacity-70" />
+                    Download JSON
                   </Button>
                   <Button
-                    variant="ghost"
+                    variant="bordered"
+                    color="secondary"
                     size="sm"
+                    radius="md"
                     onClick={() => handleCopy(getFigmaTokensJson(), "figma")}
-                    className="h-7 cursor-pointer text-xs"
                   >
                     {copied.figma ? (
-                      <Check className="mr-1 h-3 w-3 text-emerald-500" />
+                      <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" />
                     ) : (
-                      <Copy className="mr-1 h-3 w-3" />
+                      <Copy className="mr-1.5 h-3.5 w-3.5 opacity-70" />
                     )}
-                    {copied.figma ? "Copied JSON!" : "Copy JSON"}
+                    {copied.figma ? "Copied!" : "Copy JSON"}
                   </Button>
                 </div>
               </div>
               <div className="relative">
-                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 dark:border-zinc-800">
+                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 sm:text-sm dark:border-zinc-800">
                   <code>{getFigmaTokensJson()}</code>
                 </pre>
               </div>
@@ -204,29 +187,30 @@ export const ThemeExportDialog = () => {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div>
-                  <h4 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
+                  <h4 className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
                     Standard CSS Custom Properties (:root)
                   </h4>
-                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                  <p className="text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
                     Compatible with CSS Modules, Next.js, and projects without Tailwind v4.
                   </p>
                 </div>
                 <Button
-                  variant="ghost"
+                  variant="bordered"
+                  color="secondary"
                   size="sm"
+                  radius="md"
                   onClick={() => handleCopy(getCssString(), "css")}
-                  className="h-7 cursor-pointer text-xs"
                 >
                   {copied.css ? (
-                    <Check className="mr-1 h-3 w-3 text-emerald-500" />
+                    <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" />
                   ) : (
-                    <Copy className="mr-1 h-3 w-3" />
+                    <Copy className="mr-1.5 h-3.5 w-3.5 opacity-70" />
                   )}
                   {copied.css ? "Copied CSS!" : "Copy CSS"}
                 </Button>
               </div>
               <div className="relative">
-                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 dark:border-zinc-800">
+                <pre className="custom-scrollbar max-h-72 overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3.5 font-mono text-xs text-zinc-200 sm:text-sm dark:border-zinc-800">
                   <code>{getCssString()}</code>
                 </pre>
               </div>
@@ -239,23 +223,24 @@ export const ThemeExportDialog = () => {
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h4 className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
+                    <h4 className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">
                       1. Initialize Project via CLI
                     </h4>
-                    <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <p className="text-xs text-zinc-500 sm:text-sm dark:text-zinc-400">
                       Set up your project dependencies and folder structure.
                     </p>
                   </div>
                   <Button
-                    variant="ghost"
+                    variant="bordered"
+                    color="secondary"
                     size="sm"
+                    radius="md"
                     onClick={() => handleCopy(getCliCommand(), "cli")}
-                    className="h-7 cursor-pointer text-xs"
                   >
                     {copied.cli ? (
-                      <Check className="mr-1 h-3 w-3 text-emerald-500" />
+                      <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" />
                     ) : (
-                      <Terminal className="mr-1 h-3 w-3" />
+                      <Terminal className="mr-1.5 h-3.5 w-3.5 opacity-70" />
                     )}
                     {copied.cli ? "Copied CLI!" : "Copy CLI"}
                   </Button>
@@ -276,17 +261,18 @@ export const ThemeExportDialog = () => {
                     </p>
                   </div>
                   <Button
-                    variant="ghost"
+                    variant="bordered"
+                    color="secondary"
                     size="sm"
+                    radius="md"
                     onClick={() => handleCopy(getComponentsJsonSnippet(), "json")}
-                    className="h-7 cursor-pointer text-xs"
                   >
                     {copied.json ? (
-                      <Check className="mr-1 h-3 w-3 text-emerald-500" />
+                      <Check className="mr-1.5 h-3.5 w-3.5 text-emerald-500" />
                     ) : (
-                      <Copy className="mr-1 h-3 w-3" />
+                      <Copy className="mr-1.5 h-3.5 w-3.5 opacity-70" />
                     )}
-                    {copied.json ? "Copied JSON!" : "Copy components.json"}
+                    {copied.json ? "Copied JSON!" : "Copy JSON"}
                   </Button>
                 </div>
                 <pre className="overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-950 p-3 font-mono text-xs text-zinc-200 dark:border-zinc-800">
