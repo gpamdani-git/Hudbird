@@ -99,19 +99,23 @@ export default function ButtonDoc() {
       defaultVal: "'md'",
       description: (
         <span>
-          Button size dimensions:{" "}
+          Button size dimensions calibrated with Anisotropic Vision padding & 8-point spatial grid:{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'sm'
           </code>{" "}
-          (h-8),{" "}
+          (32px / h-8),{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'md'
           </code>{" "}
-          (h-9), or{" "}
+          (40px / h-10 standard touch target),{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'lg'
           </code>{" "}
-          (h-11).
+          (48px / h-12 spacious), or{" "}
+          <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
+            'xl'
+          </code>{" "}
+          (56px / h-14 hero cta).
         </span>
       ),
     },
@@ -328,6 +332,9 @@ function Example() {
                 <Button size="lg" color="primary">
                   Large (lg)
                 </Button>
+                <Button size="xl" color="primary">
+                  Extra Large (xl)
+                </Button>
               </div>
             </div>
           </ComponentPreview>
@@ -342,10 +349,11 @@ function Example() {
       <Button color="success">Success</Button>
       <Button color="danger">Danger</Button>
       
-      {/* Sizes */}
+      {/* Ergonomic Sizes calibrated to Anisotropic Vision & Fitts's Law */}
       <Button size="sm">Small</Button>
       <Button size="md">Medium</Button>
       <Button size="lg">Large</Button>
+      <Button size="xl">Extra Large</Button>
     </>
   )
 }`}

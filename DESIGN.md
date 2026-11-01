@@ -218,34 +218,49 @@ Every element in the typographic hierarchy is calibrated with exact optical trac
 
 ## 4. Component Stylings
 
-### 4.1 Buttons & Interactive Controls (Derived from packages/core/src/components/Button)
+### 4.1 Buttons & Interactive Controls (Cognitive-Ergonomic & Gestalt Standard)
 
-The Button architecture is governed by strict tactile feedback and explicit geometric tokens extracted directly from `Button.tsx` and `KineticButton.tsx`:
+The Button architecture is governed by strict visual perception science, Gestalt psychology, Fitts's Law ergonomics, tactile feedback, and explicit geometric tokens extracted directly from `hudbird-skill-ui.md` and `Button.tsx`:
+
+- **Safe Editing Mandate (No Full Rewrite):**
+  - All modifications to button primitives must be strictly **surgical**.
+  - Mass replacements are prohibited; working logic, 20+ color tokens, Radix Slot delegation (`asChild`), anchor link handling (`href`), and full ARIA compatibility must be preserved without exception.
+
+- **Cognitive Foundations & Spacing Theories:**
+  - **Teori Persepsi Anisotropik (_Anisotropic Vision_):** Human vision perceives vertical differences with far higher sensitivity than horizontal differences. To prevent buttons from appearing cramped or compressed at the sides, **horizontal padding ($X$) must always exceed vertical padding ($Y$) with an optical ratio between 1.5 : 1 and 2 : 1**.
+  - **Teori Gestalt (_Law of Common Region_ & _Figure-Ground_):** The button perimeter functions as the container (_ground_), while internal typography and icons represent the foreground (_figure_). Generous white space prevents cognitive crowding (_perceptual clutter_).
+  - **Hukum Kedekatan (_Law of Proximity_):** The internal gap between icon and text must be **significantly smaller than the outer padding** (ratio of at least 1 : 2.5) so that the icon and label fuse into a singular interactive unit.
+  - **Hukum Fitts (_Fitts’s Law_) & Touch Ergonomics:** Standard buttons provide a minimum 40px – 44px target, while large buttons provide a 48px – 56px spacious target, drastically minimizing touch/click acquisition errors.
 
 - **Variants Architecture:**
   - **Solid (`variant="solid"`):** Solid opaque background with crisp contrast text (`text-primary-foreground`), high-agency active press feedback, and micro-elevation (`shadow-xs`).
-  - **Bordered (`variant="bordered"`):** Transparent background framed by a structured 2px high-contrast stroke (`border-2`).
+  - **Bordered (`variant="bordered"`):** Transparent background framed by a structured 2px stroke (`border-2`).
   - **Flat & Soft (`variant="flat" | "soft"`):** Borderless container with translucent tint fill for secondary actions.
   - **Outline (`variant="outline"`):** Hairline 1px border (`border-zinc-950/10` light / `border-white/15` dark) with gentle hover wash.
   - **Light & Ghost (`variant="light" | "ghost"`):** Borderless text button with surface-tinted hover state (`hover:bg-zinc-100` / `hover:bg-zinc-800`).
   - **Plain (`variant="plain"`):** Zero background or border, used exclusively for inline links or tertiary triggers.
-- **Dimensional Scales & Touch Targets:**
-  - **Small (`size="sm"`):** Height `32px` (`h-8`), horizontal padding `12px` (`px-3`), font size `12px` (`text-xs`), icon gap `6px` (`gap-1.5`).
-  - **Medium (`size="md"`):** Height `36px` (`h-9`), horizontal padding `16px` (`px-4`), font size `14px` (`text-sm`), icon gap `8px` (`gap-2`). Default standard control.
-  - **Large (`size="lg"`):** Height `44px` (`h-11`), horizontal padding `20px` (`px-5`), font size `16px` (`text-base`), icon gap `10px` (`gap-2.5`). Satisfies mobile accessibility target.
-- **Corner Radius Mapping:**
+
+- **8-Point Spatial Grid Dimensions & Touch Targets:**
+  - **Small (`size="sm"`):** Height `32px` (`h-8`), horizontal padding `14px` (`px-3.5`), font size `12px` (`text-xs`), icon gap `6px` (`gap-1.5`).
+  - **Medium (`size="md"`):** Height `40px` (`h-10`), horizontal padding `20px` (`px-5`), font size `14px` (`text-sm`), icon gap `8px` (`gap-2`). Default standard control meeting 40px touch ergonomics.
+  - **Large (`size="lg"`):** Height `48px` (`h-12`), horizontal padding `28px` (`px-7`), font size `16px` (`text-base`), icon gap `10px` (`gap-2.5`). Spacious control satisfying mobile guidelines.
+  - **Extra Large (`size="xl"`):** Height `56px` (`h-14`), horizontal padding `36px` (`px-9`), font size `18px` (`text-lg`), icon gap `12px` (`gap-3`). Hero call-to-action standard.
+
+- **Corner Radius Mapping & Capsule Compensation:**
   - **Sharp (`radius="none"`):** Squared edges (`0px` / `rounded-none`).
   - **Medium (`radius="md"`):** Generously rounded (`12px` / `rounded-xl`).
   - **Large (`radius="lg"`):** Fluid organic corners (`16px` / `rounded-2xl`).
-  - **Full Capsule (`radius="full"`):** Pill shape (`9999px` / `rounded-full`) with optical compensation padding (`px-3.5` for sm, `px-5` for md, `px-6` for lg).
-- **Icon-Only Precision (`isIconOnly={true}`):**
-  - Strictly locked to 1:1 square aspect ratios (`w-8 h-8`, `w-9 h-9`, `w-11 h-11`) with zero horizontal padding (`p-0`).
+  - **Full Capsule (`radius="full"`):** Pill shape (`9999px` / `rounded-full`) with optical compensation padding: `px-4` (sm), `px-6` (md), `px-8` (lg), `px-10` (xl).
+
+- **Optical Icon Alignment & Fixed Wrappers:**
+  - Fixed transparent optical frames: `16×16 px` (`w-4 h-4`) for sm, `20×20 px` (`w-5 h-5`) for md and lg, `24×24 px` (`w-6 h-6`) for xl.
+  - Icon-only precision (`isIconOnly={true}`): Locked to 1:1 square aspect ratios (`w-8 h-8`, `w-10 h-10`, `w-12 h-12`, `w-14 h-14`).
+  - Banned: Manual margins (`ml-1.5`, `mr-1.5`) when flex `gap` is active.
+
 - **Tactile Micro-Interactions & Focus:**
-  - Active state: Tactile `-2%` scale compression (`active:scale-[0.98]`) with `200ms` duration.
+  - Active state: Tactile `-3%` scale compression (`active:scale-[0.97]`) with `150ms` duration.
   - Focus state: `2px` focus ring with `2px` offset (`focus-visible:ring-2 focus-visible:ring-offset-2`).
-  - Kinetic spring easing: `ease-[cubic-bezier(0.16,1,0.3,1)]` for smooth physical velocity.
-- **Enforced Restrictions:**
-  - Banned: High-saturation neon outer drop-shadows and non-standard cursor pointers.
+  - Kinetic spring easing: `ease-[cubic-bezier(0.16,1,0.3,1)]`.
 
 ### 4.2 Cards & Double-Bezel Containers
 
@@ -330,6 +345,7 @@ To preserve human agency and elite design execution, the following patterns are 
 All components, layouts, and interactive workflows in Hudbird UI are bound by human cognitive psychology principles to eliminate cognitive overload, reduce error rates, and deliver effortless high-agency usability:
 
 ### 8.1 Law of Proximity (Gestalt)
+
 - **Principle:** Elements positioned close to one another are cognitively perceived as belonging to the same functional cluster.
 - **Rule:**
   - Micro-spacing (`4px` to `8px` / `gap-1` to `gap-2`): Connect closely coupled items (e.g. form label to input, icon to accompanying button text).
@@ -337,23 +353,27 @@ All components, layouts, and interactive workflows in Hudbird UI are bound by hu
   - Macro-spacing (`80px` to `128px` / `mt-20 sm:mt-32` / `space-y-24 sm:space-y-32`): Separate distinct thematic sections. Vertical gaps smaller than 64px violate proximity and cause cognitive fatigue.
 
 ### 8.2 Law of Common Region (Gestalt)
+
 - **Principle:** Elements enclosed within a clearly defined visual boundary are perceived as sharing a single unified purpose.
 - **Rule:**
   - Enclose related data, code previews, or form groups inside explicit perimeter containers (e.g. `DoubleBezelCard` or 1px hairline border `border-zinc-200 dark:border-white/10`).
   - **Anti-Nesting Rule:** Strictly ban gratuitous nested frames ("cards inside cards inside cards"). A container must have distinct informational boundary purpose, not redundant decorative framing.
 
 ### 8.3 Law of Similarity (Gestalt)
+
 - **Principle:** Elements sharing visual characteristics (color, shape, typography) are perceived to perform the same function.
 - **Rule:**
   - Headings at each hierarchy tier (`h1`, `h2`, `h3`) must strictly share the same typeface, weight (`500`), letter-spacing, and line-height across every page.
   - Banned: Arbitrary rainbow badge styling where each section or card invents a unique accent color. Color must signal functional states (system status, primary intent), not arbitrary cosmetic variety.
 
 ### 8.4 Aesthetic-Usability Effect
+
 - **Principle:** Users perceive visually balanced, polished, and clutter-free interfaces as significantly more intuitive, tolerant of minor friction, and credible.
 - **Rule:**
   - Prioritize generous negative space, deliberate typography, and subdued surfaces over visual noise, emojis, or neon effects. Software that looks clean feels faster, safer, and more reliable.
 
 ### 8.5 Fitts's Law
+
 - **Principle:** The time required to rapidly move to a target area is a function of the ratio between the distance to the target and the width of the target.
 - **Rule:**
   - **Minimum Touch Targets:** Interactive targets must measure at least `44px × 44px` on mobile/touch viewports (`h-11`) and `36px × 36px` on desktop viewports (`h-9`).
@@ -361,30 +381,35 @@ All components, layouts, and interactive workflows in Hudbird UI are bound by hu
   - Primary call-to-actions must be positioned along primary natural focal paths (top-right or bottom-left terminal anchor).
 
 ### 8.6 Hick's Law
+
 - **Principle:** The time required to make a decision increases logarithmically with the number and complexity of choices presented.
 - **Rule:**
   - Limit the number of primary options: strictly one primary button (`variant="solid"`) per view or card cluster.
   - Employ progressive disclosure: bury advanced configurations, detailed filters, or verbose telemetry behind expandable disclosures or modal steps rather than overwhelming the default viewport.
 
 ### 8.7 Miller's Law (Cognitive Chunking)
+
 - **Principle:** The average human working memory can hold only 7 (± 2) discrete chunks of information simultaneously.
 - **Rule:**
   - Group navigation links, form fields, and telemetry metrics into digestible clusters of 5 to 7 items.
   - Bento grids and dashboard summaries must limit active primary blocks to 3–5 high-signal widgets per view. Long lists must use categorical headings and dividers.
 
 ### 8.8 Jakob's Law
+
 - **Principle:** Users spend most of their time using other digital products; they expect your system to operate according to well-established mental models.
 - **Rule:**
   - Preserve familiar architectural conventions: left-hand navigation sidebar, top-right utility actions/search (`Cmd+K`), right-hand "On this page" TOC, standard form inputs (labels on top, error message below).
   - Never invert or obscure universal interaction standards (e.g. standard ESC to dismiss modals, Tab to navigate form fields).
 
 ### 8.9 Von Restorff Effect (Isolation Effect)
+
 - **Principle:** When multiple similar objects are present, the item that visually differs from the rest is the most memorable and most likely to receive action.
 - **Rule:**
   - Reserve the high-contrast Electric Indigo (`#4F46E5` / `#6366F1`) brand accent exclusively for the primary intended user action.
   - Subordinate all supporting secondary actions to neutral surfaces (`variant="outline"`, `variant="ghost"`). If every button or card is highlighted, visual hierarchy collapses.
 
 ### 8.10 Zeigarnik Effect & Goal Gradient Effect
+
 - **Principle:** Incomplete tasks generate cognitive tension that motivates completion, and user momentum accelerates as they perceive proximity to their goal.
 - **Rule:**
   - Multi-step configurations, setup wizards, and documentation walkthroughs must render clear, linear step indicators (e.g. `Step 1 of 4` or subtle progress track).
@@ -397,30 +422,35 @@ All components, layouts, and interactive workflows in Hudbird UI are bound by hu
 Digital layouts frequently look unbalanced when aligned strictly by bounding-box coordinates. Hudbird UI mandates optical compensation rules so interfaces feel balanced to human eyes:
 
 ### 9.1 Mathematical vs. Visual Center (Center of Mass Compensation)
+
 - **Principle:** Symmetrical geometric bounding boxes do not account for asymmetric mass distribution. For example, a right-pointing triangle (`Play` icon) has more visual mass on its left vertical base than on its right apex point.
 - **Rule:**
   - In circular or square containers, right-pointing play icons must be optically nudged by `+1px` to `+2px` horizontally (`translate-x-[1px]` or `translate-x-[1.5px]`).
   - Asymmetric icons (e.g. magnifying glass, diagonal arrows) must be optically centered based on their visual centroid, not purely by CSS `flex justify-center items-center`.
 
 ### 9.2 Cap-Height & Baseline Alignment
+
 - **Principle:** Font bounding boxes contain whitespace for ascenders and descenders (e.g. `p`, `y`, `d`, `h`), which often causes inline icons and adjacent badges to look vertically misaligned.
 - **Rule:**
   - Inline icons next to text must align to the text’s **Cap-Height** (the height of capital letters), not the arbitrary line-height wrapper.
   - When pairing `16px` icons with `14px` or `16px` text in buttons, apply an optical offset (`-mt-px` or `translate-y-[-0.5px]`) if vertical centering leaves an awkward gap beneath baseline.
 
 ### 9.3 Concentric Radii Formula (Nested Corner Continuity)
+
 - **Principle:** When an inner card sits inside an outer card or bezel container, using identical corner radii makes the inner corners appear sharp, pinched, or distorted.
 - **Rule:**
   - All nested surfaces must satisfy the concentric radius formula: `R_inner = R_outer - padding`.
   - **Example:** For an outer container with `rounded-[28px]` and padding of `6px` (`p-1.5`), the inner core must strictly use `rounded-[22px]` (28 - 6 = 22).
 
 ### 9.4 Visual Weight & Density Balancing
+
 - **Principle:** Solid (filled) shapes appear 20% to 30% larger and heavier than stroked (outlined) shapes of the exact same pixel dimensions.
 - **Rule:**
   - In icon-text pairs or split-action groups, filled icons must be sized down slightly (e.g. `14px` filled vs. `16px` outline) or paired with slightly wider spacing to avoid dominating visual hierarchy.
   - Circular badges beside rectangular buttons must be optically scaled so their perceived surface area matches the visual weight of the adjacent typography.
 
 ### 9.5 Overshoot & Optical Perimeter Balance
+
 - **Principle:** Curved forms (circles, rounded pill containers) visually appear smaller than squares of the exact same pixel width because their corners do not fill the bounding box.
 - **Rule:**
   - Circular avatar rings, status dots, and pill buttons must apply an optical overshoot (~1px to 2px extra clearance or dimension) when placed flush with crisp rectangular grids.
@@ -432,24 +462,28 @@ Digital layouts frequently look unbalanced when aligned strictly by bounding-box
 Intuition in user experience is the synthesis of cognitive psychology, tactile physics, and immediate causality:
 
 ### 10.1 Physical Affordances & Perceived Interactability
+
 - **Principle:** Users should instantly intuit how an element behaves without reading instructions.
 - **Rule:**
   - Tactile depth is conveyed through subtle 1px specular highlights (`shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]`) and hairline whisper borders, not cartoonish gradients or drop shadows.
   - Interactive components must visibly shift state on hover: slight surface luminosity shift (+4% lightness) and tactile compression on click (`active:scale-[0.98]`).
 
 ### 10.2 Zero-Latency Feedback Loops
+
 - **Principle:** Any delay greater than 100ms breaks the perception of immediate physical causation, increasing user cognitive friction.
 - **Rule:**
   - Button presses and toggle switches must provide instantaneous visual feedback within 16ms (1 frame).
   - High-agency physics: Always use the signature Hudbird spring curve `duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]` for fluid positional shifts. Never use browser default `ease` or linear timers.
 
 ### 10.3 Spatial Constancy & Motion Continuity
+
 - **Principle:** Sudden layout shifts and jumping elements destroy spatial orientation and force users to re-scan the screen.
 - **Rule:**
   - Dialogs, popovers, and menus must reveal from their triggering origin point or slide upwards smoothly (`y: 12px -> 0px`).
   - Animated layout transitions must use Framer Motion layout animations (`layoutId`) to morph between active tabs or selection pills seamlessly.
 
 ### 10.4 Progressive Disclosure & Contextual Scaffolding
+
 - **Principle:** Present only the vital decisions required for the current task; reserve secondary complexity for deliberate inquiry.
 - **Rule:**
   - High-density data tables and component configuration forms must present the primary 3–5 controls by default.

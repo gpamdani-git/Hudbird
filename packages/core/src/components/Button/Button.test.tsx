@@ -59,7 +59,7 @@ describe("Button component", () => {
     expect(link).toHaveAttribute("href", "https://hudbird.com");
   });
 
-  it("renders startContent and endContent icons", () => {
+  it("renders startContent and endContent icons inside optical wrappers", () => {
     render(
       <Button
         startContent={<span data-testid="start-icon">⭐</span>}
@@ -70,5 +70,19 @@ describe("Button component", () => {
     );
     expect(screen.getByTestId("start-icon")).toBeInTheDocument();
     expect(screen.getByTestId("end-icon")).toBeInTheDocument();
+  });
+
+  it("applies anisotropic vision padding and Fitts's Law sizing across scales", () => {
+    const { rerender } = render(<Button size="sm">Small</Button>);
+    expect(screen.getByRole("button")).toHaveClass("h-8", "px-3.5", "gap-1.5");
+
+    rerender(<Button size="md">Medium</Button>);
+    expect(screen.getByRole("button")).toHaveClass("h-10", "px-5", "gap-2");
+
+    rerender(<Button size="lg">Large</Button>);
+    expect(screen.getByRole("button")).toHaveClass("h-12", "px-7", "gap-2.5");
+
+    rerender(<Button size="xl">Extra Large</Button>);
+    expect(screen.getByRole("button")).toHaveClass("h-14", "px-9", "gap-3");
   });
 });

@@ -38,7 +38,7 @@ export type ButtonColor =
   | "pink"
   | "rose";
 
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonSize = "sm" | "md" | "lg" | "xl";
 export type ButtonRadius = "none" | "md" | "lg" | "full";
 
 const buttonVariants = cva(
@@ -88,9 +88,10 @@ const buttonVariants = cva(
         rose: "focus-visible:ring-rose-500/40 dark:focus-visible:ring-offset-[#161618]",
       },
       size: {
-        sm: "h-8 px-3 text-xs gap-1.5",
-        md: "h-9 px-4 text-sm gap-2",
-        lg: "h-11 px-5 text-base gap-2.5",
+        sm: "h-8 px-3.5 text-xs gap-1.5",
+        md: "h-10 px-5 text-sm gap-2",
+        lg: "h-12 px-7 text-base gap-2.5",
+        xl: "h-14 px-9 text-lg gap-3",
       },
       radius: {
         none: "rounded-none",
@@ -112,12 +113,17 @@ const buttonVariants = cva(
       {
         isIconOnly: true,
         size: "md",
-        className: "w-9 h-9",
+        className: "w-10 h-10",
       },
       {
         isIconOnly: true,
         size: "lg",
-        className: "w-11 h-11",
+        className: "w-12 h-12",
+      },
+      {
+        isIconOnly: true,
+        size: "xl",
+        className: "w-14 h-14",
       },
 
       // Capsule (radius: "full") extra padding to prevent trailing icons/chevrons from hitting corner curve
@@ -125,19 +131,25 @@ const buttonVariants = cva(
         radius: "full",
         size: "sm",
         isIconOnly: false,
-        className: "px-3.5",
+        className: "px-4",
       },
       {
         radius: "full",
         size: "md",
         isIconOnly: false,
-        className: "px-5",
+        className: "px-6",
       },
       {
         radius: "full",
         size: "lg",
         isIconOnly: false,
-        className: "px-6",
+        className: "px-8",
+      },
+      {
+        radius: "full",
+        size: "xl",
+        isIconOnly: false,
+        className: "px-10",
       },
 
       // ==========================================
@@ -582,6 +594,15 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       </svg>
     );
 
+    // Standard optical frame dimensions for icons to guarantee visual balance (Gestalt Law of Proximity & Optical Centering)
+    const iconFrameClass = cn(
+      "inline-flex shrink-0 items-center justify-center pointer-events-none",
+      size === "sm" && "w-4 h-4 [&>svg]:w-3.5 [&>svg]:h-3.5",
+      size === "md" && "w-5 h-5 [&>svg]:w-4 [&>svg]:h-4",
+      size === "lg" && "w-5 h-5 [&>svg]:w-5 [&>svg]:h-5",
+      size === "xl" && "w-6 h-6 [&>svg]:w-5.5 [&>svg]:h-5.5"
+    );
+
     const buttonBody = isIconOnly ? (
       isLoading ? (
         spinner
@@ -591,18 +612,16 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     ) : (
       <>
         {isLoading && (
-          <span className="animate-in fade-in mr-1.5 -ml-0.5 inline-flex shrink-0 items-center duration-150">
-            {spinner}
-          </span>
+          <span className={cn(iconFrameClass, "animate-in fade-in duration-150")}>{spinner}</span>
         )}
         {!isLoading && startContent && (
-          <span className="inline-flex shrink-0 items-center" aria-hidden="true">
+          <span className={iconFrameClass} aria-hidden="true">
             {startContent}
           </span>
         )}
         {children}
         {endContent && (
-          <span className="ml-1.5 inline-flex shrink-0 items-center" aria-hidden="true">
+          <span className={iconFrameClass} aria-hidden="true">
             {endContent}
           </span>
         )}
