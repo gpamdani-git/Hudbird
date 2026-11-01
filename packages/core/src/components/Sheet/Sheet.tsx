@@ -28,14 +28,16 @@ const SheetContext = React.createContext<SheetContextValue>({
 export const useSheetContext = () => React.useContext(SheetContext);
 
 const sheetPanelVariants = cva(
-  "fixed z-[100] flex flex-col bg-background border-border/80 shadow-2xl transition-all duration-300 ease-in-out focus-visible:outline-none",
+  "fixed z-[100] flex flex-col bg-white/95 dark:bg-[#161618]/95 backdrop-blur-2xl border-black/[0.08] dark:border-white/10 shadow-2xl dark:shadow-[0_24px_64px_rgba(0,0,0,0.8)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none",
   {
     variants: {
       side: {
-        top: "inset-x-0 top-0 border-b animate-in slide-in-from-top duration-300",
-        bottom: "inset-x-0 bottom-0 border-t animate-in slide-in-from-bottom duration-300",
-        left: "inset-y-0 left-0 h-full border-r animate-in slide-in-from-left duration-300",
-        right: "inset-y-0 right-0 h-full border-l animate-in slide-in-from-right duration-300",
+        top: "inset-x-0 top-0 border-b animate-in slide-in-from-top duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        bottom:
+          "inset-x-0 bottom-0 border-t rounded-t-[28px] animate-in slide-in-from-bottom duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        left: "inset-y-0 left-0 h-full border-r animate-in slide-in-from-left duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+        right:
+          "inset-y-0 right-0 h-full border-l animate-in slide-in-from-right duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
       },
       size: {
         sm: "",
@@ -127,7 +129,7 @@ export const Sheet: React.FC<SheetProps> = ({
       <div className="fixed inset-0 z-[100] flex">
         {/* Backdrop */}
         <div
-          className="bg-background/80 animate-in fade-in-0 fixed inset-0 backdrop-blur-sm transition-opacity duration-300"
+          className="animate-in fade-in-0 fixed inset-0 bg-black/45 backdrop-blur-sm transition-opacity duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
           aria-hidden="true"
           onClick={() => {
             if (isDismissable) onClose?.();
@@ -174,7 +176,7 @@ export const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
             type="button"
             aria-label="Close sheet"
             onClick={onClose}
-            className="text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:ring-ring absolute top-4 right-4 rounded-xl p-1.5 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+            className="absolute top-4 right-4 rounded-xl p-1.5 text-zinc-400 transition-colors hover:bg-zinc-100 hover:text-zinc-900 focus-visible:ring-2 focus-visible:ring-indigo-500/40 focus-visible:outline-none dark:text-zinc-400 dark:hover:bg-white/10 dark:hover:text-white"
           >
             <X className="h-4 w-4" />
           </button>
@@ -190,11 +192,7 @@ export interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const SheetHeader = React.forwardRef<HTMLDivElement, SheetHeaderProps>(
   ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn("mb-6 flex flex-col space-y-1.5 text-left", className)}
-      {...props}
-    />
+    <div ref={ref} className={cn("mb-6 flex flex-col space-y-1 text-left", className)} {...props} />
   )
 );
 SheetHeader.displayName = "SheetHeader";
@@ -205,7 +203,10 @@ export const SheetTitle = React.forwardRef<HTMLHeadingElement, SheetTitleProps>(
   ({ className, ...props }, ref) => (
     <h2
       ref={ref}
-      className={cn("text-foreground text-lg font-bold tracking-tight", className)}
+      className={cn(
+        "text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50",
+        className
+      )}
       {...props}
     />
   )
@@ -218,7 +219,7 @@ export const SheetDescription = React.forwardRef<HTMLParagraphElement, SheetDesc
   ({ className, ...props }, ref) => (
     <p
       ref={ref}
-      className={cn("text-muted-foreground text-sm leading-relaxed", className)}
+      className={cn("text-sm leading-relaxed text-zinc-500 dark:text-zinc-400", className)}
       {...props}
     />
   )
@@ -232,7 +233,7 @@ export const SheetFooter = React.forwardRef<HTMLDivElement, SheetFooterProps>(
     <div
       ref={ref}
       className={cn(
-        "border-border/60 mt-auto flex flex-col-reverse border-t pt-6 sm:flex-row sm:justify-end sm:space-x-2",
+        "mt-auto flex flex-col-reverse border-t border-black/5 pt-4 sm:flex-row sm:justify-end sm:gap-2 dark:border-white/5",
         className
       )}
       {...props}

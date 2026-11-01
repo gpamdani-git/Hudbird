@@ -31,6 +31,7 @@ const FieldsetDoc = lazy(() => import("./pages/FieldsetDoc"));
 const HeadingDoc = lazy(() => import("./pages/HeadingDoc"));
 const InputDoc = lazy(() => import("./pages/InputDoc"));
 const CardDoc = lazy(() => import("./pages/CardDoc"));
+const DoubleBezelCardDoc = lazy(() => import("./pages/DoubleBezelCardDoc"));
 const NavbarDoc = lazy(() => import("./pages/NavbarDoc"));
 const PaginationDoc = lazy(() => import("./pages/PaginationDoc"));
 const SelectDoc = lazy(() => import("./pages/SelectDoc"));
@@ -251,6 +252,7 @@ export default function App() {
                     <Route path="/button" element={<ButtonDoc />} />
                     <Route path="/input" element={<InputDoc />} />
                     <Route path="/card" element={<CardDoc />} />
+                    <Route path="/double-bezel-card" element={<DoubleBezelCardDoc />} />
                     <Route path="/alert" element={<AlertDoc />} />
                     <Route path="/avatar" element={<AvatarDoc />} />
                     <Route path="/badge" element={<BadgeDoc />} />

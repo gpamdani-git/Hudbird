@@ -268,6 +268,21 @@ export const cardTocItems: TocItem[] = [
   },
 ];
 
+export const doubleBezelCardTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "interactive-playground", title: "Interactive Chassis Playground" },
+      { id: "all-variants", title: "Surface Variants" },
+      { id: "metric-card", title: "Architectural Metric Card" },
+      { id: "concentric-geometry", title: "Concentric Radii Geometry" },
+    ],
+  },
+];
+
 export const navbarTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -782,6 +797,7 @@ const tocMap: Record<string, TocItem[]> = {
   "/heading": headingTocItems,
   "/input": inputTocItems,
   "/card": cardTocItems,
+  "/double-bezel-card": doubleBezelCardTocItems,
   "/navbar": navbarTocItems,
   "/pagination": paginationTocItems,
   "/progress": progressTocItems,

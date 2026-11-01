@@ -21,7 +21,7 @@ const DialogContext = React.createContext<DialogContextValue>({
 });
 
 const dialogPanelVariants = cva(
-  "relative w-full overflow-hidden bg-background border border-border/80 shadow-2xl rounded-3xl p-6 sm:p-7 transition-all animate-in fade-in-0 zoom-in-95 duration-200 focus-visible:outline-none",
+  "relative w-full overflow-hidden bg-white/95 dark:bg-[#161618]/95 backdrop-blur-2xl border border-black/[0.08] dark:border-white/10 shadow-2xl shadow-black/10 dark:shadow-[0_24px_64px_rgba(0,0,0,0.7)] rounded-[28px] p-6 sm:p-7 transition-all animate-in fade-in-0 zoom-in-95 duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none",
   {
     variants: {
       size: {
@@ -30,7 +30,7 @@ const dialogPanelVariants = cva(
       },
       severity: {
         default: "",
-        danger: "border-t-4 border-t-destructive",
+        danger: "border-t-4 border-t-rose-600 dark:border-t-rose-500",
       },
     },
     defaultVariants: {
@@ -98,7 +98,7 @@ const Dialog: React.FC<DialogProps> = ({
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
         {/* Backdrop */}
         <div
-          className="animate-in fade-in-0 bg-background/80 fixed inset-0 backdrop-blur-md transition-opacity duration-200"
+          className="animate-in fade-in-0 fixed inset-0 bg-black/45 backdrop-blur-md transition-opacity duration-200"
           aria-hidden="true"
           onClick={() => {
             if (isDismissable) onClose?.();
@@ -146,7 +146,7 @@ export interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> 
 const DialogHeader = React.forwardRef<HTMLDivElement, DialogHeaderProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("mb-5 flex flex-col gap-1.5 text-left", className)} {...props}>
+      <div ref={ref} className={cn("mb-4 flex flex-col gap-1 text-left", className)} {...props}>
         {children}
       </div>
     );
@@ -164,8 +164,8 @@ const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
       <h2
         ref={ref}
         className={cn(
-          "text-foreground flex items-center gap-2 text-lg font-bold tracking-tight",
-          context.severity === "danger" && "text-rose-600",
+          "flex items-center gap-2 text-lg font-semibold tracking-tight text-zinc-950 dark:text-zinc-50",
+          context.severity === "danger" && "text-rose-600 dark:text-rose-400",
           className
         )}
         {...props}
@@ -184,7 +184,7 @@ const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescripti
     return (
       <p
         ref={ref}
-        className={cn("text-muted-foreground text-sm leading-normal", className)}
+        className={cn("text-sm leading-relaxed text-zinc-500 dark:text-zinc-400", className)}
         {...props}
       >
         {children}
@@ -202,7 +202,7 @@ const DialogFooter = React.forwardRef<HTMLDivElement, DialogFooterProps>(
       <div
         ref={ref}
         className={cn(
-          "mt-2 flex flex-col-reverse gap-2.5 pt-4 sm:flex-row sm:justify-end",
+          "mt-6 flex flex-col-reverse gap-2 border-t border-black/5 pt-4 sm:flex-row sm:justify-end dark:border-white/5",
           className
         )}
         {...props}

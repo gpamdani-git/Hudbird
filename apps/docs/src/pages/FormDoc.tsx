@@ -113,8 +113,12 @@ function HeroFormDemo() {
           />
 
           <div className="pt-2">
-            <Button type="submit" color="primary" className="w-full">
-              <Send className="mr-2 h-4 w-4" />
+            <Button
+              type="submit"
+              color="primary"
+              className="w-full"
+              startContent={<Send className="h-4 w-4" />}
+            >
               Save Account Settings
             </Button>
           </div>

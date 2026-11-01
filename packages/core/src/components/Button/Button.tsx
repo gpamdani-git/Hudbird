@@ -540,7 +540,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         radius,
         isIconOnly,
         className,
-      })
+      }),
+      isLoading && "opacity-80 cursor-wait"
     );
 
     if (asChild) {
@@ -590,7 +591,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     ) : (
       <>
         {isLoading && (
-          <span className="animate-in fade-in mr-1 -ml-0.5 inline-flex shrink-0 items-center duration-150">
+          <span className="animate-in fade-in mr-1.5 -ml-0.5 inline-flex shrink-0 items-center duration-150">
             {spinner}
           </span>
         )}
@@ -599,11 +600,9 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
             {startContent}
           </span>
         )}
-        <span className={cn(isLoading && !startContent && "transition-opacity duration-150")}>
-          {children}
-        </span>
+        {children}
         {endContent && (
-          <span className="ml-0.5 inline-flex shrink-0 items-center" aria-hidden="true">
+          <span className="ml-1.5 inline-flex shrink-0 items-center" aria-hidden="true">
             {endContent}
           </span>
         )}

@@ -203,8 +203,8 @@ const DropdownMenu = React.forwardRef<HTMLDivElement, DropdownMenuProps>(
         role="menu"
         tabIndex={-1}
         className={cn(
-          "border-border/80 bg-popover text-popover-foreground absolute z-50 min-w-[210px] rounded-2xl border p-1.5 shadow-xl backdrop-blur-md",
-          "animate-in fade-in-0 zoom-in-95 duration-150 focus:outline-none",
+          "absolute z-50 min-w-[210px] rounded-2xl border border-black/[0.08] bg-white/95 p-1.5 text-zinc-900 shadow-xl shadow-zinc-900/10 backdrop-blur-2xl dark:border-white/10 dark:bg-[#161618]/95 dark:text-zinc-100 dark:shadow-[0_16px_40px_rgba(0,0,0,0.6)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]",
+          "animate-in fade-in-0 zoom-in-95 duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] focus:outline-none",
           placementClasses[placement] || placementClasses["bottom-start"],
           className
         )}
@@ -222,8 +222,10 @@ const dropdownItemVariants = cva(
   {
     variants: {
       variant: {
-        default: "text-popover-foreground hover:bg-accent focus:bg-accent",
-        danger: "text-rose-600 hover:bg-rose-600/10 focus:bg-rose-600/10 font-medium",
+        default:
+          "text-zinc-800 dark:text-zinc-200 hover:bg-black/5 dark:hover:bg-white/[0.08] focus:bg-black/5 dark:focus:bg-white/[0.08] active:scale-[0.98]",
+        danger:
+          "text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 dark:hover:bg-rose-500/15 focus:bg-rose-500/10 font-medium active:scale-[0.98]",
       },
     },
     defaultVariants: {
@@ -303,13 +305,13 @@ const DropdownSection = React.forwardRef<HTMLDivElement, DropdownSectionProps>(
         role="group"
         className={cn(
           "flex flex-col gap-0.5 py-1",
-          showDivider && "border-border/60 mt-1 border-t pt-1.5",
+          showDivider && "mt-1 border-t border-black/5 pt-1.5 dark:border-white/5",
           className
         )}
         {...props}
       >
         {title && (
-          <div className="text-muted-foreground px-3 py-1 text-[10px] font-bold tracking-wider uppercase select-none">
+          <div className="px-3 py-1 text-[10px] font-bold tracking-wider text-zinc-400 uppercase select-none dark:text-zinc-500">
             {title}
           </div>
         )}

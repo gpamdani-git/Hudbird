@@ -106,7 +106,7 @@ export const Command = React.forwardRef<HTMLDivElement, CommandProps>(
           ref={ref}
           onKeyDown={handleKeyDown}
           className={cn(
-            "flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100",
+            "flex h-full w-full flex-col overflow-hidden rounded-[24px] bg-white/95 text-zinc-900 backdrop-blur-2xl dark:bg-[#161618]/95 dark:text-zinc-100",
             className
           )}
           {...props}
@@ -172,7 +172,7 @@ export const CommandDialog: React.FC<CommandDialogProps> = ({
     <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 pt-16 sm:p-6 sm:pt-24">
       {/* Backdrop */}
       <div
-        className="bg-background/80 animate-in fade-in-0 fixed inset-0 backdrop-blur-md transition-opacity duration-200"
+        className="animate-in fade-in-0 fixed inset-0 bg-black/45 backdrop-blur-md transition-opacity duration-200"
         aria-hidden="true"
         onClick={() => {
           if (isDismissable) onClose?.();
@@ -180,7 +180,7 @@ export const CommandDialog: React.FC<CommandDialogProps> = ({
       />
 
       {/* Modal Box */}
-      <div className="animate-in fade-in-0 zoom-in-95 relative z-10 w-full max-w-xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl transition-all duration-200 dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="animate-in fade-in-0 zoom-in-95 relative z-10 w-full max-w-xl overflow-hidden rounded-[24px] border border-black/[0.08] bg-white/95 shadow-2xl shadow-black/15 backdrop-blur-2xl transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] dark:border-white/10 dark:bg-[#161618]/95 dark:shadow-[0_24px_64px_rgba(0,0,0,0.8)] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)]">
         <Command>{children}</Command>
       </div>
     </div>
@@ -212,8 +212,8 @@ export const CommandInput = React.forwardRef<HTMLInputElement, CommandInputProps
     };
 
     return (
-      <div className="flex items-center border-b border-zinc-200 px-4 dark:border-zinc-800">
-        <Search className="mr-2.5 h-4 w-4 shrink-0 text-zinc-400" />
+      <div className="flex items-center border-b border-black/[0.06] px-4 dark:border-white/[0.08]">
+        <Search className="mr-2.5 h-4 w-4 shrink-0 text-zinc-400 dark:text-zinc-500" />
         <input
           ref={ref}
           type="text"
@@ -301,7 +301,7 @@ export const CommandGroup = React.forwardRef<HTMLDivElement, CommandGroupProps>(
   ({ className, heading, children, ...props }, ref) => (
     <div ref={ref} className={cn("text-foreground overflow-hidden p-1", className)} {...props}>
       {heading && (
-        <div className="px-2 py-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+        <div className="px-3 py-1.5 text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
           {heading}
         </div>
       )}
@@ -390,10 +390,10 @@ export const CommandItem = React.forwardRef<HTMLDivElement, CommandItemProps>(
           }
         }}
         className={cn(
-          "relative flex cursor-pointer items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm transition-all duration-150 outline-none select-none active:scale-[0.99]",
+          "relative flex cursor-pointer items-center gap-2.5 rounded-xl px-3 py-2 text-sm transition-all duration-150 outline-none select-none active:scale-[0.99]",
           isSelected
-            ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-            : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800/60",
+            ? "bg-zinc-100 font-medium text-zinc-950 dark:bg-white/[0.08] dark:text-white"
+            : "text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-white/[0.04]",
           disabled && "pointer-events-none cursor-not-allowed opacity-40",
           className
         )}
@@ -415,7 +415,7 @@ export interface CommandShortcutProps extends React.HTMLAttributes<HTMLSpanEleme
 export const CommandShortcut: React.FC<CommandShortcutProps> = ({ className, ...props }) => (
   <span
     className={cn(
-      "ml-auto font-mono text-xs tracking-widest text-zinc-400 dark:text-zinc-500",
+      "ml-auto rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-[10px] tracking-wider text-zinc-500 dark:bg-white/10 dark:text-zinc-400",
       className
     )}
     {...props}

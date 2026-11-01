@@ -46,6 +46,7 @@ export const navigationData: NavGroup[] = [
       { name: "Button", path: "/button", variants: 7 },
       { name: "Calendar", path: "/calendar", variants: 4, isNew: true },
       { name: "Card", path: "/card", variants: 5 },
+      { name: "Double Bezel Card", path: "/double-bezel-card", variants: 4, isNew: true },
       { name: "Checkbox", path: "/checkbox", variants: 5 },
       { name: "Combobox", path: "/combobox", variants: 4 },
       { name: "Command", path: "/command", variants: 2, isNew: true },
