@@ -20,9 +20,13 @@ interface BreadcrumbsContextValue {
   isDisabled: boolean;
 }
 
+const defaultSeparator = (
+  <ChevronRight className="h-3.5 w-3.5 translate-x-[0.5px] text-zinc-400 dark:text-zinc-500" />
+);
+
 const BreadcrumbsContext = React.createContext<BreadcrumbsContextValue>({
   size: "md",
-  separator: <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />,
+  separator: defaultSeparator,
   underline: "hover",
   isDisabled: false,
 });
@@ -38,14 +42,14 @@ export const breadcrumbsVariants = cva("flex flex-wrap items-center", {
     variant: {
       light: "bg-transparent p-0",
       bordered:
-        "border border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 rounded-xl px-3 py-2 shadow-2xs backdrop-blur-sm",
+        "border border-black/[0.06] bg-white/80 dark:border-white/[0.08] dark:bg-[#161618]/80 rounded-xl px-3.5 py-1.5 shadow-2xs backdrop-blur-md",
       solid:
-        "bg-zinc-100 dark:bg-zinc-800/80 rounded-xl px-3.5 py-2 text-zinc-800 dark:text-zinc-200",
+        "bg-zinc-100/90 dark:bg-[#202124] border border-black/[0.04] dark:border-white/[0.06] rounded-xl px-3.5 py-1.5 text-zinc-800 dark:text-zinc-200",
     },
     size: {
       sm: "text-xs gap-1.5",
-      md: "text-sm gap-2",
-      lg: "text-base gap-2.5",
+      md: "text-[13px] gap-2",
+      lg: "text-sm gap-2.5",
     },
   },
   defaultVariants: {
@@ -69,7 +73,7 @@ export interface BreadcrumbsProps
 export const Breadcrumbs = React.forwardRef<HTMLElement, BreadcrumbsProps>(
   (
     {
-      separator = <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />,
+      separator = defaultSeparator,
       variant = "light",
       size = "md",
       underline = "hover",
@@ -208,12 +212,12 @@ export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProp
         ref={ref}
         aria-current={isCurrent ? "page" : undefined}
         className={cn(
-          "inline-flex items-center transition-all duration-150",
+          "inline-flex items-center transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)]",
           isCurrent
-            ? "cursor-default font-semibold text-zinc-900 dark:text-zinc-50"
+            ? "cursor-default font-semibold text-zinc-950 dark:text-zinc-50"
             : disabled
               ? "pointer-events-none cursor-not-allowed text-zinc-400 dark:text-zinc-600"
-              : "cursor-pointer text-zinc-600 hover:text-zinc-900 active:scale-[0.98] dark:text-zinc-400 dark:hover:text-zinc-100",
+              : "cursor-pointer text-zinc-500 hover:text-zinc-950 active:scale-[0.98] dark:text-zinc-400 dark:hover:text-zinc-100",
           className
         )}
         {...props}

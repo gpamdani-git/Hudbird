@@ -10,20 +10,23 @@ export type TabsSize = "sm" | "md" | "lg";
 export type TabsRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const tabListVariants = cva(
-  "inline-flex items-center gap-1 text-muted-foreground select-none",
+  "inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400 select-none",
   {
     variants: {
       variant: {
-        solid: "bg-muted p-1 border border-border/60",
-        bordered: "border-2 border-border p-1 bg-transparent",
+        solid:
+          "bg-zinc-100/90 dark:bg-[#161618] p-1 border border-black/[0.05] dark:border-white/[0.08] backdrop-blur-md",
+        bordered:
+          "border border-black/[0.08] dark:border-white/[0.1] p-1 bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md",
         light: "bg-transparent p-0 gap-1.5",
-        underlined: "bg-transparent p-0 gap-4 border-b border-border",
+        underlined:
+          "bg-transparent p-0 gap-6 border-b border-black/[0.08] dark:border-white/[0.08]",
       },
       radius: {
         none: "rounded-none",
-        sm: "rounded-md",
-        md: "rounded-lg",
-        lg: "rounded-xl",
+        sm: "rounded-lg",
+        md: "rounded-xl",
+        lg: "rounded-2xl",
         full: "rounded-full",
       },
       fullWidth: {
@@ -45,7 +48,7 @@ export const tabListVariants = cva(
 );
 
 export const tabTriggerVariants = cva(
-  "relative inline-flex items-center justify-center font-medium whitespace-nowrap transition-all duration-150 ease-out active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none",
+  "relative inline-flex items-center justify-center font-medium whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 cursor-pointer select-none",
   {
     variants: {
       size: {
@@ -55,18 +58,18 @@ export const tabTriggerVariants = cva(
       },
       radius: {
         none: "rounded-none",
-        sm: "rounded-sm",
-        md: "rounded-md",
-        lg: "rounded-lg",
+        sm: "rounded-md",
+        md: "rounded-lg",
+        lg: "rounded-xl",
         full: "rounded-full",
       },
       variant: {
-        solid: "text-muted-foreground hover:text-foreground",
-        bordered: "text-muted-foreground hover:text-foreground",
+        solid: "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100",
+        bordered: "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100",
         light:
-          "text-muted-foreground hover:text-foreground hover:bg-accent hover:text-accent-foreground",
+          "text-zinc-600 hover:text-zinc-950 hover:bg-black/[0.04] dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/[0.06]",
         underlined:
-          "text-muted-foreground hover:text-foreground pb-2 border-b-2 border-transparent -mb-px rounded-none",
+          "text-zinc-500 hover:text-zinc-900 pb-2.5 border-b-2 border-transparent -mb-px rounded-none dark:text-zinc-400 dark:hover:text-zinc-100",
       },
       isSelected: {
         true: "",
@@ -81,22 +84,23 @@ export const tabTriggerVariants = cva(
       {
         variant: "solid",
         isSelected: true,
-        className: "bg-background text-foreground shadow-xs font-semibold",
+        className:
+          "bg-white dark:bg-[#28292d] text-zinc-950 dark:text-white shadow-xs dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)] font-semibold",
       },
       {
         variant: "bordered",
         isSelected: true,
-        className: "bg-accent text-accent-foreground font-semibold",
+        className: "bg-zinc-100 dark:bg-white/10 text-zinc-950 dark:text-white font-semibold",
       },
       {
         variant: "light",
         isSelected: true,
-        className: "bg-accent text-accent-foreground font-semibold",
+        className: "bg-zinc-100 dark:bg-white/10 text-zinc-950 dark:text-white font-semibold",
       },
       {
         variant: "underlined",
         isSelected: true,
-        className: "text-foreground border-foreground font-semibold",
+        className: "text-zinc-950 dark:text-white border-zinc-950 dark:border-white font-semibold",
       },
     ],
     defaultVariants: {
@@ -114,10 +118,11 @@ export const tabColorStyles: Record<
   { solid: string; light: string; underlined: string; bordered: string }
 > = {
   default: {
-    solid: "bg-background text-foreground shadow-xs",
-    light: "bg-accent text-accent-foreground",
-    underlined: "!text-foreground !border-foreground",
-    bordered: "bg-accent text-accent-foreground",
+    solid:
+      "bg-white dark:bg-[#28292d] text-zinc-950 dark:text-white shadow-xs dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)]",
+    light: "bg-black/[0.05] text-zinc-950 dark:bg-white/10 dark:text-white",
+    underlined: "!text-zinc-950 !border-zinc-950 dark:!text-white dark:!border-white",
+    bordered: "bg-black/[0.05] text-zinc-950 dark:bg-white/10 dark:text-white",
   },
   primary: {
     solid: "!bg-primary !text-primary-foreground shadow-xs",

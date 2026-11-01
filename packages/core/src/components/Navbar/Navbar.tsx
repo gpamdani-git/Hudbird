@@ -4,6 +4,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { cn } from "../../utils/cn";
 
 export type NavbarLayout = "standard" | "admin";
@@ -44,10 +45,10 @@ const navbarVariants = cva("w-full transition-all duration-200 box-border", {
     },
     styleVariant: {
       glassmorphism:
-        "bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md backdrop-saturate-150 border-b border-zinc-200/80 dark:border-zinc-800/80",
+        "bg-white/80 dark:bg-[#161618]/85 backdrop-blur-2xl backdrop-saturate-150 border-b border-black/[0.06] dark:border-white/[0.08]",
       transparent: "bg-transparent border-b border-transparent shadow-none",
       "floating-full":
-        "mt-2 sm:mt-4 mx-auto max-w-5xl rounded-full border border-zinc-200/90 dark:border-zinc-800/90 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-lg shadow-zinc-950/5 dark:shadow-black/40 px-3 sm:px-6 transition-all",
+        "mt-2 sm:mt-4 mx-auto max-w-5xl rounded-full border border-black/[0.08] dark:border-white/[0.1] bg-white/90 dark:bg-[#161618]/90 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/40 px-3 sm:px-6 transition-all",
     },
     isBordered: {
       true: "",
@@ -55,7 +56,7 @@ const navbarVariants = cva("w-full transition-all duration-200 box-border", {
     },
     isBlurred: {
       true: "",
-      false: "backdrop-blur-none bg-white dark:bg-zinc-950",
+      false: "backdrop-blur-none bg-white dark:bg-[#161618]",
     },
   },
   defaultVariants: {
@@ -244,7 +245,7 @@ const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
             isMenuOpen && "z-50",
             isMenuOpen &&
               styleVariant === "transparent" &&
-              "bg-white transition-colors dark:bg-zinc-950",
+              "bg-white transition-colors dark:bg-[#161618]",
             isContained && styleVariant !== "floating-full" && "rounded-t-2xl",
             isContained && !isMenuOpen && styleVariant !== "floating-full" && "rounded-b-2xl"
           )}
@@ -362,7 +363,7 @@ const NavbarItem = React.forwardRef<HTMLLIElement, NavbarItemProps>(
         ref={ref}
         data-active={isActive ? "true" : undefined}
         className={cn(
-          "relative flex shrink-0 cursor-pointer items-center text-sm font-medium whitespace-nowrap transition-colors select-none",
+          "relative flex shrink-0 cursor-pointer items-center text-sm font-medium whitespace-nowrap transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] select-none active:scale-[0.98]",
           isActive
             ? "font-semibold text-zinc-950 dark:text-white"
             : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100",
@@ -424,7 +425,7 @@ const NavbarMenuToggle = React.forwardRef<HTMLButtonElement, NavbarMenuTogglePro
         onClick={handleClick}
         className={cn(
           forceVisible ? "flex" : "flex md:hidden",
-          "relative h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-zinc-200 bg-white text-zinc-700 shadow-xs transition-all select-none hover:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-zinc-500 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800 dark:focus-visible:ring-offset-zinc-950",
+          "relative h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl border border-black/[0.06] bg-white text-zinc-700 shadow-2xs transition-all select-none hover:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-200 dark:hover:bg-[#202124] dark:focus-visible:ring-offset-[#161618]",
           className
         )}
         {...props}
@@ -526,15 +527,17 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                 "left-0 z-50 flex w-full flex-col overflow-y-auto p-6",
                 // Conditional styling based on styleVariant
                 styleVariant === "glassmorphism" || isFloating
-                  ? "border-x border-b border-zinc-200/50 bg-white/80 shadow-2xl backdrop-blur-xl dark:border-zinc-800/50 dark:bg-zinc-950/80"
-                  : "bg-white shadow-xl dark:bg-zinc-950",
+                  ? "border-x border-b border-black/[0.06] bg-white/90 shadow-2xl backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#161618]/95"
+                  : "bg-white shadow-xl dark:bg-[#161618]",
 
                 isContained
                   ? "absolute top-16 max-h-[500px]"
                   : "fixed top-16 max-h-[calc(100vh-4rem)]",
 
                 // When floating, detach from top edge and fully round it
-                isFloating ? "mt-2 rounded-2xl border-t" : "rounded-b-2xl",
+                isFloating
+                  ? "mt-2 rounded-2xl border-t border-black/[0.06] dark:border-white/[0.08]"
+                  : "rounded-b-2xl",
 
                 isFloating && !isContained && "fixed top-20 mt-2",
                 className
@@ -542,23 +545,23 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
               {...(props as any)}
             >
               {title && (
-                <div className="mb-2 flex shrink-0 items-center justify-between border-b border-zinc-100 pb-3 dark:border-zinc-800">
+                <div className="mb-2 flex shrink-0 items-center justify-between border-b border-black/[0.05] pb-3 dark:border-white/[0.08]">
                   <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                     {title}
                   </span>
                   <button
                     type="button"
                     onClick={handleClose}
-                    className="cursor-pointer rounded-md p-1 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
+                    className="cursor-pointer rounded-lg p-1.5 text-zinc-400 transition-colors hover:bg-black/[0.04] hover:text-zinc-700 dark:hover:bg-white/[0.06] dark:hover:text-zinc-200"
                     aria-label="Close menu"
                   >
-                    ✕
+                    <X className="h-4 w-4" />
                   </button>
                 </div>
               )}
               <div className="flex flex-1 flex-col gap-1.5">{children}</div>
               {footer && (
-                <div className="mt-auto shrink-0 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                <div className="mt-auto shrink-0 border-t border-black/[0.05] pt-4 dark:border-white/[0.08]">
                   {footer}
                 </div>
               )}
@@ -610,30 +613,30 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                   transition: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
                 }}
                 className={cn(
-                  "pointer-events-auto absolute top-0 bottom-0 left-0 z-20 flex h-full w-[84%] max-w-full flex-col justify-between overflow-y-auto border-r border-zinc-200 bg-white p-5 shadow-2xl sm:w-[320px] sm:p-6 dark:border-zinc-800 dark:bg-zinc-950",
+                  "pointer-events-auto absolute top-0 bottom-0 left-0 z-20 flex h-full w-[84%] max-w-full flex-col justify-between overflow-y-auto border-r border-black/[0.06] bg-white p-5 shadow-2xl sm:w-[320px] sm:p-6 dark:border-white/[0.08] dark:bg-[#161618]",
                   className
                 )}
                 {...(props as any)}
               >
                 <div className="flex flex-1 flex-col">
-                  <div className="mb-4 flex shrink-0 items-center justify-between border-b border-zinc-100 pb-4 dark:border-zinc-800">
+                  <div className="mb-4 flex shrink-0 items-center justify-between border-b border-black/[0.05] pb-4 dark:border-white/[0.08]">
                     <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
                       {title || "Navigation"}
                     </span>
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-zinc-900 dark:hover:text-zinc-100"
+                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-white/10 dark:text-zinc-300 dark:hover:text-white"
                       aria-label="Close menu"
                     >
-                      ✕
+                      <X className="h-4 w-4" />
                     </button>
                   </div>
                   <div className="flex flex-1 flex-col gap-1.5">{children}</div>
                 </div>
 
                 {footer && (
-                  <div className="mt-6 shrink-0 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                  <div className="mt-6 shrink-0 border-t border-black/[0.05] pt-4 dark:border-white/[0.08]">
                     {footer}
                   </div>
                 )}
@@ -686,30 +689,30 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
                   transition: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
                 }}
                 className={cn(
-                  "pointer-events-auto absolute top-0 right-0 bottom-0 z-20 flex h-full w-[84%] max-w-full flex-col justify-between overflow-y-auto border-l border-zinc-200 bg-white p-5 shadow-2xl sm:w-[320px] sm:p-6 dark:border-zinc-800 dark:bg-zinc-950",
+                  "pointer-events-auto absolute top-0 right-0 bottom-0 z-20 flex h-full w-[84%] max-w-full flex-col justify-between overflow-y-auto border-l border-black/[0.06] bg-white p-5 shadow-2xl sm:w-[320px] sm:p-6 dark:border-white/[0.08] dark:bg-[#161618]",
                   className
                 )}
                 {...(props as any)}
               >
                 <div className="flex flex-1 flex-col">
-                  <div className="mb-4 flex shrink-0 items-center justify-between border-b border-zinc-100 pb-4 dark:border-zinc-800">
+                  <div className="mb-4 flex shrink-0 items-center justify-between border-b border-black/[0.05] pb-4 dark:border-white/[0.08]">
                     <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
                       {title || "Navigation"}
                     </span>
                     <button
                       type="button"
                       onClick={handleClose}
-                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-zinc-900 dark:hover:text-zinc-100"
+                      className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 transition-colors hover:text-zinc-900 dark:bg-white/10 dark:text-zinc-300 dark:hover:text-white"
                       aria-label="Close menu"
                     >
-                      ✕
+                      <X className="h-4 w-4" />
                     </button>
                   </div>
                   <div className="flex flex-1 flex-col gap-1.5">{children}</div>
                 </div>
 
                 {footer && (
-                  <div className="mt-6 shrink-0 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                  <div className="mt-6 shrink-0 border-t border-black/[0.05] pt-4 dark:border-white/[0.08]">
                     {footer}
                   </div>
                 )}
@@ -746,23 +749,23 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
             }}
             className={cn(
               isContained ? "absolute inset-0 z-[99999]" : "fixed inset-0 z-[99999]",
-              "pointer-events-auto flex h-full w-full flex-col justify-between overflow-y-auto bg-white p-6 shadow-2xl sm:p-10 dark:bg-zinc-950",
+              "pointer-events-auto flex h-full w-full flex-col justify-between overflow-y-auto bg-white p-6 shadow-2xl sm:p-10 dark:bg-[#161618]",
               className
             )}
             {...(props as any)}
           >
             {/* Fullscreen Header with Brand & Close Button */}
-            <div className="flex shrink-0 items-center justify-between border-b border-zinc-100 pb-6 dark:border-zinc-800">
+            <div className="flex shrink-0 items-center justify-between border-b border-black/[0.05] pb-6 dark:border-white/[0.08]">
               <span className="text-base font-extrabold tracking-tight text-zinc-900 dark:text-zinc-50">
                 {title || "Menu"}
               </span>
               <button
                 type="button"
                 onClick={handleClose}
-                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 shadow-xs transition-all hover:scale-105 active:scale-95 dark:bg-zinc-900 dark:text-zinc-200"
+                className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-zinc-100 text-sm font-bold text-zinc-700 shadow-xs transition-all hover:scale-105 active:scale-95 dark:bg-white/10 dark:text-zinc-200"
                 aria-label="Close fullscreen menu"
               >
-                ✕
+                <X className="h-4 w-4" />
               </button>
             </div>
 
@@ -771,7 +774,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
 
             {/* Footer Information */}
             {footer && (
-              <div className="shrink-0 border-t border-zinc-100 pt-6 text-xs text-zinc-500 dark:border-zinc-800">
+              <div className="shrink-0 border-t border-black/[0.05] pt-6 text-xs text-zinc-500 dark:border-white/[0.08]">
                 {footer}
               </div>
             )}
@@ -805,10 +808,10 @@ const NavbarMenuItem = React.forwardRef<HTMLDivElement, NavbarMenuItemProps>(
         variants={menuItemVariants}
         data-active={isActive ? "true" : undefined}
         className={cn(
-          "flex w-full cursor-pointer items-center rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all select-none",
+          "flex w-full cursor-pointer items-center rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all select-none active:scale-[0.99]",
           isActive
-            ? "bg-zinc-100 font-semibold text-zinc-950 shadow-xs dark:bg-zinc-900 dark:text-white"
-            : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900/50 dark:hover:text-zinc-100",
+            ? "bg-zinc-100 font-semibold text-zinc-950 shadow-xs dark:bg-white/10 dark:text-white"
+            : "text-zinc-600 hover:bg-black/[0.03] hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-white/[0.05] dark:hover:text-zinc-100",
           className
         )}
         {...(props as any)}
@@ -845,7 +848,7 @@ const NavbarMegaMenu = React.forwardRef<HTMLDivElement, NavbarMegaMenuProps>(
             onMouseLeave={onClose}
             {...(props as any)}
           >
-            <div className="mx-auto max-w-6xl rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/95">
+            <div className="mx-auto max-w-6xl rounded-2xl border border-black/[0.08] bg-white/95 p-6 shadow-2xl backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#161618]/95">
               {children}
             </div>
           </motion.div>
@@ -885,7 +888,7 @@ const NavbarDropdownMenu = React.forwardRef<HTMLDivElement, NavbarDropdownMenuPr
             exit={{ opacity: 0, y: 6, scale: 0.96 }}
             transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "absolute top-full z-[9990] mt-2 min-w-[220px] rounded-xl border border-zinc-200 bg-white/95 p-2 shadow-xl backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-900/95",
+              "absolute top-full z-[9990] mt-2 min-w-[220px] rounded-xl border border-black/[0.08] bg-white/95 p-2 shadow-xl backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#161618]/95",
               alignClasses[align],
               className
             )}

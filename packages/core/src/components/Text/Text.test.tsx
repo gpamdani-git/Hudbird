@@ -1,7 +1,7 @@
 import React from "react";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { Text, Strong, Code } from "./Text";
+import { Text, Strong, Code, Kbd, Blockquote, Mark } from "./Text";
 
 describe("Text polymorphic component", () => {
   it("renders as a paragraph <p> by default", () => {
@@ -35,5 +35,19 @@ describe("Text polymorphic component", () => {
   it("applies variant classes properly", () => {
     render(<Text variant="muted">Muted text</Text>);
     expect(screen.getByText("Muted text")).toHaveClass("text-zinc-500");
+  });
+
+  it("renders Kbd, Blockquote, and Mark components", () => {
+    render(
+      <div>
+        <Kbd>⌘K</Kbd>
+        <Blockquote author="Steve Jobs">Design is how it works.</Blockquote>
+        <Mark>Highlighted</Mark>
+      </div>
+    );
+    expect(screen.getByText("⌘K").tagName).toBe("KBD");
+    expect(screen.getByText("Design is how it works.")).toBeInTheDocument();
+    expect(screen.getByText("— Steve Jobs")).toBeInTheDocument();
+    expect(screen.getByText("Highlighted").tagName).toBe("MARK");
   });
 });

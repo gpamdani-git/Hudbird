@@ -10,7 +10,7 @@ export type PaginationSize = "sm" | "md" | "lg";
 export type PaginationRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 
 const paginationItemVariants = cva(
-  "inline-flex items-center justify-center font-medium select-none transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 disabled:active:scale-100 cursor-pointer",
+  "inline-flex items-center justify-center font-medium select-none transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 disabled:active:scale-100 cursor-pointer",
   {
     variants: {
       size: {
@@ -217,66 +217,66 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
         case "solid":
           switch (color) {
             case "primary":
-              return "bg-primary text-primary-foreground shadow-xs hover:bg-primary-hover focus-visible:ring-primary";
+              return "bg-indigo-600 text-white shadow-xs hover:bg-indigo-700 focus-visible:ring-indigo-600 dark:bg-indigo-500 dark:hover:bg-indigo-600";
             case "success":
               return "bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 focus-visible:ring-emerald-600 dark:bg-emerald-500 dark:hover:bg-emerald-600";
             case "danger":
               return "bg-rose-600 text-white shadow-xs hover:bg-rose-700 focus-visible:ring-rose-600 dark:bg-rose-500 dark:hover:bg-rose-600";
             case "dark":
-              return "bg-zinc-900 text-white shadow-xs hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-950 dark:hover:bg-white focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100";
+              return "bg-zinc-950 text-white shadow-xs hover:bg-zinc-900 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 focus-visible:ring-zinc-900 dark:focus-visible:ring-zinc-100";
             case "zinc":
             default:
-              return "bg-zinc-800 text-white shadow-xs hover:bg-zinc-700 dark:bg-zinc-200 dark:text-zinc-900 dark:hover:bg-white focus-visible:ring-zinc-600";
+              return "bg-zinc-900 text-white shadow-xs hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 focus-visible:ring-zinc-600";
           }
         case "bordered":
           switch (color) {
             case "primary":
-              return "border-2 border-primary-600 text-primary-700 bg-primary-50 focus-visible:ring-primary dark:border-primary-500 dark:text-primary-400 dark:bg-primary-500/15";
+              return "border border-indigo-600 text-indigo-700 bg-indigo-50/80 focus-visible:ring-indigo-600 dark:border-indigo-400 dark:text-indigo-400 dark:bg-indigo-500/15";
             case "success":
-              return "border-2 border-emerald-600 text-emerald-700 bg-emerald-50 focus-visible:ring-emerald-600 dark:border-emerald-400 dark:text-emerald-400 dark:bg-emerald-500/15";
+              return "border border-emerald-600 text-emerald-700 bg-emerald-50/80 focus-visible:ring-emerald-600 dark:border-emerald-400 dark:text-emerald-400 dark:bg-emerald-500/15";
             case "danger":
-              return "border-2 border-rose-600 text-rose-700 bg-rose-50 focus-visible:ring-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-500/15";
+              return "border border-rose-600 text-rose-700 bg-rose-50/80 focus-visible:ring-rose-600 dark:border-rose-400 dark:text-rose-400 dark:bg-rose-500/15";
             case "dark":
-              return "border-2 border-zinc-900 text-zinc-900 bg-zinc-100/60 dark:border-zinc-100 dark:text-zinc-100 dark:bg-zinc-800/60 focus-visible:ring-zinc-900";
+              return "border border-zinc-950 text-zinc-950 bg-black/[0.04] dark:border-white/20 dark:text-white dark:bg-white/10 focus-visible:ring-zinc-950";
             case "zinc":
             default:
-              return "border-2 border-zinc-700 text-zinc-800 bg-zinc-100/60 dark:border-zinc-300 dark:text-zinc-200 dark:bg-zinc-800/60 focus-visible:ring-zinc-600";
+              return "border border-zinc-800 text-zinc-900 bg-black/[0.04] dark:border-white/20 dark:text-white dark:bg-white/10 focus-visible:ring-zinc-600";
           }
         case "flat":
           switch (color) {
             case "primary":
-              return "bg-primary-50 text-primary-700 hover:bg-primary-100 focus-visible:ring-primary-600 dark:bg-primary-500/15 dark:text-primary-400 dark:hover:bg-primary-500/25";
+              return "bg-indigo-50 text-indigo-700 hover:bg-indigo-100 focus-visible:ring-indigo-600 dark:bg-indigo-500/15 dark:text-indigo-400 dark:hover:bg-indigo-500/25";
             case "success":
               return "bg-emerald-50 text-emerald-700 hover:bg-emerald-100 focus-visible:ring-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400 dark:hover:bg-emerald-500/25";
             case "danger":
               return "bg-rose-50 text-rose-700 hover:bg-rose-100 focus-visible:ring-rose-600 dark:bg-rose-500/15 dark:text-rose-400 dark:hover:bg-rose-500/25";
             case "dark":
-              return "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 hover:bg-zinc-300 dark:hover:bg-zinc-700 focus-visible:ring-zinc-900";
+              return "bg-zinc-200 text-zinc-900 dark:bg-white/10 dark:text-white hover:bg-zinc-300 dark:hover:bg-white/15 focus-visible:ring-zinc-900";
             case "zinc":
             default:
-              return "bg-zinc-200 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 focus-visible:ring-zinc-600";
+              return "bg-zinc-200 text-zinc-800 dark:bg-white/10 dark:text-white hover:bg-zinc-300 dark:hover:bg-white/15 focus-visible:ring-zinc-600";
           }
         case "light":
         default:
           switch (color) {
             case "primary":
-              return "text-primary-700 font-bold bg-primary-50 hover:bg-primary-100 focus-visible:ring-primary-600 dark:text-primary-400 dark:bg-primary-500/15 dark:hover:bg-primary-500/25";
+              return "text-indigo-700 font-semibold bg-indigo-50 hover:bg-indigo-100 focus-visible:ring-indigo-600 dark:text-indigo-400 dark:bg-indigo-500/15 dark:hover:bg-indigo-500/25";
             case "success":
-              return "text-emerald-700 font-bold bg-emerald-50 hover:bg-emerald-100 focus-visible:ring-emerald-600 dark:text-emerald-400 dark:bg-emerald-500/15 dark:hover:bg-emerald-500/25";
+              return "text-emerald-700 font-semibold bg-emerald-50 hover:bg-emerald-100 focus-visible:ring-emerald-600 dark:text-emerald-400 dark:bg-emerald-500/15 dark:hover:bg-emerald-500/25";
             case "danger":
-              return "text-rose-700 font-bold bg-rose-50 hover:bg-rose-100 focus-visible:ring-rose-600 dark:text-rose-400 dark:bg-rose-500/15 dark:hover:bg-rose-500/25";
+              return "text-rose-700 font-semibold bg-rose-50 hover:bg-rose-100 focus-visible:ring-rose-600 dark:text-rose-400 dark:bg-rose-500/15 dark:hover:bg-rose-500/25";
             case "dark":
-              return "text-zinc-950 font-bold bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-visible:ring-zinc-900";
+              return "text-zinc-950 font-semibold bg-black/[0.04] dark:text-white dark:bg-white/10 hover:bg-black/[0.06] dark:hover:bg-white/15 focus-visible:ring-zinc-900";
             case "zinc":
             default:
-              return "text-zinc-800 font-bold bg-zinc-100 dark:text-zinc-200 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 focus-visible:ring-zinc-600";
+              return "text-zinc-900 font-semibold bg-black/[0.04] dark:text-white dark:bg-white/10 hover:bg-black/[0.06] dark:hover:bg-white/15 focus-visible:ring-zinc-600";
           }
       }
     };
 
     // Inactive regular item styles
     const inactiveStyles =
-      "text-zinc-600 dark:text-zinc-400 bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800/80 hover:text-zinc-900 dark:hover:text-zinc-100 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
+      "text-zinc-600 dark:text-zinc-400 bg-transparent hover:bg-black/[0.04] dark:hover:bg-white/[0.06] hover:text-zinc-950 dark:hover:text-zinc-100 focus-visible:ring-zinc-400 dark:focus-visible:ring-zinc-600";
 
     const isFirstPage = activePage <= 1;
     const isLastPage = activePage >= total;
@@ -302,12 +302,17 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage - 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
+              "border border-black/[0.06] bg-white text-zinc-700 shadow-2xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white dark:focus-visible:ring-offset-[#161618]"
             )}
           >
             {prevContent ?? (
               <span className="flex items-center gap-1">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="h-4 w-4 -translate-x-[0.5px]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -339,7 +344,7 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
                 onClick={() => handlePageChange(jumpTarget)}
                 className={cn(
                   paginationItemVariants({ size, radius }),
-                  "group text-zinc-400 hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-500 dark:hover:bg-zinc-800/60 dark:hover:text-zinc-300"
+                  "group text-zinc-400 hover:bg-black/[0.04] hover:text-zinc-700 dark:text-zinc-500 dark:hover:bg-white/[0.06] dark:hover:text-zinc-300"
                 )}
               >
                 <span className="text-xs tracking-widest group-hover:hidden">•••</span>
@@ -379,13 +384,18 @@ export const Pagination = React.forwardRef<HTMLElement, PaginationProps>(
             onClick={() => handlePageChange(activePage + 1)}
             className={cn(
               paginationItemVariants({ size, radius }),
-              "border border-zinc-200 bg-white text-zinc-700 shadow-xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800/80 dark:hover:text-white dark:focus-visible:ring-offset-zinc-950"
+              "border border-black/[0.06] bg-white text-zinc-700 shadow-2xs hover:bg-zinc-50 hover:text-zinc-950 focus-visible:ring-indigo-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-300 dark:hover:bg-[#202124] dark:hover:text-white dark:focus-visible:ring-offset-[#161618]"
             )}
           >
             {nextContent ?? (
               <span className="flex items-center gap-1">
                 <span className="hidden sm:inline">Next</span>
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="h-4 w-4 translate-x-[0.5px]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"

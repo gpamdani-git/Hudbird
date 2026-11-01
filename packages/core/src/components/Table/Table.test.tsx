@@ -46,4 +46,31 @@ describe("Table component suite", () => {
     expect(screen.getByText("Paid")).toBeInTheDocument();
     expect(screen.getAllByText("$250.00")).toHaveLength(2);
   });
+
+  it("supports variants and densities", () => {
+    const { container, rerender } = render(
+      <Table variant="striped" density="compact">
+        <TableBody>
+          <TableRow isSelected>
+            <TableCell>Item 1</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+
+    const row = container.querySelector("tr");
+    expect(row).toHaveAttribute("data-selected", "true");
+
+    rerender(
+      <Table variant="borderless" density="relaxed">
+        <TableBody>
+          <TableRow>
+            <TableCell>Item 2</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+
+    expect(screen.getByText("Item 2")).toBeInTheDocument();
+  });
 });
