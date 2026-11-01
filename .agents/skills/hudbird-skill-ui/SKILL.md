@@ -51,10 +51,10 @@ Seluruh ukuran tombol, padding, dan jarak internal mengacu pada kelipatan kisi 8
 
 | Ukuran (*Size*) | Padding Vertikal (Y) | Padding Horizontal (X) | Gap (Ikon ke Teks) | Tinggi Total (*Height*) | Font Size |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Small (`sm`)** | 6px – 8px | 14px (`px-3.5`) | 6px (`gap-1.5`) | 32px (`h-8`) | 12px (`text-xs`) |
-| **Medium (`md`) — Standar** | 10px – 12px | 20px (`px-5`) | 8px (`gap-2`) | 40px (`h-10`) | 14px (`text-sm`) |
-| **Large (`lg`) — Lega (Spacious)** | 14px – 16px | 28px (`px-7`) | 10px (`gap-2.5`) | 48px (`h-12`) | 16px (`text-base`) |
-| **Extra Large (`xl`)** | 18px – 20px | 36px (`px-9`) | 12px (`gap-3`) | 56px (`h-14`) | 18px (`text-lg`) |
+| **Small (`sm`)** | 8px – 10px | 16px (`px-4`) | 6px (`gap-1.5`) | 36px (`h-9`) | 12px (`text-xs`) |
+| **Medium (`md`) — Standar** | 10px – 12px | 24px (`px-6`) | 8px (`gap-2`) | 44px (`h-11`) | 14px (`text-sm`) |
+| **Large (`lg`) — Lega (Spacious)** | 14px – 16px | 32px (`px-8`) | 10px (`gap-2.5`) | 52px (`h-13`) | 16px (`text-base`) |
+| **Extra Large (`xl`) — Hero** | 18px – 20px | 40px (`px-10`) | 12px (`gap-3`) | 60px (`h-15`) | 18px (`text-lg`) |
 
 ---
 
@@ -72,16 +72,16 @@ Saat ikon diletakkan berdampingan dengan label teks di dalam tombol:
    Dilarang menambahkan manual margin seperti `ml-1.5` atau `mr-1.5` pada slot konten jika kontainer tombol sudah menerapkan flex `gap`. Menumpuk margin manual di atas `gap` merusak kepatuhan Hukum Kedekatan Gestalt.
 3. **Pill / Capsule Compensation (`radius="full"`):**
    Ketika tombol menggunakan radius penuh (kapsul), kelengkungan ekstrem di kedua ujung memerlukan kompensasi padding horizontal tambahan agar label tidak menabrak batas kurva:
-   * `sm`: `px-4`
-   * `md`: `px-6`
-   * `lg`: `px-8`
-   * `xl`: `px-10`
+   * `sm`: `px-5`
+   * `md`: `px-7`
+   * `lg`: `px-9`
+   * `xl`: `px-11`
 4. **Icon-Only Precision (`isIconOnly={true}`):**
    Tombol berbasis ikon murni terkunci pada rasio aspek 1:1 tanpa padding horizontal:
-   * `sm`: `w-8 h-8` (32×32)
-   * `md`: `w-10 h-10` (40×40)
-   * `lg`: `w-12 h-12` (48×48)
-   * `xl`: `w-14 h-14` (56×56)
+   * `sm`: `w-9 h-9` (36×36)
+   * `md`: `w-11 h-11` (44×44)
+   * `lg`: `w-13 h-13` (52×52)
+   * `xl`: `w-15 h-15` (60×60)
 
 ---
 
@@ -92,3 +92,4 @@ Skill `hudbird-skill-ui.md` ini akan terus berkembang untuk mencakup seluruh kel
 * **Fase Feedback & Indikator:** `Alert`, `Toast`, `Tooltip`, `Progress`, `Skeleton` (Apple HUD, Dynamic Island, micro-groove tracks).
 * **Fase Seleksi & Pickers:** `Select`, `RadioGroup`, `Slider`, `InputOTP`, `Calendar` (Obsidian surfaces, spring handles, concentric pills).
 * **Fase Auxiliary & Navigasi:** `Sidebar`, `Divider`, `IconBox`, `ComboBox`.
+

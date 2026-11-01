@@ -103,19 +103,19 @@ export default function ButtonDoc() {
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'sm'
           </code>{" "}
-          (32px / h-8),{" "}
+          (36px / h-9, px-4),{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'md'
           </code>{" "}
-          (40px / h-10 standard touch target),{" "}
+          (44px / h-11 Apple HIG touch target, px-6),{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'lg'
           </code>{" "}
-          (48px / h-12 spacious), or{" "}
+          (52px / h-13 spacious, px-8), or{" "}
           <code className="rounded bg-zinc-100 px-1 py-0.5 font-mono text-[11px] dark:bg-zinc-800">
             'xl'
           </code>{" "}
-          (56px / h-14 hero cta).
+          (60px / h-15 hero cta, px-10).
         </span>
       ),
     },

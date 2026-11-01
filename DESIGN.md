@@ -240,21 +240,21 @@ The Button architecture is governed by strict visual perception science, Gestalt
   - **Light & Ghost (`variant="light" | "ghost"`):** Borderless text button with surface-tinted hover state (`hover:bg-zinc-100` / `hover:bg-zinc-800`).
   - **Plain (`variant="plain"`):** Zero background or border, used exclusively for inline links or tertiary triggers.
 
-- **8-Point Spatial Grid Dimensions & Touch Targets:**
-  - **Small (`size="sm"`):** Height `32px` (`h-8`), horizontal padding `14px` (`px-3.5`), font size `12px` (`text-xs`), icon gap `6px` (`gap-1.5`).
-  - **Medium (`size="md"`):** Height `40px` (`h-10`), horizontal padding `20px` (`px-5`), font size `14px` (`text-sm`), icon gap `8px` (`gap-2`). Default standard control meeting 40px touch ergonomics.
-  - **Large (`size="lg"`):** Height `48px` (`h-12`), horizontal padding `28px` (`px-7`), font size `16px` (`text-base`), icon gap `10px` (`gap-2.5`). Spacious control satisfying mobile guidelines.
-  - **Extra Large (`size="xl"`):** Height `56px` (`h-14`), horizontal padding `36px` (`px-9`), font size `18px` (`text-lg`), icon gap `12px` (`gap-3`). Hero call-to-action standard.
+- **8-Point Spatial Grid Dimensions & Touch Targets (Spacious Maximum):**
+  - **Small (`size="sm"`):** Height `36px` (`h-9`), horizontal padding `16px` (`px-4`), font size `12px` (`text-xs`), icon gap `6px` (`gap-1.5`).
+  - **Medium (`size="md"`):** Height `44px` (`h-11`), horizontal padding `24px` (`px-6`), font size `14px` (`text-sm`), icon gap `8px` (`gap-2`). Apple HIG standard 44px touch target with ideal 2:1 anisotropic ratio.
+  - **Large (`size="lg"`):** Height `52px` (`h-13`), horizontal padding `32px` (`px-8`), font size `16px` (`text-base`), icon gap `10px` (`gap-2.5`). Spacious luxury control.
+  - **Extra Large (`size="xl"`):** Height `60px` (`h-15`), horizontal padding `40px` (`px-10`), font size `18px` (`text-lg`), icon gap `12px` (`gap-3`). High-conversion hero call-to-action standard.
 
 - **Corner Radius Mapping & Capsule Compensation:**
   - **Sharp (`radius="none"`):** Squared edges (`0px` / `rounded-none`).
   - **Medium (`radius="md"`):** Generously rounded (`12px` / `rounded-xl`).
   - **Large (`radius="lg"`):** Fluid organic corners (`16px` / `rounded-2xl`).
-  - **Full Capsule (`radius="full"`):** Pill shape (`9999px` / `rounded-full`) with optical compensation padding: `px-4` (sm), `px-6` (md), `px-8` (lg), `px-10` (xl).
+  - **Full Capsule (`radius="full"`):** Pill shape (`9999px` / `rounded-full`) with optical compensation padding: `px-5` (sm), `px-7` (md), `px-9` (lg), `px-11` (xl).
 
 - **Optical Icon Alignment & Fixed Wrappers:**
   - Fixed transparent optical frames: `16×16 px` (`w-4 h-4`) for sm, `20×20 px` (`w-5 h-5`) for md and lg, `24×24 px` (`w-6 h-6`) for xl.
-  - Icon-only precision (`isIconOnly={true}`): Locked to 1:1 square aspect ratios (`w-8 h-8`, `w-10 h-10`, `w-12 h-12`, `w-14 h-14`).
+  - Icon-only precision (`isIconOnly={true}`): Locked to 1:1 square aspect ratios (`w-9 h-9`, `w-11 h-11`, `w-13 h-13`, `w-15 h-15`).
   - Banned: Manual margins (`ml-1.5`, `mr-1.5`) when flex `gap` is active.
 
 - **Tactile Micro-Interactions & Focus:**

@@ -74,15 +74,15 @@ describe("Button component", () => {
 
   it("applies anisotropic vision padding and Fitts's Law sizing across scales", () => {
     const { rerender } = render(<Button size="sm">Small</Button>);
-    expect(screen.getByRole("button")).toHaveClass("h-8", "px-3.5", "gap-1.5");
+    expect(screen.getByRole("button")).toHaveClass("h-9", "px-4", "gap-1.5");
 
     rerender(<Button size="md">Medium</Button>);
-    expect(screen.getByRole("button")).toHaveClass("h-10", "px-5", "gap-2");
+    expect(screen.getByRole("button")).toHaveClass("h-11", "px-6", "gap-2");
 
     rerender(<Button size="lg">Large</Button>);
-    expect(screen.getByRole("button")).toHaveClass("h-12", "px-7", "gap-2.5");
+    expect(screen.getByRole("button")).toHaveClass("h-13", "px-8", "gap-2.5");
 
     rerender(<Button size="xl">Extra Large</Button>);
-    expect(screen.getByRole("button")).toHaveClass("h-14", "px-9", "gap-3");
+    expect(screen.getByRole("button")).toHaveClass("h-15", "px-10", "gap-3");
   });
 });

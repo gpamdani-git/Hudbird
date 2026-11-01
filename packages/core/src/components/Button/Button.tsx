@@ -88,10 +88,10 @@ const buttonVariants = cva(
         rose: "focus-visible:ring-rose-500/40 dark:focus-visible:ring-offset-[#161618]",
       },
       size: {
-        sm: "h-8 px-3.5 text-xs gap-1.5",
-        md: "h-10 px-5 text-sm gap-2",
-        lg: "h-12 px-7 text-base gap-2.5",
-        xl: "h-14 px-9 text-lg gap-3",
+        sm: "h-9 px-4 text-xs gap-1.5",
+        md: "h-11 px-6 text-sm gap-2",
+        lg: "h-13 px-8 text-base gap-2.5",
+        xl: "h-15 px-10 text-lg gap-3",
       },
       radius: {
         none: "rounded-none",
@@ -108,22 +108,22 @@ const buttonVariants = cva(
       {
         isIconOnly: true,
         size: "sm",
-        className: "w-8 h-8",
+        className: "w-9 h-9",
       },
       {
         isIconOnly: true,
         size: "md",
-        className: "w-10 h-10",
+        className: "w-11 h-11",
       },
       {
         isIconOnly: true,
         size: "lg",
-        className: "w-12 h-12",
+        className: "w-13 h-13",
       },
       {
         isIconOnly: true,
         size: "xl",
-        className: "w-14 h-14",
+        className: "w-15 h-15",
       },
 
       // Capsule (radius: "full") extra padding to prevent trailing icons/chevrons from hitting corner curve
@@ -131,25 +131,25 @@ const buttonVariants = cva(
         radius: "full",
         size: "sm",
         isIconOnly: false,
-        className: "px-4",
+        className: "px-5",
       },
       {
         radius: "full",
         size: "md",
         isIconOnly: false,
-        className: "px-6",
+        className: "px-7",
       },
       {
         radius: "full",
         size: "lg",
         isIconOnly: false,
-        className: "px-8",
+        className: "px-9",
       },
       {
         radius: "full",
         size: "xl",
         isIconOnly: false,
-        className: "px-10",
+        className: "px-11",
       },
 
       // ==========================================
