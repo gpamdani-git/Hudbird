@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { navigationData } from "../navData";
 import { motion, AnimatePresence } from "framer-motion";
+import changelogData from "../data/changelog.json";
 import { cn } from "@hudbird/ui";
 
 interface SidebarProps {
@@ -53,8 +54,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
       <aside
         className={`fixed top-3 bottom-3 left-3 z-50 flex w-64 flex-col overflow-hidden rounded-xl bg-white/80 px-3 py-4 backdrop-blur-3xl dark:bg-[#161618]/90 ${transformClasses} transition-transform duration-300 ease-in-out`}
       >
-        {/* Header / Logo (clean, without version badge) */}
-        <div className="relative z-10 mb-4 flex items-center justify-between px-2 pt-1">
+        {/* Header / Logo & Version Badge */}
+        <div className="relative z-10 mb-7 flex items-center justify-between px-2 pt-2">
           <NavLink
             to="/"
             className="flex items-center gap-2 overflow-hidden transition-opacity hover:opacity-80"
@@ -69,6 +70,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
               alt="Hudbird UI"
               className="hidden h-6 w-auto object-contain dark:block"
             />
+            <span className="ml-1 rounded-full bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold text-zinc-500 dark:bg-zinc-800/80 dark:text-zinc-400">
+              v{changelogData[0]?.version || "1.5.0"}
+            </span>
           </NavLink>
         </div>
 
