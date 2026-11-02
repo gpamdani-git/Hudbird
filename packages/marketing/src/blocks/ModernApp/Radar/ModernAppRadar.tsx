@@ -26,6 +26,7 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,7 +81,7 @@ import {
 export const ModernAppRadar = () => (
   <>
     {/* Radar Section */}
-    <section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pt-24 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pt-24 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
       <CyberSectionDivider />
 
       {/* Radar Illustration */}
@@ -257,6 +258,6 @@ export const ModernAppRadar = () => (
           </p>
         </div>
       </div>
-    </section>
+    </Section>
   </>
 );

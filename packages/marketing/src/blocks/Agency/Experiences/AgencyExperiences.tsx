@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Container } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 
 export function AgencyExperiences() {
@@ -11,7 +12,7 @@ export function AgencyExperiences() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="border-b border-[#3D3935] bg-[#282623] py-24 pr-6 pl-[88px] text-[#F4F2ED] md:py-40 md:pr-12 md:pl-[128px] lg:pr-20 lg:pl-[160px]"
     >
-      <div className="mx-auto max-w-5xl">
+      <Container size="xl">
         <BlurRevealText
           text="Work spanning brands, products, and digital teams."
           className="mb-16 text-xs tracking-widest text-[#8E8A83] uppercase"
@@ -41,7 +42,7 @@ export function AgencyExperiences() {
             )
           )}
         </div>
-      </div>
+      </Container>
     </motion.section>
   );
 }

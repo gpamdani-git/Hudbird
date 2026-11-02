@@ -10,6 +10,7 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { PageToolbar } from "./components/PageToolbar";
 import { DocsFooter } from "./components/DocsFooter";
 import { MarketingLayout } from "./components/MarketingLayout";
+import { Container } from "@hudbird/ui";
 import { getTocForPath } from "./tocData";
 
 // Lazy-load all documentation pages for lightning-fast initial load & low memory footprint
@@ -73,6 +74,10 @@ const CliDoc = lazy(() => import("./pages/CliDoc"));
 const AiSkillsDoc = lazy(() => import("./pages/AiSkillsDoc"));
 const DesignSystemDoc = lazy(() => import("./pages/DesignSystemDoc"));
 const IconsDoc = lazy(() => import("./pages/IconsDoc"));
+
+const SectionDoc = lazy(() => import("./pages/SectionDoc"));
+const ContainerDoc = lazy(() => import("./pages/ContainerDoc"));
+const GridDoc = lazy(() => import("./pages/GridDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
@@ -235,8 +240,10 @@ export default function App() {
               onToggleDesktopSidebar={() => setIsMiniSidebar(!isMiniSidebar)}
             />
 
-            <div
-              className={`mx-auto flex w-full max-w-7xl justify-center px-4 pt-8 pb-16 sm:px-8 lg:px-12 ${!isWideLayoutPage ? "gap-12" : ""}`}
+            <Container
+              size="xl"
+              gutter="lg"
+              className={`flex justify-center pt-8 pb-16 ${!isWideLayoutPage ? "gap-12" : ""}`}
             >
               {/* Center Main Content Container */}
               <div className={`relative w-full max-w-full min-w-0 flex-1`}>
@@ -271,6 +278,9 @@ export default function App() {
                     <Route path="/navbar" element={<NavbarDoc />} />
                     <Route path="/pagination" element={<PaginationDoc />} />
                     <Route path="/select" element={<SelectDoc />} />
+                    <Route path="/section" element={<SectionDoc />} />
+                    <Route path="/container" element={<ContainerDoc />} />
+                    <Route path="/grid" element={<GridDoc />} />
                     <Route
                       path="/sidebar"
                       element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
@@ -363,7 +373,7 @@ export default function App() {
                   </div>
                 </aside>
               )}
-            </div>
+            </Container>
           </main>
         </div>
 

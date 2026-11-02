@@ -6,7 +6,7 @@ import { cn } from "../../utils/cn";
 import { Slot } from "../Slot";
 
 export type ButtonVariant =
-  "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain";
+  "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain" | "default";
 export type ButtonColor =
   | "primary"
   | "secondary"
@@ -38,7 +38,7 @@ export type ButtonColor =
   | "pink"
   | "rose";
 
-export type ButtonSize = "sm" | "md" | "lg" | "xl";
+export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type ButtonRadius = "none" | "md" | "lg" | "full";
 
 const buttonVariants = cva(
@@ -47,6 +47,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         solid: "shadow-xs font-semibold",
+        default: "shadow-xs font-semibold",
         bordered: "border-2 bg-transparent font-semibold",
         flat: "font-semibold border-0",
         soft: "font-semibold border-0",
@@ -88,6 +89,7 @@ const buttonVariants = cva(
         rose: "focus-visible:ring-rose-500/40 dark:focus-visible:ring-offset-[#161618]",
       },
       size: {
+        xs: "h-7 px-2.5 text-xs gap-1 rounded-lg",
         sm: "h-9 px-4 text-xs gap-1.5",
         md: "h-11 px-6 text-sm gap-2",
         lg: "h-13 px-8 text-base gap-2.5",
@@ -105,6 +107,11 @@ const buttonVariants = cva(
     },
     compoundVariants: [
       // Icon-only size adjustments
+      {
+        isIconOnly: true,
+        size: "xs",
+        className: "w-7 h-7",
+      },
       {
         isIconOnly: true,
         size: "sm",
@@ -127,6 +134,12 @@ const buttonVariants = cva(
       },
 
       // Capsule (radius: "full") extra padding to prevent trailing icons/chevrons from hitting corner curve
+      {
+        radius: "full",
+        size: "xs",
+        isIconOnly: false,
+        className: "px-3.5",
+      },
       {
         radius: "full",
         size: "sm",
@@ -543,6 +556,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     let resolvedVariant = variant;
     if (plain) resolvedVariant = "plain";
     else if (outline) resolvedVariant = "outline";
+    else if (resolvedVariant === "default") resolvedVariant = "solid";
 
     const computedClass = cn(
       buttonVariants({
@@ -597,6 +611,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     // Standard optical frame dimensions for icons to guarantee visual balance (Gestalt Law of Proximity & Optical Centering)
     const iconFrameClass = cn(
       "inline-flex shrink-0 items-center justify-center pointer-events-none",
+      size === "xs" && "w-3.5 h-3.5 [&>svg]:w-3 [&>svg]:h-3",
       size === "sm" && "w-4 h-4 [&>svg]:w-3.5 [&>svg]:h-3.5",
       size === "md" && "w-5 h-5 [&>svg]:w-4 [&>svg]:h-4",
       size === "lg" && "w-5 h-5 [&>svg]:w-5 [&>svg]:h-5",

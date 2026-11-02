@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
+import { Container } from "@hudbird/ui";
 
 export interface HeroGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
@@ -49,7 +50,10 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
         />
         <div className="bg-primary/10 dark:bg-primary/5 pointer-events-none absolute right-1/4 bottom-1/4 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full opacity-50 blur-[140px]" />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center gap-12 px-6 lg:flex-row lg:gap-16 lg:px-8">
+        <Container
+          size="xl"
+          className="relative z-10 flex flex-col items-center gap-12 lg:flex-row lg:gap-16"
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -89,7 +93,7 @@ export const HeroGlass = React.forwardRef<HTMLElement, HeroGlassProps>(
               </div>
             </motion.div>
           )}
-        </div>
+        </Container>
       </section>
     );
   }

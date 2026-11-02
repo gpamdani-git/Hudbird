@@ -42,7 +42,7 @@ import {
   FooterMega,
   Faq,
 } from "@hudbird/marketing";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Container, Section } from "@hudbird/ui";
 import {
   Sparkles,
   BrainCircuit,
@@ -130,9 +130,9 @@ import { AiStartupHero } from "../Hero/AiStartupHero";
 export const AiStartupFeatures = () => (
   <>
     {/* <!-- Built for Modern Web — Feature Bento --> */}
-    <section
+    <Section
       id="features"
-      className="relative w-full overflow-hidden bg-zinc-50 px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#080d1a]"
+      className="relative w-full overflow-hidden bg-zinc-50 py-24 sm:py-32 dark:bg-[#080d1a]"
     >
       {/* Hero-matching aurora gradient */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -140,7 +140,7 @@ export const AiStartupFeatures = () => (
         <div className="absolute -right-[10%] -bottom-[10%] h-[60%] w-[45%] rounded-full bg-blue-400/8 blur-[120px] dark:bg-blue-500/10" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl space-y-16">
+      <Container size="xl" className="relative z-10 space-y-16">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -546,7 +546,7 @@ export const AiStartupFeatures = () => (
             </div>
           </BentoCard>
         </BentoGrid>
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

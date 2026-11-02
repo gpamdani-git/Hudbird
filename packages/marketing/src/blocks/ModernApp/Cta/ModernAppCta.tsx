@@ -26,6 +26,8 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Container,
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,12 +82,12 @@ import {
 export const ModernAppCta = () => (
   <>
     {/* CTA Section */}
-    <section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 py-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 py-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
       <CyberSectionDivider />
       {/* Mixed violet/rose ambient bottom glow */}
       <div className="pointer-events-none absolute bottom-0 h-[400px] w-full max-w-5xl bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.1)_0%,rgba(244,63,94,0.05)_40%,transparent_70%)] dark:bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.15)_0%,rgba(244,63,94,0.1)_40%,transparent_70%)]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-4xl px-4 text-center">
+      <Container size="lg" className="relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -117,7 +119,7 @@ export const ModernAppCta = () => (
             </a>
           </div>
         </motion.div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

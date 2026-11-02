@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
 import { Check } from "lucide-react";
-import { Badge, Button } from "@hudbird/ui";
+import { Badge, Button, Container } from "@hudbird/ui";
 
 export interface PricingGlassTier {
   name: string;
@@ -72,7 +72,7 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
         className={cn("relative overflow-hidden py-24 sm:py-32", className)}
         {...props}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Container size="xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -190,7 +190,7 @@ export const PricingGlass = React.forwardRef<HTMLElement, PricingGlassProps>(
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     );
   }

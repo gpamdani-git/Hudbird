@@ -245,14 +245,15 @@ function Example() {
 }`;
 
 const proStyleCode = `import { motion } from "framer-motion";
+import { Badge, Section, Container } from "@hudbird/ui";
 
 export const ProStyleVisualEditor = () => (
-  <section className="relative overflow-hidden bg-zinc-950 py-24 sm:py-32 w-full rounded-2xl border border-zinc-800 font-sans">
+  <Section spacing="lg" className="overflow-hidden bg-zinc-950 dark:bg-zinc-950 py-24 sm:py-32 rounded-2xl border border-zinc-800 font-sans">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent" />
     <div className="absolute -left-40 -top-40 h-96 w-96 rounded-full bg-violet-900/20 blur-3xl" />
     <div className="absolute -right-40 -bottom-40 h-96 w-96 rounded-full bg-indigo-900/20 blur-3xl" />
 
-    <div className="mx-auto w-full max-w-7xl flex flex-col lg:flex-row items-center gap-16 px-4 sm:px-8 lg:px-12">
+    <Container size="xl" gutter="none" className="flex flex-col lg:flex-row items-center gap-16 px-4 sm:px-8 lg:px-12">
       <div className="w-full lg:w-1/3 text-left">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex items-center gap-2 text-indigo-400 font-medium mb-4">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -354,8 +355,8 @@ export const ProStyleVisualEditor = () => (
           </div>
         </motion.div>
       </div>
-    </div>
-  </section>
+    </Container>
+  </Section>
 );
 `;
 export default function FeatureSectionDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }) {

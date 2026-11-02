@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { Avatar } from "@hudbird/ui";
+import { Avatar, Section, Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Testimonial, DEFAULT_TESTIMONIALS } from "./Testimonials";
 
@@ -47,7 +47,7 @@ export function TestimonialsGlobe({
   };
 
   return (
-    <section
+    <Section
       className={cn("relative overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
     >
       {/* Background Globe Wrapper */}
@@ -64,7 +64,7 @@ export function TestimonialsGlobe({
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,white_70%)] dark:bg-[radial-gradient(circle_at_center,transparent_0%,#09090b_70%)]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container size="xl" className="relative z-10">
         <div className="mx-auto mb-16 max-w-2xl text-center">
           {label && (
             <span className="mb-4 block text-sm font-semibold tracking-wide text-zinc-600 dark:text-zinc-400">
@@ -121,7 +121,7 @@ export function TestimonialsGlobe({
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

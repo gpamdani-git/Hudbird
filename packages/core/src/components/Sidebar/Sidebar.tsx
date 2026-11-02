@@ -172,7 +172,7 @@ Sidebar.displayName = "Sidebar";
  * SidebarHeader & SidebarBrand
  * -----------------------------------------------------------------------------------------------*/
 
-export interface SidebarBrandProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface SidebarBrandProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   icon?: React.ReactNode;
   title?: React.ReactNode;
 }
@@ -228,12 +228,13 @@ export const SidebarHeader = React.forwardRef<HTMLDivElement, SidebarHeaderProps
           if (!React.isValidElement(child)) return child;
 
           if (isCollapsed && !isBottom) {
+            const childProps = child.props as Record<string, any>;
             const isToggle =
               (child.type as any)?.displayName === "SidebarToggle" ||
-              child.props?.["data-sidebar-toggle"] !== undefined ||
-              child.props?.["aria-label"]?.toLowerCase().includes("sidebar");
+              childProps?.["data-sidebar-toggle"] !== undefined ||
+              childProps?.["aria-label"]?.toLowerCase().includes("sidebar");
 
-            const shouldKeep = child.props?.["data-sidebar-keep"] === true;
+            const shouldKeep = childProps?.["data-sidebar-keep"] === true;
 
             // When mini/collapsed, hide text/labels and non-toggle children unless explicitly told to keep
             if (!isToggle && !shouldKeep) {

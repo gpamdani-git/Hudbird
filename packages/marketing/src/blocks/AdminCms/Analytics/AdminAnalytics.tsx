@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, AreaChart, BarChart } from "@hudbird/ui";
+import { Card, AreaChart, BarChart, Grid } from "@hudbird/ui";
 import { TrendingUp, TrendingDown, Globe, Monitor, Smartphone, Tablet } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -94,12 +94,12 @@ export const AdminAnalytics = () => {
   return (
     <motion.div className="space-y-5" initial="initial" animate="animate" variants={stagger}>
       {/* Metrics Row */}
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <Grid cols={4} gap="sm" className="grid-cols-2">
         <MetricCard label="Page Views" value="32,841" change="+14.2%" positive index={0} />
         <MetricCard label="Sessions" value="18,392" change="+8.7%" positive index={1} />
         <MetricCard label="Avg. Duration" value="3m 42s" change="+5.1%" positive index={2} />
         <MetricCard label="Bounce Rate" value="42.3%" change="-3.2%" positive={false} index={3} />
-      </div>
+      </Grid>
 
       {/* Main Chart */}
       <motion.div variants={fadeUp} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
@@ -134,7 +134,7 @@ export const AdminAnalytics = () => {
       </motion.div>
 
       {/* Bottom Grid: Sources + Devices + Top Pages */}
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <Grid cols={1} gap="sm" className="lg:grid-cols-3">
         {/* Traffic Sources */}
         <motion.div variants={fadeUp} transition={{ type: "spring", stiffness: 400, damping: 30 }}>
           <Card className="bg-card border-border/30 flex h-full flex-col p-6">
@@ -215,7 +215,7 @@ export const AdminAnalytics = () => {
             </div>
           </Card>
         </motion.div>
-      </div>
+      </Grid>
     </motion.div>
   );
 };

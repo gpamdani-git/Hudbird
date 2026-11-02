@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 import { SmoothStackingWrapper } from "../../../components/SmoothStackingWrapper";
 import {
   motion,
@@ -457,7 +457,11 @@ export function HospitalityHighlights() {
           style={{ zIndex: 3 }}
           className="relative mt-[-8vw] flex w-full flex-col items-center bg-[#F5F3E7] px-6 pt-[calc(6rem+8vw)] pb-[35vh]"
         >
-          <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-12 md:flex-row md:gap-24">
+          <Container
+            size="xl"
+            gutter="none"
+            className="flex flex-col items-start gap-12 md:flex-row md:gap-24"
+          >
             {/* Left Column */}
             <div className="flex w-full flex-col gap-24 md:w-1/2">
               {/* 1. Ocean Beach Pool (Large) */}
@@ -593,10 +597,13 @@ export function HospitalityHighlights() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </Container>
 
           {/* Section Footer */}
-          <div className="mt-48 flex w-full max-w-4xl flex-col items-center justify-center text-center">
+          <Container
+            size="lg"
+            className="mt-48 flex flex-col items-center justify-center text-center"
+          >
             <p className="font-serif text-lg text-[#6a6a6a]">
               Find the perfect spot for every moment
             </p>
@@ -629,7 +636,7 @@ export function HospitalityHighlights() {
                 <div className="absolute bottom-0 left-0 h-[1px] w-full origin-left scale-x-0 bg-[#2a2a2a] transition-transform duration-500 ease-out group-hover:scale-x-100" />
               </Button>
             </div>
-          </div>
+          </Container>
         </motion.section>
       </div>
     </SmoothStackingWrapper>

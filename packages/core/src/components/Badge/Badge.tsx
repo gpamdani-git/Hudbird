@@ -5,7 +5,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "default";
-export type BadgeColor = "primary" | "secondary" | "success" | "warning" | "danger" | "info";
+export type BadgeColor =
+  "primary" | "secondary" | "success" | "warning" | "danger" | "info" | "zinc" | "neutral";
 export type BadgeSize = "sm" | "md" | "lg";
 export type BadgePlacement = "top-right" | "top-left" | "bottom-right" | "bottom-left";
 export type BadgeShape = "circle" | "rectangle";
@@ -15,11 +16,11 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        solid: "text-white font-semibold shadow-xs",
+        solid: "font-semibold shadow-xs",
         soft: "font-semibold",
         outline: "bg-transparent border",
         flat: "font-medium",
-        default: "text-white font-semibold shadow-xs",
+        default: "font-semibold shadow-xs",
       },
       color: {
         primary: "",
@@ -28,6 +29,8 @@ const badgeVariants = cva(
         warning: "",
         danger: "",
         info: "",
+        zinc: "",
+        neutral: "",
       },
       size: {
         dot: "p-0 min-h-0 min-w-0 h-2.5 w-2.5 aspect-square rounded-full shrink-0",
@@ -71,6 +74,16 @@ const badgeVariants = cva(
         color: "info",
         className: "bg-sky-600 text-white dark:bg-sky-500",
       },
+      {
+        variant: "solid",
+        color: "zinc",
+        className: "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900",
+      },
+      {
+        variant: "solid",
+        color: "neutral",
+        className: "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900",
+      },
 
       // Soft (Pastel) Variants
       {
@@ -108,6 +121,18 @@ const badgeVariants = cva(
         color: "info",
         className:
           "bg-sky-50 text-sky-700 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:ring-sky-500/20",
+      },
+      {
+        variant: "soft",
+        color: "zinc",
+        className:
+          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/80 dark:text-zinc-200 dark:ring-zinc-700/60",
+      },
+      {
+        variant: "soft",
+        color: "neutral",
+        className:
+          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/80 dark:text-zinc-200 dark:ring-zinc-700/60",
       },
 
       // Outline Variants
@@ -147,6 +172,18 @@ const badgeVariants = cva(
         className:
           "border-sky-600 text-sky-700 hover:bg-sky-50 dark:border-sky-500 dark:text-sky-400 dark:hover:bg-sky-500/15",
       },
+      {
+        variant: "outline",
+        color: "zinc",
+        className:
+          "border-zinc-300 text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800",
+      },
+      {
+        variant: "outline",
+        color: "neutral",
+        className:
+          "border-zinc-300 text-zinc-700 hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800",
+      },
 
       // Flat Variants
       {
@@ -174,6 +211,21 @@ const badgeVariants = cva(
         variant: "flat",
         color: "danger",
         className: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-400",
+      },
+      {
+        variant: "flat",
+        color: "info",
+        className: "bg-sky-50 text-sky-700 dark:bg-sky-500/15 dark:text-sky-400",
+      },
+      {
+        variant: "flat",
+        color: "zinc",
+        className: "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200",
+      },
+      {
+        variant: "flat",
+        color: "neutral",
+        className: "bg-zinc-100 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200",
       },
       {
         variant: "flat",
@@ -211,6 +263,16 @@ const badgeVariants = cva(
         variant: "default",
         color: "info",
         className: "bg-sky-600 text-white dark:bg-sky-500",
+      },
+      {
+        variant: "default",
+        color: "zinc",
+        className: "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900",
+      },
+      {
+        variant: "default",
+        color: "neutral",
+        className: "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900",
       },
     ],
     defaultVariants: {

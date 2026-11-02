@@ -55,3 +55,6 @@ export * from "./components/EditorialImage";
 export * from "./components/SplitTextReveal";
 export * from "./components/StickyStack";
 export * from "./components/HudbirdIcon";
+export * from "./components/Section";
+export * from "./components/Container";
+export * from "./components/Grid";

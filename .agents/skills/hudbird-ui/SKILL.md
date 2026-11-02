@@ -28,6 +28,11 @@ This skill equips any AI model with comprehensive knowledge of all 60+ component
    * Use Framer Motion for scroll reveals, layout springs, and tactile buttons (`KineticButton`, `SplitTextReveal`, `StickyStack`).
 5. **Lucide Icons Standard**:
    * Always use `lucide-react` for iconography (`size={16}` for inline controls, `size={20}` for headers).
+6. **Mandatory 100% Core Component Consumption**:
+   * Every marketing block, dashboard page, template showcase, and docs page **MUST** consume `@hudbird/ui` core components directly (`<Button>`, `<Card>`, `<Badge>`, `<Avatar>`, `<Section>`, `<Container>`, `<Grid>`, `<GridItem>`, `<Input>`, `<Switch>`, etc.). Raw HTML elements like `<button>`, raw `<section>`, or ad-hoc `<div className="grid">` are strictly banned.
+   * Do not destroy theme tokens with excessive hardcoded `cn` overrides; all components must react dynamically to the Hudbird Theme Editor.
+7. **Pexels-Only Photography Standard**:
+   * All placeholder and editorial photography for marketing blocks, templates, and showcases must originate from **Pexels** (`images.pexels.com`). Unsplash and uncurated URLs are banned.
 
 ---
 
@@ -77,7 +82,7 @@ This automatically:
 npx hudbird-ui add Button
 
 # Common UI batch
-npx hudbird-ui add Button Card Dialog Form Input Dropdown Table
+npx hudbird-ui add Section Container Grid Button Card Dialog Form Input Dropdown Table
 
 # Signature interactive & marketing components
 npx hudbird-ui add DoubleBezelCard KineticButton SplitTextReveal StickyStack BentoGrid Hero Testimonials Pricing
@@ -113,6 +118,9 @@ npx hudbird-ui add --all
 
 | Category | Component Name | Subcomponents & Compound Elements | Primary Props & Variants |
 | :--- | :--- | :--- | :--- |
+| **Macro Layout** | `Section` | Self-contained | `spacing`: none, xs, sm, md, lg, xl<br/>`variant`: default, muted, card, inverted, obsidian<br/>`fullHeight`: boolean (100dvh safe dynamic viewport)<br/>`bordered`: boolean, top, bottom, both |
+| **Macro Layout** | `Container` | Self-contained | `size`: sm, md, prose (65ch reading channel), lg, xl, 2xl, fluid<br/>`gutter`: none, sm, md, lg (monumental Stitch)<br/>`centered`: boolean |
+| **Macro Layout** | `Grid` | `Grid`, `GridItem` | `cols`: 1-6, 12, auto-fit, auto-fill<br/>`layout`: default, bento-2-1, bento-1-2, bento-split<br/>`gap`: none, xs, sm, md, lg, xl<br/>`animate`: boolean (Google Stitch waterfall)<br/>`staggerDelay`: number |
 | **Primitives** | `Button` | Self-contained, `asChild` via Slot | `variant`: solid, bordered, flat, soft, light, ghost, outline, plain<br/>`color`: primary, secondary, success, warning, danger, zinc, dark/zinc<br/>`size`: sm, md, lg<br/>`isLoading`, `startContent`, `endContent`, `isIconOnly`, `href` |
 | **Primitives** | `Badge` | Self-contained | `variant`: solid, flat, outline, soft<br/>`color`: primary, secondary, success, warning, danger, zinc |
 | **Primitives** | `Avatar` | `Avatar`, `AvatarImage`, `AvatarFallback` | `size`: sm, md, lg, xl<br/>`src`, `alt`, `ringColor` |

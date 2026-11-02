@@ -46,6 +46,7 @@ import {
 import {
   Button,
   Card,
+  Container,
   Text,
   Navbar,
   NavbarBrand,
@@ -97,7 +98,10 @@ export const SaaSHero = () => (
         <div className="absolute right-0 bottom-0 left-0 h-40 bg-gradient-to-t from-white to-transparent dark:from-[#070912]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-32 sm:pt-40 lg:pt-48">
+      <Container
+        size="lg"
+        className="relative z-10 flex flex-col items-center pt-32 sm:pt-40 lg:pt-48"
+      >
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -163,159 +167,161 @@ export const SaaSHero = () => (
             </Button>
           </form>
         </motion.div>
-      </div>
+      </Container>
 
       {/* Dashboard UI Mockup */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="relative z-20 mx-auto mt-20 w-full max-w-5xl px-4 pb-0"
-      >
-        <div className="overflow-hidden rounded-t-[2rem] border border-zinc-200 bg-white shadow-2xl transition-colors duration-500 dark:border-white/20 dark:bg-[#161822] dark:shadow-[0_-20px_60px_-15px_rgba(24,117,255,0.2)]">
-          {/* Mockup Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 px-6 py-4 dark:border-white/5">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-zinc-900 dark:text-white">
-                <Box className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                <span className="font-semibold tracking-tight">Taskk</span>
+      <Container size="xl" className="relative z-20 mt-20 pb-0">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="w-full"
+        >
+          <div className="overflow-hidden rounded-t-[2rem] border border-zinc-200 bg-white shadow-2xl transition-colors duration-500 dark:border-white/20 dark:bg-[#161822] dark:shadow-[0_-20px_60px_-15px_rgba(24,117,255,0.2)]">
+            {/* Mockup Header */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 px-6 py-4 dark:border-white/5">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white">
+                  <Box className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <span className="font-semibold tracking-tight">Taskk</span>
+                </div>
+                <div className="hidden h-4 w-px bg-zinc-200 sm:block dark:bg-white/10" />
+                <div className="hidden items-center gap-2 text-sm text-zinc-500 sm:flex dark:text-zinc-400">
+                  <LayoutDashboard className="h-4 w-4" />
+                  <span>Board</span>
+                  <ChevronDown className="h-3 w-3" />
+                  <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-900 dark:bg-white/5 dark:text-white">
+                    Overview
+                  </span>
+                </div>
               </div>
-              <div className="hidden h-4 w-px bg-zinc-200 sm:block dark:bg-white/10" />
-              <div className="hidden items-center gap-2 text-sm text-zinc-500 sm:flex dark:text-zinc-400">
-                <LayoutDashboard className="h-4 w-4" />
-                <span>Board</span>
-                <ChevronDown className="h-3 w-3" />
-                <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-900 dark:bg-white/5 dark:text-white">
-                  Overview
+              <div className="flex items-center gap-4">
+                <div className="flex -space-x-2">
+                  <div className="h-7 w-7 rounded-full border-2 border-white bg-orange-400 dark:border-[#161822]"></div>
+                  <div className="h-7 w-7 rounded-full border-2 border-white bg-blue-400 dark:border-[#161822]"></div>
+                  <div className="h-7 w-7 rounded-full border-2 border-white bg-pink-400 dark:border-[#161822]"></div>
+                </div>
+                <span className="hidden text-xs text-zinc-500 sm:inline-block dark:text-zinc-400">
+                  7/12 Members
                 </span>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-2">
-                <div className="h-7 w-7 rounded-full border-2 border-white bg-orange-400 dark:border-[#161822]"></div>
-                <div className="h-7 w-7 rounded-full border-2 border-white bg-blue-400 dark:border-[#161822]"></div>
-                <div className="h-7 w-7 rounded-full border-2 border-white bg-pink-400 dark:border-[#161822]"></div>
-              </div>
-              <span className="hidden text-xs text-zinc-500 sm:inline-block dark:text-zinc-400">
-                7/12 Members
-              </span>
-            </div>
-          </div>
 
-          {/* Mockup Body Layout */}
-          <div className="flex h-[400px]">
-            {/* Sidebar */}
-            <div className="hidden w-56 border-r border-zinc-100 p-4 md:block dark:border-white/5">
-              <div className="mb-6 flex items-center gap-2 rounded-md bg-zinc-50 px-3 py-2 text-xs text-zinc-500 dark:bg-white/5">
-                <Star className="h-3 w-3" /> Search
-              </div>
-              <nav className="space-y-1">
-                {["Home", "Tasks", "Docs", "Schedule", "Chat", "Payments", "Customers"].map(
-                  (item, i) => (
-                    <div
-                      key={item}
-                      className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm ${i === 1 ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-white/10 dark:text-white" : "text-zinc-500 dark:text-zinc-400"}`}
-                    >
+            {/* Mockup Body Layout */}
+            <div className="flex h-[400px]">
+              {/* Sidebar */}
+              <div className="hidden w-56 border-r border-zinc-100 p-4 md:block dark:border-white/5">
+                <div className="mb-6 flex items-center gap-2 rounded-md bg-zinc-50 px-3 py-2 text-xs text-zinc-500 dark:bg-white/5">
+                  <Star className="h-3 w-3" /> Search
+                </div>
+                <nav className="space-y-1">
+                  {["Home", "Tasks", "Docs", "Schedule", "Chat", "Payments", "Customers"].map(
+                    (item, i) => (
                       <div
-                        className={`h-4 w-4 rounded-sm ${i === 1 ? "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" : "bg-zinc-100 text-zinc-400 dark:bg-white/5 dark:text-zinc-500"}`}
-                      ></div>
-                      {item}
-                    </div>
-                  )
-                )}
-              </nav>
-            </div>
-
-            {/* Main Kanban Content */}
-            <div className="flex-1 p-4 sm:p-6">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
-                    Project UI/UX
-                  </h3>
-                  <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
-                    <span className="text-zinc-900 dark:text-white">Board</span>
-                    <span>List</span>
-                    <span>Timeline</span>
-                    <span className="hidden sm:inline">Due Tasks</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button size="sm" variant="bordered" className="hidden sm:inline-flex">
-                    Import
-                  </Button>
-                  <Button size="sm" color="primary" startContent={<Star className="h-3 w-3" />}>
-                    New Board
-                  </Button>
-                </div>
+                        key={item}
+                        className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm ${i === 1 ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-white/10 dark:text-white" : "text-zinc-500 dark:text-zinc-400"}`}
+                      >
+                        <div
+                          className={`h-4 w-4 rounded-sm ${i === 1 ? "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400" : "bg-zinc-100 text-zinc-400 dark:bg-white/5 dark:text-zinc-500"}`}
+                        ></div>
+                        {item}
+                      </div>
+                    )
+                  )}
+                </nav>
               </div>
 
-              {/* Columns */}
-              <div className="flex gap-4 overflow-hidden">
-                {/* Column 1 */}
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                    <div className="h-2 w-2 rounded-full bg-blue-400"></div> To Do{" "}
-                    <span className="ml-auto text-zinc-400 dark:text-zinc-500">3</span>
-                  </div>
-                  {/* Card */}
-                  <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
-                    <div className="text-xs text-zinc-500">Client: Stelar</div>
-                    <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
-                      Change top CTA button text
-                    </div>
-                    <div className="mt-3 flex items-center gap-2">
-                      <span className="rounded bg-blue-100 px-2 py-0.5 text-[10px] text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
-                        Priority
-                      </span>
-                      <div className="ml-auto h-4 w-4 rounded-full bg-orange-400 sm:h-5 sm:w-5"></div>
+              {/* Main Kanban Content */}
+              <div className="flex-1 p-4 sm:p-6">
+                <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
+                      Project UI/UX
+                    </h3>
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+                      <span className="text-zinc-900 dark:text-white">Board</span>
+                      <span>List</span>
+                      <span>Timeline</span>
+                      <span className="hidden sm:inline">Due Tasks</span>
                     </div>
                   </div>
-                  <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
-                    <div className="text-xs text-zinc-500">Client: Stelar</div>
-                    <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
-                      Redesign analytics dashboard
-                    </div>
+                  <div className="flex items-center gap-3">
+                    <Button size="sm" variant="bordered" className="hidden sm:inline-flex">
+                      Import
+                    </Button>
+                    <Button size="sm" color="primary" startContent={<Star className="h-3 w-3" />}>
+                      New Board
+                    </Button>
                   </div>
                 </div>
 
-                {/* Column 2 */}
-                <div className="flex-1 space-y-3">
-                  <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                    <div className="h-2 w-2 rounded-full bg-orange-400"></div> In Progress{" "}
-                    <span className="ml-auto text-zinc-400 dark:text-zinc-500">2</span>
-                  </div>
-                  <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
-                    <div className="text-xs text-zinc-500">Client: Stelar</div>
-                    <div className="mt-1 text-sm leading-tight font-medium text-zinc-900 dark:text-white">
-                      Redesign news page
+                {/* Columns */}
+                <div className="flex gap-4 overflow-hidden">
+                  {/* Column 1 */}
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                      <div className="h-2 w-2 rounded-full bg-blue-400"></div> To Do{" "}
+                      <span className="ml-auto text-zinc-400 dark:text-zinc-500">3</span>
                     </div>
-                    <div className="mt-3 flex items-center gap-2">
-                      <span className="rounded bg-orange-100 px-2 py-0.5 text-[10px] text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
-                        In Review
-                      </span>
+                    {/* Card */}
+                    <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
+                      <div className="text-xs text-zinc-500">Client: Stelar</div>
+                      <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
+                        Change top CTA button text
+                      </div>
+                      <div className="mt-3 flex items-center gap-2">
+                        <span className="rounded bg-blue-100 px-2 py-0.5 text-[10px] text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">
+                          Priority
+                        </span>
+                        <div className="ml-auto h-4 w-4 rounded-full bg-orange-400 sm:h-5 sm:w-5"></div>
+                      </div>
+                    </div>
+                    <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
+                      <div className="text-xs text-zinc-500">Client: Stelar</div>
+                      <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
+                        Redesign analytics dashboard
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Column 3 */}
-                <div className="hidden flex-1 space-y-3 lg:block">
-                  <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                    <div className="h-2 w-2 rounded-full bg-purple-400"></div> In Review{" "}
-                    <span className="ml-auto text-zinc-400 dark:text-zinc-500">1</span>
+                  {/* Column 2 */}
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                      <div className="h-2 w-2 rounded-full bg-orange-400"></div> In Progress{" "}
+                      <span className="ml-auto text-zinc-400 dark:text-zinc-500">2</span>
+                    </div>
+                    <div className="rounded-lg border border-zinc-200 bg-white p-3 shadow-sm sm:p-4 dark:border-white/5 dark:bg-[#1d202d]">
+                      <div className="text-xs text-zinc-500">Client: Stelar</div>
+                      <div className="mt-1 text-sm leading-tight font-medium text-zinc-900 dark:text-white">
+                        Redesign news page
+                      </div>
+                      <div className="mt-3 flex items-center gap-2">
+                        <span className="rounded bg-orange-100 px-2 py-0.5 text-[10px] text-orange-600 dark:bg-orange-500/10 dark:text-orange-400">
+                          In Review
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-white/5 dark:bg-[#1d202d]">
-                    <div className="text-xs text-zinc-500">Client: Stelar</div>
-                    <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
-                      UI Animation for the onboarding...
+
+                  {/* Column 3 */}
+                  <div className="hidden flex-1 space-y-3 lg:block">
+                    <div className="flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                      <div className="h-2 w-2 rounded-full bg-purple-400"></div> In Review{" "}
+                      <span className="ml-auto text-zinc-400 dark:text-zinc-500">1</span>
+                    </div>
+                    <div className="rounded-lg border border-zinc-200 bg-white p-4 shadow-sm dark:border-white/5 dark:bg-[#1d202d]">
+                      <div className="text-xs text-zinc-500">Client: Stelar</div>
+                      <div className="mt-1 text-sm font-medium text-zinc-900 dark:text-white">
+                        UI Animation for the onboarding...
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </Container>
     </Hero>
   </>
 );

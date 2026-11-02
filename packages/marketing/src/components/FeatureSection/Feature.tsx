@@ -4,6 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Container } from "@hudbird/ui";
 
 const featureSectionVariants = cva("py-24 sm:py-32 overflow-hidden relative", {
   variants: {
@@ -33,9 +34,10 @@ FeatureSection.displayName = "FeatureSection";
 const FeatureHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div
+      <Container
         ref={ref}
-        className={cn("relative z-10 mx-auto mb-16 max-w-7xl px-6 sm:mb-20 lg:px-8", className)}
+        size="xl"
+        className={cn("relative z-10 mb-16 sm:mb-20", className)}
         {...props}
       >
         <motion.div
@@ -47,7 +49,7 @@ const FeatureHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
         >
           {children}
         </motion.div>
-      </div>
+      </Container>
     );
   }
 );
@@ -104,12 +106,13 @@ FeatureDescription.displayName = "Feature.Description";
 const FeatureGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("relative z-10 mx-auto max-w-7xl px-6 lg:px-8", className)}>
+      <Container size="xl" className={cn("relative z-10", className)}>
         <div
+          ref={ref}
           className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
           {...props}
         />
-      </div>
+      </Container>
     );
   }
 );
@@ -197,12 +200,10 @@ FeatureCardDescription.displayName = "Feature.CardDescription";
 const FeatureAlternating = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return (
-      <div
+      <Container
         ref={ref}
-        className={cn(
-          "relative z-10 mx-auto max-w-7xl space-y-24 px-6 sm:space-y-32 lg:px-8",
-          className
-        )}
+        size="xl"
+        className={cn("relative z-10 space-y-24 px-6 sm:space-y-32 lg:px-8", className)}
         {...props}
       />
     );

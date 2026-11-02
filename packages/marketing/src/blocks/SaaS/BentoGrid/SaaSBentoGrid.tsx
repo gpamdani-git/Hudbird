@@ -45,6 +45,8 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
+  Section,
   Text,
   Navbar,
   NavbarBrand,
@@ -78,13 +80,13 @@ import { logos, MEGA_LINK_GROUPS, SOCIALS, FAQS } from "../components/SaaSIntern
 export const SaaSBentoGrid = () => (
   <>
     {/* <!-- Bento Grid: Problem -> Solution Visualization --> */}
-    <div className="relative w-full overflow-hidden bg-white px-4 py-32 sm:px-8 dark:bg-[#070912]">
+    <Section className="relative w-full overflow-hidden bg-white py-32 dark:bg-[#070912]">
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div className="absolute top-[20%] left-[-10%] h-[500px] w-[500px] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
         <div className="absolute right-[-10%] bottom-[20%] h-[500px] w-[500px] rounded-full bg-violet-500/5 blur-[120px] dark:bg-violet-600/10" />
       </div>
-      <div className="relative z-10 mx-auto max-w-6xl space-y-12">
+      <Container size="xl" className="relative z-10 space-y-12">
         <div className="mx-auto mb-20 max-w-3xl text-center">
           <span className="mb-6 block text-sm font-semibold tracking-wide text-blue-600 uppercase dark:text-blue-400">
             Smart Automations
@@ -370,7 +372,7 @@ export const SaaSBentoGrid = () => (
             </BentoCardContent>
           </BentoCard>
         </BentoGrid>
-      </div>
-    </div>
+      </Container>
+    </Section>
   </>
 );

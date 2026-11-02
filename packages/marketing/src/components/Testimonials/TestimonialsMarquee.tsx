@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import { Section, Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import {
   Testimonial,
@@ -156,8 +157,9 @@ export function TestimonialsMarquee({
   ));
 
   return (
-    <section
-      className={cn("relative overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
+    <Section
+      spacing="lg"
+      className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
     >
       <style>{`
         /* Subtle scrollbar for mobile native scrolling */
@@ -188,7 +190,7 @@ export function TestimonialsMarquee({
         <div className="absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full bg-purple-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
       </div>
 
-      <div className="mx-auto mb-16 max-w-7xl px-4 sm:mb-20 sm:px-6 lg:px-8">
+      <Container size="xl" className="mb-16 sm:mb-20">
         <div className="mx-auto max-w-2xl text-center">
           <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
             <span className={cn("mr-2 flex h-1.5 w-1.5 rounded-full", dotClassName)}></span>
@@ -201,7 +203,7 @@ export function TestimonialsMarquee({
             <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">{description}</p>
           )}
         </div>
-      </div>
+      </Container>
 
       {/* Marquee Rows Container */}
       <div className="group relative flex w-full flex-col gap-6 overflow-hidden lg:gap-8">
@@ -215,6 +217,6 @@ export function TestimonialsMarquee({
           <MarqueeRow items={Row2Content} direction="right" speed={30} />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

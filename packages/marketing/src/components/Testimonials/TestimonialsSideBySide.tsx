@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { Card, Avatar } from "@hudbird/ui";
+import { Card, Avatar, Section, Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Testimonial, DEFAULT_TESTIMONIALS } from "./Testimonials";
 
@@ -56,8 +56,8 @@ export function TestimonialsSideBySide({
   };
 
   return (
-    <section className={cn("relative bg-zinc-50 py-24 sm:py-32 dark:bg-zinc-950", className)}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Section spacing="lg" className={cn("bg-zinc-50 py-24 sm:py-32 dark:bg-zinc-950", className)}>
+      <Container size="xl">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Left Column - Content */}
           <div className="flex h-full flex-col justify-between lg:sticky lg:top-24 lg:col-span-5 lg:pb-16">
@@ -153,7 +153,7 @@ export function TestimonialsSideBySide({
             </motion.div>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

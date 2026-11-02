@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, AreaChart, BarChart, Tabs, Tab } from "@hudbird/ui";
+import { Card, AreaChart, BarChart, Tabs, Tab, Grid } from "@hudbird/ui";
 
 export const AdminCharts = () => {
   const trafficData = [
@@ -23,7 +23,7 @@ export const AdminCharts = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+    <Grid cols={1} gap="sm" className="lg:grid-cols-2">
       <Card className="bg-card border-border/40 flex h-full flex-col p-6">
         <div className="mb-3 flex shrink-0 items-center justify-between">
           <h3 className="text-sm font-semibold tracking-tight">Traffic Overview</h3>
@@ -60,6 +60,6 @@ export const AdminCharts = () => {
           />
         </div>
       </Card>
-    </div>
+    </Grid>
   );
 };

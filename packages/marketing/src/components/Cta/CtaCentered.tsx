@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 
 export interface CtaCenteredProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
@@ -36,7 +36,7 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
         {/* Decorative Background Glow for Dark Mode */}
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 dark:opacity-100" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Container size="xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -121,7 +121,7 @@ export const CtaCentered = React.forwardRef<HTMLElement, CtaCenteredProps>(
               </motion.div>
             )}
           </motion.div>
-        </div>
+        </Container>
       </section>
     );
   }

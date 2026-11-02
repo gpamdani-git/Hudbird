@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Container } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 
 export interface Project {
@@ -67,7 +68,7 @@ export function AgencyProjects({
         </h2>
       </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
+      <Container size="xl" className="relative z-10">
         <div className="mb-16 flex items-end justify-between">
           <BlurRevealText
             text="THE WORK"
@@ -110,7 +111,7 @@ export function AgencyProjects({
             </motion.div>
           ))}
         </div>
-      </div>
+      </Container>
     </motion.section>
   );
 }

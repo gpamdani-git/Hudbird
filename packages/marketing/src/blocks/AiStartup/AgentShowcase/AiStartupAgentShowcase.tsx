@@ -42,7 +42,7 @@ import {
   FooterMega,
   Faq,
 } from "@hudbird/marketing";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Container, Section } from "@hudbird/ui";
 import {
   Sparkles,
   BrainCircuit,
@@ -142,16 +142,16 @@ export const AiStartupAgentShowcase = ({
   return (
     <>
       {/* <!-- Agent Showcase Section --> */}
-      <section
+      <Section
         id="components"
-        className="relative w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]"
+        className="relative w-full bg-white py-24 sm:py-32 dark:bg-[#030712]"
       >
         {/* Subtle blue gradient glow — matches hero */}
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           <div className="absolute -top-[30%] -right-[10%] h-[60%] w-[50%] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
           <div className="absolute -bottom-[20%] -left-[10%] h-[50%] w-[40%] rounded-full bg-blue-400/5 blur-[100px] dark:bg-blue-500/8" />
         </div>
-        <div className="relative z-10 mx-auto max-w-7xl space-y-14">
+        <Container size="xl" className="relative z-10 space-y-14">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -555,8 +555,8 @@ export const AiStartupAgentShowcase = ({
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
     </>
   );
 };

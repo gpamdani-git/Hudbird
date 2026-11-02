@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
+import { Container } from "@hudbird/ui";
 
 export interface LogoGlassItem {
   name: string;
@@ -18,7 +19,7 @@ export const LogoCloudGlass = React.forwardRef<HTMLElement, LogoCloudGlassProps>
   ({ className, title = "Integrated across modern web frameworks", logos, ...props }, ref) => {
     return (
       <section ref={ref} className={cn("relative py-16 sm:py-24", className)} {...props}>
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <Container size="xl">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +54,7 @@ export const LogoCloudGlass = React.forwardRef<HTMLElement, LogoCloudGlassProps>
               </motion.div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
     );
   }

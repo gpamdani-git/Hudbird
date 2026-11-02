@@ -26,6 +26,8 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Container,
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,7 +82,7 @@ import {
 export const ModernAppMeetings = () => (
   <>
     {/* Meetings Section */}
-    <section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
       <CyberSectionDivider />
 
       {/* Top Arc Illustration (Animated Horizon) */}
@@ -174,7 +176,7 @@ export const ModernAppMeetings = () => (
       </div>
 
       {/* Meeting UI Card */}
-      <div className="relative z-10 mt-16 w-full max-w-[900px] px-4">
+      <Container size="lg" className="relative z-10 mt-16 max-w-[900px]">
         <div className="relative flex h-[500px] flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl md:flex-row dark:border-white/10 dark:bg-[#0A0A0F]">
           {/* Left Col: Notes */}
           <div className="flex-1 border-r border-zinc-100 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] p-8 pt-10 dark:border-white/5 dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)]">
@@ -399,7 +401,7 @@ export const ModernAppMeetings = () => (
             </div>
           </motion.div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

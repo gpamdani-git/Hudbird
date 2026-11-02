@@ -26,6 +26,8 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Container,
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,8 +82,8 @@ import {
 export const ModernAppGrid = () => (
   <>
     {/* Minimalist Grid Section (Reflect-style) */}
-    <div className="relative overflow-hidden border-t border-zinc-100 bg-white py-24 dark:border-white/5 dark:bg-[#070912]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+    <Section className="relative overflow-hidden border-t border-zinc-100 bg-white py-24 dark:border-white/5 dark:bg-[#070912]">
+      <Container size="xl">
         {/* Grid Container with Faded Borders Mask */}
         <div className="relative">
           {/* Background Grid Lines with Radial Mask */}
@@ -131,7 +133,7 @@ export const ModernAppGrid = () => (
             ))}
           </motion.div>
         </div>
-      </div>
-    </div>
+      </Container>
+    </Section>
   </>
 );

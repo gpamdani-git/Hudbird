@@ -27,6 +27,7 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -211,7 +212,10 @@ export const ModernAppHero = () => (
           <div className="absolute right-0 bottom-0 left-0 h-64 bg-gradient-to-t from-zinc-50 via-zinc-50/80 to-transparent dark:from-[#020617] dark:via-[#020617]/80" />
         </div>
 
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-32 sm:pt-40 lg:pt-48">
+        <Container
+          size="lg"
+          className="relative z-10 flex flex-col items-center pt-32 sm:pt-40 lg:pt-48"
+        >
           {/* Text Contrast Enhancer (radial fade behind text) */}
           <div className="pointer-events-none absolute top-40 left-1/2 -z-10 h-[400px] w-full max-w-[800px] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.6)_0%,transparent_70%)] blur-[20px] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.8)_0%,transparent_70%)]" />
           <motion.div
@@ -274,181 +278,183 @@ export const ModernAppHero = () => (
               </Button>
             </form>
           </motion.div>
-        </div>
+        </Container>
 
         {/* Desktop App UI Mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          viewport={{ once: true, margin: "-50px" }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="relative z-20 mx-auto mt-20 w-full max-w-6xl cursor-default px-4 pb-0"
-        >
-          {/* === Light Splash — beam hitting the mockup surface === */}
-
-          {/* Bright impact point (intense white center) */}
-          <div className="absolute -top-1 left-1/2 z-30 h-[6px] w-[6px] -translate-x-1/2 rounded-full bg-rose-500 shadow-[0_0_20px_8px_rgba(225,29,72,0.6),0_0_60px_20px_rgba(225,29,72,0.4)] dark:bg-white dark:shadow-[0_0_20px_8px_rgba(255,255,255,0.9),0_0_60px_20px_rgba(225,29,72,0.6)]" />
-
-          {/* Sharp horizontal line (the visible edge glow) */}
-          <div className="absolute top-0 left-1/2 z-30 h-[2px] w-[85%] -translate-x-1/2 bg-gradient-to-r from-rose-500/0 via-rose-500/80 to-rose-500/0 shadow-[0_0_10px_rgba(225,29,72,0.5),0_0_30px_rgba(225,29,72,0.3)] dark:via-white/90 dark:shadow-[0_0_10px_rgba(255,255,255,0.8),0_0_30px_rgba(225,29,72,0.5)]" />
-
-          {/* Medium horizontal spread (rose-tinted) */}
-          <div className="absolute -top-2 left-1/2 z-30 h-[20px] w-[70%] -translate-x-1/2 bg-gradient-to-r from-rose-500/0 via-rose-500/40 to-rose-500/0 blur-[6px] dark:via-rose-400/50" />
-
-          {/* Wide diffused halo (atmospheric spread) */}
-          <div className="absolute -top-4 left-1/2 z-30 h-[60px] w-[60%] -translate-x-1/2 bg-gradient-to-r from-rose-600/0 via-rose-600/20 to-rose-600/0 blur-[20px] dark:via-rose-500/30" />
-
-          {/* Vertical light bleeding downward into the mockup */}
-          <div className="absolute top-0 left-1/2 z-30 h-[150px] w-[250px] -translate-x-1/2 bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(225,29,72,0.15)_0%,rgba(225,29,72,0.05)_40%,rgba(225,29,72,0)_100%)] blur-[20px] dark:bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.15)_0%,rgba(225,29,72,0.08)_40%,rgba(225,29,72,0)_100%)]" />
-
-          {/* Animated Border Wrapper */}
-          <div
-            className="relative overflow-hidden rounded-t-[2rem] p-[1px]"
-            style={{
-              WebkitMaskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
-              maskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
-            }}
+        <Container size="xl" className="relative z-20 mt-20 pb-0">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            viewport={{ once: true, margin: "-50px" }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="w-full cursor-default"
           >
-            {/* Inner Content (The Mockup itself) */}
-            <div className="relative flex h-auto min-h-[500px] w-full flex-col overflow-hidden rounded-t-[2rem] bg-white/40 shadow-[0_-20px_80px_-15px_rgba(225,29,72,0.1),0_20px_80px_-15px_rgba(139,92,246,0.1)] ring-1 ring-white/50 backdrop-blur-3xl transition-colors duration-500 ring-inset sm:h-[650px] dark:bg-[#020617]/40 dark:shadow-[0_-20px_80px_-15px_rgba(225,29,72,0.2),0_20px_80px_-15px_rgba(139,92,246,0.2)] dark:ring-white/10">
-              <div className="flex h-full w-full">
-                {/* Main Area */}
-                <div className="relative flex flex-1 flex-col items-center justify-center bg-transparent p-6 py-16 sm:p-8 sm:py-8">
-                  {/* Huge ambient gradient glow at the top (Fading effect matching reference, with violet accent) */}
-                  <motion.div
-                    whileInView={{
-                      opacity: [0.4, 0.7, 0.4],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="pointer-events-none absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(159,18,57,0.15)_0%,rgba(139,92,246,0.1)_40%,rgba(159,18,57,0)_80%)] blur-[40px] dark:bg-[radial-gradient(ellipse_at_center,rgba(190,18,60,0.2)_0%,rgba(139,92,246,0.15)_40%,rgba(190,18,60,0)_80%)]"
-                  />
+            {/* === Light Splash — beam hitting the mockup surface === */}
 
-                  {/* Particle Sphere Orb */}
-                  <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative z-10 mb-8 h-[140px] w-[140px] shrink-0 sm:mb-10 sm:h-[180px] sm:w-[180px]"
-                  >
-                    <ParticleSphere particleColor="#f43f5e" className="scale-[1.1]" />
-                  </motion.div>
+            {/* Bright impact point (intense white center) */}
+            <div className="absolute -top-1 left-1/2 z-30 h-[6px] w-[6px] -translate-x-1/2 rounded-full bg-rose-500 shadow-[0_0_20px_8px_rgba(225,29,72,0.6),0_0_60px_20px_rgba(225,29,72,0.4)] dark:bg-white dark:shadow-[0_0_20px_8px_rgba(255,255,255,0.9),0_0_60px_20px_rgba(225,29,72,0.6)]" />
 
-                  {/* Greeting Text */}
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative z-10 text-center"
-                  >
-                    <h2 className="text-xl font-medium text-zinc-500 sm:text-2xl dark:text-zinc-400">
-                      Hi, Founder
-                    </h2>
-                    <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
-                      What are we shipping today?
-                    </h1>
-                    <p className="mx-auto mt-4 max-w-sm text-xs text-zinc-500 sm:text-sm">
-                      Your AI team is standing by. Let's execute your vision.
-                    </p>
-                  </motion.div>
+            {/* Sharp horizontal line (the visible edge glow) */}
+            <div className="absolute top-0 left-1/2 z-30 h-[2px] w-[85%] -translate-x-1/2 bg-gradient-to-r from-rose-500/0 via-rose-500/80 to-rose-500/0 shadow-[0_0_10px_rgba(225,29,72,0.5),0_0_30px_rgba(225,29,72,0.3)] dark:via-white/90 dark:shadow-[0_0_10px_rgba(255,255,255,0.8),0_0_30px_rgba(225,29,72,0.5)]" />
 
-                  {/* Prompt Input Area */}
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="relative z-10 mt-10 w-full max-w-2xl rounded-2xl border border-white/40 bg-white/30 p-2 shadow-sm ring-1 ring-white/50 backdrop-blur-2xl ring-inset sm:mt-12 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] dark:ring-white/10"
-                  >
-                    <div className="flex items-center gap-2 px-4 py-2 text-xs font-medium text-rose-600 dark:text-rose-400">
-                      <Sparkles className="h-3 w-3" />
-                      Unlock more features with Pro
-                    </div>
-                    <div className="mt-1 rounded-xl border border-white/50 bg-white/60 p-4 shadow-sm backdrop-blur-md dark:border-white/5 dark:bg-white/5 dark:shadow-none">
-                      <input
-                        type="text"
-                        placeholder="Ask me anything..."
-                        className="w-full bg-transparent text-sm text-zinc-900 placeholder-zinc-500 outline-none dark:text-white dark:placeholder-zinc-400"
-                      />
-                      <div className="mt-6 flex items-center justify-between sm:mt-8">
-                        <div className="flex items-center gap-2 sm:gap-3">
+            {/* Medium horizontal spread (rose-tinted) */}
+            <div className="absolute -top-2 left-1/2 z-30 h-[20px] w-[70%] -translate-x-1/2 bg-gradient-to-r from-rose-500/0 via-rose-500/40 to-rose-500/0 blur-[6px] dark:via-rose-400/50" />
+
+            {/* Wide diffused halo (atmospheric spread) */}
+            <div className="absolute -top-4 left-1/2 z-30 h-[60px] w-[60%] -translate-x-1/2 bg-gradient-to-r from-rose-600/0 via-rose-600/20 to-rose-600/0 blur-[20px] dark:via-rose-500/30" />
+
+            {/* Vertical light bleeding downward into the mockup */}
+            <div className="absolute top-0 left-1/2 z-30 h-[150px] w-[250px] -translate-x-1/2 bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(225,29,72,0.15)_0%,rgba(225,29,72,0.05)_40%,rgba(225,29,72,0)_100%)] blur-[20px] dark:bg-[radial-gradient(ellipse_100%_100%_at_50%_0%,rgba(255,255,255,0.15)_0%,rgba(225,29,72,0.08)_40%,rgba(225,29,72,0)_100%)]" />
+
+            {/* Animated Border Wrapper */}
+            <div
+              className="relative overflow-hidden rounded-t-[2rem] p-[1px]"
+              style={{
+                WebkitMaskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
+                maskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
+              }}
+            >
+              {/* Inner Content (The Mockup itself) */}
+              <div className="relative flex h-auto min-h-[500px] w-full flex-col overflow-hidden rounded-t-[2rem] bg-white/40 shadow-[0_-20px_80px_-15px_rgba(225,29,72,0.1),0_20px_80px_-15px_rgba(139,92,246,0.1)] ring-1 ring-white/50 backdrop-blur-3xl transition-colors duration-500 ring-inset sm:h-[650px] dark:bg-[#020617]/40 dark:shadow-[0_-20px_80px_-15px_rgba(225,29,72,0.2),0_20px_80px_-15px_rgba(139,92,246,0.2)] dark:ring-white/10">
+                <div className="flex h-full w-full">
+                  {/* Main Area */}
+                  <div className="relative flex flex-1 flex-col items-center justify-center bg-transparent p-6 py-16 sm:p-8 sm:py-8">
+                    {/* Huge ambient gradient glow at the top (Fading effect matching reference, with violet accent) */}
+                    <motion.div
+                      whileInView={{
+                        opacity: [0.4, 0.7, 0.4],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="pointer-events-none absolute top-0 left-1/2 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(ellipse_at_center,rgba(159,18,57,0.15)_0%,rgba(139,92,246,0.1)_40%,rgba(159,18,57,0)_80%)] blur-[40px] dark:bg-[radial-gradient(ellipse_at_center,rgba(190,18,60,0.2)_0%,rgba(139,92,246,0.15)_40%,rgba(190,18,60,0)_80%)]"
+                    />
+
+                    {/* Particle Sphere Orb */}
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 1, ease: "easeOut" }}
+                      className="relative z-10 mb-8 h-[140px] w-[140px] shrink-0 sm:mb-10 sm:h-[180px] sm:w-[180px]"
+                    >
+                      <ParticleSphere particleColor="#f43f5e" className="scale-[1.1]" />
+                    </motion.div>
+
+                    {/* Greeting Text */}
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8, delay: 0.2 }}
+                      className="relative z-10 text-center"
+                    >
+                      <h2 className="text-xl font-medium text-zinc-500 sm:text-2xl dark:text-zinc-400">
+                        Hi, Founder
+                      </h2>
+                      <h1 className="mt-2 text-3xl font-semibold tracking-tight text-zinc-900 sm:text-5xl dark:text-white">
+                        What are we shipping today?
+                      </h1>
+                      <p className="mx-auto mt-4 max-w-sm text-xs text-zinc-500 sm:text-sm">
+                        Your AI team is standing by. Let's execute your vision.
+                      </p>
+                    </motion.div>
+
+                    {/* Prompt Input Area */}
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8, delay: 0.4 }}
+                      className="relative z-10 mt-10 w-full max-w-2xl rounded-2xl border border-white/40 bg-white/30 p-2 shadow-sm ring-1 ring-white/50 backdrop-blur-2xl ring-inset sm:mt-12 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] dark:ring-white/10"
+                    >
+                      <div className="flex items-center gap-2 px-4 py-2 text-xs font-medium text-rose-600 dark:text-rose-400">
+                        <Sparkles className="h-3 w-3" />
+                        Unlock more features with Pro
+                      </div>
+                      <div className="mt-1 rounded-xl border border-white/50 bg-white/60 p-4 shadow-sm backdrop-blur-md dark:border-white/5 dark:bg-white/5 dark:shadow-none">
+                        <input
+                          type="text"
+                          placeholder="Ask me anything..."
+                          className="w-full bg-transparent text-sm text-zinc-900 placeholder-zinc-500 outline-none dark:text-white dark:placeholder-zinc-400"
+                        />
+                        <div className="mt-6 flex items-center justify-between sm:mt-8">
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <Button
+                              size="sm"
+                              variant="light"
+                              startContent={<Paperclip className="h-4 w-4" />}
+                              className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                            >
+                              <span className="hidden sm:inline">Import file</span>
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="light"
+                              startContent={<Wrench className="h-4 w-4" />}
+                              className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                            >
+                              <span className="hidden sm:inline">Tools</span>
+                            </Button>
+                          </div>
                           <Button
+                            isIconOnly
                             size="sm"
-                            variant="light"
-                            startContent={<Paperclip className="h-4 w-4" />}
-                            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                            radius="full"
+                            color="danger"
+                            className="shadow-[0_0_15px_rgba(225,29,72,0.4)]"
                           >
-                            <span className="hidden sm:inline">Import file</span>
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="light"
-                            startContent={<Wrench className="h-4 w-4" />}
-                            className="text-xs font-medium text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
-                          >
-                            <span className="hidden sm:inline">Tools</span>
+                            <ArrowUp className="h-4 w-4" />
                           </Button>
                         </div>
-                        <Button
-                          isIconOnly
-                          size="sm"
-                          radius="full"
-                          color="danger"
-                          className="shadow-[0_0_15px_rgba(225,29,72,0.4)]"
-                        >
-                          <ArrowUp className="h-4 w-4" />
-                        </Button>
                       </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
 
-                  {/* Suggestion Cards */}
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="relative z-10 mt-6 flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:gap-4"
-                  >
-                    <div className="group flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
-                      <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                        <MessageCircle className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
-                        Surprise me!
+                    {/* Suggestion Cards */}
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.8, delay: 0.6 }}
+                      className="relative z-10 mt-6 flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:gap-4"
+                    >
+                      <div className="group flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
+                        <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                          <MessageCircle className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
+                          Surprise me!
+                        </div>
+                        <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                          Surprise me with a creative idea or story.
+                        </p>
                       </div>
-                      <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                        Surprise me with a creative idea or story.
-                      </p>
-                    </div>
-                    <div className="group flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
-                      <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                        <ImageIcon className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
-                        Create image
+                      <div className="group flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
+                        <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                          <ImageIcon className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
+                          Create image
+                        </div>
+                        <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                          Create an image from your idea or prompt.
+                        </p>
                       </div>
-                      <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                        Create an image from your idea or prompt.
-                      </p>
-                    </div>
-                    <div className="group hidden flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 sm:block dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
-                      <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
-                        <FileText className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
-                        Summarise
+                      <div className="group hidden flex-1 cursor-pointer rounded-xl border border-white/40 bg-white/30 p-4 shadow-sm ring-1 ring-white/50 backdrop-blur-xl transition ring-inset hover:bg-white/50 sm:block dark:border-white/5 dark:bg-black/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.5)] dark:ring-white/10 dark:hover:bg-white/10">
+                        <div className="mb-1.5 flex items-center gap-2 text-sm font-medium text-zinc-900 dark:text-white">
+                          <FileText className="h-4 w-4 text-rose-500 transition group-hover:text-rose-600 dark:text-rose-400 dark:group-hover:text-rose-300" />{" "}
+                          Summarise
+                        </div>
+                        <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
+                          Summarise a document or text in seconds.
+                        </p>
                       </div>
-                      <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                        Summarise a document or text in seconds.
-                      </p>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </Container>
       </Hero>
     </div>
   </>

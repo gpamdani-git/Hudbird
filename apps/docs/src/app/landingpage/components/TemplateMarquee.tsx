@@ -13,7 +13,7 @@ import {
 } from "./shared";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Container } from "@hudbird/ui";
 import {
   Hero,
   HeroHeader,
@@ -217,7 +217,10 @@ export const TemplateMarquee = () => {
       className="relative flex w-full flex-col items-center justify-center overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950"
     >
       {/* Header */}
-      <div className="relative z-10 mx-auto mb-10 flex w-full max-w-7xl flex-col justify-between gap-4 px-4 sm:mb-12 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+      <Container
+        size="xl"
+        className="relative z-10 mb-10 flex flex-col justify-between gap-4 sm:mb-12 sm:flex-row sm:items-center"
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -241,10 +244,10 @@ export const TemplateMarquee = () => {
             Browse all templates
           </Button>
         </motion.div>
-      </div>
+      </Container>
 
       {/* Rounded marquee container — mirrors reference (large uniform cards) */}
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container size="xl" className="relative z-10">
         <div className="relative overflow-hidden rounded-[28px] bg-zinc-50 p-2 shadow-sm sm:rounded-[32px] sm:p-3 lg:rounded-[36px] lg:p-4 dark:border-zinc-950 dark:bg-zinc-950">
           <div className="flex w-full flex-col gap-3 sm:gap-4">
             {/* Row 1 - scrolling left — uniform, full bleed, no crop */}
@@ -298,7 +301,7 @@ export const TemplateMarquee = () => {
           <div className="pointer-events-none absolute inset-y-2 left-2 w-16 bg-gradient-to-r from-zinc-50 to-transparent sm:inset-y-3 sm:w-24 dark:from-zinc-950" />
           <div className="pointer-events-none absolute inset-y-2 right-2 w-16 bg-gradient-to-l from-zinc-50 to-transparent sm:inset-y-3 sm:w-24 dark:from-zinc-950" />
         </div>
-      </div>
+      </Container>
     </div>
   );
 };

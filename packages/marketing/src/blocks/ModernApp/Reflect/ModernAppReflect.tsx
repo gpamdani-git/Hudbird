@@ -26,6 +26,7 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,7 +81,7 @@ import {
 export const ModernAppReflect = () => (
   <>
     {/* Reflect AI-style AI Feature Section */}
-    <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-32 pb-40 font-sans transition-colors duration-500 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-32 pb-40 font-sans transition-colors duration-500 dark:bg-[#05050A]">
       {/* Starry Background (subtle) */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-40 dark:opacity-30"
@@ -373,6 +374,6 @@ export const ModernAppReflect = () => (
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   </>
 );

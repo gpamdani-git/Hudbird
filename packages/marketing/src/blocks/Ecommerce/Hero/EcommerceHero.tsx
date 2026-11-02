@@ -45,6 +45,7 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
   Text,
   Navbar,
   NavbarBrand,
@@ -100,7 +101,10 @@ export const EcommerceHero = () => (
         <div className="absolute right-0 bottom-0 left-0 h-40 bg-gradient-to-t from-white to-transparent dark:from-[#070912]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center px-4 pt-32 sm:pt-40 lg:pt-48">
+      <Container
+        size="lg"
+        className="relative z-10 flex flex-col items-center pt-32 sm:pt-40 lg:pt-48"
+      >
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -160,157 +164,161 @@ export const EcommerceHero = () => (
             </Button>
           </form>
         </motion.div>
-      </div>
+      </Container>
 
       {/* Dashboard UI Mockup */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.1 }}
-        className="relative z-20 mx-auto mt-20 w-full max-w-5xl px-4 pb-0"
-      >
-        <div className="overflow-hidden rounded-t-[2rem] border border-zinc-200 bg-white shadow-2xl transition-colors duration-500 dark:border-white/20 dark:bg-[#161822] dark:shadow-[0_-20px_60px_-15px_rgba(24,117,255,0.2)]">
-          {/* Mockup Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 px-6 py-4 dark:border-white/5">
-            <div className="flex items-center gap-6">
-              <div className="flex items-center gap-2 text-zinc-900 dark:text-white">
-                <Box className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
-                <span className="font-semibold tracking-tight">StoreMetrics</span>
+      <Container size="xl" className="relative z-20 mt-20 pb-0">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="w-full"
+        >
+          <div className="overflow-hidden rounded-t-[2rem] border border-zinc-200 bg-white shadow-2xl transition-colors duration-500 dark:border-white/20 dark:bg-[#161822] dark:shadow-[0_-20px_60px_-15px_rgba(24,117,255,0.2)]">
+            {/* Mockup Header */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 px-6 py-4 dark:border-white/5">
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2 text-zinc-900 dark:text-white">
+                  <Box className="h-5 w-5 text-indigo-600 dark:text-indigo-400" />
+                  <span className="font-semibold tracking-tight">StoreMetrics</span>
+                </div>
+                <div className="hidden h-4 w-px bg-zinc-200 sm:block dark:bg-white/10" />
+                <div className="hidden items-center gap-2 text-sm text-zinc-500 sm:flex dark:text-zinc-400">
+                  <Activity className="h-4 w-4" />
+                  <span>Wallet</span>
+                  <ChevronDown className="h-3 w-3" />
+                  <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-900 dark:bg-white/5 dark:text-white">
+                    Starter
+                  </span>
+                </div>
               </div>
-              <div className="hidden h-4 w-px bg-zinc-200 sm:block dark:bg-white/10" />
-              <div className="hidden items-center gap-2 text-sm text-zinc-500 sm:flex dark:text-zinc-400">
-                <Activity className="h-4 w-4" />
-                <span>Wallet</span>
-                <ChevronDown className="h-3 w-3" />
-                <span className="rounded bg-zinc-100 px-2 py-0.5 text-zinc-900 dark:bg-white/5 dark:text-white">
-                  Starter
+              <div className="flex items-center gap-4">
+                <span className="hidden text-xs text-zinc-500 sm:inline-block dark:text-zinc-400">
+                  Gross Sales
                 </span>
+                <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                  $12,450.00
+                </span>
+                <div className="h-8 w-8 rounded-full border-2 border-white bg-indigo-400 dark:border-[#161822]"></div>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <span className="hidden text-xs text-zinc-500 sm:inline-block dark:text-zinc-400">
-                Gross Sales
-              </span>
-              <span className="font-semibold text-indigo-600 dark:text-indigo-400">$12,450.00</span>
-              <div className="h-8 w-8 rounded-full border-2 border-white bg-indigo-400 dark:border-[#161822]"></div>
-            </div>
-          </div>
 
-          {/* Mockup Body Layout */}
-          <div className="flex h-[400px]">
-            {/* Sidebar */}
-            <div className="hidden w-56 border-r border-zinc-100 p-4 md:block dark:border-white/5">
-              <div className="mb-6 flex items-center gap-2 rounded-md bg-zinc-50 px-3 py-2 text-xs text-zinc-500 dark:bg-white/5">
-                <Star className="h-3 w-3" /> Search
-              </div>
-              <nav className="space-y-1">
-                {["Overview", "Cards", "Transfers", "Analytics", "Crypto", "Settings"].map(
-                  (item, i) => (
-                    <div
-                      key={item}
-                      className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm ${i === 0 ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-white/10 dark:text-white" : "text-zinc-500 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-white/5"}`}
-                    >
+            {/* Mockup Body Layout */}
+            <div className="flex h-[400px]">
+              {/* Sidebar */}
+              <div className="hidden w-56 border-r border-zinc-100 p-4 md:block dark:border-white/5">
+                <div className="mb-6 flex items-center gap-2 rounded-md bg-zinc-50 px-3 py-2 text-xs text-zinc-500 dark:bg-white/5">
+                  <Star className="h-3 w-3" /> Search
+                </div>
+                <nav className="space-y-1">
+                  {["Overview", "Cards", "Transfers", "Analytics", "Crypto", "Settings"].map(
+                    (item, i) => (
                       <div
-                        className={`h-4 w-4 rounded-sm ${i === 0 ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400" : "bg-zinc-100 text-zinc-400 dark:bg-white/5 dark:text-zinc-500"}`}
-                      ></div>
-                      {item}
-                    </div>
-                  )
-                )}
-              </nav>
-            </div>
-
-            {/* Main Banking Content */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
-                    Good morning, Alex
-                  </h3>
-                  <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
-                    <span className="text-zinc-900 dark:text-white">SKU Wallet</span>
-                    <span>EUR Wallet</span>
-                    <span>Crypto</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Button size="sm" startContent={<ArrowRight className="h-3 w-3" />}>
-                    Send Money
-                  </Button>
-                </div>
+                        key={item}
+                        className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm ${i === 0 ? "bg-zinc-100 font-medium text-zinc-900 dark:bg-white/10 dark:text-white" : "text-zinc-500 hover:bg-zinc-50 dark:text-zinc-400 dark:hover:bg-white/5"}`}
+                      >
+                        <div
+                          className={`h-4 w-4 rounded-sm ${i === 0 ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-400" : "bg-zinc-100 text-zinc-400 dark:bg-white/5 dark:text-zinc-500"}`}
+                        ></div>
+                        {item}
+                      </div>
+                    )
+                  )}
+                </nav>
               </div>
 
-              {/* Dashboard Cards */}
-              <div className="flex flex-col gap-4 lg:flex-row">
-                {/* Balance Card */}
-                <div className="flex-1 rounded-xl border border-zinc-200 bg-gradient-to-br from-indigo-500 to-teal-700 p-5 text-white shadow-sm dark:border-white/5 dark:from-indigo-900/50 dark:to-teal-900/50">
-                  <div className="text-sm font-medium text-indigo-50 dark:text-indigo-200">
-                    Gross Sales
+              {/* Main Banking Content */}
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-white">
+                      Good morning, Alex
+                    </h3>
+                    <div className="mt-2 flex flex-wrap items-center gap-4 text-sm text-zinc-500 dark:text-zinc-400">
+                      <span className="text-zinc-900 dark:text-white">SKU Wallet</span>
+                      <span>EUR Wallet</span>
+                      <span>Crypto</span>
+                    </div>
                   </div>
-                  <div className="mt-2 text-3xl font-bold tracking-tight">$12,450.00</div>
-                  <div className="mt-4 flex items-center gap-2 text-xs text-indigo-100">
-                    <TrendingUp className="h-3 w-3" /> +$450.00 (3.2%) this week
+                  <div className="flex items-center gap-3">
+                    <Button size="sm" startContent={<ArrowRight className="h-3 w-3" />}>
+                      Send Money
+                    </Button>
                   </div>
                 </div>
 
-                {/* Recent Transactions */}
-                <div className="flex-[2] rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-[#1d202d]">
-                  <div className="mb-4 flex items-center justify-between">
-                    <div className="font-medium text-zinc-900 dark:text-white">
-                      Recent Transactions
+                {/* Dashboard Cards */}
+                <div className="flex flex-col gap-4 lg:flex-row">
+                  {/* Balance Card */}
+                  <div className="flex-1 rounded-xl border border-zinc-200 bg-gradient-to-br from-indigo-500 to-teal-700 p-5 text-white shadow-sm dark:border-white/5 dark:from-indigo-900/50 dark:to-teal-900/50">
+                    <div className="text-sm font-medium text-indigo-50 dark:text-indigo-200">
+                      Gross Sales
                     </div>
-                    <div className="text-xs text-indigo-600 dark:text-indigo-400">View All</div>
+                    <div className="mt-2 text-3xl font-bold tracking-tight">$12,450.00</div>
+                    <div className="mt-4 flex items-center gap-2 text-xs text-indigo-100">
+                      <TrendingUp className="h-3 w-3" /> +$450.00 (3.2%) this week
+                    </div>
                   </div>
-                  <div className="space-y-4">
-                    {[
-                      {
-                        name: "Apple Store",
-                        category: "Electronics",
-                        amount: "-$199.00",
-                        icon: LayoutDashboard,
-                      },
-                      {
-                        name: "Upwork Transfer",
-                        category: "Income",
-                        amount: "+$4,892.00",
-                        icon: Target,
-                        isPositive: true,
-                      },
-                      {
-                        name: "Starbucks",
-                        category: "Food & Drink",
-                        amount: "-$5.40",
-                        icon: PieChart,
-                      },
-                    ].map((tx, idx) => (
-                      <div key={idx} className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 dark:bg-white/5 dark:text-zinc-400">
-                            <tx.icon className="h-4 w-4" />
-                          </div>
-                          <div>
-                            <div className="text-sm font-medium text-zinc-900 dark:text-white">
-                              {tx.name}
-                            </div>
-                            <div className="text-xs text-zinc-500 dark:text-zinc-400">
-                              {tx.category}
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className={`text-sm font-semibold ${tx.isPositive ? "text-indigo-600 dark:text-indigo-400" : "text-zinc-900 dark:text-white"}`}
-                        >
-                          {tx.amount}
-                        </div>
+
+                  {/* Recent Transactions */}
+                  <div className="flex-[2] rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-[#1d202d]">
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="font-medium text-zinc-900 dark:text-white">
+                        Recent Transactions
                       </div>
-                    ))}
+                      <div className="text-xs text-indigo-600 dark:text-indigo-400">View All</div>
+                    </div>
+                    <div className="space-y-4">
+                      {[
+                        {
+                          name: "Apple Store",
+                          category: "Electronics",
+                          amount: "-$199.00",
+                          icon: LayoutDashboard,
+                        },
+                        {
+                          name: "Upwork Transfer",
+                          category: "Income",
+                          amount: "+$4,892.00",
+                          icon: Target,
+                          isPositive: true,
+                        },
+                        {
+                          name: "Starbucks",
+                          category: "Food & Drink",
+                          amount: "-$5.40",
+                          icon: PieChart,
+                        },
+                      ].map((tx, idx) => (
+                        <div key={idx} className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-100 text-zinc-500 dark:bg-white/5 dark:text-zinc-400">
+                              <tx.icon className="h-4 w-4" />
+                            </div>
+                            <div>
+                              <div className="text-sm font-medium text-zinc-900 dark:text-white">
+                                {tx.name}
+                              </div>
+                              <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                                {tx.category}
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            className={`text-sm font-semibold ${tx.isPositive ? "text-indigo-600 dark:text-indigo-400" : "text-zinc-900 dark:text-white"}`}
+                          >
+                            {tx.amount}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </Container>
     </Hero>
   </>
 );

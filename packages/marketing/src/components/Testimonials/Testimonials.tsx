@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
-import { Card, Avatar, Badge } from "@hudbird/ui";
+import { Card, Avatar, Badge, Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { Play } from "lucide-react";
 
@@ -249,7 +249,7 @@ export function Testimonials({
         <div className="bg-primary/10 dark:bg-primary/5 absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container size="xl">
         <div className="mx-auto mb-16 max-w-2xl text-center sm:mb-20">
           <Badge
             variant="outline"
@@ -285,7 +285,7 @@ export function Testimonials({
             </div>
           ))}
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

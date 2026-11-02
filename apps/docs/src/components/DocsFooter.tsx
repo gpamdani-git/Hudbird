@@ -14,7 +14,7 @@ export const DocsFooter: React.FC<DocsFooterProps> = ({ isWide }) => {
   if (!prev && !next) return null;
 
   return (
-    <div className="mt-16 flex w-full flex-row items-center justify-between border-t border-zinc-200 pt-8 pb-16 dark:border-[#2E2F33]">
+    <footer className="mt-16 flex w-full flex-row items-center justify-between border-t border-zinc-200 pt-8 pb-16 dark:border-[#2E2F33]">
       {prev ? (
         <Link
           to={prev.path}
@@ -48,6 +48,6 @@ export const DocsFooter: React.FC<DocsFooterProps> = ({ isWide }) => {
       ) : (
         <div />
       )}
-    </div>
+    </footer>
   );
 };

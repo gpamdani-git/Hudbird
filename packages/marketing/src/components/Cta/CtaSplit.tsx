@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 
 export interface CtaSplitProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
@@ -40,7 +40,7 @@ export const CtaSplit = React.forwardRef<HTMLElement, CtaSplitProps>(
   ) => {
     return (
       <section ref={ref} className={cn("overflow-hidden py-24 sm:py-32", className)} {...props}>
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Container size="xl">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center lg:gap-8">
             {/* Left Content */}
             <motion.div
@@ -143,7 +143,7 @@ export const CtaSplit = React.forwardRef<HTMLElement, CtaSplitProps>(
               </motion.div>
             )}
           </div>
-        </div>
+        </Container>
       </section>
     );
   }

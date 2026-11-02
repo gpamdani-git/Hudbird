@@ -26,6 +26,7 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,7 +81,7 @@ import {
 export const ModernAppNetwork = () => (
   <>
     {/* Network & Superpowers Section */}
-    <section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 pb-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
       <CyberSectionDivider />
 
       {/* Top Illustration: AI Chip & Hacker Matrix */}
@@ -380,6 +381,6 @@ export const ModernAppNetwork = () => (
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   </>
 );

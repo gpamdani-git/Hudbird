@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Search, Bell } from "lucide-react";
-import { Button, Card, Avatar } from "@hudbird/ui";
+import { Button, Card, Avatar, Container, Section, Grid } from "@hudbird/ui";
 
 export default function StackedLayoutDemo() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -10,7 +10,7 @@ export default function StackedLayoutDemo() {
     <div className="min-h-screen bg-zinc-50 font-sans dark:bg-[#121214]">
       {/* Top Navigation */}
       <nav className="border-b border-zinc-200/80 bg-white/90 backdrop-blur-xl dark:border-white/[0.08] dark:bg-[#161618]/90">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Container size="xl">
           <div className="flex h-16 items-center justify-between">
             {/* Logo & Desktop Nav */}
             <div className="flex items-center gap-8">
@@ -62,12 +62,15 @@ export default function StackedLayoutDemo() {
               <Avatar size="sm" src="https://i.pravatar.cc/150?img=47" alt="Profile" />
             </div>
           </div>
-        </div>
+        </Container>
       </nav>
 
       {/* Page Header */}
-      <header className="border-b border-zinc-200/80 bg-white py-8 dark:border-white/[0.08] dark:bg-[#161618]">
-        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-4 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
+      <Section as="header" spacing="xs" bordered="bottom" className="bg-white dark:bg-[#161618]">
+        <Container
+          size="xl"
+          className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center"
+        >
           <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
             {activeTab}
           </h1>
@@ -79,12 +82,12 @@ export default function StackedLayoutDemo() {
               Create New
             </Button>
           </div>
-        </div>
-      </header>
+        </Container>
+      </Section>
 
       {/* Main Content */}
-      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <Container as="main" size="xl" className="py-8">
+        <Grid cols={3} gap="md" className="mb-6">
           <Card className="flex h-32 flex-col justify-center p-6 dark:border-white/[0.08] dark:bg-[#161618]">
             <span className="text-sm font-medium text-zinc-500">Total Revenue</span>
             <span className="mt-2 text-2xl font-bold text-zinc-900 dark:text-white">
@@ -99,11 +102,11 @@ export default function StackedLayoutDemo() {
             <span className="text-sm font-medium text-zinc-500">Pending Tickets</span>
             <span className="mt-2 text-2xl font-bold text-zinc-900 dark:text-white">14</span>
           </Card>
-        </div>
+        </Grid>
         <Card className="flex h-96 items-center justify-center dark:border-white/[0.08] dark:bg-[#161618]">
           <span className="font-medium text-zinc-400">Main Content Area</span>
         </Card>
-      </main>
+      </Container>
     </div>
   );
 }

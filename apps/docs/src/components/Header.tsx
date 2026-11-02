@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import {
+  Container,
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
@@ -106,7 +107,11 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-3xl transition-colors duration-300 dark:bg-[#161618]/90">
-      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8 lg:px-12">
+      <Container
+        size="xl"
+        gutter="none"
+        className="flex h-14 items-center justify-between gap-3 px-4 sm:gap-6 sm:px-8 lg:px-12"
+      >
         {/* Left: Toggles & Breadcrumbs */}
         <div className="flex shrink-0 items-center gap-3">
           {/* Mobile Hamburger Toggle */}
@@ -275,7 +280,7 @@ export const Header: React.FC<HeaderProps> = ({
             </DropdownMenu>
           </Dropdown>
         </div>
-      </div>
+      </Container>
     </header>
   );
 };

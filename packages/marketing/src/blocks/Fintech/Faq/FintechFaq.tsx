@@ -45,6 +45,8 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
+  Section,
   Text,
   Navbar,
   NavbarBrand,
@@ -81,19 +83,19 @@ import { logos, MEGA_LINK_GROUPS, SOCIALS, FAQS } from "../components/FintechInt
 export const FintechFaq = () => (
   <>
     {/* <!-- Objection Handling: FAQ Section --> */}
-    <section className="relative overflow-hidden border-t border-zinc-200/50 bg-white px-4 py-24 sm:px-8 dark:border-white/5 dark:bg-[#070912]">
+    <Section className="relative overflow-hidden border-t border-zinc-200/50 bg-white py-24 dark:border-white/5 dark:bg-[#070912]">
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div className="h-[400px] w-[600px] rounded-full bg-emerald-500/5 blur-[120px] dark:bg-emerald-600/5" />
       </div>
-      <div className="relative z-10 mx-auto max-w-4xl">
+      <Container size="lg" className="relative z-10">
         <Faq
           faqs={FAQS}
           variant="centered"
           badgeClassName="border-emerald-200/50 bg-emerald-50/50 text-emerald-700 dark:border-emerald-800/30 dark:bg-emerald-900/20 dark:text-emerald-400"
           accentClassName="text-emerald-600 dark:text-emerald-400"
         />
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

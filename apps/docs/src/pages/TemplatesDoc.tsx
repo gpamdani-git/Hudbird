@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Badge, Tabs, Tab } from "@hudbird/ui";
+import { Button, Badge, Tabs, Tab, Section, Container, Grid } from "@hudbird/ui";
 import { Eye, Search, Filter, Code, Sparkles, ArrowRight } from "lucide-react";
 import { TemplateCodeModal } from "../components/TemplateCodeModal";
 import { ProPricingModal } from "../components/ProPricingModal";
@@ -328,8 +328,8 @@ export default function TemplatesDoc() {
   return (
     <div className="mx-auto w-full">
       {/* Header Section */}
-      <div className="w-full border-b border-zinc-200 pt-24 pb-12 dark:border-white/5">
-        <div className="mx-auto max-w-7xl px-6">
+      <Section as="header" spacing="sm" bordered="bottom" className="pt-24">
+        <Container size="xl">
           <div className="mb-16 flex flex-col justify-between gap-8 md:flex-row md:items-start">
             <div className="max-w-2xl">
               <h1 className="font-outfit mb-4 text-4xl font-medium tracking-tight text-zinc-900 md:text-5xl dark:text-white">
@@ -387,7 +387,7 @@ export default function TemplatesDoc() {
           </div>
 
           {/* Categories Grid */}
-          <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-5">
+          <Grid cols={5} gap="lg" className="mb-12">
             {CATEGORIES.map((cat) => (
               <div key={cat.name}>
                 <button
@@ -410,12 +410,12 @@ export default function TemplatesDoc() {
                 </ul>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
+          </Grid>
+        </Container>
+      </Section>
 
       {/* Main Content Area */}
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <Container size="xl" className="py-12">
         {/* Filters Bar */}
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <Tabs
@@ -481,7 +481,7 @@ export default function TemplatesDoc() {
 
         {/* Templates Grid */}
         {filteredTemplates.length > 0 ? (
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          <Grid cols={3} gap="lg">
             {filteredTemplates.map((template) => (
               <div key={template.id} className="group flex flex-col">
                 <div
@@ -516,7 +516,7 @@ export default function TemplatesDoc() {
                 </div>
               </div>
             ))}
-          </div>
+          </Grid>
         ) : (
           <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-dashed border-zinc-200 bg-zinc-50 py-32 dark:border-white/10 dark:bg-white/[0.02]">
             <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5">
@@ -542,7 +542,7 @@ export default function TemplatesDoc() {
             </Button>
           </div>
         )}
-      </div>
+      </Container>
 
       <TemplateCodeModal
         isOpen={!!selectedTemplateForCode}

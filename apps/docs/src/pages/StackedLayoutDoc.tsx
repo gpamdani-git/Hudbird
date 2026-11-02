@@ -47,17 +47,17 @@ export default function App() {
       <div id="installation" className="scroll-mt-24">
         <InstallationTabs
           componentName="stacked-layout"
-          manualCode={`import { Navbar, NavbarItem } from "@/components/hudbird-ui/Navbar";
+          manualCode={`import { Navbar, NavbarItem, Container } from "@hudbird/ui";
 
 export default function Example() {
   return (
-    <div className="min-h-screen bg-zinc-50">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
       <Navbar>
         <NavbarItem href="/">Home</NavbarItem>
       </Navbar>
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      <Container size="xl" className="py-8">
         Content goes here
-      </main>
+      </Container>
     </div>
   );
 }`}

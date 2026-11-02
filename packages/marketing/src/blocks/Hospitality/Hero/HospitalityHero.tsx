@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 import { SmoothStackingWrapper } from "../../../components/SmoothStackingWrapper";
 import {
   motion,
@@ -259,7 +259,7 @@ export function HospitalityHero({
           {/* Section 2: Blue Sky Background (100vh) */}
           <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#7DB3CF] px-6 pt-32">
             {/* Description Text that appears in the Blue BG naturally, sits safely below the sticky title */}
-            <div className="z-20 mx-auto max-w-4xl space-y-14 text-center text-white/90">
+            <Container size="lg" className="z-20 space-y-14 text-center text-white/90">
               <div className="flex justify-center pb-4">
                 <svg className="h-3 w-3 text-white/80" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
@@ -291,7 +291,7 @@ export function HospitalityHero({
               <p className="font-serif text-lg leading-[1.2] tracking-wide md:text-xl lg:text-[22px]">
                 Make this holiday uniquely yours at AYANA Bali.
               </p>
-            </div>
+            </Container>
 
             {/* Gradient at the bottom to smoothly blend into the next section's lighter blue sky (#E1F2FB) */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[#E1F2FB]" />

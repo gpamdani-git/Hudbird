@@ -4,7 +4,14 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
-import { Button, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@hudbird/ui";
+import {
+  Button,
+  Container,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@hudbird/ui";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -253,7 +260,7 @@ HeroHeader.displayName = "Hero.Header";
 
 // --- Body ---
 
-const heroBodyVariants = cva("mx-auto w-full max-w-7xl", {
+const heroBodyVariants = cva("", {
   variants: {
     align: {
       left: "text-left",
@@ -276,9 +283,14 @@ const HeroBody = React.forwardRef<HTMLDivElement, HeroBodyProps>(
         ref={ref}
         className="relative isolate flex h-full flex-1 flex-col justify-center px-6 pt-32 pb-24 sm:pt-40 sm:pb-32 lg:px-8"
       >
-        <div className={cn(heroBodyVariants({ align }), className)} {...props}>
+        <Container
+          size="xl"
+          gutter="none"
+          className={cn(heroBodyVariants({ align }), className)}
+          {...props}
+        >
           {children}
-        </div>
+        </Container>
       </div>
     );
   }

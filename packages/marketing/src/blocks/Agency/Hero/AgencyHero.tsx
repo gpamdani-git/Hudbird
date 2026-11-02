@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { Section } from "@hudbird/ui";
 
 export function AgencyHero({ containerRef }: { containerRef: React.RefObject<HTMLDivElement> }) {
   const heroRef = useRef<HTMLElement>(null);
@@ -107,7 +108,7 @@ export function AgencyHero({ containerRef }: { containerRef: React.RefObject<HTM
   const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   return (
-    <section
+    <Section
       ref={heroRef}
       className="relative flex min-h-screen flex-col justify-between overflow-hidden border-b border-[#3D3935] bg-black pt-32 pr-6 pb-8 pl-[88px] md:pr-12 md:pl-[128px] lg:pr-20 lg:pl-[160px]"
     >
@@ -180,6 +181,6 @@ export function AgencyHero({ containerRef }: { containerRef: React.RefObject<HTM
           Scroll
         </div>
       </motion.div>
-    </section>
+    </Section>
   );
 }

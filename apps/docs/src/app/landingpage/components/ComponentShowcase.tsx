@@ -15,7 +15,7 @@ import {
 } from "./shared";
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Section, Container } from "@hudbird/ui";
 import {
   Hero,
   HeroHeader,
@@ -722,17 +722,18 @@ export const ComponentShowcase = () => {
   galleryCards.forEach((card, i) => columns[i % 4].push(card));
 
   return (
-    <section
+    <Section
       id="gallery"
       aria-labelledby="gallery-title"
-      className="relative w-full overflow-hidden border-b border-zinc-100 bg-zinc-50/60 px-4 py-12 sm:px-8 sm:py-16 dark:border-white/5 dark:bg-[#03071200]"
+      spacing="sm"
+      className="overflow-hidden border-b border-zinc-100 bg-zinc-50/60 px-4 py-12 sm:px-8 sm:py-16 dark:border-white/5 dark:bg-[#03071200]"
     >
       {/* Subtle blue gradient glow — matches hero */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute -top-[50%] -right-[-20%] -left-[-30%] h-[60%] w-[40%] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
         <div className="absolute -bottom-[20%] -left-[10%] h-[50%] w-[100%] rounded-full bg-blue-400/5 blur-[100px] dark:bg-blue-500/8" />
       </div>
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <Container size="xl" gutter="none" className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -791,7 +792,7 @@ export const ComponentShowcase = () => {
             </div>
           ))}
         </BentoGrid>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };

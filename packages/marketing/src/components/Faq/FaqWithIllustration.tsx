@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Accordion, AccordionItem } from "@hudbird/ui";
+import { Accordion, AccordionItem, Section, Container, Grid } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import { FaqItem } from "./Faq";
 
@@ -146,61 +146,65 @@ export function FaqWithIllustration({
   accentClassName = "text-blue-600 dark:text-blue-400",
 }: FaqWithIllustrationProps) {
   return (
-    <section className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-      >
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Left Column: Text & Illustration */}
-          <div className="flex flex-col gap-10">
-            <div>
-              <h2 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
-                {title}
-              </h2>
-              <p className="max-w-lg text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {description}
-              </p>
+    <Section
+      spacing="lg"
+      className={cn("overflow-hidden bg-white py-24 sm:py-32 dark:bg-zinc-950", className)}
+    >
+      <Container size="xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.5 }}
+        >
+          <Grid cols={1} align="center" className="gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left Column: Text & Illustration */}
+            <div className="flex flex-col gap-10">
+              <div>
+                <h2 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+                  {title}
+                </h2>
+                <p className="max-w-lg text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  {description}
+                </p>
+              </div>
+
+              <div className="w-full">
+                <AnimatedIllustration />
+              </div>
             </div>
 
+            {/* Right Column: Accordion */}
             <div className="w-full">
-              <AnimatedIllustration />
+              <Accordion variant="splitted">
+                {faqs.map((faq) => (
+                  <AccordionItem
+                    key={faq.id}
+                    title={faq.question}
+                    classNames={{
+                      base: "border border-zinc-200 dark:border-zinc-800 shadow-sm bg-white dark:bg-zinc-900 rounded-xl overflow-hidden mb-3 last:mb-0",
+                      title: cn(
+                        "font-medium text-[15px] sm:text-base transition-colors",
+                        `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                      ),
+                      content:
+                        "text-zinc-500 dark:text-zinc-400 text-sm sm:text-base leading-relaxed px-5 pb-5",
+                      trigger:
+                        "group py-5 px-5 hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors",
+                      indicator: cn(
+                        "text-zinc-400 transition-colors",
+                        `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                      ),
+                    }}
+                  >
+                    {faq.answer}
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
-          </div>
-
-          {/* Right Column: Accordion */}
-          <div className="w-full">
-            <Accordion variant="splitted">
-              {faqs.map((faq) => (
-                <AccordionItem
-                  key={faq.id}
-                  title={faq.question}
-                  classNames={{
-                    base: "border border-zinc-200 dark:border-zinc-800 shadow-sm bg-white dark:bg-zinc-900 rounded-xl overflow-hidden mb-3 last:mb-0",
-                    title: cn(
-                      "font-medium text-[15px] sm:text-base transition-colors",
-                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
-                    ),
-                    content:
-                      "text-zinc-500 dark:text-zinc-400 text-sm sm:text-base leading-relaxed px-5 pb-5",
-                    trigger:
-                      "group py-5 px-5 hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors",
-                    indicator: cn(
-                      "text-zinc-400 transition-colors",
-                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
-                    ),
-                  }}
-                >
-                  {faq.answer}
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </div>
-      </motion.div>
-    </section>
+          </Grid>
+        </motion.div>
+      </Container>
+    </Section>
   );
 }

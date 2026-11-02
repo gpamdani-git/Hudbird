@@ -26,6 +26,8 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Container,
+  Section,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,12 +82,12 @@ import {
 export const ModernAppTestimonials = () => (
   <>
     {/* Testimonials */}
-    <section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 py-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
+    <Section className="relative flex flex-col items-center overflow-hidden border-t border-zinc-200 bg-zinc-50 py-32 font-sans transition-colors duration-500 dark:border-white/5 dark:bg-[#05050A]">
       <CyberSectionDivider />
       {/* Added violet glow mixed with rose */}
       <div className="pointer-events-none absolute top-0 h-[300px] w-full max-w-4xl -translate-y-1/2 rounded-full bg-gradient-to-r from-rose-500/5 via-violet-500/10 to-rose-500/5 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-4">
+      <Container size="xl" className="relative z-10">
         <div className="mb-16 flex flex-col items-center text-center">
           <div className="mb-6 rounded-full border border-rose-200 bg-rose-50 px-4 py-1.5 text-xs font-medium text-rose-600 backdrop-blur-md dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-300">
             Wall of Love
@@ -139,7 +141,7 @@ export const ModernAppTestimonials = () => (
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

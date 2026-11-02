@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
-import { Badge } from "@hudbird/ui";
+import { Badge, Section, Container } from "@hudbird/ui";
 
 export const ProStyleVisualEditor = () => (
-  <section className="relative w-full overflow-hidden rounded-2xl border border-blue-900/30 bg-[#0B1120] py-24 font-sans sm:py-32">
+  <Section
+    spacing="lg"
+    className="overflow-hidden rounded-2xl border border-blue-900/30 bg-[#0B1120] py-24 font-sans sm:py-32 dark:bg-[#0B1120]"
+  >
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent" />
     <div className="absolute -top-40 -left-40 h-96 w-96 rounded-full bg-violet-900/20 blur-3xl" />
     <div className="absolute -right-40 -bottom-40 h-96 w-96 rounded-full bg-indigo-900/20 blur-3xl" />
 
-    <div className="mx-auto w-full max-w-7xl space-y-16 px-4 sm:px-8 lg:px-12">
+    <Container size="xl" gutter="none" className="space-y-16 px-4 sm:px-8 lg:px-12">
       <div className="w-full text-left lg:w-1/3">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -169,6 +172,6 @@ export const ProStyleVisualEditor = () => (
           </div>
         </motion.div>
       </div>
-    </div>
-  </section>
+    </Container>
+  </Section>
 );

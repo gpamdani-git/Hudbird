@@ -29,6 +29,9 @@ export const navigationData: NavGroup[] = [
   {
     title: "Layouts",
     items: [
+      { name: "Container", path: "/container", variants: 7, isNew: true },
+      { name: "Section", path: "/section", variants: 5, isNew: true },
+      { name: "Grid", path: "/grid", variants: 4, isNew: true },
       { name: "Sidebar Layout", path: "/layouts/sidebar", variants: 1 },
       { name: "Stacked Layout", path: "/layouts/stacked", variants: 1 },
       { name: "Auth Layout", path: "/layouts/auth", variants: 1 },

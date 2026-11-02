@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { motion, animate, useInView } from "framer-motion";
 import { Box, Layout, Component, BarChart3, Info } from "lucide-react";
+import { Container, Grid } from "@hudbird/ui";
 
 function AnimatedCounter({
   from = 0,
@@ -41,7 +42,7 @@ function AnimatedCounter({
 
 export function StatsSection() {
   return (
-    <section className="relative z-10 mx-auto -mt-48 mb-24 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <Container as="section" size="xl" className="relative z-10 -mt-48 mb-24">
       {/* Glow background behind the stats card */}
       <div className="pointer-events-none absolute inset-0 z-0 mx-auto max-w-5xl translate-y-8 rounded-[100px] bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 opacity-30 blur-3xl dark:opacity-20" />
 
@@ -52,7 +53,11 @@ export function StatsSection() {
         transition={{ duration: 0.6 }}
         className="relative z-10 overflow-hidden rounded-3xl border border-zinc-200/50 bg-white/60 p-8 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-[#0a0a0c]/60 dark:shadow-[0_8px_40px_rgba(0,0,0,0.4)]"
       >
-        <div className="grid grid-cols-2 gap-8 divide-x-0 divide-zinc-200/50 md:grid-cols-4 md:divide-x dark:divide-white/10">
+        <Grid
+          cols={2}
+          gap="lg"
+          className="gap-8 divide-x-0 divide-zinc-200/50 md:grid-cols-4 md:divide-x dark:divide-white/10"
+        >
           <div className="flex flex-col items-center justify-center px-4 text-center">
             <div className="mb-4 flex items-center justify-center text-zinc-400 dark:text-zinc-500">
               <Box className="h-8 w-8" strokeWidth={1.2} />
@@ -94,7 +99,7 @@ export function StatsSection() {
               Block Gallery
             </p>
           </div>
-        </div>
+        </Grid>
 
         {/* Note about free vs pro templates */}
         <div className="mt-8 flex items-center justify-center border-t border-zinc-200/50 pt-6 dark:border-white/5">
@@ -112,6 +117,6 @@ export function StatsSection() {
           </p>
         </div>
       </motion.div>
-    </section>
+    </Container>
   );
 }

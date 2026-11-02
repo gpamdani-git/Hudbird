@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 
 export interface CtaGlassProps extends Omit<React.HTMLAttributes<HTMLElement>, "title"> {
   badge?: React.ReactNode;
@@ -29,7 +29,7 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
         className={cn("relative overflow-hidden py-24 sm:py-32", className)}
         {...props}
       >
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <Container size="lg">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export const CtaGlass = React.forwardRef<HTMLElement, CtaGlassProps>(
               )}
             </div>
           </motion.div>
-        </div>
+        </Container>
       </section>
     );
   }

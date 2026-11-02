@@ -333,6 +333,15 @@
   * {
     @apply border-border;
   }
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border-width: 0;
+  }
   html {
     scroll-behavior: smooth;
   }

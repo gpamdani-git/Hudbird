@@ -772,8 +772,56 @@ export const inputOtpTocItems: TocItem[] = [
   },
 ];
 
+export const sectionTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "vertical-rhythm", title: "Vertical Spatial Rhythm" },
+      { id: "surfaces", title: "Obsidian & Surface Variants" },
+      { id: "hairline-borders", title: "Specular Hairline Borders" },
+      { id: "safe-viewport", title: "Safe 100dvh Fullscreen Section" },
+    ],
+  },
+];
+
+export const containerTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "size-variants", title: "Width Constraints & Miller's Law" },
+      { id: "prose-channel", title: "Prose Channel (65ch Reading Measure)" },
+      { id: "responsive-gutters", title: "Responsive Gutter Padding" },
+      { id: "polymorphic", title: "Polymorphic Semantic Markup" },
+    ],
+  },
+];
+
+export const gridTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "uniform-columns", title: "Uniform Columns & 8-point Gaps" },
+      { id: "bento-presets", title: "Asymmetric Bento Presets (Anti-Slop)" },
+      { id: "granular-spans", title: "12-Column Granular Spans" },
+      { id: "waterfall-motion", title: "Google Stitch Waterfall Animation" },
+    ],
+  },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
+  "/section": sectionTocItems,
+  "/container": containerTocItems,
+  "/grid": gridTocItems,
   "/changelog": changelogTocItems,
   "/support": supportTocItems,
   "/cli": cliTocItems,

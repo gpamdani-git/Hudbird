@@ -26,6 +26,7 @@ import {
   TestimonialsGlobe,
 } from "@hudbird/marketing";
 import {
+  Container,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -80,7 +81,7 @@ import {
 export const ModernAppFooter = () => (
   <>
     {/* Footer */}
-    <footer className="relative mx-auto w-full max-w-7xl px-4 pt-20 pb-10 font-sans md:px-8">
+    <Container as="footer" size="xl" className="relative px-4 pt-20 pb-10 font-sans md:px-8">
       <div className="relative overflow-hidden rounded-[2.5rem] border border-zinc-200 bg-white shadow-2xl dark:border-white/5 dark:bg-[#05050A]">
         {/* Aurora Background (bottom half) */}
         <div
@@ -194,6 +195,6 @@ export const ModernAppFooter = () => (
           </div>
         </div>
       </div>
-    </footer>
+    </Container>
   </>
 );

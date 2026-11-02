@@ -491,28 +491,118 @@ The Button architecture is governed by strict visual perception science, Gestalt
   12. _Delight, Accents & General:_ `Sparkles`, `Flame`, `Zap`, `Heart`, `Star`, `Award`.
 - **Filtering & DX:** Interactive in-place category filtering (no route/hash navigation jumps), real-time cross-category search, 1-click React component snippet copy, and official Lucide React credit attribution.
 
-### 4.37 Strict Anti-Slop & Universal Cognitive Guardrails
+### 4.37 Section (Macro Spatial Cadence & Viewport Boundary)
+
+- **8-Point Vertical Rhythm:** Enforces calibrated vertical spacing cadences without layout jumps:
+  - `spacing="none"`: `py-0`
+  - `spacing="xs"`: `py-6 sm:py-8` (24px mobile, 32px desktop)
+  - `spacing="sm"`: `py-8 sm:py-12` (32px mobile, 48px desktop)
+  - `spacing="md"` (Default): `py-12 sm:py-16 lg:py-20` (48px mobile, 64px tablet, 80px desktop)
+  - `spacing="lg"`: `py-16 sm:py-24 lg:py-32` (64px mobile, 96px tablet, 128px desktop monumental breathing room)
+  - `spacing="xl"`: `py-20 sm:py-32 lg:py-40` (80px mobile, 128px tablet, 160px desktop)
+- **Surfaces:** Monochromatic Obsidian palette (`default`, `muted`, `card`, `inverted`, `obsidian`).
+- **Hairline Specular Borders:** `bordered={true | "top" | "bottom" | "both" | false}` applying fine `border-border` division rules.
+- **Mobile-Safe Dynamic Viewport:** `fullHeight={true}` strictly applies `min-h-[100dvh]` to eliminate layout shifts (CLS) caused by dynamic browser chrome in iOS Safari and Android Chrome.
+- **Polymorphism:** `as="section" | "main" | "article" | "header" | "footer"` for accessible semantic landmarks.
+
+### 4.38 Container (Width Constraints & Miller's Reading Channel)
+
+- **Responsive Size Bounding:**
+  - `size="sm"`: `max-w-screen-sm` (640px)
+  - `size="md"`: `max-w-screen-md` (768px)
+  - `size="prose"`: `max-w-3xl` (Capped at 65ch / 768px for optimal reading cadence eliminating eye-tracking fatigue per Miller's Law)
+  - `size="lg"`: `max-w-screen-lg` (1024px)
+  - `size="xl"` (Default): `max-w-7xl` (1280px standard canvas)
+  - `size="2xl"`: `max-w-[1440px]` (Wide display canvas)
+  - `size="fluid"`: `max-w-none` (100% full fluid width)
+- **Responsive Anisotropic Gutters:**
+  - `gutter="none"`: `px-0`
+  - `gutter="sm"`: `px-4` (16px edge buffer)
+  - `gutter="md"` (Default): `px-4 sm:px-6 lg:px-8` (16px mobile, 24px tablet, 32px desktop)
+  - `gutter="lg"`: `px-6 sm:px-8 lg:px-12` (24px mobile, 32px tablet, 48px desktop monumental Stitch gutters)
+- **Centering:** `centered={true}` (`mx-auto`).
+- **Polymorphic Landmark Support:** `as="div" | "main" | "article" | "nav" | "header" | "footer"`.
+
+### 4.39 Grid & GridItem (Bento Presets & Google Stitch Staggered Physics)
+
+- **Mobile-First Responsive Tracks:** Multi-column grids must always collapse cleanly to 1 column on mobile viewports:
+  - `cols={1}`: `grid-cols-1`
+  - `cols={2}`: `grid-cols-1 md:grid-cols-2`
+  - `cols={3}`: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+  - `cols={4}`: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`
+  - `cols={6}`: `grid-cols-2 sm:grid-cols-3 lg:grid-cols-6`
+  - `cols="auto-fit"`: `grid-cols-[repeat(auto-fit,minmax(280px,1fr))]`
+- **Asymmetric Bento Presets (Anti-Slop):** Banning generic 3-equal card rows in favor of intentional hierarchy:
+  - `layout="bento-2-1"`: `grid-cols-1 lg:grid-cols-3 [&>*:nth-child(1)]:lg:col-span-2`
+  - `layout="bento-1-2"`: `grid-cols-1 lg:grid-cols-3 [&>*:nth-child(2)]:lg:col-span-2`
+  - `layout="bento-split"`: `grid-cols-1 lg:grid-cols-12 [&>*:nth-child(1)]:lg:col-span-7 [&>*:nth-child(2)]:lg:col-span-5`
+- **Strict 8-Point Gutter Rhythm:** `gap="none" | "xs" (8px) | "sm" (12-16px) | "md" (16-32px) | "lg" (24-40px) | "xl" (32-64px)`.
+- **Google Stitch Waterfall Stagger:** When `animate={true}`, executes staggered entrance using Framer Motion spring physics (`stiffness: 100, damping: 20, mass: 1, staggerDelay: 0.06s`) with `whileInView` and `viewport={{ once: true, margin: "-40px" }}` for 60fps GPU acceleration.
+- **Granular GridItem Primitives:** `<GridItem>` supports typed `colSpan` (1–12, "full"), `rowSpan` (1–6, "full"), `colStart` (1–12), and coordinated child spring reveal.
+
+### 4.40 Strict Anti-Slop, CVA Integrity & Universal Cognitive Guardrails
 
 To prevent regression into templated AI-slop, gaudy accents, and cramped layouts, all component implementations must strictly obey the following guardrails:
 
+- **CVA Prop Integrity & Safe Aliases:**
+  - **`Button`:** Officially supports `size="xs"` (28px height, `h-7 px-2.5 text-xs gap-1 rounded-lg`) specifically for segmented control wells and documentation preview switchers. Varian `"default"` is mapped as a safe alias for `"solid"`. Never pass arbitrary unmapped props.
+  - **`Badge`:** Officially supports `color="zinc"` and `color="neutral"` alongside semantic colors (`primary`, `secondary`, `success`, `warning`, `danger`, `info`). `variant="solid"` has safe fallbacks to prevent invisible white-on-white text.
+  - **`Heading`:** NEVER prefix headings with rainbow icon badge squares (`<Badge color="purple"><Sparkles /> ...</Badge>`). Headings must assert dominance purely through scale, weight, and negative space.
+- **Segmented Control Inset Well for Documentation & Preview Toggles:**
+  - Control bars (column switchers, gap toggles, theme selectors) in documentation previews MUST use the **Segmented Control Inset Well** consuming the `<Button>` core component:
+    - **Well Inset Track:** `inline-flex flex-wrap items-center gap-1 rounded-xl border border-zinc-200/80 bg-zinc-100 p-1 dark:border-zinc-800 dark:bg-[#161618]`
+    - **Active Pill:** `<Button size="xs" variant="solid" color="white" className="bg-white font-semibold text-zinc-950 shadow-xs dark:bg-zinc-800 dark:text-white cursor-pointer">`
+    - **Inactive Pill:** `<Button size="xs" variant="light" color="zinc" className="text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white cursor-pointer">`
+  - **Global Button Reset:** Handled at `@layer base` in `index.css` via `appearance: none; -webkit-appearance: none; border-width: 0;` to eliminate native macOS/iOS Safari button chrome.
+  - Banned: Raw `<button>` tags without styling and loose, cramped oval buttons floating without an inset well.
 - **Banned Rainbow Slop & Multi-Colored Cards:**
   - Never apply arbitrary multicolored backgrounds (e.g. gold, yellow, neon purple, or bright cyan containers) to iconography cards or information panels without clear functional necessity.
   - Surfaces must stay grounded in the monochromatic Obsidian hierarchy: Obsidian Charcoal (`#161618`) in dark mode, crisp neutral (`white` / `zinc-50`) in light mode, with hairline specular borders (`border-zinc-200/80 dark:border-white/[0.08]`).
   - Reserve color strictly for purposeful, semantic indicators (e.g. Emerald for active status, Brand Indigo for primary callouts).
-
 - **Banned Gratuitous AI & Sparkle Icons:**
   - Never inject `Sparkles`, `Wand2`, or `Bot` icons into banners, badges, or headers that do **not** involve generative AI or machine learning models.
   - Adhere to Jakob's Law (User Mental Models): represent open-source registries with their official brand SVG (e.g. Lucide vector mark), file systems with document icons, and CLI tools with terminal glyphs.
-
 - **Channel Containment & Single-Column Reading Discipline:**
   - Never force a horizontal 2-column layout or stretched container when copy/description text is detailed or lengthy. Horizontal squeezing creates severe vertical line wraps that induce cognitive reading fatigue.
   - Lengthy explanatory text must flow naturally downward in a **single-column prose channel** capped at `65ch` / `768px` (`max-w-3xl`).
   - Structure hero/header metadata with clean vertical stacking: Title $\rightarrow$ License/Category Badge $\rightarrow$ Single-column description $\rightarrow$ Action row (CLI copy buttons, external links).
-
 - **Enforced UX Law Fundamentals:**
   - **Fitts's Law:** Touch targets must maintain standard 44px baselines (`h-11` standard, `h-9` compact). Banned cramped `px-2` or `px-2.5` padding on buttons; anisotropic ratio $X:Y \ge 1.5:1$ is mandatory.
   - **Hick's Law:** Minimize decision fatigue. Provide clear, in-place functional category filters without disruptive page reloads or hash jumps.
   - **Gestalt Common Region & Proximity:** Keep inner icon-to-label gaps tight (`gap-1.5` to `gap-2`) relative to outer container bounds. Avoid the _cards-inside-cards-inside-cards_ nesting anti-pattern.
+
+### 4.41 Mandatory 100% Core Component Consumption Across Ecosystem
+
+- **Single Source of Truth:** `packages/core` (`@hudbird/ui`) is the canonical primitive library.
+- **Zero Raw HTML Policy:**
+  - Every block in `packages/marketing/src/blocks/` (SaaS, ModernApp, Fintech, Ecommerce, AiStartup, Agency, Hospitality, AdminCms) MUST consume `@hudbird/ui` core components directly: `<Button>`, `<Card>`, `<Badge>`, `<Avatar>`, `<Input>`, `<Switch>`, `<Accordion>`, `<Tabs>`, `<Section>`, `<Container>`, `<Grid>`, `<GridItem>`.
+  - Every template in `apps/docs/src/components/templates/` and `apps/docs/src/app/landingpage/` MUST consume `@hudbird/ui` core components.
+  - Every doc page in `apps/docs/src/pages/` MUST consume `@hudbird/ui` core components.
+  - Strictly banned: Raw `<button>`, raw `<section>`, raw `<div className="max-w-...">`, raw `<div className="grid...">`, or unstyled ad-hoc HTML elements.
+- **No Destructive `cn` Theme Overrides:**
+  - Blocks and templates must respect dynamic theme tokens (`bg-background`, `text-foreground`, `border-border`, `bg-card`, `text-primary`, `bg-primary`) so that changes in the Theme Editor propagate seamlessly across all marketing sections. Do not hardcode static hex values or blanket `bg-zinc-900` / `text-white` when semantic theme tokens should be used.
+
+### 4.42 Photography & Visual Asset Standard (Pexels-Only)
+
+- **Curated High-Resolution Asset Source:** All photography across marketing sections, template blocks, hero imagery, and gallery previews **MUST originate exclusively from Pexels** (e.g. `images.pexels.com`).
+- **Banned Sources:** Unsplash, Placeholder.com, and random uncurated external URLs are strictly banned from marketing and template packages.
+- **Editorial Aesthetic:** Select minimal architectural, textured, editorial, high-contrast, and modern subjects matching the Swiss/Stitch design language.
+
+### 4.43 Gallery & Showcase Page Display Typography
+
+- **Monumental Display Titles:** Index, showcase, and gallery pages (e.g. `BlocksGalleryDoc.tsx`, `TemplatesDoc.tsx`) must lead with massive, standalone display typography:
+  - Font: `font-outfit`
+  - Scale: `text-4xl sm:text-5xl lg:text-6xl`
+  - Weight: `font-medium` (500)
+  - Kerning: `tracking-tight`
+  - Subtitle: `text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl`
+  - The gallery title must visibly assert monumental hierarchy over surrounding controls and cards.
+
+### 4.44 Tailwind CSS v4 CSS-First Architecture Standard
+
+- **CSS-First Configuration:** The repository operates strictly on **Tailwind CSS v4 CSS-First architecture**.
+- **No `tailwind.config.ts`:** Never create or reintroduce `tailwind.config.ts`, `tailwind.config.js`, or legacy `@tailwind` directives.
+- **`@theme` Single Source of Truth:** All design tokens, custom font definitions (`--font-outfit`, `--font-jakarta`), fluid spacing scales, and OKLCH color palettes live exclusively in `apps/docs/src/index.css` inside the `@theme` directive.
 
 ---
 

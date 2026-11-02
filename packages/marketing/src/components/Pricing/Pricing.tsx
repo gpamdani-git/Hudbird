@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check } from "lucide-react";
-import { Badge, Switch, Button } from "@hudbird/ui";
+import { Badge, Switch, Button, Container } from "@hudbird/ui";
 
 // ---------------------------------------------------------------------------
 // PricingSection
@@ -43,11 +43,7 @@ PricingSection.displayName = "PricingSection";
 const PricingHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={cn("mx-auto mb-16 max-w-7xl px-6 sm:mb-20 lg:px-8", className)}
-        {...props}
-      >
+      <Container ref={ref} size="xl" className={cn("mb-16 sm:mb-20", className)} {...props}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +53,7 @@ const PricingHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
         >
           {children}
         </motion.div>
-      </div>
+      </Container>
     );
   }
 );
@@ -212,12 +208,13 @@ PricingToggle.displayName = "Pricing.Toggle";
 const PricingGrid = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("relative z-10 mx-auto max-w-7xl px-6 lg:px-8", className)}>
+      <Container size="xl" className={cn("relative z-10", className)}>
         <div
+          ref={ref}
           className="mx-auto grid max-w-md grid-cols-1 items-center gap-8 lg:max-w-4xl lg:grid-cols-2 xl:max-w-5xl xl:grid-cols-3"
           {...props}
         />
-      </div>
+      </Container>
     );
   }
 );

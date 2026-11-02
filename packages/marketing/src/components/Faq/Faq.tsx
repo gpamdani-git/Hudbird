@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Accordion, AccordionItem } from "@hudbird/ui";
+import { Accordion, AccordionItem, Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 
 export interface FaqItem {
@@ -84,51 +84,54 @@ export function Faq({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+          className="w-full"
         >
-          <div className="mx-auto mb-16 max-w-4xl text-center">
-            {label && (
-              <div
-                className={cn(
-                  "mx-auto mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
-                  badgeClassName
-                )}
-              >
-                {label}
-              </div>
-            )}
-            <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
-              {title}
-            </h2>
-            {description && (
-              <p className="mx-auto max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-                {description}
-              </p>
-            )}
-          </div>
-
-          <div className="mx-auto max-w-3xl">
-            <Accordion variant="splitted">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={faq.id ?? index}
-                  title={faq.question}
-                  classNames={{
-                    trigger: cn(
-                      "group hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 py-3.5 px-3 -mx-3 min-h-[44px]"
-                    ),
-                    title: cn(
-                      "font-outfit font-semibold text-base transition-colors",
-                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
-                    ),
-                    content: "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
-                  }}
+          <Container size="xl">
+            <div className="mx-auto mb-16 max-w-4xl text-center">
+              {label && (
+                <div
+                  className={cn(
+                    "mx-auto mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
+                    badgeClassName
+                  )}
                 >
-                  {faq.answer}
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+                  {label}
+                </div>
+              )}
+              <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
+                {title}
+              </h2>
+              {description && (
+                <p className="mx-auto max-w-2xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+                  {description}
+                </p>
+              )}
+            </div>
+
+            <div className="mx-auto max-w-3xl">
+              <Accordion variant="splitted">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={faq.id ?? index}
+                    title={faq.question}
+                    classNames={{
+                      trigger: cn(
+                        "group hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 py-3.5 px-3 -mx-3 min-h-[44px]"
+                      ),
+                      title: cn(
+                        "font-outfit font-semibold text-base transition-colors",
+                        `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                      ),
+                      content:
+                        "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
+                    }}
+                  >
+                    {faq.answer}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </Container>
         </motion.div>
       </section>
     );
@@ -142,52 +145,55 @@ export function Faq({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.5 }}
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+        className="w-full"
       >
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:sticky lg:top-24 lg:col-span-5">
-            {label && (
-              <div
-                className={cn(
-                  "mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
-                  badgeClassName
-                )}
-              >
-                {label}
-              </div>
-            )}
-            <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
-              {title}
-            </h2>
-            {description && (
-              <p className="max-w-xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
-                {description}
-              </p>
-            )}
-          </div>
-          <div className="lg:col-span-7">
-            <Accordion variant="light">
-              {faqs.map((faq, index) => (
-                <AccordionItem
-                  key={faq.id ?? index}
-                  title={faq.question}
-                  classNames={{
-                    trigger: cn(
-                      "group py-4 sm:py-5 min-h-[44px] hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 px-3 -mx-3"
-                    ),
-                    title: cn(
-                      "font-outfit font-semibold text-base transition-colors",
-                      `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
-                    ),
-                    content: "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
-                  }}
+        <Container size="xl">
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:sticky lg:top-24 lg:col-span-5">
+              {label && (
+                <div
+                  className={cn(
+                    "mb-6 inline-flex w-fit items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium tracking-wide backdrop-blur-md",
+                    badgeClassName
+                  )}
                 >
-                  {faq.answer}
-                </AccordionItem>
-              ))}
-            </Accordion>
+                  {label}
+                </div>
+              )}
+              <h2 className="mb-4 text-4xl leading-tight font-bold tracking-tight text-balance text-zinc-900 md:text-5xl dark:text-white">
+                {title}
+              </h2>
+              {description && (
+                <p className="max-w-xl text-lg text-balance text-zinc-600 dark:text-zinc-400">
+                  {description}
+                </p>
+              )}
+            </div>
+            <div className="lg:col-span-7">
+              <Accordion variant="light">
+                {faqs.map((faq, index) => (
+                  <AccordionItem
+                    key={faq.id ?? index}
+                    title={faq.question}
+                    classNames={{
+                      trigger: cn(
+                        "group py-4 sm:py-5 min-h-[44px] hover:bg-zinc-100/70 dark:hover:bg-zinc-900/50 rounded-xl transition-all duration-200 px-3 -mx-3"
+                      ),
+                      title: cn(
+                        "font-outfit font-semibold text-base transition-colors",
+                        `group-hover:${accentClassName} group-[[aria-expanded=true]]:${accentClassName}`
+                      ),
+                      content:
+                        "text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed px-3 -mx-3",
+                    }}
+                  >
+                    {faq.answer}
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
           </div>
-        </div>
+        </Container>
       </motion.div>
     </section>
   );

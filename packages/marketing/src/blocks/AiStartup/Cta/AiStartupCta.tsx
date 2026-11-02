@@ -42,7 +42,7 @@ import {
   FooterMega,
   Faq,
 } from "@hudbird/marketing";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Section } from "@hudbird/ui";
 import {
   Sparkles,
   BrainCircuit,
@@ -130,9 +130,9 @@ import { AiStartupHero } from "../Hero/AiStartupHero";
 export const AiStartupCta = () => (
   <>
     {/* <!-- CTA Section --> */}
-    <section
+    <Section
       id="cta"
-      className="grid grid-cols-1 border border-zinc-100 bg-white lg:grid-cols-2 dark:border-white/5 dark:bg-[#030712]"
+      className="grid grid-cols-1 border border-zinc-100 bg-white p-0 lg:grid-cols-2 dark:border-white/5 dark:bg-[#030712]"
     >
       <div className="flex flex-col justify-center p-12 lg:p-42">
         <motion.div
@@ -167,6 +167,6 @@ export const AiStartupCta = () => (
       <div className="flex min-h-[580px] items-center justify-center bg-white p-8 lg:p-12 dark:bg-[#030712]">
         <CtaTerminalDemo />
       </div>
-    </section>
+    </Section>
   </>
 );

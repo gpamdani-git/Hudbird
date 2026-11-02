@@ -303,6 +303,55 @@ Jika padding $\ge R_{\text{outer}}$, gunakan $R_{\text{inner}} = \text{round}(R_
   12. *Delight, Accents & General:* `Sparkles`, `Flame`, `Zap`, `Heart`, `Star`, `Award`.
 - **Filtering & DX:** Filter kategori dinamis dalam status state React, live multi-keyword search, salin kode komponen 1-klik, serta atribusi resmi kredit open source Lucide React.
 
+### 2.37 Section (Macro Spatial Cadence & Viewport Boundary)
+
+- **Spasial Vertikal 8-Point:**
+  - `none`: `py-0`
+  - `xs`: `py-6 sm:py-8` (24px mobile, 32px desktop)
+  - `sm`: `py-8 sm:py-12` (32px mobile, 48px desktop)
+  - `md` (Default): `py-12 sm:py-16 lg:py-20` (48px mobile, 64px tablet, 80px desktop)
+  - `lg`: `py-16 sm:py-24 lg:py-32` (64px mobile, 96px tablet, 128px desktop)
+  - `xl`: `py-20 sm:py-32 lg:py-40` (80px mobile, 128px tablet, 160px desktop)
+- **Surfaces:** Mendukung `default`, `muted`, `card`, `inverted`, dan `obsidian`.
+- **Specular Hairline Borders:** `bordered={true | "top" | "bottom" | "both" | false}` menerapkan garis batas `border-border`.
+- **Safe Viewport:** `fullHeight={true}` mengunci `min-h-[100dvh]` tanpa layout shift di browser mobile.
+- **Polymorphic:** `as="section" | "main" | "article" | "header" | "footer"`.
+
+### 2.38 Container (Width Constraints & Miller's Reading Channel)
+
+- **Batasan Lebar Responsif:**
+  - `sm`: `max-w-screen-sm` (640px)
+  - `md`: `max-w-screen-md` (768px)
+  - `prose`: `max-w-3xl` (Capped pada 65ch / 768px untuk kenyamanan membaca optimal per Miller's Law)
+  - `lg`: `max-w-screen-lg` (1024px)
+  - `xl` (Default): `max-w-7xl` (1280px)
+  - `2xl`: `max-w-[1440px]`
+  - `fluid`: `max-w-none`
+- **Responsive Anisotropic Gutters:**
+  - `none`: `px-0`
+  - `sm`: `px-4` (16px)
+  - `md` (Default): `px-4 sm:px-6 lg:px-8` (16px mobile, 24px tablet, 32px desktop)
+  - `lg`: `px-6 sm:px-8 lg:px-12` (24px mobile, 32px tablet, 48px desktop monumental Stitch gutters)
+- **Centering:** `centered={true}` (`mx-auto`).
+- **Polymorphic:** `as="div" | "main" | "article" | "nav" | "header" | "footer"`.
+
+### 2.39 Grid & GridItem (Bento Presets & Google Stitch Staggered Physics)
+
+- **Mobile-First Responsive Tracks:** Multi-column grid selalu collapse ke 1 kolom di viewport mobile:
+  - `cols={1}`: `grid-cols-1`
+  - `cols={2}`: `grid-cols-1 md:grid-cols-2`
+  - `cols={3}`: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
+  - `cols={4}`: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`
+  - `cols={6}`: `grid-cols-2 sm:grid-cols-3 lg:grid-cols-6`
+  - `cols="auto-fit"`: `grid-cols-[repeat(auto-fit,minmax(280px,1fr))]`
+- **Asymmetric Bento Presets (Anti-Slop):** Melarang 3 kartu seragam tanpa hierarki visual:
+  - `layout="bento-2-1"`: `grid-cols-1 lg:grid-cols-3 [&>*:nth-child(1)]:lg:col-span-2`
+  - `layout="bento-1-2"`: `grid-cols-1 lg:grid-cols-3 [&>*:nth-child(2)]:lg:col-span-2`
+  - `layout="bento-split"`: `grid-cols-1 lg:grid-cols-12 [&>*:nth-child(1)]:lg:col-span-7 [&>*:nth-child(2)]:lg:col-span-5`
+- **Strict 8-Point Gaps:** `gap="none" | "xs" (8px) | "sm" (12-16px) | "md" (16-32px) | "lg" (24-40px) | "xl" (32-64px)`.
+- **Google Stitch Waterfall Stagger:** Saat `animate={true}`, menganimasikan kartu secara bertingkat via Framer Motion spring physics (`stiffness: 100, damping: 20, mass: 1, staggerDelay: 0.06s`) dengan `whileInView` dan `viewport={{ once: true, margin: "-40px" }}`.
+- **Granular GridItem:** Mendukung `colSpan` (1–12, full), `rowSpan` (1–6, full), `colStart` (1–12), dan sinkronisasi `animate`.
+
 ---
 
 ## 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)
@@ -340,3 +389,54 @@ Untuk mencegah pembuatan komponen yang melenceng dari standar premium Hudbird UI
    - Hindari anti-pattern *cards-inside-cards-inside-cards* (kartu di dalam kartu di dalam kartu). Satu container surface elegan dengan hairline border sudah cukup.
 4. **Hukum Jakob (_Jakob’s Law_) & Ekspektasi DX:**
    - Susun elemen sesuai mental model developer modern: pencarian di posisi teratas, opsi filter langsung di bawahnya, tombol toggle mode di kanan atas, dan tombol salin 1-klik untuk instalasi dependensi.
+
+### 3.5 Standar Segmented Control Docs, Button `size="xs"`, & Badge `zinc/neutral` (Anti-Slop Resolution)
+
+1. **Resolusi CVA Prop Integrity & Safe Aliases:**
+   - **`Button`:** Mendukung resmi `size="xs"` (tinggi 28px `h-7 px-2.5 text-xs gap-1 rounded-lg`) khusus untuk segmented controls, docs toolbar preview switchers, dan compact actions. Varian `"default"` kini dipetakan aman sebagai alias resmi untuk `"solid"`, sehingga tidak akan pernah lagi terjadi teks telanjang tanpa background / border akibat salah ketik.
+   - **`Badge`:** Mendukung resmi `color="zinc"` dan `color="neutral"` selain palet semantik (`primary`, `secondary`, `success`, `warning`, `danger`, `info`). Basis varian `solid` telah diamankan sehingga tidak akan pernah lagi terjadi kontras slop teks putih di atas background putih (*invisible white-on-white text*).
+   - **`Heading`:** Dilarang memasang rainbow icon badge square di sebelah teks heading (`<Badge variant="outline"><Sparkles /> ...</Badge>`). Heading harus mandiri secara tipografis.
+
+2. **Standar Segmented Control untuk Filter & Preview Toggles:**
+   - Semua kontrol pemilihan (seperti switcher kolom, gap, ukuran, atau preset) di dalam dokumentasi **wajib menggunakan Segmented Control Inset Well** dengan komponen inti `<Button>`:
+     - **Well Inset Track:** `inline-flex flex-wrap items-center gap-1 rounded-xl border border-zinc-200/80 bg-zinc-100 p-1 dark:border-zinc-800 dark:bg-[#161618]`
+     - **Item Aktif:** `<Button size="xs" variant="solid" color="white" className="bg-white font-semibold text-zinc-950 shadow-xs dark:bg-zinc-800 dark:text-white cursor-pointer">`
+     - **Item Inaktif:** `<Button size="xs" variant="light" color="zinc" className="text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white cursor-pointer">`
+   - **Global Reset Safari/WebKit:** `@layer base` di `index.css` telah mengunci `appearance: none; -webkit-appearance: none; border-width: 0;` untuk mencegah border pill abu-abu bawaan browser macOS/iOS Safari pada tombol yang tidak aktif.
+   - Dilarang menulis tag `<button>` mentah tanpa styling proper yang melanggar aturan konsumsi komponen inti.
+
+### 3.6 Kewajiban 100% Konsumsi Komponen Inti (@hudbird/ui) di Seluruh Ekosistem
+
+1. **Prinsip Single Source of Truth:** Seluruh komponen visual tingkat lanjut (blok marketing, template, showcase) dan app docs wajib murni menjadi konsumen dari `@hudbird/ui` (`packages/core`).
+2. **Larangan Tag HTML Mentah (Zero Raw HTML Policy):**
+   - Dilarang menulis tag `<button>` mentah $\rightarrow$ Wajib gunakan `<Button>`.
+   - Dilarang menulis `<section>` mentah $\rightarrow$ Wajib gunakan `<Section>`.
+   - Dilarang menulis `<div className="max-w-...">` mentah untuk wrapper kontainer $\rightarrow$ Wajib gunakan `<Container>`.
+   - Dilarang menulis `<div className="grid grid-cols-...">` mentah $\rightarrow$ Wajib gunakan `<Grid>` dan `<GridItem>`.
+   - Dilarang menulis card box border ad-hoc $\rightarrow$ Wajib gunakan `<Card>` atau `<DoubleBezelCard>`.
+   - Dilarang menulis tab atau disclosure custom $\rightarrow$ Wajib gunakan `<Tabs>`, `<Accordion>`, `<Switch>`.
+3. **Larangan Menimpa Token Tema (*No Destructive `cn` Theme Overrides*):**
+   - Blok marketing dan template showcase tidak boleh menimpa warna dasar dengan hardcoded tailwind classes (`bg-zinc-900`, `text-white`) jika elemen tersebut seharusnya responsif terhadap Theme Editor.
+   - Wajib selalu memanfaatkan token semantik: `bg-background`, `text-foreground`, `bg-card`, `border-border`, `text-primary`, `bg-primary`, dll.
+
+### 3.7 Standar Aset Visual & Fotografi Marketing (Pexels-Only)
+
+- **Sumber Foto Resmi Tunggal:** Seluruh fotografi untuk galeri blok, kartu preview, avatar showcase, dan template marketing **WAJIB bersumber dari Pexels** (misal `images.pexels.com`).
+- **Larangan Sumber Lain:** Penggunaan gambar dari Unsplash, placeholder generator, atau tautan acak tidak terkurasi dilarang keras.
+- **Karakter Visual:** Prioritaskan fotografi arsitektur minimalis, tekstur material berkualitas tinggi, pencahayaan alami, dan komposisi editorial Swiss.
+
+### 3.8 Standar Tipografi Display Halaman Galeri & Showcase
+
+- Halaman indeks, galeri blok (`BlocksGalleryDoc.tsx`), dan galeri template (`TemplatesDoc.tsx`) wajib memiliki judul display masif yang mandiri secara visual:
+  - Font: `font-outfit`
+  - Ukuran: `text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight`
+  - Subtitle: `text-base sm:text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl`
+  - Menghindari judul yang tenggelam di antara filter chip atau search bar.
+
+### 3.9 Standar Arsitektur CSS-First Tailwind CSS v4
+
+- **CSS-First Tanpa `tailwind.config.ts`:** Monorepo ini beroperasi 100% pada Tailwind CSS v4 CSS-First.
+- **Dilarang keras membuat atau mengembalikan `tailwind.config.ts` atau `tailwind.config.js`**.
+- Seluruh variabel tema, skala ukuran, dan custom tokens dikelola terpusat di `apps/docs/src/index.css` di bawah direktif `@theme`.
+
+

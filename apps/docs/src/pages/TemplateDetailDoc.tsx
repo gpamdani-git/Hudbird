@@ -23,7 +23,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { ProPricingModal } from "../components/ProPricingModal";
-import { Badge, Button, Card } from "@hudbird/ui";
+import { Badge, Button, Card, Container, Section, Grid } from "@hudbird/ui";
 
 /* ═══════════════════════════════════════════════
    Template Data
@@ -455,7 +455,7 @@ export function TemplateDetailDoc() {
   return (
     <div className="mx-auto w-full">
       {/* Breadcrumb */}
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
+      <Container size="xl" className="flex items-center justify-between py-6">
         <Button
           variant="light"
           size="sm"
@@ -473,217 +473,219 @@ export function TemplateDetailDoc() {
         >
           {isFree ? "Free & Open Source" : "Pro Template"}
         </Badge>
-      </div>
+      </Container>
 
       {/* Main Grid */}
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 pb-16 lg:grid-cols-12">
-        {/* ── Left: Gallery & Content ── */}
-        <div className="space-y-10 lg:col-span-8">
-          {/* Image Gallery */}
-          <ImageGallery
-            images={template.images}
-            name={template.name}
-            previewUrl={template.previewUrl}
-          />
+      <Container size="xl" className="pb-16">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          {/* ── Left: Gallery & Content ── */}
+          <div className="space-y-10 lg:col-span-8">
+            {/* Image Gallery */}
+            <ImageGallery
+              images={template.images}
+              name={template.name}
+              previewUrl={template.previewUrl}
+            />
 
-          {/* Overview */}
-          <div>
-            <h2 className="font-outfit mb-4 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
-              Overview
-            </h2>
-            <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              {template.description}
-            </p>
-            <p className="mt-3 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-              {template.longDescription}
-            </p>
-          </div>
-
-          <hr className="border-zinc-200 dark:border-white/10" />
-
-          {/* Features */}
-          <div>
-            <h2 className="font-outfit mb-6 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
-              What's included
-            </h2>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {template.features.map((f, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-white/5 dark:bg-zinc-900"
-                >
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
-                  <span className="font-medium text-zinc-700 dark:text-zinc-300">{f}</span>
-                </div>
-              ))}
-              {template.proOnlyFeatures?.map((f, i) => (
-                <div
-                  key={`p-${i}`}
-                  className="flex items-start gap-3 rounded-xl border border-amber-200/60 bg-amber-50/50 p-4 shadow-sm dark:border-amber-500/10 dark:bg-amber-500/5"
-                >
-                  <Lock className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
-                  <div>
-                    <span className="font-medium text-zinc-700 dark:text-zinc-300">{f}</span>
-                    <span className="ml-2 text-xs text-amber-600 dark:text-amber-400">
-                      Pro only
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── Right: Sticky Sidebar ── */}
-        <div className="relative lg:col-span-4">
-          <div className="sticky top-28 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-zinc-900">
-            {/* Name */}
+            {/* Overview */}
             <div>
-              <h1 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
-                {template.name}
-              </h1>
-              <p className="mt-1 text-sm text-zinc-500">
-                by{" "}
-                <span className="font-semibold text-zinc-900 dark:text-white">
-                  {template.author}
-                </span>
+              <h2 className="font-outfit mb-4 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                Overview
+              </h2>
+              <p className="text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {template.description}
+              </p>
+              <p className="mt-3 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {template.longDescription}
               </p>
             </div>
 
-            {/* Price */}
+            <hr className="border-zinc-200 dark:border-white/10" />
+
+            {/* Features */}
             <div>
-              {isFree ? (
-                <div className="flex items-center gap-3">
-                  <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">
-                    Free
-                  </span>
-                  <Badge variant="soft" color="success" size="sm">
-                    Open Source
-                  </Badge>
-                </div>
-              ) : (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-black text-zinc-900 dark:text-white">
-                    {template.price}
-                  </span>
-                  {template.originalPrice && (
-                    <span className="text-lg font-medium text-zinc-400 line-through decoration-zinc-300 dark:decoration-zinc-600">
-                      {template.originalPrice}
-                    </span>
-                  )}
-                  <span className="text-sm text-zinc-500">/ one-time</span>
-                </div>
-              )}
-            </div>
-
-            {/* Actions */}
-            <div className="space-y-3">
-              {isFree ? (
-                <>
-                  <CliInstallTabs templateId={id || "ai-startup"} />
-                  <Button
-                    size="lg"
-                    onClick={() => navigate("/blocks")}
-                    startContent={<Download className="h-4 w-4" />}
-                    className="w-full font-bold shadow-lg"
-                  >
-                    Browse Components
-                  </Button>
-                  <p className="text-center text-xs text-zinc-500">
-                    Free forever. No account required.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <a
-                    href={template.purchaseUrl || "#"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 font-bold text-white shadow-lg transition-all hover:bg-zinc-800 active:scale-[0.97] dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-                  >
-                    <ShoppingCart className="h-5 w-5" /> Get Pro Access ({template.price})
-                  </a>
-                  <p className="text-center text-xs text-zinc-500">
-                    Secure checkout via Gumroad. Instant download.
-                  </p>
-                </>
-              )}
-
-              <a
-                href={template.previewUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-100 px-4 py-3.5 font-semibold text-zinc-900 transition-all hover:bg-zinc-200 dark:border-white/5 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
-              >
-                <ExternalLink className="h-4 w-4" /> Live Preview
-              </a>
-            </div>
-
-            {/* Pro upsell for free templates */}
-            {isFree && (
-              <div className="rounded-xl border border-amber-200/50 bg-gradient-to-br from-amber-50 to-orange-50/50 p-4 dark:border-amber-500/10 dark:from-amber-500/5 dark:to-transparent">
-                <div className="flex items-start gap-3">
-                  <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
-                  <div>
-                    <p className="text-sm font-semibold text-zinc-900 dark:text-white">
-                      Want the full collection?
-                    </p>
-                    <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
-                      All templates & commercial license.
-                    </p>
-                    <Button
-                      variant="light"
-                      size="sm"
-                      onClick={() => setIsProModalOpen(true)}
-                      endContent={<ArrowRight className="h-3.5 w-3.5" />}
-                      className="mt-2 h-auto p-0 text-xs font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400"
-                    >
-                      View Pro Pricing
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Tech Stack */}
-            <div className="space-y-3 border-t border-zinc-200 pt-6 dark:border-white/10">
-              <h3 className="text-sm font-semibold tracking-wider text-zinc-400 uppercase">
-                Tech Stack
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {template.techStack.map((t, i) => (
-                  <span
+              <h2 className="font-outfit mb-6 text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                What's included
+              </h2>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {template.features.map((f, i) => (
+                  <div
                     key={i}
-                    className="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1.5 text-xs font-medium dark:border-white/10 dark:bg-white/5"
+                    className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-white/5 dark:bg-zinc-900"
                   >
-                    {t.icon} {t.name}
-                  </span>
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
+                    <span className="font-medium text-zinc-700 dark:text-zinc-300">{f}</span>
+                  </div>
+                ))}
+                {template.proOnlyFeatures?.map((f, i) => (
+                  <div
+                    key={`p-${i}`}
+                    className="flex items-start gap-3 rounded-xl border border-amber-200/60 bg-amber-50/50 p-4 shadow-sm dark:border-amber-500/10 dark:bg-amber-500/5"
+                  >
+                    <Lock className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+                    <div>
+                      <span className="font-medium text-zinc-700 dark:text-zinc-300">{f}</span>
+                      <span className="ml-2 text-xs text-amber-600 dark:text-amber-400">
+                        Pro only
+                      </span>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Meta */}
-            <div className="space-y-3 border-t border-zinc-200 pt-6 dark:border-white/10">
-              <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
-                <span className="flex items-center gap-1.5">
-                  <Monitor className="h-4 w-4" /> Desktop
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Smartphone className="h-4 w-4" /> Mobile
-                </span>
+          {/* ── Right: Sticky Sidebar ── */}
+          <div className="relative lg:col-span-4">
+            <div className="sticky top-28 space-y-6 rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-white/10 dark:bg-zinc-900">
+              {/* Name */}
+              <div>
+                <h1 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                  {template.name}
+                </h1>
+                <p className="mt-1 text-sm text-zinc-500">
+                  by{" "}
+                  <span className="font-semibold text-zinc-900 dark:text-white">
+                    {template.author}
+                  </span>
+                </p>
+              </div>
+
+              {/* Price */}
+              <div>
+                {isFree ? (
+                  <div className="flex items-center gap-3">
+                    <span className="text-4xl font-black text-emerald-600 dark:text-emerald-400">
+                      Free
+                    </span>
+                    <Badge variant="soft" color="success" size="sm">
+                      Open Source
+                    </Badge>
+                  </div>
+                ) : (
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-black text-zinc-900 dark:text-white">
+                      {template.price}
+                    </span>
+                    {template.originalPrice && (
+                      <span className="text-lg font-medium text-zinc-400 line-through decoration-zinc-300 dark:decoration-zinc-600">
+                        {template.originalPrice}
+                      </span>
+                    )}
+                    <span className="text-sm text-zinc-500">/ one-time</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Actions */}
+              <div className="space-y-3">
+                {isFree ? (
+                  <>
+                    <CliInstallTabs templateId={id || "ai-startup"} />
+                    <Button
+                      size="lg"
+                      onClick={() => navigate("/blocks")}
+                      startContent={<Download className="h-4 w-4" />}
+                      className="w-full font-bold shadow-lg"
+                    >
+                      Browse Components
+                    </Button>
+                    <p className="text-center text-xs text-zinc-500">
+                      Free forever. No account required.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <a
+                      href={template.purchaseUrl || "#"}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 font-bold text-white shadow-lg transition-all hover:bg-zinc-800 active:scale-[0.97] dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
+                    >
+                      <ShoppingCart className="h-5 w-5" /> Get Pro Access ({template.price})
+                    </a>
+                    <p className="text-center text-xs text-zinc-500">
+                      Secure checkout via Gumroad. Instant download.
+                    </p>
+                  </>
+                )}
+
+                <a
+                  href={template.previewUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl border border-transparent bg-zinc-100 px-4 py-3.5 font-semibold text-zinc-900 transition-all hover:bg-zinc-200 dark:border-white/5 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                >
+                  <ExternalLink className="h-4 w-4" /> Live Preview
+                </a>
+              </div>
+
+              {/* Pro upsell for free templates */}
+              {isFree && (
+                <div className="rounded-xl border border-amber-200/50 bg-gradient-to-br from-amber-50 to-orange-50/50 p-4 dark:border-amber-500/10 dark:from-amber-500/5 dark:to-transparent">
+                  <div className="flex items-start gap-3">
+                    <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" />
+                    <div>
+                      <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        Want the full collection?
+                      </p>
+                      <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">
+                        All templates & commercial license.
+                      </p>
+                      <Button
+                        variant="light"
+                        size="sm"
+                        onClick={() => setIsProModalOpen(true)}
+                        endContent={<ArrowRight className="h-3.5 w-3.5" />}
+                        className="mt-2 h-auto p-0 text-xs font-bold text-amber-600 hover:text-amber-700 dark:text-amber-400"
+                      >
+                        View Pro Pricing
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tech Stack */}
+              <div className="space-y-3 border-t border-zinc-200 pt-6 dark:border-white/10">
+                <h3 className="text-sm font-semibold tracking-wider text-zinc-400 uppercase">
+                  Tech Stack
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {template.techStack.map((t, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1.5 rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1.5 text-xs font-medium dark:border-white/10 dark:bg-white/5"
+                    >
+                      {t.icon} {t.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Meta */}
+              <div className="space-y-3 border-t border-zinc-200 pt-6 dark:border-white/10">
+                <div className="flex items-center gap-4 text-sm text-zinc-600 dark:text-zinc-400">
+                  <span className="flex items-center gap-1.5">
+                    <Monitor className="h-4 w-4" /> Desktop
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Smartphone className="h-4 w-4" /> Mobile
+                  </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* ── You May Also Like ── */}
-      <section className="border-t border-zinc-200 bg-zinc-50 py-12 dark:border-white/5 dark:bg-[#050510]">
-        <div className="mx-auto max-w-6xl px-6">
+      <Section spacing="md" bordered="top" className="bg-zinc-50 dark:bg-[#050510]">
+        <Container size="xl">
           <h2 className="font-outfit mb-6 text-lg font-medium tracking-tight text-zinc-900 dark:text-white">
             You may also like
           </h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <Grid cols={4} gap="md">
             {relatedTemplates.map((tid) => {
               const t = TEMPLATES_DATA[tid];
               return (
@@ -719,9 +721,9 @@ export function TemplateDetailDoc() {
                 </Card>
               );
             })}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Container>
+      </Section>
 
       <ProPricingModal isOpen={isProModalOpen} onClose={() => setIsProModalOpen(false)} />
     </div>

@@ -230,7 +230,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
                 ? color === "warning"
                   ? "bg-zinc-950/15 text-zinc-950"
                   : "bg-white/20 text-white"
-                : iconContainerMap[color]
+                : iconContainerMap[color || "primary"]
             )}
             aria-hidden="true"
           >

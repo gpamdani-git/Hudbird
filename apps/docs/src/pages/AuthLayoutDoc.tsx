@@ -47,18 +47,20 @@ export default function App() {
       <div id="installation" className="scroll-mt-24">
         <InstallationTabs
           componentName="auth-layout"
-          manualCode={`import { Card, CardBody } from "@/components/hudbird-ui/Card";\nimport { Heading } from "@/components/hudbird-ui/Heading";
+          manualCode={`import { Card, CardBody, Heading, Section, Container } from "@hudbird/ui";
 
 export default function Example() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50 p-4">
-      <Card className="w-full max-w-sm">
-        <CardBody className="p-8">
-          <Heading className="text-center mb-6">Sign in to your account</Heading>
-          {/* Auth form */}
-        </CardBody>
-      </Card>
-    </div>
+    <Section fullHeight spacing="none" className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950 p-4">
+      <Container size="sm" centered>
+        <Card className="w-full">
+          <CardBody className="p-8">
+            <Heading className="text-center mb-6">Sign in to your account</Heading>
+            {/* Auth form */}
+          </CardBody>
+        </Card>
+      </Container>
+    </Section>
   );
 }`}
         />

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { Section, Container, Grid } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 
 export interface FeatureGlassItem {
@@ -42,12 +43,13 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
     ref
   ) => {
     return (
-      <section
+      <Section
         ref={ref}
-        className={cn("relative overflow-hidden py-24 sm:py-32", className)}
+        spacing="lg"
+        className={cn("overflow-hidden py-24 sm:py-32", className)}
         {...props}
       >
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Container size="xl">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +70,7 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
           </motion.div>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <Grid cols={3} gap="lg" className="gap-8">
             {features.map((feature, idx) => (
               <motion.div
                 key={idx}
@@ -104,9 +106,9 @@ export const FeatureGlass = React.forwardRef<HTMLElement, FeatureGlassProps>(
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
+          </Grid>
+        </Container>
+      </Section>
     );
   }
 );

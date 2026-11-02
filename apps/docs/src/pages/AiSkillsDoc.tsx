@@ -614,6 +614,8 @@ export function SaaSMarketingHero() {
                 language="tsx"
                 filename="FeatureBento.tsx"
                 code={`import React from "react";
+import { Section } from "@/components/hudbird-ui/Section";
+import { Container } from "@/components/hudbird-ui/Container";
 import { BentoGrid, BentoCard, BentoCardContent } from "@/components/hudbird-ui/BentoGrid";
 import { DoubleBezelCard } from "@/components/hudbird-ui/DoubleBezelCard";
 import { Badge } from "@/components/hudbird-ui/Badge";
@@ -621,54 +623,56 @@ import { ShieldCheck, Cpu, Terminal } from "lucide-react";
 
 export function ProductFeatures() {
   return (
-    <section className="py-20 px-6 max-w-7xl mx-auto">
-      <div className="mb-12">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
-          System Architecture
-        </h2>
-        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-          Core primitives calibrated for enterprise design systems.
-        </p>
-      </div>
+    <Section spacing="md">
+      <Container size="xl">
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-white">
+            System Architecture
+          </h2>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Core primitives calibrated for enterprise design systems.
+          </p>
+        </div>
 
-      <BentoGrid>
-        {/* Flagship Highlight Card */}
-        <BentoCard className="md:col-span-2">
-          <BentoCardContent className="p-4 sm:p-6">
-            <DoubleBezelCard
-              variant="default"
-              showCrosshairs
-              isHoverable
-              padding="lg"
-              className="h-full"
-            >
+        <BentoGrid>
+          {/* Flagship Highlight Card */}
+          <BentoCard className="md:col-span-2">
+            <BentoCardContent className="p-4 sm:p-6">
+              <DoubleBezelCard
+                variant="default"
+                showCrosshairs
+                isHoverable
+                padding="lg"
+                className="h-full"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 text-xl font-bold text-zinc-900 dark:text-white">
+                  Dual-Tier Architectural Chassis
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  Double-bezel aesthetics with SVG alignment crosshairs create optical depth without muddy drop shadows.
+                </p>
+              </DoubleBezelCard>
+            </BentoCardContent>
+          </BentoCard>
+
+          {/* Card 2 */}
+          <BentoCard>
+            <BentoCardContent className="p-6 flex flex-col justify-between">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
-                <ShieldCheck className="h-5 w-5" />
+                <Terminal className="h-5 w-5" />
               </div>
-              <h3 className="mt-4 text-xl font-bold text-zinc-900 dark:text-white">
-                Dual-Tier Architectural Chassis
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                Double-bezel aesthetics with SVG alignment crosshairs create optical depth without muddy drop shadows.
-              </p>
-            </DoubleBezelCard>
-          </BentoCardContent>
-        </BentoCard>
-
-        {/* Card 2 */}
-        <BentoCard>
-          <BentoCardContent className="p-6 flex flex-col justify-between">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-white/[0.06] dark:text-white">
-              <Terminal className="h-5 w-5" />
-            </div>
-            <div>
-              <h4 className="text-lg font-bold text-zinc-900 dark:text-white">Zero Runtime Lock-In</h4>
-              <p className="mt-1 text-sm text-zinc-500">Pure Tailwind CSS with full local ownership.</p>
-            </div>
-          </BentoCardContent>
-        </BentoCard>
-      </BentoGrid>
-    </section>
+              <div>
+                <h4 className="text-lg font-bold text-zinc-900 dark:text-white">Zero Runtime Lock-In</h4>
+                <p className="mt-1 text-sm text-zinc-500">Pure Tailwind CSS with full local ownership.</p>
+              </div>
+            </BentoCardContent>
+          </BentoCard>
+        </BentoGrid>
+      </Container>
+    </Section>
   );
 }`}
               />

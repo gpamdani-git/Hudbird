@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 import {
   ChevronRight,
   PlayCircle,
@@ -25,7 +25,7 @@ const SamsaraLogo = () => (
 export function HospitalityFooter() {
   return (
     <footer className="relative w-full bg-[#363432] pt-16 pb-12 font-sans text-[#D8D4CF]">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 lg:px-20">
+      <Container size="2xl" className="px-6 md:px-12 lg:px-20">
         {/* Top Header */}
         <div className="mb-16 flex flex-col items-start justify-between border-b border-white/10 pb-8 md:flex-row md:items-center">
           {/* Decorative Logo / Pattern Left */}
@@ -271,7 +271,7 @@ export function HospitalityFooter() {
             <span className="text-white/20">© SAMSARA</span>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Floating Action Button */}
       <Button

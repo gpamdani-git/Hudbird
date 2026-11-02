@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion, type Variants } from "framer-motion";
+import { Container } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 import {
   Testimonial,
@@ -57,7 +58,7 @@ export function TestimonialsFlat({
         <div className="absolute top-1/3 left-1/3 aspect-square w-full max-w-[600px] rounded-full bg-purple-500/30 mix-blend-multiply blur-3xl dark:mix-blend-screen" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container size="xl">
         <div className="mx-auto mb-16 max-w-2xl text-center sm:mb-20">
           <div className="mb-6 inline-flex items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-semibold text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white">
             <span className={cn("mr-2 flex h-1.5 w-1.5 rounded-full", dotClassName)}></span>
@@ -84,7 +85,7 @@ export function TestimonialsFlat({
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }

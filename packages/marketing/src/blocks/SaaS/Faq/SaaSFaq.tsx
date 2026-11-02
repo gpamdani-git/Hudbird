@@ -45,6 +45,8 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
+  Section,
   Text,
   Navbar,
   NavbarBrand,
@@ -78,14 +80,14 @@ import { logos, MEGA_LINK_GROUPS, SOCIALS, FAQS } from "../components/SaaSIntern
 export const SaaSFaq = () => (
   <>
     {/* <!-- Objection Handling: FAQ Section --> */}
-    <section className="relative overflow-hidden border-t border-zinc-200/50 bg-white px-4 py-24 sm:px-8 dark:border-white/5 dark:bg-[#070912]">
+    <Section className="relative overflow-hidden border-t border-zinc-200/50 bg-white py-24 dark:border-white/5 dark:bg-[#070912]">
       {/* Background Glow */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <div className="h-[400px] w-[600px] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/5" />
       </div>
-      <div className="relative z-10 mx-auto max-w-4xl">
+      <Container size="lg" className="relative z-10">
         <Faq faqs={FAQS} variant="centered" />
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

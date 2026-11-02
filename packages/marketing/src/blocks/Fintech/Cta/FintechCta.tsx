@@ -45,6 +45,8 @@ import {
 } from "@hudbird/marketing";
 import {
   Button,
+  Container,
+  Section,
   Text,
   Navbar,
   NavbarBrand,
@@ -81,8 +83,8 @@ import { logos, MEGA_LINK_GROUPS, SOCIALS, FAQS } from "../components/FintechInt
 export const FintechCta = () => (
   <>
     {/* <!-- Final CTA: Custom Design --> */}
-    <section className="relative overflow-hidden bg-white px-4 py-32 sm:px-6 dark:bg-[#070912]">
-      <div className="relative mx-auto max-w-5xl">
+    <Section className="relative overflow-hidden bg-white py-32 dark:bg-[#070912]">
+      <Container size="xl" className="relative">
         {/* Graphic: Horizon Line & Centered Icon */}
         <div className="relative mt-12 mb-8 flex w-full items-center justify-center">
           {/* Subtle curved string/horizon line */}
@@ -143,7 +145,7 @@ export const FintechCta = () => (
             Open a Free Account
           </Button>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   </>
 );

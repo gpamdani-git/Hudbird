@@ -1,7 +1,7 @@
 import React, { useState, Suspense, useEffect, useRef } from "react";
 import { BLOCKS_DATA } from "../data/blocks";
 import { MarketingPreview } from "../components/MarketingPreview";
-import { Button, Input } from "@hudbird/ui";
+import { Button, Input, Section, Container, cn } from "@hudbird/ui";
 import { Search } from "lucide-react";
 
 export default function BlocksGalleryDoc() {
@@ -23,8 +23,13 @@ export default function BlocksGalleryDoc() {
   return (
     <div className="mx-auto min-h-screen w-full bg-white text-zinc-900 dark:bg-[#161618] dark:text-white">
       {/* Header */}
-      <div className="w-full border-b border-zinc-200 bg-zinc-50/50 pt-24 pb-12 dark:border-white/[0.08] dark:bg-[#161618]">
-        <div className="mx-auto max-w-7xl px-6">
+      <Section
+        as="header"
+        spacing="sm"
+        bordered="bottom"
+        className="bg-zinc-50/50 pt-24 pb-12 dark:bg-[#161618]"
+      >
+        <Container size="xl">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
             <div>
               <h1 className="font-outfit mb-4 text-4xl leading-[1.12] font-bold tracking-[-1.8px] text-zinc-950 sm:mb-6 sm:text-6xl sm:tracking-[-2.2px] lg:text-[72px] dark:text-white">
@@ -50,33 +55,31 @@ export default function BlocksGalleryDoc() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-8 inline-flex flex-wrap items-center gap-1.5 rounded-2xl border border-black/[0.06] bg-zinc-100/70 p-1.5 dark:border-white/[0.08] dark:bg-[#121214]">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
               return (
-                <Button
+                <button
                   key={cat}
-                  size="sm"
-                  radius="full"
-                  variant={isActive ? "solid" : "bordered"}
-                  color={isActive ? "default" : "secondary"}
-                  className={
-                    isActive
-                      ? "font-semibold shadow-xs dark:bg-white dark:text-zinc-950"
-                      : "border-black/[0.08] text-zinc-600 hover:text-zinc-950 dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white"
-                  }
+                  type="button"
                   onClick={() => setActiveCategory(cat)}
+                  className={cn(
+                    "cursor-pointer rounded-xl px-3.5 py-1.5 text-xs font-medium transition-all duration-150 active:scale-95",
+                    isActive
+                      ? "bg-white font-semibold text-zinc-950 shadow-xs dark:bg-[#28292d] dark:text-white"
+                      : "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                  )}
                 >
                   {cat}
-                </Button>
+                </button>
               );
             })}
           </div>
-        </div>
-      </div>
+        </Container>
+      </Section>
 
       {/* Main Content */}
-      <div className="mx-auto max-w-7xl px-6 py-12">
+      <Container size="xl" className="py-12">
         <div className="mb-8">
           <h2 className="font-outfit text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             {activeCategory} Blocks{" "}
@@ -103,7 +106,7 @@ export default function BlocksGalleryDoc() {
             </div>
           )}
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

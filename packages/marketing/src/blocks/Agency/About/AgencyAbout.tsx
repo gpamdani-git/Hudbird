@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@hudbird/ui";
+import { Button, Container } from "@hudbird/ui";
 import { BlurRevealText } from "../../../components/BlurRevealText/BlurRevealText";
 import { Magnetic } from "../../../components/Magnetic";
 
@@ -21,12 +21,12 @@ export function AgencyAbout() {
         />
       </div>
 
-      <div className="mx-auto flex max-w-5xl flex-1 flex-col justify-center">
+      <Container size="xl" className="flex flex-1 flex-col justify-center">
         <BlurRevealText
           text="Hi, I'm Dani — a designer with 10+ years of experience in digital products, websites, and visual systems, creating clear and thoughtful experiences."
           className="font-sans text-4xl leading-[1.1] font-medium tracking-tight md:text-6xl lg:text-7xl"
         />
-      </div>
+      </Container>
 
       <div className="mt-32 grid grid-cols-1 items-end gap-12 md:grid-cols-2">
         <div className="space-y-12">

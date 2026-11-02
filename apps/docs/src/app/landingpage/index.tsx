@@ -55,7 +55,7 @@ import {
   FooterMega,
   Faq,
 } from "@hudbird/marketing";
-import { Button, Text, Badge, Input, Textarea } from "@hudbird/ui";
+import { Button, Text, Badge, Input, Textarea, Section, Container } from "@hudbird/ui";
 import {
   Sparkles,
   BrainCircuit,
@@ -344,16 +344,17 @@ export const AiStartupTemplate = () => {
           </Suspense>
         </div>
         {/* <!-- Agent Showcase Section --> */}
-        <section
+        <Section
           id="features"
-          className="relative w-full bg-white px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]"
+          spacing="lg"
+          className="px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#030712]"
         >
           {/* Subtle blue gradient glow — matches hero */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
             <div className="absolute -top-[30%] -right-[10%] h-[60%] w-[50%] rounded-full bg-blue-500/5 blur-[120px] dark:bg-blue-600/10" />
             <div className="absolute -bottom-[20%] -left-[10%] h-[50%] w-[40%] rounded-full bg-blue-400/5 blur-[100px] dark:bg-blue-500/8" />
           </div>
-          <div className="relative z-10 mx-auto max-w-7xl space-y-14">
+          <Container size="xl" gutter="none" className="relative z-10 space-y-14">
             {/* Header */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -777,13 +778,14 @@ export const AiStartupTemplate = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         {/* <!-- Built for Modern Web — Feature Bento --> */}
-        <section
+        <Section
           id="features"
-          className="relative w-full overflow-hidden bg-zinc-50 px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#080d1a]"
+          spacing="lg"
+          className="overflow-hidden bg-zinc-50 px-4 py-24 sm:px-8 sm:py-32 dark:bg-[#080d1a]"
         >
           {/* Hero-matching aurora gradient */}
           <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -791,7 +793,7 @@ export const AiStartupTemplate = () => {
             <div className="absolute -right-[10%] -bottom-[10%] h-[60%] w-[45%] rounded-full bg-blue-400/8 blur-[120px] dark:bg-blue-500/10" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-7xl space-y-16">
+          <Container size="xl" gutter="none" className="relative z-10 space-y-16">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1201,8 +1203,8 @@ export const AiStartupTemplate = () => {
                 </div>
               </BentoCard>
             </BentoGrid>
-          </div>
-        </section>
+          </Container>
+        </Section>
 
         {/* Reflect AI-style AI Feature Section */}
         <section className="relative flex flex-col items-center overflow-hidden bg-zinc-50 pt-32 pb-40 font-sans transition-colors duration-500 dark:bg-[#05050A]">

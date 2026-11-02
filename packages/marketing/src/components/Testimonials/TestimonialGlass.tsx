@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../utils/cn";
-import { Avatar } from "@hudbird/ui";
+import { Avatar, Section, Container } from "@hudbird/ui";
 import { Testimonial } from "./Testimonials";
 
 export interface TestimonialGlassProps {
@@ -26,8 +26,8 @@ export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
   iconClassName = "bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400",
 }) => {
   return (
-    <section className={cn("relative overflow-hidden py-24 sm:py-32", className)}>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <Section spacing="lg" className={cn("overflow-hidden py-24 sm:py-32", className)}>
+      <Container size="xl" className="px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -93,8 +93,8 @@ export const TestimonialGlass: React.FC<TestimonialGlassProps> = ({
             })}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

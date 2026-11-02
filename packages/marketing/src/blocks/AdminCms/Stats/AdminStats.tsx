@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Badge } from "@hudbird/ui";
+import { Card, Badge, Grid } from "@hudbird/ui";
 import { ArrowUpRight, ArrowDownRight, Users, Activity, FileText, Eye } from "lucide-react";
 
 const stats = [
@@ -35,7 +35,7 @@ const stats = [
 
 export const AdminStats = () => {
   return (
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+    <Grid cols={4} gap="sm" className="grid-cols-2">
       {stats.map((s, i) => {
         const Icon = s.icon;
         return (
@@ -67,6 +67,6 @@ export const AdminStats = () => {
           </Card>
         );
       })}
-    </div>
+    </Grid>
   );
 };
