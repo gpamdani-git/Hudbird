@@ -425,6 +425,24 @@ Digital layouts frequently look unbalanced when aligned strictly by bounding-box
 - **Rule:**
   - Circular avatar rings, status dots, and pill buttons must apply an optical overshoot (~1px to 2px extra clearance or dimension) when placed flush with crisp rectangular grids.
 
+### 9.6 Capsule Radial Equilibrium & End-Cap Shape Harmony
+- **Principle:** Semicircular pill containers (\`rounded-full\`) look optically distorted when paired with asymmetric rectangular padding (\`px-6 py-4\`) or \`rounded-3xl\` (\`24px\`) corners around circular avatars/buttons.
+- **Rule:**
+  - **Circular / Pill Bookends:** Single-row capsules starting or ending with circular/pill primitives (\`Avatar radius="full"\`, \`CircularProgress\`, \`Badge\`, \`Button radius="full"\`) must use \`Card radius="capsule"\` (\`rounded-full\`) paired with \`CardBody padding="capsule"\` (\`p-2.5\` = \`10px\` equal radial clearance).
+  - **Rounded-Square Bookends:** Bars starting with a rounded-square element (\`Avatar radius="md"\` \`12px\` or \`IconBox size="sm"\` \`12px\`) must use \`Card radius="full"\` (\`rounded-3xl\` \`24px\`) + \`CardBody padding="compact"\` (\`px-4 py-3\` \`12px\`) to preserve concentric curvature (\`24px - 12px = 12px\`).
+
+### 9.7 Inline-Flex Wrapper Baseline Elimination (\`leading-none\` Flex Framing)
+- **Principle:** Wrapping \`inline-flex\` or \`inline\` primitives (\`Avatar\`, \`Badge\`, \`Code\`, \`CircularProgress\`) inside a block \`<div>\` or \`<motion.div>\` introduces ~4px to 6px of invisible typographic descender space below the child, pushing avatars upward off the horizontal equator.
+- **Rule:**
+  - Every \`<div>\`, \`<span>\`, or \`<motion.div>\` wrapper around an \`inline-flex\` / \`inline\` primitive inside a flex row must apply \`flex shrink-0 items-center justify-center leading-none\`.
+  - Single-line labels inside horizontal pills and bars must apply \`leading-none\` rather than inheriting multi-line prose \`leading-relaxed\`.
+
+### 9.8 Header Badge Cap-Height Locking & Metric Baseline Parity
+- **Principle:** Aligning a compact \`<Badge>\` with \`items-start\` against a multi-line \`Heading\` + subtitle group floats the badge above the heading's cap-height, and mixing a \`10px\` \`<Badge>\` value next to a \`14px\` plain text value breaks horizontal comparison baselines.
+- **Rule:**
+  - Lock header badges onto the exact \`<Heading>\` cap-height axis inside a dedicated \`flex items-center justify-between\` title row, placing the \`<Text variant="small">\` subtitle underneath.
+  - Side-by-side \`DescriptionList\` or KPI values must use identical font size and \`leading-none\` baseline metrics across sibling columns.
+
 ---
 
 ## 10. Architecting Intuition (Cognitive Interaction & Physical Affordances)
@@ -452,6 +470,35 @@ Intuition in user experience is the synthesis of cognitive psychology, tactile p
 ### 10.4 Progressive Disclosure & Contextual Scaffolding
 - **Principle:** Present only the vital decisions required for the current task; reserve secondary complexity for deliberate inquiry.
 - **Rule:**
-  - High-density data tables and component configuration forms must present the primary 3–5 controls by default.
+  - High-density data tables and component configuration forms must present the primary 3-5 controls by default.
   - Deep options (advanced filters, custom SQL overrides, raw JSON telemetry) must be tucked within explicit expanders, drawers, or modal drawers with clear visual cues.
+
+---
+
+## 11. International Human-Experience, Accessibility & Refractive Glass Standards
+
+Every component, surface, block, and documentation page in Hudbird UI is governed by five international human-experience frameworks and strict macro-layout composition:
+
+1. **W3C / WCAG 2.2 AA & AAA Contrast:** Normal/small text (\`<Text variant="small">\`, \`muted\`, \`subtle\`, \`<Badge>\`, \`<Code>\`, \`<Progress>\` values) must achieve **\`>= 4.5:1\`** contrast (\`>= 7.0:1\` AAA target on refractive glass) over worst-case bright backdrops. Non-text UI tracks, rings, and slider grooves (\`WCAG 1.4.11\`) must achieve **\`>= 3.0:1\`** or use translucent luminous tracks (\`bg-white/24\`, \`stroke-white/25\`) instead of opaque black bars over glass.
+2. **Apple Human Interface Guidelines (HIG) - Clarity, Deference, Depth:**
+   - **Clarity:** \`<LiquidGlass>\` enforces an optical legibility floor (\`alpha >= 0.56\` dark glass, \`alpha >= 0.72\` light glass) and smoked-jewel \`Badge variant="soft"\` tokens so text never washes out over bright sky photography.
+   - **Deference:** \`<LiquidGlassStage>\` applies a calibrated multi-stop deference scrim over Pexels photography, and helper cues sit inside scrimmed capsules rather than raw text over busy imagery.
+   - **Depth & Architectural Scope:** \`<LiquidGlass>\` is a **Core Surface Component** for elevated/transient HUD layers (Dynamic Island, Control Center, floating toolbars), NOT a full-page global Theme. Global \`/themes\` presets manage semantic OKLCH colors, fonts, and radii so dense tables, forms, and prose retain effortless readability and 60fps GPU performance.
+3. **Jakob Nielsen's Usability Heuristics:** Maintain continuous visibility of system status, consistent component standards, and instant user control/reset actions.
+4. **ISO 9241-210 & ISO 9241-112 Ergonomics:** Guarantee detectability, discriminability, and unambiguous luminance polarity across Glass, Dark, and Light modes.
+5. **Don Norman's Design Principles & Macro Layout Primitives:** Provide clear signifiers, natural spatial mapping, immediate tactile feedback (\`active:scale-[0.985]\`), and always compose macro structure using \`<Section>\`, \`<Container>\`, and \`<Grid>\` from \`@hudbird/ui\`.
+
+---
+
+## 12. Official Apple Live Activities & \`WidgetKit.DynamicIsland\` Architecture Standard
+
+All Dynamic Island and Live Activity surfaces (\`LiquidGlassIslandCompact\`, \`LiquidGlassIslandExpanded\`, \`LiquidGlassSensor\`, and \`MorphingIsland\`) implement Apple's official \`WidgetKit.DynamicIsland\` and HIG Live Activities specification:
+
+1. **Three Canonical Presentations (\`compact\`, \`minimal\`, \`expanded\`):**
+   - **Compact:** \`compactLeading\` and \`compactTrailing\` flank the centered \`<LiquidGlassSensor size="compact" />\` (\`grid-cols-[1fr_auto_1fr]\`) inside \`LiquidGlass radius="capsule"\` + \`padding="compactPill"\` to form one concise, non-truncated thought.
+   - **Minimal (Concurrent Activities):** Renders an attached minimal pill next to a detached \`44x44px\` circular bubble (\`padding="minimal"\`) when two Live Activities run concurrently.
+   - **Expanded (\`leading\`, \`trailing\`, \`center\`, \`bottom\`):** Uses \`LiquidGlass radius="island"\` (\`36px\`) + \`LiquidGlassBody padding="island"\` (\`20pt\` / \`20px\` system margin), placing titles/routes/scoreboards in the unobstructed \`.center\` (\`.belowIfTooWide\`) region below the sensor and scrubbers/actions in \`.bottom\`.
+2. **Macro-Tap vs. \`44pt\` Expanded Ergonomics:** Zero micro-buttons inside \`compact\` or \`minimal\` capsules (macro-tap only); interactive buttons (\`Button size="md"\` \`44px\` or \`size="sm"\` \`36px\`) reside exclusively in \`expanded\` \`.bottom\`.
+3. **\`ContainerRelativeShape\` Concentricity & Zero Edge-to-Edge Bleed:** Outer \`36px\` minus \`20px\` margin equals \`16px\` (\`Avatar radius="lg"\` / \`rounded-2xl\`), and internal \`<Divider />\` separators stay inset within \`padding="island"\` rather than bleeding into curved outer walls.
+4. **Semantic \`.keylineTint(_:)\` & \`.monospacedDigit()\` (\`tabularNums\`):** Subtle 1px semantic perimeter keyline tint (\`emerald\`, \`indigo\`, \`amber\`, \`rose\`, \`sky\`), shared \`layoutId\` continuity across state transitions, and mandatory \`tabularNums\` on all live timers, scores, distances, and percentages.
 `;

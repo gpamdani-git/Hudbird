@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @source "../../../packages";
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark, .dark *):not(:is([data-hb-theme="light"], [data-hb-theme="light"] *)));
 
 @theme {
   --radius: var(--theme-radius, 0.5rem);

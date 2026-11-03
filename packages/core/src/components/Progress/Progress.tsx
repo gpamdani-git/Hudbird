@@ -9,7 +9,7 @@ export type ProgressSize = "sm" | "md" | "lg";
 export type ProgressRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const progressTrackVariants = cva(
-  "w-full bg-zinc-200/60 dark:bg-[#202124] shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] border border-black/[0.04] dark:border-white/[0.06] overflow-hidden relative",
+  "w-full bg-zinc-200/75 dark:bg-[#202124] [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/24 shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] [[data-glass-mode=glass][data-hb-theme=dark]_&]:shadow-none border border-black/[0.06] dark:border-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/20 overflow-hidden relative",
   {
     variants: {
       size: {
@@ -37,12 +37,18 @@ export const progressIndicatorVariants = cva(
   {
     variants: {
       color: {
-        default: "bg-zinc-700 dark:bg-zinc-300",
-        primary: "bg-indigo-600 dark:bg-indigo-500",
-        secondary: "bg-purple-600 dark:bg-purple-500",
-        success: "bg-emerald-600 dark:bg-emerald-500",
-        warning: "bg-amber-500 dark:bg-amber-400",
-        danger: "bg-rose-600 dark:bg-rose-500",
+        default:
+          "bg-zinc-800 dark:bg-zinc-200 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white",
+        primary:
+          "bg-indigo-600 dark:bg-indigo-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-indigo-400",
+        secondary:
+          "bg-purple-600 dark:bg-purple-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-purple-400",
+        success:
+          "bg-emerald-600 dark:bg-emerald-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-emerald-400",
+        warning:
+          "bg-amber-500 dark:bg-amber-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-amber-300",
+        danger:
+          "bg-rose-600 dark:bg-rose-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-rose-400",
       },
       isStriped: {
         true: "bg-[linear-gradient(45deg,rgba(255,255,255,0.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem]",
@@ -122,13 +128,21 @@ export const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
           <div className="flex items-center justify-between text-xs">
             {label && (
               <span
-                className={cn("font-medium text-zinc-700 dark:text-zinc-300", classNames?.label)}
+                className={cn(
+                  "font-medium text-zinc-800 dark:text-zinc-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-white",
+                  classNames?.label
+                )}
               >
                 {label}
               </span>
             )}
             {showValueLabel && (
-              <span className={cn("font-mono text-zinc-500 dark:text-zinc-400", classNames?.value)}>
+              <span
+                className={cn(
+                  "font-mono font-medium text-zinc-700 dark:text-zinc-200 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-slate-100",
+                  classNames?.value
+                )}
+              >
                 {formattedValue}
               </span>
             )}
@@ -179,12 +193,18 @@ const circleStrokeMap = {
 };
 
 const circleColorClasses: Record<ProgressColor, string> = {
-  default: "stroke-zinc-700 dark:stroke-zinc-300",
-  primary: "stroke-indigo-600 dark:stroke-indigo-500",
-  secondary: "stroke-purple-600 dark:stroke-purple-500",
-  success: "stroke-emerald-600 dark:stroke-emerald-500",
-  warning: "stroke-amber-500 dark:stroke-amber-400",
-  danger: "stroke-rose-600 dark:stroke-rose-500",
+  default:
+    "stroke-zinc-800 dark:stroke-zinc-200 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-white",
+  primary:
+    "stroke-indigo-600 dark:stroke-indigo-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-indigo-400",
+  secondary:
+    "stroke-purple-600 dark:stroke-purple-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-purple-400",
+  success:
+    "stroke-emerald-600 dark:stroke-emerald-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-emerald-400",
+  warning:
+    "stroke-amber-500 dark:stroke-amber-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-amber-300",
+  danger:
+    "stroke-rose-600 dark:stroke-rose-400 [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-rose-400",
 };
 
 export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgressProps>(
@@ -239,7 +259,7 @@ export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgress
             r={radius}
             fill="transparent"
             strokeWidth={strokeWidth}
-            className="stroke-zinc-200/60 dark:stroke-[#202124]"
+            className="stroke-zinc-200/75 dark:stroke-[#202124] [[data-glass-mode=glass][data-hb-theme=dark]_&]:stroke-white/25"
           />
           {/* Active indicator */}
           <circle
@@ -256,7 +276,7 @@ export const CircularProgress = React.forwardRef<SVGSVGElement, CircularProgress
         </svg>
 
         {showValueLabel && !isIndeterminate && (
-          <span className="absolute font-mono text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+          <span className="absolute font-mono text-xs font-semibold text-zinc-800 dark:text-zinc-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-white">
             {formattedValue}
           </span>
         )}

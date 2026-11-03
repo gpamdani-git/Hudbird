@@ -141,14 +141,14 @@ const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
     const horizontalVariantClasses = () => {
       switch (variant) {
         case "dashed":
-          return "my-3 h-0 border-b border-dashed border-zinc-200 bg-transparent dark:border-white/[0.08]";
+          return "my-3 h-0 border-b border-dashed border-zinc-200 bg-transparent dark:border-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/20";
         case "dotted":
-          return "my-3 h-0 border-b border-dotted border-zinc-300 bg-transparent dark:border-white/[0.15]";
+          return "my-3 h-0 border-b border-dotted border-zinc-300 bg-transparent dark:border-white/[0.15] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/25";
         case "gradient":
-          return "my-3 h-[1px] bg-gradient-to-r from-transparent via-zinc-300 dark:via-white/20 to-transparent";
+          return "my-3 h-[1px] bg-gradient-to-r from-transparent via-zinc-300 dark:via-white/20 [[data-glass-mode=glass][data-hb-theme=dark]_&]:via-white/30 to-transparent";
         case "solid":
         default:
-          return "my-3 h-[1px] bg-zinc-200/80 dark:bg-white/[0.08]";
+          return "my-3 h-[1px] bg-zinc-200/80 dark:bg-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/18";
       }
     };
 

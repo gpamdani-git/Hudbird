@@ -15,7 +15,7 @@ export const iconBoxVariants = cva(
         brand:
           "bg-brand-500/15 border border-brand-500/30 text-brand-600 dark:text-brand-300 shadow-[inset_0_1px_0_0_rgba(157,88,190,0.2)] group-hover:bg-brand-500/25 group-hover:border-brand-500/50",
         glass:
-          "bg-white/60 dark:bg-[#161618]/60 border border-black/[0.08] dark:border-white/[0.08] backdrop-blur-xl text-zinc-900 dark:text-white shadow-xs group-hover:border-brand-500/40",
+          "bg-white/75 dark:bg-[#161618]/65 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/15 border border-black/[0.08] dark:border-white/[0.1] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/25 backdrop-blur-xl text-zinc-900 dark:text-white shadow-xs group-hover:border-brand-500/40",
         subtle:
           "bg-transparent border border-black/[0.08] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 group-hover:border-zinc-300 dark:group-hover:border-zinc-700 group-hover:text-zinc-900 dark:group-hover:text-white",
         solid:

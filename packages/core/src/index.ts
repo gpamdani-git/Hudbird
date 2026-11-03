@@ -49,6 +49,7 @@ export * from "./components/Slot";
 export * from "./components/InputOTP";
 export * from "./components/Form";
 export * from "./components/DoubleBezelCard";
+export * from "./components/LiquidGlass";
 export * from "./components/KineticButton";
 export * from "./components/IconBox";
 export * from "./components/EditorialImage";

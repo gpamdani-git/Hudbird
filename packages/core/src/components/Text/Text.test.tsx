@@ -37,6 +37,11 @@ describe("Text polymorphic component", () => {
     expect(screen.getByText("Muted text")).toHaveClass("text-zinc-500");
   });
 
+  it("applies tabular-nums when tabularNums is true", () => {
+    render(<Text tabularNums>00:51</Text>);
+    expect(screen.getByText("00:51")).toHaveClass("tabular-nums");
+  });
+
   it("renders Kbd, Blockquote, and Mark components", () => {
     render(
       <div>

@@ -49,6 +49,7 @@ export const navigationData: NavGroup[] = [
       { name: "Calendar", path: "/calendar", variants: 4, isNew: true },
       { name: "Card", path: "/card", variants: 5 },
       { name: "Double Bezel Card", path: "/double-bezel-card", variants: 4, isNew: true },
+      { name: "Liquid Glass", path: "/liquid-glass", variants: 3, isNew: true },
       { name: "Checkbox", path: "/checkbox", variants: 5 },
       { name: "Combobox", path: "/combobox", variants: 4 },
       { name: "Command", path: "/command", variants: 2, isNew: true },
@@ -92,6 +93,19 @@ export const navigationData: NavGroup[] = [
       { name: "Radar Chart", path: "/radar-chart", variants: 4, isNew: true },
       { name: "Radial Chart", path: "/radial-chart", variants: 4, isNew: true },
       { name: "Chart Tooltip", path: "/chart-tooltip", variants: 1 },
+    ],
+  },
+  {
+    title: "Signature Blocks",
+    items: [
+      { name: "Morphing Island", path: "/signature/morphing-island", variants: 11, isNew: true },
+      { name: "AI Agent Canvas", path: "/signature/agent-canvas", variants: 1, isNew: true },
+      {
+        name: "Interactive Bento 2.0",
+        path: "/signature/interactive-bento",
+        variants: 1,
+        isNew: true,
+      },
     ],
   },
   {

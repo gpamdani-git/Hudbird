@@ -10,17 +10,17 @@ export type TabsSize = "sm" | "md" | "lg";
 export type TabsRadius = "none" | "sm" | "md" | "lg" | "full";
 
 export const tabListVariants = cva(
-  "inline-flex items-center gap-1 text-zinc-500 dark:text-zinc-400 select-none",
+  "inline-flex items-center gap-1 text-zinc-600 dark:text-zinc-300 select-none",
   {
     variants: {
       variant: {
         solid:
-          "bg-zinc-100/90 dark:bg-[#161618] p-1 border border-black/[0.05] dark:border-white/[0.08] backdrop-blur-md",
+          "bg-zinc-100/95 dark:bg-[#161618] [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-slate-950/45 p-1 border border-black/[0.06] dark:border-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/20 backdrop-blur-md",
         bordered:
-          "border border-black/[0.08] dark:border-white/[0.1] p-1 bg-white/70 dark:bg-[#161618]/70 backdrop-blur-md",
+          "border border-black/[0.08] dark:border-white/[0.1] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/25 p-1 bg-white/75 dark:bg-[#161618]/75 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-slate-950/35 backdrop-blur-md",
         light: "bg-transparent p-0 gap-1.5",
         underlined:
-          "bg-transparent p-0 gap-6 border-b border-black/[0.08] dark:border-white/[0.08]",
+          "bg-transparent p-0 gap-6 border-b border-black/[0.08] dark:border-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/20",
       },
       radius: {
         none: "rounded-none",
@@ -64,12 +64,14 @@ export const tabTriggerVariants = cva(
         full: "rounded-full",
       },
       variant: {
-        solid: "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100",
-        bordered: "text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100",
+        solid:
+          "text-zinc-600 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-slate-200 [[data-glass-mode=glass][data-hb-theme=dark]_&]:hover:text-white",
+        bordered:
+          "text-zinc-600 hover:text-zinc-950 dark:text-zinc-300 dark:hover:text-white [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-slate-200 [[data-glass-mode=glass][data-hb-theme=dark]_&]:hover:text-white",
         light:
-          "text-zinc-600 hover:text-zinc-950 hover:bg-black/[0.04] dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-white/[0.06]",
+          "text-zinc-600 hover:text-zinc-950 hover:bg-black/[0.04] dark:text-zinc-300 dark:hover:text-white dark:hover:bg-white/[0.08]",
         underlined:
-          "text-zinc-500 hover:text-zinc-900 pb-2.5 border-b-2 border-transparent -mb-px rounded-none dark:text-zinc-400 dark:hover:text-zinc-100",
+          "text-zinc-600 hover:text-zinc-900 pb-2.5 border-b-2 border-transparent -mb-px rounded-none dark:text-zinc-300 dark:hover:text-white",
       },
       isSelected: {
         true: "",
@@ -85,7 +87,7 @@ export const tabTriggerVariants = cva(
         variant: "solid",
         isSelected: true,
         className:
-          "bg-white dark:bg-[#28292d] text-zinc-950 dark:text-white shadow-xs dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)] font-semibold",
+          "bg-white dark:bg-[#28292d] [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/22 text-zinc-950 dark:text-white [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-white shadow-xs dark:shadow-[0_1px_3px_rgba(0,0,0,0.5)] font-semibold",
       },
       {
         variant: "bordered",

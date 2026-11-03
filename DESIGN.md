@@ -779,6 +779,27 @@ Digital layouts frequently look unbalanced when aligned strictly by bounding-box
 - **Rule:**
   - Circular avatar rings, status dots, and pill buttons must apply an optical overshoot (~1px to 2px extra clearance or dimension) when placed flush with crisp rectangular grids.
 
+### 9.6 Capsule Radial Equilibrium & End-Cap Shape Harmony
+
+- **Principle:** Semicircular pill containers (`rounded-full`) look optically distorted when paired with asymmetric rectangular padding (`px-6 py-4`) or non-matching `rounded-3xl` (`24px`) corners around circular avatars/buttons.
+- **Rule:**
+  - **Circular / Pill Bookends:** Single-row capsules starting or ending with circular/pill primitives (`Avatar radius="full"`, `CircularProgress`, `Badge`, `Button radius="full"`) must use `Card radius="capsule"` (`rounded-full`) paired with `CardBody padding="capsule"` (`p-2.5` = `10px` radial clearance on top, bottom, left, and right), satisfying $R_{\text{inner}} = R_{\text{outer}} - \text{padding}$.
+  - **Rounded-Square Bookends:** Bars starting with a rounded-square element (`Avatar radius="md"` `12px` or `IconBox size="sm"` `12px`) must use `Card radius="full"` (`rounded-3xl` `24px`) + `CardBody padding="compact"` (`px-4 py-3` `12px`) so $24\text{px} - 12\text{px} = 12\text{px}$ preserves concentric corner curvature.
+
+### 9.7 Inline-Flex Wrapper Baseline Elimination (`leading-none` Flex Framing)
+
+- **Principle:** Wrapping `inline-flex` or `inline` primitives (`Avatar`, `Badge`, `Code`, `CircularProgress`) inside a block `<div>` or `<motion.div>` introduces ~4px to 6px of invisible typographic descender space below the child, pushing avatars upward off the horizontal equator while text and badges sink lower.
+- **Rule:**
+  - Every `<div>`, `<span>`, or `<motion.div>` wrapper around an `inline-flex` / `inline` primitive inside a flex row must apply `flex shrink-0 items-center justify-center leading-none`.
+  - Single-line labels inside horizontal pills and bars must apply `leading-none` rather than inheriting multi-line prose `leading-relaxed`.
+
+### 9.8 Header Badge Cap-Height Locking & Metric Baseline Parity
+
+- **Principle:** Aligning a compact `<Badge>` with `items-start` against a multi-line `Heading` + subtitle group floats the badge above the heading's cap-height, and mixing a `10px` `<Badge>` value next to a `14px` plain text value breaks horizontal comparison baselines.
+- **Rule:**
+  - Lock header badges onto the exact `<Heading>` cap-height axis inside a dedicated `flex items-center justify-between` title row, placing the `<Text variant="small">` subtitle underneath.
+  - Side-by-side `DescriptionList` or KPI values must use identical font size and `leading-none` baseline metrics across sibling columns.
+
 ---
 
 ## 10. Architecting Intuition (Cognitive Interaction & Physical Affordances)
@@ -812,3 +833,75 @@ Intuition in user experience is the synthesis of cognitive psychology, tactile p
 - **Rule:**
   - High-density data tables and component configuration forms must present the primary 3–5 controls by default.
   - Deep options (advanced filters, custom SQL overrides, raw JSON telemetry) must be tucked within explicit expanders, drawers, or modal drawers with clear visual cues.
+
+---
+
+## 11. Signature Blocks Architecture (Zero Dead Screenshots)
+
+Flagship interactive sections exported from `@hudbird/marketing` (`MorphingIsland`, `AgentArtifactCanvas`, `InteractiveBentoShowcase`) adhere to strict composition and motion standards:
+
+- **100% Core Primitive Consumption:** Every interactive control, container, layout grid, chart, and surface is composed exclusively from `@hudbird/ui` (`Section`, `Container`, `Grid`, `GridItem`, `DoubleBezelCard`, `Tabs`, `Accordion`, `Command`, `Slider`, `InputOTP`, `Switch`, `AreaChart`, `BarChart`, `RadarChart`, `KineticButton`).
+- **Calibrated Shared-Layout Physics:** Capsule and workspace state transitions use `LayoutGroup` + `motion.div layout` with `stiffness: 380, damping: 30, mass: 0.8` for crisp, non-bouncy spatial continuity.
+- **Live Micro-Applications Over Static Mockups:** Every bento card or workspace pane responds to real keyboard and pointer input in both Light Mode and Obsidian (`#161618` / `#202124`) Dark Mode.
+
+---
+
+## 12. International Human-Experience, Accessibility & Refractive Glass Standards
+
+Every component, surface, marketing block, and documentation page in Hudbird UI MUST strictly satisfy five foundational international human-experience standards alongside mandatory macro-layout primitives:
+
+### 12.1 W3C / WCAG 2.2 AA & AAA Contrast Mandate
+
+- **Text Contrast (`WCAG 1.4.3` & `1.4.6`):** Normal and small text (`< 18px`, including `<Text variant="small">`, `<Text variant="muted">`, `<Text variant="subtle">`, `<Code>`, `<Badge>`, and `<Progress>` value labels) MUST maintain a minimum contrast ratio of **`>= 4.5:1`** (targeting **`>= 7.0:1` AAA** on glass overlays) against the worst-case underlying pixel. Large headings (`>= 24px` or `>= 19px` bold) MUST maintain **`>= 3.0:1`**.
+- **Non-Text UI Contrast (`WCAG 1.4.11`):** Interactive tracks, slider grooves, `<Progress>` / `<CircularProgress>` background rings, `<Tabs>` segmented wells, and focus indicators MUST maintain **`>= 3.0:1`** luminance separation or translucent luminous framing (`bg-white/24`, `stroke-white/25`) rather than opaque dark notches (`#202124`) over bright glass backdrops.
+- **Non-Color-Only Status (`WCAG 1.4.1`) & Keyboard Focus (`WCAG 2.4.7`):** Never rely on color alone to communicate state; always pair semantic color with explicit text labels or iconography, and preserve visible `focus-visible:ring-2` keyboard outlines.
+
+### 12.2 Apple Human Interface Guidelines (HIG): Clarity, Deference & Depth
+
+- **Clarity:** Typography, badges (`variant="soft"` smoked jewel pills on dark/glass), and icons must remain effortlessly readable at every blur or opacity slider setting. `LiquidGlass` enforces a calibrated smoked optical legibility floor (`alpha >= 0.56` in dark glass, `alpha >= 0.72` in light glass) so bright sky or photography never washes out foreground copy.
+- **Deference:** Background photography inside `<LiquidGlassStage>` must defer to foreground UI via a calibrated multi-stop deference scrim (`bg-slate-950/28` + vertical vignette) and scrimmed helper pills. Never place raw unscrimmed grey captions directly over busy photography.
+- **Depth & Architectural Scope (`LiquidGlass` = Core Surface Component, NOT a Full-Page Theme):**
+  - `LiquidGlass` is an elevated **Core Surface Component** (`@hudbird/ui`) reserved for transient HUD overlays, Dynamic Islands, Control Center modules, and floating toolbars (capped at 1 to 2 focal surfaces per viewport).
+  - Global **Themes** (`/themes` / `@hudbird/theme`) govern semantic OKLCH color tokens, typography pairings, and corner radius scales across dense data tables, forms, and long-form prose where full-page `backdrop-filter` glass would violate Apple HIG Deference, degrade WCAG readability, and cause GPU overdraw.
+
+### 12.3 Jakob Nielsen's 10 Usability Heuristics
+
+- **Visibility of System Status:** Live activities (timers, flight corridors, audio scrubbers, transfer rings) must display clear, real-time progress values (`showValueLabel`), active state badges, and immediate state transitions.
+- **User Control & Freedom:** Expanded capsules, modals, and appearance tuners must always expose an obvious one-click collapse, minimize, or reset trigger (`Reset Golden Gate Preset`).
+- **Consistency & Aesthetic Minimalism:** Eliminate decorative outer dark rings or competing visual noise that reduces signal-to-noise ratio.
+
+### 12.4 ISO Ergonomics (`ISO 9241-210` & `ISO 9241-112`)
+
+- **Detectability & Discriminability:** Foreground glyphs, progress indicators, and segmented tab thumbs must maintain unambiguous luminance polarity against their immediate container across Glassmorphic, Obsidian Dark, and Daylight Light modes.
+
+### 12.5 Don Norman's Interaction Design Principles
+
+- **Perceivable Signifiers & Affordances:** Interactive pills (`isPressable`), sliders, and segmented tabs must look unmistakably clickable/draggable via 1px top specular highlights, scrimmed helper cues, hover elevation, and immediate tactile press feedback (`active:scale-[0.985]`).
+- **Mandatory Macro Layout Primitives (`<Section>`, `<Container>`, `<Grid>`):** Every component stage (`LiquidGlassStage`), signature block (`MorphingIsland`), and documentation layout MUST compose `@hudbird/ui`'s `<Section>`, `<Container>`, and `<Grid>` primitives rather than raw `<section>`, `max-w-*`, or `grid-cols-*` wrapper divs.
+
+---
+
+## 13. Official Apple Live Activities & `WidgetKit.DynamicIsland` Architecture Standard
+
+Every Dynamic Island and Live Activity surface in Hudbird UI (`LiquidGlassIslandCompact`, `LiquidGlassIslandExpanded`, `LiquidGlassSensor`, and `MorphingIsland`) MUST implement Apple's official `WidgetKit.DynamicIsland` API and Human Interface Guidelines for Live Activities:
+
+### 13.1 Three Canonical Presentations (`compact`, `minimal`, `expanded`)
+
+- **Compact (`compactLeading` + TrueDepth Sensor + `compactTrailing`):** Displayed when a single Live Activity is active. Uses `LiquidGlass radius="capsule"`, `LiquidGlassBody padding="compactPill"`, and `LiquidGlassIslandCompact` (`grid-cols-[1fr_auto_1fr]`) so `compactLeading` and `compactTrailing` flank the centered `<LiquidGlassSensor size="compact" />` symmetrically and unite into one glanceable thought without truncation.
+- **Minimal (Concurrent Attached Pill + Detached `44pt` Circular Bubble):** Displayed when two Live Activities run simultaneously. Renders the primary activity attached to the TrueDepth sensor (`<LiquidGlassIslandCompact leading={...} />`) alongside a detached `44×44px` circular bubble (`LiquidGlass radius="capsule"` + `LiquidGlassBody padding="minimal"`) separated by `10px` (`gap-2.5`) for the secondary concurrent Live Activity.
+- **Expanded (`DynamicIslandExpandedRegion`: `.leading`, `.trailing`, `.center`, `.bottom`):** Uses `LiquidGlass radius="island"` (`36px` superellipse curvature), `LiquidGlassBody padding="island"` (`20px` = Apple HIG `20pt` system margin), and `LiquidGlassIslandExpanded`:
+  - **`.leading` & `.trailing`:** Top-left and top-right anchors flanking `<LiquidGlassSensor size="expanded" />`.
+  - **`.center` (`verticalPlacement: .belowIfTooWide`):** Full-width unobstructed region below the sensor row so titles, airport route pairs (`SFO -> HND`), and scoreboards (`ARS 2 - 1 MCI`) never collide with the sensor or truncate.
+  - **`.bottom`:** Full-width lower region for scrubbers, progress bars, inset dividers, and interactive controls.
+
+### 13.2 Macro-Tap Discipline vs. `44pt` Expanded Controls
+
+- **No Micro-Buttons in Compact or Minimal:** Never place interactive mini-buttons inside `compact` or `minimal` presentations; the entire capsule acts as a single macro tap target (`isPressable`) that expands or switches the activity.
+- **Ergonomic `44pt` Controls in Expanded:** Interactive buttons (`Play`/`Pause`, `Accept`/`End`, `Mute`, `Minimize`) belong exclusively in the `expanded` `.bottom` region and use `Button size="md"` (`44×44px`) or `size="sm"` (`36px`) pills to prevent accidental taps.
+
+### 13.3 `ContainerRelativeShape` Concentricity, Zero Full-Bleed Dividers, `.keylineTint(_:)` & `.monospacedDigit()`
+
+- **`ContainerRelativeShape` Concentric Math:** Expanded islands pair `radius="island"` (`36px`) with `padding="island"` (`20px` / `p-5`) so nested `Avatar radius="lg"` (`16px` / `rounded-2xl`) and `IconBox` elements satisfy $R_{\text{inner}} = R_{\text{outer}} - \text{margin}$ ($36 - 20 = 16\text{px}$).
+- **Zero Edge-to-Edge Bleed:** Never place `<Divider />` outside `LiquidGlassBody` where it slams edge-to-edge into curved outer walls; keep dividers inset inside the `20pt` (`p-5`) padded `.bottom` region.
+- **Semantic `.keylineTint(_:)` & Visual Continuity:** Apply subtle semantic `keylineTint` (`emerald`, `indigo`, `amber`, `rose`, `sky`) to tint the 1px outer perimeter border, and preserve `layoutId` continuity across `minimal`, `compact`, and `expanded` transitions.
+- **Tabular Monospace Digits (`.monospacedDigit()`):** Enforce `tabularNums` on `<Text>` and `<Heading>` (or `<Code>`) for all live clocks, countdowns, scores, distances, and percentages so 1-second updates never cause horizontal layout jitter, and exclude sensitive personal/financial data or promotional clutter.

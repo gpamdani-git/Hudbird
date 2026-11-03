@@ -439,4 +439,77 @@ Untuk mencegah pembuatan komponen yang melenceng dari standar premium Hudbird UI
 - **Dilarang keras membuat atau mengembalikan `tailwind.config.ts` atau `tailwind.config.js`**.
 - Seluruh variabel tema, skala ukuran, dan custom tokens dikelola terpusat di `apps/docs/src/index.css` di bawah direktif `@theme`.
 
+### 3.10 Kewajiban Permanen `antislop-ui`, `antislop-copywriting`, & Pure `@hudbird/ui` (Tanpa `cn` Override)
+
+Setiap pembuatan atau modifikasi komponen, blok (`@hudbird/marketing`), maupun halaman dokumentasi (`apps/docs`) **WAJIB** menerapkan aturan berikut secara otomatis (mode **DURING**):
+
+1. **100% Original `@hudbird/ui` Tanpa `cn()` Surface Override:**
+   - Pada blok showcase & `SignatureBlocks`, dilarang mengimpor `cn` untuk menimpa warna/border/radius komponen inti atau meng-override `classNames={{ core: "..." }}` pada `DoubleBezelCard`.
+   - Gunakan murni prop CVA bawaan: `Section`, `Container`, `Grid` (`layout="bento-split" | "bento-2-1" | "bento-1-2"`), `DoubleBezelCard`, `Card`, `Fieldset` (`variant="inset-grouped"`), `DescriptionList`, `Alert`, `Divider`, `Heading`, `Lead`, `Text`, `Code`, dan `Kbd`.
+2. **Aturan Visual `antislop-ui` (Anti-Truncation & Anti-Nested-Cards):**
+   - **Tanpa Eyebrow Pill Badge + Sparkles di Atas H1 (`R-04`, `R-09`):** Jangan menaruh pill badge `<Sparkles />` di atas judul utama section. Biarkan `<Heading>` dan `<Lead>` berdiri mandiri.
+   - **Tanpa *Cards-inside-Cards-inside-Cards*:** `DoubleBezelCard` sudah memiliki dua lapis bezel (`#161618` chassis + `#202124` core). Dilarang membungkus grafik atau angka KPI di dalamnya dengan `<Card>` berlapis yang mempersempit ruang horizontal.
+   - **Pencegahan Teks Terpotong (*Truncation*) & Patah Kata (*Mid-Word Break*):**
+     - Pada `AccordionItem`, kirimkan string ringkas langsung ke `title` dan `subtitle` (jangan memasukkan `<div>` + `<Badge>` ke dalam `title` karena `AccordionItem` membungkusnya dengan `<span className="truncate">`, dan jangan memasukkan `<IconBox>` ke dalam `startContent`).
+     - Pada kartu Bento 1-kolom, susun header secara vertikal tanpa `IconBox` dekoratif di samping judul, gunakan `DescriptionList orientation="vertical"`, dan gunakan label sumbu-X pendek (`CPU`, `Egress`, `Reqs`) pada `BarChart`.
+   - **Grafik dengan Pertanyaan Jelas (`Charts Without a Question` — `C-3`):** Setiap grafik wajib disertai subjudul yang menjelaskan data yang dibandingkan (misal *"Warm workers vs. p99 latency (ms) over 24 hours"*).
+   - **Tanpa Panah Dekoratif di Setiap Tombol (`R-08`):** Gunakan `showArrow={false}` pada `KineticButton` untuk aksi non-navigasi di dalam komponen.
+3. **Aturan Teks `antislop-copywriting`:**
+   - **Larangan Mutlak Em-Dash (`—`) (`R-02`):** Dilarang menggunakan karakter `—` atau ` -- ` pada teks UI, deskripsi prop, maupun halaman dokumentasi. Gunakan titik, koma, atau titik dua.
+   - **Larangan Buzzword AI (`R-16`, `R-36`):** Dilarang menggunakan kosakata klise AI (*seamlessly morphs, unleash, elevate, autonomous, zero-trust, multi-modal, cryptographic receipt, reshape telemetry polygon, game-changer*). Gunakan bahasa produk yang faktual dan lugas.
+   - **Larangan Persona & Klaim Fiktif (`R-17`, `R-18`, `R-38`):** Jangan mengarang nama, foto profil, atau jabatan orang fiktif (*"Marcus Vance, Principal Infra Architect"*) di dalam komponen UI. Tampilkan langsung prompt/input fungsionalnya.
+
+### 3.11 Disiplin Keseimbangan Optik Visual (*Optical Alignment*) & Layout 1-Block-1-Section
+
+1. **Keseimbangan Radial Kapsul & Harmoni Bentuk Ujung (*Capsule Radial Equilibrium*):**
+   - Kapsul 1-baris yang diawali/diakhiri elemen bulat atau pill (`Avatar radius="full"`, `CircularProgress`, `Badge`, `Button radius="full"`) **WAJIB** menggunakan `<Card radius="capsule">` (`rounded-full`) + `<CardBody padding="capsule">` (`p-2.5` = `10px` jarak radial merata atas, bawah, kiri, kanan) agar memenuhi rumus konsentris $R_{\text{inner}} = R_{\text{outer}} - \text{padding}$. Dilarang memakai `radius="full"` (`rounded-3xl` 24px) dengan `px-6 py-4` di sekeliling `Avatar` bulat!
+   - Jika elemen kiri berbentuk kotak bersudut tumpul (`Avatar radius="md"` `12px` atau `IconBox size="sm"` `12px`), gunakan `<Card radius="full">` (`rounded-3xl` `24px`) + `<CardBody padding="compact">` (`px-4 py-3` `12px`) agar kelengkungan tetap konsentris ($24 - 12 = 12\text{px}$).
+2. **Eliminasi *Baseline Ghost Space* pada Wrapper `inline-flex` (`<motion.div>` / `<div>`):**
+   - Membungkus komponen `inline-flex` / `inline` (`Avatar`, `Badge`, `Code`, `CircularProgress`, `IconBox`) di dalam blok `<div>` atau `<motion.div>` tanpa flex akan menyisakan ruang kosong *descender line-height* ~4–6px di bawah elemen sehingga avatar terdorong naik dan tidak sejajar dengan teks di sebelahnya.
+   - Setiap wrapper `<div>` / `<motion.div>` di sekeliling elemen tersebut **WAJIB** memakai `flex shrink-0 items-center justify-center leading-none`, dan teks 1-baris di dalam kapsul wajib memakai `leading-none`.
+3. **Kompensasi Titik Berat Ikon, Cap-Height Header Badge, & Paritas Baseline Metrik:**
+   - Ikon segitiga `<Play />` di dalam tombol bulat (`isIconOnly`) wajib diberi kompensasi titik berat `translate-x-[1px]`.
+   - Pada header kartu yang memasangkan `<Heading>` dengan `<Badge>`, letakkan `<Badge>` sejajar sumbu *cap-height* `<Heading>` di dalam baris `flex items-center justify-between` tersendiri (dengan subjudul `<Text variant="small">` di bawahnya), bukan `items-start`.
+   - Angka perbandingan berdampingan pada `DescriptionList` atau KPI wajib memiliki ukuran font dan `leading-none` yang setara (dilarang mencampur teks biasa `14px` di kolom kiri dengan `<Badge size="sm">` `10px` di kolom kanan).
+4. **Presentasi Blok Dokumentasi: 1 Block = 1 Vertical Section Scroll ke Bawah:**
+   - Pada halaman dokumentasi blok & `SignatureBlocks`, tampilkan setiap blok/varian sebagai **1 section `<MarketingPreview>` utuh yang mengalir vertikal ke bawah** (`space-y-16` / `space-y-20`), dilarang memadatkan blok kapsul horizontal ke dalam grid 3-kolom sempit dan dilarang menduplikasi komponen yang sama 2 kali pada satu halaman.
+
+### 3.12 Standar Internasional Human Experience (WCAG 2.2, Nielsen, ISO 9241, Apple HIG, Don Norman) & Arsitektur `LiquidGlass`
+
+Setiap komponen inti (`packages/core`), blok (`packages/marketing`), dan halaman dokumentasi (`apps/docs`) yang dibuat atau dimodifikasi **WAJIB** mematuhi 5 pilar standar pengalaman manusia internasional serta disiplin Macro Layout berikut:
+
+1. **Standar Aksesibilitas Internasional (W3C / WCAG 2.2 AA & AAA):**
+   - **Kontras Teks (`WCAG 1.4.3` & `1.4.6`):** Seluruh teks normal & kecil (`<Text variant="small">`, `muted`, `subtle`, `<Badge>`, `<Code>`, persentase `<Progress>`) wajib mencapai rasio kontras minimal **`>= 4.5:1`** (dan target **`>= 7.0:1` AAA** di atas permukaan kaca `LiquidGlass`) terhadap piksel latar paling terang sekalipun. Judul besar (`>= 24px`) minimal **`>= 3.0:1`**.
+   - **Kontras UI Non-Teks (`WCAG 1.4.11`):** Track `<Progress>`, `<CircularProgress>`, `<Slider>`, dan well `<Tabs>` wajib memiliki pemisahan luminansi **`>= 3.0:1`**; di dalam permukaan kaca gelap (`[data-glass-mode=glass][data-hb-theme=dark]`), wajib menggunakan track translusen bercahaya (`bg-white/24`, `stroke-white/25`) dan dilarang merender batang hitam pekat (`#202124`) di atas kaca biru/terang.
+   - **Fokus Keyboard & Non-Color-Only (`WCAG 1.4.1`, `2.4.7`):** Status tidak boleh hanya mengandalkan warna semata (wajib didampingi label teks atau ikon jelas) serta wajib mempertahankan `focus-visible:ring-2`.
+2. **Apple Human Interface Guidelines (HIG): Clarity, Deference, & Depth:**
+   - **Clarity (Kejelasan):** `LiquidGlass` wajib menjaga *optical legibility floor* (`alpha >= 0.56` pada mode kaca gelap, `alpha >= 0.72` pada mode kaca terang) dan `Badge variant="soft"` memakai *smoked jewel pill* (`bg-*-950/80 text-*-100 ring-*-400/45`) agar teks selalu tajam di atas foto langit terang.
+   - **Deference (Kegunaan & Kepatuhan Latar):** Latar foto pada `LiquidGlassStage` wajib diberi *deference scrim* (`bg-slate-950/28` + vignette) agar tidak menyaingi UI di atasnya. Dilarang menaruh teks abu-abu telanjang langsung di atas foto ramai; bungkus petunjuk interaktif di dalam kapsul berlapis kaca/badge.
+   - **Depth & Batas Arsitektur (`LiquidGlass` = Core Surface Component, BUKAN Global Theme):** `LiquidGlass` adalah **Component Type permukaan berelevasi** untuk layer transien/HUD (Dynamic Island, Control Center, floating toolbar, maksimal 1-2 elemen per viewport), bukan tema halaman penuh. Tema global (`/themes` / `@hudbird/theme`) mengatur token warna OKLCH, font, dan radius agar tabel padat, form, dan teks panjang tetap nyaman dibaca dan ringan di GPU.
+3. **Prinsip Heuristik UX (Jakob Nielsen):**
+   - Tampilkan status sistem secara langsung (*Visibility of System Status*), sediakan kontrol pemulihan/reset instan (*User Control & Freedom* seperti tombol Collapse dan Reset Preset), serta jaga konsistensi komponen tanpa ornamen garis luar gelap yang mengotori sinyal visual.
+4. **Standar Ergonomi Internasional (`ISO 9241-210` & `ISO 9241-112`):**
+   - Pastikan *Detectability*, *Discriminability*, dan polaritas luminansi yang tegas di ketiga mode permukaan (`glass`, `dark`, `light`).
+5. **Asas Desain Interaksi (Don Norman) & Kewajiban Macro Layout (`Section`, `Container`, `Grid`):**
+   - Berikan *Signifiers* yang jelas (bevel spekular 1px di tepi atas, kapsul petunjuk yang terbaca jelas, *hover lift*, dan umpan balik tekan taktil `active:scale-[0.985]`).
+   - Komponen `LiquidGlass` (`LiquidGlassStage`), blok marketing, dan halaman docs **WAJIB** menggunakan primitif tata letak `<Section>`, `<Container>`, dan `<Grid>` dari `@hudbird/ui` (dilarang memakai `<section>` mentah, `max-w-*` manual, atau `<div className="grid ...">` mentah).
+
+### 3.13 Standar Resmi Apple Live Activities & `WidgetKit.DynamicIsland`
+
+Setiap komponen Dynamic Island dan Live Activity (`LiquidGlassIslandCompact`, `LiquidGlassIslandExpanded`, `LiquidGlassSensor`, serta `MorphingIsland`) **WAJIB** menerapkan aturan resmi Apple `WidgetKit.DynamicIsland` dan *HIG Live Activities*:
+
+1. **Tiga Presentasi Resmi (`compact`, `minimal`, `expanded`):**
+   - **`compact`:** Memakai `LiquidGlass radius="capsule"` + `LiquidGlassBody padding="compactPill"` + `LiquidGlassIslandCompact` (`grid-cols-[1fr_auto_1fr]`) sehingga `compactLeading` dan `compactTrailing` mengapit `<LiquidGlassSensor size="compact" />` tepat di sumbu tengah (`50%`) dalam satu kesatuan informasi ringkas tanpa teks terpotong.
+   - **`minimal` (2 Live Activity Berjalan Bersamaan):** Menampilkan *Attached Minimal Pill* (`compactLeading` + `<LiquidGlassSensor />`) berdampingan (`gap-2.5`) dengan *Detached Circular Bubble* `44×44px` (`LiquidGlass radius="capsule"` + `padding="minimal"`) untuk aktivitas kedua.
+   - **`expanded` (4 Region Resmi `DynamicIslandExpandedRegion`):** Memakai `LiquidGlass radius="island"` (`36px`) + `LiquidGlassBody padding="island"` (`p-5` = margin sistem `20pt` Apple HIG) + `LiquidGlassIslandExpanded` yang membagi `.leading` (kiri sensor), `.trailing` (kanan sensor), `.center` (`.belowIfTooWide` penuh di bawah sensor untuk judul/skor/rute tanpa menabrak sensor), dan `.bottom` (scrubber, progress bar, serta tombol aksi).
+2. **Disiplin *Macro-Tap* vs Kontrol `44pt` di Expanded:**
+   - **Dilarang Menaruh Tombol Kecil di `compact` atau `minimal`:** Seluruh kapsul `compact` dan `minimal` berfungsi sebagai satu *macro-tap target* (`isPressable`).
+   - **Target Sentuh `44pt` di `expanded`:** Seluruh tombol aksi interaktif (`Play`/`Pause`, `Accept`/`End`, `Mute`, `Minimize`) wajib berada di region `.bottom` pada mode `expanded` dengan ukuran ergonomis (`Button size="md"` `44px` atau `size="sm"` `36px`).
+3. **Konsentrisitas `ContainerRelativeShape`, Tanpa *Full-Bleed Divider*, `.keylineTint(_:)`, & `.monospacedDigit()`:**
+   - **Rumus Konsentris `ContainerRelativeShape`:** Radius luar `36px` (`radius="island"`) dikurangi margin `20px` (`padding="island"`) menghasilkan `16px` (`Avatar radius="lg"` / `rounded-2xl`) sehingga sudut elemen dalam sejajar sempurna dengan lengkungan pulau.
+   - **Dilarang Garis Pemisah Menabrak Dinding Lengkung Luar:** `<Divider />` wajib berada di dalam padding `20pt` (`padding="island"`), tidak boleh diletakkan di luar `LiquidGlassBody` hingga menabrak garis tepi melengkung.
+   - **`.keylineTint(_:)` & `.monospacedDigit()` (`tabularNums`):** Gunakan prop `keylineTint` semantik (`emerald`, `indigo`, `amber`, `rose`, `sky`) pada garis tepi 1px pulau, pertahankan kontinuitas `layoutId` antar transisi state, dan wajib aktifkan `tabularNums` pada `<Text>` / `<Heading>` (atau `<Code>`) untuk seluruh timer, skor, jarak, dan persentase live agar angka tidak bergeser setiap detik.
+
+
+
 

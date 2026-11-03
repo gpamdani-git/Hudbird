@@ -9,7 +9,7 @@ export type SliderColor = "primary" | "success" | "danger" | "warning";
 export type SliderSize = "sm" | "md" | "lg";
 
 const trackVariants = cva(
-  "relative w-full rounded-full bg-zinc-200/80 dark:bg-[#202124] shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] border border-black/[0.04] dark:border-white/[0.06] cursor-pointer select-none transition-colors",
+  "relative w-full rounded-full bg-zinc-200/80 dark:bg-[#202124] [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/24 shadow-[inset_0_1px_2px_rgba(0,0,0,0.15)] dark:shadow-[inset_0_1px_2px_rgba(0,0,0,0.4)] [[data-glass-mode=glass][data-hb-theme=dark]_&]:shadow-none border border-black/[0.06] dark:border-white/[0.08] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/20 cursor-pointer select-none transition-colors",
   {
     variants: {
       size: {

@@ -6,7 +6,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 export type CardVariant = "shadow" | "bordered" | "flat";
-export type CardRadius = "none" | "md" | "lg" | "full";
+export type CardRadius = "none" | "md" | "lg" | "full" | "capsule";
+export type CardBodyPadding = "default" | "compact" | "capsule" | "none";
 
 const cardVariants = cva(
   "relative flex flex-col justify-between overflow-hidden text-card-foreground transition-all box-border",
@@ -24,6 +25,7 @@ const cardVariants = cva(
         md: "rounded-xl",
         lg: "rounded-2xl",
         full: "rounded-3xl",
+        capsule: "rounded-full",
       },
       isHoverable: {
         true: "hover:-translate-y-1 hover:shadow-md transition-all duration-200 ease-out cursor-pointer hover:border-black/15 dark:hover:border-white/20",
@@ -112,15 +114,25 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
 );
 CardHeader.displayName = "CardHeader";
 
-export interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
+const cardBodyPaddingClasses: Record<CardBodyPadding, string> = {
+  default: "px-6 py-4 leading-relaxed",
+  compact: "px-4 py-3 leading-normal",
+  capsule: "p-2.5 leading-none",
+  none: "p-0",
+};
+
+export interface CardBodyProps extends React.HTMLAttributes<HTMLDivElement> {
+  padding?: CardBodyPadding;
+}
 
 const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, padding = "default", children, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
-          "relative h-auto w-full flex-1 overflow-visible px-6 py-4 text-left text-sm leading-relaxed font-normal break-words text-zinc-600 dark:text-zinc-400",
+          "relative h-auto w-full flex-1 overflow-visible text-left text-sm font-normal break-words text-zinc-600 dark:text-zinc-400",
+          cardBodyPaddingClasses[padding],
           className
         )}
         {...props}

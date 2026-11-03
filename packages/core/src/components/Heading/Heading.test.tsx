@@ -22,4 +22,9 @@ describe("Heading component", () => {
     const { container } = render(<Heading color="muted">Muted Subhead</Heading>);
     expect(container.firstChild).toHaveClass("text-zinc-500");
   });
+
+  it("applies tabular-nums when tabularNums is true", () => {
+    render(<Heading tabularNums>00:22</Heading>);
+    expect(screen.getByRole("heading", { name: "00:22" })).toHaveClass("tabular-nums");
+  });
 });

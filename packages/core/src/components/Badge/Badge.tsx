@@ -85,54 +85,54 @@ const badgeVariants = cva(
         className: "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900",
       },
 
-      // Soft (Pastel) Variants
+      // Soft (Pastel / Smoked Jewel on Dark & Glass) Variants — WCAG 2.2 AA (>= 4.5:1)
       {
         variant: "soft",
         color: "primary",
         className:
-          "bg-primary-50 text-primary-700 ring-1 ring-inset ring-primary-200 dark:bg-primary-500/15 dark:text-primary-400 dark:ring-primary-500/20",
+          "bg-primary-50 text-primary-700 ring-1 ring-inset ring-primary-200 dark:bg-primary-500/20 dark:text-primary-200 dark:ring-primary-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-indigo-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-indigo-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-indigo-400/45",
       },
       {
         variant: "soft",
         color: "secondary",
         className:
-          "bg-secondary-50 text-secondary-700 ring-1 ring-inset ring-secondary-200 dark:bg-secondary-500/15 dark:text-secondary-400 dark:ring-secondary-500/20",
+          "bg-secondary-50 text-secondary-700 ring-1 ring-inset ring-secondary-200 dark:bg-secondary-500/20 dark:text-secondary-200 dark:ring-secondary-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-cyan-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-cyan-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-cyan-400/45",
       },
       {
         variant: "soft",
         color: "success",
         className:
-          "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200 dark:bg-emerald-500/15 dark:text-emerald-400 dark:ring-emerald-500/20",
+          "bg-emerald-50 text-emerald-800 ring-1 ring-inset ring-emerald-200 dark:bg-emerald-500/20 dark:text-emerald-200 dark:ring-emerald-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-emerald-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-emerald-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-emerald-400/45",
       },
       {
         variant: "soft",
         color: "warning",
         className:
-          "bg-amber-50 text-amber-700 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/15 dark:text-amber-400 dark:ring-amber-500/20",
+          "bg-amber-50 text-amber-800 ring-1 ring-inset ring-amber-200 dark:bg-amber-500/20 dark:text-amber-200 dark:ring-amber-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-amber-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-amber-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-amber-400/45",
       },
       {
         variant: "soft",
         color: "danger",
         className:
-          "bg-rose-50 text-rose-700 ring-1 ring-inset ring-rose-200 dark:bg-rose-500/15 dark:text-rose-400 dark:ring-rose-500/20",
+          "bg-rose-50 text-rose-800 ring-1 ring-inset ring-rose-200 dark:bg-rose-500/20 dark:text-rose-200 dark:ring-rose-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-rose-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-rose-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-rose-400/45",
       },
       {
         variant: "soft",
         color: "info",
         className:
-          "bg-sky-50 text-sky-700 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/15 dark:text-sky-400 dark:ring-sky-500/20",
+          "bg-sky-50 text-sky-800 ring-1 ring-inset ring-sky-200 dark:bg-sky-500/20 dark:text-sky-200 dark:ring-sky-400/35 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-sky-950/80 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-sky-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-sky-400/45",
       },
       {
         variant: "soft",
         color: "zinc",
         className:
-          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/80 dark:text-zinc-200 dark:ring-zinc-700/60",
+          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/85 dark:text-zinc-100 dark:ring-zinc-600/60 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-slate-950/75 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-slate-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-white/25",
       },
       {
         variant: "soft",
         color: "neutral",
         className:
-          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/80 dark:text-zinc-200 dark:ring-zinc-700/60",
+          "bg-zinc-100 text-zinc-800 ring-1 ring-inset ring-zinc-200 dark:bg-zinc-800/85 dark:text-zinc-100 dark:ring-zinc-600/60 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-slate-950/75 [[data-glass-mode=glass][data-hb-theme=dark]_&]:text-slate-100 [[data-glass-mode=glass][data-hb-theme=dark]_&]:ring-white/25",
       },
 
       // Outline Variants

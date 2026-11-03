@@ -39,12 +39,17 @@ const headingVariants = cva("font-display transition-colors duration-150 leading
       true: "pb-3.5 border-b border-black/[0.06] dark:border-white/[0.08] mb-4",
       false: "",
     },
+    tabularNums: {
+      true: "tabular-nums",
+      false: "",
+    },
   },
   defaultVariants: {
     size: "h1",
     tracking: "tight",
     color: "default",
     withDivider: false,
+    tabularNums: false,
   },
 });
 
@@ -55,6 +60,8 @@ export interface HeadingProps
   tracking?: HeadingTracking;
   color?: HeadingColor;
   withDivider?: boolean;
+  /** Enforces monospaced tabular digits (.monospacedDigit()) for live tickers, scores, and clocks */
+  tabularNums?: boolean;
   children: React.ReactNode;
 }
 
@@ -66,6 +73,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       tracking,
       color = "default",
       withDivider = false,
+      tabularNums = false,
       className,
       children,
       ...props
@@ -96,6 +104,7 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
             tracking: resolvedTracking,
             color,
             withDivider,
+            tabularNums,
           }),
           className
         )}

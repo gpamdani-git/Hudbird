@@ -33,6 +33,7 @@ const HeadingDoc = lazy(() => import("./pages/HeadingDoc"));
 const InputDoc = lazy(() => import("./pages/InputDoc"));
 const CardDoc = lazy(() => import("./pages/CardDoc"));
 const DoubleBezelCardDoc = lazy(() => import("./pages/DoubleBezelCardDoc"));
+const LiquidGlassDoc = lazy(() => import("./pages/LiquidGlassDoc"));
 const NavbarDoc = lazy(() => import("./pages/NavbarDoc"));
 const PaginationDoc = lazy(() => import("./pages/PaginationDoc"));
 const SelectDoc = lazy(() => import("./pages/SelectDoc"));
@@ -92,6 +93,9 @@ const TestimonialsDoc = lazy(() => import("./pages/marketing/TestimonialsDoc"));
 const FaqDoc = lazy(() => import("./pages/marketing/FaqDoc"));
 const FooterDoc = lazy(() => import("./pages/marketing/FooterDoc"));
 const CtaDoc = lazy(() => import("./pages/marketing/CtaDoc"));
+const MorphingIslandDoc = lazy(() => import("./pages/marketing/MorphingIslandDoc"));
+const AgentArtifactCanvasDoc = lazy(() => import("./pages/marketing/AgentArtifactCanvasDoc"));
+const InteractiveBentoDoc = lazy(() => import("./pages/marketing/InteractiveBentoDoc"));
 
 const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo"));
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
@@ -137,6 +141,7 @@ export default function App() {
   const isThemesPage = location.pathname.startsWith("/themes");
   const isWideLayoutPage =
     location.pathname.startsWith("/marketing") ||
+    location.pathname.startsWith("/signature") ||
     location.pathname.startsWith("/layouts") ||
     location.pathname === "/templates" ||
     location.pathname === "/blocks" ||
@@ -263,6 +268,7 @@ export default function App() {
                     <Route path="/input" element={<InputDoc />} />
                     <Route path="/card" element={<CardDoc />} />
                     <Route path="/double-bezel-card" element={<DoubleBezelCardDoc />} />
+                    <Route path="/liquid-glass" element={<LiquidGlassDoc />} />
                     <Route path="/alert" element={<AlertDoc />} />
                     <Route path="/avatar" element={<AvatarDoc />} />
                     <Route path="/badge" element={<BadgeDoc />} />
@@ -358,6 +364,9 @@ export default function App() {
                     />
                     <Route path="/marketing/footer" element={<FooterDoc />} />
                     <Route path="/marketing/cta" element={<CtaDoc />} />
+                    <Route path="/signature/morphing-island" element={<MorphingIslandDoc />} />
+                    <Route path="/signature/agent-canvas" element={<AgentArtifactCanvasDoc />} />
+                    <Route path="/signature/interactive-bento" element={<InteractiveBentoDoc />} />
 
                     <Route path="*" element={<Navigate to="/button" replace />} />
                   </Routes>

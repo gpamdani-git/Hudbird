@@ -283,6 +283,21 @@ export const doubleBezelCardTocItems: TocItem[] = [
   },
 ];
 
+export const liquidGlassTocItems: TocItem[] = [
+  { id: "interactive-playground", title: "Golden Gate Playground" },
+  { id: "installation", title: "Installation" },
+  { id: "component-api", title: "Component API" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "surface-modes", title: "Glass, Dark, and Light Modes" },
+      { id: "concentric-capsules", title: "Concentric Capsules" },
+      { id: "control-toolbar", title: "macOS Control Center HUD" },
+    ],
+  },
+];
+
 export const navbarTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -817,8 +832,39 @@ export const gridTocItems: TocItem[] = [
   },
 ];
 
+export const morphingIslandTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  {
+    id: "examples",
+    title: "Dynamic Island Blocks",
+    children: [
+      { id: "spotify", title: "1. Spotify Live Capsule" },
+      { id: "music", title: "2. Music Player" },
+      { id: "record", title: "3. Screen & Mic Capture" },
+      { id: "sport", title: "4. Live Sports Score" },
+      { id: "call", title: "5. Audio Call" },
+      { id: "timer", title: "6. Countdown Timer" },
+      { id: "navigation", title: "7. Navigation" },
+      { id: "airdrop", title: "8. AirDrop Transfer" },
+      { id: "flight", title: "9. Flight Tracker" },
+      { id: "delivery", title: "10. Live Ride Pickup" },
+      { id: "airpods", title: "11. AirPods Spatial HUD" },
+    ],
+  },
+  { id: "component-api", title: "Component API" },
+];
+
+export const signatureTocItems: TocItem[] = [
+  { id: "installation", title: "Installation" },
+  { id: "examples", title: "Interactive Block" },
+  { id: "component-api", title: "Component API" },
+];
+
 const tocMap: Record<string, TocItem[]> = {
   "/": gettingStartedTocItems,
+  "/signature/morphing-island": morphingIslandTocItems,
+  "/signature/agent-canvas": signatureTocItems,
+  "/signature/interactive-bento": signatureTocItems,
   "/section": sectionTocItems,
   "/container": containerTocItems,
   "/grid": gridTocItems,
@@ -846,6 +892,7 @@ const tocMap: Record<string, TocItem[]> = {
   "/input": inputTocItems,
   "/card": cardTocItems,
   "/double-bezel-card": doubleBezelCardTocItems,
+  "/liquid-glass": liquidGlassTocItems,
   "/navbar": navbarTocItems,
   "/pagination": paginationTocItems,
   "/progress": progressTocItems,
