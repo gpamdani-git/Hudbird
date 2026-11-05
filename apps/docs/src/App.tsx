@@ -35,6 +35,7 @@ const CardDoc = lazy(() => import("./pages/CardDoc"));
 const DoubleBezelCardDoc = lazy(() => import("./pages/DoubleBezelCardDoc"));
 const LiquidGlassDoc = lazy(() => import("./pages/LiquidGlassDoc"));
 const NavbarDoc = lazy(() => import("./pages/NavbarDoc"));
+const NavigationMenuDoc = lazy(() => import("./pages/NavigationMenuDoc"));
 const PaginationDoc = lazy(() => import("./pages/PaginationDoc"));
 const SelectDoc = lazy(() => import("./pages/SelectDoc"));
 const SkeletonDoc = lazy(() => import("./pages/SkeletonDoc"));
@@ -79,12 +80,21 @@ const IconsDoc = lazy(() => import("./pages/IconsDoc"));
 const SectionDoc = lazy(() => import("./pages/SectionDoc"));
 const ContainerDoc = lazy(() => import("./pages/ContainerDoc"));
 const GridDoc = lazy(() => import("./pages/GridDoc"));
+const MotionDoc = lazy(() => import("./pages/MotionDoc"));
 
 const SidebarDoc = lazy(() => import("./pages/SidebarDoc"));
 const StackedLayoutDoc = lazy(() => import("./pages/StackedLayoutDoc"));
 const AuthLayoutDoc = lazy(() => import("./pages/AuthLayoutDoc"));
 
 const HeroDoc = lazy(() => import("./pages/marketing/HeroDoc"));
+const LandingSectionsDoc = lazy(() => import("./pages/marketing/LandingSectionsDoc"));
+const LandingBuilderDoc = lazy(() => import("./pages/marketing/LandingBuilderDoc"));
+const SaasLandingPreview = lazy(() => import("./pages/marketing/LandingPreview"));
+const StartupPilotPreview = lazy(() =>
+  import("./pages/marketing/HeroPilotDoc").then((module) => ({
+    default: module.StartupPilotPreview,
+  }))
+);
 const LogoCloudDoc = lazy(() => import("./pages/marketing/LogoCloudDoc"));
 const FeatureSectionDoc = lazy(() => import("./pages/marketing/FeatureSectionDoc"));
 const PricingDoc = lazy(() => import("./pages/marketing/PricingDoc"));
@@ -114,6 +124,7 @@ const DigitalAgencyTemplate = lazy(() =>
   }))
 );
 
+const LandingPage = lazy(() => import("./pages/LandingPage"));
 const AiStartupTemplate = lazy(() => import("./app/landingpage"));
 const FintechTemplate = lazy(() =>
   import("./components/templates/FintechTemplate").then((m) => ({ default: m.FintechTemplate }))
@@ -131,8 +142,6 @@ const AdminCmsTemplate = lazy(() =>
     default: m.AdminCmsTemplate,
   }))
 );
-
-const BlocksGalleryDoc = lazy(() => import("./pages/BlocksGalleryDoc"));
 
 export default function App() {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
@@ -155,7 +164,7 @@ export default function App() {
   if (location.pathname === "/") {
     return (
       <Suspense fallback={<DocLoadingSkeleton />}>
-        <AiStartupTemplate />
+        <LandingPage />
       </Suspense>
     );
   }
@@ -178,6 +187,8 @@ export default function App() {
     return (
       <Suspense fallback={<DocLoadingSkeleton />}>
         <Routes>
+          <Route path="/templates/startup-pilot" element={<StartupPilotPreview />} />
+          <Route path="/templates/saas-landing" element={<SaasLandingPreview />} />
           <Route path="/templates/saas-launchpad" element={<SaaSTemplate />} />
           <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
           <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
@@ -257,8 +268,21 @@ export default function App() {
                     <Route path="/docs" element={<GettingStartedDoc />} />
                     <Route path="/support" element={<SupportDoc />} />
                     <Route path="/changelog" element={<ChangelogDoc />} />
+                    <Route
+                      path="/marketing/hero-pilot"
+                      element={<Navigate to="/marketing/landing-sections/hero" replace />}
+                    />
+                    <Route path="/marketing/landing-sections" element={<LandingSectionsDoc />} />
+                    <Route
+                      path="/marketing/landing-sections/:section"
+                      element={<LandingSectionsDoc />}
+                    />
+                    <Route path="/marketing/landing-builder" element={<LandingBuilderDoc />} />
                     <Route path="/themes" element={<ThemesDoc />} />
-                    <Route path="/blocks" element={<BlocksGalleryDoc />} />
+                    <Route
+                      path="/blocks"
+                      element={<Navigate to="/marketing/landing-sections" replace />}
+                    />
                     <Route path="/installation" element={<InstallationDoc />} />
                     <Route path="/cli" element={<CliDoc />} />
                     <Route path="/ai-skills" element={<AiSkillsDoc />} />
@@ -282,11 +306,13 @@ export default function App() {
                     <Route path="/heading" element={<HeadingDoc />} />
                     <Route path="/icon-box" element={<IconBoxDoc />} />
                     <Route path="/navbar" element={<NavbarDoc />} />
+                    <Route path="/navigation-menu" element={<NavigationMenuDoc />} />
                     <Route path="/pagination" element={<PaginationDoc />} />
                     <Route path="/select" element={<SelectDoc />} />
                     <Route path="/section" element={<SectionDoc />} />
                     <Route path="/container" element={<ContainerDoc />} />
                     <Route path="/grid" element={<GridDoc />} />
+                    <Route path="/motion" element={<MotionDoc />} />
                     <Route
                       path="/sidebar"
                       element={<SidebarDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
@@ -334,36 +360,40 @@ export default function App() {
                     <Route path="/input-otp" element={<InputOTPDoc />} />
                     <Route
                       path="/marketing/hero"
-                      element={<HeroDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/hero" replace />}
                     />
                     <Route
                       path="/marketing/logo-clouds"
-                      element={<LogoCloudDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/logos" replace />}
                     />
                     <Route
                       path="/marketing/feature-sections"
-                      element={
-                        <FeatureSectionDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />
-                      }
+                      element={<Navigate to="/marketing/landing-sections/features" replace />}
                     />
                     <Route
                       path="/marketing/pricing"
-                      element={<PricingDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/pricing" replace />}
                     />
                     <Route
                       path="/marketing/bento-grid"
-                      element={<BentoGridDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/features" replace />}
                     />
                     <Route
                       path="/marketing/testimonials"
-                      element={<TestimonialsDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/testimonials" replace />}
                     />
                     <Route
                       path="/marketing/faq"
-                      element={<FaqDoc onOpenSidebar={() => setMobileSidebarOpen(true)} />}
+                      element={<Navigate to="/marketing/landing-sections/faq" replace />}
                     />
-                    <Route path="/marketing/footer" element={<FooterDoc />} />
-                    <Route path="/marketing/cta" element={<CtaDoc />} />
+                    <Route
+                      path="/marketing/footer"
+                      element={<Navigate to="/marketing/landing-sections/footer" replace />}
+                    />
+                    <Route
+                      path="/marketing/cta"
+                      element={<Navigate to="/marketing/landing-sections/cta" replace />}
+                    />
                     <Route path="/signature/morphing-island" element={<MorphingIslandDoc />} />
                     <Route path="/signature/agent-canvas" element={<AgentArtifactCanvasDoc />} />
                     <Route path="/signature/interactive-bento" element={<InteractiveBentoDoc />} />

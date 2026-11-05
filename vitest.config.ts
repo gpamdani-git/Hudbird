@@ -17,6 +17,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@hudbird/schemas": path.resolve(__dirname, "packages/schemas/src/index.ts"),
       "@hudbird/ui": path.resolve(__dirname, "packages/core/src/index.ts"),
       "@hudbird/marketing": path.resolve(__dirname, "packages/marketing/src/index.ts"),
       "@": path.resolve(__dirname, "starter-kits/pro-templates/src"),

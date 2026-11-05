@@ -475,6 +475,15 @@ export default function HeroDoc({ onOpenSidebar }: { onOpenSidebar?: () => void 
         description="Use these Tailwind CSS hero section examples to add important messaging, product showcases, and call-to-actions to the top of your website."
       />
 
+      <div className="space-y-4">
+        <p className="text-muted-foreground">
+          Build with your brand, compare two compositions, and swap five hero layouts.
+        </p>
+        <Button href="/#/marketing/hero-pilot" variant="outline">
+          Open the branded website pilot
+        </Button>
+      </div>
+
       <div id="installation" className="scroll-mt-24 space-y-4">
         <InstallationTabs componentName="hero" manualCode={heroCode} />
       </div>

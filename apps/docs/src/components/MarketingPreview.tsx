@@ -16,6 +16,7 @@ interface MarketingPreviewProps {
   skill?: string;
   minHeight?: number;
   trapFixed?: boolean;
+  isolateViewport?: boolean;
 }
 
 export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
@@ -28,6 +29,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
   skill,
   minHeight = 400,
   trapFixed = false,
+  isolateViewport = false,
 }) => {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [viewport, setViewport] = useState<ViewportMode>("desktop");
@@ -75,7 +77,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
               isIconOnly
               radius="md"
               variant={viewport === "desktop" && activeTab === "preview" ? "solid" : "light"}
-              color={viewport === "desktop" && activeTab === "preview" ? "default" : "secondary"}
+              color={viewport === "desktop" && activeTab === "preview" ? "zinc" : "secondary"}
               className={
                 viewport === "desktop" && activeTab === "preview"
                   ? "shadow-xs dark:bg-[#28292d] dark:text-white"
@@ -94,7 +96,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
               isIconOnly
               radius="md"
               variant={viewport === "tablet" && activeTab === "preview" ? "solid" : "light"}
-              color={viewport === "tablet" && activeTab === "preview" ? "default" : "secondary"}
+              color={viewport === "tablet" && activeTab === "preview" ? "zinc" : "secondary"}
               className={
                 viewport === "tablet" && activeTab === "preview"
                   ? "shadow-xs dark:bg-[#28292d] dark:text-white"
@@ -113,7 +115,7 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
               isIconOnly
               radius="md"
               variant={viewport === "mobile" && activeTab === "preview" ? "solid" : "light"}
-              color={viewport === "mobile" && activeTab === "preview" ? "default" : "secondary"}
+              color={viewport === "mobile" && activeTab === "preview" ? "zinc" : "secondary"}
               className={
                 viewport === "mobile" && activeTab === "preview"
                   ? "shadow-xs dark:bg-[#28292d] dark:text-white"
@@ -142,7 +144,9 @@ export const MarketingPreview: React.FC<MarketingPreviewProps> = ({
               className="w-full transition-all duration-300 ease-in-out"
               style={{ maxWidth: viewportWidths[viewport] }}
             >
-              {viewport === "desktop" ? (
+              {isolateViewport ? (
+                <IframePreview minHeight={minHeight}>{children}</IframePreview>
+              ) : viewport === "desktop" ? (
                 <div
                   className={`relative isolate w-full bg-white dark:bg-[#161618] ${trapFixed ? "overflow-hidden" : ""}`}
                   style={

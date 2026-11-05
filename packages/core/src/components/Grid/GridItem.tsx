@@ -121,10 +121,10 @@ const GridItem = React.forwardRef<HTMLDivElement, GridItemProps>(
       );
     }
 
-    return (
-      <Component ref={ref as any} className={combinedClassName} {...props}>
-        {children}
-      </Component>
+    return React.createElement(
+      Component,
+      { ref, className: combinedClassName, ...props },
+      children
     );
   }
 );

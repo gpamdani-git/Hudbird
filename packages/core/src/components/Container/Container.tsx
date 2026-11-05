@@ -58,14 +58,14 @@ const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
     },
     ref
   ) => {
-    return (
-      <Component
-        ref={ref as any}
-        className={cn(containerVariants({ size, gutter, centered }), className)}
-        {...props}
-      >
-        {children}
-      </Component>
+    return React.createElement(
+      Component,
+      {
+        ref,
+        className: cn(containerVariants({ size, gutter, centered }), className),
+        ...props,
+      },
+      children
     );
   }
 );

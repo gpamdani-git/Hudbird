@@ -26,6 +26,7 @@ export interface TableProps extends React.HTMLAttributes<HTMLTableElement> {
   density?: TableDensity;
   isHoverable?: boolean;
   wrapperClassName?: string;
+  wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
 const Table = React.forwardRef<HTMLTableElement, TableProps>(
@@ -33,6 +34,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
     {
       className,
       wrapperClassName,
+      wrapperProps,
       variant = "default",
       density = "normal",
       isHoverable = true,
@@ -46,10 +48,12 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
     return (
       <TableContext.Provider value={{ variant, density, isHoverable }}>
         <div
+          {...wrapperProps}
           className={cn(
             "w-full overflow-auto",
             isFramed &&
               "rounded-2xl border border-black/[0.06] bg-white/70 shadow-xs backdrop-blur-xl dark:border-white/[0.08] dark:bg-[#161618]/70",
+            wrapperProps?.className,
             wrapperClassName
           )}
         >

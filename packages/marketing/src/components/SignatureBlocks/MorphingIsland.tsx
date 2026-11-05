@@ -961,7 +961,7 @@ export const MorphingIsland: React.FC<MorphingIslandProps> = ({
                         layoutId={`${instanceId}-shell`}
                         transition={ISLAND_MORPH_SPRING}
                         style={{ willChange: "transform" }}
-                        className="w-[296px] sm:w-[320px]"
+                        className="w-[296px] sm:w-[220px]"
                       >
                         <LiquidGlass
                           {...sharedGlassProps}

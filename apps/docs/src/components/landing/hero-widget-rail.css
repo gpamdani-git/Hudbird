@@ -1,0 +1,361 @@
+.hw-rail {
+  --hw-size: clamp(8.2rem, 15vw, 12.5rem);
+  width: 100%;
+  max-width: 96rem;
+  min-width: 0;
+  margin-inline: auto;
+  overflow: hidden;
+}
+.hw-entrance {
+  animation: hw-arrive 1s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+@keyframes hw-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(-6%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.hw-viewport {
+  position: relative;
+  height: calc(var(--hw-size) + clamp(3.2rem, 7vw, 5.4rem));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  isolation: isolate;
+}
+.hw-slot {
+  position: absolute;
+  top: 1rem;
+  left: calc(50% - var(--hw-size) / 2);
+  width: var(--hw-size);
+  aspect-ratio: 1;
+  will-change: transform;
+}
+.hw-rail .hw-card {
+  --ink: #20232a;
+  --paper: #fffeff;
+  --secondary-ink: #595f67;
+  position: relative;
+  display: flex;
+  height: 100%;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: clamp(12px, 1.3vw, 18px);
+  box-shadow:
+    0 2px 3px rgb(0 24 42 / 6%),
+    0 6px 16px -9px rgb(0 24 42 / 21%);
+  transition: transform 0.34s cubic-bezier(0.22, 1.5, 0.47, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hw-slot:hover {
+    z-index: 1;
+  }
+  .hw-slot:hover .hw-card {
+    transform: translateY(-3px) scale(1.045);
+  }
+}
+.hw-card .hw-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0;
+  padding: 9%;
+  color: inherit;
+  line-height: 1.2;
+  container-type: inline-size;
+}
+.hw-card .hw-kicker,
+.hw-card small {
+  color: var(--secondary-ink);
+  font-size: clamp(9px, 6.2cqw, 12px);
+  font-weight: 550;
+  line-height: 1.25;
+}
+.hw-card .hw-kicker {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  font-family: ui-monospace, monospace;
+}
+.hw-kicker svg {
+  width: 1.2em;
+  height: 1.2em;
+}
+.hw-body strong {
+  font-weight: 580;
+  letter-spacing: -0.035em;
+}
+.hw-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hw-label strong,
+.hw-body > strong {
+  font-size: 12cqw;
+}
+.hw-card .hw-value {
+  font-size: 24cqw;
+  font-weight: 530;
+  line-height: 0.98;
+}
+.hw-controls {
+  display: flex;
+  justify-content: center;
+}
+.hw-controls button {
+  color: var(--hb-ink, currentColor);
+}
+.hw-rail .hw-music {
+  --paper: #214364;
+  --ink: #eff7ff;
+  --secondary-ink: #d0e3f7;
+}
+.hw-disc {
+  position: absolute;
+  width: 84%;
+  aspect-ratio: 1;
+  top: -21%;
+  right: -15%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #0e2030 0 3%, #a9dbfd 4% 19%, #274761 20% 21%, transparent 22%),
+    repeating-radial-gradient(circle, transparent 0 2%, #a8bdd530 2.2% 2.7%),
+    conic-gradient(from 35deg, #162334, #69829b, #1a293a, #61788b, #172432);
+  box-shadow: 0 5px 12px #071c344d;
+}
+.hw-music .hw-label {
+  position: relative;
+}
+.hw-music .hw-kicker {
+  width: auto;
+  gap: 0.5em;
+}
+.hw-music .hw-label strong {
+  font:
+    italic 20cqw/1 Georgia,
+    serif;
+  letter-spacing: -0.065em;
+}
+.hw-spark {
+  width: 100%;
+  height: 38%;
+}
+.hw-rail .hw-photo {
+  --ink: #fff;
+  --secondary-ink: #fff;
+  --paper: #263e46;
+}
+.hw-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hw-photo-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 9%;
+  background: linear-gradient(0deg, #071b2bba, transparent 58%, #00132666);
+}
+.hw-photo-caption strong {
+  font:
+    italic 16cqw/1 Georgia,
+    serif;
+}
+.hw-rail .hw-voice {
+  --paper: #281e27;
+  --ink: #fff5f9;
+  --secondary-ink: #f0bfd2;
+}
+.hw-wave {
+  display: flex;
+  gap: 1.4%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 37%;
+}
+.hw-wave i {
+  flex: 1;
+  border-radius: 2px;
+  background: #fd97b6;
+}
+.hw-voice .hw-label strong {
+  font:
+    600 19cqw/1 ui-monospace,
+    monospace;
+  letter-spacing: -0.08em;
+}
+.hw-voice .hw-label span {
+  opacity: 0.65;
+  font-size: 0.69em;
+}
+.hw-rail .hw-weather {
+  --paper: #c6eafb;
+  --ink: #133748;
+  --secondary-ink: #34586a;
+}
+.hw-weather-icon {
+  position: absolute;
+  top: 25%;
+  right: 8%;
+  width: 42%;
+  height: 42%;
+  stroke-width: 1.3;
+  fill: #f3fbff85;
+}
+.hw-weather .hw-value {
+  font-size: 36cqw;
+}
+.hw-rail .hw-clock {
+  --paper: #232a35;
+  --ink: #fff;
+  --secondary-ink: #dce4ef;
+}
+.hw-dial {
+  position: relative;
+  width: 58%;
+  aspect-ratio: 1;
+  align-self: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #25303f 64%, transparent 65%),
+    repeating-conic-gradient(#d4e2ef 0deg 2deg, transparent 2deg 30deg);
+}
+.hw-dial i,
+.hw-dial b {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  width: 3px;
+  height: 30%;
+  border-radius: 5px;
+  background: #eaf4ff;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(-54deg);
+}
+.hw-dial b {
+  height: 38%;
+  width: 2px;
+  background: #93cfff;
+  transform: translateX(-50%) rotate(48deg);
+}
+.hw-tasks {
+  width: 100%;
+}
+.hw-tasks span {
+  display: flex;
+  gap: 0.6em;
+  align-items: center;
+  padding: 0.38em 0;
+  border-top: 1px solid #8595a333;
+  font-size: 7cqw;
+}
+.hw-tasks svg,
+.hw-tasks i {
+  width: 1.15em;
+  height: 1.15em;
+  color: #147956;
+}
+.hw-tasks i {
+  border: 1px solid #b8bfbe;
+  border-radius: 50%;
+}
+.hw-rail .hw-calendar {
+  --paper: #f5e6cf;
+  --ink: #392f22;
+  --secondary-ink: #61503a;
+}
+.hw-card .hw-date {
+  font-size: 44cqw;
+  font-weight: 460;
+  line-height: 0.9;
+}
+.hw-palette-strip {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 43%;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.hw-palette-strip i {
+  flex: 1;
+  background: #cce8f7;
+}
+.hw-palette-strip i:nth-child(2) {
+  background: #89cefa;
+}
+.hw-palette-strip i:nth-child(3) {
+  background: #488ab8;
+}
+.hw-palette-strip i:nth-child(4) {
+  background: #234263;
+}
+.hw-rail .hw-reading {
+  --paper: #e7ecdf;
+  --ink: #2d4029;
+  --secondary-ink: #4b6048;
+}
+.hw-card .hw-book {
+  font:
+    italic 19cqw/1 Georgia,
+    serif;
+  letter-spacing: -0.07em;
+}
+.hw-rail .hw-type {
+  --paper: #cdd1ef;
+  --ink: #292744;
+  --secondary-ink: #4a4966;
+}
+.hw-card .hw-glyph {
+  font-family: Outfit, sans-serif;
+  font-size: 47cqw;
+  line-height: 0.9;
+}
+.hw-card .hw-time {
+  font-size: 30cqw;
+  font-weight: 480;
+  line-height: 1;
+  letter-spacing: -0.08em;
+}
+.hw-focus-ticks {
+  width: 100%;
+  height: 13%;
+  background: repeating-linear-gradient(90deg, #77acd0 0 2px, transparent 2px 5px);
+  mask-image: linear-gradient(90deg, black 55%, #0004);
+}
+.dark .hw-rail .hw-activity,
+.dark .hw-rail .hw-project,
+.dark .hw-rail .hw-swatches,
+.dark .hw-rail .hw-focus {
+  --paper: #252a31;
+  --ink: #f0f5f9;
+  --secondary-ink: #bdcbd4;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hw-entrance {
+    animation: none;
+  }
+  .hw-slot {
+    will-change: auto;
+  }
+  .hw-slot:hover .hw-card {
+    transition: none;
+    transform: none;
+  }
+}

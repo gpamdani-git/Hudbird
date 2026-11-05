@@ -320,6 +320,20 @@ export const navbarTocItems: TocItem[] = [
   },
 ];
 
+export const navigationMenuTocItems: TocItem[] = [
+  { id: "installation", title: "Import" },
+  {
+    id: "examples",
+    title: "Examples",
+    children: [
+      { id: "standard-navigation", title: "Product navigation" },
+      { id: "surface-variants", title: "Surface and logo placement" },
+      { id: "responsive-menu", title: "Responsive menu" },
+    ],
+  },
+  { id: "component-api", title: "Component API" },
+];
+
 export const paginationTocItems: TocItem[] = [
   { id: "installation", title: "Installation" },
   { id: "component-api", title: "Component API" },
@@ -894,6 +908,7 @@ const tocMap: Record<string, TocItem[]> = {
   "/double-bezel-card": doubleBezelCardTocItems,
   "/liquid-glass": liquidGlassTocItems,
   "/navbar": navbarTocItems,
+  "/navigation-menu": navigationMenuTocItems,
   "/pagination": paginationTocItems,
   "/progress": progressTocItems,
   "/select": selectTocItems,

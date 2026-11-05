@@ -7,13 +7,15 @@ import url from "node:url";
 import pc from "picocolors";
 import prompts from "prompts";
 
-const CLI_VERSION = "1.4.1";
 const CONFIG_FILE = "components.json";
 
 const cwd = process.cwd();
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const CLI_DIR = path.resolve(__dirname, "..");
+const CLI_VERSION = JSON.parse(
+  fs.readFileSync(path.join(CLI_DIR, "package.json"), "utf-8")
+).version;
 const TEMPLATES_DIR = path.resolve(CLI_DIR, "templates");
 
 const registryPath = path.join(TEMPLATES_DIR, "registry.json");
@@ -696,6 +698,40 @@ async function installComponent(componentName, options = {}, installedSet = new 
     fs.writeFileSync(path.join(targetDir, file.name), file.content, "utf-8");
   }
 
+  if (compData.skill) {
+    const skillName = compData.skillName || "hudbird-startup-pilot";
+    const skillDir = path.join(cwd, ".agents", "skills", skillName);
+    const skillPath = path.join(skillDir, "SKILL.md");
+    if (!fs.existsSync(skillPath) || options.overwrite) {
+      fs.mkdirSync(skillDir, { recursive: true });
+      fs.writeFileSync(skillPath, compData.skill, "utf-8");
+      console.log(pc.green(`✔ Added Codex skill: ${skillName}`));
+    }
+  }
+
+  if (componentName === "HeroSection") {
+    const cssName =
+      config?.tailwind?.css ||
+      ["src/index.css", "src/App.css", "app/globals.css"].find((file) =>
+        fs.existsSync(path.join(cwd, file))
+      );
+    if (cssName && fs.existsSync(path.join(cwd, cssName))) {
+      const cssPath = path.resolve(cwd, cssName);
+      const themePath = path.join(getComponentTargetDir("HeroSection", config), "theme.css");
+      let relative = path.relative(path.dirname(cssPath), themePath).split(path.sep).join("/");
+      if (!relative.startsWith(".")) relative = `./${relative}`;
+      const directive = `@import "${relative}";`;
+      const css = fs.readFileSync(cssPath, "utf-8");
+      if (!css.includes(directive)) fs.writeFileSync(cssPath, `${directive}\n${css}`, "utf-8");
+    } else {
+      console.log(
+        pc.yellow(
+          "Import HeroSection/theme.css in your Tailwind v4 stylesheet to enable pilot tokens."
+        )
+      );
+    }
+  }
+
   installedSet.add(componentName);
   if (componentName !== "utils") {
     console.log(pc.green(`✔ Added ${componentName} to ${path.relative(cwd, targetDir)}`));
@@ -814,7 +850,7 @@ function printHelp() {
     `  ${pc.cyan("add [components]")}    Add component(s) to your project (interactive if omitted)`
   );
   console.log(
-    `  ${pc.cyan("list")} (or ${pc.cyan("ls")})       List all 62 available components with category and status`
+    `  ${pc.cyan("list")} (or ${pc.cyan("ls")})       List available components with category and status`
   );
   console.log(
     `  ${pc.cyan("diff [component]")}    Inspect code differences between local files and registry\n`

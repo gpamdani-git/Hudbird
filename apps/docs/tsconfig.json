@@ -13,7 +13,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "ignoreDeprecations": "6.0",
-
     "paths": {
       "@/*": ["./src/*"],
       "@hudbird/ui": ["../../packages/core/src/index.ts"],
@@ -31,7 +30,8 @@
       "@hudbird/marketing/admin": ["../../packages/marketing/src/blocks/AdminCms/index.ts"],
       "@hudbird/marketing/admin-cms": ["../../packages/marketing/src/blocks/AdminCms/index.ts"],
       "@hudbird/marketing/modern-app": ["../../packages/marketing/src/blocks/ModernApp/index.ts"],
-      "@hudbird/marketing/3d": ["../../packages/marketing/src/3d/index.ts"]
+      "@hudbird/marketing/3d": ["../../packages/marketing/src/3d/index.ts"],
+      "@hudbird/schemas": ["../../packages/schemas/src/index.ts"]
     }
   },
   "include": ["src/**/*", "vite.config.ts"],

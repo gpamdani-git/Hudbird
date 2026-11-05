@@ -74,3 +74,25 @@ describe("Table component suite", () => {
     expect(screen.getByText("Item 2")).toBeInTheDocument();
   });
 });
+
+describe("Table scroll wrapper", () => {
+  it("accepts an accessible, focusable scroll region without moving table attributes", () => {
+    render(
+      <Table
+        aria-label="Demo plans"
+        wrapperProps={{ role: "region", tabIndex: 0, "aria-label": "Scrollable plans" }}
+      >
+        <TableBody>
+          <TableRow>
+            <TableCell>Plan A</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
+    expect(screen.getByRole("region", { name: "Scrollable plans" })).toHaveAttribute(
+      "tabindex",
+      "0"
+    );
+    expect(screen.getByRole("table", { name: "Demo plans" })).toBeInTheDocument();
+  });
+});

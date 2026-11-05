@@ -74,19 +74,19 @@ const Section = React.forwardRef<HTMLElement, SectionProps>(
             ? "border-b border-border"
             : undefined;
 
-    return (
-      <Component
-        ref={ref as any}
-        className={cn(
+    return React.createElement(
+      Component,
+      {
+        ref,
+        className: cn(
           sectionVariants({ spacing, variant }),
           borderClass,
           fullHeight && "flex min-h-[100dvh] flex-col justify-center",
           className
-        )}
-        {...props}
-      >
-        {children}
-      </Component>
+        ),
+        ...props,
+      },
+      children
     );
   }
 );

@@ -1,0 +1,67 @@
+.hb-pilot .hb-landing-quote {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+}
+.hb-pilot .hb-section > div {
+  position: relative;
+}
+.hb-pilot .hb-section:not([data-landing-section="navbar"]):not([data-landing-section="footer"]) {
+  background:
+    radial-gradient(
+      circle at 72% 16%,
+      color-mix(in srgb, var(--hb-accent) 5%, transparent),
+      transparent 28rem
+    ),
+    var(--hb-bg);
+}
+.hb-pilot .hb-logo-item {
+  color: color-mix(in srgb, var(--hb-ink) 78%, var(--hb-muted));
+}
+.hb-pilot .hb-logo-item img {
+  opacity: 0.82;
+}
+.hb-pilot[data-brand-mode="dark"] .hb-logo-item img {
+  filter: invert(1);
+}
+.hb-pilot .hb-logo-ticker::before,
+.hb-pilot .hb-logo-ticker::after {
+  position: absolute;
+  inset-block: 0;
+  z-index: 2;
+  width: min(14vw, 8rem);
+  content: "";
+  pointer-events: none;
+}
+.hb-pilot .hb-logo-ticker::before {
+  left: 0;
+  background: linear-gradient(to right, var(--hb-bg), transparent);
+}
+.hb-pilot .hb-logo-ticker::after {
+  right: 0;
+  background: linear-gradient(to left, var(--hb-bg), transparent);
+}
+.hb-pilot .hb-landing-number {
+  font-variant-numeric: tabular-nums;
+  color: var(--hb-muted);
+}
+.hb-pilot .hb-landing-title {
+  color: var(--hb-ink);
+}
+.hb-pilot .hb-landing-item {
+  min-width: 0;
+}
+.hb-pilot .hb-landing-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.hb-pilot [data-landing-section] {
+  scroll-margin-top: 1rem;
+}
+.hb-pilot [data-landing-section="navbar"] {
+  z-index: 10;
+}
+.hb-pilot[data-landing-preview-type="navbar"]:has([aria-expanded="true"]) {
+  min-height: 56rem;
+}

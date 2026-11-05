@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom/vitest";
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
@@ -50,5 +51,24 @@ describe("Input component", () => {
     render(<Input placeholder="Disabled input" isDisabled />);
     const input = screen.getByPlaceholderText("Disabled input");
     expect(input).toBeDisabled();
+  });
+});
+
+describe("Input accessible label", () => {
+  it("associates the outside label with a unique generated input id", () => {
+    render(
+      <>
+        <Input label="Brand name" />
+        <Input label="Primary color" />
+      </>
+    );
+    expect(screen.getByLabelText("Brand name")).toHaveAttribute("id");
+    expect(screen.getByLabelText("Brand name").id).not.toBe(
+      screen.getByLabelText("Primary color").id
+    );
+  });
+  it("preserves consumer ids and labels inside inputs", () => {
+    render(<Input id="brand-logo" label="Logo URL" labelPlacement="inside" />);
+    expect(screen.getByLabelText("Logo URL")).toHaveAttribute("id", "brand-logo");
   });
 });

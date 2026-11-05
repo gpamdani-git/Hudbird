@@ -251,6 +251,9 @@ importers:
 
   packages/marketing:
     dependencies:
+      '@hudbird/schemas':
+        specifier: workspace:*
+        version: link:../schemas
       '@hudbird/theme':
         specifier: workspace:*
         version: link:../theme

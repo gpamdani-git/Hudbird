@@ -23,7 +23,6 @@ export const navigationData: NavGroup[] = [
       { name: "Icons", path: "/icons", isNew: true },
       { name: "Create Theme", path: "/themes" },
       { name: "AI Agent Skills", path: "/ai-skills", isNew: true },
-      { name: "Blocks Gallery", path: "/blocks", isNew: true },
     ],
   },
   {
@@ -64,6 +63,7 @@ export const navigationData: NavGroup[] = [
       { name: "Input", path: "/input", variants: 7 },
       { name: "Input OTP", path: "/input-otp", variants: 5, isNew: true },
       { name: "Navbar", path: "/navbar", variants: 11 },
+      { name: "Navigation Menu", path: "/navigation-menu", variants: 6, isNew: true },
       { name: "Pagination", path: "/pagination", variants: 3 },
       { name: "Popover", path: "/popover", variants: 3, isNew: true },
       { name: "Progress", path: "/progress", variants: 5, isNew: true },
@@ -96,6 +96,10 @@ export const navigationData: NavGroup[] = [
     ],
   },
   {
+    title: "Motion",
+    items: [{ name: "Motion Primitives", path: "/motion", variants: 5, isNew: true }],
+  },
+  {
     title: "Signature Blocks",
     items: [
       { name: "Morphing Island", path: "/signature/morphing-island", variants: 11, isNew: true },
@@ -111,15 +115,13 @@ export const navigationData: NavGroup[] = [
   {
     title: "Marketing Sections",
     items: [
-      { name: "Hero Section", path: "/marketing/hero", variants: 3 },
-      { name: "Bento Grid", path: "/marketing/bento-grid", variants: 1 },
-      { name: "Logo Clouds", path: "/marketing/logo-clouds", variants: 2 },
-      { name: "FAQ", path: "/marketing/faq", variants: 2 },
-      { name: "Feature Sections", path: "/marketing/feature-sections", variants: 2 },
-      { name: "Testimonials", path: "/marketing/testimonials", variants: 2 },
-      { name: "Pricing", path: "/marketing/pricing", variants: 1 },
-      { name: "Call to Action", path: "/marketing/cta", variants: 2 },
-      { name: "Footer", path: "/marketing/footer", variants: 2 },
+      {
+        name: "SaaS Section Collection",
+        path: "/marketing/landing-sections",
+        variants: 27,
+        isNew: true,
+      },
+      { name: "SaaS Page Builder", path: "/marketing/landing-builder", isNew: true },
     ],
   },
 ];

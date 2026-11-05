@@ -38,7 +38,7 @@
   --color-chart-5: hsl(var(--chart-5));
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.dark, .dark *):not(:where([data-hb-theme="light"], [data-hb-theme="light"] *)));
 
 @layer base {
   :root {

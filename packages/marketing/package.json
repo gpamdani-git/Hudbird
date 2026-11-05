@@ -64,7 +64,8 @@
       "types": "./dist/3d.d.mts",
       "import": "./dist/3d.mjs",
       "require": "./dist/3d.js"
-    }
+    },
+    "./pilot.css": "./dist/index.css"
   },
   "scripts": {
     "build": "tsup",
@@ -84,7 +85,8 @@
     "lucide-react": "^1.43.0",
     "maath": "^0.10.8",
     "tailwind-merge": "^3.6.0",
-    "three": "^0.186.0"
+    "three": "^0.186.0",
+    "@hudbird/schemas": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",
@@ -98,5 +100,8 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
 }

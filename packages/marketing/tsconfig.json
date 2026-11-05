@@ -30,7 +30,8 @@
       "@hudbird/marketing/modern-app": ["src/blocks/ModernApp/index.ts"],
       "@hudbird/marketing/3d": ["src/3d/index.ts"],
       "@hudbird/ui": ["../core/src/index.ts"],
-      "@hudbird/theme": ["../theme/src/index.js"]
+      "@hudbird/theme": ["../theme/src/index.js"],
+      "@hudbird/schemas": ["../schemas/src/index.ts"]
     }
   },
   "include": ["src/**/*"],

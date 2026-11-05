@@ -129,7 +129,7 @@ function processDirectory(srcDir, type) {
         .readdirSync(compDir)
         .filter(
           (f) =>
-            (f.endsWith(".tsx") || f.endsWith(".ts")) &&
+            (f.endsWith(".tsx") || f.endsWith(".ts") || f.endsWith(".css")) &&
             !f.endsWith(".test.tsx") &&
             !f.endsWith(".test.ts")
         );
@@ -181,6 +181,7 @@ function processDirectory(srcDir, type) {
           "Input",
           "InputOTP",
           "LiquidGlass",
+          "Motion",
           "Navbar",
           "Pagination",
           "Popover",
@@ -214,8 +215,25 @@ function processDirectory(srcDir, type) {
 
             imports.forEach((imp) => {
               const parts = imp.split(/\s+as\s+/);
-              const compName = parts[0];
-              const parent = CORE_COMPONENTS.find((core) => compName.startsWith(core)) || compName;
+              const compName = parts[0].replace(/^type\s+/, "");
+              const aliases = {
+                Tab: "Tabs",
+                TabList: "Tabs",
+                TabPanel: "Tabs",
+                Lead: "Text",
+                Code: "Text",
+                Kbd: "Text",
+                Strong: "Text",
+                Eyebrow: "Text",
+                Blockquote: "Text",
+                Mark: "Text",
+                CircularProgress: "Progress",
+              };
+              const parent =
+                aliases[compName] ||
+                CORE_COMPONENTS.find((core) => compName.startsWith(core)) ||
+                compName;
+              regDeps.add(parent);
               if (!groups[parent]) groups[parent] = [];
               groups[parent].push(imp);
             });
@@ -227,6 +245,12 @@ function processDirectory(srcDir, type) {
               .join("\n");
           }
         );
+
+        content = content.replace(/(["'])@hudbird\/schemas\1/g, '"../CompositionSchema"');
+        if (content.includes("../CompositionSchema")) regDeps.add("CompositionSchema");
+        for (const match of content.matchAll(/from\s+["']\.\.\/([^/"']+)(?:\/[^"']*)?["']/g)) {
+          if (match[1] !== compName) regDeps.add(match[1]);
+        }
 
         // Extract NPM deps
         const fileDeps = extractNpmDependencies(content);
@@ -295,6 +319,35 @@ function build() {
   processDirectory(CORE_COMPONENTS, "registry:ui");
   processDirectory(MARKETING_COMPONENTS, "registry:marketing");
   processUtils(CORE_UTILS);
+
+  registry.CompositionSchema = {
+    name: "CompositionSchema",
+    type: "registry:ui",
+    category: "components",
+    dependencies: [],
+    registryDependencies: [],
+    files: [
+      {
+        name: "index.ts",
+        content: fs.readFileSync(
+          path.join(ROOT_DIR, "packages/schemas/src/composition.ts"),
+          "utf-8"
+        ),
+      },
+    ],
+  };
+  registry.StartupPilot.skill = fs.readFileSync(
+    path.join(ROOT_DIR, "public/skills/startup-pilot.md"),
+    "utf-8"
+  );
+  const landingSkill = fs.readFileSync(
+    path.join(ROOT_DIR, "public/skills/landing-sections.md"),
+    "utf-8"
+  );
+  for (const name of ["LandingShared", "LandingPage"]) {
+    registry[name].skill = landingSkill;
+    registry[name].skillName = "hudbird-landing-sections";
+  }
 
   const registryPath = path.join(TEMPLATES_DIR, "registry.json");
   fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2), "utf-8");

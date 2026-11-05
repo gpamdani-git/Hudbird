@@ -8,6 +8,7 @@ import { cyberShieldNiche } from "./niches/cyber-shield";
 import { getPrebuiltTemplateMeta, buildNicheConfigFromPrebuilt } from "./niches/prebuilt-47";
 
 export * from "./types";
+export * from "./composition";
 export * from "./niches/digital-agency";
 export * from "./niches/ai-copilot";
 export * from "./niches/alunara-wellness";

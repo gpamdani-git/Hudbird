@@ -135,10 +135,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       defaultValue,
       onChange,
       type = "text",
+      id: providedId,
       ...props
     },
     ref
   ) => {
+    const generatedId = React.useId();
+    const inputId = providedId ?? generatedId;
     const resolvedDisabled = disabled || Boolean(propIsDisabled);
     // Support inputSize alias for seamless backwards-compatibility
     const resolvedSize = inputSize ?? size ?? "md";
@@ -190,6 +193,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {/* Outside Label */}
         {label && labelPlacement === "outside" && (
           <label
+            htmlFor={inputId}
             className={cn(
               "mb-1.5 text-xs font-semibold tracking-tight text-zinc-800 transition-colors select-none dark:text-zinc-200",
               isInvalid ? "text-rose-600 dark:text-rose-400" : "text-foreground",
@@ -224,15 +228,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {/* Main Input Element or Inside Label Wrapper */}
           {isInsideLabel ? (
             <div className="flex h-full min-w-0 flex-1 flex-col justify-center py-0.5">
-              <span
+              <label
+                htmlFor={inputId}
                 className={cn(
                   "text-[10px] leading-tight font-semibold tracking-wide uppercase transition-colors select-none",
                   isInvalid ? "text-rose-600" : "text-muted-foreground"
                 )}
               >
                 {label}
-              </span>
+              </label>
               <input
+                id={inputId}
                 ref={innerInputRef}
                 type={type}
                 value={isControlled ? value : uncontrolledVal}
@@ -245,6 +251,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             </div>
           ) : (
             <input
+              id={inputId}
               ref={innerInputRef}
               type={type}
               value={isControlled ? value : uncontrolledVal}

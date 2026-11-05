@@ -410,3 +410,12 @@ When generating UI with Hudbird UI, always enforce these rules:
      ```bash
      npx hudbird-ui add [ComponentName]
      ```
+
+
+## Branded website pilot
+
+The additive `HeroSection` and `StartupPilot` APIs support a clean, calm promotional website workflow. Read `/skills/startup-pilot.md` for interview, composition selection, setup, visual review, and touch ups. Install source plus its Codex skill with `npx hudbird-ui add StartupPilot`. Preview the pilot at `/#/marketing/hero-pilot`. This pilot does not certify the rest of the existing catalog.
+
+## SaaS section collection
+
+Read `/skills/landing-sections.md` for the 12 section types, 27 primary layouts, catalog, and page builder. Preview `/#/marketing/landing-sections` or `/#/marketing/landing-builder`. The builder exports React, configuration JSON, and a versioned recipe, and follows website theme by default. New source entries are verified with a packed local CLI; publish the updated registry before relying on `npx hudbird-ui add LandingPage`.

@@ -1,0 +1,14 @@
+@custom-variant dark (&:where(.dark, .dark *):not(:where([data-hb-theme="light"], [data-hb-theme="light"] *)));
+
+@theme inline {
+  --color-primary: var(--hb-accent, var(--primary, #2457d6));
+  --color-primary-hover: var(--hb-accent, var(--primary, #2457d6));
+  --color-primary-active: var(--hb-accent, var(--primary, #2457d6));
+  --color-primary-foreground: var(--hb-on-accent, var(--primary-foreground, #ffffff));
+  --color-background: var(--hb-bg, var(--background, #ffffff));
+  --color-foreground: var(--hb-ink, var(--foreground, #18181b));
+  --color-card: var(--hb-surface, var(--card, #f4f5f7));
+  --color-card-foreground: var(--hb-ink, var(--card-foreground, #18181b));
+  --color-muted-foreground: var(--hb-muted, var(--muted-foreground, #52525b));
+  --color-border: var(--hb-border, var(--border, #d4d4d8));
+}

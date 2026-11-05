@@ -1,0 +1,194 @@
+.hb-homepage {
+  font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.hb-homepage h1,
+.hb-homepage h2,
+.hb-homepage h3,
+.hb-homepage .font-display {
+  font-family: "Outfit", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.hb-homepage .hb-section:not([data-landing-section="navbar"]):not([data-landing-section="footer"]) {
+  background: var(--hb-bg);
+}
+
+.hb-homepage [data-landing-section="navbar"] {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--hb-bg) 88%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.hb-homepage [data-landing-section="benefits"] h3 {
+  max-width: 15ch;
+}
+
+.hb-homepage [data-landing-section="footer"] nav {
+  max-width: 46rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-homepage {
+    scroll-behavior: auto;
+  }
+}
+
+.hb-homepage .hb-studio-hero {
+  --studio-ink: #18181b;
+  --studio-secondary: #9999a0;
+  --studio-paper: #f5f5f5;
+  --studio-sky: #75caff;
+  background-color: var(--studio-paper);
+  color: var(--studio-ink);
+  padding-block: clamp(3rem, 6.5vw, 6.75rem) 1.6rem;
+  isolation: isolate;
+  overflow: clip;
+}
+.hb-homepage[data-brand-mode="dark"] .hb-studio-hero {
+  --studio-paper: #17181b;
+  --studio-ink: #f5f5f5;
+  --studio-secondary: #b3b4c0;
+}
+.hb-studio-copy {
+  text-align: center;
+}
+.hb-studio-hero .hw-rail {
+  margin-top: clamp(1.1rem, 2.6vw, 2.75rem);
+}
+.hb-studio-copy h1 {
+  margin: 0;
+  font-size: clamp(3.1rem, 6.75vw, 6.75rem);
+  font-weight: 450;
+  letter-spacing: -0.065em;
+  line-height: 0.99;
+}
+.hb-studio-copy h1 span {
+  display: block;
+  color: var(--studio-ink);
+}
+.hb-studio-copy h1 span + span {
+  color: var(--studio-secondary);
+}
+.hb-studio-hero p.hb-studio-description {
+  max-width: 47ch;
+  margin: clamp(1rem, 1.7vw, 1.6rem) auto 0;
+  color: var(--studio-secondary);
+  font-size: clamp(1.025rem, 1.45vw, 1.45rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+.hb-studio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: clamp(1.4rem, 2.2vw, 2.1rem);
+}
+.hb-studio-actions a {
+  height: 3.2rem;
+  padding-inline: 1.25rem;
+  color: var(--studio-ink);
+  border: 1px solid color-mix(in srgb, var(--studio-ink) 20%, transparent);
+  font-weight: 600;
+}
+.hb-studio-actions .hb-launch-button {
+  padding-inline: 1.45rem 0.42rem;
+  gap: 1rem;
+  background: var(--studio-sky);
+  border-color: transparent;
+  color: #0b2232;
+  box-shadow: 0 3px 12px rgb(37 116 164 / 12%);
+}
+.hb-launch-arrow {
+  display: grid;
+  place-items: center;
+  width: 2.3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #13242e;
+  color: white;
+}
+.hb-launch-arrow svg {
+  transition: transform 160ms ease;
+}
+.hb-launch-button:hover .hb-launch-arrow svg {
+  transform: translate(1px, -1px);
+}
+.hb-studio-proof {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.hb-studio-proof {
+  gap: 0 0.6rem;
+  margin-top: 0.8rem;
+}
+.hb-studio-proof a {
+  min-height: 44px;
+  padding-inline: 0.7rem;
+  font-weight: 550;
+  color: color-mix(in srgb, var(--studio-ink) 75%, var(--studio-paper));
+}
+.hb-studio-proof strong {
+  color: var(--studio-ink);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 400px) {
+  .hb-studio-actions {
+    gap: 0.4rem;
+  }
+  .hb-studio-actions a {
+    font-size: 0.82rem;
+    padding-inline: 0.85rem;
+  }
+  .hb-studio-actions .hb-launch-button {
+    gap: 0.6rem;
+    padding-right: 0.35rem;
+  }
+}
+@media (pointer: fine) {
+  .hb-studio-hero {
+    cursor:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='26' viewBox='0 0 24 26'%3E%3Cpath d='M3 2L5 21l5-5 5 7 3-2-5-7 7-1Z' fill='%2375caff' stroke='%2318181b' stroke-width='1.6' stroke-linejoin='round'/%3E%3C/svg%3E")
+        3 2,
+      auto;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hb-studio-copy h1 span,
+  .hb-studio-description,
+  .hb-studio-actions {
+    animation: hb-studio-appear 0.68s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .hb-studio-copy h1 span + span {
+    animation-delay: 90ms;
+  }
+  .hb-studio-description {
+    animation-delay: 150ms;
+  }
+  .hb-studio-actions {
+    animation-delay: 250ms;
+  }
+}
+@keyframes hb-studio-appear {
+  from {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+@media (prefers-contrast: more) {
+  .hb-homepage .hb-studio-hero {
+    --studio-secondary: var(--studio-ink);
+  }
+}

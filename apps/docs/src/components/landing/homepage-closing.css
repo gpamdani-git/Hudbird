@@ -1,0 +1,202 @@
+.hbc-questions {
+  padding-block: clamp(4.5rem, 8vw, 8rem);
+  border-top: 1px solid var(--hb-border);
+  color: var(--hb-ink);
+}
+.hbc-questions .hbc-kicker {
+  margin-bottom: 1.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--hb-muted);
+}
+.hbc-questions h2 {
+  font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+  font-weight: 450;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+}
+.hbc-questions .hbc-question-description {
+  max-width: 29ch;
+  margin-block: 1.3rem 0.5rem;
+  color: var(--hb-muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.hbc-questions .hbc-docs-link {
+  min-height: 44px;
+  padding-inline: 0;
+  color: var(--hb-ink);
+  font-size: 0.87rem;
+}
+.hbc-accordion {
+  min-width: 0;
+}
+.hbc-accordion .hbc-question-trigger {
+  min-height: 5rem;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  text-align: left;
+}
+.hbc-accordion .hbc-question-title {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  font-weight: 550;
+  color: var(--hb-ink);
+}
+.hbc-accordion .hbc-question-answer {
+  padding-bottom: 1.5rem;
+  color: var(--hb-muted);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+.hbc-closing {
+  padding-block: 0 clamp(2rem, 4vw, 4rem);
+}
+.hbc-invitation {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(2.5rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4.5rem);
+  border-radius: clamp(1.5rem, 3vw, 2.5rem);
+  background: #b9e4ff;
+  color: #152a38;
+}
+.hbc-invitation-label {
+  display: block;
+  margin-bottom: 1.7rem;
+  font:
+    500 0.76rem/1.5 "Plus Jakarta Sans",
+    sans-serif;
+}
+.hbc-invitation h2 {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(2.6rem, 5.6vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+  font-weight: 450;
+  color: #152a38;
+}
+.hbc-invitation p {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.4rem;
+  color: #2f5369;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+}
+.hbc-actions {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+  margin-top: 2rem;
+}
+.hbc-actions a {
+  min-height: 48px;
+  font-size: 0.84rem;
+}
+.hbc-actions .hbc-start-button {
+  background: #172c3b;
+  color: #f4faff;
+  padding-inline: 1.3rem;
+  gap: 1.6rem;
+}
+.hbc-actions .hbc-browse-button {
+  color: #172c3b;
+}
+.hbc-invitation-corner {
+  position: absolute;
+  z-index: 0;
+  right: 2%;
+  bottom: -4rem;
+  font:
+    300 clamp(16rem, 32vw, 30rem)/1 "Outfit",
+    sans-serif;
+  color: #172c3b;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+}
+.hbc-footer {
+  color: var(--hb-ink);
+  padding-block: 1.5rem 2.5rem;
+}
+.hbc-footer-top {
+  padding-block: 1.5rem 2rem;
+  border-bottom: 1px solid var(--hb-border);
+}
+.hbc-footer-top p {
+  color: var(--hb-muted);
+  font-size: 0.86rem;
+}
+.hbc-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+}
+.hbc-footer nav a {
+  min-height: 44px;
+  color: var(--hb-muted);
+  font-size: 0.8rem;
+}
+.hbc-footer nav a:hover {
+  color: var(--hb-ink);
+}
+.hbc-footer-signature {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-top: 3rem;
+}
+.hbc-footer-signature > a {
+  width: min(48%, 28rem);
+}
+.hbc-footer-signature img {
+  width: 100%;
+  height: auto;
+}
+.hbc-footer-signature span {
+  color: var(--hb-muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+  text-align: right;
+}
+.hbc-footer a:focus-visible {
+  outline: 2px solid var(--hb-ink);
+  outline-offset: 5px;
+  border-radius: 0.25rem;
+}
+@media (min-width: 48rem) {
+  .hbc-footer nav {
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 64rem) {
+  .hbc-question-grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}
+@media (max-width: 35rem) {
+  .hbc-footer-signature {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.3rem;
+    padding-top: 2rem;
+  }
+  .hbc-footer-signature > a {
+    width: 70%;
+  }
+  .hbc-footer-signature span {
+    text-align: left;
+  }
+  .hbc-footer-signature span br {
+    display: none;
+  }
+  .hbc-footer nav {
+    margin-left: -0.8rem;
+  }
+}

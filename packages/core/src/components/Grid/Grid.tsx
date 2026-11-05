@@ -128,11 +128,7 @@ const Grid = React.forwardRef<HTMLDivElement, GridProps>(
       );
     }
 
-    return (
-      <Component ref={ref as any} className={gridClassName} {...props}>
-        {children}
-      </Component>
-    );
+    return React.createElement(Component, { ref, className: gridClassName, ...props }, children);
   }
 );
 
