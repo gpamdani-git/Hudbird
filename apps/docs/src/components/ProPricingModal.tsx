@@ -13,6 +13,7 @@ import {
   Star,
 } from "lucide-react";
 import { trackEvent } from "../lib/analytics";
+import { posthog } from "../lib/posthog";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProPricingModalProps {
@@ -127,6 +128,10 @@ export const ProPricingModal: React.FC<ProPricingModalProps> = ({
     const plan = PLANS[planKey];
     trackEvent("pro_checkout_click", {
       plan: plan.name,
+      price: plan.price,
+    });
+    posthog.capture("pro_checkout_click", {
+      plan_key: planKey,
       price: plan.price,
     });
     window.open(plan.checkoutUrl, "_blank");

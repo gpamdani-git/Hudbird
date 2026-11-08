@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import App from "./App";
 import { AnalyticsTracker } from "./components/AnalyticsTracker";
+import { initPostHog } from "./lib/posthog";
 import "./index.css";
 
 // Suppress benign ResizeObserver notification loop events
@@ -23,6 +24,8 @@ if (typeof window !== "undefined") {
     window.location.reload();
   });
 }
+
+initPostHog();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

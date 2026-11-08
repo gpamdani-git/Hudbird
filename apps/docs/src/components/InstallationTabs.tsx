@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CodeBlock } from "./CodeBlock";
 import { ChevronRight, Copy, Check } from "lucide-react";
+import { posthog, posthogLogger } from "../lib/posthog";
 
 interface InstallationTabsProps {
   componentName: string;
@@ -58,12 +59,32 @@ export const InstallationTabs: React.FC<InstallationTabsProps> = ({
 
   const handleCopyCommand = () => {
     navigator.clipboard.writeText(getCommand());
+    posthog.capture("installation_command_copied", {
+      component_name: componentName,
+      package_manager: pkgManager,
+      command_type: "component",
+    });
+    posthogLogger.info("installation command copied", {
+      component_name: componentName,
+      package_manager: pkgManager,
+      command_type: "component",
+    });
     setCopiedCommand(true);
     setTimeout(() => setCopiedCommand(false), 2000);
   };
 
   const handleCopyDeps = () => {
     navigator.clipboard.writeText(getInstallCommand());
+    posthog.capture("installation_command_copied", {
+      component_name: componentName,
+      package_manager: pkgManager,
+      command_type: "dependencies",
+    });
+    posthogLogger.info("installation command copied", {
+      component_name: componentName,
+      package_manager: pkgManager,
+      command_type: "dependencies",
+    });
     setCopiedDeps(true);
     setTimeout(() => setCopiedDeps(false), 2000);
   };
