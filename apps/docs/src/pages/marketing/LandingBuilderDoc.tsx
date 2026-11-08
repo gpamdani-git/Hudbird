@@ -33,6 +33,7 @@ import { DocHeader } from "../../components/DocHeader";
 import { MarketingPreview } from "../../components/MarketingPreview";
 import { LandingBrandControls } from "../../components/landing/LandingBrandControls";
 import { hudbirdBuilderVariants, hudbirdHomepageContent } from "../../data/hudbirdHomepage";
+import { posthog } from "../../lib/posthog";
 
 const storageKey = "hudbird-landing-builder:v1";
 function restore() {
@@ -77,6 +78,10 @@ export default function LandingBuilderDoc() {
   async function copy() {
     try {
       await navigator.clipboard.writeText(source);
+      posthog.capture("landing_page_code_copied", {
+        section_count: config.sections.length,
+        enabled_section_count: config.sections.filter((section) => section.enabled).length,
+      });
       setStatus("React code copied. Install LandingPage with the Hudbird CLI before running it.");
     } catch {
       setStatus("Clipboard unavailable. Use Download React instead.");

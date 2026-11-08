@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useThemeEditor } from "./ThemeEditorContext";
 import { Copy, Terminal, Check, Code, Download, Sparkles, Sliders, Palette } from "lucide-react";
+import { posthog, posthogLogger } from "../../lib/posthog";
 import {
   Button,
   Tabs,
@@ -31,6 +32,14 @@ export const ThemeExportDialog = () => {
 
   const handleCopy = (text: string, key: string) => {
     navigator.clipboard.writeText(text);
+    posthog.capture("theme_tokens_exported", {
+      export_format: key,
+      export_action: "copied",
+    });
+    posthogLogger.info("theme tokens copied", {
+      export_format: key,
+      export_action: "copied",
+    });
     setCopied((prev) => ({ ...prev, [key]: true }));
     setTimeout(() => {
       setCopied((prev) => ({ ...prev, [key]: false }));
@@ -46,6 +55,14 @@ export const ThemeExportDialog = () => {
     link.download = "hudbird-tokens.json";
     document.body.appendChild(link);
     link.click();
+    posthog.capture("theme_tokens_exported", {
+      export_format: "figma",
+      export_action: "downloaded",
+    });
+    posthogLogger.info("theme tokens downloaded", {
+      export_format: "figma",
+      export_action: "downloaded",
+    });
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   };

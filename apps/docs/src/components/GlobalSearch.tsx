@@ -13,6 +13,7 @@ import {
   FileQuestion,
 } from "lucide-react";
 import { searchIndex, SearchItem } from "../data/searchIndex";
+import { posthog, posthogLogger } from "../lib/posthog";
 
 interface GlobalSearchProps {
   className?: string;
@@ -157,6 +158,14 @@ export const GlobalSearch: React.FC<GlobalSearchProps> = ({ className = "", isMi
 
   // Navigate to item
   const handleSelect = (item: SearchItem) => {
+    posthog.capture("documentation_search_result_selected", {
+      result_id: item.id,
+      result_category: item.category,
+    });
+    posthogLogger.info("documentation search result selected", {
+      result_id: item.id,
+      result_category: item.category,
+    });
     setIsOpen(false);
     if (item.path.includes("#")) {
       const [routePath, hash] = item.path.split("#");

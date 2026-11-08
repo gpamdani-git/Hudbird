@@ -4,6 +4,7 @@ import { Button, Badge, Tabs, Tab, Section, Container, Grid } from "@hudbird/ui"
 import { Eye, Search, Filter, Code, Sparkles, ArrowRight } from "lucide-react";
 import { TemplateCodeModal } from "../components/TemplateCodeModal";
 import { ProPricingModal } from "../components/ProPricingModal";
+import { posthog } from "../lib/posthog";
 
 const TemplateLivePreview = ({
   templateId,
@@ -12,6 +13,7 @@ const TemplateLivePreview = ({
   imageDark,
   previewUrl,
   onCodeClick,
+  onDetailsClick,
 }: {
   templateId: string;
   name: string;
@@ -19,8 +21,8 @@ const TemplateLivePreview = ({
   imageDark: string;
   previewUrl?: string;
   onCodeClick: () => void;
+  onDetailsClick: () => void;
 }) => {
-  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [shouldRenderIframe, setShouldRenderIframe] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
@@ -122,7 +124,7 @@ const TemplateLivePreview = ({
           startContent={<Eye className="h-4 w-4" />}
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/templates/${templateId}/detail`);
+            onDetailsClick();
           }}
         >
           Details
@@ -279,6 +281,15 @@ export default function TemplatesDoc() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubCategory, setActiveSubCategory] = useState<string | null>(null);
   const [isProModalOpen, setIsProModalOpen] = useState(false);
+
+  const handleTemplatePreviewOpened = (template: (typeof TEMPLATES)[number]) => {
+    posthog.capture("template_preview_opened", {
+      template_id: template.id,
+      template_category: template.category,
+      template_price_type: template.price === "Free" ? "free" : "paid",
+    });
+    navigate(`/templates/${template.id}/detail`);
+  };
 
   const handleCategorySelect = (category: string, subCategory?: string) => {
     if (activeCategory === category && activeSubCategory === (subCategory || null)) {
@@ -486,7 +497,7 @@ export default function TemplatesDoc() {
               <div key={template.id} className="group flex flex-col">
                 <div
                   className="relative mb-4 aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-100 dark:border-white/10 dark:bg-zinc-900"
-                  onClick={() => navigate(`/templates/${template.id}/detail`)}
+                  onClick={() => handleTemplatePreviewOpened(template)}
                 >
                   <TemplateLivePreview
                     templateId={template.id}
@@ -497,6 +508,7 @@ export default function TemplatesDoc() {
                     onCodeClick={() =>
                       setSelectedTemplateForCode({ id: template.id, name: template.name })
                     }
+                    onDetailsClick={() => handleTemplatePreviewOpened(template)}
                   />
                 </div>
                 <div className="flex items-start justify-between px-1">
