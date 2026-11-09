@@ -508,36 +508,11 @@ export default function LandingBuilderDoc() {
                 <PanelLeft className="h-4 w-4" />
               </button>
 
-              {/* Header Brand & Breadcrumbs (Image 3 Reference: Logo + Divider + Breadcrumbs) */}
-              <div className="flex items-center gap-2.5 text-sm font-medium tracking-tight">
-                <NavLink
-                  to="/docs"
-                  className="flex items-center transition-opacity hover:opacity-80"
-                >
-                  <img
-                    src="/assets/logo/hudbird-logo-black.png"
-                    alt="Hudbird UI"
-                    className="h-4.5 w-auto object-contain dark:hidden"
-                  />
-                  <img
-                    src="/assets/logo/hudbird-logo-white.png"
-                    alt="Hudbird UI"
-                    className="hidden h-4.5 w-auto object-contain dark:block"
-                  />
-                </NavLink>
-
-                <span
-                  className="hidden font-light text-zinc-300 select-none sm:inline dark:text-zinc-700"
-                  aria-hidden="true"
-                >
-                  |
-                </span>
-
-                <div className="hidden items-center gap-2 sm:flex">
-                  <span className="text-zinc-500 dark:text-zinc-400">Marketing Sections</span>
-                  <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
-                  <span className="text-zinc-900 dark:text-zinc-100">Page Builder</span>
-                </div>
+              {/* Header Breadcrumbs */}
+              <div className="flex items-center gap-2 text-sm font-medium tracking-tight">
+                <span className="text-zinc-500 dark:text-zinc-400">Marketing Sections</span>
+                <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
+                <span className="text-zinc-900 dark:text-zinc-100">Page Builder</span>
               </div>
             </div>
 
