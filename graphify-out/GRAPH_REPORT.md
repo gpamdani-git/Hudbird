@@ -1,27 +1,27 @@
-# Graph Report - Hudbird  (2026-11-05)
+# Graph Report - Hudbird  (2026-11-09)
 
 ## Corpus Check
-- 1196 files · ~1,307,880 words
+- 1247 files · ~1,349,613 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 67 file(s) not represented in the graph (top: .csv 37, .css 19, (none) 7)
+- Unclassified: 68 file(s) not represented in the graph (top: .csv 37, .css 20, (none) 7)
 
 ## Summary
-- 8027 nodes · 23050 edges · 362 communities (322 shown, 40 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 269 edges (avg confidence: 0.93)
+- 8717 nodes · 24710 edges · 394 communities (348 shown, 46 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 359 edges (avg confidence: 0.93)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `135bb7a3`
+- Built from commit: `b2fb13e3`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- ref_framer_motion
+- Text
 - docs/src/App.tsx
-- docs/package.json
+- dependencies
 - ref_react
 - PageToolbar
-- react
+- marketing/src/utils/cn.ts
 - tocData.ts
 - core/package.json
 - package.json
@@ -33,13 +33,13 @@
 - design_system.py
 - Reveal
 - lib/cn.ts
-- ui/Heading/Heading.tsx
+- class-variance-authority
 - compilerOptions
 - marketing/Hero/Hero.tsx
 - compilerOptions
 - devDependencies
 - marketing/package.json
-- HeroDoc.tsx
+- FooterDoc.tsx
 - assets.mjs
 - marketing/SaaS/components/SaaSInternal.tsx
 - core/src/index.ts
@@ -50,7 +50,7 @@
 - core.py
 - 2. Aturan Spesifik Tiap Komponen Inti (_Core Component Specifications_)
 - bin/index.js
-- marketing/src/utils/cn.ts
+- Input
 - cli/package.json
 - DialogDoc.tsx
 - components/Form/Form.tsx
@@ -59,13 +59,13 @@
 - ref_fs
 - compilerOptions
 - lint.mjs
-- AiMail.tsx
-- BentoGridDoc.tsx
-- InteractiveBentoShowcase.tsx
+- AiStartupInternal.tsx
+- HeadingDoc.tsx
+- ApplicationUiBuilder.tsx
 - DesignSystemGenerator
-- HospitalityHighlights.tsx
-- components/RadioGroup/Radio.tsx
-- components/Progress/Progress.tsx
+- DigitalAgencyTemplate.tsx
+- LandingNavbar/index.tsx
+- StudioBuilderDoc.tsx
 - lucide-react
 - brandkit/SKILL.md
 - Input
@@ -76,39 +76,39 @@
 - scripts
 - PaginationDoc.tsx
 - tasks
-- ai-chat/data.ts
+- AiChat.tsx
 - test_sync_brand_to_tokens.py
-- 2. CLI & Setup Workflow
+- Hudbird UI — AI Engineering & Design Skill
 - CORE DIRECTIVE: IMAGE-FIRST WEBSITE DESIGN TO CODE
 - ref_path
 - config.json
 - CORE DIRECTIVE: PREMIUM MOBILE APP IMAGE DIRECTION
 - Landing Page (High‑Conversion) — Web Design Skill
 - pro-templates/package.json
-- StickyProcessSteps.tsx
+- Container
 - Typography Specifications
 - High-Agency Frontend Skill
 - search
 - search_stack
-- MorphingIsland.tsx
+- cn
 - 4. Component Stylings
 - HeroAICopilot.tsx
 - theme/package.json
 - Logo Usage Rules
-- admin/Pages/AdminPages.tsx
+- marketing/src/index.ts
 - marketing/Faq/Faq.tsx
 - inspect.mjs
 - ai-chat/primitives.tsx
 - CommandDoc.tsx
 - 🚀 SaaS Launchpad Starter Kit
-- AiChat.tsx
+- framer-motion
 - Asset Approval Checklist
 - @hudbird/ui
 - ui/Navbar/Navbar.tsx
 - components/Provider/HudbirdProvider.tsx
 - ui/Toast/Toast.tsx
 - inject-installation.cjs
-- LandingBuilderShowcase/index.tsx
+- Container
 - ai-mail/primitives.tsx
 - refactor-components.cjs
 - Color Palette Management
@@ -118,15 +118,15 @@
 - SheetDoc.tsx
 - capture-pro-templates.cjs
 - @hudbird/marketing
-- LandingHeroShowcase/index.tsx
+- MotionDoc.tsx
 - components/Toast/Toast.tsx
 - DescriptionListDoc.tsx
 - cx
-- LandingPage/LandingPage.tsx
+- LandingShared/index.tsx
 - ui/Calendar/Calendar.tsx
 - verify-pilot-install.mjs
-- peerDependencies
-- GridDoc.tsx
+- BentoGrid
+- FieldsetDoc.tsx
 - cn
 - compilerOptions
 - lint-staged
@@ -138,7 +138,7 @@
 - hudbird-ui
 - 🦅 Hudbird UI Pro — Complete Monorepo Ecosystem
 - capture.sh
-- dependencies
+- pro-templates/package.json
 - marketing/BentoGrid/BentoGrid.tsx
 - Page
 - Design Audit
@@ -186,10 +186,10 @@
 - update.md
 - Pre-Delivery Checklist (canonical — the only one)
 - Quick Reference
-- CaseStudyShowcase.tsx
+- LandingBuilderDoc.tsx
 - exports
-- ai-chat/AuthScreen.tsx
-- domainContent.ts
+- ref_react_router_dom
+- NexusInnerPageRenderer
 - ui/Breadcrumbs/Breadcrumbs.tsx
 - ui/Select/Select.tsx
 - Innovative UX Designer V3
@@ -202,13 +202,13 @@
 - Brand
 - Tells — the dated registry
 - Type
-- motion/SKILL.md
+- best-practices/index.md
 - HeroPilotDoc.tsx
 - hudbird-ui
-- ui/DescriptionList/DescriptionList.tsx
+- ScrollReveal.tsx
 - sync-starter-kit.js
 - with
-- ai-chat/types.ts
+- Header.tsx
 - ui/Pagination/Pagination.tsx
 - Words
 - render
@@ -224,7 +224,7 @@
 - verify-landing-install.mjs
 - 11. COMPONENT EXECUTION GUIDELINES
 - 18. EXTRA CREATIVITY & IMPLEMENTATION EDGE
-- ai-mail/AuthScreen.tsx
+- ref_node_path
 - marketing/LogoCloud/LogoCloud.tsx
 - Verification
 - BlankUI UI/UX Design Guidelines
@@ -236,7 +236,7 @@
 - devDependencies
 - Hudbird UI Pro — Commercial Software License
 - @hudbird/ui
-- HeadingDoc.tsx
+- Hudbird Section Composer
 - StudioVisualCanvas.tsx
 - Hudbird UI — Marketing Engineering Standard
 - BlankUI Monorepo & PNPM Workspace Rules
@@ -264,11 +264,12 @@
 - BlankUI Build, Bundling & Tree Shaking
 - 29. ANTI-AI-SLOP RULES
 - 5. IMAGE COUNT & PAGE SLICING
-- Motion for Vue
+- BRD — Business Requirements Document
 - Opus 5.5 Advanced Reasoning Protocol
 - components/Navbar/Navbar.tsx
 - Workflow SOP: Generating a New Niche Demo with 24 Standard Inner Pages
 - .oxlintrc.json
+- components/Calendar/Calendar.tsx
 - BlankUI Testing & Quality Assurance
 - 3. Logo Usage
 - 12. THE BLOCK LIBRARY (Contract - Implementations Land Here Iteratively)
@@ -276,6 +277,7 @@
 - 8. DARK MODE PROTOCOL
 - 21. MOBILE ANTI-AI-TELLS RULE
 - Marketing Bento Grid Blueprint
+- LandingSectionContent
 - Motion (Vanilla JS / HTML / TypeScript)
 - MotionScore performance audit
 - TestStackFlagWithDesignSystem
@@ -292,52 +294,50 @@
 - 15. DEFAULT SITE PACKS
 - 20. EXAMPLE INTERPRETATIONS
 - LandingBuilderDoc.tsx
-- ui/ComboBox/ComboBox.tsx
+- Common Transition Patterns
 - test-tabs-bug.js
 - components/Hero/HeroThreeBackground.tsx
 - Design System: Hudbird UI (Stitch Editorial Standard)
 - Design System: Hudbird UI (Stitch Editorial Standard)
-- 8. UX Psychology Blueprint (Cognitive Architecture)
+- PRD — Product Requirements Document
 - 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)
 - ./hospitality
-- ./modern-app
-- ai-mail/Sidebar.tsx
+- HospitalityHighlights.tsx
+- Hudbird Docs
 - fix-cn.cjs
 - Safe Code Editing Rules
-- ui/Popover/Popover.tsx
+- deal
 - TextDoc.tsx
-- components/ComboBox/ComboBox.tsx
-- ui/Divider/Divider.tsx
+- Hudbird Core Component
+- HeroDoc.tsx
 - pro-templates/tsconfig.json
 - .changeset/README.md
-- Ecommerce.tsx
-- ui/Alert/Alert.tsx
+- 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`)
+- Hospitality/index.ts
+- Hudbird UI — AI Engineering & Design Skill
+- Hudbird UI — AI Engineering & Design Skill
+- 8. UX Psychology Blueprint (Cognitive Architecture)
+- cn
+- ui/Slider/Slider.tsx
+- setup-discord.mjs
 - 2. CLI & Setup Workflow
 - Hudbird UI — AI Engineering & Design Skill
 - 8. UX Psychology Blueprint (Cognitive Architecture)
-- components/Globe/Globe.tsx
-- ui/Slider/Slider.tsx
-- setup-discord.mjs
-- Hudbird UI — AI Engineering & Design Skill
-- Hudbird UI — AI Engineering & Design Skill
-- 8. UX Psychology Blueprint (Cognitive Architecture)
-- Marketing Testimonials Blueprint
-- TableOfContents.tsx
+- Hudbird: Penyatuan Marketing Collection dan Pemolesan Visual
+- HudbirdPolymorphicSections.tsx
 - VibecodeUiDetailPage.tsx
 - updates
-- Hudbird SaaS landing sections
 - @testing-library/user-event@^14.6.8
-- ./agency
+- docs/package.json
 - wrangler.json
 - ./ai
-- components/LogoCloud/LogoCloudGlass.tsx
-- ui/Switch/Switch.tsx
+- 9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)
+- Hudbird Project Context
 - Design System: Hudbird UI (Stitch Editorial Standard)
 - 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)
-- @hudbird/schemas
 - 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)
 - autoprefixer@^10.5.5
-- VoiceMode.tsx
+- components/BentoGrid/BentoGrid.tsx
 - husky@^9.1.7
 - BlankUI Tailwind Engineering
 - tsx@^4.23.13
@@ -349,46 +349,78 @@
 - engines
 - assets.d.ts
 - 1. Landasan Teori Kognitif & Ergonomis (Universal Principles)
-- @radix-ui/react-slot@^1.3.3
-- @react-three/drei@^10.7.8
+- 001 — Export quietEase as Shared Token (Foundation for All Plans)
+- 002 — MotionReveal: Reduce Duration to 300ms, Use quietEase
 - 9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)
 - TestTextLayoutDataContracts
 - 10. Architecting Intuition (Cognitive Interaction & Physical Affordances)
-- three@^0.186.0
+- 003 — MotionStagger: Harmonize staggerChildren Delay with Token
+- 004 — MotionCrossfade: Ensure Interruptibility with `mode="wait"`
 - replace-imports.cjs
 - docs/vercel.json
+- 005 — MotionTicker: Use Full transform String for Hardware Acceleration
+- 006 — Button: Stop `transition-all`, Use Scoped Transition with Token
 - pro-templates/vercel.json
+- 007 — LineChart: Reduce Entrance Duration to 300ms, Use quietEase
+- 008 — MorphingIsland: Add initial scale 0.95 to Pure-Fade Entries
+- 009 — AgentArtifactCanvas: Replace easeOut with quietEase Token
 - pnpm-workspace.yaml
-- cobe@^2.0.1
-- @hudbird/ui@workspace:^
-- maath@^0.10.8
-- motion@^13.5.0
-- react@^19.2.8
+- 010 — InteractiveBentoShowcase: Spring-Animate Slider Label on Value Change
+- ui/Checkbox/Checkbox.tsx
+- Hudbird Architecture Map
+- Hudbird SaaS Landing Collection
+- Hudbird Worklog
+- HospitalityCuratedJourneys.tsx
+- Animation & Motion Improvement Plans — Hudbird
+- puppeteer
+- Tabel Fitur — Hudbird UI Pro (Notion-Ready)
+- interface
+- interface
+- interface
+- fix-themes-doc.js
+- NavbarContainer.tsx
+- scripts
+- ./fintech
+- scripts
+- Branded hero and startup page blueprint
+- components/MouseGlow.tsx
+- marketing/Magnetic.tsx
+- marketing/MouseGlow.tsx
+- marketing/SmoothStackingWrapper.tsx
+- marketing/StackingWrapper.tsx
+- marketing-landing-page/SKILL.md
+- marketing-landing-shared/SKILL.md
+- motion-primitives/SKILL.md
+- hls.js@^1.7.3
+- @hudbird/marketing@workspace:*
+- @hudbird/ui@workspace:*
+- react-dom@^19.3.0
 - react-hook-form@^7.90.0
+- react-router-dom@^7.18.3
 
 ## God Nodes (most connected - your core abstractions)
-1. `react` - 679 edges
-2. `lucide-react` - 326 edges
+1. `react` - 713 edges
+2. `lucide-react` - 355 edges
 3. `cn()` - 313 edges
-4. `Button` - 264 edges
-5. `framer-motion` - 261 edges
-6. `cn()` - 246 edges
-7. `DocHeader()` - 160 edges
-8. `Container` - 142 edges
-9. `ApiTable()` - 135 edges
-10. `InstallationTabs()` - 134 edges
+4. `framer-motion` - 267 edges
+5. `Button` - 261 edges
+6. `cn()` - 244 edges
+7. `DocHeader()` - 171 edges
+8. `ApiTable()` - 146 edges
+9. `InstallationTabs()` - 145 edges
+10. `Container` - 140 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `Hudbird composition rules` --references--> `Container()`  [INFERRED]
+  .agents/skills/hudbird-section-composer/SKILL.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
+- `Base behavior` --references--> `Container()`  [INFERRED]
+  .agents/skills/hudbird-section-composer/references/mobile-first.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
+- `Choose the correct layer` --references--> `Container()`  [INFERRED]
+  .agents/skills/hudbird-section-composer/references/section-contract.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
+- `Branded website pilot: approved product direction` --references--> `HeroSection()`  [INFERRED]
+  .agents/skills/hudbird-skill-ui/SKILL.md → packages/marketing/src/components/HeroSection/HeroSection.tsx
 - `1. Core Principles & Design Language` --references--> `DoubleBezelCard()`  [INFERRED]
-  apps/docs/public/skills/SKILL.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
-- `6. Rules for AI Code Generation` --references--> `DoubleBezelCard()`  [INFERRED]
-  apps/docs/public/skills/SKILL.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
-- `Branded website pilot` --references--> `HeroSection()`  [INFERRED]
-  apps/docs/public/skills/SKILL.md → packages/marketing/src/components/HeroSection/HeroSection.tsx
-- `3. `apps/docs/src/pages/marketing/HeroDoc.tsx`` --references--> `MarketingPreview()`  [INFERRED]
-  .agents/skills/marketing-hero/SKILL.md → apps/docs/src/components/MarketingPreview.tsx
-- `Branded website pilot` --references--> `HeroSection()`  [INFERRED]
-  public/skills/SKILL.md → packages/marketing/src/components/HeroSection/HeroSection.tsx
+  .agents/skills/hudbird-ui/SKILL.md → starter-kits/pro-templates/src/components/nexus-sections/ScrollReveal.tsx
 
 ## Import Cycles
 - 2-file cycle: `packages/marketing/src/blocks/Hospitality/Highlights/AccommodationSlider.tsx -> packages/marketing/src/blocks/Hospitality/Highlights/HospitalityHighlights.tsx -> packages/marketing/src/blocks/Hospitality/Highlights/AccommodationSlider.tsx`
@@ -412,35 +444,35 @@
 - 3-file cycle: `packages/marketing/src/blocks/AiStartup/Cta/AiStartupCta.tsx -> packages/marketing/src/index.ts -> packages/marketing/src/blocks/AiStartup/index.ts -> packages/marketing/src/blocks/AiStartup/Cta/AiStartupCta.tsx`
 - 3-file cycle: `packages/marketing/src/blocks/AiStartup/Features/AiStartupFeatures.tsx -> packages/marketing/src/index.ts -> packages/marketing/src/blocks/AiStartup/index.ts -> packages/marketing/src/blocks/AiStartup/Features/AiStartupFeatures.tsx`
 
-## Communities (362 total, 40 thin omitted)
+## Communities (394 total, 46 thin omitted)
 
-### Community 0 - "ref_framer_motion"
-Cohesion: 0.05
-Nodes (305): AiOrbIllustration(), ComponentShowcase(), GDesc(), GLabel(), GTitle(), MockCheck(), FolderIcon(), IdeCaret() (+297 more)
+### Community 0 - "Text"
+Cohesion: 0.32
+Nodes (59): PricingDoc(), pricingTocItems, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem (+51 more)
 
 ### Community 1 - "docs/src/App.tsx"
-Cohesion: 0.04
-Nodes (99): AccordionDoc, AdminCmsTemplate, AgentArtifactCanvasDoc, AiSkillsDoc, AiStartupTemplate, AlertDoc, App(), AreaChartDoc (+91 more)
+Cohesion: 0.03
+Nodes (107): AccordionDoc, AdminCmsTemplate, AgentArtifactCanvasDoc, AiSkillsDoc, AiStartupTemplate, AlertDoc, App(), ApplicationUiExamplesDoc (+99 more)
 
-### Community 2 - "docs/package.json"
-Cohesion: 0.07
-Nodes (37): dependencies, clsx@^2.1.1, culori@^4.0.2, framer-motion@^13.2.0, hls.js@^1.7.3, @hudbird/marketing@workspace:*, @hudbird/ui@workspace:*, lucide-react@^1.43.0 (+29 more)
+### Community 2 - "dependencies"
+Cohesion: 0.15
+Nodes (13): dependencies, clsx@^2.1.1, lucide-react@^1.43.0, react@^19.3.0, recharts@^3.10.1, tailwind-merge@^3.6.0, tailwindcss-animate@^1.0.7, clsx (+5 more)
 
 ### Community 3 - "ref_react"
-Cohesion: 0.01
-Nodes (178): AuthLayoutDemo(), containerVariants, itemVariants, FieldsetDoc(), fieldsetTocItems, Alert, AlertColor, AlertProps (+170 more)
+Cohesion: 0.02
+Nodes (110): Alert, AlertColor, AlertProps, AlertVariant, alertVariants, iconColorMap, iconContainerMap, AreaChartProps (+102 more)
 
 ### Community 4 - "PageToolbar"
 Cohesion: 0.05
-Nodes (128): ApiPropRow, ApiTable(), ApiTableProps, CodeBlock(), CodeBlockProps, ComponentPreview(), ComponentPreviewProps, ViewportMode (+120 more)
+Nodes (125): Page contents, Shared contract, ApiPropRow, ApiTable(), ApiTableProps, CodeBlock(), CodeBlockProps, ComponentPreview() (+117 more)
 
-### Community 5 - "react"
-Cohesion: 0.05
-Nodes (46): FaqDoc, FaqDoc(), Accordion, AccordionProps, accordionVariants, AccordionContext, AccordionContextValue, AccordionItem (+38 more)
+### Community 5 - "marketing/src/utils/cn.ts"
+Cohesion: 0.08
+Nodes (42): Architecture & Variants, Component Makeup, Implementation Rules, Interaction Design (Motion), Marketing Testimonials Blueprint, TestimonialsDoc, TestimonialsDoc(), Accordion (+34 more)
 
 ### Community 6 - "tocData.ts"
 Cohesion: 0.03
-Nodes (63): accordionTocItems, aiSkillsTocItems, alertTocItems, areaChartTocItems, authTocItems, avatarTocItems, badgeTocItems, barChartTocItems (+55 more)
+Nodes (64): TocItem, accordionTocItems, aiSkillsTocItems, alertTocItems, areaChartTocItems, authTocItems, avatarTocItems, badgeTocItems (+56 more)
 
 ### Community 7 - "core/package.json"
 Cohesion: 0.06
@@ -451,48 +483,48 @@ Cohesion: 0.08
 Nodes (34): dependencies, class-variance-authority@^0.7.1, clsx@^2.1.1, framer-motion@^13.2.0, lucide-react@^1.43.0, motion@^13.2.0, picocolors@^1.1.1, prompts@^2.4.2 (+26 more)
 
 ### Community 9 - "useMailEngine.ts"
-Cohesion: 0.11
-Nodes (26): 2.36 Icons & Lucide React Directory, 2.36 Icons & Lucide React Directory, 4.36 Icons & Lucide React Directory, 4.36 Icons & Lucide React Directory, 2.36 Icons & Lucide React Directory, IMG, ME, MOCK_EMAILS (+18 more)
+Cohesion: 0.10
+Nodes (27): AI_IMAGE_POOL, IMG, MOCK_EMAILS, MOCK_EVENTS, MOCK_NOTIFICATIONS, SEED_FOLDERS, SMART_REPLIES, MAILBOX (+19 more)
 
 ### Community 10 - "ComposeModal.tsx"
-Cohesion: 0.13
-Nodes (37): answerAssistant(), bodyFor(), closers, firstName(), generateEmail(), openers, rewrite(), summarize() (+29 more)
+Cohesion: 0.11
+Nodes (45): answerAssistant(), bodyFor(), closers, firstName(), generateEmail(), openers, rewrite(), summarize() (+37 more)
 
 ### Community 11 - "components/Sidebar/Sidebar.tsx"
-Cohesion: 0.15
-Nodes (30): SidebarBorderedDemo(), SidebarFlatDemo(), sidebarApiProps, SidebarDoc(), sidebarItemApiProps, sidebarTocItems, Sidebar, SidebarBrand (+22 more)
+Cohesion: 0.16
+Nodes (27): SidebarBorderedDemo(), SidebarFlatDemo(), SidebarDoc(), Sidebar, SidebarBrand, SidebarBrandProps, SidebarContent, SidebarContentProps (+19 more)
 
 ### Community 12 - "Header.tsx"
-Cohesion: 0.12
-Nodes (26): GlobalSearch(), Header(), HeaderProps, Theme, HudbirdIcon(), HudbirdIconProps, HudbirdLogo, PageToolbar() (+18 more)
+Cohesion: 0.18
+Nodes (18): PageToolbar(), PageToolbarProps, DropdownDoc(), dropdownTocItems, Dropdown, DropdownContext, DropdownContextValue, DropdownItem (+10 more)
 
 ### Community 13 - "pro-templates/src/App.tsx"
-Cohesion: 0.05
-Nodes (88): 📁 Project Structure, AdminEditorPageWrapper(), AdminEditorPostWrapper(), AdminPagesWrapper(), AdminPostsWrapper(), AdminSiteBuilderWrapper(), Agency, AiStartup (+80 more)
+Cohesion: 0.04
+Nodes (103): AdminEditorPageWrapper(), AdminEditorPostWrapper(), AdminPagesWrapper(), AdminPostsWrapper(), AdminSiteBuilderWrapper(), Agency, AiStartup, App() (+95 more)
 
 ### Community 14 - "design_system.py"
 Cohesion: 0.06
 Nodes (20): ansi_ljust(), _button_outline_text_color(), _detect_page_type(), format_ascii_box(), add_wrapped(), wrap_text(), format_markdown(), format_master_md() (+12 more)
 
 ### Community 15 - "Reveal"
-Cohesion: 0.04
-Nodes (142): AllPagesDirectory(), AllPagesDirectoryProps, PAGE_PREVIEW_IMAGES, FaqWithTestimonials(), HeroAgency(), HeroSaaS(), PROMPT_SUGGESTIONS, HB (+134 more)
+Cohesion: 0.07
+Nodes (77): HB, HbGlassItem, HbHeader(), HbImage(), HbSection(), HbTone, HudbirdColorWidgetTrio(), HudbirdCtaBanner() (+69 more)
 
 ### Community 16 - "lib/cn.ts"
-Cohesion: 0.04
-Nodes (50): CtaCenteredProps, CtaGlass, CtaGlassProps, CtaSplit, CtaSplitProps, TestimonialGlass(), TestimonialGlassProps, DEFAULT_TESTIMONIALS (+42 more)
+Cohesion: 0.05
+Nodes (46): SearchHeader(), SearchHeaderProps, CtaCenteredProps, TestimonialGlass(), TestimonialGlassProps, DEFAULT_TESTIMONIALS, LogoIpsum(), Testimonial (+38 more)
 
-### Community 17 - "ui/Heading/Heading.tsx"
-Cohesion: 0.25
-Nodes (7): Heading, HeadingColor, HeadingLevel, HeadingProps, HeadingSize, HeadingTracking, headingVariants
+### Community 17 - "class-variance-authority"
+Cohesion: 0.03
+Nodes (56): class-variance-authority, StudioVisualCanvas(), Alert, AlertColor, AlertProps, AlertVariant, alertVariants, BadgeColor (+48 more)
 
 ### Community 18 - "compilerOptions"
 Cohesion: 0.06
 Nodes (34): compilerOptions, allowSyntheticDefaultImports, baseUrl, declaration, declarationMap, esModuleInterop, forceConsistentCasingInFileNames, ignoreDeprecations (+26 more)
 
 ### Community 19 - "marketing/Hero/Hero.tsx"
-Cohesion: 0.04
-Nodes (55): MouseGlowProps, StackingWrapperProps, framer-motion, BentoGlassItem, BentoGridGlass, BentoGridGlassProps, HeroBackground, HeroBackgroundProps (+47 more)
+Cohesion: 0.03
+Nodes (40): HeroBackground, HeroBackgroundProps, HeroBadgeProps, HeroBodyProps, heroBodyVariants, HeroContent, HeroContentProps, heroContentVariants (+32 more)
 
 ### Community 20 - "compilerOptions"
 Cohesion: 0.06
@@ -504,23 +536,23 @@ Nodes (30): devDependencies, @changesets/cli@^2.31.1, esbuild@^0.28.2, eslint@^1
 
 ### Community 22 - "marketing/package.json"
 Cohesion: 0.07
-Nodes (35): dependencies, class-variance-authority@^0.7.1, clsx@^2.1.1, framer-motion@^13.2.0, @hudbird/theme@workspace:*, @hudbird/ui@workspace:*, lucide-react@^1.43.0, @radix-ui/react-slot@^1.3.3 (+27 more)
+Nodes (38): dependencies, class-variance-authority@^0.7.1, clsx@^2.1.1, cobe@^2.0.1, framer-motion@^13.2.0, @hudbird/schemas@workspace:*, @hudbird/theme@workspace:*, @hudbird/ui@workspace:* (+30 more)
 
-### Community 23 - "HeroDoc.tsx"
-Cohesion: 0.05
-Nodes (36): CtaDoc, FooterDoc, HeroDoc, LogoCloudDoc, IframePreview(), IframePreviewProps, MarketingPreview(), MarketingPreviewProps (+28 more)
+### Community 23 - "FooterDoc.tsx"
+Cohesion: 0.12
+Nodes (14): FooterDoc, MEGA_LINK_GROUPS, SIMPLE_LINKS, SOCIALS, FooterGlass, FooterGlassProps, containerVariants, FooterLinkGroup (+6 more)
 
 ### Community 24 - "assets.mjs"
 Cohesion: 0.07
 Nodes (83): AIC_FIELDS, AIC_HEADERS, applyThumb(), ARCHIVE_LICENCE, args, argv, base(), clock() (+75 more)
 
 ### Community 25 - "marketing/SaaS/components/SaaSInternal.tsx"
-Cohesion: 0.20
+Cohesion: 0.18
 Nodes (68): BentoCard, BentoCardContent, BentoGrid, CtaCentered, Faq(), FeatureBadge, FeatureCard, FeatureCardDescription (+60 more)
 
 ### Community 26 - "core/src/index.ts"
 Cohesion: 0.03
-Nodes (130): AnimatedCounter(), StatsSection(), AdminCmsTemplate(), BREADCRUMB_LABELS, OverviewPage(), PAGE_TABS, PageContent(), StackedLayoutDemo() (+122 more)
+Nodes (127): AnimatedCounter(), StatsSection(), AdminCmsTemplate(), BREADCRUMB_LABELS, OverviewPage(), PAGE_TABS, PageContent(), StackedLayoutDemo() (+119 more)
 
 ### Community 27 - "compilerOptions"
 Cohesion: 0.10
@@ -532,7 +564,7 @@ Nodes (8): arrowColorStyles, Tooltip(), TooltipColor, TooltipPlacement, TooltipP
 
 ### Community 29 - "schemas/src/index.ts"
 Cohesion: 0.06
-Nodes (66): getAllNiches(), getNicheBySlug(), INNER_PAGES_MATRIX, NICHES_REGISTRY, aiCopilotNiche, alunaraWellnessNiche, cyberShieldNiche, DIGITAL_AGENCY_INNER_PAGES (+58 more)
+Nodes (52): 1. Diagram ER (Mermaid), 2. Deskripsi Entitas, 3. Kardinalitas Relasi, 4. Contoh Instance Data (Conseptual), 5. Mapping ke Kode Sumber, 6. Asumsi & Keterbatasan, ERD — Entity Relationship Diagram, Hudbird UI Pro Monorepo (v1.5.0) (+44 more)
 
 ### Community 30 - "validate_data.py"
 Cohesion: 0.06
@@ -550,17 +582,17 @@ Nodes (47): 0. Aturan Mutlak: Safe Code Editing & Surgical Modification (No Full
 Cohesion: 0.12
 Nodes (25): CATEGORY_NAMES, CLI_DIR, collectedNpmDeps, computeLcs(), cwd, detectPackageManager(), __dirname, __filename (+17 more)
 
-### Community 34 - "marketing/src/utils/cn.ts"
-Cohesion: 0.23
-Nodes (16): TestimonialsDoc, TestimonialsDoc(), TestimonialGlass(), TestimonialGlassProps, DEFAULT_TESTIMONIALS, LogoIpsum(), Testimonial, TestimonialCard() (+8 more)
+### Community 34 - "Input"
+Cohesion: 0.04
+Nodes (69): DEFAULT_DESIGN_MD_CONTENT, AreaChartDoc(), areaChartTocItems, chartData, dataDay, dataMonth, dataWeek, dataYear (+61 more)
 
 ### Community 35 - "cli/package.json"
 Cohesion: 0.13
 Nodes (16): bin, hudbird-ui, dependencies, picocolors@^1.1.1, prompts@^2.4.2, description, files, picocolors (+8 more)
 
 ### Community 36 - "DialogDoc.tsx"
-Cohesion: 0.11
-Nodes (22): AnalyticsTracker(), FrameworkType, IdeCodeBlock(), IdeCodeBlockProps, PlanKey, PLANS, ProPricingModal(), ProPricingModalProps (+14 more)
+Cohesion: 0.08
+Nodes (30): CtaDoc, AnalyticsTracker(), FrameworkType, IdeCodeBlock(), IdeCodeBlockProps, IframePreview(), IframePreviewProps, MarketingPreviewProps (+22 more)
 
 ### Community 37 - "components/Form/Form.tsx"
 Cohesion: 0.08
@@ -586,45 +618,45 @@ Nodes (18): compilerOptions, baseUrl, esModuleInterop, forceConsistentCasingInFi
 Cohesion: 0.17
 Nodes (11): args, asJson, byId, EXT, files, findings, R, roots (+3 more)
 
-### Community 43 - "AiMail.tsx"
-Cohesion: 0.22
-Nodes (17): EmptyReader(), Modal(), pageVariants, SectionCard(), Toaster(), Toggle(), CalendarView(), DAYS (+9 more)
+### Community 43 - "AiStartupInternal.tsx"
+Cohesion: 0.13
+Nodes (42): AiStartupTemplate(), AiStartupAgentShowcase(), agentCards, AiOrbIllustration(), AtomicIllustration(), ComponentShowcase(), CtaTerminalDemo(), features (+34 more)
 
-### Community 44 - "BentoGridDoc.tsx"
-Cohesion: 0.10
-Nodes (24): BentoGridDoc, CardDoc(), cardTocItems, BentoGridDoc(), CardBody, CardBodyPadding, cardBodyPaddingClasses, CardBodyProps (+16 more)
+### Community 44 - "HeadingDoc.tsx"
+Cohesion: 0.11
+Nodes (17): headingTocItems, CardBodyPadding, cardBodyPaddingClasses, CardBodyProps, CardFooterProps, CardHeaderProps, CardProps, CardRadius (+9 more)
 
-### Community 45 - "InteractiveBentoShowcase.tsx"
-Cohesion: 0.05
-Nodes (9): samples, wave, AgentArtifactCanvasProps, AgentScenarioId, ArtifactViewTab, ReasoningStep, ScenarioConfig, SCENARIOS (+1 more)
+### Community 45 - "ApplicationUiBuilder.tsx"
+Cohesion: 0.03
+Nodes (41): ACCENT_SWATCHES, ApplicationBlockRendererProps, ApplicationPageRendererProps, auditStreamRows, customerRows, revenueChartData, teamPermissionRows, blogDispatches (+33 more)
 
 ### Community 46 - "DesignSystemGenerator"
 Cohesion: 0.05
 Nodes (15): DesignSystemGenerator, _resolve_dial(), apply_decision_rules(), _object_without_duplicates(), parse_decision_rules(), _validate_action(), TestReasoningMatch, read_rows() (+7 more)
 
-### Community 47 - "HospitalityHighlights.tsx"
-Cohesion: 0.06
-Nodes (44): DigitalAgencyTemplate(), HospitalityTemplate(), AgencyAbout(), AgencyCta(), AgencyExperiences(), AgencyFooter(), AgencyHero(), AgencyProjects() (+36 more)
+### Community 47 - "DigitalAgencyTemplate.tsx"
+Cohesion: 0.14
+Nodes (16): DigitalAgencyTemplate(), AgencyAbout(), AgencyCta(), AgencyExperiences(), AgencyFooter(), AgencyHero(), AgencyProjects(), AgencyProjectsProps (+8 more)
 
-### Community 48 - "components/RadioGroup/Radio.tsx"
-Cohesion: 0.24
-Nodes (11): Radio, radioCircleVariants, RadioColor, radioDotVariants, RadioGroupContext, RadioGroupContextValue, RadioProps, RadioSize (+3 more)
+### Community 48 - "LandingNavbar/index.tsx"
+Cohesion: 0.15
+Nodes (42): LandingNavbar(), mockBrand, mockContent, HUDBIRD_SVG_MARK, NavbarBrandMark(), NavbarDrawerContent(), NavbarDrawerContentProps, LEGACY_NAVBAR_MAP (+34 more)
 
-### Community 49 - "components/Progress/Progress.tsx"
-Cohesion: 0.17
-Nodes (12): circleColorClasses, circleSizeMap, circleStrokeMap, CircularProgress, CircularProgressProps, Progress, ProgressColor, progressIndicatorVariants (+4 more)
+### Community 49 - "StudioBuilderDoc.tsx"
+Cohesion: 0.09
+Nodes (54): subscribe(), useWebsiteMode(), apiRows, ApplicationUiExamplesDoc(), apiRows, MarketingExamplesDoc(), apiRows, SharedPageExamplesDoc() (+46 more)
 
 ### Community 50 - "lucide-react"
-Cohesion: 0.04
-Nodes (57): StateConfig, GlobalSearchProps, SidebarProps, searchIndex, SearchItem, lucide-react, ConfirmModal(), ConfirmModalProps (+49 more)
+Cohesion: 0.09
+Nodes (33): PREBUILT_47_TEMPLATES, PrebuiltTemplateMeta, NicheCategory, lucide-react, HudbirdTemplateLogoIcon(), ACCENT_COLOR_PRESETS, LivePreviewToolbarProps, toggleTheme() (+25 more)
 
 ### Community 51 - "brandkit/SKILL.md"
 Cohesion: 0.04
 Nodes (44): 1. Logo Cover, 1. Monogram + Meaning, 2 × 3 REFERENCE-STYLE LAYOUT, 2. Logo Construction, 2. Product Action, 3. Digital Application, 3. Metaphor Fusion, 4. Brand Essence (+36 more)
 
 ### Community 52 - "Input"
-Cohesion: 0.03
-Nodes (92): ActionMenu(), ExportTab, ThemeExportDialog(), BaseColorPicker(), FontPicker(), PrimaryColorPicker(), RadiusPicker(), ThemeEditor() (+84 more)
+Cohesion: 0.06
+Nodes (58): ActionMenu(), ExportTab, ThemeExportDialog(), BaseColorPicker(), FontPicker(), PrimaryColorPicker(), RadiusPicker(), ThemeEditor() (+50 more)
 
 ### Community 53 - "capture-templates.js"
 Cohesion: 0.12
@@ -632,7 +664,7 @@ Nodes (14): applyTheme(), args, ASSETS_DIR, capture(), __dirname, __filename, ON
 
 ### Community 54 - "draw.mjs"
 Cohesion: 0.10
-Nodes (39): adjustments(), argv, assetQueries(), ASSETS_PATH, briefStop(), briefWords(), deal(), dealHero() (+31 more)
+Nodes (24): adjustments(), argv, assetQueries(), ASSETS_PATH, briefStop(), briefWords(), DEFAULT_SECTIONS, HERE (+16 more)
 
 ### Community 55 - "NavigationMenu.tsx"
 Cohesion: 0.10
@@ -647,32 +679,32 @@ Cohesion: 0.11
 Nodes (19): scripts, build, build:packages, bump, dev, dev:starter, format:check, format:fix (+11 more)
 
 ### Community 58 - "PaginationDoc.tsx"
-Cohesion: 0.23
+Cohesion: 0.24
 Nodes (10): paginationTocItems, Pagination, PaginationColor, PaginationItemValue, paginationItemVariants, PaginationProps, PaginationRadius, PaginationSize (+2 more)
 
 ### Community 59 - "tasks"
 Cohesion: 0.18
 Nodes (10): dependsOn, outputs, cache, persistent, dependsOn, $schema, tasks, build (+2 more)
 
-### Community 60 - "ai-chat/data.ts"
-Cohesion: 0.13
-Nodes (25): ComposerProps, BRAND, CANVAS_DOC(), DEFAULT_REPLY(), GALLERY_IMAGES, GUEST_SUGGESTIONS, IMAGE_STYLES, MODELS (+17 more)
+### Community 60 - "AiChat.tsx"
+Cohesion: 0.06
+Nodes (66): ComposerProps, BRAND, CANVAS_DOC(), DEFAULT_REPLY(), GALLERY_IMAGES, GUEST_SUGGESTIONS, IMAGE_STYLES, now (+58 more)
 
 ### Community 61 - "test_sync_brand_to_tokens.py"
 Cohesion: 0.10
 Nodes (16): _run(), test_creates_default_output_directory_when_missing(), test_dark_base_color_does_not_collapse_shades_to_black(), test_force_allows_sync_with_existing_css_token_source(), test_ignores_commented_root_custom_properties(), test_ignores_custom_properties_outside_root(), test_ignores_external_css_imports(), test_refuses_css_custom_property_source_without_force() (+8 more)
 
-### Community 62 - "2. CLI & Setup Workflow"
-Cohesion: 0.50
-Nodes (4): 2. CLI & Setup Workflow, Configuration: `components.json`, Initializing a Project, Installing Components
+### Community 62 - "Hudbird UI — AI Engineering & Design Skill"
+Cohesion: 0.17
+Nodes (11): 1.1 Cognitive Architecture & Optical Physics (Stitch & UX Laws), 1. Core Principles & Design Language, 2. CLI & Setup Workflow, 5. End-to-End Production Recipes, Branded website pilot: approved product direction, Configuration: `components.json`, Hudbird UI — AI Engineering & Design Skill, Initializing a Project (+3 more)
 
 ### Community 63 - "CORE DIRECTIVE: IMAGE-FIRST WEBSITE DESIGN TO CODE"
 Cohesion: 0.06
 Nodes (34): 10. IMAGE-FIRST CODEX WEBSITE WORKFLOW, 11. WHEN TO TRIGGER IMAGE GENERATION FIRST, 13. WEBSITE REFERENCE RULE, 15. RESPONSIVE FIRST-VIEW RULE, 16. ANTI-NESTED-BOX RULE, 17. REDUCE MICRO-UI CLUTTER RULE, 18. SECTION IMAGE GENERATION RULE, 19. WEBSITE IMAGE SYSTEM RULE (+26 more)
 
 ### Community 64 - "ref_path"
-Cohesion: 0.11
-Nodes (12): targetDir, colors, filesToUpdate, fs, path, filesToFix, fs, path (+4 more)
+Cohesion: 0.15
+Nodes (8): targetDir, filesToFix, fs, path, files, fs, pagesDir, path
 
 ### Community 65 - "config.json"
 Cohesion: 0.20
@@ -687,12 +719,12 @@ Cohesion: 0.06
 Nodes (34): 1) Match message to source, 1) Page purpose, 2) Audience + context, 2) Make the next step obvious, 3) Proof + assets, 3) Write benefit-first, 4) Constraints, 4) Use specificity (+26 more)
 
 ### Community 68 - "pro-templates/package.json"
-Cohesion: 0.11
-Nodes (25): oxlint, devDependencies, oxlint@^1.81.0, tailwindcss@^4.3.3, @tailwindcss/vite@^4.3.3, @types/node@^24.13.3, @types/react@^19.2.18, @types/react-dom@^19.2.7 (+17 more)
+Cohesion: 0.10
+Nodes (21): oxlint, devDependencies, oxlint@^1.81.0, tailwindcss@^4.3.3, @tailwindcss/vite@^4.3.3, @types/node@^24.13.3, @types/react@^19.2.18, @types/react-dom@^19.2.7 (+13 more)
 
-### Community 69 - "StickyProcessSteps.tsx"
-Cohesion: 0.23
-Nodes (10): IsoCubeIcon(), PHASE_IMAGES, StickyProcessSteps(), StickyStack, StickyStackContext, StickyStackContextValue, StickyStackItem, StickyStackItemProps (+2 more)
+### Community 69 - "Container"
+Cohesion: 0.09
+Nodes (38): Design read, Homepage overrides, Hudbird Homepage Direction, INNER_PAGES_MATRIX, AllPagesDirectory(), AllPagesDirectoryProps, PAGE_PREVIEW_IMAGES, HeroAgency() (+30 more)
 
 ### Community 70 - "Typography Specifications"
 Cohesion: 0.06
@@ -710,9 +742,9 @@ Nodes (5): search(), _style_search_destination(), TestSearchDomains, TestStyleTa
 Cohesion: 0.10
 Nodes (8): _exact_stack_identifier(), _project_row(), search_stack(), _valid_max_results(), _rows(), TestNativeDesktopStackFreshness, _rows(), TestWebStackFreshness
 
-### Community 74 - "MorphingIsland.tsx"
-Cohesion: 0.04
-Nodes (58): LiquidGlassDoc(), apiRows, buildStandaloneSnippet(), createPresentationMap(), ISLAND_SECTIONS, IslandSectionSpec, MorphingIslandDoc(), applyKeylineTint() (+50 more)
+### Community 74 - "cn"
+Cohesion: 0.02
+Nodes (109): LiquidGlassDoc(), apiRows, buildStandaloneSnippet(), createPresentationMap(), ISLAND_SECTIONS, IslandSectionSpec, MorphingIslandDoc(), BreadcrumbItem (+101 more)
 
 ### Community 75 - "4. Component Stylings"
 Cohesion: 0.05
@@ -723,28 +755,28 @@ Cohesion: 0.12
 Nodes (14): AICopilotSectionsProps, HeroAgencyProps, AIBenchmarksStripProps, BENCHMARK_ROWS, BenchmarkRow, AICapabilitiesBentoProps, AIWorkflowClusteringProps, EXTENDED_STEPS (+6 more)
 
 ### Community 77 - "theme/package.json"
-Cohesion: 0.25
-Nodes (8): dependencies, tailwindcss@^4.3.3, tailwindcss, main, name, publishConfig, access, version
+Cohesion: 0.11
+Nodes (18): peerDependencies, react@>=18, react-dom@>=18, tailwindcss@>=3.4.0, dependencies, tailwindcss@^4.3.3, exports, ./index.css (+10 more)
 
 ### Community 78 - "Logo Usage Rules"
 Cohesion: 0.07
 Nodes (28): Absolute Don'ts, Approved Backgrounds, Before Using Logo, Clear Space, Co-branding, Color Rules, Color Usage, Color Variants (+20 more)
 
-### Community 79 - "admin/Pages/AdminPages.tsx"
-Cohesion: 0.18
-Nodes (18): AdminPages(), CheckboxCell(), fadeUp, PAGES_DATA, AdminPosts(), fadeUp, AdminTable(), CheckboxCell() (+10 more)
+### Community 79 - "marketing/src/index.ts"
+Cohesion: 0.06
+Nodes (57): AgencyAbout, AgencyCta, AgencyExperiences, AgencyFooter, AgencyHero, AgencyProjects, AgencyServices, AiStartupAgentShowcase (+49 more)
 
 ### Community 80 - "marketing/Faq/Faq.tsx"
-Cohesion: 0.06
-Nodes (38): class-variance-authority, DEFAULT_FAQS, FaqItem, FaqProps, FaqCategorized(), FaqCategorizedProps, FaqCategory, FaqGlass() (+30 more)
+Cohesion: 0.13
+Nodes (21): DEFAULT_FAQS, FaqItem, FaqProps, FaqCategorized(), FaqCategorizedProps, FaqCategory, FaqGlass(), FaqGlassProps (+13 more)
 
 ### Community 81 - "inspect.mjs"
 Cohesion: 0.09
 Nodes (17): allow, args, asJson, fails, HEIGHT, merged, outDir, report (+9 more)
 
 ### Community 82 - "ai-chat/primitives.tsx"
-Cohesion: 0.15
-Nodes (26): CanvasPanel(), CanvasPanelProps, AudioBars(), Block, Caret(), CodeBlock(), CopyIcon(), highlight() (+18 more)
+Cohesion: 0.11
+Nodes (35): AuthScreen(), BackButton(), FloatingInput(), ORDER, OtpStep(), PasswordInput(), PrimaryButton(), ProviderButton() (+27 more)
 
 ### Community 83 - "CommandDoc.tsx"
 Cohesion: 0.17
@@ -754,9 +786,9 @@ Nodes (22): CommandDoc(), commandTocItems, Command, CommandContext, CommandConte
 Cohesion: 0.33
 Nodes (5): 🎨 Customizing the Theme, 🚀 Deployment, 🌟 Features, 📦 Quick Start, 🚀 SaaS Launchpad Starter Kit
 
-### Community 85 - "AiChat.tsx"
-Cohesion: 0.17
-Nodes (23): PROJECT_COLORS, NewProjectModal(), PLANS, PlansModal(), Row(), SearchModal(), SearchRow(), SETTINGS_TABS (+15 more)
+### Community 85 - "framer-motion"
+Cohesion: 0.14
+Nodes (43): AiOrbIllustration(), ComponentShowcase(), GDesc(), GLabel(), GTitle(), MockCheck(), StateConfig, FolderIcon() (+35 more)
 
 ### Community 86 - "Asset Approval Checklist"
 Cohesion: 0.08
@@ -782,13 +814,13 @@ Nodes (17): defaultIcons, generateId(), listeners, notify(), positionClasses, Si
 Cohesion: 0.40
 Nodes (5): examples, fs, path, processFile(), scanDir()
 
-### Community 92 - "LandingBuilderShowcase/index.tsx"
-Cohesion: 0.08
-Nodes (24): AssemblyDrawing(), HomepageAssembly(), Layer, layers, brands, HomepagePlayground(), layouts, PlaygroundLayout (+16 more)
+### Community 92 - "Container"
+Cohesion: 0.10
+Nodes (42): EcommerceTemplate(), FintechTemplate(), ModernAppTemplate(), SaaSTemplate(), TemplateThemeToggle(), AnalyticsIllustration(), FeatureSectionDoc(), featureSectionTocItems (+34 more)
 
 ### Community 93 - "ai-mail/primitives.tsx"
-Cohesion: 0.25
-Nodes (16): BulkBar(), FILTERS, LABEL_STYLES, MailList(), MailRow(), formatMailDate(), GRADIENTS, IconButton (+8 more)
+Cohesion: 0.13
+Nodes (37): EmptyReader(), BulkBar(), FILTERS, LABEL_STYLES, MailList(), MailRow(), formatMailDate(), GRADIENTS (+29 more)
 
 ### Community 94 - "refactor-components.cjs"
 Cohesion: 0.33
@@ -822,9 +854,9 @@ Nodes (4): { chromium }, path, { chromium }, { chromium }
 Cohesion: 0.07
 Nodes (26): 0.2.0, 1.2.1, 1.2.2, 1.2.3, 1.2.4, 1.2.5, 1.3.0, 1.4.0 (+18 more)
 
-### Community 103 - "LandingHeroShowcase/index.tsx"
-Cohesion: 0.12
-Nodes (21): MotionDoc(), tickerItems, itemVariants, MotionCrossfadeProps, MotionRevealProps, MotionScrollProgress(), MotionSlideshow, MotionSlideshowProps (+13 more)
+### Community 103 - "MotionDoc.tsx"
+Cohesion: 0.04
+Nodes (3): tickerItems, durationScale, easingScale
 
 ### Community 104 - "components/Toast/Toast.tsx"
 Cohesion: 0.10
@@ -835,12 +867,12 @@ Cohesion: 0.18
 Nodes (15): DescriptionListDoc(), descriptionListTocItems, DescriptionList, DescriptionListContext, DescriptionListContextValue, DescriptionListItem, DescriptionListItemProps, DescriptionListLabel (+7 more)
 
 ### Community 106 - "cx"
-Cohesion: 0.25
-Nodes (21): CanvasToolbar(), ActionButton(), Composer(), DictationWave(), MODE_META, cx(), IconButton, Menu() (+13 more)
+Cohesion: 0.17
+Nodes (29): 2.36 Icons & Lucide React Directory, 2.36 Icons & Lucide React Directory, 4.36 Icons & Lucide React Directory, 4.36 Icons & Lucide React Directory, 2.36 Icons & Lucide React Directory, CanvasToolbar(), ActionButton(), Composer() (+21 more)
 
-### Community 107 - "LandingPage/LandingPage.tsx"
-Cohesion: 0.12
-Nodes (30): Install and compose, LandingBenefits(), LandingCta(), LandingFaq(), LandingFeatureShowcase(), LandingFooter(), LandingHowItWorks(), LandingIntegrations() (+22 more)
+### Community 107 - "LandingShared/index.tsx"
+Cohesion: 0.08
+Nodes (43): Layer, layers, footerLinks, questions, brands, layouts, PlaygroundLayout, sampleContent (+35 more)
 
 ### Community 108 - "ui/Calendar/Calendar.tsx"
 Cohesion: 0.17
@@ -850,17 +882,17 @@ Nodes (19): Calendar, CalendarColor, CalendarPreset, CalendarProps, CalendarSize
 Cohesion: 0.10
 Nodes (13): dependencies, fixture, installed, root, rootPackage, collect(), css, deps (+5 more)
 
-### Community 110 - "peerDependencies"
+### Community 110 - "BentoGrid"
 Cohesion: 0.29
-Nodes (6): peerDependencies, react@>=18, react-dom@>=18, tailwindcss@>=3.4.0, plugin, tailwindcss
+Nodes (32): LandingPage(), AiStartupFeatures(), EcommerceFeatureGrid(), EcommerceHero(), FintechFeatureGrid(), FintechHero(), containerVariants, CyberSectionDivider() (+24 more)
 
-### Community 111 - "GridDoc.tsx"
-Cohesion: 0.13
-Nodes (15): gridTocItems, GridAlign, GridCols, GridGap, GridLayout, GridProps, gridVariants, colSpanClasses (+7 more)
+### Community 111 - "FieldsetDoc.tsx"
+Cohesion: 0.07
+Nodes (36): AuthLayoutDemo(), containerVariants, itemVariants, FieldsetDoc(), fieldsetTocItems, Checkbox, CheckboxColor, checkboxControlVariants (+28 more)
 
 ### Community 112 - "cn"
 Cohesion: 0.02
-Nodes (94): FeatureAlternating, FeatureIconProps, FeatureRow, FeatureRowContent, FeatureRowMedia, FeatureSectionProps, featureSectionVariants, FeatureGlass (+86 more)
+Nodes (117): FeatureAlternating, FeatureIconProps, FeatureRow, FeatureRowContent, FeatureRowMedia, FeatureSectionProps, featureSectionVariants, FeatureGlass (+109 more)
 
 ### Community 113 - "compilerOptions"
 Cohesion: 0.09
@@ -894,16 +926,16 @@ Nodes (22): 1.2.0, 1.2.1, 1.2.2, 1.2.3, 1.2.4, 1.2.5, 1.3.0, 1.4.0 (+14 more)
 Cohesion: 0.10
 Nodes (20): 1. `@hudbird/ui` (`packages/core`), 2. `@hudbird/marketing` (`packages/marketing`), 3. `@hudbird/schemas` (`packages/schemas`), 4. `@hudbird/theme` (`packages/theme`), 5. `hudbird-ui` (`packages/cli`), 🤖 AI Agent Skills (Claude Code, Codex, Antigravity, Cursor, Windsurf), 💬 Community, Support & Links, 🛠 How to Extract a Template to an External Project (+12 more)
 
-### Community 123 - "dependencies"
-Cohesion: 0.11
-Nodes (19): dependencies, class-variance-authority@^0.7.1, clsx@^2.1.1, framer-motion@^13.5.0, @hudbird/marketing@workspace:^, lucide-react@^1.49.0, react-dom@^19.2.8, react-router-dom@^7.18.4 (+11 more)
+### Community 123 - "pro-templates/package.json"
+Cohesion: 0.07
+Nodes (43): dependencies, class-variance-authority@^0.7.1, clsx@^2.1.1, cobe@^2.0.1, framer-motion@^13.5.0, @hudbird/marketing@workspace:^, @hudbird/ui@workspace:^, lucide-react@^1.49.0 (+35 more)
 
 ### Community 124 - "marketing/BentoGrid/BentoGrid.tsx"
-Cohesion: 0.12
-Nodes (15): BentoCardBackground, BentoCardBackgroundProps, BentoCardContentProps, BentoCardProps, BentoGridProps, CardBody, CardBodyProps, CardFooter (+7 more)
+Cohesion: 0.09
+Nodes (18): BentoCardBackground, BentoCardBackgroundProps, BentoCardContentProps, BentoCardProps, BentoGridProps, BentoGlassItem, BentoGridGlass, BentoGridGlassProps (+10 more)
 
 ### Community 125 - "Page"
-Cohesion: 0.21
+Cohesion: 0.19
 Nodes (4): Browser, findChrome(), Page, sleep()
 
 ### Community 126 - "Design Audit"
@@ -919,8 +951,8 @@ Cohesion: 0.12
 Nodes (19): devDependencies, tsup@^8.5.1, @types/node@^22.20.2, typescript@^6.0.3, exports, tsup, @types/node, typescript (+11 more)
 
 ### Community 129 - "pages/LandingPage.tsx"
-Cohesion: 0.06
-Nodes (36): HeroWidgetRail(), advance(), measure(), paint(), playback(), footerLinks, HomepageClosing(), HomepageFooter() (+28 more)
+Cohesion: 0.04
+Nodes (60): 1. HIGH · Human / semantic structure · The homepage has more than one level-one heading, 2. MEDIUM · Human / assistive technology · Variant changes may announce too much content, 3. MEDIUM · UI / product proof · The workflow media is a generated product representation, 4. MEDIUM · Copywriting / product truth · The brand-brief step is ahead of the current builder UI, 5. MEDIUM · Code / distribution · The public block installation includes homepage demo payload, 6. LOW · UI / copy rhythm · The primary hero message repeats in the next section, 7. LOW · Code / theme ownership · Homepage theme state duplicates documentation theme logic, Anti-slop audit 001 (+52 more)
 
 ### Community 130 - "Asset Organization Guide"
 Cohesion: 0.11
@@ -935,8 +967,8 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, allowSyntheticDefaultImports, baseUrl, declaration, declarationMap, esModuleInterop, forceConsistentCasingInFileNames, ignoreDeprecations (+10 more)
 
 ### Community 133 - "ui/Tabs/Tabs.tsx"
-Cohesion: 0.13
-Nodes (16): tabColorStyles, TabList, TabListProps, tabListVariants, TabPanel, TabPanelProps, TabProps, TabsColor (+8 more)
+Cohesion: 0.09
+Nodes (30): AdminAnalytics(), deviceData, DeviceIcon(), fadeUp, MetricCard(), pageViewsData, sourceData, stagger (+22 more)
 
 ### Community 134 - "4. Component Stylings"
 Cohesion: 0.05
@@ -956,19 +988,19 @@ Nodes (17): Before Delivering App UI, Example Workflow, If a search returns 0 re
 
 ### Community 138 - "PopoverDoc.tsx"
 Cohesion: 0.20
-Nodes (11): placementClasses, Popover, PopoverContent, PopoverContentProps, PopoverContext, PopoverContextValue, PopoverPlacement, PopoverProps (+3 more)
+Nodes (13): PopoverDoc(), popoverTocItems, placementClasses, Popover, PopoverContent, PopoverContentProps, PopoverContext, PopoverContextValue (+5 more)
 
 ### Community 139 - "Project: Hudbird Nexus — Polymorphic Multi-Niche Design System & Template Ecosystem"
 Cohesion: 0.11
-Nodes (17): 1.1 The "Palette-Swap Clone" Fallacy (Structural Sameness), 1.2 Mechanical "Template Chrome" Tells, 1. Forensic Design Audit: Why Nexus V1 Fell Into "AI Slop", 2. The V2 Paradigm: "Zero-Clone Polymorphic Architecture", 3. Deep UI/UX Art Direction Per Niche (Awwwards / UI8 Spec), 4. The Master Marketplace Sales Hub (`ShowcaseIndex.tsx`), 5.1 Golden Rules for Argon 4 Quota Conservation, 5.2 The 6-Phase Professional Sprint Plan (+9 more)
+Nodes (18): 1.1 The "Palette-Swap Clone" Fallacy (Structural Sameness), 1.2 Mechanical "Template Chrome" Tells, 1. Forensic Design Audit: Why Nexus V1 Fell Into "AI Slop", 2. The V2 Paradigm: "Zero-Clone Polymorphic Architecture", 3. Deep UI/UX Art Direction Per Niche (Awwwards / UI8 Spec), 4. The Master Marketplace Sales Hub (`ShowcaseIndex.tsx`), 5.1 Golden Rules for Argon 4 Quota Conservation, 5.2 The 6-Phase Professional Sprint Plan (+10 more)
 
 ### Community 140 - "@hudbird/theme"
 Cohesion: 0.10
 Nodes (19): 0.2.0, 1.2.1, 1.2.2, 1.2.3, 1.2.4, 1.2.5, 1.3.0, 1.4.0 (+11 more)
 
 ### Community 141 - "components/Form/Form.tsx"
-Cohesion: 0.08
-Nodes (43): BasicFormDemo(), BasicFormValues, FormDoc(), formTocItems, HeroFormDemo(), HeroFormValues, OtpFormDemo(), OtpFormValues (+35 more)
+Cohesion: 0.06
+Nodes (53): BasicFormDemo(), BasicFormValues, FormDoc(), formTocItems, HeroFormDemo(), HeroFormValues, OtpFormDemo(), OtpFormValues (+45 more)
 
 ### Community 142 - "4. Recipes"
 Cohesion: 0.08
@@ -987,8 +1019,8 @@ Cohesion: 0.12
 Nodes (16): 1. Skill Meta, 2.1 Swiss Industrial Print, 2.2 Tactical Telemetry & CRT Terminal, 2. Visual Archetypes, 3.1 Macro-Typography (Structural Headers), 3.2 Micro-Typography (Data & Telemetry), 3.3 Textural Contrast (Artistic Disruption), 3. Typographic Architecture (+8 more)
 
 ### Community 146 - "ref_node_path"
-Cohesion: 0.05
-Nodes (29): content, newContent, TOC_FILE, PAGES_DIR, processFile(), scanDir(), coreFiles, MARKETING_DIR (+21 more)
+Cohesion: 0.07
+Nodes (18): @playwright/test@^1.64.1, @playwright/test, channel(), contrast(), errors, out, errors, out (+10 more)
 
 ### Community 147 - "ui/InputOTP/InputOTP.tsx"
 Cohesion: 0.13
@@ -1082,21 +1114,21 @@ Nodes (12): Accessibility, Common Rules for Professional UI + Pre-Delivery Check
 Cohesion: 0.15
 Nodes (12): 10. Charts & Data (LOW), 1. Accessibility (CRITICAL), 2. Touch & Interaction (CRITICAL), 3. Performance (HIGH), 4. Style Selection (HIGH), 5. Layout & Responsive (HIGH), 6. Typography & Color (MEDIUM), 7. Animation (MEDIUM) (+4 more)
 
-### Community 171 - "CaseStudyShowcase.tsx"
-Cohesion: 0.38
-Nodes (6): CaseStudyItem, CaseStudyShowcaseProps, CASE_PEXELS_IMAGES, CaseStudyShowcase(), ProjectCard(), ProjectCardProps
+### Community 171 - "LandingBuilderDoc.tsx"
+Cohesion: 0.10
+Nodes (21): ContextMenuSectionInfo, BlockVariantsInspector(), BlockVariantsInspectorProps, HoveredVariantPreviewData, calculateLuminance(), LandingBrandControls(), SectionContextMenu(), SectionContextMenuProps (+13 more)
 
 ### Community 172 - "exports"
-Cohesion: 0.07
-Nodes (30): import, require, types, import, require, types, import, require (+22 more)
+Cohesion: 0.06
+Nodes (34): import, require, types, import, require, types, import, require (+26 more)
 
-### Community 173 - "ai-chat/AuthScreen.tsx"
-Cohesion: 0.29
-Nodes (12): AuthScreen(), BackButton(), FloatingInput(), ORDER, OtpStep(), PasswordInput(), PrimaryButton(), ProviderButton() (+4 more)
+### Community 173 - "ref_react_router_dom"
+Cohesion: 0.14
+Nodes (24): getAllNiches(), NavbarMegaMenuProps, 📁 Project Structure, HudbirdAuthMode, HudbirdAuthUtilityView(), NavbarMegaMenu(), NavbarProps, CyberShieldNicheHome() (+16 more)
 
-### Community 174 - "domainContent.ts"
-Cohesion: 0.15
-Nodes (12): AGENCY_CONTENT, AI_CONTENT, CYBER_CONTENT, DomainAboutData, DomainBlogPostItem, DomainChangelogItem, DomainContactData, DomainPortalData (+4 more)
+### Community 174 - "NexusInnerPageRenderer"
+Cohesion: 0.17
+Nodes (20): getNicheBySlug(), digitalAgencyNiche, getPrebuiltTemplateMeta(), LivePreviewToolbar(), NexusInnerPageRenderer(), FLAGSHIP_BASE_SLUGS, SectionRenderer(), SectionRendererProps (+12 more)
 
 ### Community 175 - "ui/Breadcrumbs/Breadcrumbs.tsx"
 Cohesion: 0.18
@@ -1146,21 +1178,21 @@ Nodes (10): 1. First wave (2023–2024), 2. Second wave (2025), 3. Third wave (2
 Cohesion: 0.18
 Nodes (10): 1. What the study measured, 2. The scale: few sizes, far apart, 3. Setting display type, 4. Setting text, 5. Loading the fonts properly, 6. One family or two, 7. Details that separate set type from typed text, 8. Mistakes the inspector cannot see (+2 more)
 
-### Community 187 - "motion/SKILL.md"
-Cohesion: 0.20
-Nodes (8): If the Motion MCP server is unavailable, Motion, Tiers, Upgrading Motion, Rendered curve images, The visual editor (Motion+), Transition preview, Without the editor
+### Community 187 - "best-practices/index.md"
+Cohesion: 0.11
+Nodes (14): API guidance, Component Integration, Importing, Motion for Vue, Patterns, `useTransform`, If the Motion MCP server is unavailable, Motion (+6 more)
 
 ### Community 188 - "HeroPilotDoc.tsx"
-Cohesion: 0.05
-Nodes (57): 1. Interview, 2. Offer two compositions before building, 3. Set up and assemble, 4. Touch up without losing content, 5. Review and hand over, Hudbird startup website workflow, Theme and font follow-up, primaryColors (+49 more)
+Cohesion: 0.03
+Nodes (88): 1. Interview, 2. Offer two compositions before building, 3. Set up and assemble, 4. Touch up without losing content, 5. Review and hand over, Hudbird startup website workflow, Theme and font follow-up, 1. Interview (+80 more)
 
 ### Community 189 - "hudbird-ui"
 Cohesion: 0.18
 Nodes (10): `add [components...]`, 🛠 Commands, ⚙️ Configuration (`components.json`), `diff [component]`, 📖 Documentation, hudbird-ui, `init`, 📄 License (+2 more)
 
-### Community 190 - "ui/DescriptionList/DescriptionList.tsx"
-Cohesion: 0.14
-Nodes (13): DescriptionList, DescriptionListContext, DescriptionListContextValue, DescriptionListItem, DescriptionListItemProps, DescriptionListLabel, DescriptionListLabelProps, DescriptionListOrientation (+5 more)
+### Community 190 - "ScrollReveal.tsx"
+Cohesion: 0.07
+Nodes (28): LogoMarqueeProps, InnerHeroVariant, InnerPageArchitecturalHero(), InnerPageArchitecturalHeroProps, NICHE_BANNERS, resolveVariant(), SPEC_BANNERS, stripLegacy() (+20 more)
 
 ### Community 191 - "sync-starter-kit.js"
 Cohesion: 0.22
@@ -1170,9 +1202,9 @@ Nodes (10): CORE_COMPONENTS_DIR, CORE_UTILS_DIR, __dirname, __filename, ROOT_DIR
 Cohesion: 0.06
 Nodes (31): concurrency, GITHUB_TOKEN, NODE_AUTH_TOKEN, NPM_TOKEN, jobs, release, name, on (+23 more)
 
-### Community 193 - "ai-chat/types.ts"
-Cohesion: 0.27
-Nodes (9): SidebarProps, TopbarProps, AppView, Conversation, MessageStatus, ModalKey, ModelOption, Role (+1 more)
+### Community 193 - "Header.tsx"
+Cohesion: 0.11
+Nodes (17): GlobalSearch(), GlobalSearchProps, Header(), HeaderProps, Theme, HudbirdIcon(), HudbirdIconProps, HudbirdLogo (+9 more)
 
 ### Community 194 - "ui/Pagination/Pagination.tsx"
 Cohesion: 0.22
@@ -1195,8 +1227,8 @@ Cohesion: 0.20
 Nodes (9): 1. PYTHON-DRIVEN TRUE RANDOMIZATION (BREAKING THE LOOP), 2. AIDA STRUCTURE & SPACING, 3. HERO ARCHITECTURE & THE 2-LINE IRON RULE, 4. THE GAPLESS BENTO GRID, 5. ADVANCED GSAP MOTION & HOVER PHYSICS, 6. COMPONENT ARSENAL & CREATIVITY, 7. CONTENT, ASSETS & STRICT BANS, 8. MANDATORY PRE-FLIGHT <design_plan> (+1 more)
 
 ### Community 199 - "marketing/Footer/FooterMega.tsx"
-Cohesion: 0.15
-Nodes (11): containerVariants, FooterLinkGroup, FooterMegaProps, itemVariants, Input, InputLabelPlacement, InputProps, InputRadius (+3 more)
+Cohesion: 0.09
+Nodes (17): FooterGlass, FooterGlassProps, containerVariants, FooterLinkGroup, FooterMegaProps, itemVariants, FooterLink, FooterSimple (+9 more)
 
 ### Community 200 - "22. STYLE VARIATION ENGINE"
 Cohesion: 0.20
@@ -1234,9 +1266,9 @@ Nodes (9): 11. COMPONENT EXECUTION GUIDELINES, 3D Cascading Card Deck, Diagonal 
 Cohesion: 0.22
 Nodes (9): 18. EXTRA CREATIVITY & IMPLEMENTATION EDGE, Composition variety check, Conversion focus, Cross-section contrast, CTA specificity, Cultural / tonal alignment, Data-viz restraint, Image variety inside one comp (+1 more)
 
-### Community 209 - "ai-mail/AuthScreen.tsx"
-Cohesion: 0.24
-Nodes (10): AuthScreen(), AuthScreenProps, Field(), Mode, PrimaryButton(), SIGNUP_STEPS, SocialButtons(), TONES (+2 more)
+### Community 209 - "ref_node_path"
+Cohesion: 0.10
+Nodes (11): content, newContent, TOC_FILE, PAGES_DIR, processFile(), scanDir(), coreFiles, MARKETING_DIR (+3 more)
 
 ### Community 210 - "marketing/LogoCloud/LogoCloud.tsx"
 Cohesion: 0.20
@@ -1271,8 +1303,8 @@ Cohesion: 0.25
 Nodes (8): 1. Search, 2. Return type, 2a. Fetching source, 3. Implement, Codex: Documentation, examples & Motion UI search, Search by concept, not by the word "animation", Two servers, When source is unavailable
 
 ### Community 218 - "devDependencies"
-Cohesion: 0.10
-Nodes (15): devDependencies, @hudbird/theme@workspace:*, puppeteer@^25.10.0, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@^7.0.2, vite@^8.2.2, @vitejs/plugin-react@^6.1.1 (+7 more)
+Cohesion: 0.14
+Nodes (14): devDependencies, @hudbird/theme@workspace:*, puppeteer@^25.10.0, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@^7.0.2, vite@^8.2.2, @vitejs/plugin-react@^6.1.1 (+6 more)
 
 ### Community 219 - "Hudbird UI Pro — Commercial Software License"
 Cohesion: 0.25
@@ -1282,13 +1314,13 @@ Nodes (7): 1. Grant of License, 2. Permitted Uses (What You Can Do), 3. Restrict
 Cohesion: 0.25
 Nodes (7): 🤝 Community & Support, 🛠️ Components Include, 📖 Documentation, ✨ Features, @hudbird/ui, 📄 License, 🚀 Quick Start
 
-### Community 221 - "HeadingDoc.tsx"
-Cohesion: 0.27
-Nodes (8): headingTocItems, Heading, HeadingColor, HeadingLevel, HeadingProps, HeadingSize, HeadingTracking, headingVariants
+### Community 221 - "Hudbird Section Composer"
+Cohesion: 0.08
+Nodes (21): Comparison, Extract in this order, Fidelity rules, Visual Reference to Hudbird Code, Base behavior, Larger screens, Mobile-First Section Contract, Responsive states (+13 more)
 
 ### Community 222 - "StudioVisualCanvas.tsx"
-Cohesion: 0.22
-Nodes (9): ALL_PEXELS_VISUALS, hashString(), resolvePexelsUrl(), StudioVisualCanvas(), StudioVisualCanvasProps, StudioVisualPreset, EditorialImage, EditorialImageProps (+1 more)
+Cohesion: 0.33
+Nodes (5): ALL_PEXELS_VISUALS, hashString(), resolvePexelsUrl(), StudioVisualCanvasProps, StudioVisualPreset
 
 ### Community 223 - "Hudbird UI — Marketing Engineering Standard"
 Cohesion: 0.29
@@ -1394,9 +1426,9 @@ Nodes (6): 29. ANTI-AI-SLOP RULES, Content slop, Density slop, Layout slop, Typo
 Cohesion: 0.33
 Nodes (6): 5. IMAGE COUNT & PAGE SLICING, Continuity Rule, Counting rule, Format, Section size variety, THIS IS THE PRIMARY OUTPUT RULE
 
-### Community 249 - "Motion for Vue"
-Cohesion: 0.33
-Nodes (6): API guidance, Component Integration, Importing, Motion for Vue, Patterns, `useTransform`
+### Community 249 - "BRD — Business Requirements Document"
+Cohesion: 0.08
+Nodes (24): 10. Kriteria Penerimaan, 11. Risiko & Mitigasi, 12. Roadmap (Tentatif), 1. Ringkasan Eksekutif, 2. Latar Belakang & Masalah, 3. Tujuan Bisnis, 4. Stakeholder, 5. Ruang Lingkup (Scope) (+16 more)
 
 ### Community 250 - "Opus 5.5 Advanced Reasoning Protocol"
 Cohesion: 0.33
@@ -1404,7 +1436,7 @@ Nodes (5): 1. Internal Thinking & Planning (Wajib), 2. Disiplin Sintaks & Self-C
 
 ### Community 251 - "components/Navbar/Navbar.tsx"
 Cohesion: 0.08
-Nodes (22): containerMaxWidths, lineSpringTransition, menuItemVariants, NavbarBrandProps, NavbarContentJustify, NavbarContentProps, NavbarContext, NavbarContextValue (+14 more)
+Nodes (24): containerMaxWidths, lineSpringTransition, menuItemVariants, NavbarBrandProps, NavbarContentJustify, NavbarContentProps, NavbarContext, NavbarContextValue (+16 more)
 
 ### Community 252 - "Workflow SOP: Generating a New Niche Demo with 24 Standard Inner Pages"
 Cohesion: 0.33
@@ -1413,6 +1445,10 @@ Nodes (5): Step 1: Niche Configuration & Theme Tokens, Step 2: Content Schema Po
 ### Community 253 - ".oxlintrc.json"
 Cohesion: 0.33
 Nodes (5): plugins, rules, react/only-export-components, react/rules-of-hooks, $schema
+
+### Community 254 - "components/Calendar/Calendar.tsx"
+Cohesion: 0.17
+Nodes (19): Calendar, CalendarColor, CalendarPreset, CalendarProps, CalendarSize, CalendarViewMode, cellSizeMap, DateRange (+11 more)
 
 ### Community 256 - "BlankUI Testing & Quality Assurance"
 Cohesion: 0.40
@@ -1442,6 +1478,10 @@ Nodes (5): 21. MOBILE ANTI-AI-TELLS RULE, Copy AI tells, Layout AI tells, UI clu
 Cohesion: 0.50
 Nodes (4): Architecture, Implementation Rules, Interaction Design (Motion), Marketing Bento Grid Blueprint
 
+### Community 263 - "LandingSectionContent"
+Cohesion: 0.09
+Nodes (12): LandingBenefits blueprint, LandingCta blueprint, LandingFaq blueprint, LandingFeatureShowcase blueprint, LandingFooter blueprint, LandingHowItWorks blueprint, LandingIntegrations blueprint, LandingLogoCloud blueprint (+4 more)
+
 ### Community 264 - "Motion (Vanilla JS / HTML / TypeScript)"
 Cohesion: 0.40
 Nodes (5): `animate`, API guidance, Easing, Importing, Motion (Vanilla JS / HTML / TypeScript)
@@ -1451,8 +1491,8 @@ Cohesion: 0.40
 Nodes (4): Fetch the methodology first, If the read is refused, MotionScore performance audit, Runtime audits
 
 ### Community 267 - "DoubleBezelCard"
-Cohesion: 0.11
-Nodes (42): 3.10 Kewajiban Permanen `antislop-ui`, `antislop-copywriting`, & Pure `@hudbird/ui` (Tanpa `cn` Override), size(), text(), 3.5 Kewajiban Permanen `antislop-ui`, `antislop-copywriting`, & Pure `@hudbird/ui` (Tanpa `cn` Override), 1.1 Cognitive Architecture & Optical Physics (Stitch & UX Laws), 1. Core Principles & Design Language, 3. Exhaustive Component Inventory (All 66+ Items), 5. End-to-End Production Recipes (+34 more)
+Cohesion: 0.14
+Nodes (37): 3.10 Kewajiban Permanen `antislop-ui`, `antislop-copywriting`, & Pure `@hudbird/ui` (Tanpa `cn` Override), size(), text(), 3.5 Kewajiban Permanen `antislop-ui`, `antislop-copywriting`, & Pure `@hudbird/ui` (Tanpa `cn` Override), 3. Exhaustive Component Inventory (All 66+ Items), 6. Rules for AI Code Generation, 1. `MorphingIsland`, 2. `AgentArtifactCanvas` (+29 more)
 
 ### Community 268 - "api/discord.ts"
 Cohesion: 0.11
@@ -1499,32 +1539,32 @@ Cohesion: 0.50
 Nodes (4): 20. EXAMPLE INTERPRETATIONS, Example 1, Example 2, Example 3
 
 ### Community 279 - "LandingBuilderDoc.tsx"
-Cohesion: 0.13
-Nodes (26): LandingBrandControls(), subscribe(), useWebsiteMode(), LandingBuilderDoc(), restore(), LandingPreview(), LandingSectionsDoc(), landingComponentNames (+18 more)
+Cohesion: 0.08
+Nodes (31): Hudbird SaaS landing sections, Install and compose, Keep the design coherent, Start with the brief, Verify and hand over, Hudbird SaaS landing sections, Install and compose, Keep the design coherent (+23 more)
 
-### Community 280 - "ui/ComboBox/ComboBox.tsx"
-Cohesion: 0.29
-Nodes (6): ComboBox, comboBoxInputVariants, ComboBoxOption, ComboBoxProps, ComboBoxSize, ComboBoxVariant
+### Community 280 - "Common Transition Patterns"
+Cohesion: 0.09
+Nodes (22): 1. Notification Badge Transition, 2. Dropdown/Popover Transition, 3. Page Transition (Route Change), 4. Plus-to-Menu Morph (FAB pattern), 5. Toast Transition, Available Components, Checklist Before Shipping Motion/Transition, Common Transition Patterns (+14 more)
 
 ### Community 281 - "test-tabs-bug.js"
 Cohesion: 0.50
 Nodes (3): children, childrenArray, React
 
 ### Community 282 - "components/Hero/HeroThreeBackground.tsx"
-Cohesion: 0.23
-Nodes (10): maath@^0.10.8, @react-three/drei@^10.7.8, @react-three/fiber@^9.7.0, HeroThreeBackground(), ParticleCloud(), maath, @react-three/drei, @react-three/fiber (+2 more)
+Cohesion: 0.27
+Nodes (8): maath@^0.10.8, @react-three/fiber@^9.7.0, HeroThreeBackground(), ParticleCloud(), maath, @react-three/fiber, HeroThreeBackground(), ParticleCloud()
 
 ### Community 283 - "Design System: Hudbird UI (Stitch Editorial Standard)"
 Cohesion: 0.05
-Nodes (39): 10.1 Physical Affordances & Perceived Interactability, 10.2 Zero-Latency Feedback Loops, 10.3 Spatial Constancy & Motion Continuity, 10.4 Progressive Disclosure & Contextual Scaffolding, 10. Architecting Intuition (Cognitive Interaction & Physical Affordances), 12.1 W3C / WCAG 2.2 AA & AAA Contrast Mandate, 12.2 Apple Human Interface Guidelines (HIG): Clarity, Deference & Depth, 12.3 Jakob Nielsen's 10 Usability Heuristics (+31 more)
+Nodes (41): 10.1 Physical Affordances & Perceived Interactability, 10.2 Zero-Latency Feedback Loops, 10.3 Spatial Constancy & Motion Continuity, 10.4 Progressive Disclosure & Contextual Scaffolding, 10. Architecting Intuition (Cognitive Interaction & Physical Affordances), 12.1 W3C / WCAG 2.2 AA & AAA Contrast Mandate, 12.2 Apple Human Interface Guidelines (HIG): Clarity, Deference & Depth, 12.3 Jakob Nielsen's 10 Usability Heuristics (+33 more)
 
 ### Community 284 - "Design System: Hudbird UI (Stitch Editorial Standard)"
 Cohesion: 0.05
-Nodes (39): 10.1 Physical Affordances & Perceived Interactability, 10.2 Zero-Latency Feedback Loops, 10.3 Spatial Constancy & Motion Continuity, 10.4 Progressive Disclosure & Contextual Scaffolding, 10. Architecting Intuition (Cognitive Interaction & Physical Affordances), 12.1 W3C / WCAG 2.2 AA & AAA Contrast Mandate, 12.2 Apple Human Interface Guidelines (HIG): Clarity, Deference & Depth, 12.3 Jakob Nielsen's 10 Usability Heuristics (+31 more)
+Nodes (41): 10.1 Physical Affordances & Perceived Interactability, 10.2 Zero-Latency Feedback Loops, 10.3 Spatial Constancy & Motion Continuity, 10.4 Progressive Disclosure & Contextual Scaffolding, 10. Architecting Intuition (Cognitive Interaction & Physical Affordances), 12.1 W3C / WCAG 2.2 AA & AAA Contrast Mandate, 12.2 Apple Human Interface Guidelines (HIG): Clarity, Deference & Depth, 12.3 Jakob Nielsen's 10 Usability Heuristics (+33 more)
 
-### Community 285 - "8. UX Psychology Blueprint (Cognitive Architecture)"
-Cohesion: 0.18
-Nodes (11): 8.10 Zeigarnik Effect & Goal Gradient Effect, 8.1 Law of Proximity (Gestalt), 8.2 Law of Common Region (Gestalt), 8.3 Law of Similarity (Gestalt), 8.4 Aesthetic-Usability Effect, 8.5 Fitts's Law, 8.6 Hick's Law, 8.7 Miller's Law (Cognitive Chunking) (+3 more)
+### Community 285 - "PRD — Product Requirements Document"
+Cohesion: 0.09
+Nodes (22): 10. Rilis & Versioning, 11. Kriteria Penerimaan (Definition of Done), 12. Risiko & Mitigasi, 13. Pertanyaan Terbuka (Open Questions), 1. Ringkasan Produk, 2. Persona Pengguna, 3. User Stories & Acceptance Criteria, 4. Functional Requirements (Fungsi Produk) (+14 more)
 
 ### Community 286 - "3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)"
 Cohesion: 0.15
@@ -1534,45 +1574,45 @@ Nodes (13): 3.11 Disiplin Keseimbangan Optik Visual (*Optical Alignment*) & Layo
 Cohesion: 0.50
 Nodes (4): ./hospitality, import, require, types
 
-### Community 288 - "./modern-app"
-Cohesion: 0.50
-Nodes (4): ./modern-app, import, require, types
+### Community 288 - "HospitalityHighlights.tsx"
+Cohesion: 0.20
+Nodes (14): DINING_STRIP_IMAGES, HospitalityDining(), EXP_STRIP_IMAGES, AccommodationSlider(), GooeyFullImage(), HIGHLIGHTS, HospitalityHighlights(), HOTEL_IMAGES (+6 more)
 
-### Community 289 - "ai-mail/Sidebar.tsx"
-Cohesion: 0.22
-Nodes (10): MAILBOX, NavItem(), Sidebar(), SidebarProps, WORKSPACE, TopBarProps, AppView, MailFolder (+2 more)
+### Community 289 - "Hudbird Docs"
+Cohesion: 0.12
+Nodes (13): Component Documentation Page, Inspect, Quality gate, Route registration, Common boundaries, Diagnosis order, Docs Repair, Verification (+5 more)
 
 ### Community 290 - "fix-cn.cjs"
 Cohesion: 0.50
 Nodes (3): fs, path, processDir()
 
-### Community 292 - "ui/Popover/Popover.tsx"
-Cohesion: 0.18
-Nodes (11): placementClasses, Popover, PopoverContent, PopoverContentProps, PopoverContext, PopoverContextValue, PopoverPlacement, PopoverProps (+3 more)
+### Community 292 - "deal"
+Cohesion: 0.33
+Nodes (15): deal(), dealHero(), dealOptions(), dealPalette(), dealPhotos(), dealReferences(), dealSection(), dealType() (+7 more)
 
 ### Community 293 - "TextDoc.tsx"
 Cohesion: 0.14
-Nodes (17): CliCommandTabs(), CliCommandTabsProps, GettingStartedDoc(), gettingStartedTocItems, SupportDoc(), supportTocItems, Blockquote, BlockquoteProps (+9 more)
+Nodes (21): CliCommandTabs(), CliCommandTabsProps, GettingStartedDoc(), gettingStartedTocItems, SupportDoc(), supportTocItems, TextDoc(), textTocItems (+13 more)
 
-### Community 294 - "components/ComboBox/ComboBox.tsx"
-Cohesion: 0.24
-Nodes (7): ComboBox, comboBoxInputVariants, ComboBoxOption, ComboBoxProps, ComboBoxSize, ComboBoxVariant, sampleOptions
+### Community 294 - "Hudbird Core Component"
+Cohesion: 0.13
+Nodes (13): Composition, Focused tests, Interactive Core Contract, Keyboard and focus, Names and relationships, State, Anti-slop gate, Cheap context first (+5 more)
 
-### Community 295 - "ui/Divider/Divider.tsx"
-Cohesion: 0.29
-Nodes (6): Divider, DividerContentPosition, DividerOrientation, DividerProps, DividerVariant, dividerVariants
+### Community 295 - "HeroDoc.tsx"
+Cohesion: 0.13
+Nodes (3): HeroDoc, HeroThreeBackground, heroTocItems
 
-### Community 300 - "Ecommerce.tsx"
-Cohesion: 0.04
+### Community 300 - "4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`)"
+Cohesion: 0.55
 Nodes (11): 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`), 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`), 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`), 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`), 4. Vertical Niche Marketing Blocks (`@hudbird/marketing/blocks`), Agency(), AiStartup(), Ecommerce() (+3 more)
 
-### Community 301 - "ui/Alert/Alert.tsx"
-Cohesion: 0.33
-Nodes (5): Alert, AlertColor, AlertProps, AlertVariant, alertVariants
+### Community 301 - "Hospitality/index.ts"
+Cohesion: 0.38
+Nodes (8): HospitalityTemplate(), HospitalityCuratedJourneys(), HospitalityExperiences(), HospitalityFooter(), SamsaraLogo(), HospitalityFooterHero(), HospitalityHero(), HospitalitySpa()
 
-### Community 302 - "2. CLI & Setup Workflow"
-Cohesion: 0.50
-Nodes (4): 2. CLI & Setup Workflow, Configuration: `components.json`, Initializing a Project, Installing Components
+### Community 302 - "Hudbird UI — AI Engineering & Design Skill"
+Cohesion: 0.18
+Nodes (10): 1. Core Principles & Design Language, 2. CLI & Setup Workflow, 5. End-to-End Production Recipes, 6. Rules for AI Code Generation, Configuration: `components.json`, Hudbird UI — AI Engineering & Design Skill, Initializing a Project, Installing Components (+2 more)
 
 ### Community 303 - "Hudbird UI — AI Engineering & Design Skill"
 Cohesion: 0.15
@@ -1582,9 +1622,9 @@ Nodes (12): 1. Core Principles & Design Language, 2. CLI & Setup Workflow, 5. En
 Cohesion: 0.18
 Nodes (11): 8.10 Zeigarnik Effect & Goal Gradient Effect, 8.1 Law of Proximity (Gestalt), 8.2 Law of Common Region (Gestalt), 8.3 Law of Similarity (Gestalt), 8.4 Aesthetic-Usability Effect, 8.5 Fitts's Law, 8.6 Hick's Law, 8.7 Miller's Law (Cognitive Chunking) (+3 more)
 
-### Community 305 - "components/Globe/Globe.tsx"
-Cohesion: 0.22
-Nodes (5): cobe@^2.0.1, Globe(), GlobeProps, ParticleSphereProps, cobe
+### Community 305 - "cn"
+Cohesion: 0.05
+Nodes (36): CtaCenteredProps, CtaSplitProps, Globe(), GlobeProps, HeroBackgroundProps, HeroBadgeProps, HeroBodyProps, heroBodyVariants (+28 more)
 
 ### Community 306 - "ui/Slider/Slider.tsx"
 Cohesion: 0.31
@@ -1594,9 +1634,9 @@ Nodes (7): rangeVariants, Slider, SliderColor, SliderProps, SliderSize, thumbVar
 Cohesion: 0.36
 Nodes (6): createOverwrites(), discordFetch(), PERMS, run(), sleep(), STRUCTURE
 
-### Community 308 - "Hudbird UI — AI Engineering & Design Skill"
-Cohesion: 0.18
-Nodes (10): 1. Core Principles & Design Language, 2. CLI & Setup Workflow, 5. End-to-End Production Recipes, 6. Rules for AI Code Generation, Configuration: `components.json`, Hudbird UI — AI Engineering & Design Skill, Initializing a Project, Installing Components (+2 more)
+### Community 308 - "2. CLI & Setup Workflow"
+Cohesion: 0.50
+Nodes (4): 2. CLI & Setup Workflow, Configuration: `components.json`, Initializing a Project, Installing Components
 
 ### Community 309 - "Hudbird UI — AI Engineering & Design Skill"
 Cohesion: 0.15
@@ -1606,9 +1646,13 @@ Nodes (12): 1. Core Principles & Design Language, 2. CLI & Setup Workflow, 5. En
 Cohesion: 0.18
 Nodes (11): 8.10 Zeigarnik Effect & Goal Gradient Effect, 8.1 Law of Proximity (Gestalt), 8.2 Law of Common Region (Gestalt), 8.3 Law of Similarity (Gestalt), 8.4 Aesthetic-Usability Effect, 8.5 Fitts's Law, 8.6 Hick's Law, 8.7 Miller's Law (Cognitive Chunking) (+3 more)
 
-### Community 311 - "Marketing Testimonials Blueprint"
-Cohesion: 0.33
-Nodes (5): Architecture & Variants, Component Makeup, Implementation Rules, Interaction Design (Motion), Marketing Testimonials Blueprint
+### Community 311 - "Hudbird: Penyatuan Marketing Collection dan Pemolesan Visual"
+Cohesion: 0.17
+Nodes (11): 1. Inventaris dan keputusan migrasi, 2. Fondasi visual bersama, 3. Brand demo dan visual produk, 4. Motion dan scroll, 5. Satu katalog yang menjadi sumber utama, 6. Sidebar builder sebagai workspace, 7. DX pemasangan dan kesamaan hasil ekspor, 8. Kompatibilitas dan perubahan schema (+3 more)
+
+### Community 312 - "HudbirdPolymorphicSections.tsx"
+Cohesion: 0.38
+Nodes (10): DomainBlueprint, getTemplateDomainBlueprint(), HudbirdAsymmetricEditorialBento(), HudbirdBeforeAfterAndCases(), HudbirdDomainPricingAndFaq(), HudbirdInteractiveDomainSandbox(), HudbirdInteractiveRoiSimulator(), HudbirdPolymorphicHero() (+2 more)
 
 ### Community 313 - "VibecodeUiDetailPage.tsx"
 Cohesion: 0.40
@@ -1618,17 +1662,13 @@ Nodes (5): COMPONENT_ITEMS_MAP, ComponentDetailData, LazyThumbnail(), RELATED_PR
 Cohesion: 0.20
 Nodes (9): prefix, interval, updates, commit-message, directory, labels, package-ecosystem, schedule (+1 more)
 
-### Community 315 - "Hudbird SaaS landing sections"
-Cohesion: 0.40
-Nodes (4): Hudbird SaaS landing sections, Keep the design coherent, Start with the brief, Verify and hand over
-
 ### Community 316 - "@testing-library/user-event@^14.6.8"
 Cohesion: 0.33
 Nodes (4): @testing-library/user-event@^14.6.8, @types/react-dom@^19.3.0, @types/react-dom, @testing-library/user-event
 
-### Community 319 - "./agency"
-Cohesion: 0.50
-Nodes (4): import, require, types, ./agency
+### Community 319 - "docs/package.json"
+Cohesion: 0.22
+Nodes (8): culori@^4.0.2, framer-motion@^13.2.0, framer-motion, name, private, type, version, culori
 
 ### Community 320 - "wrangler.json"
 Cohesion: 0.22
@@ -1638,29 +1678,29 @@ Nodes (8): assets, directory, not_found_handling, compatibility_date, name, obse
 Cohesion: 0.50
 Nodes (4): import, require, types, ./ai
 
-### Community 325 - "ui/Switch/Switch.tsx"
-Cohesion: 0.31
-Nodes (7): Switch, SwitchColor, switchLabelVariants, SwitchProps, SwitchSize, switchThumbVariants, switchTrackVariants
+### Community 324 - "9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)"
+Cohesion: 0.22
+Nodes (9): 9.1 Mathematical vs. Visual Center (Center of Mass Compensation), 9.2 Cap-Height & Baseline Alignment, 9.3 Concentric Radii Formula (Nested Corner Continuity), 9.4 Visual Weight & Density Balancing, 9.5 Overshoot & Optical Perimeter Balance, 9.6 Capsule Radial Equilibrium & End-Cap Shape Harmony, 9.7 Inline-Flex Wrapper Baseline Elimination (`leading-none` Flex Framing), 9.8 Header Badge Cap-Height Locking & Metric Baseline Parity (+1 more)
+
+### Community 325 - "Hudbird Project Context"
+Cohesion: 0.22
+Nodes (8): Current direction, Design shorthand, Focused references, Hudbird Project Context, Non-negotiable architecture, Product, Source-of-truth priority, Working rule
 
 ### Community 326 - "Design System: Hudbird UI (Stitch Editorial Standard)"
 Cohesion: 0.22
 Nodes (8): 1. Visual Theme & Atmosphere, 2.1 Neutral Base & Surfaces (Google Stitch Dark Canvas), 2.2 Brand & Kinetic Accents, 2. Color Palette & Roles, 5. Layout Principles & Spatial Whitespace Strategy, 6. Motion & Kinetic Interaction (Stitch Generation Guidance), 7. Anti-Patterns (Banned AI Clichés), Design System: Hudbird UI (Stitch Editorial Standard)
 
 ### Community 327 - "3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)"
-Cohesion: 0.25
-Nodes (7): 0. Aturan Mutlak: Safe Code Editing & Surgical Modification (No Full Rewrite), 3.1 Larangan Kartu & Ikon Warna-Warni Acak (Banned Rainbow Slop & Multi-Colored Icon Cards), 3.2 Larangan Ikon AI Tanpa Konteks Nyata (Banned Gratuitous AI / Sparkle Icons), 3.3 Larangan Memaksakan Container Melebar untuk Konten Panjang (Channel Containment & Single-Column Discipline), 3.4 Penerapan Fundamental Hukum UI/UX Pada Komponen, 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen), Hudbird UI Master Skill & Cognitive-Ergonomic Specification (`hudbird-skill-ui.md`)
-
-### Community 328 - "@hudbird/schemas"
-Cohesion: 0.67
-Nodes (3): @hudbird/schemas@workspace:*, @hudbird/schemas, @hudbird/schemas@workspace:^
+Cohesion: 0.22
+Nodes (8): 0. Aturan Mutlak: Safe Code Editing & Surgical Modification (No Full Rewrite), 3.1 Larangan Kartu & Ikon Warna-Warni Acak (Banned Rainbow Slop & Multi-Colored Icon Cards), 3.2 Larangan Ikon AI Tanpa Konteks Nyata (Banned Gratuitous AI / Sparkle Icons), 3.3 Larangan Memaksakan Container Melebar untuk Konten Panjang (Channel Containment & Single-Column Discipline), 3.4 Penerapan Fundamental Hukum UI/UX Pada Komponen, 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen), Branded website pilot: approved product direction, Hudbird UI Master Skill & Cognitive-Ergonomic Specification (`hudbird-skill-ui.md`)
 
 ### Community 329 - "3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen)"
 Cohesion: 0.25
 Nodes (7): 0. Aturan Mutlak: Safe Code Editing & Surgical Modification (No Full Rewrite), 3.1 Larangan Kartu & Ikon Warna-Warni Acak (Banned Rainbow Slop & Multi-Colored Icon Cards), 3.2 Larangan Ikon AI Tanpa Konteks Nyata (Banned Gratuitous AI / Sparkle Icons), 3.3 Larangan Memaksakan Container Melebar untuk Konten Panjang (Channel Containment & Single-Column Discipline), 3.4 Penerapan Fundamental Hukum UI/UX Pada Komponen, 3. Strict Anti-Slop & UI/UX Law Directives (Pantangan Keras & Aturan Baku Komponen), Hudbird UI Master Skill & Cognitive-Ergonomic Specification (`hudbird-skill-ui.md`)
 
-### Community 331 - "VoiceMode.tsx"
-Cohesion: 0.36
-Nodes (7): VOICE_SCRIPT, ControlButton(), Phase, PHASE_LABEL, Timer(), VoiceMode(), VoiceStage()
+### Community 331 - "components/BentoGrid/BentoGrid.tsx"
+Cohesion: 0.22
+Nodes (6): BentoCardBackgroundProps, BentoCardContentProps, BentoCardProps, BentoGridProps, BentoGlassItem, BentoGridGlassProps
 
 ### Community 333 - "BlankUI Tailwind Engineering"
 Cohesion: 0.29
@@ -1686,6 +1726,14 @@ Nodes (6): 1.1 Teori Persepsi Anisotropik (_Anisotropic Vision_) & Rasio Padding
 Cohesion: 0.33
 Nodes (6): 1.1 Teori Persepsi Anisotropik (_Anisotropic Vision_) & Rasio Padding, 1.2 Teori Psikologi Gestalt, 1.3 Hukum Fitts (_Fitts’s Law_) & Ergonomi Target Sentuh, 1.4 Formula Kelengkungan Konsentris (_Concentric Radii_), 1.5 Kedalaman Spasial Apple Frosted Glass & Obsidian Canvas, 1. Landasan Teori Kognitif & Ergonomis (Universal Principles)
 
+### Community 343 - "001 — Export quietEase as Shared Token (Foundation for All Plans)"
+Cohesion: 0.25
+Nodes (7): 001 — Export quietEase as Shared Token (Foundation for All Plans), Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 344 - "002 — MotionReveal: Reduce Duration to 300ms, Use quietEase"
+Cohesion: 0.25
+Nodes (7): 002 — MotionReveal: Reduce Duration to 300ms, Use quietEase, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
 ### Community 345 - "9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)"
 Cohesion: 0.33
 Nodes (6): 9.1 Mathematical vs. Visual Center (Center of Mass Compensation), 9.2 Cap-Height & Baseline Alignment, 9.3 Concentric Radii Formula (Nested Corner Continuity), 9.4 Visual Weight & Density Balancing, 9.5 Overshoot & Optical Perimeter Balance, 9. Optical Alignment & Visual Physics (Mathematical vs. Visual Perception)
@@ -1694,31 +1742,119 @@ Nodes (6): 9.1 Mathematical vs. Visual Center (Center of Mass Compensation), 9.2
 Cohesion: 0.40
 Nodes (5): 10.1 Physical Affordances & Perceived Interactability, 10.2 Zero-Latency Feedback Loops, 10.3 Spatial Constancy & Motion Continuity, 10.4 Progressive Disclosure & Contextual Scaffolding, 10. Architecting Intuition (Cognitive Interaction & Physical Affordances)
 
+### Community 351 - "003 — MotionStagger: Harmonize staggerChildren Delay with Token"
+Cohesion: 0.25
+Nodes (7): 003 — MotionStagger: Harmonize staggerChildren Delay with Token, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 352 - "004 — MotionCrossfade: Ensure Interruptibility with `mode="wait"`"
+Cohesion: 0.25
+Nodes (7): 004 — MotionCrossfade: Ensure Interruptibility with `mode="wait"`, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
 ### Community 353 - "replace-imports.cjs"
 Cohesion: 0.50
 Nodes (3): fs, path, processDir()
 
-### Community 362 - "cobe@^2.0.1"
+### Community 355 - "005 — MotionTicker: Use Full transform String for Hardware Acceleration"
+Cohesion: 0.25
+Nodes (7): 005 — MotionTicker: Use Full transform String for Hardware Acceleration, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 356 - "006 — Button: Stop `transition-all`, Use Scoped Transition with Token"
+Cohesion: 0.25
+Nodes (7): 006 — Button: Stop `transition-all`, Use Scoped Transition with Token, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 358 - "007 — LineChart: Reduce Entrance Duration to 300ms, Use quietEase"
+Cohesion: 0.25
+Nodes (7): 007 — LineChart: Reduce Entrance Duration to 300ms, Use quietEase, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 359 - "008 — MorphingIsland: Add initial scale 0.95 to Pure-Fade Entries"
+Cohesion: 0.25
+Nodes (7): 008 — MorphingIsland: Add initial scale 0.95 to Pure-Fade Entries, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 360 - "009 — AgentArtifactCanvas: Replace easeOut with quietEase Token"
+Cohesion: 0.25
+Nodes (7): 009 — AgentArtifactCanvas: Replace easeOut with quietEase Token, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 362 - "010 — InteractiveBentoShowcase: Spring-Animate Slider Label on Value Change"
+Cohesion: 0.25
+Nodes (7): 010 — InteractiveBentoShowcase: Spring-Animate Slider Label on Value Change, Boundaries, Problem, Repo conventions to follow, Steps, Target, Verification
+
+### Community 363 - "ui/Checkbox/Checkbox.tsx"
+Cohesion: 0.32
+Nodes (6): Checkbox, CheckboxColor, checkboxControlVariants, CheckboxProps, CheckboxSize, labelTextVariants
+
+### Community 364 - "Hudbird Architecture Map"
+Cohesion: 0.29
+Nodes (6): Graphify routing, Hudbird Architecture Map, Landing system, Packages, Safe search order, Targeted verification
+
+### Community 365 - "Hudbird SaaS Landing Collection"
+Cohesion: 0.29
+Nodes (6): Boundaries, Collection, Configuration and export, Hudbird SaaS Landing Collection, Try it, Verification recorded
+
+### Community 366 - "Hudbird Worklog"
+Cohesion: 0.29
+Nodes (6): Completed decisions, Current milestone, Hudbird Worklog, Known boundaries, Next suggested iteration, Work in progress — paused
+
+### Community 367 - "HospitalityCuratedJourneys.tsx"
+Cohesion: 0.29
+Nodes (6): POSITIONS, SLOT_1, SLOT_2, SLOT_3, SLOT_4, SLOTS
+
+### Community 368 - "Animation & Motion Improvement Plans — Hudbird"
+Cohesion: 0.29
+Nodes (6): Animation & Motion Improvement Plans — Hudbird, How to Use These Plans, Overview, Plan Index, Recommended Execution Order, Token & Standards References
+
+### Community 370 - "Tabel Fitur — Hudbird UI Pro (Notion-Ready)"
 Cohesion: 0.33
-Nodes (4): cobe@^2.0.1, recharts@^3.10.1, cobe, recharts
+Nodes (5): Alur Kerja (Workflow) Direkomendasikan, Panduan Status Fitur (Best Practice Manajemen), Properti Notion Direkomendasikan, Tabel Fitur — Hudbird UI Pro (Notion-Ready), Tips Paste ke Notion
+
+### Community 371 - "interface"
+Cohesion: 0.40
+Nodes (4): interface, default_prompt, display_name, short_description
+
+### Community 372 - "interface"
+Cohesion: 0.40
+Nodes (4): interface, default_prompt, display_name, short_description
+
+### Community 373 - "interface"
+Cohesion: 0.40
+Nodes (4): interface, default_prompt, display_name, short_description
+
+### Community 374 - "fix-themes-doc.js"
+Cohesion: 0.40
+Nodes (4): content, endIdx, newContent, tabsStart
+
+### Community 375 - "NavbarContainer.tsx"
+Cohesion: 0.40
+Nodes (4): NavbarContainer, NavbarContainerProps, NavbarContainerWidth, widthClasses
+
+### Community 376 - "scripts"
+Cohesion: 0.50
+Nodes (4): scripts, build, dev, preview
+
+### Community 377 - "./fintech"
+Cohesion: 0.50
+Nodes (4): ./fintech, import, require, types
+
+### Community 378 - "scripts"
+Cohesion: 0.50
+Nodes (4): scripts, build, dev, lint
 
 ## Knowledge Gaps
-- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **46 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `ref_framer_motion`, `docs/src/App.tsx`, `ref_react`, `PageToolbar`, `useMailEngine.ts`, `ComposeModal.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `pro-templates/src/App.tsx`, `Reveal`, `lib/cn.ts`, `ui/Heading/Heading.tsx`, `marketing/Hero/Hero.tsx`, `marketing/package.json`, `HeroDoc.tsx`, `marketing/SaaS/components/SaaSInternal.tsx`, `core/src/index.ts`, `ui/Tooltip/Tooltip.tsx`, `schemas/src/index.ts`, `marketing/src/utils/cn.ts`, `DialogDoc.tsx`, `components/Form/Form.tsx`, `AiMail.tsx`, `BentoGridDoc.tsx`, `InteractiveBentoShowcase.tsx`, `HospitalityHighlights.tsx`, `components/RadioGroup/Radio.tsx`, `components/Progress/Progress.tsx`, `lucide-react`, `Input`, `NavigationMenu.tsx`, `PaginationDoc.tsx`, `ai-chat/data.ts`, `StickyProcessSteps.tsx`, `MorphingIsland.tsx`, `HeroAICopilot.tsx`, `admin/Pages/AdminPages.tsx`, `marketing/Faq/Faq.tsx`, `ai-chat/primitives.tsx`, `CommandDoc.tsx`, `AiChat.tsx`, `ui/Navbar/Navbar.tsx`, `components/Provider/HudbirdProvider.tsx`, `ui/Toast/Toast.tsx`, `LandingBuilderShowcase/index.tsx`, `ai-mail/primitives.tsx`, `SheetDoc.tsx`, `LandingHeroShowcase/index.tsx`, `components/Toast/Toast.tsx`, `DescriptionListDoc.tsx`, `cx`, `LandingPage/LandingPage.tsx`, `ui/Calendar/Calendar.tsx`, `peerDependencies`, `GridDoc.tsx`, `cn`, `ui/Sheet/Sheet.tsx`, `ui/Command/Command.tsx`, `marketing/BentoGrid/BentoGrid.tsx`, `pages/LandingPage.tsx`, `ui/Tabs/Tabs.tsx`, `PopoverDoc.tsx`, `components/Form/Form.tsx`, `ui/InputOTP/InputOTP.tsx`, `ui/Progress/Progress.tsx`, `ui/RadioGroup/Radio.tsx`, `CaseStudyShowcase.tsx`, `ai-chat/AuthScreen.tsx`, `ui/Breadcrumbs/Breadcrumbs.tsx`, `ui/Select/Select.tsx`, `VibecodeUiTheme.tsx`, `HeroPilotDoc.tsx`, `ui/DescriptionList/DescriptionList.tsx`, `ui/Pagination/Pagination.tsx`, `marketing/Footer/FooterMega.tsx`, `ai-mail/AuthScreen.tsx`, `marketing/LogoCloud/LogoCloud.tsx`, `HeadingDoc.tsx`, `StudioVisualCanvas.tsx`, `ui/Provider/HudbirdProvider.tsx`, `components/Navbar/Navbar.tsx`, `ModernApp.tsx`, `LandingBuilderDoc.tsx`, `ui/ComboBox/ComboBox.tsx`, `test-tabs-bug.js`, `components/Hero/HeroThreeBackground.tsx`, `ai-mail/Sidebar.tsx`, `ui/Popover/Popover.tsx`, `TextDoc.tsx`, `components/ComboBox/ComboBox.tsx`, `ui/Divider/Divider.tsx`, `Ecommerce.tsx`, `ui/Alert/Alert.tsx`, `components/Globe/Globe.tsx`, `ui/Slider/Slider.tsx`, `TableOfContents.tsx`, `VibecodeUiDetailPage.tsx`, `components/LogoCloud/LogoCloudGlass.tsx`, `ui/Switch/Switch.tsx`, `VoiceMode.tsx`?**
-  _High betweenness centrality (0.317) - this node is a cross-community bridge._
-- **Should `ref_framer_motion` be split into smaller, more focused modules?**
-  _Cohesion score 0.05042175360710322 - nodes in this community are weakly interconnected._
-- **Why does `vitest` connect `ref_react` to `ref_framer_motion`, `pages/LandingPage.tsx`, `react`, `package.json`, `PopoverDoc.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `components/Form/Form.tsx`, `4. Recipes`, `ref_node_path`, `devDependencies`, `LandingBuilderDoc.tsx`, `core/src/index.ts`, `pack-starter-kit.js`, `TextDoc.tsx`, `components/ComboBox/ComboBox.tsx`, `BentoGridDoc.tsx`, `components/RadioGroup/Radio.tsx`, `components/Progress/Progress.tsx`, `Input`, `NavigationMenu.tsx`, `PaginationDoc.tsx`, `HeroPilotDoc.tsx`, `MorphingIsland.tsx`, `CommandDoc.tsx`, `components/Provider/HudbirdProvider.tsx`, `LandingBuilderShowcase/index.tsx`, `HeadingDoc.tsx`, `SheetDoc.tsx`, `LandingHeroShowcase/index.tsx`, `DescriptionListDoc.tsx`, `GridDoc.tsx`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Why does `react` connect `ref_react` to `Text`, `docs/src/App.tsx`, `PageToolbar`, `marketing/src/utils/cn.ts`, `useMailEngine.ts`, `ComposeModal.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `pro-templates/src/App.tsx`, `Reveal`, `lib/cn.ts`, `class-variance-authority`, `marketing/Hero/Hero.tsx`, `marketing/package.json`, `FooterDoc.tsx`, `marketing/SaaS/components/SaaSInternal.tsx`, `core/src/index.ts`, `ui/Tooltip/Tooltip.tsx`, `schemas/src/index.ts`, `Input`, `DialogDoc.tsx`, `components/Form/Form.tsx`, `AiStartupInternal.tsx`, `HeadingDoc.tsx`, `ApplicationUiBuilder.tsx`, `DigitalAgencyTemplate.tsx`, `LandingNavbar/index.tsx`, `StudioBuilderDoc.tsx`, `lucide-react`, `Input`, `NavigationMenu.tsx`, `PaginationDoc.tsx`, `AiChat.tsx`, `Container`, `cn`, `HeroAICopilot.tsx`, `theme/package.json`, `marketing/src/index.ts`, `marketing/Faq/Faq.tsx`, `ai-chat/primitives.tsx`, `CommandDoc.tsx`, `framer-motion`, `ui/Navbar/Navbar.tsx`, `components/Provider/HudbirdProvider.tsx`, `ui/Toast/Toast.tsx`, `Container`, `ai-mail/primitives.tsx`, `SheetDoc.tsx`, `MotionDoc.tsx`, `components/Toast/Toast.tsx`, `DescriptionListDoc.tsx`, `cx`, `LandingShared/index.tsx`, `ui/Calendar/Calendar.tsx`, `BentoGrid`, `FieldsetDoc.tsx`, `cn`, `ui/Sheet/Sheet.tsx`, `ui/Command/Command.tsx`, `marketing/BentoGrid/BentoGrid.tsx`, `pages/LandingPage.tsx`, `ui/Tabs/Tabs.tsx`, `PopoverDoc.tsx`, `components/Form/Form.tsx`, `ui/InputOTP/InputOTP.tsx`, `ui/Progress/Progress.tsx`, `ui/RadioGroup/Radio.tsx`, `LandingBuilderDoc.tsx`, `ref_react_router_dom`, `NexusInnerPageRenderer`, `ui/Breadcrumbs/Breadcrumbs.tsx`, `ui/Select/Select.tsx`, `VibecodeUiTheme.tsx`, `HeroPilotDoc.tsx`, `ScrollReveal.tsx`, `Header.tsx`, `ui/Pagination/Pagination.tsx`, `marketing/Footer/FooterMega.tsx`, `marketing/LogoCloud/LogoCloud.tsx`, `StudioVisualCanvas.tsx`, `ui/Provider/HudbirdProvider.tsx`, `components/Navbar/Navbar.tsx`, `components/Calendar/Calendar.tsx`, `LandingBuilderDoc.tsx`, `test-tabs-bug.js`, `components/Hero/HeroThreeBackground.tsx`, `HospitalityHighlights.tsx`, `TextDoc.tsx`, `HeroDoc.tsx`, `Hospitality/index.ts`, `cn`, `ui/Slider/Slider.tsx`, `HudbirdPolymorphicSections.tsx`, `VibecodeUiDetailPage.tsx`, `Hospitality.tsx`, `Agency.tsx`, `components/BentoGrid/BentoGrid.tsx`, `ui/Checkbox/Checkbox.tsx`, `HospitalityCuratedJourneys.tsx`, `NavbarContainer.tsx`, `components/MouseGlow.tsx`, `marketing/Magnetic.tsx`, `marketing/MouseGlow.tsx`, `marketing/SmoothStackingWrapper.tsx`, `marketing/StackingWrapper.tsx`?**
+  _High betweenness centrality (0.322) - this node is a cross-community bridge._
 - **Should `docs/src/App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.035652474904811354 - nodes in this community are weakly interconnected._
-- **Why does `lucide-react` connect `lucide-react` to `ref_framer_motion`, `docs/src/App.tsx`, `pages/LandingPage.tsx`, `ref_react`, `PageToolbar`, `react`, `ComposeModal.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `components/Form/Form.tsx`, `pro-templates/src/App.tsx`, `Reveal`, `lib/cn.ts`, `marketing/Hero/Hero.tsx`, `ui/InputOTP/InputOTP.tsx`, `marketing/package.json`, `HeroDoc.tsx`, `marketing/SaaS/components/SaaSInternal.tsx`, `core/src/index.ts`, `schemas/src/index.ts`, `ai-mail/Sidebar.tsx`, `marketing/src/utils/cn.ts`, `DialogDoc.tsx`, `TextDoc.tsx`, `AiMail.tsx`, `BentoGridDoc.tsx`, `InteractiveBentoShowcase.tsx`, `ai-chat/AuthScreen.tsx`, `HospitalityHighlights.tsx`, `CaseStudyShowcase.tsx`, `ui/Alert/Alert.tsx`, `ui/Breadcrumbs/Breadcrumbs.tsx`, `ui/Select/Select.tsx`, `Input`, `VibecodeUiTheme.tsx`, `NavigationMenu.tsx`, `VibecodeUiDetailPage.tsx`, `PaginationDoc.tsx`, `StickyProcessSteps.tsx`, `MorphingIsland.tsx`, `VoiceMode.tsx`, `HeroAICopilot.tsx`, `admin/Pages/AdminPages.tsx`, `marketing/Faq/Faq.tsx`, `ai-mail/AuthScreen.tsx`, `ai-chat/primitives.tsx`, `CommandDoc.tsx`, `AiChat.tsx`, `ui/Navbar/Navbar.tsx`, `ui/Toast/Toast.tsx`, `LandingBuilderShowcase/index.tsx`, `ai-mail/primitives.tsx`, `SheetDoc.tsx`, `LandingHeroShowcase/index.tsx`, `components/Toast/Toast.tsx`, `cx`, `ui/Calendar/Calendar.tsx`, `GridDoc.tsx`, `cn`, `ui/Sheet/Sheet.tsx`, `ui/Command/Command.tsx`, `components/Navbar/Navbar.tsx`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
-- **Should `docs/package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.07254623044096728 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.03176185728528699 - nodes in this community are weakly interconnected._
+- **Why does `lucide-react` connect `lucide-react` to `Text`, `docs/src/App.tsx`, `pages/LandingPage.tsx`, `ref_react`, `PageToolbar`, `marketing/src/utils/cn.ts`, `ui/Tabs/Tabs.tsx`, `useMailEngine.ts`, `PopoverDoc.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `components/Form/Form.tsx`, `pro-templates/src/App.tsx`, `ComposeModal.tsx`, `lib/cn.ts`, `Reveal`, `class-variance-authority`, `marketing/Hero/Hero.tsx`, `ui/InputOTP/InputOTP.tsx`, `marketing/package.json`, `FooterDoc.tsx`, `marketing/SaaS/components/SaaSInternal.tsx`, `core/src/index.ts`, `schemas/src/index.ts`, `HospitalityHighlights.tsx`, `Input`, `DialogDoc.tsx`, `TextDoc.tsx`, `HeroDoc.tsx`, `LandingBuilderDoc.tsx`, `AiStartupInternal.tsx`, `ApplicationUiBuilder.tsx`, `Hospitality/index.ts`, `ref_react_router_dom`, `LandingNavbar/index.tsx`, `StudioBuilderDoc.tsx`, `cn`, `ui/Breadcrumbs/Breadcrumbs.tsx`, `Input`, `ui/Select/Select.tsx`, `VibecodeUiTheme.tsx`, `NavigationMenu.tsx`, `HudbirdPolymorphicSections.tsx`, `VibecodeUiDetailPage.tsx`, `PaginationDoc.tsx`, `HeroPilotDoc.tsx`, `AiChat.tsx`, `ScrollReveal.tsx`, `Header.tsx`, `Container`, `cn`, `HeroAICopilot.tsx`, `marketing/Faq/Faq.tsx`, `ai-chat/primitives.tsx`, `CommandDoc.tsx`, `framer-motion`, `ui/Navbar/Navbar.tsx`, `ui/Toast/Toast.tsx`, `Container`, `ai-mail/primitives.tsx`, `SheetDoc.tsx`, `components/Toast/Toast.tsx`, `cx`, `LandingShared/index.tsx`, `ui/Calendar/Calendar.tsx`, `BentoGrid`, `FieldsetDoc.tsx`, `cn`, `ui/Sheet/Sheet.tsx`, `ui/Command/Command.tsx`, `components/Navbar/Navbar.tsx`, `components/Calendar/Calendar.tsx`?**
+  _High betweenness centrality (0.057) - this node is a cross-community bridge._
 - **Should `ref_react` be split into smaller, more focused modules?**
-  _Cohesion score 0.013881884538818846 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.01802965088474414 - nodes in this community are weakly interconnected._
+- **Why does `vitest` connect `ref_react` to `Text`, `pages/LandingPage.tsx`, `package.json`, `PopoverDoc.tsx`, `components/Sidebar/Sidebar.tsx`, `Header.tsx`, `components/Form/Form.tsx`, `4. Recipes`, `devDependencies`, `LandingBuilderDoc.tsx`, `core/src/index.ts`, `pack-starter-kit.js`, `TextDoc.tsx`, `LandingNavbar/index.tsx`, `StudioBuilderDoc.tsx`, `Input`, `NavigationMenu.tsx`, `HeroPilotDoc.tsx`, `cn`, `ref_node_path`, `CommandDoc.tsx`, `components/Provider/HudbirdProvider.tsx`, `SheetDoc.tsx`, `DescriptionListDoc.tsx`, `FieldsetDoc.tsx`, `components/Calendar/Calendar.tsx`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Should `PageToolbar` be split into smaller, more focused modules?**
+  _Cohesion score 0.0481283422459893 - nodes in this community are weakly interconnected._
+- **Should `marketing/src/utils/cn.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.07948568088836938 - nodes in this community are weakly interconnected._
