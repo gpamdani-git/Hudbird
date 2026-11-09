@@ -270,16 +270,16 @@ export function SplitIntroductionHero({
               <span>Public launch on iOS soon</span>
             </div>
 
-            {/* 2. Editorial Headline Title with Serif Italic Accent */}
+            {/* 2. Editorial Headline Title with Serif Italic Accent (Primary Hero Attraction) */}
             <Heading
               as={headingLevel}
-              className="hb-heading text-4xl font-semibold tracking-[-0.03em] text-balance text-zinc-900 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.12] dark:text-white"
+              className="hb-heading text-4xl font-bold tracking-[-0.04em] text-balance text-zinc-950 sm:text-5xl md:text-6xl lg:text-[3.75rem] lg:leading-[1.08] xl:text-[4.25rem] dark:text-white"
             >
               {renderEditorialTitle(content.title)}
             </Heading>
 
             {/* 3. Short Description with Muted Gray Tone */}
-            <Text className="mt-4 max-w-[48ch] text-base leading-relaxed font-normal text-zinc-600 sm:mt-5 sm:text-lg dark:text-zinc-400">
+            <Text className="mt-4 max-w-[42ch] text-base leading-relaxed font-normal text-zinc-600 sm:mt-5 sm:text-lg dark:text-zinc-400">
               {content.description}
             </Text>
 
@@ -403,61 +403,61 @@ export function SplitIntroductionHero({
               )}
             </div>
 
-            {/* Floating Social Proof Testimonial Card Protruding on Desktop */}
-            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-8 sm:left-[-24px] sm:max-w-[320px]">
+            {/* Floating Social Proof Testimonial Card Protruding on Desktop (Compact Refined Badge) */}
+            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-6 sm:left-[-18px] sm:max-w-[250px]">
               <motion.div
                 key={activeIdx}
                 initial={{ opacity: 0, y: 12, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-2xl border border-zinc-200/90 bg-white/95 p-4 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.18)] backdrop-blur-md sm:rounded-[22px] sm:p-5 dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[0_24px_60px_-12px_rgba(0,0,0,0.6)]"
+                className="rounded-xl border border-zinc-200/90 bg-white/95 p-3 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.14)] backdrop-blur-md sm:rounded-2xl sm:p-3.5 dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[0_20px_48px_-10px_rgba(0,0,0,0.55)]"
               >
                 {/* 5 Rating Stars & Score */}
-                <div className="flex items-center justify-between gap-2">
-                  <div className="flex items-center gap-1">
+                <div className="flex items-center justify-between gap-1.5">
+                  <div className="flex items-center gap-0.5">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className="h-3.5 w-3.5 fill-amber-400 text-amber-400"
+                        className="h-3 w-3 fill-amber-400 text-amber-400"
                         aria-hidden="true"
                       />
                     ))}
-                    <span className="ml-1 text-xs font-semibold text-zinc-900 dark:text-white">
+                    <span className="ml-1 text-[11px] font-semibold text-zinc-900 dark:text-white">
                       {currentSlide.testimonial.rating}.0
                     </span>
                   </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+                    <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-500" />
                     Verified
                   </span>
                 </div>
 
-                {/* Testimonial Quotation */}
-                <p className="my-2.5 text-xs leading-snug font-medium text-zinc-800 italic sm:text-sm dark:text-zinc-200">
+                {/* Testimonial Quotation (Compact 2 lines) */}
+                <p className="my-2 line-clamp-2 text-[11px] leading-snug font-medium text-zinc-800 italic sm:text-xs dark:text-zinc-200">
                   &ldquo;{currentSlide.testimonial.quote}&rdquo;
                 </p>
 
                 {/* Mini User Profile with Avatar, Name, and Role */}
-                <div className="flex items-center gap-2.5 border-t border-zinc-100 pt-1 dark:border-white/[0.08]">
+                <div className="flex items-center gap-2 border-t border-zinc-100 pt-1.5 dark:border-white/[0.08]">
                   <img
                     src={currentSlide.testimonial.avatar}
                     alt=""
                     role="presentation"
                     aria-hidden="true"
-                    className="h-8 w-8 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-white/15"
+                    className="h-6 w-6 rounded-full object-cover ring-1 ring-zinc-200 sm:h-7 sm:w-7 dark:ring-white/15"
                   />
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1 truncate text-xs font-semibold text-zinc-900 dark:text-white">
-                      {currentSlide.testimonial.author}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1 truncate text-[11px] font-semibold text-zinc-900 dark:text-white">
+                      <span className="truncate">{currentSlide.testimonial.author}</span>
                       <svg
-                        className="h-3 w-3 shrink-0 fill-current text-blue-500"
+                        className="h-2.5 w-2.5 shrink-0 fill-current text-blue-500"
                         viewBox="0 0 24 24"
                         aria-hidden="true"
                       >
                         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                       </svg>
                     </div>
-                    <div className="truncate text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
                       {currentSlide.testimonial.role}
                     </div>
                   </div>
