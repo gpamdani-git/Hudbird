@@ -422,8 +422,8 @@ export function SplitIntroductionHero({
       : "Reserve My Spot";
 
   return (
-    <Section id={id} spacing="lg" className="hb-section relative isolate overflow-hidden">
-      <Container size="xl" gutter="lg" className="py-6 sm:py-10 lg:py-14">
+    <Section id={id} spacing="none" className="hb-section relative isolate overflow-hidden">
+      <Container size="xl" gutter="lg" className="pt-2 pb-8 sm:pt-4 sm:pb-10 lg:pt-4 lg:pb-12">
         <Grid cols={2} gap="xl" align="center" className="[&>*]:min-w-0">
           {/* Left Column: Pill Badge, Editorial Title, Description, Email Form, Social Proof */}
           <div className="flex flex-col items-start text-left">
@@ -528,8 +528,8 @@ export function SplitIntroductionHero({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Visual Frame with Rounded Corners & Shadows (Taller than left text for full-photo presence) */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[4/5] sm:rounded-[36px] lg:aspect-auto lg:h-[620px] lg:rounded-[40px] xl:h-[660px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]">
+            {/* Visual Frame with Rounded Corners & Shadows (Taller than left text for full-photo presence, fitted for viewports) */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[4/5] sm:rounded-[36px] lg:aspect-auto lg:h-[530px] lg:rounded-[40px] xl:h-[560px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]">
               {failed || !resolvedSrc ? (
                 <div
                   role="img"
