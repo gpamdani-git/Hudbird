@@ -99,21 +99,24 @@ export const formaLandingContent: LandingSectionContent = {
     description: "A simple example workflow for a small product team.",
     items: [
       {
-        id: "capture",
-        title: "Capture the idea",
-        description: "Write a short brief and collect the context you already have.",
+        id: "builder",
+        title: "Hudbird Page Builder",
+        description:
+          "Compose production-ready SaaS landing pages with real-time visual section stacking, live theme token syncing, and instant responsive previews.",
         image: notes,
       },
       {
-        id: "organize",
-        title: "Choose the next step",
-        description: "Give the work a place and identify the first useful action.",
+        id: "export",
+        title: "Export Clean Code",
+        description:
+          "Generate full-stack React & Next.js projects with Tailwind CSS v4, pristine static HTML/CSS, or copy-paste AI prompt recipes.",
         image: projects,
       },
       {
-        id: "review",
-        title: "Review it together",
-        description: "Use the overview to reflect on what changed and decide what happens next.",
+        id: "deploy",
+        title: "Audit & Deploy",
+        description:
+          "Automate edge delivery to Vercel, Cloudflare, or Docker with 100/100 Lighthouse performance and zero layout shift.",
         image: overview,
       },
     ],
