@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { Section, Container, Grid, Button, Badge, Heading, Text, Input } from "@hudbird/ui";
-import { Star, Check, Apple } from "lucide-react";
+import { Star, Check, Apple, Users, Layers, Palette, Calendar, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
@@ -177,6 +177,169 @@ const slideVariants = {
     opacity: 0,
   }),
 };
+
+function SlideCardContent({
+  slideIndex,
+  testimonial,
+}: {
+  slideIndex: number;
+  testimonial: SplitSlideItem["testimonial"];
+}) {
+  if (slideIndex === 0) {
+    // 1. Testimonial Card (Rating + Verified + Quote + Profile)
+    return (
+      <>
+        <div className="flex items-center justify-between gap-1.5">
+          <div className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="h-3 w-3 fill-amber-400 text-amber-400" aria-hidden="true" />
+            ))}
+            <span className="ml-1 text-[11px] font-semibold text-zinc-900 dark:text-white">
+              {testimonial.rating}.0
+            </span>
+          </div>
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+            <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-500" />
+            Verified
+          </span>
+        </div>
+
+        <p className="my-2 line-clamp-2 text-[11px] leading-snug font-medium text-zinc-800 italic sm:text-xs dark:text-zinc-200">
+          &ldquo;{testimonial.quote}&rdquo;
+        </p>
+
+        <div className="flex items-center gap-2 border-t border-zinc-100 pt-1.5 dark:border-white/[0.08]">
+          <img
+            src={testimonial.avatar}
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+            className="h-6 w-6 rounded-full object-cover ring-1 ring-zinc-200 sm:h-7 sm:w-7 dark:ring-white/15"
+          />
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1 truncate text-[11px] font-semibold text-zinc-900 dark:text-white">
+              <span className="truncate">{testimonial.author}</span>
+              <svg
+                className="h-2.5 w-2.5 shrink-0 fill-current text-blue-500"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
+            </div>
+            <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+              {testimonial.role}
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (slideIndex === 1) {
+    // 2. GitHub Free Open Source Card (inspired by image 1)
+    return (
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-medium tracking-tight text-zinc-500 uppercase dark:text-zinc-400">
+            GitHub Community
+          </span>
+          <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-blue-600 dark:bg-blue-400/10 dark:text-blue-400">
+            Open Source
+          </span>
+        </div>
+
+        <div className="flex items-baseline gap-1.5 py-0.5">
+          <span className="[font-family:serif,Georgia,ui-serif] font-serif text-3xl font-normal tracking-tight text-zinc-900 italic sm:text-4xl dark:text-white">
+            14.8k
+          </span>
+          <span className="text-xs font-semibold text-amber-500">★ stars</span>
+        </div>
+
+        <div className="flex w-full items-center justify-center gap-2 rounded-full border border-zinc-200/80 bg-zinc-100/80 px-3 py-1.5 text-xs font-semibold text-zinc-900 transition-colors hover:bg-zinc-200/80 dark:border-white/10 dark:bg-white/[0.08] dark:text-white dark:hover:bg-white/15">
+          <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+            />
+          </svg>
+          <span>MIT License • Free</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (slideIndex === 2) {
+    // 3. Hudbird UI - Collaboration & Projects (inspired by image 2)
+    return (
+      <div className="space-y-2">
+        <div className="flex items-center justify-between rounded-lg border border-zinc-200/70 bg-zinc-50/70 p-2.5 transition-colors dark:border-white/[0.08] dark:bg-white/[0.04]">
+          <div className="min-w-0 pr-2">
+            <div className="text-xs font-semibold text-zinc-900 dark:text-white">Collaboration</div>
+            <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+              Collab with others for UI creation
+            </div>
+          </div>
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white text-zinc-800 shadow-2xs dark:bg-zinc-800 dark:text-zinc-200">
+            <Users className="h-4 w-4" />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between rounded-lg border border-zinc-200/70 bg-zinc-50/70 p-2.5 transition-colors dark:border-white/[0.08] dark:bg-white/[0.04]">
+          <div className="min-w-0 pr-2">
+            <div className="text-xs font-semibold text-zinc-900 dark:text-white">Project</div>
+            <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+              Build modern pages in seconds
+            </div>
+          </div>
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-white text-zinc-800 shadow-2xs dark:bg-zinc-800 dark:text-zinc-200">
+            <Layers className="h-4 w-4" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // 4. Hudbird UI - Design System & Release (inspired by image 3)
+  return (
+    <div className="divide-y divide-zinc-100 rounded-lg dark:divide-white/[0.08]">
+      <div className="flex items-center justify-between py-1.5">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-700 dark:bg-white/[0.08] dark:text-zinc-200">
+            <Palette className="h-3.5 w-3.5" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-[11px] font-semibold text-zinc-900 dark:text-white">
+              Design System
+            </div>
+            <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+              Tailwind v4 • OKLCH
+            </div>
+          </div>
+        </div>
+        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-zinc-400 dark:text-zinc-500" />
+      </div>
+
+      <div className="flex items-center justify-between pt-2 pb-0.5">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-zinc-100 text-zinc-700 dark:bg-white/[0.08] dark:text-zinc-200">
+            <Calendar className="h-3.5 w-3.5" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-[11px] font-semibold text-zinc-900 dark:text-white">
+              Hudbird v1.5.0
+            </div>
+            <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+              Production Ready • Accessible
+            </div>
+          </div>
+        </div>
+        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-zinc-400 dark:text-zinc-500" />
+      </div>
+    </div>
+  );
+}
 
 export function SplitIntroductionHero({
   content,
@@ -365,8 +528,8 @@ export function SplitIntroductionHero({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Visual Frame with Rounded Corners & Shadows */}
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[5/4] sm:rounded-[36px] lg:aspect-[4/3] lg:rounded-[40px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]">
+            {/* Visual Frame with Rounded Corners & Shadows (Taller than left text for full-photo presence) */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[4/5] sm:rounded-[36px] lg:aspect-auto lg:h-[620px] lg:rounded-[40px] xl:h-[660px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]">
               {failed || !resolvedSrc ? (
                 <div
                   role="img"
@@ -406,65 +569,16 @@ export function SplitIntroductionHero({
               )}
             </div>
 
-            {/* Floating Social Proof Testimonial Card Protruding on Desktop (Compact Refined Badge) */}
-            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-[74px] sm:left-[-33px] sm:max-w-[250px]">
+            {/* Floating Diverse Cards Protruding on Desktop (Responsive, Positioned Up 50px & Left 15px) */}
+            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-[74px] sm:left-[-33px] sm:w-[260px] sm:max-w-[270px]">
               <motion.div
                 key={activeIdx}
                 initial={{ opacity: 0, y: 12, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="rounded-xl border border-zinc-200/90 bg-white/95 p-3 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.14)] backdrop-blur-md sm:rounded-2xl sm:p-3.5 dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[0_20px_48px_-10px_rgba(0,0,0,0.55)]"
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="rounded-xl border border-zinc-200/90 bg-white/95 p-3.5 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.14)] backdrop-blur-md sm:rounded-2xl sm:p-4 dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[0_20px_48px_-10px_rgba(0,0,0,0.55)]"
               >
-                {/* 5 Rating Stars & Score */}
-                <div className="flex items-center justify-between gap-1.5">
-                  <div className="flex items-center gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="h-3 w-3 fill-amber-400 text-amber-400"
-                        aria-hidden="true"
-                      />
-                    ))}
-                    <span className="ml-1 text-[11px] font-semibold text-zinc-900 dark:text-white">
-                      {currentSlide.testimonial.rating}.0
-                    </span>
-                  </div>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-1.5 py-0.5 text-[9px] font-semibold text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
-                    <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-500" />
-                    Verified
-                  </span>
-                </div>
-
-                {/* Testimonial Quotation (Compact 2 lines) */}
-                <p className="my-2 line-clamp-2 text-[11px] leading-snug font-medium text-zinc-800 italic sm:text-xs dark:text-zinc-200">
-                  &ldquo;{currentSlide.testimonial.quote}&rdquo;
-                </p>
-
-                {/* Mini User Profile with Avatar, Name, and Role */}
-                <div className="flex items-center gap-2 border-t border-zinc-100 pt-1.5 dark:border-white/[0.08]">
-                  <img
-                    src={currentSlide.testimonial.avatar}
-                    alt=""
-                    role="presentation"
-                    aria-hidden="true"
-                    className="h-6 w-6 rounded-full object-cover ring-1 ring-zinc-200 sm:h-7 sm:w-7 dark:ring-white/15"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1 truncate text-[11px] font-semibold text-zinc-900 dark:text-white">
-                      <span className="truncate">{currentSlide.testimonial.author}</span>
-                      <svg
-                        className="h-2.5 w-2.5 shrink-0 fill-current text-blue-500"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                      </svg>
-                    </div>
-                    <div className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">
-                      {currentSlide.testimonial.role}
-                    </div>
-                  </div>
-                </div>
+                <SlideCardContent slideIndex={activeIdx} testimonial={currentSlide.testimonial} />
               </motion.div>
             </div>
 
