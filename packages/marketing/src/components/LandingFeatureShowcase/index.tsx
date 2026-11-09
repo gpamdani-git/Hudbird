@@ -12,7 +12,7 @@ import {
   IconBox,
   Text,
 } from "@hudbird/ui";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from "framer-motion";
 import {
   Scan,
   Code2,
@@ -677,6 +677,33 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
   // Duplicate cards for seamless infinite rightward gliding
   const tickerCards = [...cards, ...cards];
 
+  const trackRef = React.useRef<HTMLDivElement>(null);
+  const x = useMotionValue(-1800);
+  const [halfWidth, setHalfWidth] = React.useState(1800);
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [isDragging, setIsDragging] = React.useState(false);
+
+  React.useEffect(() => {
+    if (trackRef.current) {
+      const half = trackRef.current.scrollWidth / 2;
+      if (half > 0) {
+        setHalfWidth(half);
+        x.set(-half);
+      }
+    }
+  }, []);
+
+  useAnimationFrame((_, delta) => {
+    if (isHovered || isDragging) return;
+    const current = x.get();
+    const next = current + delta * 0.038;
+    if (next >= 0) {
+      x.set(-halfWidth);
+    } else {
+      x.set(next);
+    }
+  });
+
   if (!active) return null;
 
   return (
@@ -731,14 +758,20 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
 
           {/* Draggable & Shopify Ticker Container */}
           <div
-            className="hb-features-ticker-wrapper group/features no-scrollbar cursor-grab overflow-x-auto overflow-y-hidden py-4 active:cursor-grabbing"
+            className="group/features no-scrollbar cursor-grab overflow-hidden py-4 select-none active:cursor-grabbing"
             aria-label="Features horizontal card carousel"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <motion.div
+              ref={trackRef}
+              style={{ x }}
               drag="x"
-              dragConstraints={{ left: -1400, right: 0 }}
-              dragElastic={0.1}
-              className="hb-features-ticker flex gap-5 sm:gap-6"
+              dragConstraints={{ left: -halfWidth * 1.5, right: 100 }}
+              dragElastic={0.08}
+              onDragStart={() => setIsDragging(true)}
+              onDragEnd={() => setIsDragging(false)}
+              className="flex w-max gap-5 will-change-transform sm:gap-6"
             >
               {tickerCards.map((card, idx) => {
                 const Icon = card.icon;

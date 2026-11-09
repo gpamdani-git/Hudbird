@@ -276,14 +276,14 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     ],
     variants: [
       {
+        id: "vertical",
+        name: "Visual steps",
+        description: "Sticky 3D paper-fold stacking cards with LlamaParse interactive flow.",
+      },
+      {
         id: "horizontal",
         name: "Horizontal steps",
         description: "A concise sequence with a shared product visual.",
-      },
-      {
-        id: "vertical",
-        name: "Visual steps",
-        description: "Walk through the sequence with a visual for each step.",
       },
     ],
   },
