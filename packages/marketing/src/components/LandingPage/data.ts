@@ -56,10 +56,10 @@ export const formaLandingContent: LandingSectionContent = {
     },
   },
   logos: {
-    title: "Built around a clear system.",
-    description: "A Hudbird brand demonstration. Replace this repeated mark with approved logos.",
-    items: ["Hudbird UI", "Hudbird Studio", "Hudbird Blocks", "Hudbird Builder"],
-    logo: { src: hudbirdMark, alt: "Hudbird mark" },
+    title: "Shaping the future of investment intelligence",
+    description: "Built around a clear system.",
+    items: ["Stripe", "Linear", "Supabase", "GitHub", "Vercel", "OpenAI", "Notion", "Figma"],
+    logo: { src: "/assets/logos/vercel.svg", alt: "Partner logo" },
   },
   benefits: {
     title: startupContent.benefitsTitle,
