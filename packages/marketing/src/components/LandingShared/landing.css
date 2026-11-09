@@ -80,6 +80,7 @@
   }
 }
 
+.hb-benefit-ticker,
 .hb-pilot .hb-benefit-ticker {
   display: flex;
   width: max-content;
@@ -87,6 +88,7 @@
   will-change: transform;
 }
 
+.hb-benefit-ticker-wrapper:hover .hb-benefit-ticker,
 .hb-pilot .hb-benefit-ticker-wrapper:hover .hb-benefit-ticker {
   animation-duration: 110s;
 }

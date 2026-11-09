@@ -217,8 +217,9 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     additionalVariants: [
       {
         id: "cards",
-        name: "Bordered outcome cards",
-        description: "Structured cards with index badges for each key outcome.",
+        name: "2x2 Outcome showcase",
+        description:
+          "Segmented role toggle with 2x2 interactive smartphone & floating outcome showcase cards.",
       },
     ],
   },
