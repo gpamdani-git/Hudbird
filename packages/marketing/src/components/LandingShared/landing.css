@@ -70,3 +70,23 @@
 .hb-pilot[data-landing-preview-type="navbar"]:has([aria-expanded="true"]) {
   min-height: 56rem;
 }
+
+@keyframes hbSlideRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hb-pilot .hb-benefit-ticker {
+  display: flex;
+  width: max-content;
+  animation: hbSlideRight 38s linear infinite;
+  will-change: transform;
+}
+
+.hb-pilot .hb-benefit-ticker-wrapper:hover .hb-benefit-ticker {
+  animation-duration: 110s;
+}
