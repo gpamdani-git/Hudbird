@@ -404,7 +404,7 @@ export function SplitIntroductionHero({
             </div>
 
             {/* Floating Social Proof Testimonial Card Protruding on Desktop (Compact Refined Badge) */}
-            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-6 sm:left-[-18px] sm:max-w-[250px]">
+            <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-[74px] sm:left-[-33px] sm:max-w-[250px]">
               <motion.div
                 key={activeIdx}
                 initial={{ opacity: 0, y: 12, scale: 0.96 }}
