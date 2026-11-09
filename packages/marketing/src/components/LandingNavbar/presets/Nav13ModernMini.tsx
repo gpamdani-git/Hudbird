@@ -339,13 +339,13 @@ export function Nav13ModernMini({
                       <a
                         href={content.action?.href ?? "#features"}
                         onClick={() => setIsMenuOpen(false)}
-                        className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-zinc-950 px-5 py-3 text-center text-sm font-semibold text-white shadow-sm transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-950"
+                        className="group hb-primary hb-cta relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-3 text-center text-sm font-semibold text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-sm transition-all hover:opacity-95 active:scale-95"
                       >
                         <span className="relative z-10 flex items-center gap-2">
                           <span>{content.action?.label || "See the demo"}</span>
                           <ArrowRight className="h-4 w-4" />
                         </span>
-                        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full dark:via-black/10" />
+                        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                       </a>
                     </div>
                   </motion.div>
@@ -373,13 +373,13 @@ export function Nav13ModernMini({
               {/* Main Pill CTA Button */}
               <a
                 href={content.action?.href ?? "#features"}
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-zinc-950 px-5 py-2.5 text-sm font-semibold tracking-tight text-white shadow-xs transition-all hover:bg-zinc-800 hover:shadow-md active:scale-95 sm:px-6 sm:py-2.5 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
+                className="group hb-primary hb-cta relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-2.5 text-sm font-semibold tracking-tight text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:py-2.5"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   <span>{content.action?.label || "See the demo"}</span>
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </span>
-                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full dark:via-black/10" />
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
               </a>
             </>
           )}

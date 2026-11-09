@@ -314,16 +314,19 @@ export function SplitIntroductionHero({
                       href={content.primaryAction?.href}
                       aria-label={content.primaryAction?.label || "Reserve My Spot"}
                       onClick={handleReserve}
-                      className="h-10 shrink-0 rounded-full bg-zinc-950 px-5 text-xs font-semibold tracking-tight text-white shadow-xs transition-all hover:bg-zinc-800 active:scale-[0.98] sm:px-6 sm:text-sm dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
+                      className="group hb-primary hb-cta relative h-10 shrink-0 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 text-xs font-semibold tracking-tight text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:text-sm"
                     >
                       {isSubmitted ? (
-                        <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-400 dark:text-emerald-600">
+                        <span className="relative z-10 inline-flex items-center gap-1.5 font-semibold">
                           <Check className="h-4 w-4" />
                           Reserved!
                         </span>
                       ) : (
-                        buttonLabel
+                        <span className="relative z-10 inline-flex items-center gap-1.5">
+                          {buttonLabel}
+                        </span>
                       )}
+                      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
                     </Button>
                   }
                 />

@@ -10,8 +10,9 @@ import {
   IconBox,
   MotionReveal,
 } from "@hudbird/ui";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import type { LandingAction, LandingMotionProfile, LandingSectionType } from "@hudbird/schemas";
+import { cn } from "../../utils/cn";
 import "./landing.css";
 export { BrandScope } from "../HeroSection";
 
@@ -167,23 +168,49 @@ export function LandingActionButton({
   fullWidth = false,
   size,
   className = "",
+  onClick,
 }: {
   action: LandingAction;
   secondary?: boolean;
   fullWidth?: boolean;
   size?: "sm" | "md" | "lg";
   className?: string;
+  onClick?: () => void;
 }) {
   const { hrefFor } = useLandingNavigation();
+  const href = hrefFor(action.href);
+
+  if (secondary) {
+    return (
+      <Button
+        href={href}
+        variant="outline"
+        size={size}
+        onClick={onClick}
+        className={cn("hb-secondary hb-radius", fullWidth && "w-full", className)}
+      >
+        {action.label}
+      </Button>
+    );
+  }
+
   return (
-    <Button
-      href={hrefFor(action.href)}
-      variant={secondary ? "outline" : "solid"}
-      size={size}
-      className={`${secondary ? "hb-secondary hb-radius" : "hb-primary hb-radius"}${fullWidth ? "w-full" : ""}${className ? ` ${className}` : ""}`}
+    <a
+      href={href}
+      onClick={onClick}
+      className={cn(
+        "group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-2.5 text-sm font-semibold tracking-tight text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:py-2.5",
+        "hb-primary hb-cta",
+        fullWidth && "w-full",
+        className
+      )}
     >
-      {action.label}
-    </Button>
+      <span className="relative z-10 flex items-center gap-2">
+        <span>{action.label}</span>
+        <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+      </span>
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+    </a>
   );
 }
 

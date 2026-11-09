@@ -167,13 +167,17 @@ export function NavbarDrawerContent({
       {/* Footer CTA Buttons */}
       <div className="mt-auto flex flex-col gap-2 border-t border-zinc-200/80 pt-4 dark:border-white/10">
         {action && (
-          <Button
+          <a
             href={action.href}
             onClick={onClose}
-            className="h-10 w-full justify-center text-xs font-semibold shadow-xs"
+            className="group hb-primary hb-cta relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-3 text-center text-sm font-semibold text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-sm transition-all hover:opacity-95 active:scale-95"
           >
-            {action.label}
-          </Button>
+            <span className="relative z-10 flex items-center gap-2">
+              <span>{action.label}</span>
+              <ArrowRight className="h-4 w-4" />
+            </span>
+            <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+          </a>
         )}
         <Button
           href="/docs"
