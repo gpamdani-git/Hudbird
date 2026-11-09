@@ -74,9 +74,11 @@ export type NavbarPresetId =
   | "nav-09"
   | "nav-10"
   | "nav-11"
-  | "nav-12";
+  | "nav-12"
+  | "nav-13";
 
-export type LegacyNavbarVariant = "simple" | "mega" | "centered" | "sidebar-1" | "sidebar-2";
+export type LegacyNavbarVariant =
+  "simple" | "mega" | "centered" | "sidebar-1" | "sidebar-2" | "modern-mini";
 
 export type NavbarVariant = NavbarPresetId | LegacyNavbarVariant;
 

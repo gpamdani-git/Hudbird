@@ -14,6 +14,7 @@ export interface NavbarScrollState {
   scrolled: boolean;
   hidden: boolean;
   scrollY: number;
+  scrollPercent: number;
 }
 
 export function useNavbarScroll({
@@ -28,6 +29,7 @@ export function useNavbarScroll({
   const [scrolled, setScrolled] = React.useState(false);
   const [hidden, setHidden] = React.useState(false);
   const [scrollY, setScrollY] = React.useState(0);
+  const [scrollPercent, setScrollPercent] = React.useState(0);
   const lastScrollY = React.useRef(0);
 
   React.useEffect(() => {
@@ -41,6 +43,14 @@ export function useNavbarScroll({
     const onScroll = () => {
       const currentY = Math.max(0, ownerWindow.scrollY);
       setScrollY(currentY);
+
+      const doc = ownerWindow.document.documentElement;
+      const scrollTotal = doc ? doc.scrollHeight - ownerWindow.innerHeight : 0;
+      const pct =
+        scrollTotal > 0
+          ? Math.min(100, Math.max(0, Math.round((currentY / scrollTotal) * 100)))
+          : 0;
+      setScrollPercent(pct);
 
       // Check elevation / border threshold
       const isPastThreshold = currentY > threshold;
@@ -93,5 +103,5 @@ export function useNavbarScroll({
     }
   }, [isMenuOpen]);
 
-  return { scrolled, hidden, scrollY };
+  return { scrolled, hidden, scrollY, scrollPercent };
 }

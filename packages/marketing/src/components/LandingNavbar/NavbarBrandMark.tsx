@@ -23,6 +23,8 @@ export function NavbarBrandMark({
   tag,
   className = "",
 }: NavbarBrandMarkProps) {
+  const [imgError, setImgError] = React.useState(false);
+
   if (brandContent) {
     return (
       <a
@@ -35,34 +37,57 @@ export function NavbarBrandMark({
   }
 
   const displayName = brand.name === "Forma" ? "Hudbird UI" : brand.name;
+  const isHudbird = displayName === "Hudbird UI";
 
   return (
     <a
       href={href}
       className={`group flex items-center gap-2.5 font-bold tracking-tight text-zinc-950 transition-all hover:opacity-90 dark:text-white ${className}`}
     >
-      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900 text-white shadow-xs transition-transform group-hover:scale-105 dark:bg-white dark:text-zinc-950">
-        {brand.logo?.src ? (
+      {isHudbird && !imgError ? (
+        <div className="flex items-center gap-2">
           <img
-            src={brand.logo.src}
-            alt={brand.logo.alt ?? displayName}
-            width={20}
-            height={20}
-            className="h-5 w-5 object-contain"
+            src="/assets/logo/hudbird-logo-black.png"
+            alt="Hudbird UI"
+            onError={() => setImgError(true)}
+            className="h-7 w-auto object-contain dark:hidden"
           />
-        ) : (
-          HUDBIRD_SVG_MARK
-        )}
-      </div>
+          <img
+            src="/assets/logo/hudbird-logo-white.png"
+            alt="Hudbird UI"
+            onError={() => setImgError(true)}
+            className="hidden h-7 w-auto object-contain dark:block"
+          />
+        </div>
+      ) : (
+        <>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900 text-white shadow-xs transition-transform group-hover:scale-105 dark:bg-white dark:text-zinc-950">
+            {brand.logo?.src && !imgError ? (
+              <img
+                src={brand.logo.src}
+                alt={brand.logo.alt ?? displayName}
+                width={20}
+                height={20}
+                onError={() => setImgError(true)}
+                className="h-5 w-5 object-contain"
+              />
+            ) : (
+              HUDBIRD_SVG_MARK
+            )}
+          </div>
 
-      <div className="flex items-center gap-1.5">
-        <span className="text-foreground text-base font-bold tracking-tight">{displayName}</span>
-        {tag && (
-          <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-zinc-600 uppercase dark:bg-white/10 dark:text-zinc-300">
-            {tag}
-          </span>
-        )}
-      </div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-foreground text-base font-bold tracking-tight">
+              {displayName}
+            </span>
+            {tag && (
+              <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-zinc-600 uppercase dark:bg-white/10 dark:text-zinc-300">
+                {tag}
+              </span>
+            )}
+          </div>
+        </>
+      )}
     </a>
   );
 }

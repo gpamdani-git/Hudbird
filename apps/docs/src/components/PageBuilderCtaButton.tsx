@@ -66,7 +66,7 @@ export const PageBuilderCtaButton: React.FC<PageBuilderCtaButtonProps> = ({ clas
         whileTap={{ scale: 0.95 }}
         title="Open Page Builder"
         aria-label="Open Page Builder"
-        className="group relative hidden h-9 w-[142px] cursor-pointer items-center overflow-hidden rounded-xl border border-black/[0.08] bg-white text-zinc-900 shadow-xs transition-all duration-300 select-none hover:border-indigo-500/30 hover:shadow-md hover:shadow-indigo-500/20 sm:inline-flex dark:border-white/15 dark:bg-[#131417] dark:text-white dark:hover:border-indigo-400/40"
+        className="group relative hidden h-9 w-[146px] cursor-pointer items-center overflow-hidden rounded-xl border border-black/[0.08] bg-white text-zinc-900 shadow-xs transition-all duration-300 select-none hover:border-indigo-500/30 hover:shadow-md hover:shadow-indigo-500/20 sm:inline-flex dark:border-white/15 dark:bg-[#131417] dark:text-white dark:hover:border-indigo-400/40"
       >
         {/* Expanding Background Gradient (Left-to-Right morph with Hudbird Brand Colors) */}
         <motion.div
@@ -83,21 +83,21 @@ export const PageBuilderCtaButton: React.FC<PageBuilderCtaButtonProps> = ({ clas
           }}
         />
 
-        {/* Rest State: Single Chevron inside left block */}
+        {/* Rest State: Single Chevron inside left block (aligned with gradient box + optical centering) */}
         <motion.div
-          className="pointer-events-none relative z-10 flex h-7 w-7 shrink-0 items-center justify-center"
+          className="pointer-events-none relative z-10 ml-1 flex h-7 w-7 shrink-0 items-center justify-center"
           animate={{
             opacity: isHovered ? 0 : 1,
             scale: isHovered ? 0.75 : 1,
           }}
           transition={{ duration: 0.16 }}
         >
-          <DotMatrixChevron dotFill="#FFFFFF" className="h-3.5 w-3" />
+          <DotMatrixChevron dotFill="#FFFFFF" className="h-3.5 w-3 translate-x-[0.5px]" />
         </motion.div>
 
-        {/* Rest State: "Page Builder" Text Label */}
+        {/* Rest State: "Page Builder" Text Label with generous, balanced gap */}
         <motion.span
-          className="pointer-events-none relative z-10 pr-2 pl-2 text-[12px] font-semibold tracking-tight whitespace-nowrap text-zinc-900 transition-colors dark:text-white"
+          className="pointer-events-none relative z-10 pr-3 pl-3.5 text-[12px] font-semibold tracking-tight whitespace-nowrap text-zinc-900 transition-colors dark:text-white"
           animate={{
             opacity: isHovered ? 0 : 1,
             x: isHovered ? 12 : 0,

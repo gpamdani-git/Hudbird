@@ -6,6 +6,7 @@ import { ThemeEditor } from "./components/theme-editor/ThemeEditor";
 import { ThemeEditorProvider } from "./components/theme-editor/ThemeEditorContext";
 import { TableOfContents } from "./components/TableOfContents";
 import { DocLoadingSkeleton } from "./components/DocLoadingSkeleton";
+import { RouteProgressBar } from "./components/RouteProgressBar";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { PageToolbar } from "./components/PageToolbar";
 import { DocsFooter } from "./components/DocsFooter";
@@ -169,9 +170,12 @@ export default function App() {
 
   if (location.pathname === "/") {
     return (
-      <Suspense fallback={<DocLoadingSkeleton />}>
-        <LandingPage />
-      </Suspense>
+      <>
+        <RouteProgressBar />
+        <Suspense fallback={<DocLoadingSkeleton />}>
+          <LandingPage />
+        </Suspense>
+      </>
     );
   }
 
@@ -181,46 +185,58 @@ export default function App() {
     location.pathname.startsWith("/builder")
   ) {
     return (
-      <Suspense fallback={<DocLoadingSkeleton />}>
-        <Routes>
-          <Route path="/marketing/landing-builder" element={<LandingBuilderDoc />} />
-          <Route path="/builder/*" element={<Navigate to="/marketing/landing-builder" replace />} />
-        </Routes>
-      </Suspense>
+      <>
+        <RouteProgressBar />
+        <Suspense fallback={<DocLoadingSkeleton />}>
+          <Routes>
+            <Route path="/marketing/landing-builder" element={<LandingBuilderDoc />} />
+            <Route
+              path="/builder/*"
+              element={<Navigate to="/marketing/landing-builder" replace />}
+            />
+          </Routes>
+        </Suspense>
+      </>
     );
   }
 
   if (location.pathname.startsWith("/demos/")) {
     return (
-      <Suspense fallback={<DocLoadingSkeleton />}>
-        <Routes>
-          <Route path="/demos/sidebar" element={<SidebarBorderedDemo />} />
-          <Route path="/demos/sidebar-flat" element={<SidebarFlatDemo />} />
-          <Route path="/demos/stacked" element={<StackedLayoutDemo />} />
-          <Route path="/demos/auth" element={<AuthLayoutDemo />} />
-        </Routes>
-      </Suspense>
+      <>
+        <RouteProgressBar />
+        <Suspense fallback={<DocLoadingSkeleton />}>
+          <Routes>
+            <Route path="/demos/sidebar" element={<SidebarBorderedDemo />} />
+            <Route path="/demos/sidebar-flat" element={<SidebarFlatDemo />} />
+            <Route path="/demos/stacked" element={<StackedLayoutDemo />} />
+            <Route path="/demos/auth" element={<AuthLayoutDemo />} />
+          </Routes>
+        </Suspense>
+      </>
     );
   }
 
   // Intercept template live previews (render without header/sidebar)
   if (location.pathname.startsWith("/templates/") && !location.pathname.endsWith("/detail")) {
     return (
-      <Suspense fallback={<DocLoadingSkeleton />}>
-        <Routes>
-          <Route path="/templates/startup-pilot" element={<StartupPilotPreview />} />
-          <Route path="/templates/saas-landing" element={<SaasLandingPreview />} />
-          <Route path="/templates/saas-launchpad" element={<SaaSTemplate />} />
-          <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
-          <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
+      <>
+        <RouteProgressBar />
+        <Suspense fallback={<DocLoadingSkeleton />}>
+          <Routes>
+            <Route path="/templates/startup-pilot" element={<StartupPilotPreview />} />
+            <Route path="/templates/saas-landing" element={<SaasLandingPreview />} />
+            <Route path="/templates/saas-launchpad" element={<SaaSTemplate />} />
+            <Route path="/templates/modern-app" element={<ModernAppTemplate />} />
+            <Route path="/templates/enterprise" element={<DigitalAgencyTemplate />} />
 
-          <Route path="/templates/ai-startup" element={<AiStartupTemplate />} />
-          <Route path="/templates/fintech" element={<FintechTemplate />} />
-          <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
-          <Route path="/templates/hospitality" element={<HospitalityTemplate />} />
-          <Route path="/templates/admin-cms" element={<AdminCmsTemplate />} />
-        </Routes>
-      </Suspense>
+            <Route path="/templates/ai-startup" element={<AiStartupTemplate />} />
+            <Route path="/templates/fintech" element={<FintechTemplate />} />
+            <Route path="/templates/ecommerce" element={<EcommerceTemplate />} />
+            <Route path="/templates/hospitality" element={<HospitalityTemplate />} />
+            <Route path="/templates/admin-cms" element={<AdminCmsTemplate />} />
+          </Routes>
+        </Suspense>
+      </>
     );
   }
 
@@ -243,6 +259,7 @@ export default function App() {
 
   return (
     <ThemeEditorProvider>
+      <RouteProgressBar />
       <div className="min-h-screen bg-white text-zinc-900 antialiased transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:bg-[#161618] dark:text-[#e5e5e5] dark:selection:bg-white dark:selection:text-[#161618]">
         {/* Subtle Ambient Surface Calibration */}
         <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-400/5 via-transparent to-transparent dark:from-transparent" />

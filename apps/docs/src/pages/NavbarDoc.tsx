@@ -82,7 +82,7 @@ export const navbarTocItems = [
 ];
 
 export default function NavbarDoc() {
-  const [selectedPreset, setSelectedPreset] = useState<NavbarPresetId>("nav-01");
+  const [selectedPreset, setSelectedPreset] = useState<NavbarPresetId>("nav-13");
   const [heroMenuOpen, setHeroMenuOpen] = useState(false);
   const [standardMenuOpen, setStandardMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("features");

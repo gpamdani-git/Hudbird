@@ -2,6 +2,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { cva, type VariantProps } from "class-variance-authority";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -580,7 +581,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
 
     // 2. LEFT SIDE DRAWER (Slide in from Left with dark backdrop)
     if (variant === "left") {
-      return (
+      const leftDrawerElement = (
         <AnimatePresence>
           {isMenuOpen && (
             <div
@@ -652,11 +653,16 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
           )}
         </AnimatePresence>
       );
+
+      if (!isContained && typeof document !== "undefined") {
+        return createPortal(leftDrawerElement, document.body);
+      }
+      return leftDrawerElement;
     }
 
     // 3. RIGHT SIDE DRAWER (Slide in from Right with dark backdrop)
     if (variant === "right") {
-      return (
+      const rightDrawerElement = (
         <AnimatePresence>
           {isMenuOpen && (
             <div
@@ -728,10 +734,15 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
           )}
         </AnimatePresence>
       );
+
+      if (!isContained && typeof document !== "undefined") {
+        return createPortal(rightDrawerElement, document.body);
+      }
+      return rightDrawerElement;
     }
 
     // 4. FULLSCREEN DRAMATIC MENU (100% overlay with bold typography & close button)
-    return (
+    const fullscreenElement = (
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -789,6 +800,11 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
         )}
       </AnimatePresence>
     );
+
+    if (!isContained && typeof document !== "undefined") {
+      return createPortal(fullscreenElement, document.body);
+    }
+    return fullscreenElement;
   }
 );
 NavbarMenu.displayName = "NavbarMenu";
@@ -851,11 +867,14 @@ const NavbarMegaMenu = React.forwardRef<HTMLDivElement, NavbarMegaMenuProps>(
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.99 }}
             transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className={cn("absolute top-full right-0 left-0 z-[9990] w-full pt-2", className)}
+            className={cn(
+              "absolute top-full right-0 left-0 z-[9990] w-full px-4 pt-3 sm:px-6",
+              className
+            )}
             onMouseLeave={onClose}
             {...(props as any)}
           >
-            <div className="mx-auto max-w-6xl rounded-2xl border border-black/[0.08] bg-white/95 p-6 shadow-2xl backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#161618]/95">
+            <div className="mx-auto max-w-6xl rounded-2xl border border-black/[0.08] bg-white/95 p-6 shadow-2xl backdrop-blur-2xl dark:border-white/[0.12] dark:bg-[#161618]/95">
               {children}
             </div>
           </motion.div>
@@ -895,7 +914,7 @@ const NavbarDropdownMenu = React.forwardRef<HTMLDivElement, NavbarDropdownMenuPr
             exit={{ opacity: 0, y: 6, scale: 0.96 }}
             transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
             className={cn(
-              "absolute top-full z-[9990] mt-2 min-w-[220px] rounded-xl border border-black/[0.08] bg-white/95 p-2 shadow-xl backdrop-blur-2xl dark:border-white/[0.08] dark:bg-[#161618]/95",
+              "absolute top-full z-[9990] mt-2.5 min-w-[280px] rounded-2xl border border-black/[0.08] bg-white/95 p-2 shadow-2xl backdrop-blur-2xl dark:border-white/[0.12] dark:bg-[#161618]/95",
               alignClasses[align],
               className
             )}

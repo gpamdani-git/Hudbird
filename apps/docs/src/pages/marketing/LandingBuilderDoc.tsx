@@ -46,11 +46,10 @@ import { IframePreview } from "../../components/IframePreview";
 import { LandingBrandControls } from "../../components/landing/LandingBrandControls";
 import { BlockVariantsInspector } from "../../components/landing/BlockVariantsInspector";
 import { SectionThumbnailCard } from "../../components/landing/SectionThumbnailCard";
-import { HudbirdIcon } from "../../components/HudbirdLogo";
 import changelogData from "../../data/changelog.json";
 import { useWebsiteMode } from "../../lib/useWebsiteMode";
 
-const storageKey = "hudbird-landing-builder:v1";
+const storageKey = "hudbird-landing-builder:v2";
 
 function restore() {
   try {
@@ -281,8 +280,8 @@ export default function LandingBuilderDoc() {
               : "-translate-x-[120%] lg:translate-x-0"
         }`}
       >
-        {/* Header / Logo & Version Badge */}
-        <div className="relative z-10 mb-3 flex items-center justify-between px-1 pt-1">
+        {/* Header / Logo & Version Badge (Spacious spacing matching docs sidebar) */}
+        <div className="relative z-10 mb-6 flex items-center justify-between px-2 pt-2 sm:mb-7">
           <NavLink
             to="/docs"
             className="flex items-center gap-2 overflow-hidden transition-opacity hover:opacity-80"
@@ -509,19 +508,36 @@ export default function LandingBuilderDoc() {
                 <PanelLeft className="h-4 w-4" />
               </button>
 
-              {/* Mobile Logo */}
-              <NavLink to="/docs" className="group flex items-center gap-2 lg:hidden">
-                <HudbirdIcon className="h-5 w-auto text-zinc-950 dark:text-white" />
-                <span className="text-base font-bold tracking-tight text-zinc-950 dark:text-white">
-                  hudbird
-                </span>
-              </NavLink>
+              {/* Header Brand & Breadcrumbs (Image 3 Reference: Logo + Divider + Breadcrumbs) */}
+              <div className="flex items-center gap-2.5 text-sm font-medium tracking-tight">
+                <NavLink
+                  to="/docs"
+                  className="flex items-center transition-opacity hover:opacity-80"
+                >
+                  <img
+                    src="/assets/logo/hudbird-logo-black.png"
+                    alt="Hudbird UI"
+                    className="h-4.5 w-auto object-contain dark:hidden"
+                  />
+                  <img
+                    src="/assets/logo/hudbird-logo-white.png"
+                    alt="Hudbird UI"
+                    className="hidden h-4.5 w-auto object-contain dark:block"
+                  />
+                </NavLink>
 
-              {/* Desktop Breadcrumbs */}
-              <div className="ml-1 hidden items-center gap-2 text-sm font-medium tracking-tight lg:flex">
-                <span className="text-zinc-500 dark:text-zinc-400">Marketing Sections</span>
-                <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
-                <span className="text-zinc-900 dark:text-zinc-100">Page Builder</span>
+                <span
+                  className="hidden font-light text-zinc-300 select-none sm:inline dark:text-zinc-700"
+                  aria-hidden="true"
+                >
+                  |
+                </span>
+
+                <div className="hidden items-center gap-2 sm:flex">
+                  <span className="text-zinc-500 dark:text-zinc-400">Marketing Sections</span>
+                  <ChevronRight className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-600" />
+                  <span className="text-zinc-900 dark:text-zinc-100">Page Builder</span>
+                </div>
               </div>
             </div>
 

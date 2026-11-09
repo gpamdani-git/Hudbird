@@ -165,17 +165,22 @@ export function LandingActionButton({
   action,
   secondary = false,
   fullWidth = false,
+  size,
+  className = "",
 }: {
   action: LandingAction;
   secondary?: boolean;
   fullWidth?: boolean;
+  size?: "sm" | "md" | "lg";
+  className?: string;
 }) {
   const { hrefFor } = useLandingNavigation();
   return (
     <Button
       href={hrefFor(action.href)}
       variant={secondary ? "outline" : "solid"}
-      className={`${secondary ? "hb-secondary hb-radius" : "hb-primary hb-radius"}${fullWidth ? "w-full" : ""}`}
+      size={size}
+      className={`${secondary ? "hb-secondary hb-radius" : "hb-primary hb-radius"}${fullWidth ? "w-full" : ""}${className ? ` ${className}` : ""}`}
     >
       {action.label}
     </Button>

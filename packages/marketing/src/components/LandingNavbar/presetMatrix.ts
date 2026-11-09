@@ -218,6 +218,24 @@ export const NAVBAR_PRESETS: Record<NavbarPresetId, NavbarPresetMeta> = {
       activeSection: true,
     },
   },
+  "nav-13": {
+    id: "nav-13",
+    name: "Modern Mini",
+    category: "creative",
+    description:
+      "Ultra-compact floating capsule with live scroll percentage indicator, quick dark/light theme switch, and spring modal dropdown.",
+    layout: "logo-left",
+    surface: "transparent",
+    capabilities: {
+      sticky: true,
+      scrollTransform: true,
+      hideOnScroll: false,
+      dropdown: true,
+      megaMenu: false,
+      mobileMode: "top",
+      activeSection: true,
+    },
+  },
 };
 
 export const LEGACY_NAVBAR_MAP: Record<string, NavbarPresetId> = {
@@ -226,10 +244,11 @@ export const LEGACY_NAVBAR_MAP: Record<string, NavbarPresetId> = {
   mega: "nav-03",
   "sidebar-1": "nav-06",
   "sidebar-2": "nav-05",
+  "modern-mini": "nav-13",
 };
 
 export function resolveNavbarPreset(variant?: NavbarVariant): NavbarPresetMeta {
-  if (!variant) return NAVBAR_PRESETS["nav-01"];
+  if (!variant) return NAVBAR_PRESETS["nav-13"];
   if (variant in NAVBAR_PRESETS) {
     return NAVBAR_PRESETS[variant as NavbarPresetId];
   }
@@ -237,5 +256,5 @@ export function resolveNavbarPreset(variant?: NavbarVariant): NavbarPresetMeta {
   if (mapped && mapped in NAVBAR_PRESETS) {
     return NAVBAR_PRESETS[mapped];
   }
-  return NAVBAR_PRESETS["nav-01"];
+  return NAVBAR_PRESETS["nav-13"];
 }

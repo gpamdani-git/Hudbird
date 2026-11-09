@@ -32,6 +32,16 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [mountNode, setMountNode] = useState<HTMLElement | null>(null);
   const [frameHeight, setFrameHeight] = useState<number>(minHeight || 600);
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    if (mountNode) {
+      const id = setTimeout(() => setIsReady(true), 120);
+      return () => clearTimeout(id);
+    } else {
+      setIsReady(false);
+    }
+  }, [mountNode]);
 
   const onPreviewClickRef = useRef(onPreviewClick);
   onPreviewClickRef.current = onPreviewClick;
@@ -62,6 +72,7 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
           <head>
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <base href="${window.location.origin}/" />
             <style>
               /* Base resets for preview frame with true dynamic height */
               html, body {
@@ -253,13 +264,38 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
   }, [scrollToSection]);
 
   return (
-    <iframe
-      ref={iframeRef}
-      title="Responsive Isolated Canvas"
-      style={{ height: `${frameHeight}px` }}
-      className={`block w-full border-0 bg-transparent ${className}`}
-    >
-      {mountNode && ReactDOM.createPortal(children, mountNode)}
-    </iframe>
+    <div className="relative w-full overflow-hidden">
+      {!isReady && (
+        <div
+          className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-zinc-50/90 py-12 backdrop-blur-xs transition-opacity duration-300 dark:bg-[#161618]/90"
+          style={{ minHeight: `${Math.max(minHeight, 140)}px` }}
+        >
+          <div className="relative flex items-center justify-center">
+            <div className="absolute h-9 w-9 animate-ping rounded-full bg-blue-500/25" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/[0.08] bg-white shadow-xs dark:border-white/10 dark:bg-zinc-900">
+              <svg
+                viewBox="0 0 81 123"
+                fill="currentColor"
+                className="h-5 w-auto animate-pulse text-zinc-900 dark:text-white"
+                aria-hidden="true"
+              >
+                <path d="M 11.5,0 A 11.5,11.5 0 0,1 23,11.5 L 23,44 C 25,38 36,35 48,35 C 64,35 80.5,45 80.5,65 L 80.5,111.5 A 11.25,11.25 0 0,1 58,111.5 L 58,65 C 58,57 50,53.5 40.5,53.5 C 31,53.5 23,58 23,67 L 23,111.5 A 11.5,11.5 0 0,1 0,111.5 L 0,11.5 A 11.5,11.5 0 0,1 11.5,0 Z" />
+              </svg>
+            </div>
+          </div>
+          <span className="mt-2.5 text-[11px] font-medium tracking-tight text-zinc-500 dark:text-zinc-400">
+            Rendering preview...
+          </span>
+        </div>
+      )}
+      <iframe
+        ref={iframeRef}
+        title="Responsive Isolated Canvas"
+        style={{ height: `${frameHeight}px` }}
+        className={`block w-full border-0 bg-transparent transition-opacity duration-300 ${!isReady ? "opacity-0" : "opacity-100"} ${className}`}
+      >
+        {mountNode && ReactDOM.createPortal(children, mountNode)}
+      </iframe>
+    </div>
   );
 };

@@ -40,7 +40,7 @@ export function Nav05CreativeAgency({
       ref={navbarRef as any}
       data-navbar-preset="nav-05"
       style={{
-        transform: hidden ? "translateY(-100%)" : "translateY(0)",
+        transform: hidden && !fullscreenOpen ? "translateY(-100%)" : "none",
         transition: "transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease",
       }}
       className={`fixed inset-x-0 top-0 z-40 w-full ${
@@ -49,6 +49,18 @@ export function Nav05CreativeAgency({
           : "border-b border-transparent bg-transparent"
       } ${className ?? ""}`}
     >
+      {/* Visually hidden accessible navigation for screen readers and SEO */}
+      <div className="sr-only">
+        <h2>Navigation Links</h2>
+        <ul>
+          {links.map((link) => (
+            <li key={link.label}>
+              <a href={linkHref(link)}>{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <Navbar
         position="static"
         styleVariant="transparent"

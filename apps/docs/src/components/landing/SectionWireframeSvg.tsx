@@ -16,6 +16,59 @@ export function SectionWireframeSvg({
   // 1. NAVBAR PRESETS
   if (type === "navbar") {
     switch (variant) {
+      case "nav-13":
+      case "modern-mini":
+        return (
+          <svg viewBox="0 0 160 36" fill="none" className={className}>
+            {/* Left Logo */}
+            <rect x="8" y="12" width="12" height="12" rx="3" fill="currentColor" />
+            <circle cx="14" cy="18" r="2" fill="#18181b" />
+            {/* Center Capsule */}
+            <rect
+              x="52"
+              y="9"
+              width="56"
+              height="18"
+              rx="9"
+              fill="#18181b"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeOpacity="0.3"
+            />
+            {/* Menu icon lines */}
+            <line
+              x1="59"
+              y1="16"
+              x2="65"
+              y2="16"
+              stroke="white"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+            <line
+              x1="59"
+              y1="20"
+              x2="65"
+              y2="20"
+              stroke="white"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+            <circle cx="78" cy="18" r="3" fill="white" fillOpacity="0.3" />
+            <rect x="87" y="14" width="15" height="8" rx="4" fill="white" fillOpacity="0.25" />
+            {/* Right User circle & CTA pill */}
+            <circle
+              cx="122"
+              cy="18"
+              r="5"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeOpacity="0.4"
+            />
+            <rect x="132" y="13" width="20" height="10" rx="5" fill="#3b82f6" />
+          </svg>
+        );
+
       case "nav-02": // SaaS Floating Pill
       case "centered":
         return (

@@ -31,9 +31,10 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     ],
     variants: [
       {
-        id: "simple",
-        name: "Simple navigation",
-        description: "Direct links with a compact mobile menu.",
+        id: "nav-13",
+        name: "Modern Mini",
+        description:
+          "Ultra-compact floating capsule with live scroll percentage indicator, quick dark/light theme switch, and spring modal dropdown.",
       },
       {
         id: "mega",
@@ -42,6 +43,11 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       },
     ],
     additionalVariants: [
+      {
+        id: "simple",
+        name: "Simple navigation",
+        description: "Direct links with a compact mobile menu.",
+      },
       {
         id: "nav-01",
         name: "NAV-01 — SaaS Classic",
@@ -134,14 +140,14 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     coreComponents: ["Section", "Container", "Grid", "Badge", "Heading", "Text", "Button", "Tabs"],
     variants: [
       {
-        id: "centered",
-        name: "Centered product",
-        description: "A focused headline above a wide product image.",
-      },
-      {
         id: "split",
         name: "Split introduction",
         description: "Balance product copy with a visual alongside it.",
+      },
+      {
+        id: "centered",
+        name: "Centered product",
+        description: "A focused headline above a wide product image.",
       },
       {
         id: "interactive",

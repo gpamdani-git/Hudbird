@@ -5,6 +5,9 @@ import { ArrowRight } from "lucide-react";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { ProductDemo } from "./ProductDemo";
 import { useBrandMode } from "./BrandScope";
+import { SplitIntroductionHero } from "./SplitIntroductionHero";
+
+export { SplitIntroductionHero, renderEditorialTitle } from "./SplitIntroductionHero";
 
 export interface HeroSectionProps {
   content: HeroContent;
@@ -263,20 +266,39 @@ export function HeroSection({ content, config, id, headingLevel = "h1" }: HeroSe
         </Container>
       </Section>
     );
-  return (
-    <Section id={id} spacing="lg" className="hb-section">
-      <Container size="xl" gutter="lg">
-        <Grid cols={2} gap="xl" align="center" className="[&>*]:min-w-0">
-          <HeroCopy content={content} headingLevel={headingLevel} />
-          {config.variant === "interactive" ? (
+  if (config.variant === "split") {
+    return (
+      <SplitIntroductionHero
+        content={content}
+        config={config}
+        id={id}
+        headingLevel={headingLevel}
+      />
+    );
+  }
+  if (config.variant === "interactive") {
+    return (
+      <Section id={id} spacing="lg" className="hb-section">
+        <Container size="xl" gutter="lg">
+          <Grid cols={2} gap="xl" align="center" className="[&>*]:min-w-0">
+            <HeroCopy content={content} headingLevel={headingLevel} />
             <ProductDemo tabs={config.tabs} />
-          ) : config.variant === "slideshow" ? (
+          </Grid>
+        </Container>
+      </Section>
+    );
+  }
+  if (config.variant === "slideshow") {
+    return (
+      <Section id={id} spacing="lg" className="hb-section">
+        <Container size="xl" gutter="lg">
+          <Grid cols={2} gap="xl" align="center" className="[&>*]:min-w-0">
+            <HeroCopy content={content} headingLevel={headingLevel} />
             <Slideshow slides={config.slides} />
-          ) : (
-            <HeroImageView image={config.image} />
-          )}
-        </Grid>
-      </Container>
-    </Section>
-  );
+          </Grid>
+        </Container>
+      </Section>
+    );
+  }
+  return null;
 }

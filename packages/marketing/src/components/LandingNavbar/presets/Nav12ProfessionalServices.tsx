@@ -97,20 +97,22 @@ export function Nav12ProfessionalServices({
               isOpen={practicesOpen}
               onClose={() => setPracticesOpen(false)}
               align="left"
-              className="w-64 p-3 shadow-lg"
+              className="w-72 p-2"
             >
               <div className="space-y-1">
                 <a
                   href="#corporate-law"
                   onClick={() => setPracticesOpen(false)}
-                  className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-zinc-100/80 dark:hover:bg-white/[0.06]"
                 >
-                  <Scale className="mt-0.5 h-4 w-4 text-zinc-600 dark:text-zinc-300" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-white group-hover:shadow-xs dark:bg-white/10 dark:text-zinc-200 dark:group-hover:bg-white/20">
+                    <Scale className="h-4 w-4" />
+                  </div>
                   <div>
                     <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                       M&A and Transactions
                     </div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <div className="mt-0.5 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
                       Cross-border financing and entity structure
                     </div>
                   </div>
@@ -118,14 +120,16 @@ export function Nav12ProfessionalServices({
                 <a
                   href="#advisory"
                   onClick={() => setPracticesOpen(false)}
-                  className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-zinc-100/80 dark:hover:bg-white/[0.06]"
                 >
-                  <Briefcase className="mt-0.5 h-4 w-4 text-zinc-600 dark:text-zinc-300" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-white group-hover:shadow-xs dark:bg-white/10 dark:text-zinc-200 dark:group-hover:bg-white/20">
+                    <Briefcase className="h-4 w-4" />
+                  </div>
                   <div>
                     <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                       Regulatory & Tax
                     </div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <div className="mt-0.5 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
                       Multi-jurisdictional compliance counsel
                     </div>
                   </div>

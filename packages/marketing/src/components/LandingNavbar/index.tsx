@@ -31,6 +31,7 @@ import { Nav09CorporateEnterprise } from "./presets/Nav09CorporateEnterprise";
 import { Nav10LuxuryHospitality } from "./presets/Nav10LuxuryHospitality";
 import { Nav11RestaurantFB } from "./presets/Nav11RestaurantFB";
 import { Nav12ProfessionalServices } from "./presets/Nav12ProfessionalServices";
+import { Nav13ModernMini } from "./presets/Nav13ModernMini";
 
 export * from "./types";
 export * from "./presetMatrix";
@@ -39,6 +40,7 @@ export * from "./useActiveSection";
 export * from "./NavbarContainer";
 export * from "./NavbarBrandMark";
 export * from "./NavbarDrawerContent";
+export * from "./presets/Nav13ModernMini";
 
 export function LandingNavbar({
   variant,
@@ -171,6 +173,16 @@ export function LandingNavbar({
       case "nav-12":
         return (
           <Nav12ProfessionalServices
+            brand={brand}
+            content={content}
+            brandContent={brandContent}
+            endContent={endContent}
+            customSettings={customSettings}
+          />
+        );
+      case "nav-13":
+        return (
+          <Nav13ModernMini
             brand={brand}
             content={content}
             brandContent={brandContent}

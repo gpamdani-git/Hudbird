@@ -98,20 +98,22 @@ export function Nav08CorporateClassic({
               isOpen={dropdownOpen}
               onClose={() => setDropdownOpen(false)}
               align="left"
-              className="w-64 p-3 shadow-lg"
+              className="w-72 p-2"
             >
               <div className="space-y-1">
                 <a
                   href={hrefFor("#features")}
                   onClick={() => setDropdownOpen(false)}
-                  className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-zinc-100/80 dark:hover:bg-white/[0.06]"
                 >
-                  <ShieldCheck className="mt-0.5 h-4 w-4 text-zinc-700 dark:text-zinc-300" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-white group-hover:shadow-xs dark:bg-white/10 dark:text-zinc-200 dark:group-hover:bg-white/20">
+                    <ShieldCheck className="h-4 w-4" />
+                  </div>
                   <div>
                     <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                       Enterprise Compliance
                     </div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <div className="mt-0.5 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
                       SOC2, ISO, and audit-ready infrastructure
                     </div>
                   </div>
@@ -119,14 +121,16 @@ export function Nav08CorporateClassic({
                 <a
                   href={hrefFor("#pricing")}
                   onClick={() => setDropdownOpen(false)}
-                  className="flex items-start gap-2.5 rounded-lg p-2 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                  className="group flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-zinc-100/80 dark:hover:bg-white/[0.06]"
                 >
-                  <Building2 className="mt-0.5 h-4 w-4 text-zinc-700 dark:text-zinc-300" />
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-white group-hover:shadow-xs dark:bg-white/10 dark:text-zinc-200 dark:group-hover:bg-white/20">
+                    <Building2 className="h-4 w-4" />
+                  </div>
                   <div>
                     <div className="text-xs font-semibold text-zinc-900 dark:text-zinc-100">
                       Volume Licensing
                     </div>
-                    <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <div className="mt-0.5 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-400">
                       Custom SLAs and dedicated clusters
                     </div>
                   </div>

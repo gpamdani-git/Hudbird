@@ -110,12 +110,15 @@ export interface InputProps
   endContent?: React.ReactNode;
   isClearable?: boolean;
   onClear?: () => void;
+  /** Optional custom class name applied directly to the inner input wrapper div */
+  wrapperClassName?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
+      wrapperClassName,
       variant = "flat",
       size = "md",
       inputSize,
@@ -206,6 +209,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
         {/* Input Interactive Box Container */}
         <div
+          data-slot="input-wrapper"
           className={cn(
             inputWrapperVariants({
               variant,
@@ -214,7 +218,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
               isInvalid,
               isDisabled: resolvedDisabled,
               labelPlacement,
-            })
+            }),
+            wrapperClassName
           )}
           onClick={() => innerInputRef.current?.focus()}
         >
