@@ -242,8 +242,8 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     variants: [
       {
         id: "tabs",
-        name: "Tabbed preview",
-        description: "Switch the feature explanation and its matching view.",
+        name: "Features horizontal card",
+        description: "Horizontal cards with smooth Shopify-style glide, drag, and morphing hover.",
       },
       {
         id: "accordion",
