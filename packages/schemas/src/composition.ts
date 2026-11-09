@@ -111,7 +111,7 @@ export interface LandingVariantMap {
   features: "tabs" | "accordion" | "split";
   "how-it-works": "horizontal" | "vertical";
   integrations: "grid" | "grouped";
-  testimonials: "featured" | "collection";
+  testimonials: "single" | "featured" | "collection";
   pricing: "cards" | "comparison" | "highlight";
   faq: "single" | "grouped" | "columns";
   cta: "centered" | "split" | "banner";

@@ -327,19 +327,31 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       "Avatar",
       "Card",
       "CardBody",
+      "Button",
       "Text",
       "Heading",
+      "Divider",
     ],
     variants: [
       {
-        id: "featured",
-        name: "Featured quotation",
-        description: "Let one considered quotation lead the section.",
+        id: "single",
+        name: "Single card testimonial",
+        description:
+          "1-column centered card with 5 auto-sliding quotes, author navigation, and big metric stats.",
       },
       {
         id: "collection",
-        name: "Quotation collection",
-        description: "Present several short perspectives with their context.",
+        name: "Quotation cards & video",
+        description:
+          "Horizontal showcase of reviews with integrated video testimonial and author badges.",
+      },
+    ],
+    additionalVariants: [
+      {
+        id: "featured",
+        name: "Featured video story",
+        description:
+          "Split spotlight story with Pexels photography, playable video modal, and ratings.",
       },
     ],
   },

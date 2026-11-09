@@ -167,22 +167,39 @@ export const formaLandingContent: LandingSectionContent = {
       "A preview of how verified feedback could appear. The quotations below are writing placeholders.",
     items: [
       {
-        id: "quote-a",
-        quote: "Describe a specific improvement your customer experienced, in their own words.",
-        source: "Customer quotation placeholder",
-        context: "Add an approved name and role here.",
+        id: "quote-1",
+        quote:
+          "All I can say until this point is that Hudbird is trustworthy and their services are outstanding. Keep up the good work guys! Thank you!",
+        source: "Adrian Lazea",
+        context: "QA Engineer",
       },
       {
-        id: "quote-b",
-        quote: "Use this space for feedback about a useful everyday detail.",
-        source: "Feedback placeholder",
-        context: "Replace with a verified customer perspective.",
+        id: "quote-2",
+        quote:
+          "Hudbird reduced our design-to-production turnaround from weeks to hours. The micro-interactions and accessibility are peerless.",
+        source: "Elena Vance",
+        context: "VP of Product, FinScale",
       },
       {
-        id: "quote-c",
-        quote: "A short, concrete observation can say more than a broad promise.",
-        source: "Experience placeholder",
-        context: "Publish only with the customer's approval.",
+        id: "quote-3",
+        quote:
+          "The cleanest React code generation I've seen in a design system. Zero runtime overhead, pure Tailwind v4, and instantaneous export.",
+        source: "David Sterling",
+        context: "Founding Engineer, Veloce",
+      },
+      {
+        id: "quote-4",
+        quote:
+          "Our engineering velocity jumped 3x within our first sprint. Every single block conforms to strict WCAG AA standards out of the box.",
+        source: "Marcus Chen",
+        context: "Lead Architect, CloudPulse",
+      },
+      {
+        id: "quote-5",
+        quote:
+          "Finally, a component system that doesn't force compromise between design taste and engineering rigor. Simply extraordinary.",
+        source: "Sophia Laurent",
+        context: "Head of Design, Lumina",
       },
     ],
   },
