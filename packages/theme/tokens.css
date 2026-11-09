@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Hudbird UI — World-Class Design Tokens (Tailwind CSS v4 CSS-First @theme)
+   Precision-engineered OKLCH colors, fluid typography, spring motion,
+   and dark-mode specular elevation.
+   ========================================================================== */
+
+@theme {
+  /* ========================================================================
+     1. TYPOGRAPHY TOKENS
+     ======================================================================== */
+  --font-sans:
+    var(--theme-font-sans, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
+    sans-serif;
+  --font-heading:
+    var(--theme-font-heading, "Outfit"), var(--theme-font-sans, "Inter"), -apple-system,
+    BlinkMacSystemFont, ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--theme-font-display, "Outfit"), var(--theme-font-sans, "Inter"), -apple-system,
+    BlinkMacSystemFont, ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    var(--theme-font-mono, "JetBrains Mono"), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+
+  /* Fluid Display Scales (Clamp based) */
+  --text-display-2xl: clamp(2.5rem, 5vw, 4.5rem);
+  --text-display-2xl--line-height: 1.1;
+  --text-display-2xl--letter-spacing: -0.025em;
+
+  --text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-display-xl--line-height: 1.15;
+  --text-display-xl--letter-spacing: -0.022em;
+
+  --text-display-lg: clamp(1.75rem, 3.2vw, 2.5rem);
+  --text-display-lg--line-height: 1.2;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --text-display-md: clamp(1.5rem, 2.5vw, 2rem);
+  --text-display-md--line-height: 1.25;
+  --text-display-md--letter-spacing: -0.018em;
+
+  --text-display-sm: 1.25rem;
+  --text-display-sm--line-height: 1.35;
+  --text-display-sm--letter-spacing: -0.015em;
+
+  /* Body Scales */
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.5;
+
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.6;
+
+  --text-base: 1rem;
+  --text-base--line-height: 1.5;
+
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.45;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+
+  /* ========================================================================
+     2. MOTION & TRANSITION TOKENS
+     ======================================================================== */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-deliberate: 600ms;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  --transition-fast: all var(--duration-fast) var(--ease-spring);
+  --transition-normal: all var(--duration-normal) var(--ease-spring);
+  --transition-slow: all var(--duration-slow) var(--ease-spring);
+
+  /* Keyframe Animations */
+  --animate-shimmer: shimmer 2s infinite linear;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  /* ========================================================================
+     3. RADIUS & ELEVATION TOKENS
+     ======================================================================== */
+  --radius: var(--theme-radius, 0.625rem);
+  --radius-xs: calc(var(--theme-radius, 0.625rem) - 6px);
+  --radius-sm: calc(var(--theme-radius, 0.625rem) - 4px);
+  --radius-md: calc(var(--theme-radius, 0.625rem) - 2px);
+  --radius-lg: var(--theme-radius, 0.625rem);
+  --radius-xl: calc(var(--theme-radius, 0.625rem) + 4px);
+  --radius-2xl: calc(var(--theme-radius, 0.625rem) + 8px);
+  --radius-3xl: calc(var(--theme-radius, 0.625rem) + 14px);
+  --radius-full: 9999px;
+
+  /* Shadows (Light default) */
+  --shadow-2xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(16, 24, 40, 0.1), 0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(16, 24, 40, 0.1), 0 4px 6px -4px rgba(16, 24, 40, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(16, 24, 40, 0.1), 0 8px 10px -6px rgba(16, 24, 40, 0.05);
+  --shadow-2xl: 0 25px 50px -12px rgba(16, 24, 40, 0.25);
+  --shadow-skeuomorphic:
+    0 1px 2px rgba(16, 24, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 0 0 1px rgba(16, 24, 40, 0.12);
+
+  /* ========================================================================
+     4. OKLCH PERCEPTION-CALIBRATED COLOR SCALES
+     ======================================================================== */
+  /* Primary Scale (Indigo H: 276, C: 0.26) */
+  --color-primary-50: oklch(0.96 calc(var(--primary-c, 0.26) * 0.35) var(--primary-h, 276));
+  --color-primary-100: oklch(0.92 calc(var(--primary-c, 0.26) * 0.5) var(--primary-h, 276));
+  --color-primary-200: oklch(0.88 calc(var(--primary-c, 0.26) * 0.65) var(--primary-h, 276));
+  --color-primary-300: oklch(0.8 calc(var(--primary-c, 0.26) * 0.8) var(--primary-h, 276));
+  --color-primary-400: oklch(0.7 calc(var(--primary-c, 0.26) * 0.9) var(--primary-h, 276));
+  --color-primary-500: oklch(0.6 calc(var(--primary-c, 0.26) * 0.95) var(--primary-h, 276));
+  --color-primary-600: oklch(0.53 calc(var(--primary-c, 0.26) * 1) var(--primary-h, 276));
+  --color-primary-700: oklch(0.44 calc(var(--primary-c, 0.26) * 0.85) var(--primary-h, 276));
+  --color-primary-800: oklch(0.35 calc(var(--primary-c, 0.26) * 0.65) var(--primary-h, 276));
+  --color-primary-900: oklch(0.26 calc(var(--primary-c, 0.26) * 0.5) var(--primary-h, 276));
+  --color-primary-950: oklch(0.18 calc(var(--primary-c, 0.26) * 0.35) var(--primary-h, 276));
+
+  /* Secondary Scale (Slate H: 240, C: 0.04) */
+  --color-secondary-50: oklch(0.96 calc(var(--secondary-c, 0.04) * 0.35) var(--secondary-h, 240));
+  --color-secondary-100: oklch(0.92 calc(var(--secondary-c, 0.04) * 0.5) var(--secondary-h, 240));
+  --color-secondary-200: oklch(0.88 calc(var(--secondary-c, 0.04) * 0.65) var(--secondary-h, 240));
+  --color-secondary-300: oklch(0.8 calc(var(--secondary-c, 0.04) * 0.8) var(--secondary-h, 240));
+  --color-secondary-400: oklch(0.7 calc(var(--secondary-c, 0.04) * 0.9) var(--secondary-h, 240));
+  --color-secondary-500: oklch(0.6 calc(var(--secondary-c, 0.04) * 0.95) var(--secondary-h, 240));
+  --color-secondary-600: oklch(0.53 calc(var(--secondary-c, 0.04) * 1) var(--secondary-h, 240));
+  --color-secondary-700: oklch(0.44 calc(var(--secondary-c, 0.04) * 0.85) var(--secondary-h, 240));
+  --color-secondary-800: oklch(0.35 calc(var(--secondary-c, 0.04) * 0.65) var(--secondary-h, 240));
+  --color-secondary-900: oklch(0.26 calc(var(--secondary-c, 0.04) * 0.5) var(--secondary-h, 240));
+  --color-secondary-950: oklch(0.18 calc(var(--secondary-c, 0.04) * 0.35) var(--secondary-h, 240));
+
+  /* Semantic Semantic State Colors (OKLCH) */
+  --color-success-50: oklch(0.96 0.06 150);
+  --color-success-500: oklch(0.6 0.17 150);
+  --color-success-600: oklch(0.53 0.18 150);
+  --color-success-700: oklch(0.44 0.15 150);
+
+  --color-warning-50: oklch(0.96 0.06 70);
+  --color-warning-500: oklch(0.6 0.17 70);
+  --color-warning-600: oklch(0.53 0.18 70);
+  --color-warning-700: oklch(0.44 0.15 70);
+
+  --color-danger-50: oklch(0.96 0.07 20);
+  --color-danger-500: oklch(0.6 0.19 20);
+  --color-danger-600: oklch(0.53 0.2 20);
+  --color-danger-700: oklch(0.44 0.17 20);
+
+  --color-info-50: oklch(0.96 0.06 240);
+  --color-info-500: oklch(0.6 0.17 240);
+  --color-info-600: oklch(0.53 0.18 240);
+  --color-info-700: oklch(0.44 0.15 240);
+
+  /* Semantic Surface Mappings (Light default) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+
+  --color-primary: var(--color-primary-600);
+  --color-primary-hover: var(--color-primary-700);
+  --color-primary-active: var(--color-primary-800);
+  --color-primary-foreground: oklch(1 0 0);
+
+  --color-secondary: var(--color-secondary-600);
+  --color-secondary-hover: var(--color-secondary-700);
+  --color-secondary-active: var(--color-secondary-800);
+  --color-secondary-foreground: oklch(0.15 0 0);
+}
+
+/* ==========================================================================
+   5. BASE LAYER & DARK MODE TOKENS (WITH SPECULAR HIGHLIGHTS)
+   ========================================================================== */
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #18181b;
+    --card: #ffffff;
+    --card-foreground: #18181b;
+    --popover: #ffffff;
+    --popover-foreground: #18181b;
+    --border: #e4e4e7;
+    --input: #e4e4e7;
+    --muted: #f9fafb;
+    --muted-foreground: #52525b;
+
+    /* Section Spacing Tokens */
+    --hb-section-spacing: clamp(4.5rem, 7vw, 6rem);
+    --hb-section-spacing-compact: clamp(3.5rem, 6vw, 5rem);
+    --hb-container-gutter: 1.5rem;
+
+    /* Shimmer keyframes */
+    @keyframes shimmer {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  .dark {
+    --background: #0c0d10;
+    --foreground: #f4f4f6;
+    --card: #14151a;
+    --card-foreground: #f4f4f6;
+    --popover: #18181d;
+    --popover-foreground: #f4f4f6;
+    --border: #27272a;
+    --input: #27272a;
+    --muted: #14151a;
+    --muted-foreground: #a1a1aa;
+
+    /* Primary Semantic Mappings in Dark */
+    --color-primary: var(--color-primary-500);
+    --color-primary-hover: var(--color-primary-600);
+    --color-primary-active: var(--color-primary-700);
+
+    /* Dark Mode Specular Shadows */
+    --shadow-2xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-xs: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-md: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 8px rgba(0, 0, 0, 0.6);
+    --shadow-lg: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 16px rgba(0, 0, 0, 0.6);
+    --shadow-xl: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 12px 24px rgba(0, 0, 0, 0.7);
+    --shadow-2xl: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 48px rgba(0, 0, 0, 0.8);
+    --shadow-skeuomorphic:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 1px 3px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    /* Google Stitch & Obsidian Core Variables */
+    --stitch-canvas: #0c0d10;
+    --stitch-surface: #14151a;
+    --stitch-border: #27272a;
+    --stitch-prose: #f4f4f6;
+    --stitch-muted: #a1a1aa;
+    --hudbird-brand: #818cf8;
+  }
+}

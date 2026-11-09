@@ -227,9 +227,26 @@ export const ThemeEditorProvider: React.FC<{ children: React.ReactNode }> = ({ c
     theme += `  --radius-2xl: calc(${activeRadius}rem + 8px);\n`;
     theme += `  --radius-3xl: calc(${activeRadius}rem + 12px);\n\n`;
 
-    theme += `  /* Typography */\n`;
+    theme += `  /* Typography & Fluid Scales */\n`;
     theme += `  --font-sans: "${activeFontSans}", sans-serif;\n`;
     theme += `  --font-heading: "${activeFontHeading}", sans-serif;\n`;
+    theme += `  --font-display: "${activeFontHeading}", sans-serif;\n`;
+    theme += `  --text-display-2xl: clamp(2.5rem, 5vw, 4.5rem);\n`;
+    theme += `  --text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);\n`;
+    theme += `  --text-display-lg: clamp(1.75rem, 3.2vw, 2.5rem);\n`;
+    theme += `  --text-display-md: clamp(1.5rem, 2.5vw, 2rem);\n`;
+    theme += `  --text-display-sm: 1.25rem;\n\n`;
+
+    theme += `  /* Standard Motion Tokens */\n`;
+    theme += `  --duration-fast: 150ms;\n`;
+    theme += `  --duration-normal: 250ms;\n`;
+    theme += `  --duration-slow: 400ms;\n`;
+    theme += `  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);\n`;
+    theme += `  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);\n\n`;
+
+    theme += `  /* Section Rhythm & Elevation */\n`;
+    theme += `  --hb-section-spacing: clamp(4.5rem, 7vw, 6rem);\n`;
+    theme += `  --shadow-skeuomorphic: 0 1px 2px rgba(16, 24, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(16, 24, 40, 0.12);\n`;
     theme += `}\n`;
 
     return theme;

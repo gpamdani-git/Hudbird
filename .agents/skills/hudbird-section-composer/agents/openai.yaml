@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hudbird Section Composer"
+  short_description: "Compose mobile-first sections from Hudbird core"
+  default_prompt: "Use $hudbird-section-composer to translate one visual reference into a mobile-first Hudbird block or section."

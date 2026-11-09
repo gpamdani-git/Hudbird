@@ -29,8 +29,46 @@
     var(--theme-font-heading, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
     sans-serif;
   --font-outfit:
-    var(--theme-font-heading, "Inter"), -apple-system, BlinkMacSystemFont, ui-sans-serif, system-ui,
-    sans-serif;
+    var(--theme-font-heading, "Outfit"), var(--theme-font-sans, "Inter"), -apple-system,
+    BlinkMacSystemFont, ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid Display Typography Scale */
+  --text-display-2xl: clamp(2.5rem, 5vw, 4.5rem);
+  --text-display-2xl--line-height: 1.1;
+  --text-display-2xl--letter-spacing: -0.025em;
+
+  --text-display-xl: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-display-xl--line-height: 1.15;
+  --text-display-xl--letter-spacing: -0.022em;
+
+  --text-display-lg: clamp(1.75rem, 3.2vw, 2.5rem);
+  --text-display-lg--line-height: 1.2;
+  --text-display-lg--letter-spacing: -0.02em;
+
+  --text-display-md: clamp(1.5rem, 2.5vw, 2rem);
+  --text-display-md--line-height: 1.25;
+  --text-display-md--letter-spacing: -0.018em;
+
+  --text-display-sm: 1.25rem;
+  --text-display-sm--line-height: 1.35;
+  --text-display-sm--letter-spacing: -0.015em;
+
+  /* Standard Motion Tokens */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-deliberate: 600ms;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Shadows (Light defaults) */
+  --shadow-2xs: 0 1px 2px rgba(16, 24, 40, 0.04);
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-skeuomorphic:
+    0 1px 2px rgba(16, 24, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 0 0 0 1px rgba(16, 24, 40, 0.12);
 
   /* Semantic Fallback Mappings */
   --color-primary: var(--color-primary-600);
@@ -222,6 +260,18 @@
     --hudbird-brand: #818cf8;
     --stitch-prose: #e5e5e5;
     --stitch-muted: #828282;
+
+    /* Dark Mode Specular Shadows */
+    --shadow-2xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-xs: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-skeuomorphic:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 1px 3px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    /* Section Spacing Tokens */
+    --hb-section-spacing: clamp(4.5rem, 7vw, 6rem);
+    --hb-section-spacing-compact: clamp(3.5rem, 6vw, 5rem);
+    --hb-container-gutter: 1.5rem;
   }
 
   /* Zinc (h=0) */

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hudbird Core Component"
+  short_description: "Build focused, accessible Hudbird primitives"
+  default_prompt: "Use $hudbird-core-component to build or refine one Hudbird core UI component with focused verification."

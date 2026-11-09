@@ -1,6 +1,16 @@
 "use client";
 import * as React from "react";
-import { Section, Container, Heading, Text, Button, MotionReveal } from "@hudbird/ui";
+import {
+  Section,
+  Container,
+  Heading,
+  Text,
+  Button,
+  Badge,
+  IconBox,
+  MotionReveal,
+} from "@hudbird/ui";
+import { Check } from "lucide-react";
 import type { LandingAction, LandingMotionProfile, LandingSectionType } from "@hudbird/schemas";
 import "./landing.css";
 export { BrandScope } from "../HeroSection";
@@ -51,6 +61,8 @@ export function useLandingMode(): "light" | "dark" {
   );
 }
 
+const alternatingSections = new Set<string>(["benefits", "how-it-works", "testimonials", "faq"]);
+
 export function LandingFrame({
   id,
   as,
@@ -62,16 +74,26 @@ export function LandingFrame({
   children: React.ReactNode;
   compact?: boolean;
 }) {
+  const isAlt = alternatingSections.has(id);
+  const isNavbar = id === "navbar";
   return (
     <Section
       as={as}
       id={id}
       data-landing-section={id}
-      spacing={compact ? "sm" : "lg"}
-      bordered={id === "navbar" ? "bottom" : "top"}
-      className={compact ? undefined : "hb-section"}
+      spacing={isNavbar ? "none" : compact ? "sm" : "lg"}
+      bordered={isNavbar ? false : "top"}
+      className={
+        isNavbar
+          ? "hb-navbar-frame z-40 bg-transparent"
+          : compact
+            ? undefined
+            : isAlt
+              ? "hb-section bg-zinc-50/55 dark:bg-white/[0.015]"
+              : "hb-section"
+      }
     >
-      <Container size="xl" gutter="lg">
+      <Container size={isNavbar ? "fluid" : "xl"} gutter={isNavbar ? "none" : "lg"}>
         {id === "navbar" || id === "footer" ? children : <LandingReveal>{children}</LandingReveal>}
       </Container>
     </Section>
@@ -81,21 +103,39 @@ export function LandingFrame({
 export function LandingHeading({
   title,
   description,
+  eyebrow,
   centered = false,
 }: {
   title: string;
   description?: string;
+  eyebrow?: string;
   centered?: boolean;
 }) {
   return (
     <div
-      className={centered ? "mb-14 text-center [&>h2]:mx-auto [&>p]:mx-auto" : "mb-14 max-w-3xl"}
+      className={
+        centered
+          ? "mb-12 text-center sm:mb-16 [&>h2]:mx-auto [&>p]:mx-auto"
+          : "mb-12 max-w-3xl sm:mb-16"
+      }
     >
-      <Heading as="h2" className="hb-subheading max-w-[25ch] text-balance">
+      {eyebrow && (
+        <div className={centered ? "mb-3.5 flex justify-center" : "mb-3.5 flex items-center"}>
+          <Badge variant="modern" size="sm" className="gap-1.5 px-2.5 py-1 text-xs font-semibold">
+            <span
+              className="inline-block h-2 w-2 shrink-0 rounded-full"
+              style={{ backgroundColor: "var(--hb-accent)" }}
+              aria-hidden="true"
+            />
+            {eyebrow}
+          </Badge>
+        </div>
+      )}
+      <Heading as="h2" className="hb-subheading max-w-[26ch] text-balance">
         {title}
       </Heading>
       {description && (
-        <Text className="text-muted-foreground mt-5 max-w-[58ch] leading-relaxed">
+        <Text className="text-muted-foreground mt-4 max-w-[60ch] text-base leading-relaxed sm:mt-5 sm:text-lg">
           {description}
         </Text>
       )}
@@ -103,19 +143,39 @@ export function LandingHeading({
   );
 }
 
+export function LandingCheckItem({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-3">
+      <IconBox
+        size="xs"
+        variant="double-ring"
+        icon={Check}
+        showGlow={false}
+        className="mt-0.5 shrink-0"
+        aria-hidden="true"
+      />
+      <Text as="span" className="text-muted-foreground text-sm leading-relaxed sm:text-base">
+        {children}
+      </Text>
+    </li>
+  );
+}
+
 export function LandingActionButton({
   action,
   secondary = false,
+  fullWidth = false,
 }: {
   action: LandingAction;
   secondary?: boolean;
+  fullWidth?: boolean;
 }) {
   const { hrefFor } = useLandingNavigation();
   return (
     <Button
       href={hrefFor(action.href)}
       variant={secondary ? "outline" : "solid"}
-      className={secondary ? "hb-secondary hb-radius" : "hb-primary hb-radius"}
+      className={`${secondary ? "hb-secondary hb-radius" : "hb-primary hb-radius"}${fullWidth ? "w-full" : ""}`}
     >
       {action.label}
     </Button>
@@ -128,7 +188,7 @@ export function LandingDemoNote({
   children?: React.ReactNode;
 }) {
   return (
-    <Text variant="small" className="text-muted-foreground mt-6">
+    <Text variant="small" className="text-muted-foreground mt-8 opacity-80">
       {children}
     </Text>
   );

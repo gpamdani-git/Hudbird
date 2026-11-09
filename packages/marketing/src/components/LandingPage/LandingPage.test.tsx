@@ -43,7 +43,7 @@ describe("SaaS landing collection", () => {
     ).toBe(27);
     expect(new Set(landingSectionRegistry.map((section) => section.type)).size).toBe(12);
     for (const definition of landingSectionRegistry)
-      for (const variant of definition.variants) {
+      for (const variant of [...definition.variants, ...(definition.additionalVariants ?? [])]) {
         const view = render(
           <LandingSectionPreview
             selection={
@@ -145,7 +145,9 @@ describe("SaaS landing collection", () => {
       enabled: section.type !== "hero",
     }));
     render(<SaasLandingPage config={config} content={formaLandingContent} />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Forma product overview");
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      `${config.brand.name} product overview`
+    );
   });
 
   it("updates matching visuals with tabs and accordion feature selection", () => {

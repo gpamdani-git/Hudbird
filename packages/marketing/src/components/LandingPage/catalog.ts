@@ -20,7 +20,15 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "navbar",
     title: "Navbar",
     description: "Give visitors a clear route through your page.",
-    coreComponents: ["Section", "Container", "Navbar", "NavbarMegaMenu", "Button", "Grid"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Navbar",
+      "NavbarMegaMenu",
+      "IconBox",
+      "Button",
+      "Grid",
+    ],
     variants: [
       {
         id: "simple",
@@ -33,12 +41,97 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Group product links with short descriptions.",
       },
     ],
+    additionalVariants: [
+      {
+        id: "nav-01",
+        name: "NAV-01 — SaaS Classic",
+        description: "Left logo, centered navigation links, and right conversion CTA.",
+      },
+      {
+        id: "nav-02",
+        name: "NAV-02 — SaaS Floating",
+        description:
+          "Floating rounded pill navbar with backdrop glassmorphism and hide/reveal on scroll.",
+      },
+      {
+        id: "nav-03",
+        name: "NAV-03 — SaaS Platform",
+        description:
+          "Modern platform header with multi-column rich mega menu and featured customer card.",
+      },
+      {
+        id: "nav-04",
+        name: "NAV-04 — Startup Launch",
+        description: "Centered brand wordmark with symmetrical split navigation links.",
+      },
+      {
+        id: "nav-05",
+        name: "NAV-05 — Creative Agency",
+        description:
+          "Bold editorial layout with right menu trigger and immersive fullscreen overlay.",
+      },
+      {
+        id: "nav-06",
+        name: "NAV-06 — Creative Studio",
+        description: "Asymmetric typographic navigation with right-aligned logo and left links.",
+      },
+      {
+        id: "nav-07",
+        name: "NAV-07 — Portfolio",
+        description: "Cinematic minimal header with subtle centered branding and split links.",
+      },
+      {
+        id: "nav-08",
+        name: "NAV-08 — Corporate Classic",
+        description:
+          "Restrained corporate header with disclosure dropdown submenu and enterprise CTA.",
+      },
+      {
+        id: "nav-09",
+        name: "NAV-09 — Corporate Enterprise",
+        description:
+          "Dense two-row header with top utility row and primary sticky row with mega menu.",
+      },
+      {
+        id: "nav-10",
+        name: "NAV-10 — Luxury Hospitality",
+        description:
+          "High-contrast hero overlay header with centered serif typography and booking action.",
+      },
+      {
+        id: "nav-11",
+        name: "NAV-11 — Restaurant & F&B",
+        description:
+          "Warm brand-first header with reservation CTA and smooth color change on scroll.",
+      },
+      {
+        id: "nav-12",
+        name: "NAV-12 — Professional Services",
+        description:
+          "Refined geometric corporate header with right-anchored wordmark and dropdown.",
+      },
+      {
+        id: "centered",
+        name: "Centered pill bar",
+        description: "Floating centered navigation pill with action button.",
+      },
+      {
+        id: "sidebar-1",
+        name: "Sidebar 1 — Compact rail",
+        description: "Left rail navigation header with slide-out section drawer.",
+      },
+      {
+        id: "sidebar-2",
+        name: "Sidebar 2 — Command drawer",
+        description: "Minimal top bar with full-height sidebar navigation drawer.",
+      },
+    ],
   },
   {
     type: "hero",
     title: "Hero",
     description: "Introduce the product and its next action.",
-    coreComponents: ["Section", "Container", "Grid", "Heading", "Text", "Button", "Tabs"],
+    coreComponents: ["Section", "Container", "Grid", "Badge", "Heading", "Text", "Button", "Tabs"],
     variants: [
       {
         id: "centered",
@@ -73,7 +166,7 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "logos",
     title: "Logo Cloud",
     description: "A restrained place for real customer or partner logos.",
-    coreComponents: ["Section", "Container", "Grid", "Text", "Heading"],
+    coreComponents: ["Section", "Container", "Grid", "Badge", "Text", "Heading"],
     variants: [
       { id: "row", name: "Logo row", description: "A quiet wrapping row beneath an introduction." },
       {
@@ -92,7 +185,17 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "benefits",
     title: "Benefits",
     description: "Explain the outcomes that matter to the visitor.",
-    coreComponents: ["Section", "Container", "Grid", "Heading", "Text"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
+      "Heading",
+      "Text",
+    ],
     variants: [
       {
         id: "columns",
@@ -105,6 +208,13 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Pair a product view with a readable benefit list.",
       },
     ],
+    additionalVariants: [
+      {
+        id: "cards",
+        name: "Bordered outcome cards",
+        description: "Structured cards with index badges for each key outcome.",
+      },
+    ],
   },
   {
     type: "features",
@@ -114,6 +224,8 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       "Section",
       "Container",
       "Grid",
+      "Badge",
+      "IconBox",
       "Tabs",
       "TabPanel",
       "Accordion",
@@ -142,7 +254,17 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "how-it-works",
     title: "How It Works",
     description: "Describe a real sequence from starting to finishing.",
-    coreComponents: ["Section", "Container", "Grid", "Heading", "Text"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
+      "Heading",
+      "Text",
+    ],
     variants: [
       {
         id: "horizontal",
@@ -160,7 +282,17 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "integrations",
     title: "Integrations",
     description: "Show where the product fits in a workflow.",
-    coreComponents: ["Section", "Container", "Grid", "Card", "CardBody", "Heading", "Text"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
+      "Heading",
+      "Text",
+    ],
     variants: [
       {
         id: "grid",
@@ -178,7 +310,17 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "testimonials",
     title: "Testimonials",
     description: "Make room for verified customer feedback.",
-    coreComponents: ["Section", "Container", "Grid", "Card", "CardBody", "Text", "Heading"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "Avatar",
+      "Card",
+      "CardBody",
+      "Text",
+      "Heading",
+    ],
     variants: [
       {
         id: "featured",
@@ -196,7 +338,17 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     type: "pricing",
     title: "Pricing",
     description: "Make the differences between plans easy to read.",
-    coreComponents: ["Section", "Container", "Grid", "Card", "CardBody", "Button", "Table"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
+      "Button",
+      "Table",
+    ],
     variants: [
       {
         id: "cards",
@@ -209,6 +361,14 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Compare the same plans feature by feature.",
       },
     ],
+    additionalVariants: [
+      {
+        id: "highlight",
+        name: "Featured plan spotlight",
+        description:
+          "Highlight the primary team plan alongside compact starter and enterprise tiers.",
+      },
+    ],
   },
   {
     type: "faq",
@@ -218,6 +378,10 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       "Section",
       "Container",
       "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
       "Accordion",
       "AccordionItem",
       "Heading",
@@ -235,12 +399,30 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Split questions into clear topics.",
       },
     ],
+    additionalVariants: [
+      {
+        id: "columns",
+        name: "Two-column Q&A grid",
+        description: "Display all answers open in a scannable two-column editorial grid.",
+      },
+    ],
   },
   {
     type: "cta",
     title: "Call to Action",
     description: "Close with one useful next step.",
-    coreComponents: ["Section", "Container", "Grid", "Button", "Heading", "Text"],
+    coreComponents: [
+      "Section",
+      "Container",
+      "Grid",
+      "Badge",
+      "IconBox",
+      "Card",
+      "CardBody",
+      "Button",
+      "Heading",
+      "Text",
+    ],
     variants: [
       {
         id: "centered",
@@ -253,12 +435,19 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Pair the next step with a short benefit reminder.",
       },
     ],
+    additionalVariants: [
+      {
+        id: "banner",
+        name: "High-contrast banner card",
+        description: "A bordered full-width callout banner with inline benefit pills.",
+      },
+    ],
   },
   {
     type: "footer",
     title: "Footer",
     description: "Finish the page with useful navigation and context.",
-    coreComponents: ["Section", "Container", "Grid", "Button", "Text", "Heading"],
+    coreComponents: ["Section", "Container", "Grid", "Badge", "Button", "Text", "Heading"],
     variants: [
       {
         id: "simple",
@@ -269,6 +458,13 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         id: "columns",
         name: "Navigation columns",
         description: "Group useful links alongside the brand description.",
+      },
+    ],
+    additionalVariants: [
+      {
+        id: "centered",
+        name: "Centered minimal footer",
+        description: "Centered brand mark, horizontal navigation links, and legal note.",
       },
     ],
   },

@@ -33,6 +33,7 @@ export * from "./components/CustomCursor/CustomCursor";
 export * from "./components/BlurRevealText/BlurRevealText";
 export * from "./components/StackingWrapper";
 export * from "./components/SignatureBlocks";
+export * from "./components/BlueprintStudio";
 
 // 3D Entry Re-export
 export * from "./3d";

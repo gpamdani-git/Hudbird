@@ -25,6 +25,7 @@ import { navigationData } from "../navData";
 import { GithubIcon, DiscordIcon } from "./SocialIcons";
 import { GlobalSearch } from "./GlobalSearch";
 import { HudbirdIcon } from "./HudbirdLogo";
+import { PageBuilderCtaButton } from "./PageBuilderCtaButton";
 
 interface HeaderProps {
   onToggleMobileSidebar?: () => void;
@@ -141,7 +142,7 @@ export const Header: React.FC<HeaderProps> = ({
           </Link>
 
           {/* Desktop Breadcrumbs */}
-          <div className="ml-1 hidden items-center gap-2 text-[13px] font-medium lg:flex">
+          <div className="ml-1 hidden items-center gap-2 text-sm font-medium tracking-tight lg:flex">
             {parentGroup && (
               <>
                 <span className="text-zinc-500 dark:text-zinc-400">{parentGroup}</span>
@@ -156,10 +157,13 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Right: Search & Grouped Three-Dots Menu */}
+        {/* Right: Search, Page Builder CTA & Grouped Three-Dots Menu */}
         <div className="flex shrink-0 items-center gap-2 text-sm font-medium sm:gap-3">
           {/* Global Search Bar */}
           <GlobalSearch />
+
+          {/* Kinetic Morphing Page Builder CTA Button */}
+          <PageBuilderCtaButton />
 
           {/* Three-Dots Menu (Ecosystem, Resources, Community, Appearance) */}
           <Dropdown placement="bottom-end">

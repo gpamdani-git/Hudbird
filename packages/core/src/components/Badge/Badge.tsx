@@ -4,7 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
-export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "default";
+export type BadgeVariant = "solid" | "soft" | "outline" | "flat" | "modern" | "default";
 export type BadgeColor =
   "primary" | "secondary" | "success" | "warning" | "danger" | "info" | "zinc" | "neutral";
 export type BadgeSize = "sm" | "md" | "lg";
@@ -20,6 +20,8 @@ const badgeVariants = cva(
         soft: "font-semibold",
         outline: "bg-transparent border",
         flat: "font-medium",
+        modern:
+          "rounded-lg bg-white text-zinc-700 ring-1 ring-inset ring-zinc-200/90 shadow-xs font-medium dark:bg-[#161618] dark:text-zinc-200 dark:ring-white/15",
         default: "font-semibold shadow-xs",
       },
       color: {

@@ -3,6 +3,7 @@ import navbarCode from "../../../../packages/core/src/components/Navbar/Navbar.t
 import { InstallationTabs } from "../components/InstallationTabs";
 import React, { useState } from "react";
 import { DocHeader } from "../components/DocHeader";
+import { LandingNavbar, NAVBAR_PRESETS, type NavbarPresetId } from "@hudbird/marketing";
 import {
   Navbar,
   NavbarBrand,
@@ -64,6 +65,7 @@ export const navbarTocItems = [
     id: "examples",
     title: "Examples",
     children: [
+      { id: "production-presets", title: "12 Hybrid Navbar Presets (NAV-01 to NAV-12)" },
       { id: "standard-navbar", title: "Standard Web Page Navbar" },
       { id: "mobile-drawer-variants", title: "4 Mobile Drawer Variations" },
       { id: "drawer-variant-top", title: "1. Top Slide-Down Drawer" },
@@ -80,6 +82,7 @@ export const navbarTocItems = [
 ];
 
 export default function NavbarDoc() {
+  const [selectedPreset, setSelectedPreset] = useState<NavbarPresetId>("nav-01");
   const [heroMenuOpen, setHeroMenuOpen] = useState(false);
   const [standardMenuOpen, setStandardMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("features");
@@ -453,6 +456,183 @@ export default function StandardNavbarExample() {
           <h2 className="font-outfit mb-2 text-2xl font-medium tracking-tight text-zinc-900 sm:text-3xl dark:text-white">
             Examples
           </h2>
+        </div>
+
+        {/* 12 Hybrid Navbar Presets Showcase */}
+        <div id="production-presets" className="scroll-mt-24 space-y-6">
+          <div className="flex flex-col justify-between gap-4 border-b border-black/[0.08] pb-4 sm:flex-row sm:items-center dark:border-white/[0.08]">
+            <div>
+              <div className="mb-1 inline-flex items-center gap-2">
+                <span className="rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                  New System
+                </span>
+                <span className="font-mono text-xs tracking-widest text-zinc-400 uppercase">
+                  12 Archetypes
+                </span>
+              </div>
+              <h3 className="font-outfit text-xl font-medium tracking-tight text-zinc-900 dark:text-white">
+                12 Production Navbar Presets (NAV-01 to NAV-12)
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm text-zinc-600 dark:text-zinc-400">
+                A hybrid system of 12 distinct, fully-responsive navigation archetypes with shared
+                accessibility, scroll-awareness, mega menus, and mobile drawers:
+              </p>
+            </div>
+            <a
+              href="/#/marketing/landing-builder"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-black/10 bg-zinc-900 px-3.5 py-2 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-zinc-800 dark:border-white/10 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100"
+            >
+              Open in Page Builder →
+            </a>
+          </div>
+
+          {/* Preset Selector Grid */}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+            {(Object.keys(NAVBAR_PRESETS) as NavbarPresetId[]).map((id) => {
+              const meta = NAVBAR_PRESETS[id];
+              const isSelected = selectedPreset === id;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  onClick={() => setSelectedPreset(id)}
+                  className={`flex cursor-pointer flex-col items-start rounded-xl border p-2.5 text-left transition-all ${
+                    isSelected
+                      ? "border-zinc-950 bg-zinc-950 text-white shadow-sm dark:border-white dark:bg-white dark:text-zinc-950"
+                      : "border-black/[0.08] bg-white text-zinc-700 hover:border-black/20 hover:bg-zinc-50 dark:border-white/[0.08] dark:bg-zinc-900/60 dark:text-zinc-300 dark:hover:border-white/20 dark:hover:bg-zinc-800/60"
+                  }`}
+                >
+                  <div className="flex w-full items-center justify-between">
+                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase opacity-70">
+                      {id}
+                    </span>
+                    <span
+                      className={`py-0.2 rounded px-1.5 text-[9px] font-bold uppercase ${
+                        isSelected
+                          ? "bg-white/20 text-white dark:bg-black/20 dark:text-black"
+                          : "bg-zinc-100 text-zinc-600 dark:bg-white/10 dark:text-zinc-400"
+                      }`}
+                    >
+                      {meta.category}
+                    </span>
+                  </div>
+                  <span className="mt-1 w-full truncate text-xs font-bold">{meta.name}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Preset Spec Bar */}
+          {(() => {
+            const meta = NAVBAR_PRESETS[selectedPreset];
+            return (
+              <div className="flex flex-wrap items-center gap-4 rounded-xl border border-black/[0.06] bg-zinc-50 px-4 py-2.5 text-xs text-zinc-600 dark:border-white/[0.06] dark:bg-zinc-900/40 dark:text-zinc-400">
+                <span className="font-semibold text-zinc-900 dark:text-zinc-100">{meta.name}:</span>
+                <span>
+                  Layout:{" "}
+                  <strong className="font-medium text-zinc-800 capitalize dark:text-zinc-200">
+                    {meta.layout}
+                  </strong>
+                </span>
+                <span>
+                  Surface:{" "}
+                  <strong className="font-medium text-zinc-800 capitalize dark:text-zinc-200">
+                    {meta.surface}
+                  </strong>
+                </span>
+                <span>
+                  Mobile:{" "}
+                  <strong className="font-medium text-zinc-800 capitalize dark:text-zinc-200">
+                    {meta.capabilities.mobileMode}
+                  </strong>
+                </span>
+                <span>
+                  Mega Menu:{" "}
+                  <strong className="font-medium text-zinc-800 dark:text-zinc-200">
+                    {meta.capabilities.megaMenu ? "Yes" : "No"}
+                  </strong>
+                </span>
+                <span>
+                  Hide on Scroll:{" "}
+                  <strong className="font-medium text-zinc-800 dark:text-zinc-200">
+                    {meta.capabilities.hideOnScroll ? "Yes" : "No"}
+                  </strong>
+                </span>
+              </div>
+            );
+          })()}
+
+          {/* Live Preview of Selected Preset */}
+          <ComponentPreview>
+            <div className="w-full overflow-hidden rounded-xl bg-zinc-100/50 p-2 py-4 sm:p-4 dark:bg-zinc-950/50">
+              <div className="relative min-h-[300px] w-full overflow-hidden rounded-xl border border-black/[0.08] bg-white shadow-xs dark:border-white/[0.08] dark:bg-zinc-900">
+                <LandingNavbar
+                  variant={selectedPreset}
+                  brand={{
+                    id: "showcase-brand",
+                    name: "Hudbird Studio",
+                    primary: "#2457d6",
+                    fontFamily: "Inter, sans-serif",
+                    radius: "soft",
+                    density: "comfortable",
+                    mode: "light",
+                  }}
+                  content={{
+                    action: { label: "Get started", href: "#start" },
+                    links: [
+                      {
+                        label: "Products",
+                        href: "#products",
+                        description: "Composable UI foundation",
+                      },
+                      {
+                        label: "Solutions",
+                        href: "#solutions",
+                        description: "Design systems for teams",
+                      },
+                      { label: "Pricing", href: "#pricing", description: "Predictable SaaS tiers" },
+                      { label: "Company", href: "#company", description: "Our team and vision" },
+                    ],
+                  }}
+                />
+
+                <div className="p-12 text-center">
+                  <p className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
+                    [ Canvas Content Area — {NAVBAR_PRESETS[selectedPreset].name} active ]
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ComponentPreview>
+
+          <CodeBlock
+            code={`// In your page or LandingPage composition:
+import { LandingNavbar } from "@hudbird/marketing";
+
+export default function MyNavbar() {
+  return (
+    <LandingNavbar
+      variant="${selectedPreset}" // ${NAVBAR_PRESETS[selectedPreset].name}
+      brand={{
+        id: "my-brand",
+        name: "Acme",
+        primary: "#2457d6",
+        fontFamily: "Inter, sans-serif",
+        radius: "soft",
+        density: "comfortable",
+        mode: "light",
+      }}
+      content={{
+        action: { label: "Get started", href: "/signup" },
+        links: [
+          { label: "Features", href: "#features", description: "Modern features" },
+          { label: "Pricing", href: "#pricing", description: "Plans & tiers" },
+        ],
+      }}
+    />
+  );
+}`}
+          />
         </div>
 
         {/* 1. Standard Navbar */}

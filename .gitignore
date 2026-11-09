@@ -19,6 +19,7 @@ dist.css
 coverage/
 test-results/
 playwright-report/
+output/playwright/
 test_*.txt
 test_tabs.txt
 test_themes.txt

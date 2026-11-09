@@ -13,6 +13,7 @@ import {
 import { cn } from "../../utils/cn";
 import { ChartTooltip } from "../ChartTooltip";
 import { motion } from "framer-motion";
+import { quietEase } from "../Motion";
 
 export interface LineChartProps extends Omit<
   React.HTMLAttributes<HTMLDivElement>,
@@ -85,7 +86,7 @@ const LineChart = React.forwardRef<HTMLDivElement, LineChartProps>(
         {...props}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        transition={{ duration: 0.3, ease: quietEase }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <RechartsLineChart

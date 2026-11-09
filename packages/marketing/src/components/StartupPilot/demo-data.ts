@@ -28,7 +28,7 @@ function productImage(view: string, accent: string): HeroImage {
 export const pilotBrands: BrandProfile[] = [
   {
     id: "clear-blue",
-    name: "Forma",
+    name: "Hudbird UI",
     primary: "#2457d6",
     fontFamily: '"Plus Jakarta Sans", sans-serif',
     radius: "soft",

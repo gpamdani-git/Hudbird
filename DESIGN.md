@@ -905,3 +905,17 @@ Every Dynamic Island and Live Activity surface in Hudbird UI (`LiquidGlassIsland
 - **Zero Edge-to-Edge Bleed:** Never place `<Divider />` outside `LiquidGlassBody` where it slams edge-to-edge into curved outer walls; keep dividers inset inside the `20pt` (`p-5`) padded `.bottom` region.
 - **Semantic `.keylineTint(_:)` & Visual Continuity:** Apply subtle semantic `keylineTint` (`emerald`, `indigo`, `amber`, `rose`, `sky`) to tint the 1px outer perimeter border, and preserve `layoutId` continuity across `minimal`, `compact`, and `expanded` transitions.
 - **Tabular Monospace Digits (`.monospacedDigit()`):** Enforce `tabularNums` on `<Text>` and `<Heading>` (or `<Code>`) for all live clocks, countdowns, scores, distances, and percentages so 1-second updates never cause horizontal layout jitter, and exclude sensitive personal/financial data or promotional clutter.
+
+## 14. Branded Website Pilot Direction
+
+The approved direction for the additive HeroSection and StartupPilot APIs is clean and calm. For this pilot, this section takes precedence over earlier default high-motion or mandatory glass aesthetics. Existing component APIs remain unchanged.
+
+Use shared Container/gutter/Section cadence and core controls. BrandScope applies the selected font, primary color, accessible accent foreground, radius, density, and explicit light/dark mode. Decoration is opt-in. Hero copy and actions remain independent of layout media. User-owned logos, images, and videos are allowed; bundled illustrations and video are visibly demo content. Slideshow is manual; video begins paused; reduced motion disables incidental transitions.
+
+Core = individual controls. Block = grouped product content such as ProductDemo. Section = replaceable page unit such as HeroSection. Template = StartupPage ordering those sections. Two compositions must differ in narrative order and initial hero, not merely palette.
+
+## 15. SaaS Landing Collection
+
+The additive collection extends the calm pilot direction to 12 section types and 26 primary layouts. Layout variants change arrangement while retaining content and brand. Use shared LandingFrame (core Section/Container), core Grid, semantic brand tokens, and Hudbird controls/surfaces. Keep native wrappers for semantic content and media. Existing slideshow/video heroes remain additional options.
+
+Preview canvases must use their own viewport so responsive behavior matches the visible width. Full page mode follows the website by default; explicit theme overrides remain scoped. Avoid broken local actions when a target section is hidden. Pricing comparison tables may scroll within a labeled, focusable region on mobile; the document itself must not overflow. Example logos, quotes, prices, and integration concepts must stay visibly labeled. See `docs/HUDBIRD-LANDING-SECTIONS.md` for implementation status and review boundaries.

@@ -181,7 +181,7 @@ describe("Composable startup hero", () => {
       </BrandScope>
     );
     expect(view.container.firstChild).toHaveStyle({
-      "--hb-section": "clamp(4rem, 8vw, 7rem)",
+      "--hb-section": "clamp(4.5rem, 7vw, 6rem)",
       "--hb-radius": "12px",
     });
   });

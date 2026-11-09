@@ -150,27 +150,29 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, isMini = fals
                         className="overflow-hidden"
                       >
                         <ul className="relative space-y-0.5 pt-0.5 pl-2.5">
-                          {group.items.map((item) => (
-                            <li key={item.path}>
-                              <NavLink
-                                to={item.path}
-                                onClick={() => {
-                                  if (window.innerWidth < 1024) onClose?.();
-                                }}
-                                className={({ isActive }) =>
-                                  cn(
-                                    "group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-150 outline-none select-none",
-                                    isActive
-                                      ? "bg-zinc-100 font-bold text-zinc-950 shadow-xs dark:bg-white/10 dark:text-white"
-                                      : "font-semibold text-zinc-400 group-hover/section:text-zinc-600 hover:bg-black/5 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-zinc-300 dark:hover:bg-white/5 dark:hover:font-bold dark:hover:!text-white"
-                                  )
-                                }
-                                title={item.name}
-                              >
-                                <span className="truncate">{item.name}</span>
-                              </NavLink>
-                            </li>
-                          ))}
+                          {group.items
+                            .filter((item) => !item.hidden)
+                            .map((item) => (
+                              <li key={item.path}>
+                                <NavLink
+                                  to={item.path}
+                                  onClick={() => {
+                                    if (window.innerWidth < 1024) onClose?.();
+                                  }}
+                                  className={({ isActive }) =>
+                                    cn(
+                                      "group relative flex items-center justify-between rounded-lg px-2.5 py-1.5 text-[13px] transition-all duration-150 outline-none select-none",
+                                      isActive
+                                        ? "bg-zinc-100 font-bold text-zinc-950 shadow-xs dark:bg-white/10 dark:text-white"
+                                        : "font-semibold text-zinc-400 group-hover/section:text-zinc-600 hover:bg-black/5 hover:font-bold hover:!text-zinc-950 dark:text-zinc-500 dark:group-hover/section:text-zinc-300 dark:hover:bg-white/5 dark:hover:font-bold dark:hover:!text-white"
+                                    )
+                                  }
+                                  title={item.name}
+                                >
+                                  <span className="truncate">{item.name}</span>
+                                </NavLink>
+                              </li>
+                            ))}
                         </ul>
                       </motion.div>
                     )}

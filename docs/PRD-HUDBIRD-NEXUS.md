@@ -220,3 +220,9 @@ Before any section in Sprints 1–6 is marked complete, it must pass all 8 check
 - [ ] **Zero Unprotected Icons:** Every icon serves a functional/informational purpose or lives inside a domain-appropriate housing.
 - [ ] **Responsive Breakpoint Integrity:** Verified layout flow at `375px` (Mobile), `768px` (Tablet), `1024px` (Laptop), and `1440px+` (Desktop Studio).
 - [ ] **Zero TypeScript / Build Errors:** Clean compilation across `starter-kits/pro-templates` and `@hudbird/schemas`.
+
+## Branded website pilot: implementation status
+
+A focused pilot adds BrandProfile, HeroContent, HeroSectionConfig, PageComposition, and StartupPageContent. It provides two promotional page compositions and five interchangeable hero types (centered, split, slideshow, video, interactive). Source distribution uses the existing CLI registry and includes a Codex workflow skill. The default visual direction for this pilot is clean and calm; expressive motion and decorative glass are opt-in.
+
+These capabilities apply to the pilot rather than certifying every existing template. A subsequent SaaS collection now adds 12 section types with 27 primary layouts, pricing UI, a section catalog, and a branded page builder with React, configuration JSON, and versioned recipe export. Existing slideshow/video heroes remain additional options. See `docs/HUDBIRD-LANDING-SECTIONS.md` for scope and verification. Payment flows, chatbot/dashboard UI, full catalog migration, and willingness-to-pay validation remain future work. Owner usability feedback remains pending.

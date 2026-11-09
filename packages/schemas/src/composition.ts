@@ -62,24 +62,68 @@ export interface StartupPageContent {
   footer: string;
 }
 
+export type NavbarPresetId =
+  | "nav-01"
+  | "nav-02"
+  | "nav-03"
+  | "nav-04"
+  | "nav-05"
+  | "nav-06"
+  | "nav-07"
+  | "nav-08"
+  | "nav-09"
+  | "nav-10"
+  | "nav-11"
+  | "nav-12";
+
+export type LegacyNavbarVariant = "simple" | "mega" | "centered" | "sidebar-1" | "sidebar-2";
+
+export type NavbarVariant = NavbarPresetId | LegacyNavbarVariant;
+
+export interface NavbarCustomSettings {
+  surface?: "preset" | "solid" | "transparent" | "glass";
+  backgroundColor?: string;
+  borderColor?: string;
+  hasBorder?: boolean;
+  hasShadow?: boolean;
+  containerWidth?: "compact" | "standard" | "wide" | "floating" | "full";
+  paddingY?: "none" | "compact" | "default" | "spacious";
+  paddingX?: "none" | "compact" | "default" | "spacious";
+  heroClearance?: "none" | "compact" | "default" | "generous";
+  showCta?: boolean;
+  showSocialIcons?: boolean;
+  navigationStyle?: "links" | "mega" | "drawer-only";
+  layoutAlignment?:
+    | "default"
+    | "logo-left-links-center-cta-right"
+    | "logo-left-links-left-cta-right"
+    | "logo-center-split-links"
+    | "logo-right-asymmetric";
+}
+
 export interface LandingVariantMap {
-  navbar: "simple" | "mega";
+  navbar: NavbarVariant;
   hero: "centered" | "split" | "interactive" | "slideshow" | "video";
   logos: "row" | "intro-grid" | "ticker";
-  benefits: "columns" | "visual-list";
+  benefits: "columns" | "visual-list" | "cards";
   features: "tabs" | "accordion" | "split";
   "how-it-works": "horizontal" | "vertical";
   integrations: "grid" | "grouped";
   testimonials: "featured" | "collection";
-  pricing: "cards" | "comparison";
-  faq: "single" | "grouped";
-  cta: "centered" | "split";
-  footer: "simple" | "columns";
+  pricing: "cards" | "comparison" | "highlight";
+  faq: "single" | "grouped" | "columns";
+  cta: "centered" | "split" | "banner";
+  footer: "simple" | "columns" | "centered";
 }
 
 export type LandingSectionType = keyof LandingVariantMap;
 export type LandingSectionSelection = {
-  [K in LandingSectionType]: { type: K; variant: LandingVariantMap[K]; enabled: boolean };
+  [K in LandingSectionType]: {
+    type: K;
+    variant: LandingVariantMap[K];
+    enabled: boolean;
+    customSettings?: K extends "navbar" ? NavbarCustomSettings : Record<string, unknown>;
+  };
 }[LandingSectionType];
 
 export interface LandingPageConfig {

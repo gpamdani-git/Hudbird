@@ -14,6 +14,10 @@ export const iconBoxVariants = cva(
           "bg-zinc-100 dark:bg-white/[0.05] border border-zinc-200/90 dark:border-white/[0.08] text-zinc-800 dark:text-zinc-200 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] group-hover:border-brand-500/40 group-hover:bg-brand-500/10 group-hover:text-brand-600 dark:group-hover:text-brand-300",
         brand:
           "bg-brand-500/15 border border-brand-500/30 text-brand-600 dark:text-brand-300 shadow-[inset_0_1px_0_0_rgba(157,88,190,0.2)] group-hover:bg-brand-500/25 group-hover:border-brand-500/50",
+        modern:
+          "bg-white dark:bg-[#161618] border border-zinc-200/90 dark:border-white/[0.1] text-zinc-700 dark:text-zinc-200 shadow-xs ring-1 ring-inset ring-black/[0.03] dark:ring-white/[0.04]",
+        "double-ring":
+          "bg-primary/10 text-primary border border-primary/20 ring-4 ring-primary/5 dark:bg-primary/15 dark:border-primary/30 dark:ring-primary/10",
         glass:
           "bg-white/75 dark:bg-[#161618]/65 [[data-glass-mode=glass][data-hb-theme=dark]_&]:bg-white/15 border border-black/[0.08] dark:border-white/[0.1] [[data-glass-mode=glass][data-hb-theme=dark]_&]:border-white/25 backdrop-blur-xl text-zinc-900 dark:text-white shadow-xs group-hover:border-brand-500/40",
         subtle:
@@ -22,9 +26,10 @@ export const iconBoxVariants = cva(
           "bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 shadow-md group-hover:scale-105",
       },
       size: {
+        xs: "w-6 h-6 rounded-full text-xs",
         sm: "w-9 h-9 rounded-xl text-sm",
-        md: "w-12 h-12 rounded-2xl text-base",
-        lg: "w-14 h-14 rounded-2xl text-lg",
+        md: "w-11 h-11 rounded-xl text-base",
+        lg: "w-13 h-13 rounded-2xl text-lg",
       },
     },
     defaultVariants: {
@@ -59,7 +64,14 @@ export const IconBox = React.forwardRef<HTMLDivElement, IconBoxProps>(
     },
     ref
   ) => {
-    const iconSizeClass = size === "sm" ? "w-4 h-4" : size === "lg" ? "w-6 h-6" : "w-5 h-5";
+    const iconSizeClass =
+      size === "xs"
+        ? "w-3.5 h-3.5"
+        : size === "sm"
+          ? "w-4 h-4"
+          : size === "lg"
+            ? "w-6 h-6"
+            : "w-5 h-5";
 
     return (
       <div

@@ -5,6 +5,7 @@ export interface NavItem {
   variants?: number;
   isExternal?: boolean;
   icon?: string; // used for standard icons if needed
+  hidden?: boolean;
 }
 
 export interface NavGroup {
@@ -113,15 +114,63 @@ export const navigationData: NavGroup[] = [
     ],
   },
   {
+    title: "Application UI",
+    items: [
+      { name: "Dashboards 01 (Sidebar)", path: "/application-ui/dashboards", variants: 2 },
+      { name: "Dashboards 02 (Stacked)", path: "/application-ui/dashboards-stacked", variants: 2 },
+      { name: "Settings Pages 01", path: "/application-ui/settings", variants: 2 },
+      { name: "Settings Pages 02", path: "/application-ui/settings-stacked", variants: 1 },
+      { name: "Informational Pages 01", path: "/application-ui/informational", variants: 1 },
+      {
+        name: "Informational Pages 02",
+        path: "/application-ui/informational-stacked",
+        variants: 1,
+      },
+    ],
+  },
+  {
+    title: "Shared Pages",
+    items: [
+      { name: "Log In", path: "/shared-pages/login", variants: 2 },
+      { name: "Sign Up", path: "/shared-pages/signup", variants: 2 },
+      { name: "Verification (OTP)", path: "/shared-pages/verification", variants: 2 },
+      { name: "Forgot Password", path: "/shared-pages/forgot-password", variants: 1 },
+      { name: "404 Recovery", path: "/shared-pages/404", variants: 2 },
+      { name: "Email Templates", path: "/shared-pages/email-templates", variants: 1 },
+    ],
+  },
+  {
     title: "Marketing Sections",
     items: [
-      {
-        name: "SaaS Section Collection",
-        path: "/marketing/landing-sections",
-        variants: 27,
-        isNew: true,
-      },
-      { name: "SaaS Page Builder", path: "/marketing/landing-builder", isNew: true },
+      { name: "Page Builder", path: "/marketing/landing-builder", hidden: true, isNew: true },
+      { name: "All Sections", path: "/marketing/landing-sections", hidden: true },
+      { name: "Navbar", path: "/marketing/landing-sections/navbar", variants: 5 },
+      { name: "Hero", path: "/marketing/landing-sections/hero", variants: 5 },
+      { name: "Logo Cloud", path: "/marketing/landing-sections/logos", variants: 3 },
+      { name: "Benefits", path: "/marketing/landing-sections/benefits", variants: 3 },
+      { name: "Feature Showcase", path: "/marketing/landing-sections/features", variants: 3 },
+      { name: "How It Works", path: "/marketing/landing-sections/how-it-works", variants: 2 },
+      { name: "Integrations", path: "/marketing/landing-sections/integrations", variants: 2 },
+      { name: "Testimonials", path: "/marketing/landing-sections/testimonials", variants: 2 },
+      { name: "Pricing", path: "/marketing/landing-sections/pricing", variants: 3 },
+      { name: "FAQ", path: "/marketing/landing-sections/faq", variants: 3 },
+      { name: "Call to Action", path: "/marketing/landing-sections/cta", variants: 3 },
+      { name: "Footer", path: "/marketing/landing-sections/footer", variants: 3 },
+    ],
+  },
+  {
+    title: "Marketing Examples",
+    items: [
+      { name: "Landing Pages", path: "/marketing/examples/landing-pages", variants: 1 },
+      { name: "Pricing Pages", path: "/marketing/examples/pricing-pages", variants: 1 },
+      { name: "About Pages", path: "/marketing/examples/about-pages", variants: 1 },
+      { name: "Contact Pages", path: "/marketing/examples/contact-pages", variants: 1 },
+      { name: "Blog Pages", path: "/marketing/examples/blog-pages", variants: 1 },
+      { name: "Blog Post Pages", path: "/marketing/examples/blog-post-pages", variants: 1 },
+      { name: "FAQ Pages", path: "/marketing/examples/faq-pages", variants: 1 },
+      { name: "Team Pages", path: "/marketing/examples/team-pages", variants: 1 },
+      { name: "Legal Pages", path: "/marketing/examples/legal-pages", variants: 1 },
+      { name: "404 Pages", path: "/marketing/examples/404-pages", variants: 1 },
     ],
   },
 ];

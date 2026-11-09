@@ -20,15 +20,15 @@ export function brandStyle(brand: BrandProfile): CSSProperties {
   return {
     "--hb-accent": brand.primary,
     "--hb-on-accent": foreground,
-    "--hb-bg": dark ? "#161618" : "#ffffff",
-    "--hb-ink": dark ? "#f4f4f5" : "#18181b",
-    "--hb-muted": dark ? "#b4b4bc" : "#52525b",
-    "--hb-surface": dark ? "#202124" : "#f4f5f7",
-    "--hb-border": dark ? "#42424a" : "#d4d4d8",
+    "--hb-bg": dark ? "#0c0d10" : "#ffffff",
+    "--hb-ink": dark ? "#f4f4f6" : "#18181b",
+    "--hb-muted": dark ? "#a1a1aa" : "#52525b",
+    "--hb-surface": dark ? "#14151a" : "#f9fafb",
+    "--hb-border": dark ? "#27272a" : "#e4e4e7",
     "--hb-radius": { square: "0px", soft: "12px", round: "24px" }[brand.radius],
     "--hb-font": brand.fontFamily,
     "--hb-section":
-      brand.density === "compact" ? "clamp(3rem, 6vw, 5rem)" : "clamp(4rem, 8vw, 7rem)",
+      brand.density === "compact" ? "clamp(3.5rem, 6vw, 5rem)" : "clamp(4.5rem, 7vw, 6rem)",
     fontFamily: brand.fontFamily,
     colorScheme: brand.mode,
   } as CSSProperties;

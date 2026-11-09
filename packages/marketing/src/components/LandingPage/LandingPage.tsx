@@ -38,7 +38,14 @@ export function LandingSection({
 }) {
   switch (selection.type) {
     case "navbar":
-      return <LandingNavbar variant={selection.variant} content={content.navbar} brand={brand} />;
+      return (
+        <LandingNavbar
+          variant={selection.variant}
+          content={content.navbar}
+          brand={brand}
+          customSettings={selection.customSettings}
+        />
+      );
     case "hero":
       return (
         <div data-landing-section="hero">
@@ -75,9 +82,11 @@ export function LandingSection({
 export function SaasLandingPage({
   config,
   content,
+  className,
 }: {
   config: LandingPageConfig;
   content: LandingSectionContent;
+  className?: string;
 }) {
   const websiteMode = useLandingMode();
   const brand = {
@@ -97,37 +106,38 @@ export function SaasLandingPage({
         : "#landing-page";
   };
   const render = (section: LandingSectionSelection) => (
-    <LandingSection
-      key={section.type}
-      selection={section}
-      brand={brand}
-      content={{
-        ...content,
-        hero: {
-          ...content.hero,
-          content: {
-            ...content.hero.content,
-            primaryAction: {
-              ...content.hero.content.primaryAction,
-              href: hrefFor(content.hero.content.primaryAction.href),
+    <div key={section.type} data-landing-section={section.type} className="w-full">
+      <LandingSection
+        selection={section}
+        brand={brand}
+        content={{
+          ...content,
+          hero: {
+            ...content.hero,
+            content: {
+              ...content.hero.content,
+              primaryAction: {
+                ...content.hero.content.primaryAction,
+                href: hrefFor(content.hero.content.primaryAction.href),
+              },
+              secondaryAction: content.hero.content.secondaryAction
+                ? {
+                    ...content.hero.content.secondaryAction,
+                    href: hrefFor(content.hero.content.secondaryAction.href),
+                  }
+                : undefined,
             },
-            secondaryAction: content.hero.content.secondaryAction
-              ? {
-                  ...content.hero.content.secondaryAction,
-                  href: hrefFor(content.hero.content.secondaryAction.href),
-                }
-              : undefined,
           },
-        },
-      }}
-    />
+        }}
+      />
+    </div>
   );
   return (
     <BrandScope
       brand={brand}
       data-landing-page
       data-landing-smooth-scroll={config.motion?.smoothScroll ?? true}
-      className="min-h-[100dvh]"
+      className={className ?? "min-h-[100dvh]"}
     >
       <LandingMotionContext.Provider
         value={config.motion ?? { reveal: "subtle", autoplay: true, smoothScroll: true }}

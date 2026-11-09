@@ -111,6 +111,9 @@ const SidebarBorderedDemo = lazy(() => import("./pages/demos/SidebarBorderedDemo
 const SidebarFlatDemo = lazy(() => import("./pages/demos/SidebarFlatDemo"));
 const StackedLayoutDemo = lazy(() => import("./pages/demos/StackedLayoutDemo"));
 const AuthLayoutDemo = lazy(() => import("./pages/demos/AuthLayoutDemo"));
+const ApplicationUiExamplesDoc = lazy(() => import("./pages/ApplicationUiExamplesDoc"));
+const SharedPageExamplesDoc = lazy(() => import("./pages/SharedPageExamplesDoc"));
+const MarketingExamplesDoc = lazy(() => import("./pages/marketing/MarketingExamplesDoc"));
 
 const SaaSTemplate = lazy(() =>
   import("./components/templates/SaaSTemplate").then((m) => ({ default: m.SaaSTemplate }))
@@ -150,6 +153,9 @@ export default function App() {
   const isThemesPage = location.pathname.startsWith("/themes");
   const isWideLayoutPage =
     location.pathname.startsWith("/marketing") ||
+    location.pathname.startsWith("/application-ui") ||
+    location.pathname.startsWith("/shared-pages") ||
+    location.pathname.startsWith("/builder") ||
     location.pathname.startsWith("/signature") ||
     location.pathname.startsWith("/layouts") ||
     location.pathname === "/templates" ||
@@ -165,6 +171,21 @@ export default function App() {
     return (
       <Suspense fallback={<DocLoadingSkeleton />}>
         <LandingPage />
+      </Suspense>
+    );
+  }
+
+  // Intercept standalone full-screen Page Builder web app (render without Docs sidebar/header)
+  if (
+    location.pathname === "/marketing/landing-builder" ||
+    location.pathname.startsWith("/builder")
+  ) {
+    return (
+      <Suspense fallback={<DocLoadingSkeleton />}>
+        <Routes>
+          <Route path="/marketing/landing-builder" element={<LandingBuilderDoc />} />
+          <Route path="/builder/*" element={<Navigate to="/marketing/landing-builder" replace />} />
+        </Routes>
       </Suspense>
     );
   }
@@ -272,12 +293,37 @@ export default function App() {
                       path="/marketing/hero-pilot"
                       element={<Navigate to="/marketing/landing-sections/hero" replace />}
                     />
-                    <Route path="/marketing/landing-sections" element={<LandingSectionsDoc />} />
+                    <Route
+                      path="/marketing/landing-sections"
+                      element={<Navigate to="/marketing/landing-sections/hero" replace />}
+                    />
                     <Route
                       path="/marketing/landing-sections/:section"
                       element={<LandingSectionsDoc />}
                     />
                     <Route path="/marketing/landing-builder" element={<LandingBuilderDoc />} />
+                    <Route
+                      path="/marketing/examples"
+                      element={<Navigate to="/marketing/examples/landing-pages" replace />}
+                    />
+                    <Route path="/marketing/examples/:slug" element={<MarketingExamplesDoc />} />
+                    <Route
+                      path="/application-ui"
+                      element={<Navigate to="/application-ui/dashboards" replace />}
+                    />
+                    <Route
+                      path="/application-ui/:category"
+                      element={<ApplicationUiExamplesDoc />}
+                    />
+                    <Route
+                      path="/shared-pages"
+                      element={<Navigate to="/shared-pages/login" replace />}
+                    />
+                    <Route path="/shared-pages/:category" element={<SharedPageExamplesDoc />} />
+                    <Route
+                      path="/builder/studio"
+                      element={<Navigate to="/marketing/landing-builder" replace />}
+                    />
                     <Route path="/themes" element={<ThemesDoc />} />
                     <Route
                       path="/blocks"

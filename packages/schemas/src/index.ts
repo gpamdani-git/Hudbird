@@ -9,6 +9,7 @@ import { getPrebuiltTemplateMeta, buildNicheConfigFromPrebuilt } from "./niches/
 
 export * from "./types";
 export * from "./composition";
+export * from "./blueprint";
 export * from "./niches/digital-agency";
 export * from "./niches/ai-copilot";
 export * from "./niches/alunara-wellness";

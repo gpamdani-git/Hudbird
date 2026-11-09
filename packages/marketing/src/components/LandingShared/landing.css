@@ -62,6 +62,11 @@
 .hb-pilot [data-landing-section="navbar"] {
   z-index: 10;
 }
+/* Ensure ample breathing room between navbar (floating/sticky) and hero badge/title */
+.hb-pilot [data-landing-section="hero"] .hb-section,
+.hb-pilot #hero.hb-section {
+  padding-top: calc(var(--hb-section) + 1.5rem);
+}
 .hb-pilot[data-landing-preview-type="navbar"]:has([aria-expanded="true"]) {
   min-height: 56rem;
 }

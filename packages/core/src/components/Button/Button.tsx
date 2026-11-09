@@ -4,6 +4,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 import { Slot } from "../Slot";
+import { motion } from "framer-motion";
 
 export type ButtonVariant =
   "solid" | "bordered" | "flat" | "soft" | "light" | "ghost" | "outline" | "plain" | "default";
@@ -42,7 +43,7 @@ export type ButtonSize = "xs" | "sm" | "md" | "lg" | "xl";
 export type ButtonRadius = "none" | "md" | "lg" | "full";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center font-medium tracking-tight whitespace-nowrap select-none transition-all duration-150 ease-out hover:-translate-y-[0.5px] active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none disabled:active:scale-100 disabled:hover:translate-y-0",
+  "inline-flex items-center justify-center font-medium tracking-tight whitespace-nowrap select-none [transition-property:transform,opacity] [transition-duration:150ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[0.5px] active:translate-y-0 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none disabled:active:scale-100 disabled:hover:translate-y-0",
   {
     variants: {
       variant: {
@@ -585,8 +586,10 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
 
     // Spinner indicator
     const spinner = (
-      <svg
-        className="h-4 w-4 shrink-0 animate-spin text-current"
+      <motion.svg
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, ease: "linear", duration: 1 }}
+        className="h-4 w-4 shrink-0 text-current"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -605,7 +608,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
           fill="currentColor"
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
         />
-      </svg>
+      </motion.svg>
     );
 
     // Standard optical frame dimensions for icons to guarantee visual balance (Gestalt Law of Proximity & Optical Centering)

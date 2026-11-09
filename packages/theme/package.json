@@ -2,6 +2,18 @@
   "name": "@hudbird/theme",
   "version": "1.5.0",
   "main": "src/index.js",
+  "style": "tokens.css",
+  "exports": {
+    ".": {
+      "style": "./tokens.css",
+      "import": "./src/index.js",
+      "require": "./src/index.js",
+      "default": "./tokens.css"
+    },
+    "./tokens.css": "./tokens.css",
+    "./tokens": "./tokens.css",
+    "./index.css": "./index.css"
+  },
   "dependencies": {
     "tailwindcss": "^4.3.3"
   },

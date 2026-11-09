@@ -1,0 +1,31 @@
+---
+description: Keep every Hudbird task focused, iterative, and token-efficient
+alwaysApply: true
+---
+
+# Token-Efficient Hudbird Workflow
+
+- Start with `docs/PROJECT_CONTEXT.md`, then the relevant part of `docs/ARCHITECTURE_MAP.md` and `docs/WORKLOG.md`. Do not reopen long source documents unless these summaries are insufficient.
+- Default to one clearly bounded outcome per iteration.
+- Before editing, inspect only the files directly involved. Do not inventory the whole monorepo unless required.
+- Reuse prior findings and existing components; do not repeat completed discovery or visual research.
+- Use the smallest relevant skill set. Do not load overlapping design skills unless the user explicitly requests a multi-skill audit.
+- Separate implementation, broad QA, documentation, registry work, and audit into distinct iterations unless the user explicitly asks for an end-to-end release.
+- During implementation, run focused typechecks and tests first. Run the full delivery gate only when the user asks to finalize or release.
+- Perform browser review only at representative desktop and mobile widths during iteration. Check every breakpoint and theme only at the final delivery gate.
+- Do not create screenshots, generated proof assets, compatibility layers, or new public APIs unless they are part of the requested outcome.
+- Preserve existing APIs by default, but do not expand scope to compatibility work without evidence that the edited code affects them.
+- Send short progress updates. Report outcomes, blockers, and decisions; omit routine command narration.
+- If a request would touch more than one package or combines more than three deliverables, state the proposed slices and implement only the first approved slice.
+- Stop after the requested slice is working. Offer the next slice instead of beginning it automatically.
+- Never trade correctness, accessibility, or preservation of user work for token savings.
+
+## Default Iteration
+
+1. Confirm the single outcome in one sentence.
+2. Inspect targeted files.
+3. Implement the smallest complete change.
+4. Run focused verification.
+5. Summarize what changed and propose one next step.
+
+Full audits, exhaustive browser matrices, packed CLI consumer tests, and monorepo-wide validation belong to a named finalization iteration.

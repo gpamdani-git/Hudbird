@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hudbird Docs"
+  short_description: "Create and repair focused Hudbird documentation"
+  default_prompt: "Use $hudbird-docs to document one Hudbird component or repair one focused Docs issue."

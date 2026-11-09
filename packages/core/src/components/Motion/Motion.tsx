@@ -11,7 +11,7 @@ import {
 import { Button } from "../Button";
 import { cn } from "../../utils/cn";
 
-const quietEase = [0.22, 1, 0.36, 1] as const;
+export const quietEase = [0.22, 1, 0.36, 1] as const;
 
 export interface MotionRevealProps extends HTMLMotionProps<"div"> {
   distance?: number;
@@ -29,7 +29,7 @@ export const MotionReveal = React.forwardRef<HTMLDivElement, MotionRevealProps>(
         initial={active ? { opacity: 0.01, y: distance } : false}
         whileInView={active ? { opacity: 1, y: 0 } : undefined}
         viewport={{ once, amount: 0.12 }}
-        transition={{ duration: 0.55, ease: quietEase }}
+        transition={{ duration: 0.3, ease: quietEase }}
         className={className}
         {...props}
       >
@@ -123,7 +123,7 @@ export const MotionTicker = React.forwardRef<HTMLDivElement, MotionTickerProps>(
       >
         <motion.div
           className="flex w-max items-center"
-          animate={running ? { x: ["0%", "-50%"] } : undefined}
+          animate={running ? { transform: ["translateX(0%)", "translateX(-50%)"] } : undefined}
           transition={{ duration, ease: "linear", repeat: Infinity }}
         >
           <div className="flex shrink-0 items-center">{items}</div>

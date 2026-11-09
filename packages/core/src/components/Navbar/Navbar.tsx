@@ -326,8 +326,11 @@ const NavbarContent = React.forwardRef<HTMLUListElement, NavbarContentProps>(
       end: "justify-end ml-auto shrink-0",
     };
 
-    // Center navigation links container strictly hides on mobile (hidden md:flex) by default
-    const shouldHideOnMobile = hideOnMobile !== undefined ? hideOnMobile : justify === "center";
+    // Center navigation links container strictly hides on mobile (hidden md:flex) by default unless className provides display rules
+    const hasCustomDisplay =
+      className && /(^|\s)(hidden|flex|inline-flex|block)(\s|$)/.test(className);
+    const shouldHideOnMobile =
+      hideOnMobile !== undefined ? hideOnMobile : !hasCustomDisplay && justify === "center";
 
     return (
       <ul
@@ -416,6 +419,10 @@ const NavbarMenuToggle = React.forwardRef<HTMLButtonElement, NavbarMenuTogglePro
       onClick?.(e);
     };
 
+    const hasCustomResponsive =
+      className && /(^|\s)(sm:|md:|lg:|xl:)(flex|hidden|block|inline)(\s|$)/.test(className);
+    const defaultDisplay = forceVisible ? "flex" : hasCustomResponsive ? "flex" : "flex lg:hidden";
+
     return (
       <button
         ref={ref}
@@ -424,7 +431,7 @@ const NavbarMenuToggle = React.forwardRef<HTMLButtonElement, NavbarMenuTogglePro
         aria-expanded={isMenuOpen}
         onClick={handleClick}
         className={cn(
-          forceVisible ? "flex" : "flex md:hidden",
+          defaultDisplay,
           "relative h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-xl border border-black/[0.06] bg-white text-zinc-700 shadow-2xs transition-all select-none hover:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-95 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-200 dark:hover:bg-[#202124] dark:focus-visible:ring-offset-[#161618]",
           className
         )}
