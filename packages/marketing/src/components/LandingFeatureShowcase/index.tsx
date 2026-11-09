@@ -29,6 +29,12 @@ import {
   ListChecks,
   FileText,
   Star,
+  MapPin,
+  Clock,
+  CreditCard,
+  Heart,
+  ArrowRight,
+  Maximize2,
 } from "lucide-react";
 import type { LandingSectionProps, LandingFeature } from "@hudbird/schemas";
 import { HeroImageView } from "../HeroSection";
@@ -431,6 +437,227 @@ function FeatureCardVisual({ cardIndex }: { cardIndex: number }) {
   );
 }
 
+const splitPhaseLabels = ["SPECIFICATION", "TALENT & CURATION", "EXECUTION & ESCROW"];
+
+function EditorialFoldVisual({ index, item }: { index: number; item: LandingFeature }) {
+  if (index === 0) {
+    // 1. Specification & Project Architecture (Phone Mockup + Austin Floating Card from user Image 6)
+    return (
+      <div className="relative mx-auto max-w-[340px] overflow-hidden rounded-[32px] border-[5px] border-zinc-800/80 bg-zinc-950 p-3 text-white shadow-2xl transition-transform duration-300 group-hover/card:scale-[1.01] sm:max-w-[380px]">
+        {/* Dynamic Island / Notch */}
+        <div className="mx-auto mb-3 flex h-4 w-28 items-center justify-between rounded-full bg-zinc-900 px-2.5 text-[9px] text-zinc-400">
+          <span>9:41</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
+          <span>5G</span>
+        </div>
+
+        {/* Screen Header */}
+        <div className="mb-2 flex items-center justify-between px-2 text-xs">
+          <span className="font-semibold text-zinc-200">Create Project</span>
+          <span className="text-zinc-500">✕</span>
+        </div>
+
+        {/* Photo Gallery preview */}
+        <div className="relative h-44 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
+          <img
+            src="https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Project reference photography"
+            className="h-full w-full object-cover contrast-125 grayscale transition-transform duration-500 group-hover/card:scale-105"
+          />
+          <div className="absolute top-2.5 left-2.5 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-medium backdrop-blur-md">
+            References (4)
+          </div>
+          <div className="sr-only">
+            <HeroImageView image={item.image} priority={false} />
+          </div>
+        </div>
+
+        {/* Floating Austin Requirement Card (from user Image 6) */}
+        <div className="mt-3 rounded-2xl border border-white/10 bg-zinc-900/90 p-3.5 backdrop-blur-xl transition-transform duration-300 group-hover/card:-translate-y-1">
+          <div className="flex items-center justify-between border-b border-white/[0.06] pb-2 text-[11px]">
+            <div className="flex items-center gap-2 text-zinc-300">
+              <MapPin className="h-3.5 w-3.5 text-zinc-400" />
+              <span>Austin, TX, USA</span>
+            </div>
+            <ChevronRight className="h-3 w-3 text-zinc-500" />
+          </div>
+          <div className="flex items-center justify-between border-b border-white/[0.06] py-2 text-[11px]">
+            <div className="flex items-center gap-2 text-zinc-300">
+              <Calendar className="h-3.5 w-3.5 text-zinc-400" />
+              <span>Sunday, 28 Mar</span>
+            </div>
+            <ChevronRight className="h-3 w-3 text-zinc-500" />
+          </div>
+          <div className="pt-2 text-[11px]">
+            <div className="flex items-center gap-2 font-medium text-amber-400">
+              <Clock className="h-3.5 w-3.5" />
+              <span>Expires in 3 days</span>
+            </div>
+            <p className="mt-0.5 pl-5.5 text-[10px] text-zinc-400">
+              Close applications 3 days before start
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (index === 1) {
+    // 2. Talent Curation & Sophia Chen 5.0 Review (from user Image 6 & Image 1)
+    return (
+      <div className="relative mx-auto max-w-[360px] space-y-3.5 sm:max-w-[400px]">
+        {/* James Smith Talent Card (from user Image 6) */}
+        <div className="rounded-2xl border border-zinc-200/90 bg-white/90 p-4 shadow-lg backdrop-blur-xl transition-all duration-300 group-hover/card:scale-[1.01] dark:border-white/10 dark:bg-zinc-900/90">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img
+                src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=150"
+                alt="James Smith"
+                className="h-10 w-10 rounded-full object-cover contrast-125 grayscale"
+              />
+              <div>
+                <h4 className="text-xs font-semibold text-zinc-900 dark:text-white">James Smith</h4>
+                <div className="flex items-center gap-1 text-[11px] text-zinc-500 dark:text-zinc-400">
+                  <span className="font-semibold text-amber-500">5.0★</span>
+                  <span>•</span>
+                  <span>Photographer</span>
+                </div>
+              </div>
+            </div>
+            <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+              ● Verified
+            </span>
+          </div>
+
+          {/* 3-thumbnail portfolio row */}
+          <div className="mt-3 flex gap-2">
+            {[
+              "https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=300",
+              "https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=300",
+              "https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=300",
+            ].map((imgUrl, i) => (
+              <div
+                key={i}
+                className="h-16 w-1/3 overflow-hidden rounded-xl border border-zinc-200/70 dark:border-white/10"
+              >
+                <img
+                  src={imgUrl}
+                  alt={`Portfolio shot ${i + 1}`}
+                  className="h-full w-full object-cover contrast-125 grayscale transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-3 flex items-center justify-between rounded-xl bg-zinc-50 px-3 py-2 text-[11px] text-zinc-700 dark:bg-white/[0.05] dark:text-zinc-300">
+            <span>Hi, I can give you 15 edited images</span>
+            <span className="font-bold text-emerald-600 dark:text-emerald-400">$220</span>
+          </div>
+        </div>
+
+        {/* Sophia Chen Verified Review Card (exact copy from user Image 1!) */}
+        <div className="rounded-2xl border border-zinc-200/90 bg-white/95 p-4 shadow-xl backdrop-blur-xl transition-all duration-300 group-hover/card:-translate-y-1 dark:border-white/10 dark:bg-zinc-950/95">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1 text-amber-400">
+              <Star className="h-3.5 w-3.5 fill-amber-400" />
+              <Star className="h-3.5 w-3.5 fill-amber-400" />
+              <Star className="h-3.5 w-3.5 fill-amber-400" />
+              <Star className="h-3.5 w-3.5 fill-amber-400" />
+              <Star className="h-3.5 w-3.5 fill-amber-400" />
+              <span className="ml-1 text-xs font-bold text-zinc-900 dark:text-white">5.0</span>
+            </div>
+            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Verified
+            </span>
+          </div>
+          <p className="mt-2.5 text-xs leading-relaxed text-zinc-700 italic dark:text-zinc-200">
+            &ldquo;The smoothest hiring experience we&apos;ve ever had. Verified talents with
+            impeccable taste.&rdquo;
+          </p>
+          <div className="mt-3 flex items-center gap-2.5">
+            <img
+              src="https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=150"
+              alt="Sophia Chen"
+              className="h-7 w-7 rounded-full object-cover contrast-125 grayscale"
+            />
+            <div>
+              <div className="flex items-center gap-1 text-xs font-semibold text-zinc-900 dark:text-white">
+                <span>Sophia Chen</span>
+                <CheckCircle2 className="h-3 w-3 text-blue-500" />
+              </div>
+              <p className="text-[10px] text-zinc-500 dark:text-zinc-400">
+                Creative Director @ Forma
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="sr-only">
+          <HeroImageView image={item.image} priority={false} />
+        </div>
+      </div>
+    );
+  }
+
+  // 3. Account Balance ($100.60) & Communication Inbox (from user Image 5 & Image 7)
+  return (
+    <div className="relative mx-auto max-w-[360px] space-y-3.5 sm:max-w-[400px]">
+      {/* Account Balance Card (from user Image 5!) */}
+      <div className="rounded-2xl border border-zinc-200/90 bg-white/95 p-5 shadow-lg backdrop-blur-xl transition-all duration-300 group-hover/card:scale-[1.01] dark:border-white/10 dark:bg-zinc-900/95">
+        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+          Account Balance
+        </span>
+        <div className="mt-1 font-serif text-3xl tracking-tight text-zinc-950 italic sm:text-4xl dark:text-white">
+          $100.60
+        </div>
+        <div className="mt-4 flex items-center justify-between rounded-xl bg-zinc-100/80 px-3.5 py-2.5 text-xs font-medium text-zinc-800 transition-colors hover:bg-zinc-200/80 dark:bg-white/[0.06] dark:text-zinc-200 dark:hover:bg-white/[0.1]">
+          <div className="flex items-center gap-2">
+            <CreditCard className="h-4 w-4 text-zinc-500" />
+            <span>Withdraw Funds</span>
+          </div>
+          <ArrowRight className="h-3.5 w-3.5 text-zinc-400" />
+        </div>
+      </div>
+
+      {/* Communication DM Card (from user Image 7!) */}
+      <div className="rounded-2xl border border-zinc-200/90 bg-white/95 p-4 shadow-xl backdrop-blur-xl transition-all duration-300 group-hover/card:-translate-y-1 dark:border-white/10 dark:bg-zinc-950/95">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <img
+              src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=150"
+              alt="James Smith"
+              className="h-8 w-8 rounded-full object-cover contrast-125 grayscale"
+            />
+            <div>
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-zinc-900 dark:text-white">
+                <span>James Smith</span>
+                <span className="text-[10px] font-normal text-zinc-400">09:00 AM</span>
+              </div>
+              <p className="max-w-[170px] truncate text-[10px] text-zinc-500 dark:text-zinc-400">
+                I can arrive at 8 am with the gear
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-purple-600 text-[10px] font-bold text-white">
+              1
+            </span>
+            <div className="flex items-center gap-1 rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-semibold text-rose-600 dark:bg-rose-950/30 dark:text-rose-300">
+              <Heart className="h-3 w-3 fill-rose-500 text-rose-500" />
+              <span>123</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="sr-only">
+        <HeroImageView image={item.image} priority={false} />
+      </div>
+    </div>
+  );
+}
+
 export function LandingFeatureShowcase({ variant, content }: LandingSectionProps<"features">) {
   const [selected, setSelected] = React.useState(content.items[0]?.id ?? "");
   const active = content.items.find((item) => item.id === selected) ?? content.items[0];
@@ -560,67 +787,197 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
           </div>
         </div>
       ) : variant === "accordion" ? (
-        /* Expandable Preview Variant */
-        <Grid cols={2} gap="xl" align="start">
-          <div className="rounded-[24px] border border-zinc-200/80 bg-zinc-50/60 p-4 sm:p-6 dark:border-white/10 dark:bg-white/[0.02]">
-            <Accordion
-              selectedKeys={[active.id]}
-              onSelectionChange={(keys) => {
-                if (keys[0]) setSelected(keys[0]);
-              }}
-            >
-              {content.items.map((item, index) => {
-                const Icon = featureIcons[index % featureIcons.length];
-                return (
-                  <AccordionItem
-                    key={item.id}
-                    itemKey={item.id}
-                    title={
-                      <div className="flex items-center gap-2.5">
-                        <Icon className="h-4 w-4 text-zinc-600 dark:text-zinc-400" />
-                        <span className="font-semibold">{item.title}</span>
+        /* Expandable Preview Variant - Sticky Scrollytelling Stage with Live Interactive Progress */
+        <div>
+          <Grid cols={2} gap="xl" align="start">
+            {/* Left: Scrollytelling Accordion List */}
+            <div className="rounded-[28px] border border-zinc-200/80 bg-zinc-50/60 p-4 sm:p-6 dark:border-white/10 dark:bg-white/[0.02]">
+              <div className="mb-4 flex items-center justify-between border-b border-zinc-200/60 pb-3 text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400">
+                <span className="font-semibold tracking-wider uppercase">
+                  Features Scrollytelling
+                </span>
+                <span className="font-mono text-[11px]">{content.items.length} Modules</span>
+              </div>
+              <Accordion
+                selectedKeys={[active.id]}
+                onSelectionChange={(keys) => {
+                  if (keys[0]) setSelected(keys[0]);
+                }}
+                variant="splitted"
+                className="space-y-3"
+              >
+                {content.items.map((item, index) => {
+                  const isItemActive = item.id === active.id;
+                  const bullets = featureBullets[index % 3] ?? featureBullets[0];
+                  return (
+                    <AccordionItem
+                      key={item.id}
+                      itemKey={item.id}
+                      title={item.title}
+                      classNames={{
+                        base: cn(
+                          "rounded-2xl border transition-all duration-300",
+                          isItemActive
+                            ? "border-zinc-300 bg-white/95 shadow-md dark:border-white/20 dark:bg-zinc-900/95"
+                            : "border-zinc-200/60 bg-white/40 dark:border-white/5 dark:bg-white/[0.02]"
+                        ),
+                        title: "text-sm sm:text-base font-semibold",
+                        trigger: "py-3.5 px-4 sm:px-5",
+                        content: "px-4 sm:px-5 pb-5 pt-1",
+                      }}
+                    >
+                      <div className="space-y-3.5">
+                        <div className="flex items-center gap-2 font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
+                          <span className="rounded bg-zinc-100 px-1.5 py-0.5 font-bold text-zinc-700 dark:bg-white/10 dark:text-zinc-300">
+                            MODULE 0{index + 1}
+                          </span>
+                          <span>•</span>
+                          <span className="font-medium text-emerald-600 dark:text-emerald-400">
+                            Synced View
+                          </span>
+                        </div>
+
+                        <Text className="text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
+                          {item.description}
+                        </Text>
+
+                        {/* Scrolly progress track indicator */}
+                        <div className="overflow-hidden rounded-full bg-zinc-100 dark:bg-white/10">
+                          <div className="h-1 w-full animate-pulse bg-gradient-to-r from-blue-500 to-indigo-500" />
+                        </div>
+
+                        <ul className="hb-landing-list space-y-2 pt-1">
+                          {bullets.map((bullet) => (
+                            <LandingCheckItem key={bullet}>{bullet}</LandingCheckItem>
+                          ))}
+                        </ul>
                       </div>
-                    }
-                    classNames={{ title: "whitespace-normal overflow-visible text-clip" }}
-                  >
-                    <div className="pt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
-                      {item.description}
-                    </div>
-                  </AccordionItem>
-                );
-              })}
-            </Accordion>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
+            </div>
+
+            {/* Right: Sticky 3D Interactive Stage */}
+            <div className="sticky top-28 self-start">
+              <div className="overflow-hidden rounded-[28px] border border-zinc-200/90 bg-zinc-50/90 p-4 shadow-xl backdrop-blur-xl transition-transform duration-500 hover:scale-[1.01] sm:p-6 dark:border-white/10 dark:bg-zinc-950/90">
+                {/* macOS Window Title Bar */}
+                <div className="mb-4 flex items-center justify-between border-b border-zinc-200/80 pb-3 dark:border-white/10">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+                    <span className="ml-2 font-mono text-[11px] text-zinc-400 dark:text-zinc-500">
+                      hudbird://preview/{active.id}
+                    </span>
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                    Synced View
+                  </div>
+                </div>
+
+                {/* Hero image view (strictly accessible role="img" with alt={active.image?.alt ?? active.title}) */}
+                <div
+                  aria-live="polite"
+                  className="relative overflow-hidden rounded-2xl border border-zinc-200/80 shadow-sm dark:border-white/10"
+                >
+                  <HeroImageView image={active.image} priority={false} />
+
+                  {/* Dynamic Glass HUD Overlay */}
+                  <div className="absolute top-3 right-3 flex items-center gap-2 rounded-xl border border-white/20 bg-black/60 px-3 py-1.5 text-white shadow-lg backdrop-blur-md">
+                    <span className="text-xs font-semibold">{active.title}</span>
+                    <span className="rounded bg-white/20 px-1.5 py-0.5 font-mono text-[9px] tracking-wider uppercase">
+                      v1.5.0
+                    </span>
+                    <Eye className="h-3.5 w-3.5 text-zinc-300" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Grid>
+
+          {/* Interactive Step Timeline Scrubber at Bottom */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+            {content.items.map((item, index) => {
+              const isStepActive = item.id === active.id;
+              return (
+                <Button
+                  key={item.id}
+                  variant={isStepActive ? "solid" : "bordered"}
+                  size="sm"
+                  onClick={() => setSelected(item.id)}
+                  className={cn(
+                    "h-8 gap-2 rounded-full px-3.5 text-xs font-medium transition-all duration-200",
+                    isStepActive
+                      ? "shadow-sm"
+                      : "text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                  )}
+                >
+                  <span className="font-mono text-[10px] opacity-70">0{index + 1}</span>
+                  <span>{item.title}</span>
+                </Button>
+              );
+            })}
           </div>
-          <div
-            aria-live="polite"
-            className="overflow-hidden rounded-[24px] border border-zinc-200/80 shadow-md dark:border-white/10"
-          >
-            <HeroImageView image={active.image} priority={false} />
-          </div>
-        </Grid>
+        </div>
       ) : (
-        /* Split Editorial Rows */
-        <div className="space-y-12 sm:space-y-16">
+        /* Split Editorial Rows - Sticky 3D Paper Fold Stacking */
+        <div className="relative space-y-8 pt-4 pb-16 sm:space-y-12">
           {content.items.map((item, index) => {
             const Icon = featureIcons[index % featureIcons.length];
             const bullets = featureBullets[index % 3] ?? featureBullets[0];
             return (
               <div
                 key={item.id}
-                className="overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/60 p-6 sm:p-8 lg:p-10 dark:border-white/10 dark:bg-white/[0.02]"
+                className={cn(
+                  "hb-paper-fold-card sticky rounded-[32px] border border-zinc-200/90 bg-white/95 p-6 backdrop-blur-2xl transition-all duration-300 sm:p-10 dark:border-white/10 dark:bg-zinc-950/95",
+                  "shadow-[0_-12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_-16px_50px_rgba(0,0,0,0.45)]",
+                  "before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-zinc-400/40 before:to-transparent dark:before:via-white/20",
+                  "group/card"
+                )}
+                style={{
+                  top: `calc(90px + ${index * 32}px)`,
+                  zIndex: 10 + index,
+                }}
               >
+                {/* 3D Paper Fold Dossier Header */}
+                <div className="mb-6 flex items-center justify-between border-b border-zinc-100 pb-4 dark:border-white/[0.06]">
+                  <div className="flex items-center gap-2">
+                    <span className="rounded-full bg-zinc-900/5 px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wider text-zinc-700 uppercase dark:bg-white/10 dark:text-zinc-300">
+                      PHASE 0{index + 1} // {splitPhaseLabels[index] ?? "EXECUTION"}
+                    </span>
+                    <span className="hidden text-xs text-zinc-400 sm:inline dark:text-zinc-500">
+                      •
+                    </span>
+                    <span className="hidden text-xs font-medium text-zinc-500 sm:inline dark:text-zinc-400">
+                      Paper Fold Depth #{index + 1}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1 font-mono text-xs text-zinc-400 dark:text-zinc-500">
+                    <span>0{index + 1}</span>
+                    <span>/</span>
+                    <span>0{content.items.length}</span>
+                  </div>
+                </div>
+
                 <Grid cols={2} gap="xl" align="center">
                   <div className={index % 2 ? "md:order-2" : undefined}>
-                    <div className="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-200/80 bg-white text-zinc-800 shadow-2xs dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-200">
-                      <Icon className="h-4 w-4" />
-                    </div>
+                    <IconBox
+                      size="md"
+                      variant="double-ring"
+                      icon={Icon}
+                      showGlow={false}
+                      className="mb-5"
+                      aria-hidden="true"
+                    />
                     <Heading
                       as="h3"
-                      className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
+                      className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl lg:text-3xl dark:text-white"
                     >
                       {item.title}
                     </Heading>
-                    <Text className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
+                    <Text className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
                       {item.description}
                     </Text>
                     <ul className="hb-landing-list mt-6 space-y-2.5">
@@ -628,11 +985,15 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                         <LandingCheckItem key={bullet}>{bullet}</LandingCheckItem>
                       ))}
                     </ul>
+                    <div className="mt-7 flex items-center gap-3">
+                      <Button size="sm" variant="bordered" className="gap-2 text-xs">
+                        <span>Explore Phase 0{index + 1}</span>
+                        <ArrowRight className="h-3 w-3" />
+                      </Button>
+                    </div>
                   </div>
                   <div className={index % 2 ? "md:order-1" : undefined}>
-                    <div className="overflow-hidden rounded-2xl border border-zinc-200/80 shadow-sm dark:border-white/10">
-                      <HeroImageView image={item.image} priority={false} />
-                    </div>
+                    <EditorialFoldVisual index={index} item={item} />
                   </div>
                 </Grid>
               </div>

@@ -248,12 +248,14 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       {
         id: "accordion",
         name: "Expandable preview",
-        description: "Open a feature to update the adjacent product view.",
+        description:
+          "Expandable scrollytelling preview with sticky 3D stage and progress scrubber.",
       },
       {
         id: "split",
         name: "Editorial feature rows",
-        description: "Give each feature its own alternating text and visual row.",
+        description:
+          "Sticky 3D paper-fold stacking cards with rich editorial mockups and micro-interactions.",
       },
     ],
   },
