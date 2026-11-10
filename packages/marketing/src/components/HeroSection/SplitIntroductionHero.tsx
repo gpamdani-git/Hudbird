@@ -1,10 +1,21 @@
 "use client";
 import * as React from "react";
 import { Section, Container, Grid, Button, Badge, Heading, Text, Input } from "@hudbird/ui";
-import { Star, Check, Apple, Users, Layers, Palette, Calendar, ChevronRight } from "lucide-react";
+import {
+  Star,
+  Check,
+  Apple,
+  Users,
+  Layers,
+  Palette,
+  Calendar,
+  ChevronRight,
+  Play,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
+import { FullscreenVideoPlayer } from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 export interface SplitIntroductionHeroProps {
@@ -93,24 +104,24 @@ export interface SplitSlideItem {
 }
 
 export const DEFAULT_SPLIT_HERO_VIDEO_URL =
-  "https://videos.pexels.com/video-files/8764795/8764795-hd_1080_1920_25fps.mp4";
+  "https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4";
 
 export const defaultSplitSlides: SplitSlideItem[] = [
   {
     id: "slide-1",
     videoSrc: DEFAULT_SPLIT_HERO_VIDEO_URL,
     image: {
-      src: "https://images.pexels.com/photos/32993772/pexels-photo-32993772.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      src: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1400",
       darkSrc:
-        "https://images.pexels.com/photos/32993772/pexels-photo-32993772.jpeg?auto=compress&cs=tinysrgb&w=1400",
-      alt: "A woman wearing a VR headset and headphones in monochrome studio lighting",
+        "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1400",
+      alt: "Product and design engineering team collaborating on software UI prototypes",
     },
     testimonial: {
       quote: "Found our lead brand designer in under 24 hours. The talent pool is astonishing.",
       author: "Elena Rostova",
       role: "Head of Design @ Studio A",
       avatar:
-        "https://images.pexels.com/photos/32993772/pexels-photo-32993772.jpeg?auto=compress&cs=tinysrgb&w=150",
+        "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=150",
       rating: 5,
     },
   },
@@ -360,6 +371,7 @@ export function SplitIntroductionHero({
   const [[activeIdx, direction], setSlideState] = React.useState<[number, number]>([0, 1]);
   const [isPaused, setIsPaused] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = React.useState(false);
 
   // Determine if image passed in config is a custom customer image or theme test image
   const isDefaultSvg = config.image?.src?.startsWith("data:image/svg+xml");
@@ -574,16 +586,35 @@ export function SplitIntroductionHero({
                       />
 
                       {!hasCustomImage && currentSlide.videoSrc && (
-                        <video
-                          src={currentSlide.videoSrc}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          preload="auto"
-                          aria-label="A woman wearing a VR headset and headphones"
-                          className="absolute inset-0 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
-                        />
+                        <>
+                          <video
+                            src={currentSlide.videoSrc}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="auto"
+                            aria-label="Product and design engineering team collaborating on software UI prototypes"
+                            className="absolute inset-0 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
+                          />
+                          {/* Watch Story Action Pill */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsVideoModalOpen(true);
+                            }}
+                            aria-label="Watch video story in fullscreen"
+                            className="group/story-btn absolute top-3.5 right-3.5 z-20 flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95 sm:top-4 sm:right-4 sm:px-3.5"
+                          >
+                            <div className="flex h-4 w-4 items-center justify-center rounded-full bg-white text-zinc-950 transition-transform group-hover/story-btn:scale-110">
+                              <Play className="ml-0.5 h-2.5 w-2.5 fill-current" />
+                            </div>
+                            <span className="font-sans text-[11px] font-semibold tracking-wide sm:text-xs">
+                              Watch Story
+                            </span>
+                          </button>
+                        </>
                       )}
 
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
@@ -641,6 +672,17 @@ export function SplitIntroductionHero({
           </div>
         </Grid>
       </Container>
+
+      {/* Fullscreen Video Player Modal (Matches Reference Image) */}
+      <FullscreenVideoPlayer
+        isOpen={isVideoModalOpen}
+        onClose={() => setIsVideoModalOpen(false)}
+        videoUrl={currentSlide.videoSrc || DEFAULT_SPLIT_HERO_VIDEO_URL}
+        title="Hudbird UI • Product & Engineering Collaboration"
+        author={currentSlide.testimonial?.author || "Elena Rostova"}
+        role={currentSlide.testimonial?.role || "Head of Design"}
+        subtitle="We call ourselves generalist investors with a vertical focus."
+      />
     </Section>
   );
 }

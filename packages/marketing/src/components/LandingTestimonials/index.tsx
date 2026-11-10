@@ -16,7 +16,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import type { LandingSectionProps } from "@hudbird/schemas";
-import { LandingFrame, LandingHeading } from "../LandingShared";
+import { LandingFrame, LandingHeading, FullscreenVideoPlayer } from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 // Default 5 testimonials matching Image Reference 1 specifications
@@ -74,6 +74,12 @@ const singleMetrics = [
   },
 ];
 
+// Shared free UHD collaborative team story video from Pexels (ID: 3255275)
+export const SHARED_THEME_VIDEO_URL =
+  "https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_25fps.mp4";
+export const SHARED_THEME_VIDEO_POSTER =
+  "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1200";
+
 // Featured spotlight video testimonials (Image Reference 4 & 2)
 const featuredSpotlights = [
   {
@@ -85,11 +91,9 @@ const featuredSpotlights = [
     company: "Studio Alivio",
     avatar:
       "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300",
-    image:
-      "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    videoDuration: "1:24",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    image: SHARED_THEME_VIDEO_POSTER,
+    videoDuration: "1:48",
+    videoUrl: SHARED_THEME_VIDEO_URL,
   },
   {
     id: "spotlight-2",
@@ -102,8 +106,8 @@ const featuredSpotlights = [
       "https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=300",
     image:
       "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    videoDuration: "2:08",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoDuration: "1:48",
+    videoUrl: SHARED_THEME_VIDEO_URL,
   },
 ];
 
@@ -130,11 +134,9 @@ const collectionCards = [
     handle: "@kanew",
     avatar:
       "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300",
-    image:
-      "https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=800",
-    videoDuration: "1:42",
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    image: SHARED_THEME_VIDEO_POSTER,
+    videoDuration: "1:48",
+    videoUrl: SHARED_THEME_VIDEO_URL,
     date: "09/30/2026",
     rating: 5,
   },
@@ -613,79 +615,17 @@ export function LandingTestimonials({
       )}
 
       {/* ========================================================
-          VIDEO POPUP MODAL (100% Works Ready)
+          FULLSCREEN VIDEO PLAYER (Matches Reference Image)
          ======================================================== */}
-      <AnimatePresence>
-        {activeVideo && (
-          <div
-            className="absolute -inset-4 z-50 flex min-h-[540px] items-center justify-center p-4 sm:-inset-8 sm:p-6"
-            role="dialog"
-            aria-modal="true"
-          >
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setActiveVideo(null)}
-              className="absolute inset-0 rounded-3xl bg-black/85 backdrop-blur-md"
-            />
-
-            {/* Modal Dialog Window */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 20 }}
-              transition={{ type: "spring", stiffness: 350, damping: 30 }}
-              className="relative z-10 w-full max-w-3xl overflow-hidden rounded-[28px] border border-white/10 bg-zinc-950 p-4 shadow-2xl sm:p-6"
-            >
-              {/* Modal Top Bar */}
-              <div className="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-500/20 text-blue-400">
-                    <Play className="h-4 w-4 fill-current" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-white">{activeVideo.title}</h3>
-                    <p className="text-xs text-zinc-400">
-                      {activeVideo.author} • {activeVideo.role}
-                    </p>
-                  </div>
-                </div>
-                <Button
-                  variant="bordered"
-                  size="sm"
-                  onClick={() => setActiveVideo(null)}
-                  aria-label="Close video"
-                  className="h-8 w-8 rounded-full border-white/10 p-0 text-zinc-400 hover:bg-white/10 hover:text-white"
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </div>
-
-              {/* Video Player */}
-              <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black">
-                <video
-                  src={activeVideo.videoUrl}
-                  controls
-                  autoPlay
-                  playsInline
-                  className="h-full w-full object-cover"
-                />
-              </div>
-
-              {/* Modal Footer info */}
-              <div className="mt-4 flex items-center justify-between text-xs text-zinc-400">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                  <span>Verified Customer Experience</span>
-                </div>
-                <span className="font-mono text-[11px] text-zinc-500">Hudbird Video Showcase</span>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+      <FullscreenVideoPlayer
+        isOpen={Boolean(activeVideo)}
+        onClose={() => setActiveVideo(null)}
+        videoUrl={activeVideo?.videoUrl || SHARED_THEME_VIDEO_URL}
+        title={activeVideo?.title || "Hudbird Customer Story"}
+        author={activeVideo?.author}
+        role={activeVideo?.role}
+        subtitle="We call ourselves generalist investors with a vertical focus."
+      />
     </LandingFrame>
   );
 }

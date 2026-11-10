@@ -15,6 +15,7 @@ import type { LandingAction, LandingMotionProfile, LandingSectionType } from "@h
 import { cn } from "../../utils/cn";
 import "./landing.css";
 export { BrandScope } from "../HeroSection";
+export * from "./FullscreenVideoPlayer";
 
 export const landingSectionTypes: LandingSectionType[] = [
   "navbar",
