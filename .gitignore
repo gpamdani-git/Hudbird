@@ -10,16 +10,34 @@ dist-releases/
 dist.css
 *.tsbuildinfo
 
-# Turbo & Cache
+# Turbo, Bundler & Framework Caches
 .turbo/
+**/.turbo/
 .cache/
+**/.cache/
+.vite/
+**/.vite/
+.vitest-cache/
+**/.vitest-cache/
+.parcel-cache/
 .eslintcache
+
+# Local Tool & AI Agent Workspaces
+graphify-out/
+.kilo/
+.wrangler/
+**/.wrangler/
+.vercel/
+**/.vercel/
+.agents-scratch/
+APP/
 
 # Testing & Coverage
 coverage/
 test-results/
 playwright-report/
-output/playwright/
+output/
+**/output/
 test_*.txt
 test_tabs.txt
 test_themes.txt
@@ -42,10 +60,23 @@ starter-kits/*.zip
 .env*
 !.env.example
 
-# OS & Editor
+# OS, IDE & Editor
 .DS_Store
+**/.DS_Store
+Thumbs.db
 *.log
 *.local
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
+
+# Temporary & Scratch
+*.tmp
+tmp/
+temp/
