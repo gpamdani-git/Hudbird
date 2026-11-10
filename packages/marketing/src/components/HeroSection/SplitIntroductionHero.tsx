@@ -82,6 +82,7 @@ const defaultSocialAvatars = [
 export interface SplitSlideItem {
   id: string;
   image: HeroImage;
+  videoSrc?: string;
   testimonial: {
     quote: string;
     author: string;
@@ -97,11 +98,12 @@ export const DEFAULT_SPLIT_HERO_VIDEO_URL =
 export const defaultSplitSlides: SplitSlideItem[] = [
   {
     id: "slide-1",
+    videoSrc: DEFAULT_SPLIT_HERO_VIDEO_URL,
     image: {
       src: "https://images.pexels.com/photos/32993772/pexels-photo-32993772.jpeg?auto=compress&cs=tinysrgb&w=1400",
       darkSrc:
         "https://images.pexels.com/photos/32993772/pexels-photo-32993772.jpeg?auto=compress&cs=tinysrgb&w=1400",
-      alt: "Elegant black and white portrait of a woman with headscarf in monochrome lighting",
+      alt: "A woman wearing a VR headset and headphones in monochrome studio lighting",
     },
     testimonial: {
       quote: "Found our lead brand designer in under 24 hours. The talent pool is astonishing.",
@@ -565,25 +567,28 @@ export function SplitIntroductionHero({
                         loading="eager"
                         fetchPriority="high"
                         onError={() => setFailed(true)}
-                        className="h-full w-full object-cover object-top grayscale select-none"
+                        className={cn(
+                          "h-full w-full object-cover select-none",
+                          currentSlide.videoSrc ? "object-top grayscale" : ""
+                        )}
                       />
+
+                      {!hasCustomImage && currentSlide.videoSrc && (
+                        <video
+                          src={currentSlide.videoSrc}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          preload="auto"
+                          aria-label="A woman wearing a VR headset and headphones"
+                          className="absolute inset-0 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
+                        />
+                      )}
+
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
                     </motion.div>
                   </AnimatePresence>
-
-                  {!hasCustomImage && (
-                    <video
-                      src={DEFAULT_SPLIT_HERO_VIDEO_URL}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="auto"
-                      aria-label="A woman wearing a VR headset and headphones"
-                      className="absolute inset-0 z-10 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
-                    />
-                  )}
-
-                  <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
                 </div>
               )}
             </div>
