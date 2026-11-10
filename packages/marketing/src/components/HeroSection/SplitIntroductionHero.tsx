@@ -91,6 +91,9 @@ export interface SplitSlideItem {
   };
 }
 
+export const DEFAULT_SPLIT_HERO_VIDEO_URL =
+  "https://videos.pexels.com/video-files/8764795/8764795-hd_1080_1920_25fps.mp4";
+
 export const defaultSplitSlides: SplitSlideItem[] = [
   {
     id: "slide-1",
@@ -539,33 +542,49 @@ export function SplitIntroductionHero({
                   Image unavailable. Add your brand image.
                 </div>
               ) : (
-                <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                  <motion.div
-                    key={activeIdx}
-                    custom={direction}
-                    variants={slideVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.35 },
-                    }}
-                    className="absolute inset-0 h-full w-full"
-                  >
-                    <img
-                      src={resolvedSrc}
-                      alt={currentSlide.image.alt}
-                      width={1440}
-                      height={900}
-                      loading="eager"
-                      fetchPriority="high"
-                      onError={() => setFailed(true)}
-                      className="h-full w-full object-cover select-none"
+                <div className="relative h-full w-full">
+                  <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                    <motion.div
+                      key={activeIdx}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.35 },
+                      }}
+                      className="absolute inset-0 h-full w-full"
+                    >
+                      <img
+                        src={resolvedSrc}
+                        alt={currentSlide.image.alt}
+                        width={1440}
+                        height={900}
+                        loading="eager"
+                        fetchPriority="high"
+                        onError={() => setFailed(true)}
+                        className="h-full w-full object-cover object-top grayscale select-none"
+                      />
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {!hasCustomImage && (
+                    <video
+                      src={DEFAULT_SPLIT_HERO_VIDEO_URL}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      aria-label="A woman wearing a VR headset and headphones"
+                      className="absolute inset-0 z-10 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
                     />
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
-                  </motion.div>
-                </AnimatePresence>
+                  )}
+
+                  <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+                </div>
               )}
             </div>
 
