@@ -757,7 +757,7 @@
   },
   "packages/cli/templates/registry.json": {
     "mtime": 1793878581.2473156,
-    "seen": 1794247708.91405,
+    "seen": 1794274013.313445,
     "ast_hash": "",
     "semantic_hash": ""
   },
@@ -9168,9 +9168,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingBenefits/index.tsx": {
-    "mtime": 1794226251.997442,
-    "seen": 1794226268.3805912,
-    "ast_hash": "a3e920a2fc31e35ce62c9cf9b3534ee7",
+    "mtime": 1794253062.3001156,
+    "seen": 1794270654.0844889,
+    "ast_hash": "bd8493dfad2d6e68100d35fd848c7ca8",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingBuilderShowcase/LandingBuilderShowcase.test.tsx": {
@@ -9198,9 +9198,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingFeatureShowcase/index.tsx": {
-    "mtime": 1794226252.0242963,
-    "seen": 1794226268.380596,
-    "ast_hash": "31a979108cd6565a74ca62f9d8b105d9",
+    "mtime": 1794263325.7430043,
+    "seen": 1794270654.0881238,
+    "ast_hash": "592d1e579cd2319a3d1066187d6379bd",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingFooter/index.tsx": {
@@ -9222,9 +9222,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingHowItWorks/index.tsx": {
-    "mtime": 1794226252.0429168,
-    "seen": 1794226268.3806012,
-    "ast_hash": "9a43da1a22e759c9d0fc4dbf0ea82e70",
+    "mtime": 1794268853.4440072,
+    "seen": 1794270654.088675,
+    "ast_hash": "ae405048a7bec81e5bd78a22c2fe2a1a",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingIntegrations/index.tsx": {
@@ -9264,9 +9264,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingPage/catalog.ts": {
-    "mtime": 1794241042.8423707,
-    "seen": 1794241059.357271,
-    "ast_hash": "0d47c5aa16cf39601811605fefd50b6e",
+    "mtime": 1794264880.885356,
+    "seen": 1794270654.1141078,
+    "ast_hash": "5624a07d5e924825569246acad110403",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingPage/config.ts": {
@@ -9276,9 +9276,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingPage/data.ts": {
-    "mtime": 1794247699.8853972,
-    "seen": 1794247708.914596,
-    "ast_hash": "71127c72f80b0286e9397b6f79fec574",
+    "mtime": 1794265645.6436222,
+    "seen": 1794270654.114423,
+    "ast_hash": "ce4b7c859db3539e69b07999894fdb37",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingPage/index.ts": {
@@ -9294,15 +9294,15 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingShared/index.tsx": {
-    "mtime": 1794250189.798474,
-    "seen": 1794250207.458665,
-    "ast_hash": "346095091546ff9e19c7869482af0bdb",
+    "mtime": 1794274015.116167,
+    "seen": 1794274031.287711,
+    "ast_hash": "5609d3f4c7451e7bb831af4931bcc5fc",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingTestimonials/index.tsx": {
-    "mtime": 1794226234.3723726,
-    "seen": 1794226268.380633,
-    "ast_hash": "8212be86f032a62656c2a90c4236dc76",
+    "mtime": 1794274015.1174276,
+    "seen": 1794274031.287713,
+    "ast_hash": "138485af9486344df1a5fc5376820767",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/StartupPilot/StartupPage.tsx": {
@@ -9330,9 +9330,9 @@
     "semantic_hash": ""
   },
   "packages/schemas/src/composition.ts": {
-    "mtime": 1794241042.8427513,
-    "seen": 1794241059.358943,
-    "ast_hash": "d56068bdc154ef033f6a5e2fcbd406c2",
+    "mtime": 1794264880.8868532,
+    "seen": 1794270654.189525,
+    "ast_hash": "6abfec173e026bfdfb8bf0b8314efd85",
     "semantic_hash": ""
   },
   "scripts/capture-homepage-proof.mjs": {
@@ -10068,9 +10068,9 @@
     "semantic_hash": ""
   },
   "packages/marketing/src/components/HeroSection/SplitIntroductionHero.tsx": {
-    "mtime": 1794250189.79789,
-    "seen": 1794250207.4573498,
-    "ast_hash": "98064ac154b3d8fd690e3c1a2f31972c",
+    "mtime": 1794274015.0985928,
+    "seen": 1794274031.28163,
+    "ast_hash": "db1506f4aefaea95de0fe48f5662fec2",
     "semantic_hash": ""
   },
   "packages/marketing/src/components/LandingNavbar/presets/Nav13ModernMini.tsx": {
@@ -10203,6 +10203,12 @@
     "mtime": 1794247699.8864899,
     "seen": 1794247708.9196842,
     "ast_hash": "76dadbe88c8d7d12c58f93358ada560c",
+    "semantic_hash": ""
+  },
+  "packages/marketing/src/components/LandingShared/FullscreenVideoPlayer.tsx": {
+    "mtime": 1794274015.115253,
+    "seen": 1794274031.28771,
+    "ast_hash": "f5b06c7c2b0f45cd930bd79d5ea2964d",
     "semantic_hash": ""
   },
   "pnpm-lock.yaml": {
