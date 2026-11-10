@@ -14,13 +14,17 @@ page.on("pageerror", (error) => errors.push(error.message));
 
 function channel(value) {
   const normalized = value / 255;
-  return normalized <= 0.03928
-    ? normalized / 12.92
-    : ((normalized + 0.055) / 1.055) ** 2.4;
+  return normalized <= 0.03928 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
 }
 function contrast(foreground, background) {
-  const fg = foreground.match(/\d+(?:\.\d+)?/g).slice(0, 3).map(Number);
-  const bg = background.match(/\d+(?:\.\d+)?/g).slice(0, 3).map(Number);
+  const fg = foreground
+    .match(/\d+(?:\.\d+)?/g)
+    .slice(0, 3)
+    .map(Number);
+  const bg = background
+    .match(/\d+(?:\.\d+)?/g)
+    .slice(0, 3)
+    .map(Number);
   const fgL = 0.2126 * channel(fg[0]) + 0.7152 * channel(fg[1]) + 0.0722 * channel(fg[2]);
   const bgL = 0.2126 * channel(bg[0]) + 0.7152 * channel(bg[1]) + 0.0722 * channel(bg[2]);
   return (Math.max(fgL, bgL) + 0.05) / (Math.min(fgL, bgL) + 0.05);
@@ -81,14 +85,19 @@ try {
   const navLogo = page.getByRole("link", { name: "Hudbird UI home" }).locator("img");
   assert.equal(await navLogo.getAttribute("src"), "/assets/logo/hudbird-logo-white.png");
   assert.equal(await page.locator("#hero .hw-slot").count(), 12);
-  assert.equal(await page.getByRole("link", { name: "Get Started", exact: true }).getAttribute("href"), "/#/marketing/landing-builder");
+  assert.equal(
+    await page.getByRole("link", { name: "Get Started", exact: true }).getAttribute("href"),
+    "/#/marketing/landing-builder"
+  );
   await page.getByRole("tab", { name: "Centered" }).click();
   await page.locator("[data-builder-preview='centered']").waitFor();
   assert.equal(
     await page.locator("[data-builder-preview='centered']").getAttribute("data-brand"),
     "hudbird-home"
   );
-  const proofImages = await page.locator('img[alt^="Hudbird page builder"], img[alt^="React source"]').all();
+  const proofImages = await page
+    .locator('img[alt^="Hudbird page builder"], img[alt^="React source"]')
+    .all();
   assert.ok(proofImages.length >= 3);
   for (const image of proofImages) {
     await image.scrollIntoViewIfNeeded();
@@ -97,9 +106,9 @@ try {
         throw new Error(`Product proof image failed to load: ${node.getAttribute("src")}`);
     });
   }
-  const hrefs = await page.locator("a").evaluateAll((anchors) =>
-    anchors.map((anchor) => anchor.getAttribute("href")).filter(Boolean)
-  );
+  const hrefs = await page
+    .locator("a")
+    .evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute("href")).filter(Boolean));
   for (const href of [
     "/#/docs",
     "/#/marketing/landing-sections",
@@ -129,7 +138,9 @@ try {
       2
     )
   );
-  console.log("Homepage theme, responsive layout, builder, links, contrast, and legacy template passed.");
+  console.log(
+    "Homepage theme, responsive layout, builder, links, contrast, and legacy template passed."
+  );
 } finally {
   await browser.close();
 }

@@ -125,4 +125,6 @@ fs.writeFileSync(
 
 run(path.join(root, "node_modules/.bin/tsc"), ["--noEmit"]);
 run(path.join(root, "node_modules/.bin/vite"), ["build"]);
-console.log(`LandingBuilderShowcase passed packed CLI install, typecheck, and Vite build in ${fixture}`);
+console.log(
+  `LandingBuilderShowcase passed packed CLI install, typecheck, and Vite build in ${fixture}`
+);

@@ -128,11 +128,7 @@ function createOverwrites(profile, guildId) {
       {
         id: guildId,
         type: 0, // Role
-        allow: (
-          PERMS.VIEW_CHANNEL |
-          PERMS.READ_MESSAGE_HISTORY |
-          PERMS.ADD_REACTIONS
-        ).toString(),
+        allow: (PERMS.VIEW_CHANNEL | PERMS.READ_MESSAGE_HISTORY | PERMS.ADD_REACTIONS).toString(),
         deny: (
           PERMS.SEND_MESSAGES |
           PERMS.SEND_MESSAGES_IN_THREADS |
@@ -182,7 +178,7 @@ function createOverwrites(profile, guildId) {
           PERMS.STREAM |
           PERMS.USE_VAD
         ).toString(),
-        deny: (PERMS.MENTION_EVERYONE).toString(),
+        deny: PERMS.MENTION_EVERYONE.toString(),
       },
     ];
   }
