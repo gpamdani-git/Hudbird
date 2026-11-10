@@ -21,9 +21,7 @@ Build, customize, and export production-ready landing pages and SaaS templates d
 
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./public/assets/homepage/builder-sections-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="./public/assets/homepage/builder-sections-light.png">
-    <img alt="Hudbird UI Interactive Page Builder" src="./public/assets/homepage/builder-sections-dark.png" width="100%" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);" />
+    <img alt="Hudbird UI Interactive Page Builder" src="./public/assets/homepage/pagebuilder.png" width="100%" style="border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);" />
   </picture>
   <p align="center"><sub><i>Live Page Builder: Real-time section ordering, 27 responsive layout archetypes, brand theme customizer, and one-click code/recipe export.</i></sub></p>
 </div>
