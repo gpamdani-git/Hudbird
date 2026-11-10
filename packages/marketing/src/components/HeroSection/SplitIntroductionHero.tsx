@@ -598,14 +598,17 @@ export function SplitIntroductionHero({
                             className="absolute inset-0 h-full w-full object-cover object-top contrast-[1.06] grayscale select-none"
                           />
                           {/* Watch Story Action Pill */}
-                          <button
+                          <Button
                             type="button"
+                            variant="outline"
+                            size="sm"
+                            radius="full"
                             onClick={(e) => {
                               e.stopPropagation();
                               setIsVideoModalOpen(true);
                             }}
                             aria-label="Watch video story in fullscreen"
-                            className="group/story-btn absolute top-3.5 right-3.5 z-20 flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95 sm:top-4 sm:right-4 sm:px-3.5"
+                            className="group/story-btn absolute top-3.5 right-3.5 z-20 flex h-auto cursor-pointer items-center gap-2 border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95 sm:top-4 sm:right-4 sm:px-3.5"
                           >
                             <div className="flex h-4 w-4 items-center justify-center rounded-full bg-white text-zinc-950 transition-transform group-hover/story-btn:scale-110">
                               <Play className="ml-0.5 h-2.5 w-2.5 fill-current" />
@@ -613,7 +616,7 @@ export function SplitIntroductionHero({
                             <span className="font-sans text-[11px] font-semibold tracking-wide sm:text-xs">
                               Watch Story
                             </span>
-                          </button>
+                          </Button>
                         </>
                       )}
 

@@ -3,6 +3,7 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Maximize2, Minimize2 } from "lucide-react";
+import { Button, Badge } from "@hudbird/ui";
 import { cn } from "../../utils/cn";
 
 export interface FullscreenVideoPlayerProps {
@@ -147,9 +148,14 @@ export function FullscreenVideoPlayer({
             {/* Top Bar Context & Controls (Reveals on Hover / Non-intrusive) */}
             <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between bg-gradient-to-b from-black/70 via-black/30 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover/player:opacity-100 sm:p-5">
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-white/15 px-3 py-1 font-mono text-[11px] font-semibold tracking-wider text-white uppercase backdrop-blur-md">
+                <Badge
+                  variant="flat"
+                  size="sm"
+                  radius="full"
+                  className="bg-white/15 font-mono text-[11px] font-semibold tracking-wider text-white uppercase backdrop-blur-md"
+                >
                   4K UHD
-                </span>
+                </Badge>
                 {(author || role) && (
                   <span className="hidden font-sans text-xs font-medium text-zinc-300 sm:inline">
                     {[author, role].filter(Boolean).join(" • ")}
@@ -158,11 +164,14 @@ export function FullscreenVideoPlayer({
               </div>
 
               {/* Fullscreen Toggle Action */}
-              <button
+              <Button
                 type="button"
+                variant="outline"
+                size="sm"
+                radius="full"
                 onClick={toggleFullscreen}
                 aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                className="pointer-events-auto flex h-9 items-center gap-1.5 rounded-full border border-white/20 bg-black/60 px-3.5 text-xs font-medium text-white shadow-md backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95"
+                className="pointer-events-auto flex h-9 items-center gap-1.5 border-white/20 bg-black/60 px-3.5 text-xs font-medium text-white shadow-md backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95"
               >
                 {isFullscreen ? (
                   <>
@@ -175,7 +184,7 @@ export function FullscreenVideoPlayer({
                     <span className="hidden sm:inline">Fullscreen</span>
                   </>
                 )}
-              </button>
+              </Button>
             </div>
 
             {/* Subtitle Caption Overlay (Matches Reference Image Exactly) */}
