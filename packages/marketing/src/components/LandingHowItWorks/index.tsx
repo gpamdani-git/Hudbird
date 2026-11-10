@@ -1,58 +1,43 @@
 "use client";
 import * as React from "react";
-import { Badge, Button, Card, CardBody, Grid, Heading, Text } from "@hudbird/ui";
-import { motion, AnimatePresence, useInView } from "framer-motion";
-import {
-  Sparkles,
-  Layers,
-  SlidersHorizontal,
-  Palette,
-  Download,
-  Code2,
-  CheckCircle2,
-  ArrowRight,
-  ChevronRight,
-  Play,
-  Check,
-  Copy,
-  FileCode,
-  Terminal,
-  ExternalLink,
-  ShieldCheck,
-  Zap,
-  Globe,
-  Server,
-  Cloud,
-} from "lucide-react";
+import { Button, Card, Grid, Heading, Text } from "@hudbird/ui";
 import type { LandingSectionProps } from "@hudbird/schemas";
 import { HeroImageView } from "../HeroSection";
-import { LandingFrame } from "../LandingShared";
+import { LandingFrame, useLandingNavigation } from "../LandingShared";
 import { cn } from "../../utils/cn";
 
-// Sub-step definitions for Step 1: Page Builder Assembly (Image Reference 1)
-const step1SubSteps = [
+// ============================================================================
+// STEP DEFINITIONS (Matching Reference Layout & Content)
+// ============================================================================
+
+interface SubStepItem {
+  id: string;
+  title: string;
+  description: string;
+}
+
+const step1SubSteps: SubStepItem[] = [
   {
     id: "open",
-    title: "1. Open page builder",
+    title: "Open page builder",
     description:
       "Launch the visual studio to compose layouts on a real-time preview canvas with zero friction.",
   },
   {
     id: "customize",
-    title: "2. Customize & reorder sections",
+    title: "Customize & reorder sections",
     description:
       "Toggle sections on or off (Navbar, Hero, Logos, Benefits, Pricing) and reorder narrative flow with intuitive controls.",
   },
   {
     id: "theme",
-    title: "3. Change theme & brand system",
+    title: "Change theme & brand system",
     description:
       "Tune OKLCH color palettes, typography pairings, and border radius to match your company's design identity.",
   },
 ];
 
-// Export modes for Step 2: Export Template (Image Reference 1 layout)
-const step2ExportModes = [
+const step2ExportModes: SubStepItem[] = [
   {
     id: "react",
     title: "Export React & Next.js Project",
@@ -73,8 +58,7 @@ const step2ExportModes = [
   },
 ];
 
-// Deploy targets for Step 3: Production Verified & Deploy
-const step3DeployTargets = [
+const step3DeployTargets: SubStepItem[] = [
   {
     id: "vercel",
     title: "Vercel & Next.js Deployment",
@@ -95,685 +79,951 @@ const step3DeployTargets = [
 ];
 
 // ============================================================================
-// ART-DIRECTED 3D ISOMETRIC VECTOR ILLUSTRATIONS (LlamaParse Style - Image 1)
+// NATIVE STICKY CARD STACK HOOK (Zero External Libraries, 60fps rAF)
 // ============================================================================
 
-/**
- * 3D Isometric Hexagon Base with internal coordinate axes, wireframe grid,
- * and drop shadow matching LlamaParse Image Reference 1.
- */
-function IsometricHexagonBase({
-  children,
-  className,
+function useStickyCardStack(cardCount: number) {
+  const stackContainerRef = React.useRef<HTMLDivElement | null>(null);
+  const cardRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const [depths, setDepths] = React.useState<number[]>(() => Array(cardCount).fill(0));
+
+  React.useEffect(() => {
+    let rafId: number | null = null;
+
+    const updateStack = () => {
+      const container = stackContainerRef.current;
+      const cards = cardRefs.current;
+      if (!container || !cards[0]) return;
+
+      const doc = container.ownerDocument;
+      const iframeWin = doc.defaultView ?? window;
+      const frameEl = iframeWin.frameElement as HTMLElement | null;
+      const parentWin = frameEl?.ownerDocument?.defaultView ?? iframeWin;
+
+      // Detect if rendered inside an auto-sized full-height iframe (like IframePreview)
+      const isAutoHeightIframe =
+        Boolean(frameEl) && iframeWin.innerHeight > parentWin.innerHeight * 1.3;
+      const iframeTopInViewport = frameEl ? frameEl.getBoundingClientRect().top : 0;
+
+      const containerRect = container.getBoundingClientRect();
+      const containerHeight = container.offsetHeight;
+
+      // Compute effective viewport top for each card
+      const visualTops: number[] = [];
+      const pinOffsets: number[] = [];
+      const cardHeights: number[] = [];
+
+      for (let i = 0; i < cardCount; i++) {
+        const card = cards[i];
+        if (!card) {
+          visualTops.push(0);
+          pinOffsets.push(0);
+          cardHeights.push(420);
+          continue;
+        }
+
+        const stickyTopPx = 88 + i * 24;
+        const cardHeight = Math.max(card.offsetHeight, 320);
+        cardHeights.push(cardHeight);
+
+        if (isAutoHeightIframe) {
+          const naturalViewportTop = iframeTopInViewport + containerRect.top + card.offsetTop;
+          const maxPin = Math.max(0, containerHeight - card.offsetTop - cardHeight - 24);
+          const pinY = Math.min(maxPin, Math.max(0, stickyTopPx - naturalViewportTop));
+          pinOffsets.push(pinY);
+          visualTops.push(naturalViewportTop + pinY);
+        } else {
+          pinOffsets.push(0);
+          visualTops.push(card.getBoundingClientRect().top);
+        }
+      }
+
+      const nextDepths: number[] = [];
+
+      for (let i = 0; i < cardCount; i++) {
+        const current = cards[i];
+        if (!current) {
+          nextDepths.push(0);
+          continue;
+        }
+
+        const currentTop = visualTops[i];
+        const currentHeight = cardHeights[i];
+        let totalOverlap = 0;
+
+        for (let j = i + 1; j < cardCount; j++) {
+          const nextTop = visualTops[j];
+          const distance = nextTop - currentTop;
+          const triggerRange = currentHeight * 0.92;
+
+          if (distance < triggerRange) {
+            const progress = Math.min(
+              1,
+              Math.max(0, (triggerRange - distance) / Math.max(1, triggerRange - 24))
+            );
+            totalOverlap += progress;
+          }
+        }
+
+        nextDepths.push(Number(totalOverlap.toFixed(3)));
+        const pinY = pinOffsets[i];
+
+        if (totalOverlap > 0.005 || pinY > 0.5) {
+          const scale = Math.max(0.88, 1 - totalOverlap * 0.05);
+          const rotateX = -Math.min(14, totalOverlap * 5.5);
+          const depthShiftY = -Math.min(24, totalOverlap * 10);
+          const translateY = pinY + depthShiftY;
+          const translateZ = -Math.min(64, totalOverlap * 30);
+          const opacity = Math.max(0.42, 1 - totalOverlap * 0.26);
+          const blur = Math.min(3.2, totalOverlap * 1.4);
+
+          current.style.transform = `perspective(1200px) translate3d(0px, ${translateY.toFixed(1)}px, ${translateZ.toFixed(1)}px) rotateX(${rotateX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
+          current.style.opacity = opacity.toFixed(3);
+          current.style.filter = totalOverlap > 0.02 ? `blur(${blur.toFixed(2)}px)` : "none";
+        } else {
+          current.style.transform =
+            "perspective(1200px) translate3d(0px, 0px, 0px) rotateX(0deg) scale(1)";
+          current.style.opacity = "1";
+          current.style.filter = "none";
+        }
+      }
+
+      setDepths((prev) => {
+        const changed = prev.some((val, idx) => Math.abs(val - nextDepths[idx]) > 0.04);
+        return changed ? nextDepths : prev;
+      });
+    };
+
+    const onScroll = () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateStack);
+    };
+
+    updateStack();
+
+    const container = stackContainerRef.current;
+    const doc = container?.ownerDocument ?? document;
+    const iframeWin = doc.defaultView ?? window;
+    const frameEl = iframeWin.frameElement as HTMLElement | null;
+    const parentWin = frameEl?.ownerDocument?.defaultView ?? window;
+
+    parentWin.addEventListener("scroll", onScroll, { passive: true });
+    parentWin.addEventListener("resize", onScroll, { passive: true });
+    if (iframeWin !== parentWin) {
+      iframeWin.addEventListener("scroll", onScroll, { passive: true });
+      iframeWin.addEventListener("resize", onScroll, { passive: true });
+    }
+
+    const scrollParents: Element[] = [];
+    let el: HTMLElement | null = container?.parentElement ?? null;
+    while (el) {
+      const style = iframeWin.getComputedStyle(el);
+      if (/(auto|scroll)/.test(style.overflowY)) {
+        scrollParents.push(el);
+        el.addEventListener("scroll", onScroll, { passive: true });
+      }
+      el = el.parentElement;
+    }
+
+    return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      parentWin.removeEventListener("scroll", onScroll);
+      parentWin.removeEventListener("resize", onScroll);
+      if (iframeWin !== parentWin) {
+        iframeWin.removeEventListener("scroll", onScroll);
+        iframeWin.removeEventListener("resize", onScroll);
+      }
+      scrollParents.forEach((p) => p.removeEventListener("scroll", onScroll));
+    };
+  }, [cardCount]);
+
+  return { stackContainerRef, cardRefs, depths };
+}
+
+// ============================================================================
+// REUSABLE 3D WIREFRAME CUBE PRIMITIVE (CSS 3D Transform, Stroke Only)
+// ============================================================================
+
+function WireframeCube3D({
+  size = 56,
+  dashed = false,
+  label,
+  style,
 }: {
-  children?: React.ReactNode;
-  className?: string;
+  size?: number;
+  dashed?: boolean;
+  label?: string;
+  style?: React.CSSProperties;
 }) {
+  const half = size / 2;
+  const borderClass = cn(
+    "absolute inset-0 border-[1.35px] border-zinc-900 dark:border-zinc-100 bg-white/35 dark:bg-zinc-950/35",
+    dashed && "border-dashed border-zinc-500 dark:border-zinc-400"
+  );
+
   return (
-    <svg
-      viewBox="0 0 380 390"
-      className={cn("w-full max-w-[340px] drop-shadow-xl select-none sm:max-w-[380px]", className)}
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      className="relative flex items-center justify-center transition-transform duration-500 ease-out"
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        transformStyle: "preserve-3d",
+        ...style,
+      }}
     >
-      <defs>
-        {/* Soft Radial Glow matching Image 1 */}
-        <radialGradient id="llamaAura" cx="50%" cy="55%" r="50%">
-          <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.35" />
-          <stop offset="45%" stopColor="#818cf8" stopOpacity="0.25" />
-          <stop offset="70%" stopColor="#c084fc" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#f472b6" stopOpacity="0" />
-        </radialGradient>
+      <div className={borderClass} style={{ transform: `translateZ(${half}px)` }}>
+        {label && (
+          <span className="flex h-full w-full items-center justify-center font-mono text-[8px] font-bold tracking-tighter text-zinc-950 dark:text-white">
+            {label}
+          </span>
+        )}
+      </div>
+      <div className={borderClass} style={{ transform: `rotateY(180deg) translateZ(${half}px)` }} />
+      <div className={borderClass} style={{ transform: `rotateY(90deg) translateZ(${half}px)` }} />
+      <div className={borderClass} style={{ transform: `rotateY(-90deg) translateZ(${half}px)` }} />
+      <div className={borderClass} style={{ transform: `rotateX(90deg) translateZ(${half}px)` }} />
+      <div className={borderClass} style={{ transform: `rotateX(-90deg) translateZ(${half}px)` }} />
+    </div>
+  );
+}
 
-        <linearGradient
-          id="hexFill"
-          x1="190"
-          y1="145"
-          x2="190"
-          y2="345"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0%" stopColor="rgba(255,255,255,0.95)" />
-          <stop offset="100%" stopColor="rgba(244,244,245,0.85)" />
-        </linearGradient>
+// ============================================================================
+// SHARED 3D TRANSFORM STAGE & TOP WIREFRAME DOCUMENTS (Stroke Only, No Gradients)
+// ============================================================================
 
-        <linearGradient
-          id="hexFillDark"
-          x1="190"
-          y1="145"
-          x2="190"
-          y2="345"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop offset="0%" stopColor="rgba(24,24,27,0.95)" />
-          <stop offset="100%" stopColor="rgba(9,9,11,0.9)" />
-        </linearGradient>
+interface Stage3DProps {
+  stepIndex: 0 | 1 | 2;
+  activeSubStep: number;
+  stackDepth?: number;
+  onCycleSubStep?: () => void;
+}
 
-        {/* Shadow filter */}
-        <filter id="hexShadow" x="90" y="140" width="200" height="220" filterUnits="userSpaceOnUse">
-          <feDropShadow dx="3" dy="6" stdDeviation="5" floodOpacity="0.2" floodColor="#000" />
-        </filter>
-      </defs>
+/**
+ * Top 3D Stacked Wireframe Documents (LlamaParse style, pure stroke lines + 3D transform)
+ */
+function TopStackedDocuments3D({
+  stepIndex,
+  activeSubStep,
+  isHovered,
+  isExpanded,
+}: {
+  stepIndex: 0 | 1 | 2;
+  activeSubStep: number;
+  isHovered: boolean;
+  isExpanded: boolean;
+}) {
+  const spread = isExpanded ? 1.4 : isHovered ? 1.18 : 1;
 
-      {/* Background Aura Glow from Image 1 */}
-      <circle cx="190" cy="225" r="150" fill="url(#llamaAura)" />
+  return (
+    <div
+      className="relative flex h-[96px] w-[190px] items-center justify-center select-none sm:h-[104px] sm:w-[210px]"
+      style={{
+        perspective: "800px",
+        transformStyle: "preserve-3d",
+      }}
+    >
+      {/* Back-Left Sheet (3D Tilted) */}
+      <div
+        className="absolute h-[74px] w-[86px] rounded-[5px] border-[1.25px] border-zinc-900/75 bg-white p-2 transition-transform duration-500 ease-out dark:border-zinc-200/75 dark:bg-zinc-950"
+        style={{
+          transform: `translate3d(${-26 * spread}px, ${3 * spread}px, ${-24 * spread}px) rotateZ(${-11 * spread}deg) rotateX(10deg)`,
+        }}
+      >
+        <div className="space-y-1.5 pt-1">
+          <div className="h-px w-3/5 bg-zinc-400 dark:bg-zinc-600" />
+          <div className="h-px w-4/5 bg-zinc-300 dark:bg-zinc-700" />
+          <div className="h-px w-2/3 bg-zinc-300 dark:bg-zinc-700" />
+          <div className="h-px w-3/4 bg-zinc-300 dark:bg-zinc-700" />
+        </div>
+      </div>
 
-      {/* ==============================================================
-          DOWNWARD ARROWS (Image Reference 1: ↓ ↓ ↓)
-         ============================================================== */}
-      <g className="text-zinc-800 dark:text-white" stroke="currentColor" strokeWidth="1.75">
-        {/* Left arrow */}
-        <line x1="158" y1="92" x2="158" y2="128" />
-        <polygon points="158,135 154,127 162,127" fill="currentColor" stroke="none" />
+      {/* Back-Right Sheet (3D Tilted) */}
+      <div
+        className="absolute h-[74px] w-[86px] rounded-[5px] border-[1.25px] border-zinc-900/75 bg-white p-2 transition-transform duration-500 ease-out dark:border-zinc-200/75 dark:bg-zinc-950"
+        style={{
+          transform: `translate3d(${26 * spread}px, ${3 * spread}px, ${-14 * spread}px) rotateZ(${10 * spread}deg) rotateX(10deg)`,
+        }}
+      >
+        <div className="space-y-1.5 pt-1">
+          <div className="ml-auto h-px w-3/5 bg-zinc-400 dark:bg-zinc-600" />
+          <div className="ml-auto h-px w-4/5 bg-zinc-300 dark:bg-zinc-700" />
+          <div className="ml-auto h-px w-2/3 bg-zinc-300 dark:bg-zinc-700" />
+          <div className="ml-auto h-px w-3/4 bg-zinc-300 dark:bg-zinc-700" />
+        </div>
+      </div>
 
-        {/* Center arrow */}
-        <line x1="190" y1="92" x2="190" y2="128" />
-        <polygon points="190,135 186,127 194,127" fill="currentColor" stroke="none" />
+      {/* Front Active Sheet (3D Elevated) */}
+      <div
+        className="relative z-10 flex h-[84px] w-[104px] flex-col justify-between rounded-[6px] border-[1.5px] border-zinc-950 bg-white p-2.5 transition-transform duration-500 ease-out dark:border-white dark:bg-zinc-950"
+        style={{
+          transform: `translate3d(0px, ${isHovered ? -3 : 0}px, ${16 * spread}px) rotateX(${isHovered ? 4 : 0}deg)`,
+        }}
+      >
+        {stepIndex === 0 && (
+          /* Step 1 Document: Squiggly / Wireframe Layout Lines matching LlamaParse */
+          <div className="flex h-full flex-col justify-between">
+            <svg viewBox="0 0 84 62" className="h-full w-full overflow-visible" fill="none">
+              {activeSubStep === 0 && (
+                <g
+                  className="stroke-zinc-900 dark:stroke-zinc-100"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                >
+                  <path d="M2 6 C5 4, 8 8, 11 6 C14 4, 17 8, 20 6 C23 4, 26 8, 29 6" />
+                  <path d="M2 14 C5 12, 8 16, 11 14 C14 12, 17 16, 20 14" />
+                  <line x1="2" y1="25" x2="80" y2="25" strokeDasharray="4 2.5" />
+                  <line x1="2" y1="33" x2="78" y2="33" strokeDasharray="6 2" />
+                  <line x1="2" y1="41" x2="80" y2="41" strokeDasharray="3 2" />
+                  <line x1="2" y1="49" x2="74" y2="49" strokeDasharray="5 2.5" />
+                  <line x1="2" y1="57" x2="62" y2="57" strokeDasharray="4 2" />
+                </g>
+              )}
+              {activeSubStep === 1 && (
+                <g className="stroke-zinc-900 dark:stroke-zinc-100" strokeWidth="1.3">
+                  <rect x="2" y="3" width="80" height="12" rx="2" />
+                  <rect x="2" y="20" width="80" height="18" rx="2" strokeDasharray="3 2" />
+                  <rect x="2" y="43" width="80" height="14" rx="2" />
+                </g>
+              )}
+              {activeSubStep === 2 && (
+                <g className="stroke-zinc-900 dark:stroke-zinc-100" strokeWidth="1.3">
+                  <circle cx="15" cy="16" r="9" />
+                  <circle cx="42" cy="16" r="9" strokeDasharray="2.5 2" />
+                  <circle cx="69" cy="16" r="9" />
+                  <line x1="4" y1="38" x2="80" y2="38" />
+                  <circle cx="30" cy="38" r="3.5" className="fill-white dark:fill-zinc-950" />
+                  <line x1="4" y1="50" x2="64" y2="50" strokeDasharray="4 2" />
+                </g>
+              )}
+            </svg>
+          </div>
+        )}
 
-        {/* Right arrow */}
-        <line x1="222" y1="92" x2="222" y2="128" />
-        <polygon points="222,135 218,127 226,127" fill="currentColor" stroke="none" />
-      </g>
+        {stepIndex === 1 && (
+          /* Step 2 Document: Code Syntax Wireframe Sheet */
+          <div className="flex h-full flex-col justify-between">
+            <div className="flex items-center justify-between border-b border-zinc-200 pb-1.5 dark:border-zinc-800">
+              <div className="flex items-center gap-1">
+                <span className="h-1.5 w-1.5 rounded-full border border-zinc-900 dark:border-white" />
+                <span className="h-1.5 w-1.5 rounded-full border border-zinc-900 dark:border-white" />
+              </div>
+              <span className="font-mono text-[7px] text-zinc-600 dark:text-zinc-400">
+                {activeSubStep === 0 ? "App.tsx" : activeSubStep === 1 ? "index.html" : "prompt.md"}
+              </span>
+            </div>
+            <div className="space-y-1.5 py-1">
+              <div className="h-[1.5px] w-1/2 bg-zinc-900 dark:bg-zinc-100" />
+              <div className="ml-2 h-[1.5px] w-3/4 bg-zinc-500 dark:bg-zinc-400" />
+              <div className="ml-4 h-[1.5px] w-2/3 bg-zinc-400 dark:bg-zinc-500" />
+              <div className="ml-2 h-[1.5px] w-1/2 bg-zinc-500 dark:bg-zinc-400" />
+              <div className="h-[1.5px] w-2/5 bg-zinc-900 dark:bg-zinc-100" />
+            </div>
+          </div>
+        )}
 
-      {/* ==============================================================
-          3D ISOMETRIC HEXAGON WITH DROP SHADOW (Image Reference 1)
-         ============================================================== */}
-      {/* Drop shadow facet underneath */}
-      <polygon
-        points="106,298 194,348 281,298 281,304 194,354 106,304"
-        className="fill-zinc-900/25 dark:fill-black/60"
-      />
-
-      {/* Hexagon Body (Points: Top: 190,145 | TR: 277,195 | BR: 277,295 | B: 190,345 | BL: 103,295 | TL: 103,195) */}
-      <polygon
-        points="190,145 277,195 277,295 190,345 103,295 103,195"
-        className="fill-white stroke-zinc-900 dark:fill-zinc-900/90 dark:stroke-white/40"
-        strokeWidth="2"
-      />
-
-      {/* Internal 3D Isometric Coordinate Axes meeting at center (190, 245) */}
-      <g className="stroke-zinc-800 dark:stroke-white/50" strokeWidth="1.5">
-        {/* Axis going Up: (190,245) to (190,145) */}
-        <line x1="190" y1="245" x2="190" y2="145" />
-        {/* Axis going Down-Left: (190,245) to (103,295) */}
-        <line x1="190" y1="245" x2="103" y2="295" />
-        {/* Axis going Down-Right: (190,245) to (277,295) */}
-        <line x1="190" y1="245" x2="277" y2="295" />
-      </g>
-
-      {/* Subtle 3D Perspective Grid Lines inside faces */}
-      <g className="stroke-zinc-300 dark:stroke-white/10" strokeWidth="1" strokeDasharray="3 3">
-        {/* Top Plane grid lines */}
-        <line x1="146.5" y1="170" x2="233.5" y2="220" />
-        <line x1="233.5" y1="170" x2="146.5" y2="220" />
-
-        {/* Left Plane grid lines */}
-        <line x1="146.5" y1="220" x2="146.5" y2="320" />
-        <line x1="103" y1="245" x2="190" y2="295" />
-
-        {/* Right Plane grid lines */}
-        <line x1="233.5" y1="220" x2="233.5" y2="320" />
-        <line x1="190" y1="295" x2="277" y2="245" />
-      </g>
-
-      {/* Dynamic Content Placed on the 3D Stage */}
-      {children}
-    </svg>
+        {stepIndex === 2 && (
+          /* Step 3 Document: Audit Gauge & Verification Sheet */
+          <div className="flex h-full flex-col items-center justify-between py-0.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full border-[1.5px] border-zinc-900 dark:border-white">
+              <span className="font-mono text-[9px] font-bold text-zinc-950 dark:text-white">
+                100
+              </span>
+            </div>
+            <div className="w-full space-y-1.5">
+              <div className="mx-auto h-[1.5px] w-4/5 bg-zinc-900 dark:bg-zinc-100" />
+              <div className="mx-auto h-px w-3/5 bg-zinc-400 dark:bg-zinc-500" />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
 /**
- * Step 1 Illustration: Dynamic Morphing Flow for Page Builder Steps (Image 1)
+ * Downward Stroke Arrows (↓ ↓ ↓) matching LlamaParse Reference
  */
-function Step1Illustration({ activeStep }: { activeStep: number }) {
+function DownwardStrokeArrows({ isHovered }: { isHovered: boolean }) {
   return (
-    <IsometricHexagonBase>
-      {/* ==============================================================
-          TOP STACKED DOCUMENTS (Image Reference 1)
-         ============================================================== */}
-      <g>
-        {/* Sheet 1 (Back left, tilted -10°) */}
-        <rect
-          x="126"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(-9 126 18)"
-        />
-        {/* Sheet 2 (Back right, tilted +9°) */}
-        <rect
-          x="180"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(8 180 18)"
-        />
-        {/* Sheet 3 (Center front document with lines) */}
-        <g className="drop-shadow-md filter">
-          <rect
-            x="148"
-            y="22"
-            width="84"
-            height="68"
-            rx="5"
-            className="fill-white stroke-zinc-900 dark:fill-zinc-900 dark:stroke-white"
-            strokeWidth="1.5"
-          />
-          {/* Header strip on front document */}
-          <rect
-            x="154"
-            y="27"
-            width="40"
-            height="5"
-            rx="2"
-            className="fill-blue-500 dark:fill-blue-400"
-          />
-          {/* Text lines simulating Page Builder content */}
+    <div className="my-2 flex items-center justify-center gap-7 select-none">
+      {[0, 1, 2].map((idx) => (
+        <svg
+          key={idx}
+          width="12"
+          height="36"
+          viewBox="0 0 12 36"
+          fill="none"
+          className={cn(
+            "text-zinc-900 transition-transform duration-300 dark:text-zinc-100",
+            isHovered && (idx === 1 ? "translate-y-1" : "translate-y-0.5")
+          )}
+        >
           <line
-            x1="154"
-            y1="38"
-            x2="218"
-            y2="38"
-            className="stroke-zinc-400 dark:stroke-zinc-500"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+            x1="6"
+            y1={idx === 1 ? "12" : "2"}
+            x2="6"
+            y2="30"
+            stroke="currentColor"
+            strokeWidth="1.4"
           />
-          <line
-            x1="154"
-            y1="45"
-            x2="224"
-            y2="45"
-            className="stroke-zinc-300 dark:stroke-zinc-600"
-            strokeWidth="1.5"
+          <polyline
+            points="3,26.5 6,31 9,26.5"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            fill="none"
             strokeLinecap="round"
+            strokeLinejoin="round"
           />
-          <line
-            x1="154"
-            y1="52"
-            x2="204"
-            y2="52"
-            className="stroke-zinc-300 dark:stroke-zinc-600"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * Interactive 3D Transform Isometric Cube & Inner 3D Wireframe Shapes
+ * - Pure Stroke Only / Line Only (Zero Gradients)
+ * - Uses CSS 3D Transforms (perspective, preserve-3d, rotateX, rotateY, rotateZ, translateZ)
+ * - Interactive Hover tilt + Click 3D rotation & layer expansion
+ */
+function Interactive3DShapeStage({
+  stepIndex,
+  activeSubStep,
+  stackDepth = 0,
+  onCycleSubStep,
+}: Stage3DProps) {
+  const [isHovered, setIsHovered] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [spinCount, setSpinCount] = React.useState(0);
+  const [tilt, setTilt] = React.useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    setTilt({ x: -ny * 14, y: nx * 18 });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  const handleClick = () => {
+    setSpinCount((c) => c + 1);
+    setIsExpanded((prev) => !prev);
+    onCycleSubStep?.();
+  };
+
+  // Base isometric angles + interactive hover tilt + click rotation + scroll paper-fold morphing
+  const rotX = -26 + tilt.x - stackDepth * 14;
+  const rotY = 45 + tilt.y + spinCount * 90 + activeSubStep * 20;
+  const cubeScale = Math.max(0.82, (isHovered ? 1.05 : 1) - stackDepth * 0.08);
+  const zSpread = isExpanded ? 1.32 : isHovered ? 1.15 : 1;
+
+  return (
+    <div
+      role="button"
+      tabIndex={0}
+      aria-label="Interactive 3D wireframe illustration. Hover to tilt, click to rotate and morph 3D shapes."
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+      className="group relative flex w-full cursor-pointer flex-col items-center justify-center py-1 outline-none select-none"
+    >
+      {/* 1. Top 3D Stacked Wireframe Documents */}
+      <TopStackedDocuments3D
+        stepIndex={stepIndex}
+        activeSubStep={activeSubStep}
+        isHovered={isHovered}
+        isExpanded={isExpanded}
+      />
+
+      {/* 2. Downward Stroke Arrows (↓ ↓ ↓) */}
+      <DownwardStrokeArrows isHovered={isHovered} />
+
+      {/* 3. Outer Isometric Hexagon Silhouette + True CSS 3D Transform Wireframe Stage */}
+      <div
+        className="relative flex h-[230px] w-[230px] items-center justify-center sm:h-[248px] sm:w-[248px]"
+        style={{ perspective: "1000px" }}
+      >
+        {/* Crisp LlamaParse Isometric Hexagon Frame & Internal Coordinate Grid (Pure Stroke Only) */}
+        <svg
+          viewBox="0 0 240 240"
+          className="pointer-events-none absolute inset-0 h-full w-full transition-transform duration-500 ease-out"
+          style={{
+            transform: `rotateX(${(tilt.x * 0.35 - stackDepth * 8).toFixed(1)}deg) rotateY(${(tilt.y * 0.35).toFixed(1)}deg) scale(${cubeScale.toFixed(3)})`,
+          }}
+          fill="none"
+        >
+          {/* Solid Architectural Offset Shadow Facet (Line/Stroke + Crisp Offset, No Blur Gradient) */}
+          <polygon
+            points="120,16 212,69 212,175 120,228 28,175 28,69"
+            transform="translate(4, 5)"
+            className="fill-zinc-900/10 stroke-zinc-900/30 dark:fill-white/5 dark:stroke-white/25"
+            strokeWidth="1"
           />
-          <line
-            x1="154"
-            y1="59"
-            x2="214"
-            y2="59"
-            className="stroke-zinc-400 dark:stroke-zinc-500"
-            strokeWidth="1.5"
-            strokeLinecap="round"
+
+          {/* Main Isometric Hexagon Outer Boundary */}
+          <polygon
+            points="120,16 212,69 212,175 120,228 28,175 28,69"
+            className="fill-white stroke-zinc-950 dark:fill-zinc-950 dark:stroke-zinc-100"
+            strokeWidth="1.75"
+            strokeLinejoin="round"
           />
-          <line
-            x1="154"
-            y1="66"
-            x2="190"
-            y2="66"
-            className="stroke-zinc-300 dark:stroke-zinc-600"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="154"
-            y1="73"
-            x2="222"
-            y2="73"
-            className="stroke-zinc-400 dark:stroke-zinc-500"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </g>
-      </g>
 
-      {/* ==============================================================
-          DYNAMIC DATA POINTS / NODES IN 3D HEXAGON (Image Reference 1)
-         ============================================================== */}
-      <AnimatePresence mode="wait">
-        {activeStep === 0 && (
-          /* Step 1: Open Page Builder - Real-Time Canvas Data Nodes */
-          <motion.g
-            key="sub-0"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Cyan & Blue Nodes (Left face) */}
-            <circle cx="135" cy="225" r="3.5" fill="#0284c7" />
-            <circle cx="150" cy="210" r="2.5" fill="#38bdf8" />
-            <circle cx="165" cy="235" r="3" fill="#0369a1" />
-            <circle cx="145" cy="255" r="2.5" fill="#0284c7" />
-            <circle cx="130" cy="270" r="3.5" fill="#38bdf8" />
-            <circle cx="160" cy="285" r="3" fill="#0284c7" />
-            <circle cx="175" cy="265" r="2.5" fill="#38bdf8" />
-            <circle cx="120" cy="240" r="3" fill="#0284c7" />
+          {/* Isometric Perspective Grid Lines on All 3 Inner Planes */}
+          <g className="stroke-zinc-200 dark:stroke-zinc-800" strokeWidth="1">
+            {/* Left Plane Grid */}
+            <line x1="59" y1="51" x2="59" y2="157" />
+            <line x1="90" y1="33" x2="90" y2="139" />
+            <line x1="28" y1="104" x2="120" y2="51" />
+            <line x1="28" y1="140" x2="120" y2="87" />
 
-            {/* Purple & Violet Nodes (Top face) */}
-            <circle cx="180" cy="180" r="3.5" fill="#6366f1" />
-            <circle cx="195" cy="165" r="3" fill="#818cf8" />
-            <circle cx="210" cy="190" r="2.5" fill="#6366f1" />
-            <circle cx="165" cy="195" r="3.5" fill="#a855f7" />
-            <circle cx="190" cy="205" r="4" fill="#6366f1" />
-            <circle cx="220" cy="175" r="2.5" fill="#c084fc" />
+            {/* Right Plane Grid */}
+            <line x1="151" y1="33" x2="151" y2="139" />
+            <line x1="182" y1="51" x2="182" y2="157" />
+            <line x1="120" y1="51" x2="212" y2="104" />
+            <line x1="120" y1="87" x2="212" y2="140" />
 
-            {/* Magenta & Coral Pink Nodes (Right face) */}
-            <circle cx="215" cy="225" r="3" fill="#ec4899" />
-            <circle cx="230" cy="210" r="3.5" fill="#f43f5e" />
-            <circle cx="245" cy="235" r="2.5" fill="#fb7185" />
-            <circle cx="225" cy="255" r="3.5" fill="#ec4899" />
-            <circle cx="250" cy="270" r="3" fill="#f43f5e" />
-            <circle cx="220" cy="285" r="2.5" fill="#fb7185" />
-            <circle cx="235" cy="265" r="3.5" fill="#ec4899" />
-            <circle cx="260" cy="245" r="2.5" fill="#f43f5e" />
+            {/* Bottom Plane Grid */}
+            <line x1="59" y1="157" x2="151" y2="210" />
+            <line x1="90" y1="139" x2="182" y2="192" />
+            <line x1="151" y1="139" x2="59" y2="192" />
+            <line x1="182" y1="157" x2="90" y2="210" />
+          </g>
 
-            {/* Glowing Center Connection Ring */}
-            <circle
-              cx="190"
-              cy="245"
-              r="7"
-              className="fill-blue-500/20 stroke-blue-500 dark:stroke-blue-400"
-              strokeWidth="2"
-            />
-            <circle cx="190" cy="245" r="3" className="fill-blue-600 dark:fill-blue-400" />
-          </motion.g>
-        )}
+          {/* 3 Primary Internal Coordinate Axes meeting at (120, 122) */}
+          <g className="stroke-zinc-900 dark:stroke-zinc-200" strokeWidth="1.35">
+            <line x1="120" y1="122" x2="120" y2="26" />
+            <line x1="120" y1="122" x2="36" y2="170" />
+            <line x1="120" y1="122" x2="204" y2="170" />
+          </g>
+        </svg>
 
-        {activeStep === 1 && (
-          /* Step 2: Customize & Reorder Sections - Isometric Slabs */
-          <motion.g
-            key="sub-1"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Slab 1: Navbar (ON) */}
-            <g transform="translate(0, 10)">
-              <polygon
-                points="190,175 250,210 190,245 130,210"
-                className="fill-white stroke-blue-500 dark:fill-zinc-800 dark:stroke-blue-400"
-                strokeWidth="1.5"
-              />
-              <circle cx="190" cy="210" r="3" fill="#3b82f6" />
-              <text
-                x="190"
-                y="200"
-                textAnchor="middle"
-                className="fill-zinc-800 font-mono text-[9px] font-bold dark:fill-zinc-200"
-              >
-                01. NAVBAR [ON]
-              </text>
-            </g>
-
-            {/* Slab 2: Hero Split (Active) */}
-            <g transform="translate(0, 48)">
-              <polygon
-                points="190,175 250,210 190,245 130,210"
-                className="fill-blue-50 stroke-blue-600 dark:fill-blue-950/60 dark:stroke-blue-400"
-                strokeWidth="2"
-              />
-              <circle cx="190" cy="210" r="3.5" fill="#2563eb" />
-              <text
-                x="190"
-                y="200"
-                textAnchor="middle"
-                className="fill-blue-950 font-mono text-[9px] font-bold dark:fill-blue-200"
-              >
-                02. SPLIT HERO [↕]
-              </text>
-            </g>
-
-            {/* Slab 3: Benefits Columns (ON) */}
-            <g transform="translate(0, 86)">
-              <polygon
-                points="190,175 250,210 190,245 130,210"
-                className="fill-white stroke-emerald-500 dark:fill-zinc-800 dark:stroke-emerald-400"
-                strokeWidth="1.5"
-              />
-              <circle cx="190" cy="210" r="3" fill="#10b981" />
-              <text
-                x="190"
-                y="200"
-                textAnchor="middle"
-                className="fill-zinc-800 font-mono text-[9px] font-bold dark:fill-zinc-200"
-              >
-                03. BENEFITS [ON]
-              </text>
-            </g>
-          </motion.g>
-        )}
-
-        {activeStep === 2 && (
-          /* Step 3: Change Theme & Brand - OKLCH Theme Lighting */
-          <motion.g
-            key="sub-2"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Color Spheres floating above 3D isometric plane */}
-            <g transform="translate(145, 200)">
-              <circle cx="0" cy="0" r="14" fill="#4f46e5" className="drop-shadow-md filter" />
-              <circle cx="0" cy="0" r="12" fill="#6366f1" />
-              <circle cx="-3" cy="-3" r="3" fill="rgba(255,255,255,0.6)" />
-              <text
-                x="0"
-                y="24"
-                textAnchor="middle"
-                className="fill-zinc-700 font-mono text-[9px] font-semibold dark:fill-zinc-300"
-              >
-                Indigo
-              </text>
-            </g>
-
-            <g transform="translate(190, 185)">
-              <circle cx="0" cy="0" r="14" fill="#059669" className="drop-shadow-md filter" />
-              <circle cx="0" cy="0" r="12" fill="#10b981" />
-              <circle cx="-3" cy="-3" r="3" fill="rgba(255,255,255,0.6)" />
-              <text
-                x="0"
-                y="24"
-                textAnchor="middle"
-                className="fill-zinc-700 font-mono text-[9px] font-semibold dark:fill-zinc-300"
-              >
-                Forest
-              </text>
-            </g>
-
-            <g transform="translate(235, 200)">
-              <circle cx="0" cy="0" r="14" fill="#e11d48" className="drop-shadow-md filter" />
-              <circle cx="0" cy="0" r="12" fill="#f43f5e" />
-              <circle cx="-3" cy="-3" r="3" fill="rgba(255,255,255,0.6)" />
-              <text
-                x="0"
-                y="24"
-                textAnchor="middle"
-                className="fill-zinc-700 font-mono text-[9px] font-semibold dark:fill-zinc-300"
-              >
-                Sunset
-              </text>
-            </g>
-
-            {/* OKLCH Color Spectrum Ring on Floor */}
-            <ellipse
-              cx="190"
-              cy="285"
-              rx="45"
-              ry="22"
-              className="fill-transparent stroke-purple-500 dark:stroke-purple-400"
-              strokeWidth="2"
-              strokeDasharray="6 4"
-            />
-            <text
-              x="190"
-              y="325"
-              textAnchor="middle"
-              className="fill-zinc-800 font-mono text-[10px] font-bold dark:fill-zinc-200"
+        {/* ================================================================
+            TRUE CSS 3D TRANSFORM INNER GEOMETRY (preserve-3d)
+            Morphs in 3D according to stepIndex & activeSubStep
+           ================================================================ */}
+        <div
+          className="relative flex h-[120px] w-[120px] items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          style={{
+            transformStyle: "preserve-3d",
+            transform: `scale(${cubeScale.toFixed(3)}) rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg)`,
+          }}
+        >
+          {/* ---------------- STEP 1: PAGE BUILDER 3D SHAPES ---------------- */}
+          {stepIndex === 0 && activeSubStep === 0 && (
+            /* 1.1: 3D Spatial Wireframe Cube + Vector Node Cloud (LlamaParse Dot/Node Cloud in 3D) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              OKLCH Brand Engine
-            </text>
-          </motion.g>
-        )}
-      </AnimatePresence>
-    </IsometricHexagonBase>
+              <WireframeCube3D size={Math.round(68 * zSpread)} dashed />
+              {/* 3D Floating Stroke Nodes distributed across X/Y/Z coordinates */}
+              {[
+                { x: -28, y: -18, z: 26, hollow: true },
+                { x: -16, y: -26, z: 12, hollow: false },
+                { x: -32, y: 8, z: 18, hollow: true },
+                { x: -14, y: 18, z: 28, hollow: false },
+                { x: 22, y: -20, z: 20, hollow: true },
+                { x: 30, y: -8, z: -14, hollow: false },
+                { x: 18, y: 22, z: 24, hollow: true },
+                { x: 28, y: 14, z: -20, hollow: true },
+                { x: -20, y: 28, z: -18, hollow: false },
+                { x: 8, y: -28, z: -24, hollow: true },
+                { x: 0, y: 0, z: 0, hollow: true },
+              ].map((pt, idx) => (
+                <div
+                  key={idx}
+                  className={cn(
+                    "absolute h-2.5 w-2.5 rounded-full border-[1.5px] border-zinc-950 transition-transform duration-500 dark:border-white",
+                    pt.hollow ? "bg-white dark:bg-zinc-950" : "bg-zinc-950 dark:bg-white"
+                  )}
+                  style={{
+                    transform: `translate3d(${pt.x * zSpread}px, ${pt.y * zSpread}px, ${pt.z * zSpread}px)`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+
+          {stepIndex === 0 && activeSubStep === 1 && (
+            /* 1.2: 3D Stacked Section Slabs (Navbar, Hero, Benefits, Pricing reordering in 3D) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {[
+                { z: 28, label: "01 NAVBAR", active: false },
+                { z: 4, label: "02 HERO ↕", active: true },
+                { z: -20, label: "03 BENEFITS", active: false },
+              ].map((layer, idx) => (
+                <div
+                  key={idx}
+                  className={cn(
+                    "absolute flex h-16 w-20 flex-col justify-between border-[1.5px] bg-white/90 p-2 transition-transform duration-500 dark:bg-zinc-950/90",
+                    layer.active
+                      ? "border-zinc-950 dark:border-white"
+                      : "border-dashed border-zinc-500 dark:border-zinc-400"
+                  )}
+                  style={{
+                    transform: `rotateX(52deg) translateZ(${layer.z * zSpread}px)`,
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[7px] font-bold text-zinc-950 dark:text-white">
+                      {layer.label}
+                    </span>
+                    <span className="h-2 w-2 rounded-full border border-zinc-950 dark:border-white" />
+                  </div>
+                  <div className="space-y-1">
+                    <div className="h-px w-full bg-zinc-900 dark:bg-zinc-200" />
+                    <div className="h-px w-2/3 bg-zinc-400 dark:bg-zinc-600" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {stepIndex === 0 && activeSubStep === 2 && (
+            /* 1.3: 3D Gyroscopic Theme Prism & Concentric Wireframe Rings */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <div
+                className="absolute inset-0 rounded-full border-[1.5px] border-zinc-950 transition-transform duration-500 dark:border-white"
+                style={{ transform: `rotateX(68deg) scale(${zSpread})` }}
+              />
+              <div
+                className="absolute inset-1 rounded-full border-[1.5px] border-dashed border-zinc-900 transition-transform duration-500 dark:border-zinc-200"
+                style={{ transform: `rotateY(68deg) scale(${zSpread})` }}
+              />
+              <div
+                className="absolute inset-2 rounded-full border-[1.5px] border-zinc-950 transition-transform duration-500 dark:border-white"
+                style={{ transform: "rotateZ(45deg) rotateX(45deg)" }}
+              />
+              <WireframeCube3D size={36} label="Aa" />
+            </div>
+          )}
+
+          {/* ---------------- STEP 2: EXPORT CODE 3D SHAPES ---------------- */}
+          {stepIndex === 1 && activeSubStep === 0 && (
+            /* 2.1: 3D Modular Component Tree Cubes (React & Next.js) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <WireframeCube3D size={34} dashed />
+              {[
+                { x: -24, y: -20, z: 22, label: "TSX" },
+                { x: 24, y: -18, z: -20, label: "</>" },
+                { x: 0, y: 24, z: 20, label: "UI" },
+              ].map((node, idx) => (
+                <div
+                  key={idx}
+                  className="absolute flex items-center justify-center transition-transform duration-500"
+                  style={{
+                    transform: `translate3d(${node.x * zSpread}px, ${node.y * zSpread}px, ${node.z * zSpread}px)`,
+                  }}
+                >
+                  <WireframeCube3D size={28} label={node.label} />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {stepIndex === 1 && activeSubStep === 1 && (
+            /* 2.2: 3D Folded Architectural DOM Planes (Static HTML & CSS) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {[-24, 0, 24].map((zPos, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-2 flex flex-col justify-between border-[1.5px] border-zinc-950 bg-white/90 p-2 transition-transform duration-500 dark:border-white dark:bg-zinc-950/90"
+                  style={{
+                    transform: `translateZ(${zPos * zSpread}px)`,
+                  }}
+                >
+                  <div className="h-2 w-full border border-zinc-900 dark:border-zinc-200" />
+                  <div className="flex flex-1 gap-1.5 pt-1.5">
+                    <div className="h-full w-1/3 border border-dashed border-zinc-600 dark:border-zinc-400" />
+                    <div className="h-full flex-1 border border-zinc-900 dark:border-zinc-200" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {stepIndex === 1 && activeSubStep === 2 && (
+            /* 2.3: 3D Intersecting Prompt Hypercube / Tesseract (AI System Prompt) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <WireframeCube3D size={Math.round(70 * zSpread)} dashed />
+              <WireframeCube3D
+                size={38}
+                label="AI"
+                style={{ transform: "rotateX(45deg) rotateY(45deg)" }}
+              />
+            </div>
+          )}
+
+          {/* ---------------- STEP 3: AUDIT & DEPLOY 3D SHAPES ---------------- */}
+          {stepIndex === 2 && activeSubStep === 0 && (
+            /* 3.1: 3D Wireframe Edge Pyramid & Orbital Ring (Vercel & Next.js) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <div
+                className="absolute -inset-2 rounded-full border-[1.5px] border-dashed border-zinc-900 dark:border-zinc-200"
+                style={{ transform: `rotateX(75deg) scale(${zSpread})` }}
+              />
+              {[0, 90, 180, 270].map((deg, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 flex items-center justify-center"
+                  style={{
+                    transform: `rotateY(${deg}deg) translateZ(${14 * zSpread}px) rotateX(28deg)`,
+                  }}
+                >
+                  <svg viewBox="0 0 80 80" className="h-20 w-20 overflow-visible" fill="none">
+                    <polygon
+                      points="40,6 74,70 6,70"
+                      className="fill-white/80 stroke-zinc-950 dark:fill-zinc-950/80 dark:stroke-white"
+                      strokeWidth="1.75"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {stepIndex === 2 && activeSubStep === 1 && (
+            /* 3.2: 3D Geodesic Wireframe Edge Sphere (Cloudflare & Netlify Edge) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              {[0, 45, 90, 135].map((deg, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-0 rounded-full border-[1.4px] border-zinc-950 transition-transform duration-500 dark:border-white"
+                  style={{
+                    transform: `rotateY(${deg}deg) scale(${zSpread})`,
+                  }}
+                />
+              ))}
+              <div
+                className="absolute inset-0 rounded-full border-[1.4px] border-dashed border-zinc-900 dark:border-zinc-200"
+                style={{ transform: `rotateX(90deg) scale(${zSpread})` }}
+              />
+            </div>
+          )}
+
+          {stepIndex === 2 && activeSubStep === 2 && (
+            /* 3.3: 3D Interlocking Container Prisms (Docker & Standalone Containers) */
+            <div
+              className="relative flex h-24 w-24 items-center justify-center"
+              style={{ transformStyle: "preserve-3d" }}
+            >
+              <WireframeCube3D size={Math.round(68 * zSpread)} dashed />
+              {[-16, 16].map((yPos, idx) => (
+                <div
+                  key={idx}
+                  className="absolute inset-x-1 top-1/2 -mt-4 flex h-8 items-center justify-around border-[1.5px] border-zinc-950 bg-white/95 px-2 transition-transform duration-500 dark:border-white dark:bg-zinc-950/95"
+                  style={{
+                    transform: `translate3d(0px, ${yPos * zSpread}px, ${(idx === 0 ? 14 : -14) * zSpread}px)`,
+                  }}
+                >
+                  <span className="h-4 w-px bg-zinc-900 dark:bg-zinc-200" />
+                  <span className="h-4 w-px bg-zinc-900 dark:bg-zinc-200" />
+                  <span className="h-4 w-px bg-zinc-900 dark:bg-zinc-200" />
+                  <span className="h-4 w-px bg-zinc-900 dark:bg-zinc-200" />
+                  <span className="h-4 w-px bg-zinc-900 dark:bg-zinc-200" />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
-/**
- * Step 2 Illustration: Instant Code & Asset Export (LlamaParse Style)
- */
-function Step2Illustration({ activeMode }: { activeMode: number }) {
-  return (
-    <IsometricHexagonBase>
-      {/* Top Stacked Code & Component Sheets */}
-      <g>
-        <rect
-          x="126"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(-9 126 18)"
-        />
-        <rect
-          x="180"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(8 180 18)"
-        />
-        {/* Front Code Terminal Document */}
-        <g className="drop-shadow-md filter">
-          <rect
-            x="148"
-            y="22"
-            width="84"
-            height="68"
-            rx="5"
-            className="fill-zinc-900 stroke-zinc-950 dark:fill-black dark:stroke-white/40"
-            strokeWidth="1.5"
-          />
-          {/* Terminal Dots */}
-          <circle cx="156" cy="30" r="2" fill="#f87171" />
-          <circle cx="162" cy="30" r="2" fill="#fbbf24" />
-          <circle cx="168" cy="30" r="2" fill="#34d399" />
-          <text x="210" y="32" textAnchor="end" className="fill-zinc-500 font-mono text-[7px]">
-            App.tsx
-          </text>
-          {/* Code lines */}
-          <line
-            x1="154"
-            y1="40"
-            x2="198"
-            y2="40"
-            stroke="#a78bfa"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="154"
-            y1="47"
-            x2="220"
-            y2="47"
-            stroke="#60a5fa"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="160"
-            y1="54"
-            x2="210"
-            y2="54"
-            stroke="#34d399"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="160"
-            y1="61"
-            x2="190"
-            y2="61"
-            stroke="#f472b6"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="154"
-            y1="68"
-            x2="180"
-            y2="68"
-            stroke="#a78bfa"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-          <line
-            x1="154"
-            y1="75"
-            x2="224"
-            y2="75"
-            stroke="#38bdf8"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </g>
-      </g>
+// ============================================================================
+// REUSABLE 3-COLUMN STEP CARD (Exact LlamaParse Reference Layout)
+// ============================================================================
 
-      {/* Compiler Core in 3D Isometric Space */}
-      <g>
-        {/* Isometric Code Cube / Stage */}
-        <polygon
-          points="190,210 235,235 190,260 145,235"
-          className="fill-emerald-500/20 stroke-emerald-500 dark:stroke-emerald-400"
-          strokeWidth="2"
-        />
-        <text
-          x="190"
-          y="240"
-          textAnchor="middle"
-          className="fill-emerald-600 font-mono text-[10px] font-bold dark:fill-emerald-300"
-        >
-          {activeMode === 0 ? "TSX / App.tsx" : activeMode === 1 ? "index.html" : "PROMPT.md"}
-        </text>
-
-        {/* Scattered syntax particle nodes */}
-        <circle cx="135" cy="225" r="3" fill="#34d399" />
-        <circle cx="160" cy="285" r="3" fill="#38bdf8" />
-        <circle cx="225" cy="255" r="3" fill="#a78bfa" />
-        <circle cx="245" cy="235" r="3" fill="#f472b6" />
-        <circle cx="190" cy="185" r="3.5" fill="#34d399" />
-        <circle cx="145" cy="265" r="2.5" fill="#60a5fa" />
-        <circle cx="235" cy="275" r="2.5" fill="#34d399" />
-
-        <text
-          x="190"
-          y="315"
-          textAnchor="middle"
-          className="fill-zinc-800 font-mono text-[10px] font-bold dark:fill-zinc-200"
-        >
-          ✓ Zero Runtime • 100% Typed
-        </text>
-      </g>
-    </IsometricHexagonBase>
-  );
+interface StepCardProps {
+  index: 0 | 1 | 2;
+  numberLabel: string;
+  title: string;
+  description: string;
+  primaryCtaLabel: string;
+  secondaryCtaLabel: string;
+  primaryHref: string;
+  secondaryHref: string;
+  subSteps: SubStepItem[];
+  activeSubStep: number;
+  onSelectSubStep: (subIndex: number) => void;
+  stackDepth: number;
+  cardRef: (el: HTMLDivElement | null) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
-/**
- * Step 3 Illustration: Production Verified & Deploy (LlamaParse Style)
- */
-function Step3Illustration({ activeTarget }: { activeTarget: number }) {
+function StepStackCard({
+  index,
+  numberLabel,
+  title,
+  description,
+  primaryCtaLabel,
+  secondaryCtaLabel,
+  primaryHref,
+  secondaryHref,
+  subSteps,
+  activeSubStep,
+  onSelectSubStep,
+  stackDepth,
+  cardRef,
+  onMouseEnter,
+  onMouseLeave,
+}: StepCardProps) {
+  const { hrefFor } = useLandingNavigation();
+  const stickyTopPx = 88 + index * 24;
+
   return (
-    <IsometricHexagonBase>
-      {/* Top Stacked Audit Documents */}
-      <g>
-        <rect
-          x="126"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(-9 126 18)"
-        />
-        <rect
-          x="180"
-          y="18"
-          width="74"
-          height="64"
-          rx="5"
-          className="fill-zinc-50 stroke-zinc-700 dark:fill-zinc-800 dark:stroke-zinc-500"
-          strokeWidth="1.25"
-          transform="rotate(8 180 18)"
-        />
-        {/* Front Lighthouse 100 Score Document */}
-        <g className="drop-shadow-md filter">
-          <rect
-            x="148"
-            y="22"
-            width="84"
-            height="68"
-            rx="5"
-            className="fill-white stroke-zinc-900 dark:fill-zinc-900 dark:stroke-white"
-            strokeWidth="1.5"
+    <div
+      ref={cardRef}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      style={{
+        position: "sticky",
+        top: `${stickyTopPx}px`,
+        zIndex: (index + 1) * 10,
+        transformOrigin: "top center",
+        willChange: "transform, opacity, filter",
+      }}
+      className={cn(
+        "hb-paper-fold-card w-full rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs transition-shadow duration-300 sm:rounded-3xl sm:p-10 lg:p-14",
+        "dark:border-zinc-800 dark:bg-zinc-950"
+      )}
+    >
+      {/* Mobile-First 3-Column Layout (3 Columns on md+ & lg+ matching LlamaParse Reference) */}
+      <div className="flex flex-col gap-8 md:min-h-[410px] md:flex-row md:items-stretch md:justify-between md:gap-8 lg:gap-12">
+        {/* COLUMN 1: Left Eyebrow, Title, Description & Bottom Hudbird Buttons */}
+        <div className="flex w-full flex-col justify-between md:w-[30%] md:shrink-0">
+          <div>
+            <div className="mb-4 flex items-center gap-2 font-mono text-xs font-medium text-zinc-500 dark:text-zinc-400">
+              <span className="inline-block h-1.5 w-1.5 bg-zinc-500 dark:bg-zinc-400" />
+              <span>{numberLabel}</span>
+            </div>
+
+            <Heading
+              as="h3"
+              className="text-2xl leading-[1.12] font-bold tracking-tight text-zinc-950 sm:text-3xl lg:text-[40px] dark:text-white"
+            >
+              {title}
+            </Heading>
+
+            <Text className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
+              {description}
+            </Text>
+          </div>
+
+          {/* Bottom Action Buttons (Hudbird UI Component Style) */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 pt-4 md:mt-12">
+            <Button
+              href={hrefFor(secondaryHref)}
+              variant="outline"
+              size="sm"
+              className="hb-secondary hb-radius font-mono text-xs tracking-wider uppercase"
+            >
+              {secondaryCtaLabel}
+            </Button>
+            <Button
+              href={hrefFor(primaryHref)}
+              variant="solid"
+              color="primary"
+              size="sm"
+              className="hb-primary hb-radius font-mono text-xs tracking-wider uppercase"
+            >
+              {primaryCtaLabel}
+            </Button>
+          </div>
+        </div>
+
+        {/* COLUMN 2: Center Interactive 3D Transform Wireframe Illustration (Stroke Only) */}
+        <div className="flex w-full items-center justify-center md:w-[38%] md:shrink-0">
+          <Interactive3DShapeStage
+            stepIndex={index}
+            activeSubStep={activeSubStep}
+            stackDepth={stackDepth}
+            onCycleSubStep={() => onSelectSubStep((activeSubStep + 1) % subSteps.length)}
           />
-          {/* Circular 100 Gauge Badge */}
-          <circle
-            cx="190"
-            cy="48"
-            r="16"
-            className="fill-emerald-50 stroke-emerald-500 dark:fill-emerald-950/40"
-            strokeWidth="2"
-          />
-          <text
-            x="190"
-            y="52"
-            textAnchor="middle"
-            className="fill-emerald-600 font-mono text-[11px] font-bold dark:fill-emerald-400"
-          >
-            100
-          </text>
-          <text
-            x="190"
-            y="74"
-            textAnchor="middle"
-            className="fill-zinc-700 font-mono text-[8px] font-bold dark:fill-zinc-300"
-          >
-            LIGHTHOUSE PASS
-          </text>
-        </g>
-      </g>
+        </div>
 
-      {/* 3D Global Deployment Hub Nodes */}
-      <g>
-        {/* Center Deploy Nexus */}
-        <polygon
-          points="190,210 235,235 190,260 145,235"
-          className="fill-blue-500/20 stroke-blue-500 dark:stroke-blue-400"
-          strokeWidth="2"
-        />
-        <text
-          x="190"
-          y="240"
-          textAnchor="middle"
-          className="fill-blue-600 font-mono text-[10px] font-bold dark:fill-blue-300"
-        >
-          {activeTarget === 0
-            ? "Vercel & Next.js"
-            : activeTarget === 1
-              ? "Cloudflare Edge"
-              : "Docker Engine"}
-        </text>
-
-        {/* Global Edge Node Points */}
-        <circle cx="130" cy="240" r="4" fill="#10b981" />
-        <circle cx="160" cy="275" r="3.5" fill="#3b82f6" />
-        <circle cx="220" cy="275" r="3.5" fill="#8b5cf6" />
-        <circle cx="250" cy="240" r="4" fill="#10b981" />
-        <circle cx="190" cy="180" r="4" fill="#06b6d4" />
-
-        <text
-          x="190"
-          y="315"
-          textAnchor="middle"
-          className="fill-zinc-800 font-mono text-[10px] font-bold dark:fill-zinc-200"
-        >
-          0ms CLS • 0.8s LCP • WCAG AA
-        </text>
-      </g>
-    </IsometricHexagonBase>
+        {/* COLUMN 3: Right Minimal List with Hairline Dividers (Exact LlamaParse Reference) */}
+        <div className="flex w-full flex-col justify-center md:w-[28%] md:shrink-0">
+          {subSteps.map((sub, i) => {
+            const isActive = activeSubStep === i;
+            return (
+              <div
+                key={sub.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => onSelectSubStep(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onSelectSubStep(i);
+                  }
+                }}
+                className={cn(
+                  "cursor-pointer border-b border-zinc-200 py-4 transition-colors outline-none select-none sm:py-5 dark:border-zinc-800",
+                  i === 0 && "border-t md:border-t-0"
+                )}
+              >
+                {isActive ? (
+                  <div>
+                    <div className="flex items-center gap-2.5">
+                      <span className="inline-block h-1.5 w-1.5 shrink-0 bg-zinc-950 dark:bg-white" />
+                      <Heading
+                        as="h4"
+                        className="text-sm font-semibold tracking-tight text-zinc-950 sm:text-base lg:text-lg dark:text-white"
+                      >
+                        {sub.title}
+                      </Heading>
+                    </div>
+                    <Text className="mt-2 pl-4 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
+                      {sub.description}
+                    </Text>
+                  </div>
+                ) : (
+                  <div className="text-sm font-normal text-zinc-400 transition-colors hover:text-zinc-800 sm:text-base lg:text-lg dark:text-zinc-500 dark:hover:text-zinc-200">
+                    {sub.title}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -782,25 +1032,21 @@ function Step3Illustration({ activeTarget }: { activeTarget: number }) {
 // ============================================================================
 
 export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how-it-works">) {
-  // Step 1 Active Sub-step state & Auto-rotation
   const [activeStep1Sub, setActiveStep1Sub] = React.useState(0);
+  const [activeStep2Mode, setActiveStep2Mode] = React.useState(0);
+  const [activeStep3Target, setActiveStep3Target] = React.useState(0);
   const [isStep1Hovered, setIsStep1Hovered] = React.useState(false);
-  const card1Ref = React.useRef<HTMLDivElement>(null);
-  const isCard1InView = useInView(card1Ref, { margin: "-5% 0px -5% 0px" });
 
+  const { stackContainerRef, cardRefs, depths } = useStickyCardStack(3);
+
+  // Auto-cycle Step 1 sub-steps smoothly when not hovered
   React.useEffect(() => {
-    if (!isCard1InView || isStep1Hovered) return;
+    if (isStep1Hovered) return;
     const timer = setInterval(() => {
       setActiveStep1Sub((prev) => (prev + 1) % step1SubSteps.length);
     }, 4500);
     return () => clearInterval(timer);
-  }, [isCard1InView, isStep1Hovered]);
-
-  // Step 2 Active Export Mode state
-  const [activeStep2Mode, setActiveStep2Mode] = React.useState(0);
-
-  // Step 3 Active Deploy Target state
-  const [activeStep3Target, setActiveStep3Target] = React.useState(0);
+  }, [isStep1Hovered]);
 
   return (
     <LandingFrame id="how-it-works">
@@ -813,19 +1059,18 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
                 key={item.id}
                 variant="bordered"
                 radius="lg"
-                className="rounded-2xl border border-zinc-200/90 bg-white/90 p-6 shadow-sm backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/90"
+                className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-950"
               >
                 <div className="min-w-0">
                   <div className="mb-4 flex items-center justify-between">
                     <span className="font-mono text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-                      STEP 0{index + 1}
+                      ▪ 0{index + 1}
                     </span>
-                    <span className="h-2 w-2 rounded-full bg-blue-500" />
                   </div>
                   <Heading as="h3" className="text-lg font-bold text-zinc-950 dark:text-white">
                     {item.title}
                   </Heading>
-                  <Text className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
+                  <Text className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
                     {item.description}
                   </Text>
                 </div>
@@ -833,365 +1078,83 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
             ))}
           </Grid>
           {content.items[0] && (
-            <div className="overflow-hidden rounded-2xl border border-zinc-200/80 shadow-md dark:border-white/10">
+            <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-xs dark:border-zinc-800">
               <HeroImageView image={content.items[0].image} priority={false} />
             </div>
           )}
         </div>
       ) : (
         /* ====================================================================
-           VISUAL STEPS - STACKED CARD SCROLL / CARD STACKING EFFECT
-           Exact 1:1 Layout & Typography from Image Reference 1 (LlamaParse)
+           VISUAL STEPS - STICKY CARD STACK ON SCROLL WITH 3D TRANSFORM SHAPES
            ==================================================================== */
-        <div className="relative space-y-12 pt-4 pb-24 sm:space-y-20">
-          {/* ========================================================
-              CARD STEP 1: PAGE BUILDER ASSEMBLY (Image Reference 1)
-             ======================================================== */}
-          <div
-            ref={card1Ref}
-            className={cn(
-              "hb-paper-fold-card sticky top-[90px] z-10 rounded-[32px] border border-zinc-200/90 bg-white/95 p-8 sm:rounded-[40px] sm:p-12 lg:p-14",
-              "shadow-[0_-12px_40px_rgba(0,0,0,0.06)] backdrop-blur-2xl transition-all duration-300",
-              "dark:border-white/10 dark:bg-zinc-950/95 dark:shadow-[0_-16px_50px_rgba(0,0,0,0.45)]",
-              "before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-zinc-400/40 before:to-transparent dark:before:via-white/20"
-            )}
+        <div ref={stackContainerRef} className="relative space-y-12 pt-2 pb-20 sm:space-y-16">
+          {/* CARD STEP 01: PAGE BUILDER */}
+          <StepStackCard
+            index={0}
+            numberLabel="01"
+            title={content.items[0]?.title || "Hudbird Page Builder"}
+            description={
+              content.items[0]?.description ||
+              "Compose production-ready SaaS landing pages with real-time visual section stacking, live theme token syncing, and instant responsive previews."
+            }
+            secondaryCtaLabel="Learn more"
+            primaryCtaLabel="Get started"
+            secondaryHref="#features"
+            primaryHref="#pricing"
+            subSteps={step1SubSteps}
+            activeSubStep={activeStep1Sub}
+            onSelectSubStep={setActiveStep1Sub}
+            stackDepth={depths[0] ?? 0}
+            cardRef={(el) => {
+              cardRefs.current[0] = el;
+            }}
             onMouseEnter={() => setIsStep1Hovered(true)}
             onMouseLeave={() => setIsStep1Hovered(false)}
-          >
-            {/* Paper Fold Depth Header */}
-            <div className="mb-6 flex items-center justify-between border-b border-zinc-100 pb-4 dark:border-white/[0.06]">
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-zinc-900/5 px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wider text-zinc-700 uppercase dark:bg-white/10 dark:text-zinc-300">
-                  STEP 01 // ASSEMBLY
-                </span>
-                <span className="hidden text-xs text-zinc-400 sm:inline dark:text-zinc-500">•</span>
-                <span className="hidden text-xs font-medium text-zinc-500 sm:inline dark:text-zinc-400">
-                  Paper Fold Depth #1
-                </span>
-              </div>
-              <div className="flex items-center gap-1 font-mono text-xs text-zinc-400 dark:text-zinc-500">
-                <span>01</span>
-                <span>/</span>
-                <span>03</span>
-              </div>
-            </div>
+          />
 
-            {/* 3-Column LlamaParse Style Layout (Image Reference 1) */}
-            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-10">
-              {/* Column 1: Left Context & CTAs */}
-              <div className="flex w-full flex-col justify-between space-y-6 md:w-[28%] md:shrink-0">
-                <div>
-                  <div className="mb-4 font-mono text-xs font-semibold text-zinc-400 dark:text-zinc-500">
-                    ▪ 01
-                  </div>
-                  <Heading
-                    as="h3"
-                    className="text-3xl leading-[1.12] font-bold tracking-tight text-zinc-950 sm:text-4xl lg:text-[42px] dark:text-white"
-                  >
-                    {content.items[0]?.title || "Hudbird Page Builder"}
-                  </Heading>
-                  <Text className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
-                    {content.items[0]?.description ||
-                      "Hudbird powers enterprise-grade landing page automation with industry-best component composition, section reordering, and theme customization."}
-                  </Text>
-                </div>
+          {/* CARD STEP 02: CODE EXPORT */}
+          <StepStackCard
+            index={1}
+            numberLabel="02"
+            title={content.items[1]?.title || "Export Clean Code"}
+            description={
+              content.items[1]?.description ||
+              "Generate full-stack React & Next.js projects with Tailwind CSS v4, pristine static HTML/CSS, or copy-paste AI prompt recipes."
+            }
+            secondaryCtaLabel="Learn more"
+            primaryCtaLabel="Export now"
+            secondaryHref="#features"
+            primaryHref="#pricing"
+            subSteps={step2ExportModes}
+            activeSubStep={activeStep2Mode}
+            onSelectSubStep={setActiveStep2Mode}
+            stackDepth={depths[1] ?? 0}
+            cardRef={(el) => {
+              cardRefs.current[1] = el;
+            }}
+          />
 
-                {/* Bottom Rectangular Buttons matching Image Reference 1 */}
-                <div className="flex flex-wrap items-center gap-3 pt-6 sm:pt-8">
-                  <Button
-                    variant="bordered"
-                    className="rounded-none border border-zinc-900 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-zinc-900 uppercase hover:bg-zinc-100 dark:border-white dark:text-white dark:hover:bg-white/10"
-                  >
-                    LEARN MORE
-                  </Button>
-                  <Button
-                    variant="solid"
-                    className="rounded-none bg-zinc-950 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-white uppercase shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-                  >
-                    GET STARTED
-                  </Button>
-                </div>
-              </div>
-
-              {/* Column 2: Center Vector Isometric 3D Illustration */}
-              <div className="relative flex min-h-[340px] w-full items-center justify-center overflow-hidden rounded-3xl border border-zinc-100 bg-zinc-50/50 p-4 md:w-[42%] md:shrink-0 dark:border-white/[0.04] dark:bg-white/[0.01]">
-                <Step1Illustration activeStep={activeStep1Sub} />
-              </div>
-
-              {/* Column 3: Right Vertical List with Thin Dividers (Image Reference 1) */}
-              <div className="w-full space-y-1 md:w-[28%] md:shrink-0">
-                {step1SubSteps.map((sub, i) => {
-                  const isActive = activeStep1Sub === i;
-                  return (
-                    <div key={sub.id} className="w-full">
-                      <div
-                        onClick={() => setActiveStep1Sub(i)}
-                        className="cursor-pointer py-3.5 transition-colors select-none"
-                      >
-                        {isActive ? (
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="h-1.5 w-1.5 rounded-xs bg-zinc-950 dark:bg-white" />
-                              <Heading
-                                as="h4"
-                                className="text-base font-bold tracking-tight text-zinc-950 sm:text-lg dark:text-white"
-                              >
-                                {sub.title}
-                              </Heading>
-                            </div>
-                            <motion.p
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.25 }}
-                              className="mt-2 pl-3.5 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
-                            >
-                              {sub.description}
-                            </motion.p>
-                          </div>
-                        ) : (
-                          <div className="text-base font-medium text-zinc-400 transition-colors hover:text-zinc-800 sm:text-lg dark:text-zinc-500 dark:hover:text-zinc-200">
-                            {sub.title}
-                          </div>
-                        )}
-                      </div>
-                      <div className="h-px w-full bg-zinc-200/70 dark:bg-white/10" />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* ========================================================
-              CARD STEP 2: INSTANT CODE & ASSET EXPORT (Step 02)
-             ======================================================== */}
-          <div
-            className={cn(
-              "hb-paper-fold-card sticky top-[114px] z-20 rounded-[32px] border border-zinc-200/90 bg-white/95 p-8 sm:rounded-[40px] sm:p-12 lg:p-14",
-              "shadow-[0_-16px_45px_rgba(0,0,0,0.08)] backdrop-blur-2xl transition-all duration-300",
-              "dark:border-white/10 dark:bg-zinc-950/95 dark:shadow-[0_-20px_60px_rgba(0,0,0,0.55)]",
-              "before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-zinc-400/40 before:to-transparent dark:before:via-white/20"
-            )}
-          >
-            {/* Paper Fold Depth Header */}
-            <div className="mb-6 flex items-center justify-between border-b border-zinc-100 pb-4 dark:border-white/[0.06]">
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-zinc-900/5 px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wider text-zinc-700 uppercase dark:bg-white/10 dark:text-zinc-300">
-                  STEP 02 // CODE GENERATION
-                </span>
-                <span className="hidden text-xs text-zinc-400 sm:inline dark:text-zinc-500">•</span>
-                <span className="hidden text-xs font-medium text-zinc-500 sm:inline dark:text-zinc-400">
-                  Paper Fold Depth #2
-                </span>
-              </div>
-              <div className="flex items-center gap-1 font-mono text-xs text-zinc-400 dark:text-zinc-500">
-                <span>02</span>
-                <span>/</span>
-                <span>03</span>
-              </div>
-            </div>
-
-            {/* 3-Column Layout */}
-            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-10">
-              {/* Column 1: Left Context & CTAs */}
-              <div className="flex w-full flex-col justify-between space-y-6 md:w-[28%] md:shrink-0">
-                <div>
-                  <div className="mb-4 font-mono text-xs font-semibold text-zinc-400 dark:text-zinc-500">
-                    ▪ 02
-                  </div>
-                  <Heading
-                    as="h3"
-                    className="text-3xl leading-[1.12] font-bold tracking-tight text-zinc-950 sm:text-4xl lg:text-[42px] dark:text-white"
-                  >
-                    {content.items[1]?.title || "Instant Code & Asset Export"}
-                  </Heading>
-                  <Text className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
-                    {content.items[1]?.description ||
-                      "Turn your visual assembly into clean, enterprise-ready source code. Zero dependencies, pure Tailwind v4 styling, and strictly typed TypeScript components."}
-                  </Text>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 pt-6 sm:pt-8">
-                  <Button
-                    variant="bordered"
-                    className="rounded-none border border-zinc-900 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-zinc-900 uppercase hover:bg-zinc-100 dark:border-white dark:text-white dark:hover:bg-white/10"
-                  >
-                    LEARN MORE
-                  </Button>
-                  <Button
-                    variant="solid"
-                    className="rounded-none bg-zinc-950 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-white uppercase shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-                  >
-                    EXPORT NOW
-                  </Button>
-                </div>
-              </div>
-
-              {/* Column 2: Center Vector Isometric 3D Illustration */}
-              <div className="relative flex min-h-[340px] w-full items-center justify-center overflow-hidden rounded-3xl border border-zinc-100 bg-zinc-50/50 p-4 md:w-[42%] md:shrink-0 dark:border-white/[0.04] dark:bg-white/[0.01]">
-                <Step2Illustration activeMode={activeStep2Mode} />
-              </div>
-
-              {/* Column 3: Right Export Mode List with Thin Dividers */}
-              <div className="w-full space-y-1 md:w-[28%] md:shrink-0">
-                {step2ExportModes.map((mode, i) => {
-                  const isActive = activeStep2Mode === i;
-                  return (
-                    <div key={mode.id} className="w-full">
-                      <div
-                        onClick={() => setActiveStep2Mode(i)}
-                        className="cursor-pointer py-3.5 transition-colors select-none"
-                      >
-                        {isActive ? (
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="h-1.5 w-1.5 rounded-xs bg-zinc-950 dark:bg-white" />
-                              <Heading
-                                as="h4"
-                                className="text-base font-bold tracking-tight text-zinc-950 sm:text-lg dark:text-white"
-                              >
-                                {mode.title}
-                              </Heading>
-                            </div>
-                            <motion.p
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.25 }}
-                              className="mt-2 pl-3.5 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
-                            >
-                              {mode.description}
-                            </motion.p>
-                          </div>
-                        ) : (
-                          <div className="text-base font-medium text-zinc-400 transition-colors hover:text-zinc-800 sm:text-lg dark:text-zinc-500 dark:hover:text-zinc-200">
-                            {mode.title}
-                          </div>
-                        )}
-                      </div>
-                      <div className="h-px w-full bg-zinc-200/70 dark:bg-white/10" />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-
-          {/* ========================================================
-              CARD STEP 3: PRODUCTION VERIFIED & DEPLOY (Step 03)
-             ======================================================== */}
-          <div
-            className={cn(
-              "hb-paper-fold-card sticky top-[138px] z-30 rounded-[32px] border border-zinc-200/90 bg-white/95 p-8 sm:rounded-[40px] sm:p-12 lg:p-14",
-              "shadow-[0_-20px_50px_rgba(0,0,0,0.1)] backdrop-blur-2xl transition-all duration-300",
-              "dark:border-white/10 dark:bg-zinc-950/95 dark:shadow-[0_-24px_70px_rgba(0,0,0,0.65)]",
-              "before:absolute before:inset-x-8 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-zinc-400/40 before:to-transparent dark:before:via-white/20"
-            )}
-          >
-            {/* Paper Fold Depth Header */}
-            <div className="mb-6 flex items-center justify-between border-b border-zinc-100 pb-4 dark:border-white/[0.06]">
-              <div className="flex items-center gap-2">
-                <span className="rounded-full bg-zinc-900/5 px-2.5 py-1 font-mono text-[11px] font-semibold tracking-wider text-zinc-700 uppercase dark:bg-white/10 dark:text-zinc-300">
-                  STEP 03 // VERIFICATION & DEPLOY
-                </span>
-                <span className="hidden text-xs text-zinc-400 sm:inline dark:text-zinc-500">•</span>
-                <span className="hidden text-xs font-medium text-zinc-500 sm:inline dark:text-zinc-400">
-                  Paper Fold Depth #3
-                </span>
-              </div>
-              <div className="flex items-center gap-1 font-mono text-xs text-zinc-400 dark:text-zinc-500">
-                <span>03</span>
-                <span>/</span>
-                <span>03</span>
-              </div>
-            </div>
-
-            {/* 3-Column Layout */}
-            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between lg:gap-10">
-              {/* Column 1: Left Context & CTAs */}
-              <div className="flex w-full flex-col justify-between space-y-6 md:w-[28%] md:shrink-0">
-                <div>
-                  <div className="mb-4 font-mono text-xs font-semibold text-zinc-400 dark:text-zinc-500">
-                    ▪ 03
-                  </div>
-                  <Heading
-                    as="h3"
-                    className="text-3xl leading-[1.12] font-bold tracking-tight text-zinc-950 sm:text-4xl lg:text-[42px] dark:text-white"
-                  >
-                    {content.items[2]?.title || "Production Verified & Deploy"}
-                  </Heading>
-                  <Text className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
-                    {content.items[2]?.description ||
-                      "Ship with complete peace of mind. Every section is battle-tested for accessibility (ARIA), responsive across all viewports, and passes 100% automated test coverage."}
-                  </Text>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 pt-6 sm:pt-8">
-                  <Button
-                    variant="bordered"
-                    className="rounded-none border border-zinc-900 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-zinc-900 uppercase hover:bg-zinc-100 dark:border-white dark:text-white dark:hover:bg-white/10"
-                  >
-                    AUDIT REPORT
-                  </Button>
-                  <Button
-                    variant="solid"
-                    className="rounded-none bg-zinc-950 px-5 py-2 font-mono text-[11px] font-semibold tracking-wider text-white uppercase shadow-sm hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200"
-                  >
-                    DEPLOY NOW
-                  </Button>
-                </div>
-              </div>
-
-              {/* Column 2: Center Vector Isometric 3D Illustration */}
-              <div className="relative flex min-h-[340px] w-full items-center justify-center overflow-hidden rounded-3xl border border-zinc-100 bg-zinc-50/50 p-4 md:w-[42%] md:shrink-0 dark:border-white/[0.04] dark:bg-white/[0.01]">
-                <Step3Illustration activeTarget={activeStep3Target} />
-              </div>
-
-              {/* Column 3: Right Deploy Target List with Thin Dividers */}
-              <div className="w-full space-y-1 md:w-[28%] md:shrink-0">
-                {step3DeployTargets.map((target, i) => {
-                  const isActive = activeStep3Target === i;
-                  return (
-                    <div key={target.id} className="w-full">
-                      <div
-                        onClick={() => setActiveStep3Target(i)}
-                        className="cursor-pointer py-3.5 transition-colors select-none"
-                      >
-                        {isActive ? (
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="h-1.5 w-1.5 rounded-xs bg-zinc-950 dark:bg-white" />
-                              <Heading
-                                as="h4"
-                                className="text-base font-bold tracking-tight text-zinc-950 sm:text-lg dark:text-white"
-                              >
-                                {target.title}
-                              </Heading>
-                            </div>
-                            <motion.p
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: "auto" }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.25 }}
-                              className="mt-2 pl-3.5 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
-                            >
-                              {target.description}
-                            </motion.p>
-                          </div>
-                        ) : (
-                          <div className="text-base font-medium text-zinc-400 transition-colors hover:text-zinc-800 sm:text-lg dark:text-zinc-500 dark:hover:text-zinc-200">
-                            {target.title}
-                          </div>
-                        )}
-                      </div>
-                      <div className="h-px w-full bg-zinc-200/70 dark:bg-white/10" />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          {/* CARD STEP 03: AUDIT & DEPLOY */}
+          <StepStackCard
+            index={2}
+            numberLabel="03"
+            title={content.items[2]?.title || "Audit & Deploy"}
+            description={
+              content.items[2]?.description ||
+              "Automate edge delivery to Vercel, Cloudflare, or Docker with 100/100 Lighthouse performance and zero layout shift."
+            }
+            secondaryCtaLabel="Audit report"
+            primaryCtaLabel="Deploy now"
+            secondaryHref="#faq"
+            primaryHref="#cta"
+            subSteps={step3DeployTargets}
+            activeSubStep={activeStep3Target}
+            onSelectSubStep={setActiveStep3Target}
+            stackDepth={depths[2] ?? 0}
+            cardRef={(el) => {
+              cardRefs.current[2] = el;
+            }}
+          />
         </div>
       )}
     </LandingFrame>
