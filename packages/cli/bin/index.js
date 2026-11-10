@@ -200,16 +200,24 @@ function printColoredDiff(fileName, diffResult) {
 // ----------------------------------------------------
 const CATEGORY_NAMES = {
   primitives: "🧩 Primitives",
+  layout: "📐 Layout & Spacing",
   forms: "📝 Form & Verification",
   navigation: "🪟 Overlays & Navigation",
-  feedback: "⚡ Feedback & Indicators",
-  charts: "📊 Data & Charts",
-  marketing: "🌐 Marketing & Bento",
+  feedback: "⚡ Feedback & Motion",
+  data: "📋 Data Display",
+  charts: "📊 Charts & Visualizations",
+  marketing: "🌐 Marketing & Sections",
+  signature: "💎 Signature Blocks",
+  templates: "🚀 Complete Templates & Pages",
 };
 
 async function runList() {
   console.log(pc.cyan(pc.bold(`\n🦅 Hudbird UI Component Catalog (v${CLI_VERSION})`)));
-  console.log(pc.dim("Available components from official registry:\n"));
+  console.log(
+    pc.dim(
+      "Available components, sections, signature blocks, and templates from official registry:\n"
+    )
+  );
 
   const config = getProjectConfig();
   const allComponents = Object.keys(registry).filter((name) => name !== "utils");
@@ -224,7 +232,24 @@ async function runList() {
 
   for (const name of allComponents) {
     const item = registry[name];
-    const cat = item.category || (item.type === "registry:marketing" ? "marketing" : "primitives");
+    let cat = item.category || "primitives";
+    if (
+      [
+        "SignatureBlocks",
+        "MorphingIsland",
+        "AgentArtifactCanvas",
+        "InteractiveBentoShowcase",
+      ].includes(name)
+    ) {
+      cat = "signature";
+    } else if (
+      item.type === "registry:template" ||
+      name.startsWith("template-") ||
+      name.endsWith("Template") ||
+      name.startsWith("Startup")
+    ) {
+      cat = "templates";
+    }
     if (!grouped[cat]) grouped[cat] = [];
 
     const targetDir = getComponentTargetDir(name, config);
@@ -239,7 +264,18 @@ async function runList() {
   }
 
   // Display each category
-  const order = ["primitives", "forms", "navigation", "feedback", "charts", "marketing"];
+  const order = [
+    "primitives",
+    "layout",
+    "forms",
+    "navigation",
+    "feedback",
+    "data",
+    "charts",
+    "marketing",
+    "signature",
+    "templates",
+  ];
   for (const catKey of order) {
     const items = grouped[catKey] || [];
     if (items.length === 0) continue;
@@ -272,20 +308,90 @@ async function runList() {
 }
 
 // ----------------------------------------------------
+// Component Name Resolver & Alias Helper
+// ----------------------------------------------------
+function resolveComponentName(input) {
+  if (!input) return null;
+  if (registry[input]) return input;
+
+  const lower = input.toLowerCase();
+
+  // Custom shorthands & friendly aliases
+  const ALIAS_MAP = {
+    saas: "SaaSTemplate",
+    "template-saas": "SaaSTemplate",
+    fintech: "FintechTemplate",
+    "template-fintech": "FintechTemplate",
+    ecommerce: "EcommerceTemplate",
+    "template-ecommerce": "EcommerceTemplate",
+    ai: "AiStartupTemplate",
+    "template-ai": "AiStartupTemplate",
+    agency: "DigitalAgencyTemplate",
+    "template-agency": "DigitalAgencyTemplate",
+    hospitality: "HospitalityTemplate",
+    "template-hospitality": "HospitalityTemplate",
+    admin: "AdminCmsTemplate",
+    "template-admin": "AdminCmsTemplate",
+    modern: "ModernAppTemplate",
+    "modern-app": "ModernAppTemplate",
+    "template-modern": "ModernAppTemplate",
+    "startup-pilot": "StartupPilot",
+    pilot: "StartupPilot",
+    "landing-page": "LandingPage",
+    video: "FullscreenVideoPlayer",
+    "video-player": "FullscreenVideoPlayer",
+    "fullscreen-video": "FullscreenVideoPlayer",
+    "fullscreen-video-player": "FullscreenVideoPlayer",
+    "morphing-island": "MorphingIsland",
+    "agent-canvas": "AgentArtifactCanvas",
+    "agent-artifact-canvas": "AgentArtifactCanvas",
+    "interactive-bento": "InteractiveBentoShowcase",
+    "interactive-bento-showcase": "InteractiveBentoShowcase",
+    "nav-13": "LandingNavbar",
+    "modern-mini": "LandingNavbar",
+    button: "Button",
+    "kinetic-button": "KineticButton",
+    "icon-box": "IconBox",
+    "liquid-glass": "LiquidGlass",
+    "double-bezel-card": "DoubleBezelCard",
+    "golden-gate-glass": "GoldenGateGlass",
+    "navigation-menu": "NavigationMenu",
+    "radio-group": "RadioGroup",
+    "input-otp": "InputOTP",
+    "split-text-reveal": "SplitTextReveal",
+    "sticky-stack": "StickyStack",
+    "description-list": "DescriptionList",
+    "line-chart": "LineChart",
+    "bar-chart": "BarChart",
+    "area-chart": "AreaChart",
+    "pie-chart": "PieChart",
+    "radial-chart": "RadialChart",
+    "radar-chart": "RadarChart",
+    "composed-chart": "ComposedChart",
+    "chart-tooltip": "ChartTooltip",
+  };
+
+  if (ALIAS_MAP[lower] && registry[ALIAS_MAP[lower]]) return ALIAS_MAP[lower];
+
+  // Direct lowercase match
+  const lowerMatch = Object.keys(registry).find((k) => k.toLowerCase() === lower);
+  if (lowerMatch) return lowerMatch;
+
+  // Dash to PascalCase (e.g. "morphing-island" -> "MorphingIsland")
+  const pascal = input.replace(/(?:^|-)([a-z0-9])/gi, (_, c) => c.toUpperCase()).replace(/-/g, "");
+  if (registry[pascal]) return pascal;
+
+  return input;
+}
+
+// ----------------------------------------------------
 // Command: diff
 // ----------------------------------------------------
-async function runDiff(componentName) {
+async function runDiff(rawComponentName) {
   const config = getProjectConfig();
+  const componentName = resolveComponentName(rawComponentName);
 
   if (componentName) {
-    // Diff specific component
-    if (!registry[componentName]) {
-      const matchingKey = Object.keys(registry).find(
-        (k) => k.toLowerCase() === componentName.toLowerCase()
-      );
-      if (matchingKey) componentName = matchingKey;
-    }
-
     const compData = registry[componentName];
     if (!compData) {
       console.log(pc.red(`✖ Component "${componentName}" not found in registry.`));
@@ -695,7 +801,9 @@ async function installComponent(componentName, options = {}, installedSet = new 
   if (!fs.existsSync(targetDir)) fs.mkdirSync(targetDir, { recursive: true });
 
   for (const file of compData.files) {
-    fs.writeFileSync(path.join(targetDir, file.name), file.content, "utf-8");
+    const destPath = path.join(targetDir, file.name);
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
+    fs.writeFileSync(destPath, file.content, "utf-8");
   }
 
   if (compData.skill) {
@@ -779,11 +887,8 @@ async function runAdd(componentNames = [], options = {}) {
   }
 
   const installedSet = new Set();
-  for (let compName of targets) {
-    if (!registry[compName]) {
-      const match = Object.keys(registry).find((k) => k.toLowerCase() === compName.toLowerCase());
-      if (match) compName = match;
-    }
+  for (let rawName of targets) {
+    const compName = resolveComponentName(rawName) || rawName;
     await installComponent(compName, options, installedSet);
   }
 
