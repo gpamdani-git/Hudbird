@@ -1,8 +1,8 @@
 # hudbird-ui
 
-> The official CLI for initializing, scaffolding, listing, and diffing components in Hudbird UI.
+> The official CLI for initializing, scaffolding, listing, and diffing components, signature blocks, and templates in Hudbird UI.
 
-Hudbird UI is a modern, accessible React UI component library built with Tailwind CSS, CVA, and Framer Motion. This CLI tool helps you set up your project, customize paths with `components.json`, and manage components with zero friction.
+Hudbird UI is a modern, accessible React UI component library built with Tailwind CSS, CVA, and Framer Motion. This CLI tool helps you set up your project, customize paths with `components.json`, and manage **123+ official components, sections, signature blocks, and complete niche templates** with zero friction.
 
 ## 🚀 Quick Start
 
@@ -16,7 +16,7 @@ npx hudbird-ui@latest init
 
 ### `init`
 
-Initializes Hudbird UI in your current React + Tailwind project (Tailwind v3 or v4):
+Initializes Hudbird UI in your current React + Tailwind project (supports Tailwind v3 and Tailwind v4 `@theme`):
 
 - Generates `components.json` with your custom path aliases (`@/components/hudbird-ui`, etc.)
 - Injects Tailwind directives or `@theme` CSS variables
@@ -32,16 +32,29 @@ npx hudbird-ui init
 Installs one or more components directly into your codebase with automatic dependency resolution:
 
 ```bash
-# Interactive selection (fuzzy multi-select)
+# Interactive multi-select menu
 npx hudbird-ui add
 
-# Single component
-npx hudbird-ui add Button
+# UI Primitives & Layout
+npx hudbird-ui add Button Card Dialog Form InputOTP KineticButton StickyStack
 
-# Multiple components
-npx hudbird-ui add Button Card Dialog Form InputOTP
+# Signature Blocks
+npx hudbird-ui add morphing-island agent-artifact-canvas interactive-bento
 
-# Install all available components
+# Marketing Sections & Fullscreen Video Player
+npx hudbird-ui add hero-section landing-testimonials video-player
+
+# Complete Niche Industry Templates
+npx hudbird-ui add template-saas
+npx hudbird-ui add template-ai
+npx hudbird-ui add template-fintech
+npx hudbird-ui add template-ecommerce
+npx hudbird-ui add template-agency
+npx hudbird-ui add template-hospitality
+npx hudbird-ui add template-admin
+npx hudbird-ui add template-modern
+
+# Install all available components in registry
 npx hudbird-ui add --all
 
 # Skip overwrite confirmation prompts
@@ -50,11 +63,23 @@ npx hudbird-ui add Button --overwrite
 
 ### `list` (or `ls`)
 
-Displays all 62 official components categorized by domain (Primitives, Forms, Navigation, Feedback, Charts, Marketing) along with your project's local installation status:
+Displays all 123 official items categorized into 8 domains along with your project's local installation status:
 
 ```bash
 npx hudbird-ui list
 ```
+
+#### Available Categories:
+
+- **🧩 Primitives & Layout** (20 items): Button, Card, Container, Section, Grid, GoldenGateGlass, DoubleBezelCard, EditorialImage, HudbirdIcon, IconBox, KineticButton, LiquidGlass, Text, Heading, Divider, Avatar, Skeleton, Slot, Provider, Badge.
+- **📝 Form & Verification** (11 items): Input, Form, InputOTP, Checkbox, RadioGroup, Select, ComboBox, Slider, Switch, Textarea, Fieldset.
+- **🪟 Overlays & Navigation** (12 items): Accordion, Breadcrumbs, Command, Dialog, Dropdown, Navbar, NavigationMenu, Pagination, Popover, Sheet, Sidebar, Tabs.
+- **⚡ Feedback & Motion** (13 items): Alert, Toast, Progress, Tooltip, InfiniteScroll, Motion, SplitTextReveal, StickyStack, CustomCursor, Magnetic, MouseGlow, SmoothStackingWrapper, StackingWrapper.
+- **📋 Data Display** (3 items): Calendar, DescriptionList, Table.
+- **📊 Charts & Visualizations** (8 items): AreaChart, BarChart, ChartTooltip, ComposedChart, LineChart, PieChart, RadarChart, RadialChart.
+- **🌐 Marketing Sections** (26 items): BentoGrid, BlueprintStudio, BlurRevealText, Cta, Faq, FeatureSection, Footer, Globe, Hero, HeroSection, LandingBenefits, LandingBuilderShowcase, LandingCta, LandingFaq, LandingFeatureShowcase, LandingFooter, LandingHeroShowcase, LandingHowItWorks, LandingIntegrations, LandingLogoCloud, LandingNavbar (13 presets), LandingPricing, LandingShared, LandingTestimonials, LogoCloud, ParticleSphere, Pricing, Testimonials, FullscreenVideoPlayer.
+- **💎 Signature Blocks** (4 items): SignatureBlocks, MorphingIsland, AgentArtifactCanvas, InteractiveBentoShowcase.
+- **🚀 Complete Niche Templates** (8 full templates + aliases): SaaS, Fintech, Ecommerce, AI Startup, Digital Agency, Luxury Hospitality, Enterprise Admin CMS, Modern App.
 
 ### `diff [component]`
 
@@ -91,7 +116,7 @@ Customize your project structure by editing `components.json`:
 
 ## 📖 Documentation
 
-For live component previews, interactive playbooks, and API documentation:
+For live component previews, interactive page builder, and API documentation:
 
 👉 **[https://hudbird.vercel.app](https://hudbird.vercel.app)**
 

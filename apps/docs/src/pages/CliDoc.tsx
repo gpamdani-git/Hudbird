@@ -23,7 +23,7 @@ export default function CliDoc() {
       <DocHeader
         category="Tooling"
         title="Hudbird UI CLI"
-        description="The official developer command-line tool for scaffolding, batch-installing, and tracking upstream diffs across 62+ components with 100% local code ownership."
+        description="The official developer command-line tool for scaffolding, batch-installing, and tracking upstream diffs across 123+ components, signature blocks, and complete niche templates with 100% local code ownership."
         className="max-w-4xl"
       />
 
@@ -430,14 +430,28 @@ export default function CliDoc() {
 
             <div>
               <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                3. Install All 62 Components
+                3. Install Signature Blocks &amp; Complete Templates
+              </h4>
+              <p className="mt-1 text-zinc-600 dark:text-zinc-400">
+                You can install entire industry landing pages or standalone signature blocks with
+                recursive dependencies resolved:
+              </p>
+              <CodeBlock
+                language="bash"
+                code={`# Install signature blocks\nnpx hudbird-ui@latest add morphing-island\nnpx hudbird-ui@latest add agent-artifact-canvas\n\n# Install complete niche templates\nnpx hudbird-ui@latest add template-saas\nnpx hudbird-ui@latest add template-ai\nnpx hudbird-ui@latest add template-fintech`}
+              />
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                4. Install All 123 Components &amp; Templates
               </h4>
               <p className="mt-1 text-zinc-600 dark:text-zinc-400">
                 Use the{" "}
                 <code className="rounded bg-zinc-200/60 px-1.5 py-0.5 text-xs dark:bg-zinc-800">
                   --all
                 </code>{" "}
-                flag to pull down the entire component library in one sweep:
+                flag to pull down the entire component catalog in one sweep:
               </p>
               <CodeBlock language="bash" code="npx hudbird-ui@latest add --all --yes" />
             </div>
@@ -452,7 +466,8 @@ export default function CliDoc() {
                 --all
               </code>
               <span className="text-sm text-zinc-600 dark:text-zinc-300">
-                Install all 62 components currently published in the registry.
+                Install all 123 components, sections, and templates currently published in the
+                registry.
               </span>
             </div>
             <div className="flex items-center gap-3 rounded-xl border border-zinc-200/80 bg-white p-3.5 shadow-xs dark:border-white/[0.08] dark:bg-[#161618]">
@@ -495,14 +510,14 @@ export default function CliDoc() {
             <code className="rounded-md bg-zinc-100 px-1.5 py-0.5 font-mono text-xs dark:bg-white/[0.06] dark:text-zinc-200">
               list
             </code>{" "}
-            command scans your local project against the 62 components in the official registry,
-            displaying real-time indicators:
+            command scans your local project against all 123 items in the official registry across 8
+            categories:
           </p>
 
           <div className="overflow-x-auto rounded-2xl border border-zinc-800 bg-[#121214] p-5 font-mono text-xs text-zinc-200 shadow-xl sm:text-sm">
             <div className="mb-2 text-zinc-400"># Terminal output preview:</div>
             <div className="font-bold text-indigo-400">
-              ┌ Hudbird UI Registry (62 components available)
+              ┌ Hudbird UI Registry (123 items available)
             </div>
             <div className="text-zinc-500">│</div>
             <div className="font-semibold text-zinc-300">◆ Primitives</div>
