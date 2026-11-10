@@ -62,10 +62,10 @@
 .hb-pilot [data-landing-section="navbar"] {
   z-index: 10;
 }
-/* Ensure ample breathing room between navbar (floating/sticky) and hero badge/title */
+/* Ensure visually balanced distance between navbar (floating/sticky) and hero header content */
 .hb-pilot [data-landing-section="hero"] .hb-section,
 .hb-pilot #hero.hb-section {
-  padding-top: calc(var(--hb-section) + 1.5rem);
+  padding-top: calc(var(--hb-section, 3.5rem) + 1.5rem - 25px);
 }
 .hb-pilot[data-landing-preview-type="navbar"]:has([aria-expanded="true"]) {
   min-height: 56rem;
