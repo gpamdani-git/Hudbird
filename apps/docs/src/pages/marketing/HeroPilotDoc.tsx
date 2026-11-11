@@ -38,6 +38,10 @@ function googleFontProfile(family: string) {
 }
 
 export const heroLabels: Record<HeroSectionConfig["variant"], string> = {
+  "split-product": "Hero Split Product",
+  "center-canvas": "Hero Center Video",
+  "center-video": "Hero Center Video",
+  "editorial-photo": "Hero Editorial Photo",
   centered: "Centered image",
   split: "Split image",
   slideshow: "Slideshow",

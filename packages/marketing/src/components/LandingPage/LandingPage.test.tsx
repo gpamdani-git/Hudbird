@@ -20,10 +20,19 @@ describe("SaaS landing collection", () => {
     const definition = landingSectionRegistry.find((section) => section.type === "hero")!;
     expect(definition.variants).toHaveLength(3);
     expect(definition.additionalVariants?.map((variant) => variant.id)).toEqual([
+      "split-product",
+      "center-canvas",
+      "editorial-photo",
       "slideshow",
       "video",
     ]);
-    for (const variant of ["slideshow", "video"] as const) {
+    for (const variant of [
+      "split-product",
+      "center-canvas",
+      "editorial-photo",
+      "slideshow",
+      "video",
+    ] as const) {
       const config = createLandingPageConfig();
       config.sections = config.sections.map((section) =>
         section.type === "hero" ? { ...section, variant } : section

@@ -110,7 +110,7 @@ export const FooterMega = React.forwardRef<HTMLElement, FooterMegaProps>(
                             {link.href ? (
                               <a
                                 href={link.href}
-                                className="flex items-center gap-1.5 text-sm text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                                className="flex items-center gap-1.5 text-sm text-zinc-600 decoration-current/40 underline-offset-4 transition-colors hover:text-zinc-900 hover:underline hover:decoration-current dark:text-zinc-400 dark:hover:text-white"
                               >
                                 {link.label}
                                 {link.badge && link.badge}
@@ -184,7 +184,7 @@ export const FooterMega = React.forwardRef<HTMLElement, FooterMegaProps>(
                             {link.href ? (
                               <a
                                 href={link.href}
-                                className="flex items-center gap-2 text-sm text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                                className="flex items-center gap-2 text-sm text-zinc-600 decoration-current/40 underline-offset-4 transition-colors hover:text-zinc-900 hover:underline hover:decoration-current dark:text-zinc-400 dark:hover:text-white"
                               >
                                 {link.label}
                                 {link.badge && link.badge}

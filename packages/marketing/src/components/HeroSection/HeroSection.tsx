@@ -5,9 +5,14 @@ import { ArrowRight } from "lucide-react";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { ProductDemo } from "./ProductDemo";
 import { useBrandMode } from "./BrandScope";
-import { SplitIntroductionHero } from "./SplitIntroductionHero";
+import { SplitIntroductionHero, renderEditorialTitle } from "./SplitIntroductionHero";
+import { HeroSplitProduct } from "./HeroSplitProduct";
+import { HeroCenterCanvas, HeroCenterVideo } from "./HeroCenterCanvas";
+import { HeroEditorialPhoto } from "./HeroEditorialPhoto";
+import { cn } from "../../utils/cn";
 
 export { SplitIntroductionHero, renderEditorialTitle } from "./SplitIntroductionHero";
+export { HeroCenterVideo, HeroEditorialPhoto };
 
 export interface HeroSectionProps {
   content: HeroContent;
@@ -16,7 +21,13 @@ export interface HeroSectionProps {
   headingLevel?: "h1" | "h2" | "h3";
 }
 
-function HeroActions({ content }: { content: HeroContent }) {
+function HeroActions({
+  content,
+  darkSecondary = false,
+}: {
+  content: HeroContent;
+  darkSecondary?: boolean;
+}) {
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10">
       <Button href={content.primaryAction.href} className="hb-primary hb-radius" size="lg">
@@ -26,7 +37,12 @@ function HeroActions({ content }: { content: HeroContent }) {
         <Button
           href={content.secondaryAction.href}
           variant="outline"
-          className="hb-secondary hb-radius bg-white/80 dark:bg-white/[0.03]"
+          className={cn(
+            "hb-secondary hb-radius",
+            darkSecondary
+              ? "!border-white !bg-white font-medium !text-zinc-950 hover:!bg-zinc-100"
+              : "bg-white/80 dark:bg-white/[0.03]"
+          )}
           size="lg"
         >
           {content.secondaryAction.label}
@@ -40,15 +56,17 @@ function HeroCopy({
   content,
   headingLevel = "h1",
   centered = false,
+  darkSecondary = false,
 }: {
   content: HeroContent;
   headingLevel?: HeroSectionProps["headingLevel"];
   centered?: boolean;
+  darkSecondary?: boolean;
 }) {
   return (
     <div className="min-w-0">
       <div className={centered ? "mb-5 flex justify-center" : "mb-5 flex items-center"}>
-        <div className="inline-flex flex-wrap items-center gap-2 rounded-xl border border-zinc-200/90 bg-zinc-50/90 p-1 pr-3 text-xs font-medium text-zinc-700 shadow-2xs dark:border-white/[0.1] dark:bg-white/[0.04] dark:text-zinc-300">
+        <div className="hb-video-badge inline-flex flex-wrap items-center gap-2 rounded-xl border border-zinc-200/90 bg-zinc-50/90 p-1 pr-3 text-xs font-medium text-zinc-700 shadow-2xs dark:border-white/[0.1] dark:bg-white/[0.04] dark:text-zinc-300">
           <Badge variant="modern" size="sm" className="gap-1.5 px-2 py-0.5 text-xs font-semibold">
             <span
               className="inline-block h-2 w-2 shrink-0 rounded-full"
@@ -63,13 +81,19 @@ function HeroCopy({
           </span>
         </div>
       </div>
-      <Heading as={headingLevel} className="hb-heading max-w-[18ch] text-balance">
-        {content.title}
+      <Heading
+        as={headingLevel}
+        className={cn(
+          "hb-heading text-4xl font-bold tracking-[-0.04em] text-balance sm:text-5xl md:text-6xl lg:text-[3.75rem] lg:leading-[1.08] xl:text-[4.25rem]",
+          centered && "mx-auto text-center"
+        )}
+      >
+        {renderEditorialTitle(content.title)}
       </Heading>
       <Text className="text-muted-foreground mt-5 max-w-[54ch] text-lg leading-relaxed sm:mt-6 sm:text-xl">
         {content.description}
       </Text>
-      <HeroActions content={content} />
+      <HeroActions content={content} darkSecondary={darkSecondary} />
     </div>
   );
 }
@@ -176,73 +200,154 @@ function VideoHero({
   const mode = useBrandMode();
   const poster = mode === "dark" ? (video.poster.darkSrc ?? video.poster.src) : video.poster.src;
   const ref = React.useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = React.useState(false);
   const [failed, setFailed] = React.useState(false);
+
+  // Support YouTube monochrome background loop fallback
+  const ytMatch = video.src.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/
+  );
+  const isYouTube = Boolean(ytMatch);
+
   React.useEffect(() => {
-    setPlaying(false);
     setFailed(false);
-  }, [video.src]);
-  async function toggle() {
-    if (!ref.current) return;
-    if (playing) ref.current.pause();
-    else {
+    if (isYouTube) return;
+    const el = ref.current;
+    if (el) {
+      el.defaultMuted = true;
+      el.muted = true;
       try {
-        await ref.current.play();
+        const playPromise = el.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            /* jsdom or policy fallback */
+          });
+        }
       } catch {
-        setFailed(true);
+        /* jsdom or policy fallback */
       }
     }
-  }
+  }, [video.src, isYouTube]);
+
   return (
-    <Section id={id} spacing="lg" className="hb-section relative isolate overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-zinc-950">
+    <Section
+      id={id}
+      spacing="none"
+      data-hero-variant="video"
+      className="hb-section hb-video-section relative isolate flex min-h-[var(--hb-viewport-h,100dvh)] w-full flex-col justify-center overflow-hidden bg-zinc-950"
+      style={{ backgroundColor: "#09090b", minHeight: "var(--hb-viewport-h, 100vh)" }}
+    >
+      <div
+        className="hb-video-media-wrap pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden bg-zinc-950"
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: 0,
+        }}
+      >
         <img
           src={poster}
           alt={video.poster.alt}
           width={1440}
           height={900}
-          className="absolute h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover brightness-85 contrast-110 grayscale filter"
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
           fetchPriority="high"
         />
-        {!failed && (
+        {!failed && !isYouTube && (
           <video
             key={video.src}
             ref={ref}
-            src={video.src}
             poster={poster}
+            autoPlay
             muted
             playsInline
             loop
-            preload="none"
+            preload="auto"
             aria-hidden="true"
-            className="absolute h-full w-full object-cover"
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
+            className="absolute inset-0 h-full w-full object-cover brightness-95 contrast-110 grayscale filter"
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
             onError={() => {
               setFailed(true);
-              setPlaying(false);
+            }}
+          >
+            <source src={video.src} type="video/mp4" />
+            <source src="/assets/hero-video/animate_hero_agency720p.mp4" type="video/mp4" />
+          </video>
+        )}
+        {!failed && isYouTube && (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${ytMatch![1]}?autoplay=1&mute=1&loop=1&playlist=${ytMatch![1]}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&playsinline=1`}
+            title="Monochrome background video"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            tabIndex={-1}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 h-[140%] w-[140%] -translate-x-[20%] -translate-y-[20%] object-cover brightness-80 contrast-125 grayscale filter"
+            style={{
+              position: "absolute",
+              width: "140%",
+              height: "140%",
             }}
           />
         )}
-        <div className="absolute inset-0 bg-black/75" />
+        {/* Dark cinematic gradient scrim: keeps video visible while ensuring white typography is crisp and legible */}
+        <div
+          className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/75 via-black/35 to-black/55"
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+          }}
+          aria-hidden="true"
+        />
       </div>
-      <Container size="xl" gutter="lg" className="hb-video-copy relative py-10 sm:py-16">
-        <HeroCopy content={content} headingLevel={headingLevel} />
-        <div className="mt-10">
-          {!failed ? (
-            <Button variant="outline" className="hb-secondary hb-radius" onClick={toggle}>
-              {playing ? "Pause background video" : "Play background video"}
-            </Button>
-          ) : (
-            <Text role="status">Video unavailable. Showing the cover image.</Text>
-          )}
-        </div>
+      <Container
+        size="xl"
+        gutter="lg"
+        className="hb-video-copy relative z-10 py-16 sm:py-24 lg:py-32"
+      >
+        <HeroCopy content={content} headingLevel={headingLevel} darkSecondary />
       </Container>
     </Section>
   );
 }
 
 export function HeroSection({ content, config, id, headingLevel = "h1" }: HeroSectionProps) {
+  if (config.variant === "split-product")
+    return (
+      <HeroSplitProduct content={content} config={config} id={id} headingLevel={headingLevel} />
+    );
+  if (config.variant === "center-canvas" || config.variant === "center-video")
+    return (
+      <HeroCenterCanvas content={content} config={config} id={id} headingLevel={headingLevel} />
+    );
+  if (config.variant === "editorial-photo")
+    return (
+      <HeroEditorialPhoto content={content} config={config} id={id} headingLevel={headingLevel} />
+    );
   if (config.variant === "video")
     return (
       <VideoHero

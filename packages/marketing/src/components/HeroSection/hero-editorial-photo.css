@@ -1,0 +1,207 @@
+/* -------------------------------------------------------------------------- */
+/* Hero 02-03: Hero Editorial dengan Foto Penuh                                */
+/* Specifications: Obsidian Plan 02-03                                        */
+/* -------------------------------------------------------------------------- */
+
+.hb-editorial-photo {
+  position: relative;
+  width: 100%;
+}
+
+/* Typography per Obsidian 02-03: 36/40px mobile, 48/52px tablet, 60/64px desktop */
+.hb-editorial-photo-title {
+  font-family: var(
+    --hb-editorial-font,
+    "Instrument Serif",
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif
+  );
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--foreground, #09090b);
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .hb-editorial-photo-title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hb-editorial-photo-title {
+    font-size: 60px;
+    line-height: 64px;
+  }
+}
+
+/* Body per Obsidian 02-03: 16/24px */
+.hb-editorial-photo-description {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--muted-foreground, #71717a);
+  margin: 0;
+}
+
+/* Panel surface: light surface.base, dark surface.raised, solid to ensure contrast */
+.hb-editorial-copy-panel {
+  background-color: var(--background, #ffffff);
+  color: var(--foreground, #09090b);
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+  box-shadow:
+    0 20px 40px -15px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+:is(.dark, [data-theme="dark"]) .hb-editorial-copy-panel {
+  background-color: var(--card, #18181b);
+  color: var(--foreground, #fafafa);
+  border-color: var(--border, rgba(255, 255, 255, 0.12));
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Single DOM container responsive rules */
+@media (max-width: 639px) {
+  .hb-editorial-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .hb-editorial-copy-panel {
+    padding: 2.5rem 1rem; /* 40px vertical, 16px gutter */
+    border-radius: 1rem;
+  }
+  .hb-editorial-photo-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 640px) {
+  .hb-editorial-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid var(--border, rgba(0, 0, 0, 0.1));
+    aspect-ratio: 3 / 2; /* 640-1023px tablet */
+  }
+  .hb-editorial-photo-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .hb-editorial-copy-panel {
+    position: absolute;
+    z-index: 10;
+    bottom: 1.5rem; /* 24px inset */
+    left: 1.5rem;
+    max-width: 460px;
+    padding: 1.5rem; /* 24px padding */
+    border-radius: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hb-editorial-container {
+    aspect-ratio: 16 / 9; /* >=1024px desktop */
+    max-height: 720px;
+    border-radius: 2rem;
+  }
+  .hb-editorial-copy-panel {
+    bottom: 3rem; /* 48px inset */
+    left: 3rem;
+    width: calc(50% - 24px); /* 6 of 12 columns */
+    max-width: 580px;
+    padding: 2rem; /* 32px padding */
+    border-radius: 1rem; /* 16px radius */
+  }
+}
+
+/* 200% Zoom and height overflow fallback */
+@media (min-width: 640px) and (max-height: 600px) {
+  .hb-editorial-container {
+    aspect-ratio: auto !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .hb-editorial-photo-wrap {
+    position: relative !important;
+    aspect-ratio: 16 / 9 !important;
+    height: 360px !important;
+  }
+  .hb-editorial-copy-panel {
+    position: relative !important;
+    inset: auto !important;
+    margin: 1.5rem !important;
+    max-width: 100% !important;
+    width: auto !important;
+  }
+}
+
+/* CTA micro-transitions: 120ms enter hover, 160ms mouse-leave */
+.hb-editorial-cta {
+  transition:
+    background-color 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 120ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hb-editorial-cta:not(:hover) {
+  transition:
+    background-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 160ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-editorial-cta {
+    transition: none !important;
+  }
+}
+
+/* Credit link styling */
+.hb-editorial-photo-credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--muted-foreground, #71717a);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: currentColor;
+  opacity: 0.85;
+}
+
+.hb-editorial-photo-credit:hover {
+  opacity: 1;
+  color: var(--foreground, #09090b);
+}
+
+.hb-editorial-photo-credit:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary, #2457d6);
+  border-radius: 2px;
+}
+
+.hb-editorial-photo-credit-text {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--muted-foreground, #71717a);
+  opacity: 0.85;
+}

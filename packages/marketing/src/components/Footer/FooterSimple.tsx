@@ -54,7 +54,7 @@ export const FooterSimple = React.forwardRef<HTMLElement, FooterSimpleProps>(
                     <a
                       key={idx}
                       href={link.href}
-                      className="text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                      className="text-sm font-medium text-zinc-600 decoration-current/40 underline-offset-4 transition-colors hover:text-zinc-900 hover:underline hover:decoration-current dark:text-zinc-400 dark:hover:text-white"
                     >
                       {link.label}
                     </a>

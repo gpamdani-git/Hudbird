@@ -50,6 +50,54 @@ export const formaLandingContent: LandingSectionContent = {
     variants: {
       centered: pilotHeroes.centered,
       split: pilotHeroes.split,
+      "split-product": {
+        variant: "split-product",
+        image: {
+          src: "/assets/homepage/builder-sections-light.png",
+          darkSrc: "/assets/homepage/builder-sections-dark.png",
+          alt: "Hudbird Page Builder showing the section picker and landing page preview",
+          caption: "Example product preview: Hudbird Page Builder.",
+        },
+      },
+      "center-canvas": {
+        variant: "center-canvas",
+        videoUrl: "https://youtu.be/blxEtDtn31U?si=uhi3uiFfDPVIv57Z",
+        image: {
+          src: "/assets/homepage/builder-video-thumbnail.jpg",
+          darkSrc: "/assets/homepage/builder-video-thumbnail.jpg",
+          alt: "Hudbird Page Builder Update walkthrough video preview",
+          caption: "Page Builder Update: click to watch walkthrough video.",
+        },
+      },
+      "center-video": {
+        variant: "center-video",
+        videoUrl: "https://youtu.be/blxEtDtn31U?si=uhi3uiFfDPVIv57Z",
+        image: {
+          src: "/assets/homepage/builder-video-thumbnail.jpg",
+          darkSrc: "/assets/homepage/builder-video-thumbnail.jpg",
+          alt: "Hudbird Page Builder Update walkthrough video preview",
+          caption: "Page Builder Update: click to watch walkthrough video.",
+        },
+      },
+      // Reference: Pexels monochrome room matching the title "Make room for your next idea"
+      // URL: https://www.pexels.com/photo/lamp-over-table-and-chairs-in-room-21529967/
+      "editorial-photo": {
+        variant: "editorial-photo",
+        image: {
+          src: "https://images.pexels.com/photos/21529967/pexels-photo-21529967.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          portraitSrc:
+            "https://images.pexels.com/photos/21529967/pexels-photo-21529967.jpeg?auto=compress&cs=tinysrgb&w=900",
+          darkSrc:
+            "https://images.pexels.com/photos/21529967/pexels-photo-21529967.jpeg?auto=compress&cs=tinysrgb&w=1600",
+          alt: "Lamp over table and chairs in a minimalist monochrome room",
+          caption: "Monochrome room architecture and minimalist interior design.",
+          focalPoint: "center",
+        },
+        credit: {
+          label: "Photo via Pexels",
+          href: "https://www.pexels.com/photo/lamp-over-table-and-chairs-in-room-21529967/",
+        },
+      },
       interactive: pilotHeroes.interactive,
       slideshow: pilotHeroes.slideshow,
       video: pilotHeroes.video,
@@ -308,24 +356,83 @@ export const formaLandingContent: LandingSectionContent = {
       {
         title: "Product",
         links: [
+          { label: "Overview", target: "hero" },
           { label: "Features", target: "features" },
           { label: "Benefits", target: "benefits" },
-        ],
-      },
-      {
-        title: "Explore",
-        links: [
           { label: "Workflow", target: "how-it-works" },
           { label: "Integrations", target: "integrations" },
+          { label: "Pricing", target: "pricing" },
         ],
       },
       {
-        title: "Details",
+        title: "Solutions",
         links: [
-          { label: "Pricing", target: "pricing" },
-          { label: "Questions", target: "faq" },
+          { label: "SaaS Platforms", href: "#solutions-saas" },
+          { label: "Fintech Apps", href: "#solutions-fintech" },
+          { label: "AI Workspaces", href: "#solutions-ai" },
+          { label: "Design Systems", href: "#solutions-design" },
+          { label: "Enterprise Scale", href: "#solutions-enterprise" },
         ],
       },
+      {
+        title: "Resources",
+        links: [
+          { label: "Documentation", href: "#docs" },
+          { label: "Component Library", href: "#components" },
+          { label: "Design Guidelines", href: "#design" },
+          { label: "Questions & FAQ", target: "faq" },
+          { label: "Service Status", href: "#status" },
+        ],
+      },
+      {
+        title: "Company",
+        links: [
+          { label: "About Hudbird", href: "#about" },
+          { label: "Customer Stories", target: "testimonials" },
+          { label: "Careers", href: "#careers" },
+          { label: "Brand Kit", href: "#brand" },
+          { label: "Contact Us", href: "#contact" },
+        ],
+      },
+      {
+        title: "Legal & Trust",
+        links: [
+          { label: "Privacy Policy", href: "#privacy" },
+          { label: "Terms of Service", href: "#terms" },
+          { label: "Security & Trust", href: "#security" },
+          { label: "Cookie Settings", href: "#cookies" },
+          { label: "License & Usage", href: "#license" },
+        ],
+      },
+    ],
+    locales: [
+      { code: "en", label: "English (US)", href: "#en" },
+      { code: "id", label: "Bahasa Indonesia", href: "#id" },
+      { code: "ja", label: "日本語", href: "#ja" },
+      { code: "de", label: "Deutsch", href: "#de" },
+    ],
+    activeLocale: "en",
+    status: {
+      label: "All systems operational",
+      href: "#status",
+      summary: "99.99% uptime",
+      checkedAt: "Checked just now",
+    },
+    heading: "Bicarakan kebutuhan project Anda.",
+    contactAction: {
+      label: "Bicarakan Project",
+      href: "#contact",
+    },
+    contactLinks: [
+      { type: "email", label: "hello@hudbird.com", href: "mailto:hello@hudbird.com" },
+      { type: "phone", label: "+1 (555) 019-2834", href: "tel:+15550192834" },
+      { type: "schedule", label: "Konsultasi Teknis", href: "#contact" },
+    ],
+    officeHours: "Senin – Jumat · 09:00 – 18:00 WIB (UTC+7)",
+    legalLinks: [
+      { label: "Privacy Policy", href: "#privacy" },
+      { label: "Terms of Service", href: "#terms" },
+      { label: "Security & Trust", href: "#security" },
     ],
   },
 };

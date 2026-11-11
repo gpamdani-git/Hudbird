@@ -71,13 +71,45 @@ export function renderEditorialTitle(rawTitle: string) {
 
   // Generic startup title match
   if (rawTitle.includes("Make room for your next idea")) {
+    const nextIdx = rawTitle.indexOf("next");
     return (
       <>
-        <span>Make room for your </span>
+        <span>{rawTitle.slice(0, nextIdx)}</span>
         <span className="font-serif font-normal italic">next</span>
-        <span> idea.</span>
+        <span>{rawTitle.slice(nextIdx + 4)}</span>
       </>
     );
+  }
+
+  // High-impact emphasis words to accent with serif italic
+  const accentWords = [
+    "next",
+    "future",
+    "creative",
+    "clarity",
+    "craft",
+    "faster",
+    "simpler",
+    "together",
+    "workspace",
+    "product",
+  ];
+  for (const word of accentWords) {
+    const regex = new RegExp(`\\b(${word})\\b`, "i");
+    if (regex.test(rawTitle)) {
+      const match = rawTitle.match(regex);
+      if (match && typeof match.index === "number") {
+        const idx = match.index;
+        const matchedWord = match[0];
+        return (
+          <>
+            <span>{rawTitle.slice(0, idx)}</span>
+            <span className="font-serif font-normal italic">{matchedWord}</span>
+            <span>{rawTitle.slice(idx + matchedWord.length)}</span>
+          </>
+        );
+      }
+    }
   }
 
   return rawTitle;

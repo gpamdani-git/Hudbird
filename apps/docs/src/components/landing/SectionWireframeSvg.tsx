@@ -354,6 +354,7 @@ export function SectionWireframeSvg({
   // 2. HERO PRESETS
   if (type === "hero") {
     switch (variant) {
+      case "split-product":
       case "split":
         return (
           <svg viewBox="0 0 160 56" fill="none" className={className}>
@@ -470,6 +471,66 @@ export function SectionWireframeSvg({
             {/* Play Button Circle */}
             <circle cx="80" cy="28" r="9" fill="#3b82f6" />
             <polygon points="78,24 85,28 78,32" fill="#ffffff" />
+          </svg>
+        );
+
+      case "center-canvas":
+      case "center-video":
+        return (
+          <svg viewBox="0 0 160 56" fill="none" className={className}>
+            {/* Centered Top Title & CTA */}
+            <rect x="46" y="5" width="68" height="5" rx="2" fill="currentColor" />
+            <rect x="68" y="13" width="24" height="6" rx="2.5" fill="#3b82f6" />
+            {/* Wide 16:9 Video Canvas Chassis */}
+            <rect
+              x="20"
+              y="22"
+              width="120"
+              height="30"
+              rx="4"
+              className="stroke-current"
+              strokeWidth="1"
+              strokeOpacity="0.4"
+              fill="currentColor"
+              fillOpacity="0.08"
+            />
+            {/* Centered Play Button */}
+            <circle cx="80" cy="37" r="5" fill="#3b82f6" />
+            <polygon points="78.5,34.5 83,37 78.5,39.5" fill="#ffffff" />
+          </svg>
+        );
+
+      case "editorial-photo":
+        return (
+          <svg viewBox="0 0 160 56" fill="none" className={className}>
+            {/* Full photo background frame */}
+            <rect
+              x="14"
+              y="6"
+              width="132"
+              height="44"
+              rx="4"
+              className="stroke-current"
+              strokeWidth="1"
+              fill="currentColor"
+              fillOpacity="0.08"
+            />
+            {/* Bottom-left floating solid copy panel */}
+            <rect
+              x="20"
+              y="20"
+              width="62"
+              height="26"
+              rx="3"
+              fill="currentColor"
+              fillOpacity="0.9"
+              stroke="currentColor"
+              strokeWidth="0.5"
+            />
+            {/* Inner panel title, text, cta */}
+            <rect x="24" y="24" width="40" height="3.5" rx="1" fill="#3b82f6" />
+            <rect x="24" y="30" width="50" height="2.5" rx="1" fill="white" opacity="0.8" />
+            <rect x="24" y="36" width="20" height="5" rx="1.5" fill="#3b82f6" />
           </svg>
         );
 
@@ -1031,6 +1092,94 @@ export function SectionWireframeSvg({
   }
 
   // 12. FOOTER
+  if (variant === "locale-status") {
+    return (
+      <svg viewBox="0 0 160 44" fill="none" className={className}>
+        {/* Brand logo & status pill */}
+        <circle cx="20" cy="14" r="3" fill="currentColor" />
+        <rect x="27" y="12.5" width="22" height="3" rx="1.5" fill="currentColor" />
+        {/* Green status indicator */}
+        <circle cx="20" cy="24" r="2" fill="#10b981" />
+        <rect x="26" y="23" width="28" height="2" rx="1" fill="currentColor" opacity="0.7" />
+        {/* Link columns */}
+        <rect x="68" y="12" width="16" height="2.5" rx="1" fill="currentColor" opacity="0.5" />
+        <rect x="68" y="18" width="12" height="2" rx="1" fill="currentColor" opacity="0.3" />
+        <rect x="68" y="23" width="14" height="2" rx="1" fill="currentColor" opacity="0.3" />
+
+        <rect x="92" y="12" width="16" height="2.5" rx="1" fill="currentColor" opacity="0.5" />
+        <rect x="92" y="18" width="14" height="2" rx="1" fill="currentColor" opacity="0.3" />
+        <rect x="92" y="23" width="10" height="2" rx="1" fill="currentColor" opacity="0.3" />
+
+        {/* Globe + Locale Selector Box */}
+        <rect
+          x="116"
+          y="12"
+          width="32"
+          height="14"
+          rx="3"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeOpacity="0.4"
+          fill="currentColor"
+          fillOpacity="0.06"
+        />
+        <circle cx="123" cy="19" r="2.5" stroke="#3b82f6" strokeWidth="0.8" />
+        <rect x="128" y="18" width="14" height="2" rx="1" fill="currentColor" />
+        {/* Bottom policy border */}
+        <line
+          x1="12"
+          y1="36"
+          x2="148"
+          y2="36"
+          stroke="currentColor"
+          strokeOpacity="0.15"
+          strokeWidth="1"
+        />
+      </svg>
+    );
+  }
+
+  if (variant === "contact-action") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        {/* Contact Action Panel */}
+        <rect
+          x="10"
+          y="4"
+          width="140"
+          height="32"
+          rx="5"
+          className="stroke-current"
+          strokeWidth="1"
+          strokeOpacity="0.4"
+          fill="currentColor"
+          fillOpacity="0.06"
+        />
+        {/* Left Heading & CTA */}
+        <rect x="18" y="10" width="52" height="4.5" rx="2" fill="currentColor" />
+        <rect x="18" y="18" width="40" height="2.5" rx="1" fill="currentColor" opacity="0.6" />
+        <rect x="18" y="24" width="28" height="7" rx="2.5" fill="#3b82f6" />
+        {/* Right Contact Channels in panel */}
+        <line
+          x1="88"
+          y1="8"
+          x2="88"
+          y2="32"
+          stroke="currentColor"
+          strokeOpacity="0.2"
+          strokeWidth="1"
+        />
+        <circle cx="96" cy="14" r="2" fill="currentColor" opacity="0.7" />
+        <rect x="102" y="13" width="38" height="2.5" rx="1" fill="currentColor" opacity="0.8" />
+        <circle cx="96" cy="22" r="2" fill="currentColor" opacity="0.7" />
+        <rect x="102" y="21" width="30" height="2.5" rx="1" fill="currentColor" opacity="0.8" />
+        {/* Bottom policy bar */}
+        <rect x="14" y="42" width="44" height="2.5" rx="1" fill="currentColor" opacity="0.4" />
+        <rect x="110" y="42" width="36" height="2.5" rx="1" fill="currentColor" opacity="0.4" />
+      </svg>
+    );
+  }
+
   return (
     <svg viewBox="0 0 160 36" fill="none" className={className}>
       <rect

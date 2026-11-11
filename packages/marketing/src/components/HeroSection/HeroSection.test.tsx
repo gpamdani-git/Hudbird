@@ -126,30 +126,23 @@ describe("Composable startup hero", () => {
     expect(screen.getByRole("img")).toHaveTextContent("Image unavailable");
   });
 
-  it("starts video paused, provides play/pause, and falls back after a playback failure", async () => {
+  it("autoplays video by default, provides play/pause, and falls back after a playback failure", async () => {
     const play = vi.spyOn(HTMLMediaElement.prototype, "play").mockImplementation(function (
       this: HTMLMediaElement
     ) {
       this.dispatchEvent(new Event("play"));
       return Promise.resolve();
     });
-    const pause = vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(function (
-      this: HTMLMediaElement
-    ) {
-      this.dispatchEvent(new Event("pause"));
-    });
     const view = render(<HeroSection content={startupContent.hero} config={pilotHeroes.video} />);
-    expect(view.container.querySelector("video")).not.toHaveAttribute("autoplay");
-    fireEvent.click(screen.getByRole("button", { name: "Play background video" }));
-    expect(play).toHaveBeenCalledOnce();
-    fireEvent.click(screen.getByRole("button", { name: "Pause background video" }));
-    expect(pause).toHaveBeenCalledOnce();
-    play.mockRejectedValueOnce(new Error("blocked"));
-    fireEvent.click(screen.getByRole("button", { name: "Play background video" }));
-    expect(await screen.findByRole("status")).toHaveTextContent("Showing the cover image");
+    const video = view.container.querySelector("video");
+    expect(video).toBeInTheDocument();
+    expect(video).toHaveAttribute("autoplay");
+    expect(video).toHaveAttribute("loop");
+    expect(
+      screen.queryByRole("button", { name: /Pause background video/i })
+    ).not.toBeInTheDocument();
     expect(screen.getByRole("img")).toBeVisible();
     play.mockRestore();
-    pause.mockRestore();
   });
 
   it("switches real tab panels and exposes demo content as sample data", () => {

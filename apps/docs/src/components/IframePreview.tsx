@@ -93,6 +93,76 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
                 flex-direction: column;
                 justify-content: flex-start;
               }
+
+              /* AI Studio Section Selection & Transition (Hardware-accelerated, zero load) */
+              :root {
+                --hb-ai-focus-rgb: 24, 24, 27;
+              }
+              html.dark, :root.dark {
+                --hb-ai-focus-rgb: 255, 255, 255;
+              }
+
+              @keyframes hb-ai-focus-pulse {
+                0% {
+                  box-shadow: 0 0 0 1px rgba(var(--hb-ai-focus-rgb), 0),
+                              0 0 0 rgba(var(--hb-ai-focus-rgb), 0);
+                }
+                20% {
+                  box-shadow: 0 0 0 1px rgba(var(--hb-ai-focus-rgb), 0.35),
+                              0 0 30px -4px rgba(var(--hb-ai-focus-rgb), 0.16);
+                }
+                75% {
+                  box-shadow: 0 0 0 1px rgba(var(--hb-ai-focus-rgb), 0.22),
+                              0 0 18px -4px rgba(var(--hb-ai-focus-rgb), 0.08);
+                }
+                100% {
+                  box-shadow: 0 0 0 1px rgba(var(--hb-ai-focus-rgb), 0),
+                              0 0 0 rgba(var(--hb-ai-focus-rgb), 0);
+                }
+              }
+
+              @keyframes hb-ai-beam-sweep {
+                0% {
+                  transform: translateX(-100%);
+                  opacity: 0;
+                }
+                25% {
+                  opacity: 1;
+                }
+                75% {
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateX(100%);
+                  opacity: 0;
+                }
+              }
+
+              .hb-ai-focus-active {
+                position: relative !important;
+                animation: hb-ai-focus-pulse 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+              }
+
+              .hb-ai-focus-active::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(
+                  90deg,
+                  transparent 0%,
+                  rgba(var(--hb-ai-focus-rgb), 0.2) 20%,
+                  rgba(var(--hb-ai-focus-rgb), 0.95) 50%,
+                  rgba(var(--hb-ai-focus-rgb), 0.2) 80%,
+                  transparent 100%
+                );
+                box-shadow: 0 0 12px rgba(var(--hb-ai-focus-rgb), 0.6);
+                pointer-events: none;
+                z-index: 60;
+                animation: hb-ai-beam-sweep 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+              }
             </style>
           </head>
           <body class="text-zinc-900 dark:text-zinc-50 font-sans ${flush ? "p-0" : "p-4"} relative overflow-hidden m-0 w-full h-auto">
@@ -101,6 +171,9 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
         </html>
       `);
       doc.close();
+
+      // Lock preview viewport height so elements using 100vh do not cause recursive auto-expand loop
+      doc.documentElement.style.setProperty("--hb-viewport-h", `${window.innerHeight}px`);
 
       // Copy all active stylesheets & inline styles from parent document
       const syncStyles = () => {
@@ -201,9 +274,20 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
       attributeFilter: ["class"],
     });
 
+    const handleWindowResize = () => {
+      if (iframe.contentDocument?.documentElement) {
+        iframe.contentDocument.documentElement.style.setProperty(
+          "--hb-viewport-h",
+          `${window.innerHeight}px`
+        );
+      }
+    };
+    window.addEventListener("resize", handleWindowResize);
+
     return () => {
       resizeObserver?.disconnect();
       themeObserver.disconnect();
+      window.removeEventListener("resize", handleWindowResize);
     };
   }, [flush, minHeight]);
 
@@ -218,15 +302,25 @@ export const IframePreview: React.FC<IframePreviewProps> = ({
       if (!doc) return;
 
       const highlightElement = (el: HTMLElement) => {
-        el.style.transition = "outline 0.3s ease, box-shadow 0.3s ease";
-        el.style.outline = "3px solid rgb(99 102 241)";
-        el.style.outlineOffset = "4px";
-        el.style.boxShadow = "0 0 30px rgba(99, 102, 241, 0.4)";
+        const targetSection = (el.firstElementChild as HTMLElement) || el;
+        const isDark =
+          doc.documentElement.classList.contains("dark") ||
+          targetSection.dataset.heroVariant === "video" ||
+          targetSection.classList.contains("bg-zinc-950") ||
+          targetSection.classList.contains("hb-video-section");
+
+        const rgb = isDark ? "255, 255, 255" : "24, 24, 27";
+        targetSection.style.setProperty("--hb-ai-focus-rgb", rgb);
+
+        targetSection.classList.remove("hb-ai-focus-active");
+        // Force repaint to cleanly trigger the hardware-accelerated animation
+        void targetSection.offsetWidth;
+        targetSection.classList.add("hb-ai-focus-active");
+
         setTimeout(() => {
-          el.style.outline = "";
-          el.style.outlineOffset = "";
-          el.style.boxShadow = "";
-        }, 2200);
+          targetSection.classList.remove("hb-ai-focus-active");
+          targetSection.style.removeProperty("--hb-ai-focus-rgb");
+        }, 1500);
       };
 
       if (sectionType === "navbar") {

@@ -17,6 +17,14 @@ export interface FullscreenVideoPlayerProps {
   className?: string;
 }
 
+function getYouTubeEmbedUrl(url: string) {
+  if (!url) return null;
+  const match = url.match(
+    /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/
+  );
+  return match ? `https://www.youtube-nocookie.com/embed/${match[1]}?autoplay=1&rel=0` : null;
+}
+
 export function FullscreenVideoPlayer({
   isOpen,
   onClose,
@@ -135,15 +143,25 @@ export function FullscreenVideoPlayer({
             )}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* HTML5 Video Element with Fullscreen Aspect Ratio */}
-            <video
-              ref={videoRef}
-              src={videoUrl}
-              controls
-              autoPlay
-              playsInline
-              className="h-full w-full object-cover"
-            />
+            {/* Video Content: Embed or HTML5 */}
+            {getYouTubeEmbedUrl(videoUrl) ? (
+              <iframe
+                src={getYouTubeEmbedUrl(videoUrl)!}
+                title={title || "Video player"}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="h-full w-full border-0"
+              />
+            ) : (
+              <video
+                ref={videoRef}
+                src={videoUrl}
+                controls
+                autoPlay
+                playsInline
+                className="h-full w-full object-cover"
+              />
+            )}
 
             {/* Top Bar Context & Controls (Reveals on Hover / Non-intrusive) */}
             <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-center justify-between bg-gradient-to-b from-black/70 via-black/30 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover/player:opacity-100 sm:p-5">
@@ -151,8 +169,7 @@ export function FullscreenVideoPlayer({
                 <Badge
                   variant="flat"
                   size="sm"
-                  radius="full"
-                  className="bg-white/15 font-mono text-[11px] font-semibold tracking-wider text-white uppercase backdrop-blur-md"
+                  className="rounded-full bg-white/15 font-mono text-[11px] font-semibold tracking-wider text-white uppercase backdrop-blur-md"
                 >
                   4K UHD
                 </Badge>

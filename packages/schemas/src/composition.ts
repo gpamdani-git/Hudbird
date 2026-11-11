@@ -16,6 +16,10 @@ export interface HeroImage {
   src: string;
   /** Optional dark artwork; the original asset is retained when not provided. */
   darkSrc?: string;
+  /** Optional mobile-specific crop artwork. */
+  mobileSrc?: string;
+  /** Optional dark mobile-specific crop artwork. */
+  darkMobileSrc?: string;
   alt: string;
   caption?: string;
 }
@@ -37,6 +41,13 @@ export interface ProductDemoTab {
 
 export type HeroSectionConfig =
   | { variant: "centered" | "split"; image: HeroImage }
+  | { variant: "split-product"; image?: HeroImage; proof?: { label: string; sourceUrl: string } }
+  | { variant: "center-canvas" | "center-video"; image?: HeroImage; videoUrl?: string }
+  | {
+      variant: "editorial-photo";
+      image?: HeroImage & { portraitSrc?: string; focalPoint?: string };
+      credit?: { label: string; href?: string };
+    }
   | { variant: "slideshow"; slides: HeroImage[] }
   | { variant: "video"; video: { src: string; poster: HeroImage } }
   | { variant: "interactive"; tabs: ProductDemoTab[] };
@@ -105,7 +116,16 @@ export interface NavbarCustomSettings {
 
 export interface LandingVariantMap {
   navbar: NavbarVariant;
-  hero: "centered" | "split" | "interactive" | "slideshow" | "video";
+  hero:
+    | "centered"
+    | "split"
+    | "interactive"
+    | "slideshow"
+    | "video"
+    | "split-product"
+    | "center-canvas"
+    | "center-video"
+    | "editorial-photo";
   logos: "row" | "intro-grid" | "ticker";
   benefits: "columns" | "visual-list" | "cards";
   features: "tabs" | "accordion" | "split";
@@ -115,7 +135,7 @@ export interface LandingVariantMap {
   pricing: "cards" | "comparison" | "highlight";
   faq: "single" | "grouped" | "columns";
   cta: "centered" | "split" | "banner";
-  footer: "simple" | "columns" | "centered";
+  footer: "simple" | "columns" | "centered" | "locale-status" | "contact-action";
 }
 
 export type LandingSectionType = keyof LandingVariantMap;
@@ -178,7 +198,32 @@ export interface LandingSectionContent {
     action: LandingAction;
     links: LandingNavigationLink[];
   };
-  hero: { content: HeroContent; variants: Record<LandingVariantMap["hero"], HeroSectionConfig> };
+  hero: {
+    content: HeroContent;
+    variants: Record<
+      Exclude<
+        LandingVariantMap["hero"],
+        "split-product" | "center-canvas" | "center-video" | "editorial-photo"
+      >,
+      HeroSectionConfig
+    > &
+      Partial<Record<"split-product", Extract<HeroSectionConfig, { variant: "split-product" }>>> &
+      Partial<
+        Record<
+          "center-canvas",
+          Extract<HeroSectionConfig, { variant: "center-canvas" | "center-video" }>
+        >
+      > &
+      Partial<
+        Record<
+          "center-video",
+          Extract<HeroSectionConfig, { variant: "center-canvas" | "center-video" }>
+        >
+      > &
+      Partial<
+        Record<"editorial-photo", Extract<HeroSectionConfig, { variant: "editorial-photo" }>>
+      >;
+  };
   logos: { title: string; description: string; items: string[]; logo?: HeroImage };
   benefits: { title: string; description: string; items: LandingItem[]; image: HeroImage };
   features: { title: string; description: string; items: LandingFeature[] };
@@ -217,6 +262,26 @@ export interface LandingSectionContent {
     description: string;
     note: string;
     groups: { title: string; links: LandingFooterLink[] }[];
+    /** Obsidian 18-03: Locale options for multi-lingual footer */
+    locales?: { code: string; label: string; href?: string }[];
+    /** Obsidian 18-03: Currently active locale */
+    activeLocale?: string;
+    /** Obsidian 18-03: Service status metadata and target */
+    status?: { label: string; href?: string; summary?: string; checkedAt?: string };
+    /** Obsidian 18-04: Contact heading */
+    heading?: string;
+    /** Obsidian 18-04: Primary booking or next action */
+    contactAction?: LandingAction;
+    /** Obsidian 18-04: Contact channels (email, phone, schedule) */
+    contactLinks?: {
+      type?: "email" | "phone" | "schedule" | "chat";
+      label: string;
+      href: string;
+    }[];
+    /** Obsidian 18-04: Operating office hours with timezone */
+    officeHours?: string;
+    /** Concise legal and policy links */
+    legalLinks?: { label: string; href: string }[];
   };
 }
 

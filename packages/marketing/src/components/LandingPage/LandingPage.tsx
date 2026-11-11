@@ -52,7 +52,15 @@ export function LandingSection({
           <HeroSection
             id="hero"
             content={content.hero.content}
-            config={content.hero.variants[selection.variant]}
+            config={
+              content.hero.variants[selection.variant] ??
+              (selection.variant === "center-canvas" ||
+              (selection.variant as string) === "center-video"
+                ? { variant: selection.variant as "center-canvas" | "center-video" }
+                : selection.variant === "editorial-photo"
+                  ? { variant: "editorial-photo" }
+                  : { variant: "split-product" })
+            }
           />
         </div>
       );

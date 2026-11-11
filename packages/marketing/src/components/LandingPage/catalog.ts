@@ -157,6 +157,23 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
     ],
     additionalVariants: [
       {
+        id: "split-product",
+        name: "Hero Split Product · New",
+        description:
+          "Copy-first 5/7 layout with a static product image and optional sourced proof.",
+      },
+      {
+        id: "center-canvas",
+        name: "Hero Center Video · New",
+        description:
+          "Centered copy with single primary action and a wide 16:9 interactive video player.",
+      },
+      {
+        id: "editorial-photo",
+        name: "Hero Editorial Photo · New",
+        description: "Full photo layout with solid surface copy panel and optional credit link.",
+      },
+      {
         id: "slideshow",
         name: "Slideshow (additional)",
         description: "A manual image sequence from the existing hero kit.",
@@ -164,7 +181,7 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
       {
         id: "video",
         name: "Video background (additional)",
-        description: "The existing paused-by-default background video.",
+        description: "Monochrome architectural video background loop with accessible controls.",
       },
     ],
   },
@@ -486,6 +503,18 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         id: "centered",
         name: "Centered minimal footer",
         description: "Centered brand mark, horizontal navigation links, and legal note.",
+      },
+      {
+        id: "locale-status",
+        name: "Footer Locale and Status · New",
+        description:
+          "Multilingual language selector, live service status indicator, sitemap and policies.",
+      },
+      {
+        id: "contact-action",
+        name: "Footer Contact and Next Action · New",
+        description:
+          "High-intent consultation booking, direct communication channels, office hours and legal links.",
       },
     ],
   },

@@ -1,0 +1,199 @@
+/* Obsidian 18-04: Footer Contact and Next Action styles */
+
+.hb-footer-contact-action {
+  --hb-contact-footer-space: 3.5rem; /* 56px on mobile */
+  padding-top: var(--hb-contact-footer-space);
+  padding-bottom: 3.5rem;
+  background: var(--hb-bg, var(--background));
+  color: var(--hb-ink, var(--foreground));
+  border-top: 1px solid var(--hb-border, var(--border));
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 1024px) {
+  .hb-footer-contact-action {
+    --hb-contact-footer-space: 4.75rem; /* 76px on desktop */
+    padding-top: var(--hb-contact-footer-space);
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* Contact Action Panel - full width equal to Container */
+.hb-contact-action-panel {
+  position: relative;
+  width: 100%;
+  padding: 1.5rem; /* 24px on mobile */
+  background: var(--hb-surface-tint, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--hb-border, var(--border));
+  border-radius: 1.25rem; /* 20px */
+  box-sizing: border-box;
+}
+
+:root.dark .hb-contact-action-panel,
+[data-theme="dark"] .hb-contact-action-panel,
+[data-brand-mode="dark"] .hb-contact-action-panel {
+  background: var(--hb-surface-tint, rgba(255, 255, 255, 0.025));
+  border-color: var(--hb-border, rgba(255, 255, 255, 0.08));
+}
+
+.hb-footer-contact-heading {
+  font-size: 1.75rem; /* 28px */
+  line-height: 2.125rem; /* 34px */
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  color: var(--hb-ink, var(--foreground));
+  text-wrap: balance;
+}
+
+.hb-footer-contact-desc {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.5rem; /* 24px */
+  color: var(--hb-muted, var(--muted-foreground));
+  text-wrap: pretty;
+  max-width: 52ch;
+}
+
+.hb-footer-contact-cta {
+  min-height: 3rem; /* 48px touch target */
+  width: 100%;
+  max-width: 320px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8125rem 1.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+  transition:
+    background-color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hb-footer-contact-cta:hover {
+  transform: translateY(-1px);
+  transition-duration: 150ms;
+}
+
+.hb-footer-contact-cta:active {
+  transform: translateY(0);
+}
+
+/* Contact channel links in address */
+.hb-contact-channel-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.5rem;
+  color: var(--hb-ink, var(--foreground));
+  text-decoration: none;
+  background: transparent !important;
+  min-height: 2.75rem; /* 44px tap target */
+  transition:
+    color 150ms ease,
+    text-decoration-color 150ms ease;
+  word-break: break-word;
+}
+
+.hb-contact-channel-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+  background: transparent !important;
+}
+
+.hb-contact-channel-link .hb-channel-icon {
+  width: 1.125rem; /* 18px */
+  height: 1.125rem;
+  flex-shrink: 0;
+  color: var(--hb-muted, var(--muted-foreground));
+}
+
+.hb-contact-channel-link:hover .hb-channel-icon {
+  color: var(--hb-accent, var(--primary));
+}
+
+/* The spacing between card and nav row matches the top padding identically */
+.hb-contact-action-nav-row {
+  margin-top: var(--hb-contact-footer-space);
+}
+
+/* Sweet underline navigation link without button background for all footer sections */
+.hb-footer-nav-link {
+  color: var(--hb-muted, var(--muted-foreground));
+  text-decoration: none;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  font-weight: 400;
+  background: transparent !important;
+  border: none !important;
+  padding-block: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  transition:
+    color 150ms cubic-bezier(0.16, 1, 0.3, 1),
+    text-decoration-color 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hb-footer-nav-link:hover {
+  color: var(--hb-ink, var(--foreground));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: currentColor;
+  background: transparent !important;
+}
+
+.hb-footer-nav-link:focus-visible {
+  outline: 2px solid var(--hb-accent, var(--primary));
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* Tablet: >= 640px */
+@media (min-width: 640px) {
+  .hb-contact-panel-inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Desktop: >= 1024px */
+@media (min-width: 1024px) {
+  .hb-contact-action-panel {
+    padding: 2.5rem 3rem; /* 40px 48px */
+    width: 100%;
+    /* max-width not set so it fills the full container width */
+  }
+
+  .hb-contact-panel-inner {
+    grid-template-columns: 7fr 5fr;
+    gap: 3.5rem;
+  }
+
+  .hb-footer-contact-heading {
+    font-size: 2.25rem; /* 36px */
+    line-height: 2.625rem; /* 42px */
+  }
+}
+
+/* Reduced motion */
+.hb-footer-contact-action[data-motion="off"] a,
+.hb-footer-contact-action[data-motion="off"] button,
+.hb-footer-contact-action[data-motion="off"] .hb-footer-contact-cta {
+  transition: none !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-footer-contact-action a,
+  .hb-footer-contact-action button,
+  .hb-footer-contact-action .hb-footer-contact-cta {
+    transition: none !important;
+    transform: none !important;
+  }
+}

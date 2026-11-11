@@ -5,7 +5,7 @@ import type {
   PageComposition,
   StartupPageContent,
 } from "@hudbird/schemas";
-import { demoVideo } from "./demo-video";
+import { demoVideo, MONOCHROME_VIDEO_POSTER } from "./demo-video";
 
 function productImage(view: string, accent: string): HeroImage {
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900"><rect width="1440" height="900" fill="#eef0f4"/><rect x="95" y="80" width="1250" height="740" rx="18" fill="white" stroke="#d4d4d8"/><path d="M95 150h1250M350 150v670" stroke="#e4e4e7"/><circle cx="130" cy="115" r="6" fill="${accent}"/><text x="155" y="123" font-family="sans-serif" font-size="22" fill="#18181b">Workspace preview</text><text x="1125" y="123" font-family="sans-serif" font-size="18" fill="#52525b">Sample data</text><rect x="120" y="190" width="200" height="48" rx="8" fill="${accent}"/><text x="140" y="221" font-family="sans-serif" font-size="20" fill="white">${view}</text><text x="140" y="285" font-family="sans-serif" font-size="20" fill="#52525b">Projects</text><text x="140" y="340" font-family="sans-serif" font-size="20" fill="#52525b">Notes</text><text x="410" y="230" font-family="sans-serif" font-size="40" font-weight="500" fill="#18181b">${view}</text><text x="410" y="278" font-family="sans-serif" font-size="22" fill="#52525b">A clear place for the next step.</text><rect x="410" y="330" width="865" height="110" rx="10" fill="#f4f5f7"/><circle cx="455" cy="385" r="12" fill="${accent}"/><text x="490" y="392" font-family="sans-serif" font-size="24" fill="#18181b">Prepare your next launch</text><path d="M410 500h865M410 600h865M410 700h865" stroke="#e4e4e7"/><text x="415" y="550" font-family="sans-serif" font-size="23" fill="#18181b">Review the product brief</text><text x="415" y="650" font-family="sans-serif" font-size="23" fill="#18181b">Collect feedback in one place</text><text x="415" y="750" font-family="sans-serif" font-size="23" fill="#18181b">Choose what happens next</text></svg>`;
@@ -138,11 +138,17 @@ export const startupContent: StartupPageContent = {
 const overview = productImage("Overview", "#2457d6");
 const projects = productImage("Projects", "#237459");
 
-export const pilotHeroes: Record<HeroSectionConfig["variant"], HeroSectionConfig> = {
+export const pilotHeroes: Record<
+  Exclude<
+    HeroSectionConfig["variant"],
+    "split-product" | "center-canvas" | "center-video" | "editorial-photo"
+  >,
+  HeroSectionConfig
+> = {
   centered: { variant: "centered", image: overview },
   split: { variant: "split", image: overview },
   slideshow: { variant: "slideshow", slides: [overview, projects] },
-  video: { variant: "video", video: { src: demoVideo, poster: overview } },
+  video: { variant: "video", video: { src: demoVideo, poster: MONOCHROME_VIDEO_POSTER } },
   interactive: { variant: "interactive", tabs: startupContent.demo.tabs },
 };
 
