@@ -3,7 +3,13 @@ import * as React from "react";
 import { Card, CardBody, Grid, Text } from "@hudbird/ui";
 import { motion, useReducedMotion } from "framer-motion";
 import type { LandingSectionProps } from "@hudbird/schemas";
-import { LandingFrame, LandingDemoNote, useLandingMotion } from "../LandingShared";
+import {
+  LandingFrame,
+  LandingDemoNote,
+  resolveLandingGridProps,
+  useLandingAppearance,
+  useLandingMotion,
+} from "../LandingShared";
 
 export const STARTUP_LOGOS = [
   { name: "Stripe", src: "/assets/logos/stripe.svg" },
@@ -29,6 +35,7 @@ export function renderReferenceTitle(rawTitle: string) {
             return (
               <span
                 key={i}
+                data-hb-italic="true"
                 className="font-serif font-normal text-zinc-800 italic dark:text-zinc-200"
               >
                 {part.slice(1, -1)}
@@ -80,32 +87,97 @@ export function renderReferenceTitle(rawTitle: string) {
 
 interface LogoPillProps {
   name: string;
-  src: string;
+  src?: string;
+  darkSrc?: string;
+  idx?: number;
 }
 
-function LogoPill({ name, src }: LogoPillProps) {
+function LogoPill({ name, src, darkSrc, idx }: LogoPillProps) {
   return (
     <div
+      data-hb-node="items"
+      data-hb-item={idx}
+      data-hb-edit={idx !== undefined ? `logos:items.${idx}` : undefined}
+      data-hb-edit-mode={idx !== undefined ? "popover" : undefined}
       className="group relative flex h-12 items-center justify-center px-6 transition-all duration-300 select-none sm:px-8"
       aria-label={name}
     >
-      <img
-        src={src}
-        alt={name}
-        className="h-5 w-auto max-w-[100px] object-contain opacity-40 contrast-125 grayscale filter transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0 dark:opacity-40 dark:invert dark:group-hover:opacity-100"
-      />
+      {src ? (
+        <>
+          <img
+            src={src}
+            alt={name}
+            className={
+              darkSrc
+                ? "h-5 w-auto max-w-[100px] object-contain opacity-65 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 dark:hidden"
+                : "h-5 w-auto max-w-[100px] object-contain opacity-40 contrast-125 grayscale filter transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 group-hover:grayscale-0 dark:opacity-40 dark:invert dark:group-hover:opacity-100"
+            }
+          />
+          {darkSrc && (
+            <img
+              src={darkSrc}
+              alt={name}
+              className="hidden h-5 w-auto max-w-[100px] object-contain opacity-65 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100 dark:block"
+            />
+          )}
+        </>
+      ) : (
+        <span
+          data-hb-edit-text=""
+          className="text-sm font-semibold tracking-tight text-zinc-500 transition-colors group-hover:text-zinc-900 dark:text-zinc-400 dark:group-hover:text-white"
+        >
+          {name}
+        </span>
+      )}
     </div>
   );
 }
 
 export function LandingLogoCloud({ variant, content }: LandingSectionProps<"logos">) {
   const { autoplay } = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const cardCfg = appearance?.card;
+  const gridProps = resolveLandingGridProps(appearance?.grid, { cols: 2, gap: "md" });
   const reduce = useReducedMotion();
   const [isHovered, setIsHovered] = React.useState(false);
 
-  // Map 8 logos
-  const logoItems = STARTUP_LOGOS.map((item) => (
-    <LogoPill key={item.name} name={item.name} src={item.src} />
+  const resolvedLogos = React.useMemo(() => {
+    const assetMap = new Map(
+      (content.logoAssets ?? []).map((asset) => [asset.name.trim().toLowerCase(), asset])
+    );
+    const sourceList =
+      content.logoAssets && content.logoAssets.length > 0
+        ? content.logoAssets.map((a) => ({
+            name: a.name,
+            src:
+              a.src ||
+              STARTUP_LOGOS.find((s) => s.name.toLowerCase() === a.name.trim().toLowerCase())?.src,
+            darkSrc: a.darkSrc,
+          }))
+        : content.items && content.items.length > 0
+          ? content.items.map((name) => {
+              const asset = assetMap.get(name.trim().toLowerCase());
+              const builtIn = STARTUP_LOGOS.find(
+                (s) => s.name.toLowerCase() === name.trim().toLowerCase()
+              );
+              return {
+                name,
+                src: asset?.src ?? builtIn?.src,
+                darkSrc: asset?.darkSrc,
+              };
+            })
+          : STARTUP_LOGOS.map((item) => ({ name: item.name, src: item.src, darkSrc: undefined }));
+    return sourceList;
+  }, [content.items, content.logoAssets]);
+
+  const logoItems = resolvedLogos.map((item, idx) => (
+    <LogoPill
+      key={`${item.name}-${idx}`}
+      name={item.name}
+      src={item.src}
+      darkSrc={item.darkSrc}
+      idx={idx}
+    />
   ));
 
   const isTickerActive = !reduce && autoplay && !isHovered;
@@ -114,7 +186,11 @@ export function LandingLogoCloud({ variant, content }: LandingSectionProps<"logo
     <LandingFrame id="logos" compact>
       {/* 1. Top: Tulisan kecil center dengan 2 macam font seperti hero dengan warna abu berbeda */}
       <div className="mb-8 flex flex-col items-center justify-center text-center sm:mb-10">
-        <p className="text-xs font-medium tracking-tight sm:text-sm md:text-base">
+        <p
+          data-hb-node="heading"
+          data-hb-edit="logos:title"
+          className="text-xs font-medium tracking-tight sm:text-sm md:text-base"
+        >
           {renderReferenceTitle(content.title)}
         </p>
       </div>
@@ -137,16 +213,40 @@ export function LandingLogoCloud({ variant, content }: LandingSectionProps<"logo
 
         {/* Looping animation smooth gaya shopify (kiri ke kanan / kanan ke kiri smooth loop) */}
         {variant === "intro-grid" ? (
-          <Grid cols={2} gap="md">
-            {STARTUP_LOGOS.map((item) => (
-              <Card key={item.name} variant="bordered" radius="lg" className="hb-radius shadow-2xs">
+          <Grid {...gridProps}>
+            {resolvedLogos.map((item, idx) => (
+              <Card
+                key={`${item.name}-${idx}`}
+                variant={cardCfg?.variant ?? "bordered"}
+                radius={cardCfg?.radius ?? "lg"}
+                data-hb-node="card"
+                data-hb-item={idx}
+                className={cardCfg?.radius ? "shadow-2xs" : "hb-radius shadow-2xs"}
+              >
                 <CardBody className="flex items-center gap-3 p-4">
-                  <img
-                    src={item.src}
-                    alt={item.name}
-                    className="h-5 w-auto max-w-[80px] object-contain opacity-50 contrast-125 grayscale dark:invert"
-                  />
-                  <Text className="text-sm font-semibold">{item.name}</Text>
+                  {item.src && (
+                    <div
+                      data-hb-node="media"
+                      data-hb-item={idx}
+                      data-hb-edit={`logos:items.${idx}`}
+                      data-hb-edit-mode="popover"
+                      className="inline-flex cursor-pointer items-center"
+                    >
+                      <img
+                        src={item.src}
+                        alt={item.name}
+                        className="h-5 w-auto max-w-[80px] object-contain opacity-65 contrast-125 grayscale dark:invert"
+                      />
+                    </div>
+                  )}
+                  <Text
+                    data-hb-node="items"
+                    data-hb-item={idx}
+                    data-hb-edit={`logos:items.${idx}`}
+                    className="text-sm font-semibold"
+                  >
+                    {item.name}
+                  </Text>
                 </CardBody>
               </Card>
             ))}

@@ -1,3 +1,4 @@
+import { LoginPage } from "@hudbird/marketing";
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowLeft, Eye, EyeOff, Loader2, Phone } from "lucide-react";
@@ -14,10 +15,12 @@ export function AuthScreen({
   mode,
   onSuccess,
   onTryFirst,
+  onSignUp,
 }: {
   mode: "login" | "signup";
   onSuccess: (via: string) => void;
   onTryFirst: () => void;
+  onSignUp?: () => void;
 }) {
   const [step, setStep] = useState<Step>("start");
   const [dir, setDir] = useState(1);
@@ -44,6 +47,12 @@ export function AuthScreen({
   };
 
   const signup = mode === "signup";
+
+  if (mode === "login" && step === "start") {
+    return (
+      <LoginPage onLogin={() => onSuccess("email")} onSocialLogin={onSuccess} onSignUp={onSignUp} />
+    );
+  }
 
   return (
     <div className="relative flex min-h-full flex-col items-center overflow-hidden bg-[var(--c-bg)] px-5">

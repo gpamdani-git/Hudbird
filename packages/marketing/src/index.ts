@@ -47,3 +47,12 @@ export * from "./blocks/Ecommerce";
 export * from "./blocks/Fintech";
 export * from "./blocks/Hospitality";
 export * from "./blocks/AdminCms";
+
+export * from "./components/LoginPage";
+export * from "./components/AboutUsSection";
+export * from "./components/PricingCompareSection";
+export * from "./components/BlogSection";
+export * from "./components/ContactSection";
+export * from "./components/LegalSection";
+
+export * from "./components/WebsiteProject";

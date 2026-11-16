@@ -15,7 +15,12 @@ import {
 } from "lucide-react";
 import type { LandingSectionProps } from "@hudbird/schemas";
 import { HeroImageView } from "../HeroSection";
-import { LandingFrame } from "../LandingShared";
+import {
+  LandingFrame,
+  resolveLandingGridProps,
+  resolveMarketingIcon,
+  useLandingAppearance,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 export interface BenefitColumnItem {
@@ -24,6 +29,7 @@ export interface BenefitColumnItem {
   tags: string[];
   image: string;
   href: string;
+  icon?: string;
 }
 
 const defaultBenefitColumns: BenefitColumnItem[] = [
@@ -82,7 +88,7 @@ const impactQuotes = [
   },
 ];
 
-function BenefitTitle({ title }: { title?: string }) {
+function BenefitTitle({ title, editField }: { title?: string; editField?: string }) {
   const displayTitle = title || "Pick your workflow. See Hudbird at work.";
 
   if (displayTitle.includes("*")) {
@@ -90,13 +96,16 @@ function BenefitTitle({ title }: { title?: string }) {
     return (
       <Heading
         as="h2"
-        className="text-3xl font-medium tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
+        data-hb-node="heading"
+        data-hb-edit={editField}
+        className="text-3xl leading-[1.12] font-semibold tracking-[-0.03em] text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
       >
         {parts.map((part, i) => {
           if (part.startsWith("*") && part.endsWith("*")) {
             return (
               <span
                 key={i}
+                data-hb-italic="true"
                 className="[font-family:serif,Georgia,ui-serif] font-serif font-normal text-zinc-900 italic dark:text-zinc-100"
               >
                 {part.slice(1, -1)}
@@ -115,7 +124,9 @@ function BenefitTitle({ title }: { title?: string }) {
     return (
       <Heading
         as="h2"
-        className="text-3xl font-medium tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
+        data-hb-node="heading"
+        data-hb-edit={editField}
+        className="text-3xl leading-[1.12] font-semibold tracking-[-0.03em] text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
       >
         <span className="mr-2 [font-family:serif,Georgia,ui-serif] font-serif font-normal text-zinc-900 italic dark:text-zinc-100">
           {sentences[0]}.
@@ -135,7 +146,9 @@ function BenefitTitle({ title }: { title?: string }) {
     return (
       <Heading
         as="h2"
-        className="text-3xl font-medium tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
+        data-hb-node="heading"
+        data-hb-edit={editField}
+        className="text-3xl leading-[1.12] font-semibold tracking-[-0.03em] text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
       >
         <span className="mr-2 [font-family:serif,Georgia,ui-serif] font-serif font-normal text-zinc-900 italic dark:text-zinc-100">
           {firstPart}
@@ -150,6 +163,8 @@ function BenefitTitle({ title }: { title?: string }) {
   return (
     <Heading
       as="h2"
+      data-hb-node="heading"
+      data-hb-edit={editField}
       className="text-3xl font-medium tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] dark:text-white"
     >
       <span className="[font-family:serif,Georgia,ui-serif] font-serif font-normal text-zinc-900 italic dark:text-zinc-100">
@@ -162,20 +177,42 @@ function BenefitTitle({ title }: { title?: string }) {
 export function LandingBenefits({ variant, content }: LandingSectionProps<"benefits">) {
   const [activeRole, setActiveRole] = React.useState<"hirer" | "talent">("hirer");
   const [activeVisualIdx, setActiveVisualIdx] = React.useState<number>(0);
+  const appearance = useLandingAppearance();
+  const hasExplicitGrid = Boolean(appearance?.grid?.columns && appearance.grid.columns !== "auto");
+  const columnsGridProps = resolveLandingGridProps(appearance?.grid, { cols: 3, gap: "md" });
+  const cardsGridProps = resolveLandingGridProps(appearance?.grid, { cols: 2, gap: "lg" });
+  const visualGridProps = resolveLandingGridProps(appearance?.grid, {
+    cols: 2,
+    gap: "lg",
+    align: "center",
+  });
 
-  const columns: BenefitColumnItem[] = defaultBenefitColumns.map((def, idx) => {
-    const item = content?.items?.[idx];
+  const sourceBenefitItems =
+    content?.items && content.items.length > 0 ? content.items : defaultBenefitColumns;
+  const columns: BenefitColumnItem[] = sourceBenefitItems.map((item, idx) => {
+    const def = defaultBenefitColumns[idx % defaultBenefitColumns.length];
+    const resolvedImage =
+      typeof item?.image === "string" ? item.image : item?.image?.src ? item.image.src : def.image;
     return {
       title: item?.title || def.title,
       description: item?.description || def.description,
-      tags: def.tags,
-      image: def.image,
-      href: def.href,
+      tags: item?.tags && item.tags.length > 0 ? item.tags : def.tags,
+      image: resolvedImage,
+      href: item?.href || def.href,
+      icon: (item as { icon?: string } | undefined)?.icon,
     };
   });
 
   // Duplicate quotes 4x for continuous seamless rightward gliding
-  const tickerItems = [...impactQuotes, ...impactQuotes, ...impactQuotes, ...impactQuotes];
+  const baseQuotes =
+    content?.impactQuotes && content.impactQuotes.length > 0
+      ? content.impactQuotes.map((q) => ({
+          highlight: q.highlight ?? "",
+          quote: q.quote,
+          author: q.author,
+        }))
+      : impactQuotes;
+  const tickerItems = [...baseQuotes, ...baseQuotes, ...baseQuotes, ...baseQuotes];
 
   return (
     <LandingFrame id="benefits">
@@ -185,8 +222,13 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
           <div className="text-center">
             <BenefitTitle
               title={content.title || "We've done the *hard part*, now *it's* your turn to create"}
+              editField="benefits:title"
             />
-            <Text className="mx-auto mt-3 max-w-xl text-sm font-normal text-zinc-500 sm:text-base dark:text-zinc-400">
+            <Text
+              data-hb-node="text"
+              data-hb-edit="benefits:description"
+              className="mx-auto mt-3 max-w-xl text-sm font-normal text-zinc-500 sm:text-base dark:text-zinc-400"
+            >
               {content.description ||
                 "Whether you're looking for work or finding talent, everything is designed to flow effortlessly."}
             </Text>
@@ -223,7 +265,7 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
             </div>
           </div>
         ) : (
-          <BenefitTitle title={content.title} />
+          <BenefitTitle title={content.title} editField="benefits:title" />
         )}
       </div>
 
@@ -232,11 +274,27 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
         <>
           {/* 3-Column Luxury Container matching image reference */}
           <div className="overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-2xs dark:border-white/10 dark:bg-[#14151a]">
-            <div className="flex flex-col divide-y divide-zinc-200/90 md:flex-row md:divide-x md:divide-y-0 dark:divide-white/10 [&>*]:flex-1">
+            <div
+              data-hb-node="grid"
+              data-hb-grid={columnsGridProps["data-hb-grid"]}
+              className={
+                hasExplicitGrid
+                  ? cn(
+                      "grid divide-y divide-zinc-200/90 md:divide-x md:divide-y-0 dark:divide-white/10",
+                      columnsGridProps.cols === 1 && "grid-cols-1",
+                      columnsGridProps.cols === 2 && "grid-cols-1 md:grid-cols-2",
+                      columnsGridProps.cols === 3 && "grid-cols-1 md:grid-cols-3",
+                      columnsGridProps.cols === 4 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+                    )
+                  : "flex flex-col divide-y divide-zinc-200/90 md:flex-row md:divide-x md:divide-y-0 dark:divide-white/10 [&>*]:flex-1"
+              }
+            >
               {columns.map((col, idx) => (
                 <div
                   key={idx}
-                  className="group relative flex min-h-[400px] cursor-pointer flex-col justify-between overflow-hidden p-7 sm:min-h-[440px] sm:p-8 lg:p-10"
+                  data-hb-node="card"
+                  data-hb-item={idx}
+                  className="group relative flex min-h-[400px] min-w-0 cursor-pointer flex-col justify-between overflow-hidden p-7 sm:min-h-[440px] sm:p-8 lg:p-10"
                 >
                   {/* Background image: smooth hover fade-in & scale */}
                   <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -251,19 +309,55 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
 
                   {/* Relative content */}
                   <div className="relative z-10 flex min-w-0 flex-col">
+                    {(() => {
+                      const ColIcon = resolveMarketingIcon(col.icon);
+                      return (
+                        <div className="mb-4 flex items-center justify-between gap-2">
+                          <span
+                            data-hb-node="badge"
+                            data-hb-item={idx}
+                            data-hb-edit={`benefits:items.${idx}.icon`}
+                            data-hb-edit-mode="popover"
+                            className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-zinc-200/80 bg-zinc-50/90 text-zinc-800 shadow-2xs dark:border-white/15 dark:bg-white/[0.06] dark:text-zinc-200"
+                          >
+                            <ColIcon className="h-4 w-4" aria-hidden="true" />
+                          </span>
+                          <span
+                            data-hb-node="media"
+                            data-hb-item={idx}
+                            data-hb-edit={`benefits:items.${idx}.image`}
+                            data-hb-edit-mode="popover"
+                            className="cursor-pointer rounded-md border border-zinc-200/70 bg-white/80 px-2 py-0.5 text-[10px] font-medium text-zinc-500 opacity-0 transition-opacity group-hover:opacity-100 dark:border-white/10 dark:bg-zinc-900/80 dark:text-zinc-400"
+                          >
+                            Media
+                          </span>
+                        </div>
+                      );
+                    })()}
                     <Heading
                       as="h3"
+                      data-hb-node="heading"
+                      data-hb-item={idx}
+                      data-hb-edit={`benefits:items.${idx}.title`}
                       className="[font-family:serif,Georgia,ui-serif] font-serif text-2xl font-normal tracking-tight text-zinc-950 transition-colors sm:text-[1.75rem] dark:text-white"
                     >
                       {col.title}
                     </Heading>
-                    <Text className="mt-3.5 text-sm leading-relaxed font-normal text-zinc-600 transition-colors group-hover:text-zinc-900 sm:text-base dark:text-zinc-300 dark:group-hover:text-white">
+                    <Text
+                      data-hb-node="text"
+                      data-hb-item={idx}
+                      data-hb-edit={`benefits:items.${idx}.description`}
+                      className="mt-3.5 text-sm leading-relaxed font-normal text-zinc-600 transition-colors group-hover:text-zinc-900 sm:text-base dark:text-zinc-300 dark:group-hover:text-white"
+                    >
                       {col.description}
                     </Text>
                     <div className="mt-6 flex flex-wrap gap-2">
-                      {col.tags.map((tag) => (
+                      {col.tags.map((tag, tagIdx) => (
                         <span
-                          key={tag}
+                          key={`${tag}-${tagIdx}`}
+                          data-hb-node="badge"
+                          data-hb-item={idx}
+                          data-hb-edit={`benefits:items.${idx}.tags.${tagIdx}`}
                           className="inline-flex items-center rounded-md border border-zinc-200/80 bg-zinc-50/80 px-2.5 py-1 text-xs font-medium text-zinc-700 shadow-2xs backdrop-blur-xs transition-colors group-hover:border-zinc-300 group-hover:bg-white/95 dark:border-white/10 dark:bg-white/[0.05] dark:text-zinc-300 dark:group-hover:border-white/20 dark:group-hover:bg-zinc-900/90"
                         >
                           {tag}
@@ -275,6 +369,10 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
                   <div className="relative z-10 mt-10 sm:mt-14">
                     <a
                       href={col.href}
+                      data-hb-node="primary-button"
+                      data-hb-item={idx}
+                      data-hb-edit={`benefits:items.${idx}.href`}
+                      data-hb-edit-mode="popover"
                       className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-tight text-zinc-950 transition-colors group-hover:text-[var(--hb-accent,var(--primary))] sm:text-sm dark:text-white"
                     >
                       <span>{`Explore ${col.title}`}</span>
@@ -297,22 +395,44 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[var(--hb-bg,#ffffff)] to-transparent sm:w-28" />
 
               <div className="hb-benefit-ticker flex gap-10 sm:gap-14">
-                {tickerItems.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex w-[320px] shrink-0 flex-col justify-between sm:w-[460px] lg:w-[520px]"
-                  >
-                    <Text className="text-base leading-relaxed font-medium tracking-tight text-zinc-900 sm:text-lg lg:text-xl dark:text-zinc-100">
-                      <span className="mr-1.5 font-serif font-normal text-zinc-400 italic dark:text-zinc-500">
-                        {item.highlight}
-                      </span>
-                      <span className="text-zinc-800 dark:text-zinc-200">{item.quote}</span>
-                    </Text>
-                    <Text className="mt-3.5 text-xs font-medium text-zinc-400 sm:text-sm dark:text-zinc-500">
-                      {item.author}
-                    </Text>
-                  </div>
-                ))}
+                {tickerItems.map((item, idx) => {
+                  const quoteIdx = idx % baseQuotes.length;
+                  return (
+                    <div
+                      key={idx}
+                      data-hb-node="card"
+                      data-hb-item={quoteIdx}
+                      className="flex w-[320px] shrink-0 flex-col justify-between sm:w-[460px] lg:w-[520px]"
+                    >
+                      <Text className="text-base leading-relaxed font-medium tracking-tight text-zinc-900 sm:text-lg lg:text-xl dark:text-zinc-100">
+                        <span
+                          data-hb-node="text"
+                          data-hb-item={quoteIdx}
+                          data-hb-edit={`benefits:impactQuotes.${quoteIdx}.highlight`}
+                          className="mr-1.5 font-serif font-normal text-zinc-400 italic dark:text-zinc-500"
+                        >
+                          {item.highlight}
+                        </span>
+                        <span
+                          data-hb-node="text"
+                          data-hb-item={quoteIdx}
+                          data-hb-edit={`benefits:impactQuotes.${quoteIdx}.quote`}
+                          className="text-zinc-800 dark:text-zinc-200"
+                        >
+                          {item.quote}
+                        </span>
+                      </Text>
+                      <Text
+                        data-hb-node="text"
+                        data-hb-item={quoteIdx}
+                        data-hb-edit={`benefits:impactQuotes.${quoteIdx}.author`}
+                        className="mt-3.5 text-xs font-medium text-zinc-400 sm:text-sm dark:text-zinc-500"
+                      >
+                        {item.author}
+                      </Text>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -324,18 +444,30 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
         </>
       ) : variant === "cards" ? (
         /* 2x2 Showcase Card Grid (Faithful to uploaded reference images 1 & 2) */
-        <Grid cols={2} gap="lg">
+        <Grid {...cardsGridProps}>
           {/* Card 1: Create project with iPhone mockup and floating metadata card */}
-          <div className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/70 p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.02]">
+          <div
+            data-hb-node="card"
+            data-hb-item={0}
+            className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/70 p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.02]"
+          >
             <div>
               <Heading
                 as="h3"
+                data-hb-node="heading"
+                data-hb-item={0}
+                data-hb-edit="benefits:items.0.title"
                 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
               >
-                Create project
+                {columns[0]?.title || "Create project"}
               </Heading>
-              <Text className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400">
-                Add requirements, upload references.
+              <Text
+                data-hb-node="text"
+                data-hb-item={0}
+                data-hb-edit="benefits:items.0.description"
+                className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400"
+              >
+                {columns[0]?.description || "Add requirements, upload references."}
               </Text>
             </div>
 
@@ -357,10 +489,19 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
                   <div className="text-[10px] font-medium text-zinc-500 dark:text-zinc-400">
                     References (4)
                   </div>
-                  <div className="mt-1.5 overflow-hidden rounded-xl">
+                  <div
+                    data-hb-node="media"
+                    data-hb-item={0}
+                    data-hb-edit="benefits:items.0.image"
+                    data-hb-edit-mode="popover"
+                    className="mt-1.5 cursor-pointer overflow-hidden rounded-xl"
+                  >
                     <img
-                      src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=600"
-                      alt="Reference"
+                      src={
+                        columns[0]?.image ||
+                        "https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=600"
+                      }
+                      alt={columns[0]?.title || "Reference"}
                       className="h-28 w-full object-cover"
                     />
                   </div>
@@ -404,82 +545,133 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
           </div>
 
           {/* Card 2: Hire talent with photographer card & price bubble */}
-          <div className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-purple-200/60 bg-purple-50/50 p-6 sm:p-8 dark:border-purple-500/20 dark:bg-purple-950/20">
+          <div
+            data-hb-node="card"
+            data-hb-item={1}
+            className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-purple-200/60 bg-purple-50/50 p-6 sm:p-8 dark:border-purple-500/20 dark:bg-purple-950/20"
+          >
             <div>
               <Heading
                 as="h3"
+                data-hb-node="heading"
+                data-hb-item={1}
+                data-hb-edit="benefits:items.1.title"
                 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
               >
-                Hire talent
+                {columns[1]?.title || "Hire talent"}
               </Heading>
-              <Text className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400">
-                Choose talent and collaborate.
+              <Text
+                data-hb-node="text"
+                data-hb-item={1}
+                data-hb-edit="benefits:items.1.description"
+                className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400"
+              >
+                {columns[1]?.description || "Choose talent and collaborate."}
               </Text>
             </div>
 
-            <div className="relative mt-8 flex justify-center pt-2">
-              <div className="w-full max-w-[320px] rounded-2xl border border-zinc-200/80 bg-white/95 p-4 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-zinc-900/95">
-                {/* Talent Header */}
-                <div className="flex items-center gap-2.5">
+            <div
+              data-hb-node="media"
+              data-hb-item={1}
+              data-hb-edit="benefits:illustration"
+              data-hb-visual="code-illustration"
+              data-hb-edit-mode="popover"
+              className="relative mt-8 flex cursor-pointer justify-center pt-2"
+            >
+              {appearance?.illustration?.mode === "custom-image" &&
+              appearance.illustration.customImage?.src ? (
+                <div className="h-[240px] w-full max-w-[320px] overflow-hidden rounded-2xl border border-zinc-200/80 shadow-xl dark:border-white/10">
                   <img
-                    src="https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=200"
-                    alt="James Smith"
-                    className="h-9 w-9 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-white/15"
+                    src={appearance.illustration.customImage.src}
+                    alt={appearance.illustration.customImage.alt || columns[1]?.title || "Benefit"}
+                    className="h-full w-full object-cover"
                   />
-                  <div>
-                    <div className="text-xs font-semibold text-zinc-900 dark:text-white">
-                      James Smith
-                    </div>
-                    <div className="flex items-center gap-1 text-[10px] text-zinc-500 dark:text-zinc-400">
-                      <span className="font-semibold text-amber-500">5.0★</span>
-                      <span>• Photographer</span>
+                </div>
+              ) : (
+                <div className="w-full max-w-[320px] rounded-2xl border border-zinc-200/80 bg-white/95 p-4 shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-zinc-900/95">
+                  {/* Talent Header */}
+                  <div className="flex items-center gap-2.5">
+                    <img
+                      src="https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=200"
+                      alt="James Smith"
+                      className="h-9 w-9 rounded-full object-cover ring-1 ring-zinc-200 dark:ring-white/15"
+                    />
+                    <div>
+                      <div className="text-xs font-semibold text-zinc-900 dark:text-white">
+                        James Smith
+                      </div>
+                      <div className="flex items-center gap-1 text-[10px] text-zinc-500 dark:text-zinc-400">
+                        <span className="font-semibold text-amber-500">5.0★</span>
+                        <span>• Photographer</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* 3 Photos Grid */}
-                <div className="mt-3 flex gap-2 overflow-hidden rounded-xl">
-                  <img
-                    src="https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=300"
-                    alt="Work 1"
-                    className="h-28 w-1/3 rounded-lg object-cover"
-                  />
-                  <img
-                    src="https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=300"
-                    alt="Work 2"
-                    className="h-28 w-1/3 rounded-lg object-cover"
-                  />
-                  <img
-                    src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=300"
-                    alt="Work 3"
-                    className="h-28 w-1/3 rounded-lg object-cover"
-                  />
-                </div>
+                  {/* 3 Photos Grid */}
+                  <div
+                    data-hb-node="media"
+                    data-hb-item={1}
+                    data-hb-edit="benefits:items.1.image"
+                    data-hb-edit-mode="popover"
+                    className="mt-3 flex cursor-pointer gap-2 overflow-hidden rounded-xl"
+                  >
+                    <img
+                      src={
+                        columns[1]?.image ||
+                        "https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=300"
+                      }
+                      alt="Work 1"
+                      className="h-28 w-1/3 rounded-lg object-cover"
+                    />
+                    <img
+                      src="https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=300"
+                      alt="Work 2"
+                      className="h-28 w-1/3 rounded-lg object-cover"
+                    />
+                    <img
+                      src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=300"
+                      alt="Work 3"
+                      className="h-28 w-1/3 rounded-lg object-cover"
+                    />
+                  </div>
 
-                {/* Offer Chat Bubble */}
-                <div className="mt-3.5 flex items-center justify-between rounded-xl bg-zinc-100/80 px-3 py-2 text-xs dark:bg-white/[0.06]">
-                  <span className="truncate text-zinc-700 dark:text-zinc-300">
-                    Hi, I can give you 15 edited images
-                  </span>
-                  <span className="ml-2 shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 font-bold text-emerald-600 dark:text-emerald-400">
-                    $220
-                  </span>
+                  {/* Offer Chat Bubble */}
+                  <div className="mt-3.5 flex items-center justify-between rounded-xl bg-zinc-100/80 px-3 py-2 text-xs dark:bg-white/[0.06]">
+                    <span className="truncate text-zinc-700 dark:text-zinc-300">
+                      Hi, I can give you 15 edited images
+                    </span>
+                    <span className="ml-2 shrink-0 rounded-full bg-emerald-500/10 px-2 py-0.5 font-bold text-emerald-600 dark:text-emerald-400">
+                      $220
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
           {/* Card 3: Communication with iPhone inbox & floating DM bubble */}
-          <div className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-emerald-200/60 bg-emerald-50/50 p-6 sm:p-8 dark:border-emerald-500/20 dark:bg-emerald-950/20">
+          <div
+            data-hb-node="card"
+            data-hb-item={2}
+            className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-emerald-200/60 bg-emerald-50/50 p-6 sm:p-8 dark:border-emerald-500/20 dark:bg-emerald-950/20"
+          >
             <div>
               <Heading
                 as="h3"
+                data-hb-node="heading"
+                data-hb-item={2}
+                data-hb-edit="benefits:items.2.title"
                 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
               >
-                Communication
+                {columns[2]?.title || "Communication"}
               </Heading>
-              <Text className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400">
-                All DMs are finally in one app.
+              <Text
+                data-hb-node="text"
+                data-hb-item={2}
+                data-hb-edit="benefits:items.2.description"
+                className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400"
+              >
+                {columns[2]?.description || "All DMs are finally in one app."}
               </Text>
             </div>
 
@@ -529,26 +721,47 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
           </div>
 
           {/* Card 4: Freely trust with rating review card and like heart pill */}
-          <div className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/70 p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.02]">
+          <div
+            data-hb-node="card"
+            data-hb-item={3}
+            className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/70 p-6 sm:p-8 dark:border-white/10 dark:bg-white/[0.02]"
+          >
             <div>
               <Heading
                 as="h3"
+                data-hb-node="heading"
+                data-hb-item={3}
+                data-hb-edit="benefits:items.3.title"
                 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl dark:text-white"
               >
-                Freely trust
+                {columns[3]?.title || "Freely trust"}
               </Heading>
-              <Text className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400">
-                Choose talent on rating and reviews.
+              <Text
+                data-hb-node="text"
+                data-hb-item={3}
+                data-hb-edit="benefits:items.3.description"
+                className="mt-1 text-sm font-normal text-zinc-500 dark:text-zinc-400"
+              >
+                {columns[3]?.description || "Choose talent on rating and reviews."}
               </Text>
             </div>
 
             <div className="relative mt-8 flex justify-center pt-4">
               {/* Phone Mockup Frame */}
               <div className="relative w-[230px] rounded-t-[32px] border-4 border-b-0 border-zinc-900 bg-white px-3 pt-2.5 pb-16 shadow-2xl sm:w-[250px] dark:border-zinc-700 dark:bg-zinc-900">
-                <div className="overflow-hidden rounded-xl">
+                <div
+                  data-hb-node="media"
+                  data-hb-item={3}
+                  data-hb-edit="benefits:items.3.image"
+                  data-hb-edit-mode="popover"
+                  className="cursor-pointer overflow-hidden rounded-xl"
+                >
                   <img
-                    src="https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=600"
-                    alt="Photo Shoot"
+                    src={
+                      columns[3]?.image ||
+                      "https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    }
+                    alt={columns[3]?.title || "Photo Shoot"}
                     className="h-24 w-full object-cover"
                   />
                 </div>
@@ -602,9 +815,15 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
         </Grid>
       ) : (
         /* Asymmetrical Visual List with Device Mockup Preview & Interactive Stack */
-        <Grid cols={2} gap="xl" align="center">
+        <Grid {...visualGridProps}>
           {/* Left Column: Device Mockup Interactive Showcase */}
-          <div className="group relative overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/80 p-6 shadow-sm sm:p-8 dark:border-white/10 dark:bg-zinc-900/40">
+          <div
+            data-hb-node="media"
+            data-hb-item={activeVisualIdx}
+            data-hb-edit={`benefits:items.${activeVisualIdx}.image`}
+            data-hb-edit-mode="popover"
+            className="group relative cursor-pointer overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-50/80 p-6 shadow-sm sm:p-8 dark:border-white/10 dark:bg-zinc-900/40"
+          >
             <div className="relative mx-auto w-full max-w-[340px] overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-3 shadow-xl dark:border-white/10 dark:bg-zinc-950">
               <img
                 src={columns[activeVisualIdx]?.image || columns[0].image}
@@ -626,12 +845,14 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
           </div>
 
           {/* Right Column: Interactive List Rows */}
-          <div className="space-y-4">
+          <div className="space-y-4" data-hb-node="items">
             {columns.map((col, idx) => {
               const isActive = idx === activeVisualIdx;
               return (
                 <div
                   key={idx}
+                  data-hb-node="card"
+                  data-hb-item={idx}
                   onMouseEnter={() => setActiveVisualIdx(idx)}
                   onClick={() => setActiveVisualIdx(idx)}
                   className={cn(
@@ -649,18 +870,29 @@ export function LandingBenefits({ variant, content }: LandingSectionProps<"benef
                         </span>
                         <Heading
                           as="h3"
+                          data-hb-node="heading"
+                          data-hb-item={idx}
+                          data-hb-edit={`benefits:items.${idx}.title`}
                           className="font-serif text-lg font-normal text-zinc-900 sm:text-xl dark:text-zinc-100"
                         >
                           {col.title}
                         </Heading>
                       </div>
-                      <Text className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
+                      <Text
+                        data-hb-node="text"
+                        data-hb-item={idx}
+                        data-hb-edit={`benefits:items.${idx}.description`}
+                        className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
+                      >
                         {col.description}
                       </Text>
                       <div className="mt-3 flex flex-wrap gap-1.5">
-                        {col.tags.slice(0, 3).map((tag) => (
+                        {col.tags.slice(0, 3).map((tag, tagIdx) => (
                           <span
-                            key={tag}
+                            key={`${tag}-${tagIdx}`}
+                            data-hb-node="badge"
+                            data-hb-item={idx}
+                            data-hb-edit={`benefits:items.${idx}.tags.${tagIdx}`}
                             className="inline-flex items-center rounded-md border border-zinc-200/80 bg-zinc-50/80 px-2 py-0.5 text-[11px] font-medium text-zinc-600 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-400"
                           >
                             {tag}

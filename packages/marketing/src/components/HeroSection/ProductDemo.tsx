@@ -47,36 +47,53 @@ export function ProductDemo({
                 onSelectionChange={setSelected}
               >
                 <TabList aria-label={label} className="w-full flex-wrap">
-                  {tabs.map((tab) => (
+                  {tabs.map((tab, tabIdx) => (
                     <Tab
                       key={tab.id}
                       tabKey={tab.id}
+                      data-hb-node="items"
+                      data-hb-item={tabIdx}
+                      data-hb-edit={`hero:tabs.${tabIdx}.label`}
                       className="min-w-0 flex-none px-2 text-xs sm:px-3 sm:text-sm"
                     >
-                      {tab.label}
+                      <span data-hb-edit-text="">{tab.label}</span>
                     </Tab>
                   ))}
                 </TabList>
-                {tabs.map((tab) => (
+                {tabs.map((tab, tabIdx) => (
                   <TabPanel key={tab.id} tabKey={tab.id}>
                     <div className="min-h-56 pt-5">
-                      <Heading as="h3" size="h4">
+                      <Heading
+                        as="h3"
+                        size="h4"
+                        data-hb-node="heading"
+                        data-hb-item={tabIdx}
+                        data-hb-edit={`hero:tabs.${tabIdx}.title`}
+                      >
                         {tab.title}
                       </Heading>
-                      <Text className="text-muted-foreground mt-3 max-w-prose leading-relaxed">
+                      <Text
+                        data-hb-node="text"
+                        data-hb-item={tabIdx}
+                        data-hb-edit={`hero:tabs.${tabIdx}.description`}
+                        className="text-muted-foreground mt-3 max-w-prose leading-relaxed"
+                      >
                         {tab.description}
                       </Text>
                       <ul className="mt-6 list-none p-0">
                         {tab.items.map((item, index) => (
                           <li
                             key={`${tab.id}-${index}`}
+                            data-hb-node="items"
+                            data-hb-item={tabIdx}
+                            data-hb-edit={`hero:tabs.${tabIdx}.items.${index}`}
                             className="hb-demo-row border-border flex items-start gap-3 border-b py-3 text-sm leading-relaxed"
                           >
                             <span
                               className="bg-primary mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
                               aria-hidden="true"
                             />
-                            {item}
+                            <span data-hb-edit-text="">{item}</span>
                           </li>
                         ))}
                       </ul>

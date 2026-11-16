@@ -1,9 +1,18 @@
 "use client";
 import * as React from "react";
+import type { AboutSectionId, ContactSectionId, LegalSectionId } from "@hudbird/marketing";
 import type { LandingSectionType } from "@hudbird/schemas";
 
 export interface SectionWireframeSvgProps {
-  type: LandingSectionType;
+  type:
+    | LandingSectionType
+    | AboutSectionId
+    | ContactSectionId
+    | LegalSectionId
+    | "pricing-compare"
+    | "blog-index"
+    | "blog-post"
+    | "contact-page";
   variant?: string;
   className?: string;
 }
@@ -13,6 +22,178 @@ export function SectionWireframeSvg({
   variant,
   className = "w-full h-auto text-zinc-400 dark:text-zinc-500",
 }: SectionWireframeSvgProps) {
+  if (type === "about") {
+    return (
+      <svg viewBox="0 0 160 56" fill="none" className={className}>
+        <rect x="10" y="6" width="28" height="6" rx="3" fill="currentColor" opacity="0.28" />
+        <rect x="10" y="15" width="96" height="5" rx="2" fill="currentColor" />
+        <rect x="10" y="22" width="76" height="4" rx="2" fill="currentColor" opacity="0.8" />
+        <rect x="120" y="23" width="30" height="4" rx="2" fill="currentColor" opacity="0.5" />
+        <rect
+          x="10"
+          y="30"
+          width="140"
+          height="21"
+          rx="4"
+          fill="currentColor"
+          fillOpacity="0.12"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+        />
+        <circle cx="80" cy="40.5" r="5" fill="#ffffff" fillOpacity="0.7" />
+        <path d="M78.5 38.2L82.5 40.5L78.5 42.8V38.2Z" fill="#18181b" />
+      </svg>
+    );
+  }
+
+  if (type === "who-are-we") {
+    return (
+      <svg viewBox="0 0 160 56" fill="none" className={className}>
+        <rect x="10" y="6" width="30" height="6" rx="3" fill="currentColor" opacity="0.28" />
+        <rect x="10" y="15" width="54" height="4.5" rx="2" fill="currentColor" />
+        <rect x="10" y="22" width="44" height="4.5" rx="2" fill="currentColor" opacity="0.8" />
+        <rect x="84" y="15" width="66" height="2.5" rx="1" fill="currentColor" opacity="0.5" />
+        <rect x="84" y="20" width="60" height="2.5" rx="1" fill="currentColor" opacity="0.4" />
+        <rect x="84" y="25" width="50" height="2.5" rx="1" fill="currentColor" opacity="0.35" />
+        {[10, 46, 82, 118].map((x) => (
+          <g key={x}>
+            <rect x={x} y="35" width="24" height="5" rx="1.5" fill="currentColor" />
+            <rect x={x} y="43" width="28" height="2.5" rx="1" fill="currentColor" opacity="0.45" />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (type === "our-team") {
+    return (
+      <svg viewBox="0 0 160 56" fill="none" className={className}>
+        <rect x="10" y="8" width="46" height="6" rx="2" fill="currentColor" />
+        <rect x="84" y="8" width="66" height="2.5" rx="1" fill="currentColor" opacity="0.5" />
+        <rect x="84" y="13" width="56" height="2.5" rx="1" fill="currentColor" opacity="0.4" />
+        <rect
+          x="10"
+          y="22"
+          width="140"
+          height="28"
+          rx="5"
+          fill="currentColor"
+          fillOpacity="0.14"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+        />
+        <circle cx="44" cy="34" r="4" fill="currentColor" opacity="0.35" />
+        <circle cx="80" cy="31" r="4.5" fill="currentColor" opacity="0.45" />
+        <circle cx="116" cy="34" r="4" fill="currentColor" opacity="0.35" />
+      </svg>
+    );
+  }
+
+  if (type === "meet-our-expert") {
+    return (
+      <svg viewBox="0 0 160 56" fill="none" className={className}>
+        <rect x="10" y="5" width="32" height="5" rx="2.5" fill="currentColor" opacity="0.28" />
+        <rect x="10" y="13" width="58" height="4.5" rx="2" fill="currentColor" />
+        <rect x="84" y="13" width="66" height="2.5" rx="1" fill="currentColor" opacity="0.45" />
+        {[10, 46, 82, 118].map((x) => (
+          <g key={x}>
+            <rect
+              x={x}
+              y="22"
+              width="30"
+              height="24"
+              rx="4"
+              fill="currentColor"
+              fillOpacity="0.14"
+              stroke="currentColor"
+              strokeOpacity="0.22"
+            />
+            <rect
+              x={x + 4}
+              y="48"
+              width="22"
+              height="2.5"
+              rx="1"
+              fill="currentColor"
+              opacity="0.7"
+            />
+          </g>
+        ))}
+      </svg>
+    );
+  }
+
+  if (type === "values") {
+    return (
+      <svg viewBox="0 0 160 56" fill="none" className={className}>
+        <rect
+          x="10"
+          y="6"
+          width="52"
+          height="30"
+          rx="4"
+          fill="currentColor"
+          fillOpacity="0.16"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+        />
+        <rect x="68" y="6" width="22" height="3" rx="1" fill="currentColor" opacity="0.4" />
+        <rect x="68" y="11" width="66" height="4.5" rx="1.5" fill="currentColor" />
+        <rect
+          x="68"
+          y="19"
+          width="38"
+          height="17"
+          rx="3.5"
+          fill="currentColor"
+          fillOpacity="0.12"
+        />
+        <rect
+          x="111"
+          y="19"
+          width="39"
+          height="17"
+          rx="3.5"
+          fill="currentColor"
+          fillOpacity="0.12"
+        />
+        <rect x="10" y="40" width="56" height="11" rx="3" fill="currentColor" fillOpacity="0.14" />
+        <rect x="70" y="40" width="80" height="11" rx="3" fill="currentColor" fillOpacity="0.14" />
+      </svg>
+    );
+  }
+
+  if (type === "editorial-cta" || (type === "cta" && variant === "editorial-showcase")) {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="10" y="6" width="64" height="5" rx="2" fill="currentColor" />
+        <rect x="10" y="13" width="48" height="4" rx="1.5" fill="currentColor" opacity="0.8" />
+        <rect x="10" y="21" width="28" height="7" rx="2.5" fill="currentColor" />
+        <circle
+          cx="46"
+          cy="24.5"
+          r="3.5"
+          stroke="currentColor"
+          strokeOpacity="0.5"
+          strokeWidth="1"
+        />
+        <rect x="53" y="23" width="22" height="3" rx="1" fill="currentColor" opacity="0.45" />
+        <rect
+          x="100"
+          y="6"
+          width="48"
+          height="28"
+          rx="5"
+          fill="currentColor"
+          fillOpacity="0.14"
+          stroke="currentColor"
+          strokeOpacity="0.25"
+        />
+        <rect x="14" y="40" width="132" height="7" rx="2" fill="currentColor" opacity="0.9" />
+      </svg>
+    );
+  }
+
   // 1. NAVBAR PRESETS
   if (type === "navbar") {
     switch (variant) {
@@ -534,6 +715,176 @@ export function SectionWireframeSvg({
           </svg>
         );
 
+      case "remit-grid":
+      case "fintech-remit":
+        return (
+          <svg viewBox="0 0 160 56" fill="none" className={className}>
+            {/* Top Left: Badge, Headline & CTA */}
+            <rect
+              x="14"
+              y="8"
+              width="22"
+              height="3"
+              rx="1.5"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeOpacity="0.4"
+              fill="currentColor"
+              fillOpacity="0.1"
+            />
+            <rect x="14" y="13" width="48" height="4" rx="1" fill="currentColor" />
+            <rect x="14" y="19" width="38" height="4" rx="1" fill="var(--primary, #84cc16)" />
+            <rect x="14" y="26" width="18" height="5" rx="2" fill="var(--primary, #84cc16)" />
+            <rect
+              x="35"
+              y="26"
+              width="16"
+              height="5"
+              rx="2"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeOpacity="0.3"
+              fill="none"
+            />
+
+            {/* Top Right: Dashboard Card with bar chart */}
+            <rect
+              x="80"
+              y="8"
+              width="66"
+              height="23"
+              rx="3"
+              stroke="currentColor"
+              strokeWidth="0.8"
+              strokeOpacity="0.25"
+              fill="currentColor"
+              fillOpacity="0.05"
+            />
+            <rect
+              x="86"
+              y="11"
+              width="20"
+              height="2"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.4"
+            />
+            <rect x="86" y="15" width="18" height="4" rx="0.5" fill="currentColor" />
+            {/* Micro bars */}
+            <rect
+              x="110"
+              y="18"
+              width="3"
+              height="7"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.2"
+            />
+            <rect
+              x="115"
+              y="15"
+              width="3"
+              height="10"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.2"
+            />
+            <rect
+              x="120"
+              y="12"
+              width="3"
+              height="13"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.2"
+            />
+            <rect x="125" y="9" width="3.5" height="16" rx="0.5" fill="var(--primary, #84cc16)" />
+
+            {/* Floating overlapping accent badge */}
+            <rect x="118" y="21" width="30" height="13" rx="2.5" fill="var(--primary, #84cc16)" />
+            <rect
+              x="122"
+              y="23.5"
+              width="12"
+              height="2"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.7"
+            />
+            <rect x="122" y="27" width="22" height="2.5" rx="0.5" fill="currentColor" />
+
+            {/* Bottom: 3 metric stats cards */}
+            <rect
+              x="14"
+              y="37"
+              width="41"
+              height="13"
+              rx="2"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeOpacity="0.25"
+              fill="currentColor"
+              fillOpacity="0.05"
+            />
+            <rect x="18" y="40" width="14" height="3" rx="0.5" fill="var(--primary, #84cc16)" />
+            <rect
+              x="18"
+              y="45"
+              width="26"
+              height="2"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.4"
+            />
+
+            <rect
+              x="59.5"
+              y="37"
+              width="41"
+              height="13"
+              rx="2"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeOpacity="0.25"
+              fill="currentColor"
+              fillOpacity="0.05"
+            />
+            <rect x="63.5" y="40" width="14" height="3" rx="0.5" fill="var(--primary, #84cc16)" />
+            <rect
+              x="63.5"
+              y="45"
+              width="26"
+              height="2"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.4"
+            />
+
+            <rect
+              x="105"
+              y="37"
+              width="41"
+              height="13"
+              rx="2"
+              stroke="currentColor"
+              strokeWidth="0.6"
+              strokeOpacity="0.25"
+              fill="currentColor"
+              fillOpacity="0.05"
+            />
+            <rect x="109" y="40" width="14" height="3" rx="0.5" fill="var(--primary, #84cc16)" />
+            <rect
+              x="109"
+              y="45"
+              width="26"
+              height="2"
+              rx="0.5"
+              fill="currentColor"
+              fillOpacity="0.4"
+            />
+          </svg>
+        );
+
       default: // centered (Matches Card 2 in reference image)
         return (
           <svg viewBox="0 0 160 56" fill="none" className={className}>
@@ -999,7 +1350,204 @@ export function SectionWireframeSvg({
     );
   }
 
+  if (type === "blog-index") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="14" y="6" width="52" height="5" rx="2.5" fill="currentColor" opacity="0.65" />
+        <rect x="14" y="14" width="22" height="3" rx="1.5" fill="#3b82f6" />
+        <rect x="40" y="14" width="20" height="3" rx="1.5" fill="currentColor" opacity="0.25" />
+        <rect x="14" y="21" width="60" height="24" rx="4" fill="currentColor" opacity="0.14" />
+        <rect x="80" y="21" width="66" height="5" rx="2" fill="currentColor" opacity="0.55" />
+        <rect x="80" y="29" width="52" height="3" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="80" y="35" width="44" height="3" rx="1.5" fill="currentColor" opacity="0.25" />
+      </svg>
+    );
+  }
+
+  if (type === "blog-post") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="18" y="6" width="76" height="5" rx="2.5" fill="currentColor" opacity="0.65" />
+        <rect x="18" y="14" width="124" height="16" rx="4" fill="currentColor" opacity="0.16" />
+        <rect x="42" y="34" width="2" height="12" rx="1" fill="#3b82f6" />
+        <rect x="48" y="35" width="84" height="3" rx="1.5" fill="currentColor" opacity="0.4" />
+        <rect x="48" y="41" width="66" height="3" rx="1.5" fill="currentColor" opacity="0.25" />
+      </svg>
+    );
+  }
+  if (type === "contact-mail") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="7" width="66" height="5" rx="2.5" fill="currentColor" opacity="0.65" />
+        <rect x="12" y="15" width="76" height="3" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="12" y="20" width="56" height="3" rx="1.5" fill="currentColor" opacity="0.24" />
+        <rect x="98" y="6" width="50" height="20" rx="4" fill="currentColor" opacity="0.16" />
+        <rect x="12" y="30" width="42" height="16" rx="3.5" fill="currentColor" opacity="0.12" />
+        <rect x="59" y="30" width="42" height="16" rx="3.5" fill="currentColor" opacity="0.12" />
+        <rect x="106" y="30" width="42" height="16" rx="3.5" fill="currentColor" opacity="0.12" />
+        <rect x="17" y="35" width="24" height="3" rx="1.5" fill="#3b82f6" opacity="0.8" />
+        <rect x="64" y="35" width="24" height="3" rx="1.5" fill="currentColor" opacity="0.45" />
+        <rect x="111" y="35" width="24" height="3" rx="1.5" fill="currentColor" opacity="0.45" />
+        <rect x="17" y="40" width="30" height="2.5" rx="1.25" fill="currentColor" opacity="0.25" />
+        <rect x="64" y="40" width="30" height="2.5" rx="1.25" fill="currentColor" opacity="0.25" />
+        <rect x="111" y="40" width="30" height="2.5" rx="1.25" fill="currentColor" opacity="0.25" />
+      </svg>
+    );
+  }
+  if (type === "contact-form-call") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="14" y="6" width="58" height="4" rx="2" fill="currentColor" opacity="0.6" />
+        <rect x="14" y="13" width="132" height="33" rx="4.5" fill="currentColor" opacity="0.1" />
+        <rect x="22" y="18" width="26" height="3" rx="1.5" fill="#3b82f6" />
+        <rect x="54" y="18" width="26" height="3" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="22" y="25" width="54" height="6" rx="2" fill="currentColor" opacity="0.24" />
+        <rect x="82" y="25" width="56" height="6" rx="2" fill="currentColor" opacity="0.24" />
+        <rect x="22" y="34" width="82" height="7" rx="2" fill="currentColor" opacity="0.18" />
+        <rect x="110" y="34" width="28" height="7" rx="2.5" fill="#3b82f6" opacity="0.9" />
+      </svg>
+    );
+  }
+  if (type === "contact-locations") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="6" width="54" height="4" rx="2" fill="currentColor" opacity="0.6" />
+        <rect x="108" y="5" width="18" height="6" rx="2" fill="#3b82f6" opacity="0.85" />
+        <rect x="129" y="5" width="19" height="6" rx="2" fill="currentColor" opacity="0.2" />
+        <rect x="12" y="14" width="52" height="32" rx="4" fill="currentColor" opacity="0.12" />
+        <rect x="18" y="20" width="32" height="3.5" rx="1.75" fill="currentColor" opacity="0.5" />
+        <rect x="18" y="26" width="38" height="2.5" rx="1.25" fill="currentColor" opacity="0.28" />
+        <rect x="18" y="31" width="34" height="2.5" rx="1.25" fill="currentColor" opacity="0.28" />
+        <rect x="18" y="38" width="24" height="4" rx="2" fill="#3b82f6" opacity="0.85" />
+        <rect x="70" y="14" width="78" height="32" rx="4" fill="currentColor" opacity="0.16" />
+        <circle cx="109" cy="30" r="4" fill="#3b82f6" opacity="0.9" />
+        <circle cx="109" cy="30" r="8" stroke="#3b82f6" strokeOpacity="0.35" strokeWidth="1.5" />
+      </svg>
+    );
+  }
+  if (type === "legal-hero") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="7" width="68" height="5.5" rx="2.5" fill="currentColor" opacity="0.65" />
+        <rect x="12" y="15" width="84" height="3" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="12" y="21" width="52" height="2.5" rx="1.25" fill="currentColor" opacity="0.22" />
+        <rect x="114" y="8" width="16" height="7" rx="2" fill="currentColor" opacity="0.18" />
+        <rect x="133" y="8" width="15" height="7" rx="2" fill="currentColor" opacity="0.18" />
+        <rect x="12" y="34" width="136" height="1" fill="currentColor" opacity="0.2" />
+        <rect x="12" y="31" width="26" height="2" rx="1" fill="#3b82f6" />
+        <rect x="44" y="31" width="24" height="2" rx="1" fill="currentColor" opacity="0.28" />
+        <rect x="74" y="31" width="22" height="2" rx="1" fill="currentColor" opacity="0.28" />
+        <rect x="102" y="31" width="24" height="2" rx="1" fill="currentColor" opacity="0.28" />
+      </svg>
+    );
+  }
+  if (type === "legal-reader") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="7" width="44" height="38" rx="4" fill="currentColor" opacity="0.1" />
+        <rect x="16" y="12" width="36" height="5" rx="2" fill="currentColor" opacity="0.22" />
+        <rect x="16" y="21" width="36" height="5" rx="2" fill="#3b82f6" opacity="0.85" />
+        <rect x="16" y="29" width="32" height="4" rx="1.5" fill="currentColor" opacity="0.25" />
+        <rect x="16" y="36" width="28" height="4" rx="1.5" fill="currentColor" opacity="0.25" />
+        <rect x="62" y="7" width="86" height="18" rx="4" fill="currentColor" opacity="0.12" />
+        <rect x="68" y="11" width="46" height="3.5" rx="1.5" fill="currentColor" opacity="0.5" />
+        <rect x="68" y="17" width="2" height="5" rx="1" fill="#3b82f6" />
+        <rect x="73" y="17" width="66" height="3" rx="1.5" fill="currentColor" opacity="0.28" />
+        <rect x="62" y="28" width="86" height="17" rx="4" fill="currentColor" opacity="0.12" />
+        <rect x="68" y="32" width="52" height="3.5" rx="1.5" fill="currentColor" opacity="0.45" />
+        <rect x="68" y="38" width="68" height="3" rx="1.5" fill="currentColor" opacity="0.25" />
+      </svg>
+    );
+  }
+  if (type === "legal-preferences") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="7" width="66" height="38" rx="4" fill="currentColor" opacity="0.1" />
+        <rect x="17" y="13" width="38" height="3" rx="1.5" fill="currentColor" opacity="0.45" />
+        <rect x="62" y="12" width="11" height="5" rx="2.5" fill="#3b82f6" opacity="0.9" />
+        <rect x="17" y="21" width="34" height="3" rx="1.5" fill="currentColor" opacity="0.35" />
+        <rect x="62" y="20" width="11" height="5" rx="2.5" fill="currentColor" opacity="0.28" />
+        <rect x="17" y="34" width="26" height="6" rx="2.5" fill="#3b82f6" opacity="0.85" />
+        <rect x="84" y="7" width="64" height="38" rx="4" fill="currentColor" opacity="0.1" />
+        <rect x="90" y="12" width="52" height="6" rx="2" fill="currentColor" opacity="0.2" />
+        <rect x="90" y="21" width="52" height="6" rx="2" fill="currentColor" opacity="0.2" />
+        <rect x="90" y="34" width="32" height="6" rx="2.5" fill="#3b82f6" opacity="0.85" />
+      </svg>
+    );
+  }
+  if (type === "contact-page") {
+    return (
+      <svg viewBox="0 0 160 52" fill="none" className={className}>
+        <rect x="12" y="7" width="44" height="5" rx="2" fill="currentColor" opacity="0.65" />
+        <rect x="12" y="15" width="52" height="3" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="12" y="21" width="48" height="7" rx="2.5" fill="currentColor" opacity="0.14" />
+        <rect x="12" y="30" width="48" height="7" rx="2.5" fill="currentColor" opacity="0.14" />
+        <rect x="74" y="6" width="24" height="3" rx="1.5" fill="#3b82f6" />
+        <rect x="102" y="6" width="24" height="3" rx="1.5" fill="currentColor" opacity="0.28" />
+        <rect x="74" y="12" width="74" height="25" rx="4" fill="currentColor" opacity="0.1" />
+        <rect x="80" y="17" width="28" height="4" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="112" y="17" width="28" height="4" rx="1.5" fill="currentColor" opacity="0.3" />
+        <rect x="80" y="24" width="60" height="5" rx="1.5" fill="currentColor" opacity="0.22" />
+        <rect x="80" y="31" width="24" height="4" rx="2" fill="#3b82f6" opacity="0.85" />
+        <rect x="12" y="40" width="136" height="8" rx="3" fill="currentColor" opacity="0.16" />
+        <circle cx="24" cy="44" r="2" fill="#3b82f6" />
+      </svg>
+    );
+  }
+
   // 9. PRICING
+  if (type === "pricing-compare") {
+    return (
+      <svg viewBox="0 0 160 48" fill="none" className={className}>
+        <rect x="14" y="6" width="38" height="5" rx="2.5" fill="currentColor" opacity="0.55" />
+        <rect x="96" y="6" width="50" height="5" rx="2.5" fill="currentColor" opacity="0.2" />
+        <rect
+          x="14"
+          y="15"
+          width="132"
+          height="27"
+          rx="4"
+          className="stroke-current"
+          strokeWidth="1"
+          opacity="0.45"
+        />
+        <line
+          x1="14"
+          y1="23"
+          x2="146"
+          y2="23"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.25"
+        />
+        <line
+          x1="14"
+          y1="30"
+          x2="146"
+          y2="30"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.2"
+        />
+        <line
+          x1="14"
+          y1="36"
+          x2="146"
+          y2="36"
+          stroke="currentColor"
+          strokeWidth="1"
+          opacity="0.2"
+        />
+        <rect x="86" y="15" width="24" height="27" fill="currentColor" opacity="0.06" />
+        <circle cx="98" cy="26.5" r="2" fill="#3b82f6" />
+        <circle cx="98" cy="33" r="2" fill="#3b82f6" />
+        <circle cx="98" cy="39" r="2" fill="#3b82f6" />
+        <circle cx="72" cy="26.5" r="1.5" fill="currentColor" opacity="0.35" />
+        <circle cx="128" cy="26.5" r="1.5" fill="currentColor" opacity="0.45" />
+      </svg>
+    );
+  }
+
   if (type === "pricing") {
     return (
       <svg viewBox="0 0 160 48" fill="none" className={className}>

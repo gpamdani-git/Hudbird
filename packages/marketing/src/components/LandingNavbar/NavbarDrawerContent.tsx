@@ -25,13 +25,21 @@ export function NavbarDrawerContent({
   return (
     <div className="flex h-full flex-col space-y-6 py-2">
       {/* Brand Header */}
-      <div className="flex items-center justify-between border-b border-zinc-200/80 pb-4 dark:border-white/10">
+      <div
+        data-hb-node="brand"
+        className="flex items-center justify-between border-b border-zinc-200/80 pb-4 dark:border-white/10"
+      >
         <div className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-900 text-white dark:bg-white dark:text-zinc-950">
             {HUDBIRD_SVG_MARK}
           </div>
           <div>
-            <div className="text-foreground text-sm font-bold tracking-tight">{displayName}</div>
+            <div
+              data-hb-edit="navbar:brandName"
+              className="text-foreground text-sm font-bold tracking-tight"
+            >
+              {displayName}
+            </div>
             <div className="text-muted-foreground text-[11px] font-medium">
               Modern UI Architecture
             </div>
@@ -47,14 +55,17 @@ export function NavbarDrawerContent({
         <div className="text-muted-foreground mb-2 px-2 text-[11px] font-semibold tracking-wider uppercase">
           Navigation
         </div>
-        {links.map((link) => (
+        {links.map((link, idx) => (
           <a
             key={link.label}
             href={linkHref(link)}
             onClick={onClose}
+            data-hb-node="links"
+            data-hb-item={idx}
+            data-hb-edit={`navbar:links.${idx}.label`}
             className="group flex items-center justify-between rounded-lg px-2.5 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/[0.08] dark:hover:text-white"
           >
-            <span>{link.label}</span>
+            <span data-hb-edit-text="">{link.label}</span>
             <ArrowRight className="text-muted-foreground h-3.5 w-3.5 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
           </a>
         ))}

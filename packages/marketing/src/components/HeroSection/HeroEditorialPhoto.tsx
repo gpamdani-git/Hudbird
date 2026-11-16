@@ -1,9 +1,9 @@
 "use client";
 import * as React from "react";
-import { Button, Container, Heading, Section, Text } from "@hudbird/ui";
+import { Button, Container, EditorialImage, Heading, Section, Text } from "@hudbird/ui";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
-import { useLandingMotion } from "../LandingShared";
+import { useLandingAppearance, useLandingMotion, useLandingNavigation } from "../LandingShared";
 import { renderEditorialTitle } from "./SplitIntroductionHero";
 import { cn } from "../../utils/cn";
 import "./hero-editorial-photo.css";
@@ -18,7 +18,9 @@ export interface HeroEditorialPhotoProps extends Omit<
 }
 
 function hasDestination(value?: string) {
-  return Boolean(value && /^(https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim()));
+  return Boolean(
+    value && /^(website-page:|https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim())
+  );
 }
 
 interface EditorialCopyProps {
@@ -28,38 +30,78 @@ interface EditorialCopyProps {
 }
 
 function EditorialCopy({ content, headingLevel = "h1", credit }: EditorialCopyProps) {
+  const appearance = useLandingAppearance();
+  const { hrefFor } = useLandingNavigation();
+  const headingCfg = appearance?.heading;
+  const textCfg = appearance?.text;
+  const primaryCfg = appearance?.button;
+  const secondaryCfg = appearance?.secondaryButton;
   const actions = [content.primaryAction, content.secondaryAction];
   const primaryAction = actions[0];
   const secondaryAction = actions[1];
 
   return (
     <div className="flex flex-col space-y-5 text-left">
-      <Heading as={headingLevel} className="hb-editorial-photo-title">
+      <Heading
+        as={headingLevel}
+        size={headingCfg?.size}
+        tracking={headingCfg?.tracking}
+        color={headingCfg?.color}
+        withDivider={headingCfg?.withDivider}
+        data-hb-node="heading"
+        data-hb-edit="hero:title"
+        className={cn(!headingCfg?.size && "hb-editorial-photo-title")}
+      >
         {renderEditorialTitle(content.title)}
       </Heading>
 
-      <Text className="hb-editorial-photo-description">{content.description}</Text>
+      <Text
+        variant={textCfg?.variant}
+        weight={textCfg?.weight}
+        align={textCfg?.align}
+        data-hb-node="text"
+        data-hb-edit="hero:description"
+        className="hb-editorial-photo-description"
+      >
+        {content.description}
+      </Text>
 
       {/* Primary CTA and optional secondary CTA */}
       <div className="flex flex-wrap items-center gap-3 pt-2">
         {primaryAction?.label?.trim() && hasDestination(primaryAction.href) && (
           <Button
-            href={primaryAction.href.trim()}
-            size="lg"
-            variant="solid"
-            className="hb-editorial-cta hb-radius hb-primary font-medium"
+            href={hrefFor(primaryAction.href.trim())}
+            size={primaryCfg?.size ?? "lg"}
+            variant={primaryCfg?.variant ?? "solid"}
+            color={primaryCfg?.color}
+            radius={primaryCfg?.radius}
+            data-hb-node="primary-button"
+            data-hb-edit="hero:primaryAction.label"
+            className={cn(
+              "hb-editorial-cta font-medium",
+              !primaryCfg?.radius && "hb-radius",
+              !primaryCfg?.variant && !primaryCfg?.color && "hb-primary"
+            )}
           >
-            {primaryAction.label}
+            <span data-hb-edit-text="">{primaryAction.label}</span>
           </Button>
         )}
         {secondaryAction?.label?.trim() && hasDestination(secondaryAction.href) && (
           <Button
-            href={secondaryAction.href.trim()}
-            size="lg"
-            variant="outline"
-            className="hb-editorial-cta hb-radius hb-secondary font-medium"
+            href={hrefFor(secondaryAction.href.trim())}
+            size={secondaryCfg?.size ?? "lg"}
+            variant={secondaryCfg?.variant ?? "outline"}
+            color={secondaryCfg?.color}
+            radius={secondaryCfg?.radius}
+            data-hb-node="secondary-button"
+            data-hb-edit="hero:secondaryAction.label"
+            className={cn(
+              "hb-editorial-cta font-medium",
+              !secondaryCfg?.radius && "hb-radius",
+              !secondaryCfg?.variant && !secondaryCfg?.color && "hb-secondary"
+            )}
           >
-            {secondaryAction.label}
+            <span data-hb-edit-text="">{secondaryAction.label}</span>
           </Button>
         )}
       </div>
@@ -103,6 +145,16 @@ export function HeroEditorialPhoto({
 }: HeroEditorialPhotoProps) {
   const mode = useBrandMode();
   const motion = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const mediaCfg = appearance?.media;
+  const hasMediaOverrides = Boolean(
+    mediaCfg &&
+    (mediaCfg.aspectRatio ||
+      mediaCfg.radius ||
+      mediaCfg.hasBorder !== undefined ||
+      mediaCfg.overlayGradient !== undefined ||
+      mediaCfg.isZoomable !== undefined)
+  );
   const image = config.image;
   const credit = config.credit;
 
@@ -148,19 +200,37 @@ export function HeroEditorialPhoto({
           </div>
 
           {/* 2. Photo asset: 4:5 on mobile, background cover on >=640px */}
-          <div className="hb-editorial-photo-wrap bg-muted">
-            <picture className="h-full w-full">
-              <source media="(max-width: 639px)" srcSet={portraitSrc} />
-              <source media="(min-width: 640px)" srcSet={desktopSrc} />
-              <img
+          <div
+            data-hb-node="media"
+            data-hb-edit="hero:media.src"
+            data-hb-edit-mode="popover"
+            className="hb-editorial-photo-wrap bg-muted cursor-pointer"
+          >
+            {hasMediaOverrides ? (
+              <EditorialImage
                 src={desktopSrc}
                 alt={image?.alt || ""}
-                fetchPriority="high"
-                loading="eager"
-                className="h-full w-full object-cover"
-                style={{ objectPosition: focalPoint }}
+                aspectRatio={mediaCfg?.aspectRatio ?? "auto"}
+                radius={mediaCfg?.radius ?? "lg"}
+                hasBorder={mediaCfg?.hasBorder ?? false}
+                overlayGradient={mediaCfg?.overlayGradient ?? false}
+                isZoomable={mediaCfg?.isZoomable ?? false}
+                className="h-full w-full"
               />
-            </picture>
+            ) : (
+              <picture className="h-full w-full">
+                <source media="(max-width: 639px)" srcSet={portraitSrc} />
+                <source media="(min-width: 640px)" srcSet={desktopSrc} />
+                <img
+                  src={desktopSrc}
+                  alt={image?.alt || ""}
+                  fetchPriority="high"
+                  loading="eager"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: focalPoint }}
+                />
+              </picture>
+            )}
 
             {/* Subtle gradient to assist contrast edge on large screens */}
             <div

@@ -16,7 +16,13 @@ import {
   MessageSquare,
 } from "lucide-react";
 import type { LandingSectionProps } from "@hudbird/schemas";
-import { LandingFrame, LandingHeading, FullscreenVideoPlayer } from "../LandingShared";
+import {
+  LandingFrame,
+  LandingHeading,
+  FullscreenVideoPlayer,
+  resolveLandingGridProps,
+  useLandingAppearance,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 // Default 5 testimonials matching Image Reference 1 specifications
@@ -181,9 +187,61 @@ export function LandingTestimonials({
   const singleCardRef = React.useRef<HTMLDivElement>(null);
   const isSingleCardInView = useInView(singleCardRef, { margin: "100px 0px" });
 
-  // Use content items if available and 5+ items, or default singleTestimonials
+  const appearance = useLandingAppearance();
+  const collectionGridProps = resolveLandingGridProps(appearance?.grid, { cols: 3, gap: "md" });
+
+  // Merge user content items onto the single preset fallback list so edits always reflect on canvas
   const activeTestimonials =
-    content.items && content.items.length >= 5 ? content.items : singleTestimonials;
+    content.items && content.items.length > 0
+      ? content.items.map((item, idx) => ({
+          ...singleTestimonials[idx % singleTestimonials.length],
+          ...item,
+          quote: item.quote || singleTestimonials[idx % singleTestimonials.length].quote,
+          source: item.source || singleTestimonials[idx % singleTestimonials.length].source,
+          context: item.context || singleTestimonials[idx % singleTestimonials.length].context,
+        }))
+      : singleTestimonials;
+
+  const resolvedSpotlights = (
+    content.items && content.items.length > 0 ? content.items : featuredSpotlights
+  ).map((entry, idx) => {
+    const fallback = featuredSpotlights[idx % featuredSpotlights.length];
+    const override = content.items?.[idx];
+    return override
+      ? {
+          ...fallback,
+          id: override.id || fallback.id,
+          quote: override.quote || fallback.quote,
+          author: override.source || fallback.author,
+          role: override.context || fallback.role,
+          avatar: override.avatar || fallback.avatar,
+          image: override.image || fallback.image,
+          videoUrl: override.videoUrl || fallback.videoUrl,
+        }
+      : fallback;
+  });
+
+  const resolvedCollection = (
+    content.items && content.items.length > 0 ? content.items : collectionCards
+  ).map((entry, idx) => {
+    const fallback = collectionCards[idx % collectionCards.length];
+    const override = content.items?.[idx];
+    return override
+      ? {
+          ...fallback,
+          id: override.id || fallback.id,
+          quote: override.quote || fallback.quote,
+          author: override.source || fallback.author,
+          role: override.context || fallback.role,
+          avatar: override.avatar || fallback.avatar,
+          image: override.image || fallback.image,
+          videoUrl: override.videoUrl || fallback.videoUrl,
+          videoDuration: override.videoDuration || fallback.videoDuration,
+          rating: override.rating ? Number.parseFloat(override.rating) || 5 : fallback.rating,
+          type: override.videoUrl ? ("video" as const) : fallback.type,
+        }
+      : fallback;
+  });
 
   // Auto-advance Shopify smooth slide from left-to-right
   React.useEffect(() => {
@@ -238,6 +296,7 @@ export function LandingTestimonials({
           <div className="mx-auto w-full max-w-4xl">
             <div
               ref={singleCardRef}
+              data-hb-node="items"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className={cn(
@@ -286,6 +345,9 @@ export function LandingTestimonials({
                   >
                     <Text
                       as="blockquote"
+                      data-hb-node="text"
+                      data-hb-item={currentIdx}
+                      data-hb-edit={`testimonials:items.${currentIdx}.quote`}
                       className="m-0 text-2xl leading-[1.35] font-medium tracking-tight text-zinc-700 transition-colors duration-300 group-hover/single-card:text-zinc-950 sm:text-3xl lg:text-[34px] dark:text-zinc-300 dark:group-hover/single-card:text-white"
                     >
                       {activeTestimonial.quote}
@@ -295,12 +357,25 @@ export function LandingTestimonials({
               </div>
 
               {/* Author & Controls Row (Space Between) */}
-              <div className="mt-8 flex items-center justify-between sm:mt-10">
+              <div
+                className="mt-8 flex items-center justify-between sm:mt-10"
+                data-hb-item={currentIdx}
+              >
                 <div>
-                  <div className="text-sm font-semibold tracking-tight text-zinc-900 sm:text-base dark:text-white">
+                  <div
+                    data-hb-node="heading"
+                    data-hb-item={currentIdx}
+                    data-hb-edit={`testimonials:items.${currentIdx}.source`}
+                    className="text-sm font-semibold tracking-tight text-zinc-900 sm:text-base dark:text-white"
+                  >
                     {activeTestimonial.source}
                   </div>
-                  <div className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
+                  <div
+                    data-hb-node="text"
+                    data-hb-item={currentIdx}
+                    data-hb-edit={`testimonials:items.${currentIdx}.context`}
+                    className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400"
+                  >
                     {activeTestimonial.context}
                   </div>
                 </div>
@@ -331,9 +406,12 @@ export function LandingTestimonials({
               {/* Divider between testimonial and metrics */}
               <div className="my-8 h-px w-full bg-zinc-100 sm:my-10 dark:bg-white/[0.08]" />
 
-              {/* 3 Metric Rows separated by horizontal dividers */}
-              <div className="space-y-6 sm:space-y-7">
-                {singleMetrics.map((stat, idx) => (
+              {/* Metric Rows separated by horizontal dividers */}
+              <div className="space-y-6 sm:space-y-7" data-hb-node="items">
+                {(content.metrics && content.metrics.length > 0
+                  ? content.metrics
+                  : singleMetrics
+                ).map((stat, idx, arr) => (
                   <React.Fragment key={idx}>
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <Text className="max-w-xl text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
@@ -343,7 +421,7 @@ export function LandingTestimonials({
                         {stat.value}
                       </span>
                     </div>
-                    {idx < singleMetrics.length - 1 && (
+                    {idx < arr.length - 1 && (
                       <div className="h-px w-full bg-zinc-100 dark:bg-white/[0.08]" />
                     )}
                   </React.Fragment>
@@ -371,9 +449,14 @@ export function LandingTestimonials({
           />
 
           {(() => {
-            const item = featuredSpotlights[featuredIdx] || featuredSpotlights[0];
+            const safeFeaturedIdx = featuredIdx % resolvedSpotlights.length;
+            const item = resolvedSpotlights[safeFeaturedIdx] || resolvedSpotlights[0];
             return (
-              <div className="mx-auto w-full max-w-5xl overflow-hidden rounded-[32px] border border-zinc-200/90 bg-white/95 p-6 shadow-xl backdrop-blur-2xl sm:rounded-[36px] sm:p-10 lg:p-12 dark:border-white/10 dark:bg-zinc-950/90">
+              <div
+                data-hb-node="card"
+                data-hb-item={safeFeaturedIdx}
+                className="mx-auto w-full max-w-5xl overflow-hidden rounded-[32px] border border-zinc-200/90 bg-white/95 p-6 shadow-xl backdrop-blur-2xl sm:rounded-[36px] sm:p-10 lg:p-12 dark:border-white/10 dark:bg-zinc-950/90"
+              >
                 <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
                   {/* Left Column: Quote & Author */}
                   <div className="flex w-full flex-col justify-between space-y-6 lg:w-[48%]">
@@ -385,20 +468,41 @@ export function LandingTestimonials({
                       </div>
                       <Text
                         as="blockquote"
+                        data-hb-node="text"
+                        data-hb-item={safeFeaturedIdx}
+                        data-hb-edit={`testimonials:items.${safeFeaturedIdx}.quote`}
                         className="text-xl leading-snug font-medium tracking-tight text-zinc-900 sm:text-2xl lg:text-3xl dark:text-white"
                       >
-                        “{item.quote}”
+                        {item.quote}
                       </Text>
                     </div>
 
                     <div className="flex items-center gap-4 border-t border-zinc-100 pt-6 dark:border-white/[0.08]">
-                      <Avatar src={item.avatar} name={item.author} size="lg" />
+                      <div
+                        data-hb-node="media"
+                        data-hb-item={safeFeaturedIdx}
+                        data-hb-edit={`testimonials:items.${safeFeaturedIdx}.avatar`}
+                        data-hb-edit-mode="popover"
+                        className="inline-flex cursor-pointer rounded-full"
+                      >
+                        <Avatar src={item.avatar} name={item.author} size="lg" />
+                      </div>
                       <div>
-                        <div className="text-sm font-semibold text-zinc-900 dark:text-white">
+                        <div
+                          data-hb-node="heading"
+                          data-hb-item={safeFeaturedIdx}
+                          data-hb-edit={`testimonials:items.${safeFeaturedIdx}.source`}
+                          className="text-sm font-semibold text-zinc-900 dark:text-white"
+                        >
                           {item.author}
                         </div>
-                        <div className="text-xs text-zinc-500 dark:text-zinc-400">
-                          {item.role} • {item.company}
+                        <div
+                          data-hb-node="text"
+                          data-hb-item={safeFeaturedIdx}
+                          data-hb-edit={`testimonials:items.${safeFeaturedIdx}.context`}
+                          className="text-xs text-zinc-500 dark:text-zinc-400"
+                        >
+                          {item.role}
                         </div>
                       </div>
                     </div>
@@ -409,7 +513,7 @@ export function LandingTestimonials({
                         size="sm"
                         onClick={() =>
                           setFeaturedIdx((prev) =>
-                            prev === 0 ? featuredSpotlights.length - 1 : prev - 1
+                            prev === 0 ? resolvedSpotlights.length - 1 : prev - 1
                           )
                         }
                         className="h-9 w-9 rounded-full p-0"
@@ -420,7 +524,7 @@ export function LandingTestimonials({
                         variant="bordered"
                         size="sm"
                         onClick={() =>
-                          setFeaturedIdx((prev) => (prev + 1) % featuredSpotlights.length)
+                          setFeaturedIdx((prev) => (prev + 1) % resolvedSpotlights.length)
                         }
                         className="h-9 w-9 rounded-full p-0"
                       >
@@ -431,6 +535,11 @@ export function LandingTestimonials({
 
                   {/* Right Column: High Quality Pexels Photo with Video Play Overlay */}
                   <div
+                    data-hb-node="media"
+                    data-hb-item={safeFeaturedIdx}
+                    data-hb-edit={`testimonials:items.${safeFeaturedIdx}.videoUrl`}
+                    data-hb-edit-mode="popover"
+                    data-hb-video-trigger="true"
                     onClick={() =>
                       setActiveVideo({
                         title: `Customer Story: ${item.author}`,
@@ -477,42 +586,60 @@ export function LandingTestimonials({
           {/* Header Row with Contact Sales CTA (Image Reference 2) */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="font-mono text-xs font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                TESTIMONIALS
+              <span
+                data-hb-node="badge"
+                data-hb-edit="testimonials:badge"
+                className="font-mono text-xs font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500"
+              >
+                <span data-hb-edit-text="">{appearance?.badge?.trim() || "TESTIMONIALS"}</span>
               </span>
               <Heading
                 as="h2"
+                data-hb-node="heading"
+                data-hb-edit="testimonials:title"
                 className="mt-2 text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl lg:text-4xl dark:text-white"
               >
-                Chosen by 14k+ growing businesses worldwide!
+                {content.title || "Chosen by 14k+ growing businesses worldwide!"}
               </Heading>
             </div>
             <Button
+              asChild
               variant="solid"
               size="sm"
+              data-hb-node="primary-button"
+              data-hb-edit="testimonials:featuredAction.label"
               className="shrink-0 self-start rounded-full px-5 py-2 text-xs font-medium shadow-sm sm:self-auto"
             >
-              Contact Sales
+              <a href={content.featuredAction?.href || "#contact"}>
+                <span data-hb-edit-text="">{content.featuredAction?.label || "Contact Sales"}</span>
+              </a>
             </Button>
           </div>
 
           {/* 3-4 Cards Grid (Image Reference 2 & 3) */}
-          <div className="flex flex-col gap-6 md:flex-row md:items-stretch">
-            {collectionCards.slice(0, 3).map((card) => {
+          <Grid {...collectionGridProps} className="items-stretch">
+            {resolvedCollection.map((card, cardIdx) => {
               // Video Card (Image Reference 2 center card)
               if (card.type === "video") {
                 return (
                   <div
                     key={card.id}
+                    data-hb-node="media"
+                    data-hb-item={cardIdx}
+                    data-hb-edit={`testimonials:items.${cardIdx}.videoUrl`}
+                    data-hb-edit-mode="popover"
+                    data-hb-video-trigger="true"
                     onClick={() =>
                       setActiveVideo({
                         title: `Featured Review: ${card.author}`,
                         author: card.author,
                         role: card.role,
-                        videoUrl: card.videoUrl,
+                        videoUrl:
+                          card.videoUrl ??
+                          "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
                       })
                     }
-                    className="group/videocard relative flex min-h-[360px] w-full cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 p-6 shadow-md transition-all duration-300 hover:shadow-xl md:w-1/3 dark:border-white/10"
+                    className="group/videocard relative flex min-h-[360px] w-full cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-zinc-200/90 p-6 shadow-md transition-all duration-300 hover:shadow-xl dark:border-white/10"
                   >
                     <img
                       src={card.image}
@@ -524,10 +651,32 @@ export function LandingTestimonials({
                     {/* Top Author Details */}
                     <div className="relative z-10 flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Avatar src={card.avatar} name={card.author} size="sm" />
+                        <div
+                          data-hb-node="media"
+                          data-hb-item={cardIdx}
+                          data-hb-edit={`testimonials:items.${cardIdx}.avatar`}
+                          data-hb-edit-mode="popover"
+                          className="inline-flex cursor-pointer rounded-full"
+                        >
+                          <Avatar src={card.avatar} name={card.author} size="sm" />
+                        </div>
                         <div>
-                          <div className="text-sm font-semibold text-white">{card.author}</div>
-                          <div className="text-[11px] text-zinc-300">{card.role}</div>
+                          <div
+                            data-hb-node="heading"
+                            data-hb-item={cardIdx}
+                            data-hb-edit={`testimonials:items.${cardIdx}.source`}
+                            className="text-sm font-semibold text-white"
+                          >
+                            {card.author}
+                          </div>
+                          <div
+                            data-hb-node="text"
+                            data-hb-item={cardIdx}
+                            data-hb-edit={`testimonials:items.${cardIdx}.context`}
+                            className="text-[11px] text-zinc-300"
+                          >
+                            {card.role}
+                          </div>
                         </div>
                       </div>
                       <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md">
@@ -559,18 +708,38 @@ export function LandingTestimonials({
               return (
                 <div
                   key={card.id}
-                  className="flex min-h-[360px] w-full flex-col justify-between rounded-3xl border border-zinc-200/90 bg-white/95 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md md:w-1/3 dark:border-white/10 dark:bg-zinc-950/90"
+                  data-hb-node="card"
+                  data-hb-item={cardIdx}
+                  className="flex min-h-[360px] w-full flex-col justify-between rounded-3xl border border-zinc-200/90 bg-white/95 p-6 shadow-sm backdrop-blur-xl transition-all duration-300 hover:shadow-md dark:border-white/10 dark:bg-zinc-950/90"
                 >
                   <div>
                     {/* Top Author Details */}
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <Avatar src={card.avatar} name={card.author} size="sm" />
+                        <div
+                          data-hb-node="media"
+                          data-hb-item={cardIdx}
+                          data-hb-edit={`testimonials:items.${cardIdx}.avatar`}
+                          data-hb-edit-mode="popover"
+                          className="inline-flex cursor-pointer rounded-full"
+                        >
+                          <Avatar src={card.avatar} name={card.author} size="sm" />
+                        </div>
                         <div>
-                          <div className="text-sm font-semibold text-zinc-900 dark:text-white">
+                          <div
+                            data-hb-node="heading"
+                            data-hb-item={cardIdx}
+                            data-hb-edit={`testimonials:items.${cardIdx}.source`}
+                            className="text-sm font-semibold text-zinc-900 dark:text-white"
+                          >
                             {card.author}
                           </div>
-                          <div className="text-[11px] text-zinc-500 dark:text-zinc-400">
+                          <div
+                            data-hb-node="text"
+                            data-hb-item={cardIdx}
+                            data-hb-edit={`testimonials:items.${cardIdx}.context`}
+                            className="text-[11px] text-zinc-500 dark:text-zinc-400"
+                          >
                             {card.role}
                           </div>
                         </div>
@@ -583,9 +752,12 @@ export function LandingTestimonials({
                     {/* Quote Text */}
                     <Text
                       as="blockquote"
+                      data-hb-node="text"
+                      data-hb-item={cardIdx}
+                      data-hb-edit={`testimonials:items.${cardIdx}.quote`}
                       className="mt-6 text-sm leading-relaxed font-medium text-zinc-700 sm:text-base dark:text-zinc-300"
                     >
-                      “{card.quote}”
+                      {card.quote}
                     </Text>
                   </div>
 
@@ -610,7 +782,7 @@ export function LandingTestimonials({
                 </div>
               );
             })}
-          </div>
+          </Grid>
         </div>
       )}
 

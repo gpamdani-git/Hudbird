@@ -141,7 +141,12 @@ const projects = productImage("Projects", "#237459");
 export const pilotHeroes: Record<
   Exclude<
     HeroSectionConfig["variant"],
-    "split-product" | "center-canvas" | "center-video" | "editorial-photo"
+    | "split-product"
+    | "center-canvas"
+    | "center-video"
+    | "editorial-photo"
+    | "remit-grid"
+    | "fintech-remit"
   >,
   HeroSectionConfig
 > = {

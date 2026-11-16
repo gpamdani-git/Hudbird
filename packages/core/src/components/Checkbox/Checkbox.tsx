@@ -100,6 +100,10 @@ export interface CheckboxProps
    * @default false
    */
   isInvalid?: boolean;
+  /**
+   * Disables the checkbox.
+   */
+  isDisabled?: boolean;
 }
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
@@ -112,6 +116,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       checked,
       defaultChecked,
       disabled = false,
+      isDisabled: propIsDisabled,
       onChange,
       label,
       description,
@@ -121,6 +126,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
+    const resolvedDisabled = Boolean(disabled || propIsDisabled);
     // Unique ID fallback for label association
     const generatedId = React.useId();
     const id = customId || generatedId;
@@ -132,7 +138,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const isCurrentChecked = isControlled ? checked : internalChecked;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (disabled) return;
+      if (resolvedDisabled) return;
       if (!isControlled) {
         setInternalChecked(e.target.checked);
       }
@@ -147,7 +153,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         className={cn(
           "group relative inline-flex gap-2.5 transition-opacity duration-150",
           description ? "items-start" : "items-center",
-          disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+          resolvedDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
           className
         )}
       >
@@ -157,7 +163,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           type="checkbox"
           id={id}
           checked={isCurrentChecked}
-          disabled={disabled}
+          disabled={resolvedDisabled}
           onChange={handleChange}
           aria-invalid={isInvalid}
           className="peer sr-only"

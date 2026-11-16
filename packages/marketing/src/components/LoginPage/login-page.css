@@ -1,0 +1,43 @@
+.hb-login {
+  container-type: inline-size;
+}
+.hb-login-grid {
+  min-height: 780px;
+  padding: 12px;
+}
+.hb-login-film {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: #18181b;
+}
+.hb-login-film::backdrop {
+  background: #18181b;
+}
+@container (max-width: 760px) {
+  .hb-login-grid {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
+  .hb-login-aside {
+    min-height: 540px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hb-login button,
+  .hb-login a {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+@container (min-width: 760px) {
+  .hb-login[data-login-variant="split"] .hb-login-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

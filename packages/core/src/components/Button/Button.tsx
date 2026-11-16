@@ -524,6 +524,10 @@ export interface ButtonProps
    */
   asChild?: boolean;
   /**
+   * Disables the button and prevents pointer/keyboard activation.
+   */
+  isDisabled?: boolean;
+  /**
    * Optional link destination URL to render as an `<a>` tag.
    */
   href?: string;
@@ -548,11 +552,13 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       asChild = false,
       children,
       disabled,
+      isDisabled: propIsDisabled,
       href,
       ...props
     },
     ref
   ) => {
+    const resolvedDisabled = Boolean(disabled || propIsDisabled);
     // Resolve variant precedence if outline/plain shorthand was provided
     let resolvedVariant = variant;
     if (plain) resolvedVariant = "plain";
@@ -576,7 +582,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
         <Slot
           ref={ref as any}
           className={computedClass}
-          aria-disabled={disabled || isLoading}
+          aria-disabled={resolvedDisabled || isLoading}
           {...(props as any)}
         >
           {children}
@@ -658,8 +664,8 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
       <button
         ref={ref as React.ForwardedRef<HTMLButtonElement>}
         className={computedClass}
-        disabled={disabled || isLoading}
-        aria-disabled={disabled || isLoading}
+        disabled={resolvedDisabled || isLoading}
+        aria-disabled={resolvedDisabled || isLoading}
         aria-busy={isLoading}
         {...props}
       >

@@ -239,6 +239,7 @@ export interface DropdownItemProps
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
   disabled?: boolean;
+  isDisabled?: boolean;
 }
 
 const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
@@ -248,13 +249,15 @@ const DropdownItem = React.forwardRef<HTMLDivElement, DropdownItemProps>(
       variant = "default",
       startContent,
       endContent,
-      disabled = false,
+      disabled: propDisabled = false,
+      isDisabled: propIsDisabled = false,
       onClick,
       children,
       ...props
     },
     ref
   ) => {
+    const disabled = Boolean(propDisabled || propIsDisabled);
     const { close } = React.useContext(DropdownContext);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {

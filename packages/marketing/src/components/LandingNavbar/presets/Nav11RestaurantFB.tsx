@@ -31,7 +31,7 @@ export function Nav11RestaurantFB({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   return (
     <div
@@ -116,15 +116,18 @@ export function Nav11RestaurantFB({
             </NavbarDropdownMenu>
           </NavbarItem>
 
-          {links.map((link) => (
+          {links.map((link, idx) => (
             <NavbarItem key={link.label}>
               <Button
                 href={linkHref(link)}
                 variant="plain"
                 size="sm"
+                data-hb-node="links"
+                data-hb-item={idx}
+                data-hb-edit={`navbar:links.${idx}.label`}
                 className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-tight text-amber-950/80 hover:text-amber-950 dark:text-amber-200/80 dark:hover:text-amber-100"
               >
-                {link.label}
+                <span data-hb-edit-text="">{link.label}</span>
               </Button>
             </NavbarItem>
           ))}

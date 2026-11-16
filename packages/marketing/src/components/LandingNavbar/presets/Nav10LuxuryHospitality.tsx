@@ -29,7 +29,7 @@ export function Nav10LuxuryHospitality({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   const half = Math.ceil(links.length / 2);
   const leftLinks = links.slice(0, half);
@@ -58,15 +58,18 @@ export function Nav10LuxuryHospitality({
           {/* Left Split Links */}
           <NavbarContent justify="start" className="flex-1">
             <div className="hidden items-center gap-1.5 sm:gap-2 lg:flex">
-              {leftLinks.map((link) => (
+              {leftLinks.map((link, idx) => (
                 <NavbarItem key={link.label}>
                   <Button
                     href={linkHref(link)}
                     variant="plain"
                     size="sm"
+                    data-hb-node="links"
+                    data-hb-item={idx}
+                    data-hb-edit={`navbar:links.${idx}.label`}
                     className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-wide text-zinc-200 uppercase hover:text-white dark:text-zinc-300 dark:hover:text-white"
                   >
-                    {link.label}
+                    <span data-hb-edit-text="">{link.label}</span>
                   </Button>
                 </NavbarItem>
               ))}
@@ -77,11 +80,15 @@ export function Nav10LuxuryHospitality({
           <NavbarBrand position="center">
             <a
               href={hrefFor("#landing-page")}
+              data-hb-node="brand"
               className="flex flex-col items-center justify-center text-center font-serif text-white transition-opacity hover:opacity-85"
             >
               {brandContent ?? (
                 <>
-                  <span className="font-serif text-xl font-normal tracking-[0.25em] uppercase">
+                  <span
+                    data-hb-edit="navbar:brandName"
+                    className="font-serif text-xl font-normal tracking-[0.25em] uppercase"
+                  >
                     {brand.name}
                   </span>
                   <span className="text-[9px] tracking-[0.35em] text-amber-200/80 uppercase">
@@ -95,15 +102,18 @@ export function Nav10LuxuryHospitality({
           {/* Right Split Links & Booking Button */}
           <NavbarContent justify="end" className="flex-1 gap-2.5">
             <div className="hidden items-center gap-1.5 sm:gap-2 lg:flex">
-              {rightLinks.map((link) => (
+              {rightLinks.map((link, idx) => (
                 <NavbarItem key={link.label}>
                   <Button
                     href={linkHref(link)}
                     variant="plain"
                     size="sm"
+                    data-hb-node="links"
+                    data-hb-item={half + idx}
+                    data-hb-edit={`navbar:links.${half + idx}.label`}
                     className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-wide text-zinc-200 uppercase hover:text-white dark:text-zinc-300 dark:hover:text-white"
                   >
-                    {link.label}
+                    <span data-hb-edit-text="">{link.label}</span>
                   </Button>
                 </NavbarItem>
               ))}

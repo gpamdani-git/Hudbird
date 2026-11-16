@@ -89,6 +89,7 @@ export interface SelectProps
   description?: React.ReactNode;
   errorMessage?: React.ReactNode;
   disabled?: boolean;
+  isDisabled?: boolean;
   isInvalid?: boolean;
   name?: string;
   children: React.ReactNode;
@@ -104,7 +105,8 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
       label,
       description,
       errorMessage,
-      disabled = false,
+      disabled: propDisabled = false,
+      isDisabled: propIsDisabled = false,
       isInvalid = false,
       variant = "flat",
       size = "md",
@@ -117,6 +119,7 @@ export const Select = React.forwardRef<HTMLDivElement, SelectProps>(
     },
     ref
   ) => {
+    const disabled = Boolean(propDisabled || propIsDisabled);
     const generatedId = useId();
     const selectId = id || generatedId;
     const [isOpen, setIsOpen] = useState(false);
@@ -294,12 +297,25 @@ Select.displayName = "Select";
 export interface SelectItemProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   disabled?: boolean;
+  isDisabled?: boolean;
   children: React.ReactNode;
   icon?: React.ReactNode;
 }
 
 export const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
-  ({ value, disabled = false, children, icon, className, ...props }, ref) => {
+  (
+    {
+      value,
+      disabled: propDisabled = false,
+      isDisabled: propIsDisabled = false,
+      children,
+      icon,
+      className,
+      ...props
+    },
+    ref
+  ) => {
+    const disabled = Boolean(propDisabled || propIsDisabled);
     const { selectedValue, onSelectOption, size } = useSelectContext();
     const isSelected = selectedValue === value;
 

@@ -198,16 +198,28 @@ const auditStreamRows = [
   },
 ];
 
+export interface ApplicationCustomLink {
+  id: string;
+  label: string;
+  href: string;
+}
+
 export interface ApplicationBlockRendererProps {
   block: ApplicationBlockSelection;
   brand: BrandProfile;
   category: ApplicationExampleCategorySlug;
+  appTitle?: string;
+  welcomeSubtitle?: string;
+  sidebarLinks?: ApplicationCustomLink[];
 }
 
 export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> = ({
   block,
   brand,
   category,
+  appTitle,
+  welcomeSubtitle,
+  sidebarLinks,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [ssoEnabled, setSsoEnabled] = useState(true);
@@ -216,6 +228,8 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
   if (!block.enabled) return null;
 
   const categoryDef = getApplicationCategory(category);
+  const resolvedAppTitle = appTitle?.trim() || brand.name;
+  const resolvedSubtitle = welcomeSubtitle?.trim() || categoryDef.description;
   const brandDomain = `${brand.id || "hudbird"}.dev`;
 
   switch (block.type) {
@@ -233,9 +247,12 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
                   {brand.name.slice(0, 2).toUpperCase()}
                 </div>
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold tracking-tight text-zinc-950 dark:text-white">
-                      {brand.name}
+                  <div className="flex shrink-0 flex-wrap items-center gap-2">
+                    <span
+                      data-hb-edit="dashboard:appTitle"
+                      className="text-sm font-bold tracking-tight text-zinc-950 dark:text-white"
+                    >
+                      {resolvedAppTitle}
                     </span>
                     <Badge size="sm" variant="flat" color="primary">
                       {categoryDef.badge}
@@ -246,24 +263,39 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
               </NavbarBrand>
 
               <NavbarContent className="hidden gap-1 md:flex" justify="center">
-                <NavbarItem isActive={category.startsWith("dashboards")}>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold">
-                    <LayoutDashboard className="h-3.5 w-3.5" />
-                    Overview
-                  </span>
-                </NavbarItem>
-                <NavbarItem isActive={category.startsWith("informational")}>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                    <Database className="h-3.5 w-3.5" />
-                    Entities & Telemetry
-                  </span>
-                </NavbarItem>
-                <NavbarItem isActive={category.startsWith("settings")}>
-                  <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                    <Settings className="h-3.5 w-3.5" />
-                    Workspace Settings
-                  </span>
-                </NavbarItem>
+                {sidebarLinks && sidebarLinks.length > 0 ? (
+                  sidebarLinks.map((link, idx) => (
+                    <NavbarItem key={link.id} isActive={idx === 0}>
+                      <a
+                        href={link.href}
+                        className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-white/[0.06]"
+                      >
+                        {link.label}
+                      </a>
+                    </NavbarItem>
+                  ))
+                ) : (
+                  <>
+                    <NavbarItem isActive={category.startsWith("dashboards")}>
+                      <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold">
+                        <LayoutDashboard className="h-3.5 w-3.5" />
+                        Overview
+                      </span>
+                    </NavbarItem>
+                    <NavbarItem isActive={category.startsWith("informational")}>
+                      <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                        <Database className="h-3.5 w-3.5" />
+                        Entities & Telemetry
+                      </span>
+                    </NavbarItem>
+                    <NavbarItem isActive={category.startsWith("settings")}>
+                      <span className="inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium text-zinc-600 dark:text-zinc-400">
+                        <Settings className="h-3.5 w-3.5" />
+                        Workspace Settings
+                      </span>
+                    </NavbarItem>
+                  </>
+                )}
               </NavbarContent>
 
               <NavbarContent justify="end" className="gap-2.5">
@@ -293,11 +325,25 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
                   {brand.name.slice(0, 2).toUpperCase()}
                 </div>
               }
-              title={brand.name}
+              title={resolvedAppTitle}
             />
             <SidebarToggle />
           </SidebarHeader>
           <SidebarContent>
+            {sidebarLinks && sidebarLinks.length > 0 && (
+              <SidebarNav title="Navigation">
+                {sidebarLinks.map((link) => (
+                  <SidebarItem
+                    key={link.id}
+                    href={link.href}
+                    icon={<Globe className="h-4 w-4" />}
+                    label={link.label}
+                  >
+                    {link.label}
+                  </SidebarItem>
+                ))}
+              </SidebarNav>
+            )}
             <SidebarNav title="Workspace">
               <SidebarItem
                 icon={<LayoutDashboard className="h-4 w-4" />}
@@ -371,7 +417,7 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
             className="flex flex-col gap-4 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-2xs sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08] dark:bg-[#161618]"
           >
             <div className="space-y-1">
-              <div className="flex items-center gap-2">
+              <div className="flex shrink-0 flex-wrap items-center gap-2">
                 <Badge size="sm" variant="flat" color="primary">
                   {categoryDef.badge}
                 </Badge>
@@ -379,8 +425,13 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
                   {brandDomain}
                 </span>
               </div>
-              <Heading as="h3" className="text-xl font-bold tracking-tight">
-                {categoryDef.title}
+              <Heading
+                as="h3"
+                data-hb-node="heading"
+                data-hb-edit="dashboard:appTitle"
+                className="text-xl font-bold tracking-tight"
+              >
+                {appTitle?.trim() || categoryDef.title}
               </Heading>
             </div>
             <div className="flex flex-wrap items-center gap-2.5">
@@ -415,14 +466,21 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
           >
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <Heading as="h3" className="text-xl font-bold tracking-tight">
-                  {categoryDef.title}
+                <Heading
+                  as="h3"
+                  data-hb-edit="dashboard:appTitle"
+                  className="text-xl font-bold tracking-tight"
+                >
+                  {appTitle?.trim() || categoryDef.title}
                 </Heading>
-                <Text className="text-xs text-zinc-500 dark:text-zinc-400">
-                  {categoryDef.description}
+                <Text
+                  data-hb-edit="dashboard:welcomeSubtitle"
+                  className="text-xs text-zinc-500 dark:text-zinc-400"
+                >
+                  {resolvedSubtitle}
                 </Text>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex shrink-0 flex-wrap items-center gap-2">
                 <Button size="sm" variant="bordered">
                   <Filter className="mr-1.5 h-3.5 w-3.5" />
                   Filters
@@ -460,24 +518,29 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
         <div
           data-application-block="page-header"
           data-variant={block.variant}
-          className="flex flex-col gap-4 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-2xs sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08] dark:bg-[#161618]"
+          className="flex flex-col gap-4 rounded-2xl border border-zinc-200/80 bg-white p-5 shadow-2xs xl:flex-row xl:items-center xl:justify-between dark:border-white/[0.08] dark:bg-[#161618]"
         >
-          <div className="space-y-1.5">
+          <div className="min-w-0 space-y-1.5">
             <Breadcrumbs size="sm">
               <BreadcrumbItem>{brand.name}</BreadcrumbItem>
               <BreadcrumbItem>Application UI</BreadcrumbItem>
               <BreadcrumbItem isCurrent>{categoryDef.title}</BreadcrumbItem>
             </Breadcrumbs>
             <div className="flex flex-wrap items-center gap-2.5">
-              <Heading as="h3" className="text-xl font-bold tracking-tight">
-                {categoryDef.title}
+              <Heading
+                as="h3"
+                data-hb-node="heading"
+                data-hb-edit="dashboard:appTitle"
+                className="text-xl font-bold tracking-tight"
+              >
+                {appTitle?.trim() || categoryDef.title}
               </Heading>
               <Badge size="sm" variant="flat" color="success">
                 Live Production
               </Badge>
             </div>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
             <Button size="sm" variant="bordered">
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Export Report
@@ -605,21 +668,24 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
           className="gap-4 md:grid-cols-3"
         >
           {cards.map((card) => (
-            <Card key={card.title} className="border border-zinc-200/80 dark:border-white/[0.08]">
-              <CardBody className="space-y-3 p-5">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+            <Card
+              key={card.title}
+              className="min-w-0 border border-zinc-200/80 dark:border-white/[0.08]"
+            >
+              <CardBody className="min-w-0 space-y-3 p-5">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="truncate text-xs font-medium text-zinc-500 dark:text-zinc-400">
                     {card.title}
                   </span>
                   <IconBox size="sm" variant="default" icon={card.icon} showGlow={false} />
                 </div>
-                <div className="flex items-baseline justify-between">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <span className="text-2xl font-bold tracking-tight text-zinc-950 tabular-nums dark:text-white">
                     {card.value}
                   </span>
-                  <Badge size="sm" variant="flat" color="success">
-                    <ArrowUpRight className="mr-1 inline h-3 w-3" />
-                    {card.delta}
+                  <Badge size="sm" variant="flat" color="success" className="max-w-full truncate">
+                    <ArrowUpRight className="mr-1 inline h-3 w-3 shrink-0" />
+                    <span className="truncate">{card.delta}</span>
                   </Badge>
                 </div>
               </CardBody>
@@ -999,7 +1065,7 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
             data-variant={block.variant}
             className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-zinc-200/80 bg-white px-5 py-3.5 text-xs text-zinc-500 dark:border-white/[0.08] dark:bg-[#161618] dark:text-zinc-400"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex shrink-0 flex-wrap items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-emerald-500" />
               <span>
                 All control-plane clusters operational for <strong>{brand.name}</strong>
@@ -1026,7 +1092,7 @@ export const ApplicationBlockRenderer: React.FC<ApplicationBlockRendererProps> =
             Showing <strong>1–4</strong> of <strong>148</strong> verified records in{" "}
             <strong>{brand.name}</strong>
           </span>
-          <div className="flex items-center gap-2">
+          <div className="flex shrink-0 flex-wrap items-center gap-2">
             <Button size="sm" variant="bordered" disabled>
               Previous
             </Button>
@@ -1047,12 +1113,18 @@ export interface ApplicationPageRendererProps {
   category: ApplicationExampleCategorySlug;
   blocks: ApplicationBlockSelection[];
   brand: BrandProfile;
+  appTitle?: string;
+  welcomeSubtitle?: string;
+  sidebarLinks?: ApplicationCustomLink[];
 }
 
 export const ApplicationPageRenderer: React.FC<ApplicationPageRendererProps> = ({
   category,
   blocks,
   brand,
+  appTitle,
+  welcomeSubtitle,
+  sidebarLinks,
 }) => {
   const shellBlock = blocks.find((b) => b.type === "app-shell" && b.enabled);
   const contentBlocks = blocks.filter((b) => b.type !== "app-shell" && b.enabled);
@@ -1066,22 +1138,39 @@ export const ApplicationPageRenderer: React.FC<ApplicationPageRendererProps> = (
       className="overflow-hidden rounded-3xl border border-zinc-200/90 bg-zinc-50/80 text-zinc-900 shadow-xs dark:border-white/[0.08] dark:bg-[#0d0d10] dark:text-zinc-100"
     >
       {shellBlock && !isSidebarShell && (
-        <ApplicationBlockRenderer block={shellBlock} brand={brand} category={category} />
+        <ApplicationBlockRenderer
+          block={shellBlock}
+          brand={brand}
+          category={category}
+          appTitle={appTitle}
+          welcomeSubtitle={welcomeSubtitle}
+          sidebarLinks={sidebarLinks}
+        />
       )}
 
       <div className={isSidebarShell ? "flex min-h-[680px] flex-col lg:flex-row" : "min-h-[640px]"}>
         {shellBlock && isSidebarShell && (
           <div className="shrink-0">
-            <ApplicationBlockRenderer block={shellBlock} brand={brand} category={category} />
+            <ApplicationBlockRenderer
+              block={shellBlock}
+              brand={brand}
+              category={category}
+              appTitle={appTitle}
+              welcomeSubtitle={welcomeSubtitle}
+              sidebarLinks={sidebarLinks}
+            />
           </div>
         )}
-        <div className="flex-1 space-y-5 p-4 sm:p-6">
+        <div className="min-w-0 flex-1 space-y-5 p-4 sm:p-6">
           {contentBlocks.map((block, index) => (
             <ApplicationBlockRenderer
               key={`${block.type}-${index}`}
               block={block}
               brand={brand}
               category={category}
+              appTitle={appTitle}
+              welcomeSubtitle={welcomeSubtitle}
+              sidebarLinks={sidebarLinks}
             />
           ))}
         </div>

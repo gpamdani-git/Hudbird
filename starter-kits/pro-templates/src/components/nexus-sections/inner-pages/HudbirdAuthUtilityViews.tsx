@@ -1,5 +1,7 @@
-// starter-kits/pro-templates/src/components/nexus-sections/inner-pages/HudbirdAuthUtilityViews.tsx
 "use client";
+
+// starter-kits/pro-templates/src/components/nexus-sections/inner-pages/HudbirdAuthUtilityViews.tsx
+import { LoginPage } from "@hudbird/marketing";
 
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -109,6 +111,17 @@ export const HudbirdAuthUtilityView: React.FC<HudbirdAuthUtilityViewProps> = ({
         : niche.slug.includes("cyber") || niche.slug.includes("security")
           ? PEXELS.neuralBrain
           : PEXELS.studioTeam;
+
+  if (mode === "sign-in") {
+    return (
+      <LoginPage
+        brandName={niche.name}
+        homeHref={`/demos/${niche.slug}`}
+        onSignUp={() => setMode("sign-up")}
+        onForgotPassword={() => setMode("forgot-password")}
+      />
+    );
+  }
 
   return (
     <section className="relative overflow-hidden bg-[#F4F5F8] py-12 transition-colors duration-300 sm:py-20 dark:bg-[#0B0C10]">

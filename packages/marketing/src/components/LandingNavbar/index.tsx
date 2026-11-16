@@ -45,7 +45,7 @@ export * from "./presets/Nav13ModernMini";
 export function LandingNavbar({
   variant,
   content,
-  brand,
+  brand: rawBrand,
   brandContent,
   endContent,
   customSettings,
@@ -55,6 +55,8 @@ export function LandingNavbar({
   endContent?: React.ReactNode;
   customSettings?: NavbarCustomSettings;
 }) {
+  const customBrandName = (content as { brandName?: string }).brandName;
+  const brand = customBrandName ? { ...rawBrand, name: customBrandName } : rawBrand;
   const meta = resolveNavbarPreset(variant);
   const presetId = meta.id;
 

@@ -6,12 +6,15 @@ import type {
   LandingSectionSelection,
   LandingSectionType,
   BrandProfile,
+  WebsiteDesignTokens,
+  SectionAppearanceSettings,
 } from "@hudbird/schemas";
 import { Heading, Text } from "@hudbird/ui";
 import { BrandScope, HeroSection } from "../HeroSection";
 import {
   LandingMotionContext,
   LandingNavigationContext,
+  LandingSectionIdContext,
   landingSectionTypes,
   useLandingMode,
 } from "../LandingShared";
@@ -59,7 +62,10 @@ export function LandingSection({
                 ? { variant: selection.variant as "center-canvas" | "center-video" }
                 : selection.variant === "editorial-photo"
                   ? { variant: "editorial-photo" }
-                  : { variant: "split-product" })
+                  : selection.variant === "remit-grid" ||
+                      (selection.variant as string) === "fintech-remit"
+                    ? { variant: "remit-grid" }
+                    : { variant: "split-product" })
             }
           />
         </div>
@@ -90,10 +96,18 @@ export function LandingSection({
 export function SaasLandingPage({
   config,
   content,
+  tokens,
+  beforeSections,
+  renderBeforeSection,
+  renderCustomSection,
   className,
 }: {
   config: LandingPageConfig;
   content: LandingSectionContent;
+  tokens?: WebsiteDesignTokens;
+  beforeSections?: React.ReactNode;
+  renderBeforeSection?: Partial<Record<LandingSectionType, React.ReactNode>>;
+  renderCustomSection?: (section: LandingSectionSelection) => React.ReactNode | undefined;
   className?: string;
 }) {
   const websiteMode = useLandingMode();
@@ -101,48 +115,107 @@ export function SaasLandingPage({
     ...config.brand,
     mode: config.themeMode === "auto" ? websiteMode : config.themeMode,
   };
-  const visible = config.sections
-    .filter((section) => section.enabled)
-    .map((section) => section.type);
+  const visibleSections = config.sections.filter((section) => section.enabled);
+  const visible = visibleSections.map((section) => section.type);
+  const sectionAnchorMap = new Map<string, string>();
+  const visibleAnchorIds: string[] = [];
+  visibleSections.forEach((section) => {
+    const customAnchor = (
+      section.customSettings as SectionAppearanceSettings | undefined
+    )?.anchorId?.trim();
+    if (customAnchor) {
+      sectionAnchorMap.set(section.type, customAnchor);
+      visibleAnchorIds.push(customAnchor);
+    }
+  });
   const first = visible.find((type) => type !== "navbar" && type !== "footer");
   const hrefFor = (href: string) => {
-    if (!href.startsWith("#") || href === "#landing-page") return href;
-    return visible.includes(href.slice(1) as LandingSectionType)
-      ? href
-      : first
-        ? `#${first}`
-        : "#landing-page";
+    if (!href.startsWith("#") || href.startsWith("#/") || href === "#landing-page") return href;
+    const rawId = href.slice(1);
+    if (visibleAnchorIds.includes(rawId)) return `#${rawId}`;
+    const normalizedId = rawId === "logo-cloud" ? "logos" : rawId;
+    if (visible.includes(normalizedId as LandingSectionType)) {
+      return `#${sectionAnchorMap.get(normalizedId) ?? normalizedId}`;
+    }
+    return first ? `#${sectionAnchorMap.get(first) ?? first}` : "#landing-page";
   };
-  const render = (section: LandingSectionSelection) => (
-    <div key={section.type} data-landing-section={section.type} className="w-full">
-      <LandingSection
-        selection={section}
-        brand={brand}
-        content={{
-          ...content,
-          hero: {
-            ...content.hero,
-            content: {
-              ...content.hero.content,
-              primaryAction: {
-                ...content.hero.content.primaryAction,
-                href: hrefFor(content.hero.content.primaryAction.href),
-              },
-              secondaryAction: content.hero.content.secondaryAction
-                ? {
-                    ...content.hero.content.secondaryAction,
-                    href: hrefFor(content.hero.content.secondaryAction.href),
-                  }
-                : undefined,
-            },
-          },
-        }}
-      />
-    </div>
-  );
+  const render = (section: LandingSectionSelection) => {
+    const appearance =
+      (section.customSettings as SectionAppearanceSettings | undefined) ?? undefined;
+    const colorCfg = appearance?.color;
+    const visCfg = appearance?.visibility;
+    const sectionStyle: React.CSSProperties | undefined =
+      colorCfg && (colorCfg.background || colorCfg.foreground || colorCfg.accent)
+        ? ({
+            ...(colorCfg.background
+              ? { "--hb-bg": colorCfg.background, backgroundColor: colorCfg.background }
+              : {}),
+            ...(colorCfg.foreground
+              ? { "--hb-ink": colorCfg.foreground, color: colorCfg.foreground }
+              : {}),
+            ...(colorCfg.accent
+              ? { "--hb-accent": colorCfg.accent, "--primary": colorCfg.accent }
+              : {}),
+          } as React.CSSProperties)
+        : undefined;
+    const customSectionNode = renderCustomSection?.(section);
+    return (
+      <React.Fragment key={section.type}>
+        {renderBeforeSection?.[section.type]}
+        <LandingSectionIdContext.Provider
+          value={{ sectionId: section.type, badge: appearance?.badge, appearance }}
+        >
+          <div
+            data-landing-section={section.type}
+            data-hb-surface={section.type !== "navbar" ? appearance?.surface : undefined}
+            data-hb-padding={section.type !== "navbar" ? appearance?.paddingY : undefined}
+            data-hb-container={section.type !== "navbar" ? appearance?.containerWidth : undefined}
+            data-hb-align={section.type !== "navbar" ? appearance?.align : undefined}
+            data-hb-featured-card={appearance?.card?.featuredIndex}
+            data-hb-hover={appearance?.motion?.hoverEffect}
+            data-hb-motion={appearance?.motion?.entrance}
+            data-hb-hide-desktop={visCfg?.hideDesktop ? "true" : undefined}
+            data-hb-hide-tablet={visCfg?.hideTablet ? "true" : undefined}
+            data-hb-hide-mobile={visCfg?.hideMobile ? "true" : undefined}
+            style={sectionStyle}
+            className="w-full"
+          >
+            {customSectionNode !== undefined ? (
+              customSectionNode
+            ) : (
+              <LandingSection
+                selection={section}
+                brand={brand}
+                content={{
+                  ...content,
+                  hero: {
+                    ...content.hero,
+                    content: {
+                      ...content.hero.content,
+                      primaryAction: {
+                        ...content.hero.content.primaryAction,
+                        href: hrefFor(content.hero.content.primaryAction.href),
+                      },
+                      secondaryAction: content.hero.content.secondaryAction
+                        ? {
+                            ...content.hero.content.secondaryAction,
+                            href: hrefFor(content.hero.content.secondaryAction.href),
+                          }
+                        : undefined,
+                    },
+                  },
+                }}
+              />
+            )}
+          </div>
+        </LandingSectionIdContext.Provider>
+      </React.Fragment>
+    );
+  };
   return (
     <BrandScope
       brand={brand}
+      tokens={tokens}
       data-landing-page
       data-landing-smooth-scroll={config.motion?.smoothScroll ?? true}
       className={className ?? "min-h-[100dvh]"}
@@ -155,18 +228,19 @@ export function SaasLandingPage({
             .filter((section) => section.enabled && section.type === "navbar")
             .map(render)}
           <main id="landing-page" tabIndex={-1}>
-            {!visible.includes("hero") && (
+            {!visible.includes("hero") && !beforeSections && (
               <Heading as="h1" className="sr-only">
                 {brand.name} product overview
               </Heading>
             )}
+            {beforeSections}
             {config.sections
               .filter(
                 (section) =>
                   section.enabled && section.type !== "navbar" && section.type !== "footer"
               )
               .map(render)}
-            {!first && (
+            {!first && !beforeSections && (
               <div className="p-8">
                 <Heading as="h2" size="h3">
                   Your page starts here.

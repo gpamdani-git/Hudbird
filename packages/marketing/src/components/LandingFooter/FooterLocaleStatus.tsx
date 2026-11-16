@@ -52,15 +52,18 @@ export function FooterLocaleStatus({
 
   // Filter groups
   const groups = content.groups
-    .map((group) => ({
+    .map((group, groupIndex) => ({
       ...group,
-      links: group.links.filter((link) => "href" in link || visible.includes(link.target)),
+      groupIndex,
+      links: group.links
+        .map((link, linkIndex) => ({ link, linkIndex }))
+        .filter(({ link }) => "href" in link || visible.includes(link.target)),
     }))
     .filter((group) => group.links.length);
 
-  const linkHref = (link: (typeof groups)[number]["links"][number]) =>
+  const linkHref = (link: (typeof groups)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : hrefFor(`#${link.target}`);
-  const linkKey = (link: (typeof groups)[number]["links"][number]) =>
+  const linkKey = (link: (typeof groups)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : link.target;
 
   // Handle locale switch button
@@ -87,22 +90,46 @@ export function FooterLocaleStatus({
         <div className="hb-footer-locale-status-grid grid grid-cols-1 gap-8">
           {/* Column 1 (4fr): Brand signature, description, and verified service status */}
           <div className="flex flex-col items-start gap-4">
-            <div className="flex items-center gap-2.5">
-              {brand.logo && (
-                <img
-                  src={brand.logo.src}
-                  alt={brand.logo.alt}
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 object-contain"
-                />
+            <div
+              className="flex items-center gap-2.5"
+              data-hb-node="brand"
+              data-hb-edit="footer:brand"
+              data-hb-edit-mode="popover"
+            >
+              {brand.logo?.src && (
+                <>
+                  <img
+                    src={brand.logo.src}
+                    alt={brand.logo.alt}
+                    width={24}
+                    height={24}
+                    className={
+                      brand.logo.darkSrc
+                        ? "h-6 w-auto max-w-[120px] object-contain dark:hidden"
+                        : "h-6 w-auto max-w-[120px] object-contain"
+                    }
+                  />
+                  {brand.logo.darkSrc && (
+                    <img
+                      src={brand.logo.darkSrc}
+                      alt={brand.logo.alt}
+                      width={24}
+                      height={24}
+                      className="hidden h-6 w-auto max-w-[120px] object-contain dark:block"
+                    />
+                  )}
+                </>
               )}
               <Text className="hb-landing-title text-xl font-semibold tracking-tight">
                 {brand.name}
               </Text>
             </div>
 
-            <Text className="text-muted-foreground max-w-[34ch] text-sm leading-relaxed">
+            <Text
+              data-hb-node="text"
+              data-hb-edit="footer:description"
+              className="text-muted-foreground max-w-[34ch] text-sm leading-relaxed"
+            >
               {content.description}
             </Text>
 
@@ -113,6 +140,8 @@ export function FooterLocaleStatus({
                   href={status?.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-hb-node="badge"
+                  data-hb-edit="footer:status.label"
                   className="hb-footer-status-pill group/status"
                   aria-label={`${statusLabel}${status?.summary ? ` — ${status.summary}` : ""}`}
                 >
@@ -121,7 +150,9 @@ export function FooterLocaleStatus({
                     data-status={statusState}
                     aria-hidden="true"
                   />
-                  <span className="text-xs font-medium">{statusLabel}</span>
+                  <span data-hb-edit-text="" className="text-xs font-medium">
+                    {statusLabel}
+                  </span>
                   <ArrowUpRight className="h-3 w-3 opacity-60 transition-transform group-hover/status:translate-x-0.5 group-hover/status:-translate-y-0.5" />
                 </a>
                 {(status?.summary || status?.checkedAt) && (
@@ -137,19 +168,31 @@ export function FooterLocaleStatus({
 
           {/* Column 2 & Column 3: Navigation Groups from sitemap */}
           {groups.slice(0, 2).map((group) => (
-            <nav key={group.title} aria-label={group.title} className="flex flex-col items-start">
+            <nav
+              key={`${group.groupIndex}-${group.title}`}
+              aria-label={group.title}
+              data-hb-node="links"
+              data-hb-item={group.groupIndex}
+              className="flex flex-col items-start"
+            >
               <Heading
                 as="h2"
                 size="h6"
+                data-hb-node="heading"
+                data-hb-item={group.groupIndex}
+                data-hb-edit={`footer:columns.${group.groupIndex}.title`}
                 className="text-muted-foreground text-xs font-semibold tracking-wider uppercase"
               >
                 {group.title}
               </Heading>
               <div className="mt-4 flex flex-col items-start gap-2.5">
-                {group.links.map((link) => (
+                {group.links.map(({ link, linkIndex }) => (
                   <a
-                    key={linkKey(link)}
+                    key={`${linkIndex}-${linkKey(link)}`}
                     href={linkHref(link)}
+                    data-hb-node="links"
+                    data-hb-item={group.groupIndex}
+                    data-hb-edit={`footer:columns.${group.groupIndex}.links.${linkIndex}.label`}
                     className="hb-footer-nav-link text-muted-foreground hover:text-foreground inline-flex min-h-[36px] items-center py-0.5 text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
                   >
                     {link.label}
@@ -171,13 +214,13 @@ export function FooterLocaleStatus({
               </Heading>
               <div className="mt-4 flex flex-col items-start gap-2.5">
                 <a
-                  href="#features"
+                  href={hrefFor("#features")}
                   className="hb-footer-nav-link text-muted-foreground hover:text-foreground inline-flex min-h-[36px] items-center py-0.5 text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
                 >
                   Documentation
                 </a>
                 <a
-                  href="#faq"
+                  href={hrefFor("#faq")}
                   className="hb-footer-nav-link text-muted-foreground hover:text-foreground inline-flex min-h-[36px] items-center py-0.5 text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
                 >
                   Help center
@@ -234,11 +277,16 @@ export function FooterLocaleStatus({
         {/* Bottom Strip: Legal links, copyright, and platform badge */}
         <div className="border-border mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
           <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-xs">
-            <span>{content.note}</span>
-            {content.legalLinks?.map((link) => (
+            <span data-hb-node="text" data-hb-edit="footer:note">
+              {content.note}
+            </span>
+            {content.legalLinks?.map((link, idx) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.href + link.label}
+                href={hrefFor(link.href)}
+                data-hb-node="links"
+                data-hb-item={idx}
+                data-hb-edit={`footer:legalLinks.${idx}.label`}
                 className="hb-footer-nav-link text-muted-foreground hover:text-foreground text-xs decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
               >
                 {link.label}

@@ -98,6 +98,53 @@ export const formaLandingContent: LandingSectionContent = {
           href: "https://www.pexels.com/photo/lamp-over-table-and-chairs-in-room-21529967/",
         },
       },
+      "remit-grid": {
+        variant: "remit-grid",
+        badgeText: "New · automatic reminders",
+        statLabel: "PAID THIS MONTH",
+        statValue: "$24,800",
+        chartBars: [38, 55, 46, 75, 62, 100],
+        invoiceList: [
+          { name: "Northwind", status: "Paid", isPaid: true },
+          { name: "Studio Park", status: "Due in 3d", isPaid: false },
+          { name: "Acme Co.", status: "Paid", isPaid: true },
+        ],
+        floatingReminder: {
+          tag: "REMINDER SENT",
+          title: "Invoice #1042 paid in 2 days",
+          badge: "On time",
+        },
+        metricCards: [
+          {
+            title: "2 days",
+            description: "average time to get paid",
+            footerText: "Original concept, not client work Shubhank Agrey",
+            footerHref: "#concept",
+            imageSrc:
+              "https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=800",
+          },
+          {
+            title: "Auto",
+            description: "friendly reminders on late invoices",
+            footerText: "friendly reminders on late invoices",
+            footerHref: "#reminders",
+            imageSrc:
+              "https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=800",
+          },
+          {
+            title: "1 click",
+            description: "pay links for every client",
+            footerText: "pay links for every client",
+            footerHref: "#paylinks",
+            imageSrc:
+              "https://images.pexels.com/photos/7582781/pexels-photo-7582781.jpeg?auto=compress&cs=tinysrgb&w=800",
+          },
+        ],
+        credit: {
+          label: "Original concept, not client work · Shubhank Agrey",
+          href: "https://dribbble.com",
+        },
+      },
       interactive: pilotHeroes.interactive,
       slideshow: pilotHeroes.slideshow,
       video: pilotHeroes.video,

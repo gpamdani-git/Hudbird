@@ -1,0 +1,254 @@
+/* Hero Remit Grid — Theme-driven Hudbird UI Component Styles */
+
+/* Remit dynamic theme accents — full support for light & dark modes without hardcoding */
+.hb-remit-hero,
+.hb-pilot .hb-remit-hero,
+:root {
+  --hb-remit-accent: var(--hb-accent, var(--primary, #2457d6));
+  --hb-remit-accent-light: color-mix(in srgb, var(--hb-remit-accent) 15%, transparent);
+  --hb-remit-card-border: var(--hb-border, var(--border, #d4d4d8));
+  --hb-remit-floating-bg: var(--hb-accent, var(--primary, #2457d6));
+  --hb-remit-floating-fg: var(--hb-on-accent, var(--primary-foreground, #ffffff));
+  --hb-remit-floating-border: color-mix(
+    in srgb,
+    var(--hb-remit-accent) 60%,
+    rgba(255, 255, 255, 0.4)
+  );
+}
+
+.dark .hb-remit-hero,
+[data-brand-mode="dark"] .hb-remit-hero,
+[data-hb-theme="dark"] .hb-remit-hero,
+.hb-pilot.dark .hb-remit-hero,
+.hb-pilot[data-brand-mode="dark"] .hb-remit-hero,
+.hb-remit-hero:where(.dark *),
+.hb-remit-hero:where([data-brand-mode="dark"] *),
+.hb-remit-hero:where([data-hb-theme="dark"] *),
+.dark,
+[data-brand-mode="dark"],
+.hb-pilot[data-brand-mode="dark"] {
+  /* In dark mode, ensure optimal contrast (>= 7:1 WCAG AAA) */
+  /* dynamically derived from the theme's primary token */
+  --hb-remit-accent: color-mix(in srgb, var(--hb-accent, var(--primary, #3b82f6)) 40%, #ffffff 60%);
+  --hb-remit-accent-light: color-mix(in srgb, var(--hb-remit-accent) 25%, transparent);
+  --hb-remit-card-border: color-mix(
+    in srgb,
+    var(--hb-border, var(--border, #27272a)) 70%,
+    rgba(255, 255, 255, 0.14)
+  );
+  --hb-remit-floating-bg: color-mix(
+    in srgb,
+    var(--hb-accent, var(--primary, #2457d6)) 75%,
+    #080c18
+  );
+  --hb-remit-floating-fg: #ffffff;
+  --hb-remit-floating-border: color-mix(
+    in srgb,
+    var(--hb-remit-accent) 48%,
+    rgba(255, 255, 255, 0.4)
+  );
+}
+
+.hb-remit-accent-text {
+  color: var(--hb-remit-accent, #2457d6) !important;
+}
+
+.dark .hb-remit-accent-text,
+[data-brand-mode="dark"] .hb-remit-accent-text,
+[data-hb-theme="dark"] .hb-remit-accent-text,
+.hb-pilot.dark .hb-remit-accent-text,
+.hb-pilot[data-brand-mode="dark"] .hb-remit-accent-text,
+.hb-remit-hero.dark .hb-remit-accent-text,
+.hb-remit-accent-text:where(.dark *),
+.hb-remit-accent-text:where([data-brand-mode="dark"] *),
+.hb-remit-accent-text:where([data-hb-theme="dark"] *) {
+  color: var(
+    --hb-remit-accent,
+    color-mix(in srgb, var(--hb-accent, var(--primary, #3b82f6)) 40%, #ffffff 60%)
+  ) !important;
+}
+
+.hb-remit-accent-bg {
+  background-color: var(--hb-remit-accent, #2457d6) !important;
+}
+
+.dark .hb-remit-accent-bg,
+[data-brand-mode="dark"] .hb-remit-accent-bg,
+[data-hb-theme="dark"] .hb-remit-accent-bg,
+.hb-pilot.dark .hb-remit-accent-bg,
+.hb-pilot[data-brand-mode="dark"] .hb-remit-accent-bg,
+.hb-remit-hero.dark .hb-remit-accent-bg,
+.hb-remit-accent-bg:where(.dark *),
+.hb-remit-accent-bg:where([data-brand-mode="dark"] *),
+.hb-remit-accent-bg:where([data-hb-theme="dark"] *) {
+  background-color: var(
+    --hb-remit-accent,
+    color-mix(in srgb, var(--hb-accent, var(--primary, #3b82f6)) 40%, #ffffff 60%)
+  ) !important;
+}
+
+/* Hero Section Container & Visual Rhythm:
+   Compact top padding ensures tight, balanced proximity to the navbar
+   without pushing content below the fold. */
+.hb-remit-hero,
+.hb-pilot [data-landing-section="hero"] .hb-remit-hero,
+.hb-pilot #hero.hb-remit-hero {
+  background-color: var(--background);
+  color: var(--foreground);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  padding-top: 1rem !important;
+  padding-bottom: clamp(2.5rem, 5vw, 4rem) !important;
+}
+
+/* Atmospheric Ambient Radial Glow: subtle, theme-colored, non-intrusive */
+.hb-remit-ambient-glow {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at top right,
+    color-mix(in srgb, var(--hb-remit-accent) 14%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Remit Card Surface: inherits completely from Hudbird theme tokens */
+.hb-remit-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--hb-remit-card-border);
+  border-radius: var(--radius-xl, 1rem);
+  position: relative;
+  transition:
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark .hb-remit-card,
+[data-brand-mode="dark"] .hb-remit-card,
+[data-hb-theme="dark"] .hb-remit-card,
+.hb-pilot.dark .hb-remit-card,
+.hb-pilot[data-brand-mode="dark"] .hb-remit-card,
+.hb-remit-card:where(.dark *),
+.hb-remit-card:where([data-brand-mode="dark"] *),
+.hb-remit-card:where([data-hb-theme="dark"] *) {
+  background-color: color-mix(in srgb, var(--card, #14151a) 92%, #141b2d);
+  border-color: color-mix(in srgb, var(--border, #27272a) 70%, rgba(255, 255, 255, 0.14));
+}
+
+.hb-remit-card:hover {
+  border-color: color-mix(in srgb, var(--hb-remit-accent) 60%, var(--border));
+  box-shadow: 0 12px 32px -8px color-mix(in srgb, var(--hb-remit-accent) 22%, transparent);
+}
+
+/* Accent Floating Reminder Card */
+.hb-remit-lime-card {
+  background-color: var(--hb-remit-floating-bg);
+  color: var(--hb-remit-floating-fg);
+  border: 1px solid var(--hb-remit-floating-border);
+  border-radius: var(--radius-xl, 1rem);
+  box-shadow:
+    0 16px 36px -8px color-mix(in srgb, var(--primary) 35%, transparent),
+    0 0 24px -4px color-mix(in srgb, var(--hb-remit-accent) 25%, transparent);
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hb-remit-lime-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 20px 42px -6px color-mix(in srgb, var(--primary) 45%, transparent),
+    0 0 28px -2px color-mix(in srgb, var(--hb-remit-accent) 35%, transparent);
+}
+
+/* Pexels Hover Image Reveal */
+.hb-remit-hover-media {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.hb-remit-card:hover .hb-remit-hover-media {
+  opacity: 1;
+}
+
+.hb-remit-scrim-blur {
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--background) 82%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Shopify-style Smooth Right Slide Marquee Animation */
+@keyframes hb-remit-slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.hb-remit-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.hb-remit-marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: hb-remit-slide-right 36s linear infinite;
+  transition: animation-duration 0.8s ease;
+  will-change: transform;
+}
+
+.hb-remit-marquee-container:hover .hb-remit-marquee-track {
+  animation-duration: 90s;
+}
+
+/* Chart Bars */
+.hb-remit-bar {
+  background-color: color-mix(in srgb, var(--muted-foreground) 25%, transparent);
+  border-radius: var(--radius-sm, 4px) var(--radius-sm, 4px) 0 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hb-remit-bar.is-active {
+  background-color: var(--hb-remit-accent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--hb-remit-accent) 60%, transparent);
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .hb-remit-marquee-track {
+    animation: none;
+    transform: none;
+  }
+  .hb-remit-card,
+  .hb-remit-lime-card,
+  .hb-remit-hover-media {
+    transition: none !important;
+  }
+}

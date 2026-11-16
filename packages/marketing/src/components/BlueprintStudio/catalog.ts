@@ -478,9 +478,9 @@ export const sharedPagesCatalog: SharedPageCategory[] = [
     variants: [
       {
         id: "login-split-telemetry",
-        name: "Split-Screen Telemetry Sign-In",
+        name: "Monochrome Studio Sign-In",
         description:
-          "2-column split layout with credential form, OAuth buttons, and live telemetry preview.",
+          "Two-column sign-in with Apple, Google, X, a monochrome room, and an interactive AI composer.",
         layout: "split",
         basePrimitives: ["Input", "Checkbox", "Button", "Divider", "Badge"],
         uiComponents: ["Form", "Card"],
@@ -494,7 +494,7 @@ export const sharedPagesCatalog: SharedPageCategory[] = [
       },
       {
         id: "login-centered-sso",
-        name: "Centered Enterprise SSO Card",
+        name: "Centered Studio Sign-In",
         description: "Focused single-column card with SAML SSO and credential fallback.",
         layout: "centered",
         basePrimitives: ["Input", "Checkbox", "Button", "IconBox"],

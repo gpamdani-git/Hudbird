@@ -22,6 +22,7 @@ export interface BlockVariantsInspectorProps {
   onHoverVariant: (preview: HoveredVariantPreviewData | null) => void;
   onToggleEnabled: (enabled: boolean) => void;
   onBack: () => void;
+  embedded?: boolean;
 }
 
 export function BlockVariantsInspector({
@@ -32,6 +33,7 @@ export function BlockVariantsInspector({
   onHoverVariant,
   onToggleEnabled,
   onBack,
+  embedded = false,
 }: BlockVariantsInspectorProps) {
   const [filterCategory, setFilterCategory] = React.useState<string>("all");
 
@@ -87,54 +89,49 @@ export function BlockVariantsInspector({
 
   return (
     <div className="space-y-3">
-      {/* 1. Header with Back button, Title & Visibility Toggle */}
-      <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/80 p-3 dark:border-white/10 dark:bg-[#161618]">
-        <div className="mb-2 flex items-center justify-between border-b border-zinc-200/60 pb-2 dark:border-white/10">
-          <button
-            type="button"
-            onClick={onBack}
-            className="group flex items-center gap-1.5 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-          >
-            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
-            <span>All Sections</span>
-          </button>
+      {!embedded && (
+        <div className="rounded-2xl border border-zinc-200/80 bg-zinc-50/80 p-3 dark:border-white/10 dark:bg-[#161618]">
+          <div className="mb-2 flex items-center justify-between border-b border-zinc-200/60 pb-2 dark:border-white/10">
+            <button
+              type="button"
+              onClick={onBack}
+              className="group flex items-center gap-1.5 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+            >
+              <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
+              <span>All Sections</span>
+            </button>
 
-          {/* Visibility toggle button */}
-          <button
-            type="button"
-            onClick={() => onToggleEnabled(!isEnabled)}
-            className={`flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors ${
-              isEnabled
-                ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300"
-                : "bg-zinc-200/70 text-zinc-600 dark:bg-white/10 dark:text-zinc-400"
-            }`}
-          >
-            {isEnabled ? (
-              <>
-                <Eye className="h-3 w-3" />
-                <span>Visible</span>
-              </>
-            ) : (
-              <>
-                <EyeOff className="h-3 w-3" />
-                <span>Hidden</span>
-              </>
-            )}
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={() => onToggleEnabled(!isEnabled)}
+              className={`flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors ${
+                isEnabled
+                  ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300"
+                  : "bg-zinc-200/70 text-zinc-600 dark:bg-white/10 dark:text-zinc-400"
+              }`}
+            >
+              {isEnabled ? (
+                <>
+                  <Eye className="h-3 w-3" />
+                  <span>Visible</span>
+                </>
+              ) : (
+                <>
+                  <EyeOff className="h-3 w-3" />
+                  <span>Hidden</span>
+                </>
+              )}
+            </button>
+          </div>
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between">
             <span className="text-sm font-bold text-zinc-900 capitalize dark:text-white">
               {definition.title}
             </span>
-            <span className="rounded-full bg-zinc-200/80 px-2 py-0.5 font-mono text-[10px] font-medium text-zinc-600 dark:bg-white/10 dark:text-zinc-300">
-              {rawVariants.length} Presets
-            </span>
+            <span className="text-xs text-zinc-500">{rawVariants.length} layouts</span>
           </div>
-          <span className="text-[10px] text-zinc-400">Click to apply</span>
         </div>
-      </div>
+      )}
 
       {/* Navbar Category Filter Pills */}
       {sectionType === "navbar" && (
@@ -195,22 +192,14 @@ export function BlockVariantsInspector({
                   : "border-zinc-200/80 bg-white hover:border-zinc-400 hover:shadow-2xs dark:border-zinc-800 dark:bg-[#161618] dark:hover:border-zinc-700"
               }`}
             >
-              {/* Top Row: Title, Variant Badge & Active Status */}
+              {/* Top Row: Clean Layout Title & Subtle Selected Check */}
               <div className="flex items-center justify-between pb-1">
-                <div className="flex min-w-0 items-center gap-1.5">
-                  <span className="truncate text-xs font-bold text-zinc-900 dark:text-zinc-100">
-                    {v.name.replace(/NAV-\d+\s*—\s*/, "")}
-                  </span>
-                  <span className="rounded-full bg-zinc-100 px-2 py-0.5 font-mono text-[9px] font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-                    {v.id}
-                  </span>
-                </div>
+                <span className="truncate text-xs font-medium text-zinc-900 dark:text-zinc-100">
+                  {v.name.replace(/NAV-\d+\s*—\s*/, "")}
+                </span>
 
                 {isSelected && (
-                  <span className="flex items-center gap-0.5 rounded-full bg-emerald-500 px-1.5 py-0.5 text-[9px] font-bold text-white shadow-2xs">
-                    <Check className="h-2.5 w-2.5 stroke-[3]" />
-                    <span>Active</span>
-                  </span>
+                  <Check className="h-3.5 w-3.5 shrink-0 text-indigo-600 dark:text-indigo-400" />
                 )}
               </div>
 

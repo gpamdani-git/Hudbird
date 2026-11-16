@@ -1,6 +1,16 @@
 "use client";
 import * as React from "react";
-import { Section, Container, Grid, Button, Badge, Heading, Text, Input } from "@hudbird/ui";
+import {
+  Section,
+  Container,
+  EditorialImage,
+  Grid,
+  Button,
+  Badge,
+  Heading,
+  Text,
+  Input,
+} from "@hudbird/ui";
 import {
   Star,
   Check,
@@ -12,10 +22,14 @@ import {
   ChevronRight,
   Play,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import type { HeroContent, HeroImage, HeroSplitSlide } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
-import { FullscreenVideoPlayer } from "../LandingShared";
+import {
+  FullscreenVideoPlayer,
+  useLandingAppearance,
+  useLandingNavigation,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 export interface SplitIntroductionHeroProps {
@@ -23,6 +37,8 @@ export interface SplitIntroductionHeroProps {
   config: {
     variant: string;
     image?: HeroImage;
+    slides?: HeroSplitSlide[];
+    videoUrl?: string;
     [key: string]: unknown;
   };
   id?: string;
@@ -40,7 +56,7 @@ export function renderEditorialTitle(rawTitle: string) {
         {parts.map((part, i) => {
           if (part.startsWith("*") && part.endsWith("*")) {
             return (
-              <span key={i} className="font-serif font-normal italic">
+              <span key={i} data-hb-italic="true" className="font-serif font-normal italic">
                 {part.slice(1, -1)}
               </span>
             );
@@ -399,6 +415,10 @@ export function SplitIntroductionHero({
   const [email, setEmail] = React.useState("");
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
+  const appearance = useLandingAppearance();
+  const slideshowCfg = appearance?.slideshow;
+  const prefersReducedMotion = useReducedMotion();
+
   // Active slide index & direction for smooth Shopify-style transitions
   const [[activeIdx, direction], setSlideState] = React.useState<[number, number]>([0, 1]);
   const [isPaused, setIsPaused] = React.useState(false);
@@ -409,22 +429,46 @@ export function SplitIntroductionHero({
   const isDefaultSvg = config.image?.src?.startsWith("data:image/svg+xml");
   const hasCustomImage = Boolean(config.image?.src && !isDefaultSvg);
 
-  // Build the slides array
-  const slides = React.useMemo(() => {
+  // Build the slides array — prefer explicit config.slides from builder when present
+  const slides: SplitSlideItem[] = React.useMemo(() => {
+    if (Array.isArray(config.slides) && config.slides.length > 0) {
+      return config.slides.map((s, idx) => {
+        const fb = defaultSplitSlides[idx % defaultSplitSlides.length];
+        return {
+          id: s.id || fb.id || `split-slide-${idx}`,
+          image: s.image?.src ? s.image : fb.image,
+          videoSrc:
+            s.videoUrl !== undefined
+              ? s.videoUrl
+              : idx === 0
+                ? (config.videoUrl ?? fb.videoSrc)
+                : fb.videoSrc,
+          testimonial: {
+            quote: s.quote ?? fb.testimonial.quote,
+            author: s.author ?? fb.testimonial.author,
+            role: s.role ?? fb.testimonial.role,
+            avatar: fb.testimonial.avatar,
+            rating: fb.testimonial.rating,
+          },
+        };
+      });
+    }
     if (hasCustomImage && config.image) {
       return [
         {
           id: "custom-slide-0",
           image: config.image,
+          videoSrc: config.videoUrl ?? defaultSplitSlides[0].videoSrc,
           testimonial: defaultSplitSlides[0].testimonial,
         },
         ...defaultSplitSlides.slice(1),
       ];
     }
     return defaultSplitSlides;
-  }, [hasCustomImage, config.image]);
+  }, [config.slides, config.videoUrl, hasCustomImage, config.image]);
 
-  const currentSlide = slides[activeIdx] ?? slides[0];
+  const safeActiveIdx = Math.min(activeIdx, Math.max(0, slides.length - 1));
+  const currentSlide = slides[safeActiveIdx] ?? slides[0];
 
   // Resolve light/dark src for current active slide
   const resolvedSrc =
@@ -436,19 +480,50 @@ export function SplitIntroductionHero({
     setFailed(false);
   }, [resolvedSrc]);
 
-  // Shopify-style carousel auto-advance every 6 seconds when not paused
+  // Listen to builder slideshow selection events (syncs SlideshowMediaWidget -> Split Hero)
   React.useEffect(() => {
-    if (isPaused) return;
+    const onSelect = (e: Event) => {
+      const idx = (e as CustomEvent<{ index?: number }>).detail?.index;
+      if (typeof idx === "number" && idx >= 0 && idx < slides.length) {
+        setSlideState(([prev]) => [idx, idx >= prev ? 1 : -1]);
+      }
+    };
+    document.addEventListener("hb:hero-select-slide", onSelect);
+    return () => document.removeEventListener("hb:hero-select-slide", onSelect);
+  }, [slides.length]);
+
+  const autoplayIntervalMs = slideshowCfg?.autoplayMs ?? 6000;
+  const shouldLoop = slideshowCfg?.loop ?? true;
+  const shouldPauseOnHover = slideshowCfg?.pauseOnHover ?? true;
+  const showIndicators = slideshowCfg?.showIndicators ?? true;
+
+  // Carousel auto-advance respecting hover pause, autoplay=0, loop, and reduced motion
+  React.useEffect(() => {
+    if (prefersReducedMotion || autoplayIntervalMs <= 0 || slides.length < 2) return;
+    if (shouldPauseOnHover && isPaused) return;
     const timer = setInterval(() => {
-      setSlideState(([prev]) => [(prev + 1) % slides.length, 1]);
-    }, 6000);
+      setSlideState(([prev]) => {
+        if (!shouldLoop && prev >= slides.length - 1) return [prev, 1];
+        return [(prev + 1) % slides.length, 1];
+      });
+    }, autoplayIntervalMs);
     return () => clearInterval(timer);
-  }, [isPaused, slides.length]);
+  }, [
+    prefersReducedMotion,
+    autoplayIntervalMs,
+    shouldPauseOnHover,
+    shouldLoop,
+    isPaused,
+    slides.length,
+  ]);
 
   const goToSlide = (nextIndex: number) => {
-    if (nextIndex === activeIdx) return;
-    const nextDir = nextIndex > activeIdx ? 1 : -1;
+    if (nextIndex === safeActiveIdx) return;
+    const nextDir = nextIndex > safeActiveIdx ? 1 : -1;
     setSlideState([nextIndex, nextDir]);
+    document.dispatchEvent(
+      new CustomEvent("hb:hero-slide-changed", { detail: { index: nextIndex } })
+    );
   };
 
   const handleReserve = (e: React.MouseEvent) => {
@@ -469,6 +544,19 @@ export function SplitIntroductionHero({
     content.primaryAction?.label && content.primaryAction.label !== "See the product demo"
       ? content.primaryAction.label
       : "Reserve My Spot";
+  const { hrefFor } = useLandingNavigation();
+  const headingCfg = appearance?.heading;
+  const textCfg = appearance?.text;
+  const primaryCfg = appearance?.button;
+  const mediaCfg = appearance?.media;
+  const hasMediaOverrides = Boolean(
+    mediaCfg &&
+    (mediaCfg.aspectRatio ||
+      mediaCfg.radius ||
+      mediaCfg.hasBorder !== undefined ||
+      mediaCfg.overlayGradient !== undefined ||
+      mediaCfg.isZoomable !== undefined)
+  );
 
   return (
     <Section id={id} spacing="none" className="hb-section relative isolate overflow-hidden">
@@ -477,21 +565,49 @@ export function SplitIntroductionHero({
           {/* Left Column: Pill Badge, Editorial Title, Description, Email Form, Social Proof */}
           <div className="flex flex-col items-start text-left">
             {/* 1. iOS Launch Pill Badge with Apple Icon */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-zinc-100/80 px-3.5 py-1.5 text-xs font-medium text-zinc-900 shadow-2xs backdrop-blur-xs transition-colors dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-200">
+            <div
+              data-hb-node="badge"
+              data-hb-edit="hero:eyebrow"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200/90 bg-zinc-100/80 px-3.5 py-1.5 text-xs font-medium text-zinc-900 shadow-2xs backdrop-blur-xs transition-colors dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-200"
+            >
               <Apple className="h-3.5 w-3.5 shrink-0" />
-              <span>Public launch on iOS soon</span>
+              <span data-hb-edit-text="">
+                {content.eyebrow?.trim() ? content.eyebrow : "Public launch on iOS soon"}
+              </span>
             </div>
 
             {/* 2. Editorial Headline Title with Serif Italic Accent (Primary Hero Attraction) */}
             <Heading
               as={headingLevel}
-              className="hb-heading text-4xl font-bold tracking-[-0.04em] text-balance text-zinc-950 sm:text-5xl md:text-6xl lg:text-[3.75rem] lg:leading-[1.08] xl:text-[4.25rem] dark:text-white"
+              size={headingCfg?.size}
+              tracking={headingCfg?.tracking}
+              color={headingCfg?.color}
+              withDivider={headingCfg?.withDivider}
+              data-hb-node="heading"
+              data-hb-edit="hero:title"
+              className={cn(
+                !headingCfg?.size &&
+                  "hb-heading text-4xl font-semibold tracking-[-0.03em] sm:text-5xl md:text-6xl lg:text-[3.75rem] lg:leading-[1.08] xl:text-[4.25rem]",
+                !headingCfg?.color && "text-zinc-950 dark:text-white",
+                "text-balance"
+              )}
             >
               {renderEditorialTitle(content.title)}
             </Heading>
 
             {/* 3. Short Description with Muted Gray Tone */}
-            <Text className="mt-4 max-w-[42ch] text-base leading-relaxed font-normal text-zinc-600 sm:mt-5 sm:text-lg dark:text-zinc-400">
+            <Text
+              variant={textCfg?.variant}
+              weight={textCfg?.weight}
+              align={textCfg?.align}
+              data-hb-node="text"
+              data-hb-edit="hero:description"
+              className={cn(
+                "mt-4 max-w-[42ch] text-zinc-600 sm:mt-5 dark:text-zinc-400",
+                !textCfg?.variant && "text-base leading-relaxed sm:text-lg",
+                !textCfg?.weight && "font-normal"
+              )}
+            >
               {content.description}
             </Text>
 
@@ -523,10 +639,26 @@ export function SplitIntroductionHero({
                   endContent={
                     <Button
                       type="submit"
-                      href={content.primaryAction?.href}
+                      href={
+                        content.primaryAction?.href
+                          ? hrefFor(content.primaryAction.href)
+                          : undefined
+                      }
+                      variant={primaryCfg?.variant}
+                      color={primaryCfg?.color}
+                      size={primaryCfg?.size}
+                      radius={primaryCfg?.radius}
                       aria-label={content.primaryAction?.label || "Reserve My Spot"}
+                      data-hb-node="primary-button"
+                      data-hb-edit="hero:primaryAction.label"
                       onClick={handleReserve}
-                      className="group hb-primary hb-cta relative h-10 shrink-0 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 text-xs font-semibold tracking-tight text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:text-sm"
+                      className={cn(
+                        "group relative h-10 shrink-0 overflow-hidden px-5 text-xs font-semibold tracking-tight shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:text-sm",
+                        !primaryCfg?.radius && "rounded-full",
+                        !primaryCfg?.variant &&
+                          !primaryCfg?.color &&
+                          "hb-primary hb-cta bg-[var(--hb-accent,var(--primary,#2457d6))] text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))]"
+                      )}
                     >
                       {isSubmitted ? (
                         <span className="relative z-10 inline-flex items-center gap-1.5 font-semibold">
@@ -534,7 +666,10 @@ export function SplitIntroductionHero({
                           Reserved!
                         </span>
                       ) : (
-                        <span className="relative z-10 inline-flex items-center gap-1.5">
+                        <span
+                          data-hb-edit-text=""
+                          className="relative z-10 inline-flex items-center gap-1.5"
+                        >
                           {buttonLabel}
                         </span>
                       )}
@@ -578,7 +713,13 @@ export function SplitIntroductionHero({
             onMouseLeave={() => setIsPaused(false)}
           >
             {/* Visual Frame with Rounded Corners & Shadows (Taller than left text for full-photo presence, fitted for viewports) */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[4/5] sm:rounded-[36px] lg:aspect-auto lg:h-[530px] lg:rounded-[40px] xl:h-[560px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]">
+            <div
+              data-hb-node="media"
+              data-hb-item={safeActiveIdx}
+              data-hb-edit={`hero:slides.${safeActiveIdx}.image.src`}
+              data-hb-edit-mode="popover"
+              className="relative aspect-[4/5] w-full overflow-hidden rounded-[28px] border border-zinc-200/80 bg-zinc-950/[0.03] shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)] sm:aspect-[4/5] sm:rounded-[36px] lg:aspect-auto lg:h-[530px] lg:rounded-[40px] xl:h-[560px] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-[0_24px_60px_-15px_rgba(0,0,0,0.5)]"
+            >
               {failed || !resolvedSrc ? (
                 <div
                   role="img"
@@ -591,31 +732,48 @@ export function SplitIntroductionHero({
                 <div className="relative h-full w-full">
                   <AnimatePresence initial={false} custom={direction} mode="popLayout">
                     <motion.div
-                      key={activeIdx}
+                      key={safeActiveIdx}
                       custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.35 },
-                      }}
+                      variants={prefersReducedMotion ? undefined : slideVariants}
+                      initial={prefersReducedMotion ? { opacity: 0 } : "enter"}
+                      animate={prefersReducedMotion ? { opacity: 1 } : "center"}
+                      exit={prefersReducedMotion ? { opacity: 0 } : "exit"}
+                      transition={
+                        prefersReducedMotion
+                          ? { duration: 0.16 }
+                          : {
+                              x: { duration: 0.32, ease: [0.23, 1, 0.32, 1] },
+                              opacity: { duration: 0.24, ease: [0.23, 1, 0.32, 1] },
+                            }
+                      }
                       className="absolute inset-0 h-full w-full"
                     >
-                      <img
-                        src={resolvedSrc}
-                        alt={currentSlide.image.alt}
-                        width={1440}
-                        height={900}
-                        loading="eager"
-                        fetchPriority="high"
-                        onError={() => setFailed(true)}
-                        className={cn(
-                          "h-full w-full object-cover select-none",
-                          currentSlide.videoSrc ? "object-top grayscale" : ""
-                        )}
-                      />
+                      {hasMediaOverrides ? (
+                        <EditorialImage
+                          src={resolvedSrc}
+                          alt={currentSlide.image.alt}
+                          aspectRatio={mediaCfg?.aspectRatio ?? "auto"}
+                          radius={mediaCfg?.radius ?? "lg"}
+                          hasBorder={mediaCfg?.hasBorder ?? false}
+                          overlayGradient={mediaCfg?.overlayGradient ?? false}
+                          isZoomable={mediaCfg?.isZoomable ?? false}
+                          className="h-full w-full"
+                        />
+                      ) : (
+                        <img
+                          src={resolvedSrc}
+                          alt={currentSlide.image.alt}
+                          width={1440}
+                          height={900}
+                          loading="eager"
+                          fetchPriority="high"
+                          onError={() => setFailed(true)}
+                          className={cn(
+                            "h-full w-full object-cover select-none",
+                            currentSlide.videoSrc ? "object-top grayscale" : ""
+                          )}
+                        />
+                      )}
 
                       {!hasCustomImage && currentSlide.videoSrc && (
                         <>
@@ -635,12 +793,15 @@ export function SplitIntroductionHero({
                             variant="outline"
                             size="sm"
                             radius="full"
+                            data-hb-video-trigger="true"
+                            data-hb-edit={`hero:slides.${safeActiveIdx}.videoUrl`}
+                            data-hb-edit-mode="popover"
                             onClick={(e) => {
                               e.stopPropagation();
                               setIsVideoModalOpen(true);
                             }}
                             aria-label="Watch video story in fullscreen"
-                            className="group/story-btn absolute top-3.5 right-3.5 z-20 flex h-auto cursor-pointer items-center gap-2 border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-all hover:scale-105 hover:bg-black/90 active:scale-95 sm:top-4 sm:right-4 sm:px-3.5"
+                            className="group/story-btn absolute top-3.5 right-3.5 z-20 flex h-auto cursor-pointer items-center gap-2 border-white/20 bg-black/60 px-3 py-1.5 text-xs font-medium text-white shadow-lg backdrop-blur-md transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-[1.03] hover:bg-black/90 active:scale-95 sm:top-4 sm:right-4 sm:px-3.5"
                           >
                             <div className="flex h-4 w-4 items-center justify-center rounded-full bg-white text-zinc-950 transition-transform group-hover/story-btn:scale-110">
                               <Play className="ml-0.5 h-2.5 w-2.5 fill-current" />
@@ -662,48 +823,53 @@ export function SplitIntroductionHero({
             {/* Floating Diverse Cards Protruding on Desktop (Responsive, Positioned Up 50px & Left 15px) */}
             <div className="absolute right-3 bottom-3 left-3 z-20 sm:right-auto sm:bottom-[74px] sm:left-[-33px] sm:w-[260px] sm:max-w-[270px]">
               <motion.div
-                key={activeIdx}
-                initial={{ opacity: 0, y: 12, scale: 0.96 }}
+                key={safeActiveIdx}
+                initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.96 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                 className="rounded-xl border border-zinc-200/90 bg-white/95 p-3.5 shadow-[0_16px_36px_-8px_rgba(0,0,0,0.14)] backdrop-blur-md sm:rounded-2xl sm:p-4 dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[0_20px_48px_-10px_rgba(0,0,0,0.55)]"
               >
-                <SlideCardContent slideIndex={activeIdx} testimonial={currentSlide.testimonial} />
+                <SlideCardContent
+                  slideIndex={safeActiveIdx}
+                  testimonial={currentSlide.testimonial}
+                />
               </motion.div>
             </div>
 
             {/* Shopify-Style Slide Pagination Dots Below Image */}
-            <div
-              className="mt-5 flex items-center justify-center gap-2"
-              role="tablist"
-              aria-label="Slide navigation"
-            >
-              {slides.map((_, idx) => {
-                const isActive = idx === activeIdx;
-                return (
-                  <Button
-                    key={idx}
-                    isIconOnly
-                    size="sm"
-                    variant="plain"
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-label={`Go to slide ${idx + 1}`}
-                    onClick={() => goToSlide(idx)}
-                    className="relative flex h-4 min-w-0 cursor-pointer items-center justify-center p-0 focus:outline-none"
-                  >
-                    <span
-                      className={cn(
-                        "block h-2 rounded-full transition-all duration-300",
-                        isActive
-                          ? "w-7 bg-zinc-900 dark:bg-white"
-                          : "w-2 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600"
-                      )}
-                    />
-                  </Button>
-                );
-              })}
-            </div>
+            {showIndicators && slides.length > 1 && (
+              <div
+                className="mt-5 flex items-center justify-center gap-2"
+                role="tablist"
+                aria-label="Slide navigation"
+              >
+                {slides.map((_, idx) => {
+                  const isActive = idx === safeActiveIdx;
+                  return (
+                    <Button
+                      key={idx}
+                      isIconOnly
+                      size="sm"
+                      variant="plain"
+                      role="tab"
+                      aria-selected={isActive}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      onClick={() => goToSlide(idx)}
+                      className="relative flex h-4 min-w-0 cursor-pointer items-center justify-center p-0 focus:outline-none"
+                    >
+                      <span
+                        className={cn(
+                          "block h-2 rounded-full transition-[width,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)]",
+                          isActive
+                            ? "w-7 bg-zinc-900 dark:bg-white"
+                            : "w-2 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-600"
+                        )}
+                      />
+                    </Button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </Grid>
       </Container>

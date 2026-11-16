@@ -30,6 +30,7 @@ graphify-out/
 .vercel/
 **/.vercel/
 .agents-scratch/
+.playwright-cli/
 APP/
 
 # Testing & Coverage

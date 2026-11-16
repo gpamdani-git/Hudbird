@@ -1,0 +1,79 @@
+/* BlogSection animations, monochrome hover transition & reading progress tokens (/animate) */
+.hb-blog-section {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hb-blog-section .hb-blog-media-img {
+  filter: grayscale(100%) contrast(1.05);
+  transition:
+    transform 450ms var(--ease-out),
+    filter 220ms ease;
+}
+
+.hb-blog-section .hb-blog-media-card:focus-within .hb-blog-media-img,
+.hb-blog-section .hb-blog-media-frame:focus-within .hb-blog-media-img {
+  filter: grayscale(0%) contrast(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-blog-section .hb-blog-media-card:hover .hb-blog-media-img,
+  .hb-blog-section .hb-blog-media-frame:hover .hb-blog-media-img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.02);
+  }
+}
+
+@media (hover: none) {
+  .hb-blog-section .hb-blog-media-card:active .hb-blog-media-img,
+  .hb-blog-section .hb-blog-media-frame:active .hb-blog-media-img {
+    filter: grayscale(0%) contrast(1);
+  }
+}
+
+.hb-blog-card-interactive {
+  transition:
+    transform 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out);
+}
+
+.hb-blog-card-interactive:active {
+  transform: scale(0.99);
+}
+
+.hb-blog-btn-tap {
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out);
+}
+
+.hb-blog-btn-tap:active {
+  transform: scale(0.97);
+}
+
+.hb-blog-progress-fill {
+  transform-origin: left center;
+  transition: transform 80ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-blog-section .hb-blog-media-img {
+    transition: filter 160ms ease !important;
+    transform: none !important;
+  }
+
+  .hb-blog-section .hb-blog-media-card:hover .hb-blog-media-img,
+  .hb-blog-section .hb-blog-media-frame:hover .hb-blog-media-img {
+    transform: none !important;
+  }
+
+  .hb-blog-card-interactive,
+  .hb-blog-btn-tap,
+  .hb-blog-progress-fill {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}

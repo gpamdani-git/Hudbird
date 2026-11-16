@@ -9,8 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/lang-json": "^6.0.2",
+    "@codemirror/lint": "^6.9.8",
     "@hudbird/marketing": "workspace:*",
     "@hudbird/ui": "workspace:*",
+    "@uiw/react-codemirror": "^4.25.12",
     "clsx": "^2.1.1",
     "culori": "^4.0.2",
     "framer-motion": "^13.2.0",
@@ -21,6 +26,7 @@
     "react-hook-form": "^7.90.0",
     "react-router-dom": "^7.18.3",
     "recharts": "^3.10.1",
+    "sucrase": "^3.35.1",
     "tailwind-merge": "^3.6.0",
     "tailwindcss-animate": "^1.0.7"
   },

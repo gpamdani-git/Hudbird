@@ -172,6 +172,7 @@ export function AiChat() {
       <div className="aichat fixed inset-0 overflow-y-auto" data-theme={theme}>
         <AuthScreen
           mode={screen.mode}
+          onSignUp={() => setScreen({ name: "auth", mode: "signup" })}
           onTryFirst={() => setScreen({ name: "app" })}
           onSuccess={(via) => {
             setGuest(false);

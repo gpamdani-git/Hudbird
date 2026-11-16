@@ -13,7 +13,7 @@ export const authTocItems = [
 
 export default function AuthLayoutDoc({ onOpenSidebar }: { onOpenSidebar?: () => void }) {
   const codeString = `// Full source code available in the demo URL.
-// The Auth Layout features a centered card with a clean, distraction-free background.
+// The Auth Layout features a two-column layout with a monochrome room and interactive AI composer.
 import AuthLayoutDemo from "./demos/AuthLayoutDemo";
 
 export default function App() {
@@ -27,7 +27,7 @@ export default function App() {
         category="APPLICATION LAYOUTS"
         title="Auth Layout"
         badge="Layout"
-        description="A clean, distraction-free layout optimized for authentication and onboarding flows with centered card anchoring and tactile focus."
+        description="A responsive two-column login with theme-aware controls, social sign-in, a morphing AI composer, and a fullscreen inspiration film."
       />
 
       {/* Main Preview & Code */}

@@ -33,7 +33,7 @@ export function Nav05CreativeAgency({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   return (
     <div

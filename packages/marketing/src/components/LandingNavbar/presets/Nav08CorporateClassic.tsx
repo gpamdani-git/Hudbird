@@ -33,7 +33,7 @@ export function Nav08CorporateClassic({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   return (
     <div
@@ -65,15 +65,18 @@ export function Nav08CorporateClassic({
 
         {/* Center Corporate Links with Dropdown Menu */}
         <NavbarContent justify="center" className="hidden gap-1.5 sm:gap-2 lg:flex">
-          {links.slice(0, 2).map((link) => (
+          {links.slice(0, 2).map((link, idx) => (
             <NavbarItem key={link.label}>
               <Button
                 href={linkHref(link)}
                 variant="plain"
                 size="sm"
+                data-hb-node="links"
+                data-hb-item={idx}
+                data-hb-edit={`navbar:links.${idx}.label`}
                 className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-tight text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
               >
-                {link.label}
+                <span data-hb-edit-text="">{link.label}</span>
               </Button>
             </NavbarItem>
           ))}
@@ -139,15 +142,18 @@ export function Nav08CorporateClassic({
             </NavbarDropdownMenu>
           </NavbarItem>
 
-          {links.slice(2).map((link) => (
+          {links.slice(2).map((link, idx) => (
             <NavbarItem key={link.label}>
               <Button
                 href={linkHref(link)}
                 variant="plain"
                 size="sm"
+                data-hb-node="links"
+                data-hb-item={2 + idx}
+                data-hb-edit={`navbar:links.${2 + idx}.label`}
                 className="hb-secondary px-3 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
               >
-                {link.label}
+                <span data-hb-edit-text="">{link.label}</span>
               </Button>
             </NavbarItem>
           ))}

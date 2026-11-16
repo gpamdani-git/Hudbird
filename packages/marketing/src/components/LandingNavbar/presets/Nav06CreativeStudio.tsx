@@ -31,7 +31,7 @@ export function Nav06CreativeStudio({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   return (
     <div
@@ -69,15 +69,18 @@ export function Nav06CreativeStudio({
             <LandingActionButton action={content.action} />
           </NavbarItem>
           <div className="mx-1 h-3.5 w-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
-          {links.map((link) => (
+          {links.map((link, idx) => (
             <NavbarItem key={link.label}>
               <Button
                 href={linkHref(link)}
                 variant="plain"
                 size="sm"
+                data-hb-node="links"
+                data-hb-item={idx}
+                data-hb-edit={`navbar:links.${idx}.label`}
                 className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-tight text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
               >
-                {link.label}
+                <span data-hb-edit-text="">{link.label}</span>
               </Button>
             </NavbarItem>
           ))}

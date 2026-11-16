@@ -1,0 +1,44 @@
+/* LegalSection transitions, tap feedback & print rules (/animate) */
+.hb-legal-section {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hb-legal-btn-tap,
+.hb-legal-toc-item {
+  transition:
+    transform 150ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out);
+}
+
+.hb-legal-btn-tap:active,
+.hb-legal-toc-item:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-legal-toc-item:hover {
+    transform: translateX(2px);
+  }
+
+  .hb-legal-clause-card:hover {
+    border-color: var(--color-border);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-legal-btn-tap,
+  .hb-legal-toc-item,
+  .hb-legal-clause-card {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}
+
+@media print {
+  .hb-legal-no-print {
+    display: none !important;
+  }
+}

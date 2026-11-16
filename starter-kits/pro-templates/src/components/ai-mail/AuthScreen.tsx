@@ -1,3 +1,4 @@
+import { LoginPage } from "@hudbird/marketing";
 import React, { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -376,6 +377,20 @@ export function AuthScreen({ onSuccess, isDark, onToggleTheme }: AuthScreenProps
     "Training your AI writing style",
     "Organising smart folders",
   ];
+
+  if (mode === "login") {
+    return (
+      <div className={isDark ? "dark" : ""}>
+        <LoginPage
+          brandName="HudMail"
+          onLogin={() => onSuccess()}
+          onSocialLogin={() => onSuccess()}
+          onSignUp={() => go("signup")}
+          onForgotPassword={() => go("forgot")}
+        />
+      </div>
+    );
+  }
 
   return (
     <div

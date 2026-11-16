@@ -38,7 +38,14 @@ import {
 } from "lucide-react";
 import type { LandingSectionProps, LandingFeature } from "@hudbird/schemas";
 import { HeroImageView } from "../HeroSection";
-import { LandingFrame, LandingCheckItem, LandingDemoNote } from "../LandingShared";
+import {
+  LandingFrame,
+  LandingCheckItem,
+  LandingDemoNote,
+  resolveLandingGridProps,
+  resolveMarketingIcon,
+  useLandingAppearance,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 interface FeatureCardData {
@@ -148,8 +155,31 @@ const featureBullets: Record<number, string[]> = {
   ],
 };
 
-function FeatureCardVisual({ cardIndex }: { cardIndex: number }) {
+function FeatureCardVisual({ cardIndex, imageSrc }: { cardIndex: number; imageSrc?: string }) {
   const [isHovered, setIsHovered] = React.useState(false);
+  const appearance = useLandingAppearance();
+  const illustrationCfg = appearance?.illustration;
+
+  if (
+    cardIndex > 0 &&
+    illustrationCfg?.mode === "custom-image" &&
+    illustrationCfg.customImage?.src
+  ) {
+    return (
+      <div className="relative h-[250px] w-full overflow-hidden rounded-2xl border border-zinc-200/70 bg-zinc-950/[0.04] sm:h-[270px] dark:border-white/10 dark:bg-white/[0.03]">
+        <img
+          src={illustrationCfg.customImage.src}
+          alt={illustrationCfg.customImage.alt || "Feature visual"}
+          className="h-full w-full object-cover"
+        />
+        {illustrationCfg.badgeText && (
+          <div className="absolute top-3 left-3 rounded-lg border border-white/25 bg-black/65 px-2.5 py-1 text-[10px] font-semibold text-white backdrop-blur-md">
+            {illustrationCfg.badgeText}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   if (cardIndex === 0) {
     // 1. Component Intelligence: Monochrome photo with interactive floating token tags (like Image 1 facial tags)
@@ -160,7 +190,10 @@ function FeatureCardVisual({ cardIndex }: { cardIndex: number }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <img
-          src="https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=800"
+          src={
+            imageSrc ||
+            "https://images.pexels.com/photos/5882678/pexels-photo-5882678.jpeg?auto=compress&cs=tinysrgb&w=800"
+          }
           alt="Intelligence preview"
           className="h-full w-full object-cover contrast-125 grayscale transition-transform duration-700 ease-out hover:scale-105"
         />
@@ -440,6 +473,21 @@ function FeatureCardVisual({ cardIndex }: { cardIndex: number }) {
 const splitPhaseLabels = ["SPECIFICATION", "TALENT & CURATION", "EXECUTION & ESCROW"];
 
 function EditorialFoldVisual({ index, item }: { index: number; item: LandingFeature }) {
+  const appearance = useLandingAppearance();
+  const illustrationCfg = appearance?.illustration;
+
+  if (index > 0 && illustrationCfg?.mode === "custom-image" && illustrationCfg.customImage?.src) {
+    return (
+      <div className="relative mx-auto aspect-[16/10] w-full max-w-[460px] overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-950/5 shadow-lg dark:border-white/10">
+        <img
+          src={illustrationCfg.customImage.src}
+          alt={illustrationCfg.customImage.alt || item.title}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
+
   if (index === 0) {
     // 1. Specification & Project Architecture (Phone Mockup + Austin Floating Card from user Image 6)
     return (
@@ -460,8 +508,11 @@ function EditorialFoldVisual({ index, item }: { index: number; item: LandingFeat
         {/* Photo Gallery preview */}
         <div className="relative h-44 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900">
           <img
-            src="https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=800"
-            alt="Project reference photography"
+            src={
+              item.image?.src ||
+              "https://images.pexels.com/photos/5951735/pexels-photo-5951735.jpeg?auto=compress&cs=tinysrgb&w=800"
+            }
+            alt={item.image?.alt || "Project reference photography"}
             className="h-full w-full object-cover contrast-125 grayscale transition-transform duration-500 group-hover/card:scale-105"
           />
           <div className="absolute top-2.5 left-2.5 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-medium backdrop-blur-md">
@@ -661,10 +712,27 @@ function EditorialFoldVisual({ index, item }: { index: number; item: LandingFeat
 export function LandingFeatureShowcase({ variant, content }: LandingSectionProps<"features">) {
   const [selected, setSelected] = React.useState(content.items[0]?.id ?? "");
   const active = content.items.find((item) => item.id === selected) ?? content.items[0];
+  const activeIndex = Math.max(
+    0,
+    content.items.findIndex((item) => item.id === active?.id)
+  );
+  const appearance = useLandingAppearance();
+  const accordionGridProps = resolveLandingGridProps(appearance?.grid, {
+    cols: 2,
+    gap: "lg",
+    align: "start",
+  });
+  const splitGridProps = resolveLandingGridProps(appearance?.grid, {
+    cols: 2,
+    gap: "lg",
+    align: "center",
+  });
 
-  // Prepare cards array: map content items into the 6 cards with fallback data
-  const cards = defaultFeatureCards.map((def, idx) => {
-    const item = content?.items?.[idx];
+  // Prepare cards array: map content items dynamically with default card styling
+  const cardSource =
+    content?.items && content.items.length > 0 ? content.items : defaultFeatureCards;
+  const cards = cardSource.map((item, idx) => {
+    const def = defaultFeatureCards[idx % defaultFeatureCards.length];
     return {
       id: item?.id || def.id,
       icon: def.icon,
@@ -711,9 +779,15 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
       {/* 1. Eyebrow badge + Compact Title with monochrome icon on left (no description) */}
       <div className="mb-10 sm:mb-14">
         {/* Eyebrow badge matching Image 1: YEAH... WE DIDN'T STOP THERE... */}
-        <div className="mb-4 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-zinc-500 uppercase dark:text-zinc-400">
-          <Sparkles className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" />
-          <span>YEAH... WE DIDN&apos;T STOP THERE...</span>
+        <div
+          data-hb-node="badge"
+          data-hb-edit="features:badge"
+          className="mb-4 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-zinc-500 uppercase dark:text-zinc-400"
+        >
+          <Sparkles className="h-3.5 w-3.5 text-zinc-400 dark:text-zinc-500" aria-hidden="true" />
+          <span data-hb-edit-text="">
+            {appearance?.badge?.trim() || "YEAH... WE DIDN'T STOP THERE..."}
+          </span>
         </div>
 
         {/* Small punchy Title with monochrome icon on the left */}
@@ -723,6 +797,8 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
           </div>
           <Heading
             as="h2"
+            data-hb-node="heading"
+            data-hb-edit="features:title"
             className="text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl lg:text-[2.25rem] lg:leading-[1.15] dark:text-white"
           >
             {content.title || "Features that make your workflow sing."}
@@ -774,11 +850,17 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
               className="flex w-max gap-5 will-change-transform sm:gap-6"
             >
               {tickerCards.map((card, idx) => {
-                const Icon = card.icon;
                 const originalIndex = idx % 6;
+                const itemMeta = content.items[originalIndex];
+                const Icon = resolveMarketingIcon(
+                  (itemMeta as { icon?: string } | undefined)?.icon,
+                  card.icon
+                );
                 return (
                   <div
                     key={`${card.id}-${idx}`}
+                    data-hb-node="card"
+                    data-hb-item={originalIndex}
                     className={cn(
                       "group/card relative flex h-[430px] w-[310px] shrink-0 flex-col justify-between overflow-hidden rounded-[24px] border p-5 shadow-sm transition-all duration-300 hover:shadow-xl sm:h-[450px] sm:w-[340px] sm:p-6",
                       card.tint.bgLight,
@@ -790,22 +872,52 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                     {/* Card Top: Icon + Title + Description */}
                     <div>
                       <div className="flex items-center gap-2">
-                        <Icon className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
+                        <span
+                          data-hb-node="badge"
+                          data-hb-item={originalIndex}
+                          data-hb-edit={`features:items.${originalIndex}.icon`}
+                          data-hb-edit-mode="popover"
+                          className="inline-flex cursor-pointer rounded-md p-1 transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+                        >
+                          <Icon className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
+                        </span>
                         <Heading
                           as="h3"
+                          data-hb-node="heading"
+                          data-hb-item={originalIndex}
+                          data-hb-edit={`features:items.${originalIndex}.title`}
                           className="text-sm font-semibold tracking-tight text-zinc-950 sm:text-base dark:text-white"
                         >
-                          {card.title}
+                          {itemMeta?.title || card.title}
                         </Heading>
                       </div>
-                      <Text className="mt-2 line-clamp-2 text-xs leading-relaxed font-normal text-zinc-500 dark:text-zinc-400">
-                        {card.description}
+                      <Text
+                        data-hb-node="text"
+                        data-hb-item={originalIndex}
+                        data-hb-edit={`features:items.${originalIndex}.description`}
+                        className="mt-2 line-clamp-2 text-xs leading-relaxed font-normal text-zinc-500 dark:text-zinc-400"
+                      >
+                        {itemMeta?.description || card.description}
                       </Text>
                     </div>
 
                     {/* Card Visual / Illustration with smooth hover looping */}
-                    <div className="mt-4">
-                      <FeatureCardVisual cardIndex={originalIndex} />
+                    <div
+                      data-hb-node="media"
+                      data-hb-item={originalIndex}
+                      data-hb-edit={
+                        originalIndex === 0
+                          ? `features:items.${originalIndex}.image.src`
+                          : "features:illustration"
+                      }
+                      data-hb-visual={originalIndex === 0 ? undefined : "code-illustration"}
+                      data-hb-edit-mode="popover"
+                      className="mt-4 cursor-pointer"
+                    >
+                      <FeatureCardVisual
+                        cardIndex={originalIndex}
+                        imageSrc={itemMeta?.image?.src}
+                      />
                     </div>
                   </div>
                 );
@@ -822,7 +934,7 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
       ) : variant === "accordion" ? (
         /* Expandable Preview Variant - Sticky Scrollytelling Stage with Live Interactive Progress */
         <div>
-          <Grid cols={2} gap="xl" align="start">
+          <Grid {...accordionGridProps}>
             {/* Left: Scrollytelling Accordion List */}
             <div className="rounded-[28px] border border-zinc-200/80 bg-zinc-50/60 p-4 sm:p-6 dark:border-white/10 dark:bg-white/[0.02]">
               <div className="mb-4 flex items-center justify-between border-b border-zinc-200/60 pb-3 text-xs text-zinc-500 dark:border-white/10 dark:text-zinc-400">
@@ -841,12 +953,24 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
               >
                 {content.items.map((item, index) => {
                   const isItemActive = item.id === active.id;
-                  const bullets = featureBullets[index % 3] ?? featureBullets[0];
+                  const bullets =
+                    item.bullets && item.bullets.length > 0
+                      ? item.bullets
+                      : (featureBullets[index % 3] ?? featureBullets[0]);
                   return (
                     <AccordionItem
                       key={item.id}
                       itemKey={item.id}
-                      title={item.title}
+                      title={
+                        <span
+                          data-hb-node="heading"
+                          data-hb-item={index}
+                          data-hb-edit={`features:items.${index}.title`}
+                          data-hb-edit-text=""
+                        >
+                          {item.title}
+                        </span>
+                      }
                       classNames={{
                         base: cn(
                           "rounded-2xl border transition-all duration-300",
@@ -870,7 +994,12 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                           </span>
                         </div>
 
-                        <Text className="text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300">
+                        <Text
+                          data-hb-node="text"
+                          data-hb-item={index}
+                          data-hb-edit={`features:items.${index}.description`}
+                          className="text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-300"
+                        >
                           {item.description}
                         </Text>
 
@@ -880,8 +1009,16 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                         </div>
 
                         <ul className="hb-landing-list space-y-2 pt-1">
-                          {bullets.map((bullet) => (
-                            <LandingCheckItem key={bullet}>{bullet}</LandingCheckItem>
+                          {bullets.map((bullet, bulletIdx) => (
+                            <LandingCheckItem key={`${bullet}-${bulletIdx}`}>
+                              <span
+                                data-hb-node="items"
+                                data-hb-item={index}
+                                data-hb-edit={`features:items.${index}.bullets.${bulletIdx}`}
+                              >
+                                {bullet}
+                              </span>
+                            </LandingCheckItem>
                           ))}
                         </ul>
                       </div>
@@ -913,7 +1050,11 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                 {/* Hero image view (strictly accessible role="img" with alt={active.image?.alt ?? active.title}) */}
                 <div
                   aria-live="polite"
-                  className="relative overflow-hidden rounded-2xl border border-zinc-200/80 shadow-sm dark:border-white/10"
+                  data-hb-node="media"
+                  data-hb-item={activeIndex}
+                  data-hb-edit={`features:items.${activeIndex}.image.src`}
+                  data-hb-edit-mode="popover"
+                  className="relative cursor-pointer overflow-hidden rounded-2xl border border-zinc-200/80 shadow-sm dark:border-white/10"
                 >
                   <HeroImageView image={active.image} priority={false} />
 
@@ -958,11 +1099,19 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
         /* Split Editorial Rows - Sticky 3D Paper Fold Stacking */
         <div className="relative space-y-8 pt-4 pb-16 sm:space-y-12">
           {content.items.map((item, index) => {
-            const Icon = featureIcons[index % featureIcons.length];
-            const bullets = featureBullets[index % 3] ?? featureBullets[0];
+            const Icon = resolveMarketingIcon(
+              (item as { icon?: string }).icon,
+              featureIcons[index % featureIcons.length]
+            );
+            const bullets =
+              item.bullets && item.bullets.length > 0
+                ? item.bullets
+                : (featureBullets[index % 3] ?? featureBullets[0]);
             return (
               <div
                 key={item.id}
+                data-hb-node="card"
+                data-hb-item={index}
                 className={cn(
                   "hb-paper-fold-card sticky rounded-[32px] border border-zinc-200/90 bg-white/95 p-6 backdrop-blur-2xl transition-all duration-300 sm:p-10 dark:border-white/10 dark:bg-zinc-950/95",
                   "shadow-[0_-12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_-16px_50px_rgba(0,0,0,0.45)]",
@@ -994,38 +1143,79 @@ export function LandingFeatureShowcase({ variant, content }: LandingSectionProps
                   </div>
                 </div>
 
-                <Grid cols={2} gap="xl" align="center">
+                <Grid {...splitGridProps}>
                   <div className={index % 2 ? "md:order-2" : undefined}>
-                    <IconBox
-                      size="md"
-                      variant="double-ring"
-                      icon={Icon}
-                      showGlow={false}
-                      className="mb-5"
-                      aria-hidden="true"
-                    />
+                    <div
+                      data-hb-node="badge"
+                      data-hb-item={index}
+                      data-hb-edit={`features:items.${index}.icon`}
+                      data-hb-edit-mode="popover"
+                      className="mb-5 inline-flex cursor-pointer rounded-xl"
+                    >
+                      <IconBox
+                        size="md"
+                        variant="double-ring"
+                        icon={Icon}
+                        showGlow={false}
+                        aria-hidden="true"
+                      />
+                    </div>
                     <Heading
                       as="h3"
+                      data-hb-node="heading"
+                      data-hb-item={index}
+                      data-hb-edit={`features:items.${index}.title`}
                       className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl lg:text-3xl dark:text-white"
                     >
                       {item.title}
                     </Heading>
-                    <Text className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300">
+                    <Text
+                      data-hb-node="text"
+                      data-hb-item={index}
+                      data-hb-edit={`features:items.${index}.description`}
+                      className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-300"
+                    >
                       {item.description}
                     </Text>
                     <ul className="hb-landing-list mt-6 space-y-2.5">
-                      {bullets.map((bullet) => (
-                        <LandingCheckItem key={bullet}>{bullet}</LandingCheckItem>
+                      {bullets.map((bullet, bulletIdx) => (
+                        <LandingCheckItem key={`${bullet}-${bulletIdx}`}>
+                          <span
+                            data-hb-node="items"
+                            data-hb-item={index}
+                            data-hb-edit={`features:items.${index}.bullets.${bulletIdx}`}
+                          >
+                            {bullet}
+                          </span>
+                        </LandingCheckItem>
                       ))}
                     </ul>
                     <div className="mt-7 flex items-center gap-3">
-                      <Button size="sm" variant="bordered" className="gap-2 text-xs">
-                        <span>Explore Phase 0{index + 1}</span>
+                      <Button
+                        size="sm"
+                        variant="bordered"
+                        data-hb-node="primary-button"
+                        data-hb-item={index}
+                        data-hb-edit={`features:items.${index}.actionLabel`}
+                        className="gap-2 text-xs"
+                      >
+                        <span data-hb-edit-text="">
+                          {item.actionLabel || `Explore Phase 0${index + 1}`}
+                        </span>
                         <ArrowRight className="h-3 w-3" />
                       </Button>
                     </div>
                   </div>
-                  <div className={index % 2 ? "md:order-1" : undefined}>
+                  <div
+                    data-hb-node="media"
+                    data-hb-item={index}
+                    data-hb-edit={
+                      index === 0 ? `features:items.${index}.image.src` : "features:illustration"
+                    }
+                    data-hb-visual={index === 0 ? undefined : "code-illustration"}
+                    data-hb-edit-mode="popover"
+                    className={cn("cursor-pointer", index % 2 ? "md:order-1" : undefined)}
+                  >
                     <EditorialFoldVisual index={index} item={item} />
                   </div>
                 </Grid>

@@ -25,6 +25,10 @@ export function NavbarBrandMark({
 }: NavbarBrandMarkProps) {
   const [imgError, setImgError] = React.useState(false);
 
+  React.useEffect(() => {
+    setImgError(false);
+  }, [brand.logo?.src, brand.logo?.darkSrc]);
+
   if (brandContent) {
     return (
       <a
@@ -38,13 +42,50 @@ export function NavbarBrandMark({
 
   const displayName = brand.name === "Forma" ? "Hudbird UI" : brand.name;
   const isHudbird = displayName === "Hudbird UI";
+  const hasCustomLogo = Boolean(brand.logo?.src && !imgError);
 
   return (
     <a
       href={href}
+      data-hb-node="brand"
       className={`group flex items-center gap-2.5 font-bold tracking-tight text-zinc-950 transition-all hover:opacity-90 dark:text-white ${className}`}
     >
-      {isHudbird && !imgError ? (
+      {hasCustomLogo && brand.logo ? (
+        <>
+          <img
+            src={brand.logo.src}
+            alt={brand.logo.alt || displayName}
+            onError={() => setImgError(true)}
+            className={
+              brand.logo.darkSrc
+                ? "h-7 w-auto max-w-[140px] object-contain dark:hidden"
+                : "h-7 w-auto max-w-[140px] object-contain"
+            }
+          />
+          {brand.logo.darkSrc && (
+            <img
+              src={brand.logo.darkSrc}
+              alt={brand.logo.alt || displayName}
+              onError={() => setImgError(true)}
+              className="hidden h-7 w-auto max-w-[140px] object-contain dark:block"
+            />
+          )}
+          <div className="flex items-center gap-1.5">
+            <span
+              data-hb-node="brand"
+              data-hb-edit="navbar:brandName"
+              className="text-foreground text-base font-bold tracking-tight"
+            >
+              {displayName}
+            </span>
+            {tag && (
+              <span className="rounded bg-zinc-100 px-1.5 py-0.5 text-[10px] font-semibold tracking-wider text-zinc-600 uppercase dark:bg-white/10 dark:text-zinc-300">
+                {tag}
+              </span>
+            )}
+          </div>
+        </>
+      ) : isHudbird && !imgError ? (
         <div className="flex items-center gap-2">
           <img
             src="/assets/logo/hudbird-logo-black.png"
@@ -77,7 +118,11 @@ export function NavbarBrandMark({
           </div>
 
           <div className="flex items-center gap-1.5">
-            <span className="text-foreground text-base font-bold tracking-tight">
+            <span
+              data-hb-node="brand"
+              data-hb-edit="navbar:brandName"
+              className="text-foreground text-base font-bold tracking-tight"
+            >
               {displayName}
             </span>
             {tag && (

@@ -3,6 +3,7 @@ import * as React from "react";
 import {
   Button,
   Container,
+  EditorialImage,
   Grid,
   GridItem,
   Heading,
@@ -12,7 +13,12 @@ import {
 } from "@hudbird/ui";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
-import { useLandingMotion } from "../LandingShared";
+import {
+  renderInlineFormattedText,
+  useLandingAppearance,
+  useLandingMotion,
+  useLandingNavigation,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 import "./hero-split-product.css";
 
@@ -24,7 +30,9 @@ export interface HeroSplitProductProps extends Omit<React.HTMLAttributes<HTMLEle
 
 // Only navigable destinations become links; incomplete editor data stays non-interactive.
 function hasDestination(value?: string) {
-  return Boolean(value && /^(https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim()));
+  return Boolean(
+    value && /^(website-page:|https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim())
+  );
 }
 
 function ProductImage({ image, src }: { image: HeroImage; src: string }) {
@@ -32,6 +40,16 @@ function ProductImage({ image, src }: { image: HeroImage; src: string }) {
   const [decoded, setDecoded] = React.useState(false);
   const mounted = React.useRef(true);
   const motion = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const mediaCfg = appearance?.media;
+  const hasMediaOverrides = Boolean(
+    mediaCfg &&
+    (mediaCfg.aspectRatio ||
+      mediaCfg.radius ||
+      mediaCfg.hasBorder !== undefined ||
+      mediaCfg.overlayGradient !== undefined ||
+      mediaCfg.isZoomable !== undefined)
+  );
   React.useEffect(() => {
     mounted.current = true;
     return () => {
@@ -53,6 +71,17 @@ function ProductImage({ image, src }: { image: HeroImage; src: string }) {
           <Text role="status" className="px-5 text-center">
             Product preview unavailable. {image.alt}
           </Text>
+        ) : hasMediaOverrides ? (
+          <EditorialImage
+            src={src}
+            alt={image.alt}
+            aspectRatio={mediaCfg?.aspectRatio ?? "auto"}
+            radius={mediaCfg?.radius ?? "lg"}
+            hasBorder={mediaCfg?.hasBorder ?? false}
+            overlayGradient={mediaCfg?.overlayGradient ?? false}
+            isZoomable={mediaCfg?.isZoomable ?? false}
+            className="h-full w-full"
+          />
         ) : (
           <img
             src={src}
@@ -92,6 +121,10 @@ export function HeroSplitProduct({
 }: HeroSplitProductProps) {
   const mode = useBrandMode();
   const motion = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const { hrefFor } = useLandingNavigation();
+  const headingCfg = appearance?.heading;
+  const textCfg = appearance?.text;
   const image = config.image;
   const src = mode === "dark" ? image?.darkSrc || image?.src : image?.src;
   const hasMedia = Boolean(src?.trim());
@@ -121,27 +154,59 @@ export function HeroSplitProduct({
                 : "mx-auto w-full max-w-[720px] text-center"
             )}
           >
-            <Heading as={headingLevel} className="hb-split-product-title">
-              {content.title}
+            <Heading
+              as={headingLevel}
+              size={headingCfg?.size}
+              tracking={headingCfg?.tracking}
+              color={headingCfg?.color}
+              withDivider={headingCfg?.withDivider}
+              data-hb-node="heading"
+              data-hb-edit="hero:title"
+              className={cn(!headingCfg?.size && "hb-split-product-title")}
+            >
+              {renderInlineFormattedText(content.title)}
             </Heading>
-            <Text className={cn("hb-split-product-description", !hasMedia && "mx-auto")}>
+            <Text
+              variant={textCfg?.variant}
+              weight={textCfg?.weight}
+              align={textCfg?.align}
+              data-hb-node="text"
+              data-hb-edit="hero:description"
+              className={cn(
+                "hb-split-product-description",
+                !hasMedia && !textCfg?.align && "mx-auto"
+              )}
+            >
               {content.description}
             </Text>
             {actions.some((action) => action?.label.trim() && hasDestination(action.href)) && (
               <div className={cn("hb-split-product-actions", !hasMedia && "justify-center")}>
-                {actions.map((action, index) =>
-                  action?.label.trim() && hasDestination(action.href) ? (
+                {actions.map((action, index) => {
+                  if (!action?.label.trim() || !hasDestination(action.href)) return null;
+                  const btnCfg = index === 0 ? appearance?.button : appearance?.secondaryButton;
+                  return (
                     <Button
                       key={index}
-                      href={action.href.trim()}
-                      size="lg"
-                      variant={index === 0 ? "solid" : "outline"}
-                      className={cn("hb-radius", index === 0 ? "hb-primary" : "hb-secondary")}
+                      href={hrefFor(action.href.trim())}
+                      size={btnCfg?.size ?? "lg"}
+                      variant={btnCfg?.variant ?? (index === 0 ? "solid" : "outline")}
+                      color={btnCfg?.color}
+                      radius={btnCfg?.radius}
+                      data-hb-node={index === 0 ? "primary-button" : "secondary-button"}
+                      data-hb-edit={
+                        index === 0 ? "hero:primaryAction.label" : "hero:secondaryAction.label"
+                      }
+                      className={cn(
+                        !btnCfg?.radius && "hb-radius",
+                        !btnCfg?.variant &&
+                          !btnCfg?.color &&
+                          (index === 0 ? "hb-primary" : "hb-secondary")
+                      )}
                     >
-                      {action.label}
+                      <span data-hb-edit-text="">{action.label}</span>
                     </Button>
-                  ) : null
-                )}
+                  );
+                })}
               </div>
             )}
             {proof?.label.trim() && /^https?:\/\//i.test(proof.sourceUrl.trim()) && (
@@ -155,7 +220,12 @@ export function HeroSplitProduct({
             )}
           </GridItem>
           {hasMedia && image && src && (
-            <GridItem className="min-w-0 lg:col-span-7">
+            <GridItem
+              className="min-w-0 cursor-pointer lg:col-span-7"
+              data-hb-node="media"
+              data-hb-edit="hero:media.src"
+              data-hb-edit-mode="popover"
+            >
               <ProductImage key={src} image={image} src={src} />
             </GridItem>
           )}

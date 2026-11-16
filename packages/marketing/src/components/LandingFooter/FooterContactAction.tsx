@@ -15,7 +15,7 @@ export interface FooterContactActionProps {
 }
 
 function isNavigable(href?: string) {
-  return Boolean(href && /^(mailto:|tel:|\/|#[^\s]+|https?:\/\/)/i.test(href.trim()));
+  return Boolean(href && /^(website-page:|mailto:|tel:|\/|#[^\s]+|https?:\/\/)/i.test(href.trim()));
 }
 
 export function FooterContactAction({
@@ -60,15 +60,18 @@ export function FooterContactAction({
 
   // Filter sitemap groups (render all groups without truncation)
   const groups = content.groups
-    .map((group) => ({
+    .map((group, groupIndex) => ({
       ...group,
-      links: group.links.filter((link) => "href" in link || visible.includes(link.target)),
+      groupIndex,
+      links: group.links
+        .map((link, linkIndex) => ({ link, linkIndex }))
+        .filter(({ link }) => "href" in link || visible.includes(link.target)),
     }))
     .filter((group) => group.links.length);
 
-  const linkHref = (link: (typeof groups)[number]["links"][number]) =>
+  const linkHref = (link: (typeof groups)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : hrefFor(`#${link.target}`);
-  const linkKey = (link: (typeof groups)[number]["links"][number]) =>
+  const linkKey = (link: (typeof groups)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : link.target;
 
   const legalLinks = content.legalLinks ?? [
@@ -95,25 +98,38 @@ export function FooterContactAction({
               {/* Left Column (7fr): Heading, description & primary CTA */}
               <div className="flex flex-col items-start justify-between gap-6">
                 <div>
-                  <Heading as="h2" className="hb-footer-contact-heading">
+                  <Heading
+                    as="h2"
+                    data-hb-node="heading"
+                    data-hb-edit="footer:heading"
+                    className="hb-footer-contact-heading"
+                  >
                     {headingText}
                   </Heading>
-                  <Text className="hb-footer-contact-desc">{descriptionText}</Text>
+                  <Text
+                    data-hb-node="text"
+                    data-hb-edit="footer:description"
+                    className="hb-footer-contact-desc"
+                  >
+                    {descriptionText}
+                  </Text>
                 </div>
 
                 {effectivePrimaryAction && isNavigable(effectivePrimaryAction.href) && (
                   <Button
-                    href={effectivePrimaryAction.href}
+                    href={hrefFor(effectivePrimaryAction.href)}
                     target={effectivePrimaryAction.href.startsWith("http") ? "_blank" : undefined}
                     rel={
                       effectivePrimaryAction.href.startsWith("http")
                         ? "noopener noreferrer"
                         : undefined
                     }
+                    data-hb-node="primary-button"
+                    data-hb-edit="footer:contactAction.label"
                     className="hb-primary hb-radius hb-footer-contact-cta group/cta"
                     size="lg"
                   >
-                    <span>{effectivePrimaryAction.label}</span>
+                    <span data-hb-edit-text="">{effectivePrimaryAction.label}</span>
                     {effectivePrimaryAction.href.startsWith("http") && (
                       <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
                     )}
@@ -145,10 +161,15 @@ export function FooterContactAction({
                             href={channel.href}
                             target={isExternal ? "_blank" : undefined}
                             rel={isExternal ? "noopener noreferrer" : undefined}
+                            data-hb-node="links"
+                            data-hb-item={i}
+                            data-hb-edit={`footer:contactLinks.${i}.label`}
                             className="hb-contact-channel-link group/channel"
                           >
                             <Icon className="hb-channel-icon" aria-hidden="true" />
-                            <span className="truncate">{channel.label}</span>
+                            <span data-hb-edit-text="" className="truncate">
+                              {channel.label}
+                            </span>
                             {isExternal && (
                               <ArrowUpRight className="h-3.5 w-3.5 opacity-60 transition-transform group-hover/channel:translate-x-0.5 group-hover/channel:-translate-y-0.5" />
                             )}
@@ -165,7 +186,9 @@ export function FooterContactAction({
                         className="text-muted-foreground h-3.5 w-3.5 flex-shrink-0"
                         aria-hidden="true"
                       />
-                      <span>{content.officeHours}</span>
+                      <span data-hb-node="text" data-hb-edit="footer:officeHours">
+                        {content.officeHours}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -179,21 +202,45 @@ export function FooterContactAction({
           <div className="hb-contact-action-nav-row grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Brand Signature Column */}
             <div className="flex flex-col gap-3 pr-4 lg:col-span-4 xl:col-span-4">
-              <div className="flex items-center gap-2.5">
-                {brand.logo && (
-                  <img
-                    src={brand.logo.src}
-                    alt={brand.logo.alt}
-                    width={22}
-                    height={22}
-                    className="h-5.5 w-5.5 object-contain"
-                  />
+              <div
+                className="flex items-center gap-2.5"
+                data-hb-node="brand"
+                data-hb-edit="footer:brand"
+                data-hb-edit-mode="popover"
+              >
+                {brand.logo?.src && (
+                  <>
+                    <img
+                      src={brand.logo.src}
+                      alt={brand.logo.alt}
+                      width={22}
+                      height={22}
+                      className={
+                        brand.logo.darkSrc
+                          ? "h-5.5 w-auto max-w-[120px] object-contain dark:hidden"
+                          : "h-5.5 w-auto max-w-[120px] object-contain"
+                      }
+                    />
+                    {brand.logo.darkSrc && (
+                      <img
+                        src={brand.logo.darkSrc}
+                        alt={brand.logo.alt}
+                        width={22}
+                        height={22}
+                        className="hidden h-5.5 w-auto max-w-[120px] object-contain dark:block"
+                      />
+                    )}
+                  </>
                 )}
                 <Text className="text-foreground text-sm font-semibold tracking-tight">
                   {brand.name}
                 </Text>
               </div>
-              <Text className="text-muted-foreground max-w-[32ch] text-xs leading-relaxed">
+              <Text
+                data-hb-node="text"
+                data-hb-edit="footer:description"
+                className="text-muted-foreground max-w-[32ch] text-xs leading-relaxed"
+              >
                 {content.description}
               </Text>
             </div>
@@ -202,22 +249,30 @@ export function FooterContactAction({
             <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-5 xl:col-span-8">
               {groups.map((group) => (
                 <nav
-                  key={group.title}
+                  key={`${group.groupIndex}-${group.title}`}
                   aria-label={group.title}
+                  data-hb-node="links"
+                  data-hb-item={group.groupIndex}
                   className="flex flex-col items-start"
                 >
                   <Heading
                     as="h3"
                     size="h6"
+                    data-hb-node="heading"
+                    data-hb-item={group.groupIndex}
+                    data-hb-edit={`footer:columns.${group.groupIndex}.title`}
                     className="text-muted-foreground mb-3.5 text-xs font-semibold tracking-wider uppercase"
                   >
                     {group.title}
                   </Heading>
                   <div className="flex w-full flex-col gap-2.5">
-                    {group.links.map((link) => (
+                    {group.links.map(({ link, linkIndex }) => (
                       <a
-                        key={linkKey(link)}
+                        key={`${linkIndex}-${linkKey(link)}`}
                         href={linkHref(link)}
+                        data-hb-node="links"
+                        data-hb-item={group.groupIndex}
+                        data-hb-edit={`footer:columns.${group.groupIndex}.links.${linkIndex}.label`}
                         className="hb-footer-nav-link text-muted-foreground hover:text-foreground inline-flex items-center py-0.5 text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
                       >
                         {link.label}
@@ -233,16 +288,21 @@ export function FooterContactAction({
         {/* Bottom Strip: Legal policies, copyright */}
         <div className="border-border text-muted-foreground mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6 text-xs">
           <div className="flex flex-wrap items-center gap-4">
-            {legalLinks.map((link) => (
+            {legalLinks.map((link, idx) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={link.href + link.label}
+                href={hrefFor(link.href)}
+                data-hb-node="links"
+                data-hb-item={idx}
+                data-hb-edit={`footer:legalLinks.${idx}.label`}
                 className="hb-footer-nav-link text-muted-foreground hover:text-foreground text-xs decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
               >
                 {link.label}
               </a>
             ))}
-            <span>{content.note}</span>
+            <span data-hb-node="text" data-hb-edit="footer:note">
+              {content.note}
+            </span>
           </div>
 
           <div className="flex items-center gap-2 font-mono">

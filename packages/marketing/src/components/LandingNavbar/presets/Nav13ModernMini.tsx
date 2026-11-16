@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, X, User, ArrowRight } from "lucide-react";
 import type {
@@ -11,6 +12,8 @@ import type {
 import { NavbarBrandMark } from "../NavbarBrandMark";
 import { useNavbarScroll } from "../useNavbarScroll";
 import { useLandingNavigation } from "../../LandingShared";
+import { brandStyle } from "../../HeroSection/brand";
+import { cn } from "../../../utils/cn";
 
 export interface Nav13ModernMiniProps {
   brand: BrandProfile;
@@ -36,6 +39,29 @@ export function Nav13ModernMini({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [isDark, setIsDark] = React.useState(false);
   const navbarRef = React.useRef<HTMLElement>(null);
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Close menu on Escape key press
+  React.useEffect(() => {
+    if (!isMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+    const doc =
+      navbarRef.current?.ownerDocument ?? (typeof document !== "undefined" ? document : null);
+    doc?.addEventListener("keydown", handleKeyDown);
+    return () => doc?.removeEventListener("keydown", handleKeyDown);
+  }, [isMenuOpen]);
+
+  const portalTarget =
+    navbarRef.current?.ownerDocument?.body ??
+    (typeof document !== "undefined" ? document.body : null);
 
   const { scrollPercent } = useNavbarScroll({
     enabled: true,
@@ -45,29 +71,42 @@ export function Nav13ModernMini({
 
   // Detect and sync dark mode state
   React.useEffect(() => {
+    const getDoc = () =>
+      navbarRef.current?.ownerDocument ?? (typeof document !== "undefined" ? document : null);
     const checkDark = () => {
-      if (typeof document !== "undefined") {
-        setIsDark(document.documentElement.classList.contains("dark"));
+      const doc = getDoc();
+      if (doc?.documentElement) {
+        setIsDark(doc.documentElement.classList.contains("dark"));
       }
     };
     checkDark();
+    const doc = getDoc();
+    if (!doc?.documentElement) return;
     const observer = new MutationObserver(checkDark);
-    if (typeof document !== "undefined") {
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
-    }
+    observer.observe(doc.documentElement, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
 
   const toggleTheme = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (typeof document === "undefined") return;
-    const nextDark = !document.documentElement.classList.contains("dark");
+    const doc =
+      navbarRef.current?.ownerDocument ?? (typeof document !== "undefined" ? document : null);
+    if (!doc?.documentElement) return;
+    const nextDark = !doc.documentElement.classList.contains("dark");
     if (nextDark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      doc.documentElement.classList.add("dark");
+      try {
+        localStorage.setItem("theme", "dark");
+      } catch {
+        /* ignore localStorage restrictions */
+      }
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      doc.documentElement.classList.remove("dark");
+      try {
+        localStorage.setItem("theme", "light");
+      } catch {
+        /* ignore localStorage restrictions */
+      }
     }
     setIsDark(nextDark);
   };
@@ -128,12 +167,161 @@ export function Nav13ModernMini({
     }
   };
 
+  const menuDrawerContent = (
+    <AnimatePresence>
+      {isMenuOpen && (
+        <div
+          className={cn("hb-modern-mini-portal pointer-events-auto", isDark && "dark")}
+          style={brand ? brandStyle(brand) : undefined}
+        >
+          {/* Backdrop overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMenuOpen(false)}
+            className="fixed inset-0 z-[9998] bg-black/40 backdrop-blur-xs"
+            aria-hidden="true"
+          />
+
+          {/* Expanded Floating Menu Card */}
+          <motion.div
+            initial={{ opacity: 0, y: -12, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 0, scale: 1 }}
+            transition={{ type: "spring", damping: 28, stiffness: 350 }}
+            className="fixed inset-x-3.5 top-3 z-[9999] mx-auto max-h-[calc(100vh-24px)] max-w-[360px] overflow-y-auto rounded-3xl border border-black/10 bg-white p-5 text-zinc-950 shadow-2xl sm:top-4 sm:max-w-[380px] sm:p-6 dark:border-white/10 dark:bg-[#18181b] dark:text-white"
+          >
+            {/* Card Header: Close, Theme, Percentage */}
+            <div className="flex items-center justify-between pb-4 sm:pb-5">
+              <button
+                type="button"
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center gap-1.5 text-xs font-semibold tracking-tight transition-opacity hover:opacity-75 focus:outline-hidden"
+                aria-label="Close menu"
+              >
+                <X className="h-4 w-4 shrink-0" />
+                <span>Close</span>
+              </button>
+
+              <div className="flex shrink-0 items-center gap-2">
+                <button
+                  type="button"
+                  onClick={toggleTheme}
+                  className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/20"
+                  aria-label="Toggle theme"
+                >
+                  {isDark ? (
+                    <Sun className="h-3.5 w-3.5 text-white" />
+                  ) : (
+                    <Moon className="h-3.5 w-3.5 text-zinc-900" />
+                  )}
+                </button>
+                <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 font-mono text-xs font-semibold text-zinc-700 dark:bg-white/15 dark:text-white/90">
+                  {scrollPercent}%
+                </span>
+              </div>
+            </div>
+
+            {/* Section: Menu (Primary Large Typography Links) */}
+            <div className="space-y-1">
+              <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+                Menu
+              </span>
+              <ul className="space-y-0.5 pt-1">
+                {menuLinks.map((link, idx) => (
+                  <li key={link.label}>
+                    <button
+                      type="button"
+                      data-hb-node="links"
+                      data-hb-item={idx}
+                      data-hb-edit={`navbar:links.${idx}.label`}
+                      onClick={() =>
+                        handleLinkClick(
+                          "target" in link ? link.target : undefined,
+                          "href" in link ? link.href : undefined
+                        )
+                      }
+                      className="block w-full py-1 text-left text-2xl font-bold tracking-tight text-zinc-900 transition-all hover:translate-x-1 hover:text-zinc-600 focus:outline-hidden dark:text-white dark:hover:text-zinc-300"
+                    >
+                      <span data-hb-edit-text="">{link.label}</span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Divider Line */}
+            <div className="my-5 border-t border-zinc-200/80 dark:border-white/10" />
+
+            {/* Section: Other */}
+            <div className="space-y-1">
+              <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+                Other
+              </span>
+              <ul className="space-y-1 pt-1">
+                {otherLinks.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Section: Social media */}
+            <div className="mt-5 space-y-1">
+              <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
+                Social media
+              </span>
+              <ul className="space-y-1 pt-1">
+                {socialLinks.map((item) => (
+                  <li key={item.label}>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mobile CTA inside menu drawer */}
+            <div className="mt-6 sm:hidden">
+              <a
+                href={content.action?.href ?? "#features"}
+                onClick={() => setIsMenuOpen(false)}
+                className="group hb-primary hb-cta relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-3 text-center text-sm font-semibold text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-sm transition-all hover:opacity-95 active:scale-95"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <span>{content.action?.label || "See the demo"}</span>
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <nav
       ref={navbarRef}
       data-navbar-preset="nav-13"
+      data-navbar-open={isMenuOpen ? "true" : undefined}
       aria-label="Modern Mini Navigation"
-      className={`sticky top-0 z-40 w-full transition-colors duration-300 ${className ?? ""}`}
+      className={`sticky top-0 ${isMenuOpen ? "z-[100]" : "z-50"} w-full transition-colors duration-300 ${className ?? ""}`}
       style={{
         backgroundColor:
           customSettings?.surface === "solid"
@@ -211,147 +399,6 @@ export function Nav13ModernMini({
                 {scrollPercent}%
               </span>
             </motion.div>
-
-            {/* 3. MORPHING DROPDOWN MENU CARD (Image 3 Reference) */}
-            <AnimatePresence>
-              {isMenuOpen && (
-                <>
-                  {/* Backdrop overlay */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs"
-                    aria-hidden="true"
-                  />
-
-                  {/* Expanded Floating Menu Card */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -12, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -12, scale: 0.95 }}
-                    transition={{ type: "spring", damping: 28, stiffness: 350 }}
-                    className="fixed inset-x-3.5 top-3 z-50 mx-auto max-h-[calc(100vh-24px)] max-w-[360px] overflow-y-auto rounded-3xl border border-black/10 bg-white p-5 text-zinc-950 shadow-2xl sm:top-4 sm:max-w-[380px] sm:p-6 dark:border-white/10 dark:bg-[#18181b] dark:text-white"
-                  >
-                    {/* Card Header: Close, Theme, Percentage */}
-                    <div className="flex items-center justify-between pb-4 sm:pb-5">
-                      <button
-                        type="button"
-                        onClick={() => setIsMenuOpen(false)}
-                        className="flex items-center gap-1.5 text-xs font-semibold tracking-tight transition-opacity hover:opacity-75 focus:outline-hidden"
-                        aria-label="Close menu"
-                      >
-                        <X className="h-4 w-4 shrink-0" />
-                        <span>Close</span>
-                      </button>
-
-                      <div className="flex shrink-0 items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={toggleTheme}
-                          className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 transition-colors hover:bg-zinc-200 dark:bg-white/10 dark:hover:bg-white/20"
-                          aria-label="Toggle theme"
-                        >
-                          {isDark ? (
-                            <Sun className="h-3.5 w-3.5 text-white" />
-                          ) : (
-                            <Moon className="h-3.5 w-3.5 text-zinc-900" />
-                          )}
-                        </button>
-                        <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 font-mono text-xs font-semibold text-zinc-700 dark:bg-white/15 dark:text-white/90">
-                          {scrollPercent}%
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Section: Menu (Primary Large Typography Links) */}
-                    <div className="space-y-1">
-                      <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                        Menu
-                      </span>
-                      <ul className="space-y-0.5 pt-1">
-                        {menuLinks.map((link) => (
-                          <li key={link.label}>
-                            <button
-                              type="button"
-                              onClick={() =>
-                                handleLinkClick(
-                                  "target" in link ? link.target : undefined,
-                                  "href" in link ? link.href : undefined
-                                )
-                              }
-                              className="block w-full py-1 text-left text-2xl font-bold tracking-tight text-zinc-900 transition-all hover:translate-x-1 hover:text-zinc-600 focus:outline-hidden dark:text-white dark:hover:text-zinc-300"
-                            >
-                              {link.label}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Divider Line */}
-                    <div className="my-5 border-t border-zinc-200/80 dark:border-white/10" />
-
-                    {/* Section: Other */}
-                    <div className="space-y-1">
-                      <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                        Other
-                      </span>
-                      <ul className="space-y-1 pt-1">
-                        {otherLinks.map((item) => (
-                          <li key={item.label}>
-                            <a
-                              href={item.href}
-                              onClick={() => setIsMenuOpen(false)}
-                              className="block text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                            >
-                              {item.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Section: Social media */}
-                    <div className="mt-5 space-y-1">
-                      <span className="block text-[11px] font-semibold tracking-wider text-zinc-400 uppercase dark:text-zinc-500">
-                        Social media
-                      </span>
-                      <ul className="space-y-1 pt-1">
-                        {socialLinks.map((item) => (
-                          <li key={item.label}>
-                            <a
-                              href={item.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="block text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
-                            >
-                              {item.label}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Mobile CTA inside menu drawer */}
-                    <div className="mt-6 sm:hidden">
-                      <a
-                        href={content.action?.href ?? "#features"}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="group hb-primary hb-cta relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-3 text-center text-sm font-semibold text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-sm transition-all hover:opacity-95 active:scale-95"
-                      >
-                        <span className="relative z-10 flex items-center gap-2">
-                          <span>{content.action?.label || "See the demo"}</span>
-                          <ArrowRight className="h-4 w-4" />
-                        </span>
-                        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
-                      </a>
-                    </div>
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
           </div>
         </div>
 
@@ -373,10 +420,12 @@ export function Nav13ModernMini({
               {/* Main Pill CTA Button */}
               <a
                 href={content.action?.href ?? "#features"}
+                data-hb-node="primary-button"
+                data-hb-edit="navbar:action.label"
                 className="group hb-primary hb-cta relative inline-flex items-center justify-center overflow-hidden rounded-full bg-[var(--hb-accent,var(--primary,#2457d6))] px-5 py-2.5 text-sm font-semibold tracking-tight text-[var(--hb-on-accent,var(--primary-foreground,#ffffff))] shadow-xs transition-all hover:opacity-95 hover:shadow-md active:scale-95 sm:px-6 sm:py-2.5"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  <span>{content.action?.label || "See the demo"}</span>
+                  <span data-hb-edit-text="">{content.action?.label || "See the demo"}</span>
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </span>
                 <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />
@@ -385,6 +434,9 @@ export function Nav13ModernMini({
           )}
         </div>
       </div>
+
+      {/* 3. MORPHING DROPDOWN MENU CARD PORTAL (Rendered at top-level body to eliminate stacking context traps) */}
+      {mounted && portalTarget ? createPortal(menuDrawerContent, portalTarget) : menuDrawerContent}
     </nav>
   );
 }

@@ -51,14 +51,18 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       isInvalid = false,
       disabled = false,
       isDisabled: propIsDisabled,
+      id,
       ...props
     },
     ref
   ) => {
+    const generatedId = React.useId();
+    const resolvedId = id ?? generatedId;
     const resolvedDisabled = disabled || Boolean(propIsDisabled);
 
     const textareaElement = (
       <textarea
+        id={resolvedId}
         className={cn(
           textareaVariants({ variant, radius }),
           isInvalid && "!border-rose-600 focus:!border-rose-600 focus:!ring-rose-600/20",
@@ -80,6 +84,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       <div className="flex w-full flex-col text-left">
         {label && (
           <label
+            htmlFor={resolvedId}
             className={cn(
               "mb-1.5 text-xs font-semibold tracking-tight text-zinc-800 transition-colors select-none dark:text-zinc-200",
               isInvalid ? "text-rose-600 dark:text-rose-400" : "text-foreground",

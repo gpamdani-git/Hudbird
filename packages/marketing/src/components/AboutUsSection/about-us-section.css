@@ -1,0 +1,372 @@
+/* AboutUsSection animations & interaction tokens (/animate) */
+.hb-about-us {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hb-about-action {
+  transition:
+    transform 160ms var(--ease-out),
+    opacity 160ms var(--ease-out),
+    color 160ms var(--ease-out);
+}
+
+.hb-about-action:active {
+  transform: scale(0.97);
+}
+
+.hb-about-action-icon {
+  transition: transform 200ms var(--ease-out);
+}
+
+.hb-about-media-card {
+  transition:
+    transform 240ms var(--ease-out),
+    box-shadow 240ms var(--ease-out);
+}
+
+.hb-about-media-img {
+  transition: transform 500ms var(--ease-out);
+}
+
+.hb-about-media-scrim {
+  transition: opacity 220ms var(--ease-out);
+}
+
+.hb-about-play-btn {
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out);
+}
+
+.hb-about-play-btn:active {
+  transform: scale(0.95);
+}
+
+.hb-about-dialog-close {
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 180ms var(--ease-out);
+}
+
+.hb-about-dialog-close:active {
+  transform: scale(0.95);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-about-action:hover .hb-about-action-icon {
+    transform: translateY(2px);
+  }
+
+  .hb-about-media-card:hover .hb-about-media-img {
+    transform: scale(1.02);
+  }
+
+  .hb-about-media-card:hover .hb-about-media-scrim {
+    opacity: 1;
+  }
+
+  .hb-about-media-card:hover .hb-about-play-btn {
+    transform: scale(1.06);
+    background-color: rgba(255, 255, 255, 0.42);
+    border-color: rgba(255, 255, 255, 1);
+  }
+
+  .hb-about-dialog-close:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* OurTeamSection photo hover */
+.hb-team-photo {
+  transition: transform 520ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-team-media:hover .hb-team-photo {
+    transform: scale(1.015);
+  }
+}
+
+/* MeetOurExpertSection hover-revealed social overlay (/animate) */
+.hb-expert-photo {
+  transition: transform 420ms var(--ease-out);
+}
+
+.hb-expert-scrim {
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.hb-expert-socials {
+  pointer-events: none;
+}
+
+.hb-expert-social-btn {
+  opacity: 0;
+  transform: translateY(8px) scale(0.92);
+  transition:
+    opacity 160ms var(--ease-out),
+    transform 170ms var(--ease-out),
+    background-color 150ms var(--ease-out),
+    box-shadow 150ms var(--ease-out);
+  transition-delay: 0ms;
+}
+
+.hb-expert-card:focus-within .hb-expert-scrim {
+  opacity: 1;
+}
+
+.hb-expert-card:focus-within .hb-expert-socials {
+  pointer-events: auto;
+}
+
+.hb-expert-card:focus-within .hb-expert-social-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition-duration: 240ms;
+}
+
+.hb-expert-card:focus-within .hb-expert-social-btn:nth-child(2) {
+  transition-delay: 38ms;
+}
+
+.hb-expert-card:focus-within .hb-expert-social-btn:nth-child(3) {
+  transition-delay: 76ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-expert-card:hover .hb-expert-photo {
+    transform: scale(1.035);
+  }
+
+  .hb-expert-card:hover .hb-expert-scrim {
+    opacity: 1;
+  }
+
+  .hb-expert-card:hover .hb-expert-socials {
+    pointer-events: auto;
+  }
+
+  .hb-expert-card:hover .hb-expert-social-btn {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition-duration: 240ms;
+  }
+
+  .hb-expert-card:hover .hb-expert-social-btn:nth-child(2) {
+    transition-delay: 38ms;
+  }
+
+  .hb-expert-card:hover .hb-expert-social-btn:nth-child(3) {
+    transition-delay: 76ms;
+  }
+
+  .hb-expert-card .hb-expert-social-btn:hover {
+    transform: translateY(-2px) scale(1.06);
+    background-color: #ffffff;
+    transition-delay: 0ms;
+  }
+}
+
+.hb-expert-card .hb-expert-social-btn:active {
+  transform: scale(0.94);
+  transition-duration: 120ms;
+  transition-delay: 0ms;
+}
+
+/* ValuesSection bento card hover reveal (/animate) */
+.hb-value-photo,
+.hb-cta-photo {
+  transition: transform 440ms var(--ease-out);
+}
+
+.hb-about-us .hb-value-card .hb-value-title {
+  color: #ffffff;
+}
+
+.hb-about-us .hb-value-card .hb-value-desc {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.hb-value-rest-scrim {
+  background: linear-gradient(180deg, rgba(16, 17, 20, 0) 48%, rgba(16, 17, 20, 0.55) 100%);
+  transition: opacity 220ms var(--ease-out);
+}
+
+.hb-value-hover-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 17, 20, 0) 6%,
+    rgba(16, 17, 20, 0.62) 52%,
+    rgba(16, 17, 20, 0.94) 100%
+  );
+  opacity: 0;
+  transition: opacity 240ms var(--ease-out);
+}
+
+.hb-value-desc-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 250ms var(--ease-out),
+    opacity 190ms var(--ease-out);
+}
+
+.hb-value-desc-inner {
+  overflow: hidden;
+}
+
+.hb-value-desc {
+  transform: translateY(6px);
+  transition: transform 250ms var(--ease-out);
+}
+
+.hb-value-chevron {
+  transition:
+    transform 240ms var(--ease-out),
+    background-color 200ms var(--ease-out),
+    border-color 200ms var(--ease-out);
+}
+
+.hb-value-card:focus-within .hb-value-hover-gradient {
+  opacity: 1;
+}
+
+.hb-value-card:focus-within .hb-value-desc-wrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.hb-value-card:focus-within .hb-value-desc {
+  transform: translateY(0);
+}
+
+.hb-value-card:focus-within .hb-value-chevron {
+  transform: rotate(180deg);
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-value-card:hover .hb-value-photo,
+  .hb-cta-media:hover .hb-cta-photo {
+    transform: scale(1.035);
+  }
+
+  .hb-value-card:hover .hb-value-hover-gradient {
+    opacity: 1;
+  }
+
+  .hb-value-card:hover .hb-value-desc-wrap {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .hb-value-card:hover .hb-value-desc {
+    transform: translateY(0);
+    transition-delay: 25ms;
+  }
+
+  .hb-value-card:hover .hb-value-chevron {
+    transform: rotate(180deg);
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+}
+
+.hb-cta-primary-btn,
+.hb-cta-video-btn {
+  transition:
+    transform 160ms var(--ease-out),
+    background-color 180ms var(--ease-out),
+    opacity 180ms var(--ease-out);
+}
+
+.hb-cta-primary-btn:active,
+.hb-cta-video-btn:active {
+  transform: scale(0.97);
+}
+
+.hb-cta-primary-arrow {
+  transition: transform 200ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-cta-primary-btn:hover .hb-cta-primary-arrow {
+    transform: translateX(3px);
+  }
+
+  .hb-cta-video-btn:hover .hb-cta-video-circle {
+    transform: scale(1.06);
+  }
+}
+
+.hb-cta-video-circle {
+  transition:
+    transform 200ms var(--ease-out),
+    border-color 180ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-about-action,
+  .hb-about-action-icon,
+  .hb-about-media-card,
+  .hb-about-media-img,
+  .hb-about-media-scrim,
+  .hb-about-play-btn,
+  .hb-about-dialog-close,
+  .hb-team-photo,
+  .hb-expert-photo,
+  .hb-expert-scrim,
+  .hb-expert-social-btn,
+  .hb-value-photo,
+  .hb-cta-photo,
+  .hb-value-rest-scrim,
+  .hb-value-hover-gradient,
+  .hb-value-desc-wrap,
+  .hb-value-desc,
+  .hb-value-chevron,
+  .hb-cta-primary-btn,
+  .hb-cta-video-btn,
+  .hb-cta-primary-arrow,
+  .hb-cta-video-circle {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+  }
+}
+
+.hb-about-us .hb-about-media-img,
+.hb-about-us .hb-team-photo,
+.hb-about-us .hb-expert-photo,
+.hb-about-us .hb-value-photo {
+  filter: grayscale(100%) contrast(1.05);
+  transition:
+    transform 450ms var(--ease-out),
+    filter 220ms ease;
+}
+
+.hb-about-us .hb-expert-card:focus-within .hb-expert-photo,
+.hb-about-us .hb-value-card:focus-within .hb-value-photo {
+  filter: grayscale(0%) contrast(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-about-us .hb-about-media-card:hover .hb-about-media-img,
+  .hb-about-us .hb-team-media:hover .hb-team-photo,
+  .hb-about-us .hb-expert-card:hover .hb-expert-photo,
+  .hb-about-us .hb-value-card:hover .hb-value-photo {
+    filter: grayscale(0%) contrast(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-about-us .hb-about-media-img,
+  .hb-about-us .hb-team-photo,
+  .hb-about-us .hb-expert-photo,
+  .hb-about-us .hb-value-photo {
+    transition: filter 160ms ease;
+  }
+}

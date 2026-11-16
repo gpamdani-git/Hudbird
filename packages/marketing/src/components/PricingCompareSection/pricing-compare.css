@@ -1,0 +1,61 @@
+/* PricingCompareSection animations & interaction tokens (/animate) */
+.hb-pricing-compare {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hb-compare-cta {
+  transition:
+    transform 150ms var(--ease-out),
+    background-color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+}
+
+.hb-compare-cta:active {
+  transform: scale(0.97);
+}
+
+.hb-compare-cta-arrow {
+  transition: transform 180ms var(--ease-out);
+}
+
+.hb-compare-row {
+  transition: background-color 150ms ease;
+}
+
+.hb-compare-toggle-btn {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 140ms var(--ease-out);
+}
+
+.hb-compare-toggle-btn:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hb-compare-row:hover {
+    background-color: rgba(24, 24, 27, 0.03);
+  }
+
+  [data-brand-mode="dark"] .hb-compare-row:hover,
+  .dark .hb-compare-row:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+
+  .hb-compare-cta:hover .hb-compare-cta-arrow {
+    transform: translate(2px, -2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-compare-cta,
+  .hb-compare-cta-arrow,
+  .hb-compare-row,
+  .hb-compare-toggle-btn {
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}

@@ -29,8 +29,17 @@ export function SectionThumbnailCard({
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      data-section-card={selection.type}
       onClick={onSelect}
-      className={`group relative cursor-pointer overflow-hidden rounded-2xl border p-3 transition-all duration-200 ${
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+      className={`group relative cursor-pointer overflow-hidden rounded-2xl border p-3 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none ${
         isSelected
           ? "border-zinc-900 bg-zinc-50/90 shadow-md ring-2 ring-zinc-900/10 dark:border-white/90 dark:bg-[#1a1b1f] dark:ring-white/10"
           : selection.enabled
@@ -38,16 +47,11 @@ export function SectionThumbnailCard({
             : "border-dashed border-zinc-200 bg-zinc-50/50 opacity-40 dark:border-zinc-800 dark:bg-[#141416]/50"
       }`}
     >
-      {/* Top Bar: Title, Variant Badge & Actions */}
+      {/* Top Bar: Clean Section Title & Actions */}
       <div className="flex items-center justify-between pb-1">
-        <div className="flex min-w-0 items-center gap-1.5">
-          <span className="truncate text-xs font-bold text-zinc-900 capitalize dark:text-zinc-100">
-            {selection.type.replace(/-/g, " ")}
-          </span>
-          <span className="truncate rounded-full bg-zinc-100 px-2 py-0.5 font-mono text-[9px] font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
-            {selection.variant}
-          </span>
-        </div>
+        <span className="truncate text-xs font-semibold text-zinc-900 capitalize dark:text-zinc-100">
+          {selection.type.replace(/-/g, " ")}
+        </span>
 
         {/* Quick Icon Actions */}
         <div className="flex shrink-0 items-center gap-1" onClick={(e) => e.stopPropagation()}>

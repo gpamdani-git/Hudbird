@@ -31,7 +31,7 @@ export function Nav07Portfolio({
 
   const links = content.links.filter((link) => "href" in link || visible.includes(link.target));
   const linkHref = (link: (typeof links)[number]) =>
-    "href" in link ? link.href : hrefFor(`#${link.target}`);
+    link.href !== undefined ? link.href : hrefFor(`#${link.target}`);
 
   const half = Math.ceil(links.length / 2);
   const leftLinks = links.slice(0, half);
@@ -59,15 +59,18 @@ export function Nav07Portfolio({
         {/* Left Links */}
         <NavbarContent justify="start" className="flex-1">
           <div className="hidden items-center gap-1.5 sm:gap-2 lg:flex">
-            {leftLinks.map((link) => (
+            {leftLinks.map((link, idx) => (
               <NavbarItem key={link.label}>
                 <Button
                   href={linkHref(link)}
                   variant="plain"
                   size="sm"
+                  data-hb-node="links"
+                  data-hb-item={idx}
+                  data-hb-edit={`navbar:links.${idx}.label`}
                   className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-tight text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                 >
-                  {link.label}
+                  <span data-hb-edit-text="">{link.label}</span>
                 </Button>
               </NavbarItem>
             ))}
@@ -87,15 +90,18 @@ export function Nav07Portfolio({
         {/* Right Links & Action */}
         <NavbarContent justify="end" className="flex-1 gap-2.5">
           <div className="hidden items-center gap-1.5 sm:gap-2 lg:flex">
-            {rightLinks.map((link) => (
+            {rightLinks.map((link, idx) => (
               <NavbarItem key={link.label}>
                 <Button
                   href={linkHref(link)}
                   variant="plain"
                   size="sm"
+                  data-hb-node="links"
+                  data-hb-item={half + idx}
+                  data-hb-edit={`navbar:links.${half + idx}.label`}
                   className="hb-secondary rounded-lg px-3.5 py-2 !text-sm font-medium tracking-tight text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-white"
                 >
-                  {link.label}
+                  <span data-hb-edit-text="">{link.label}</span>
                 </Button>
               </NavbarItem>
             ))}

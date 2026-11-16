@@ -122,6 +122,10 @@ export interface SwitchProps
    * Description text rendered under the label.
    */
   description?: React.ReactNode;
+  /**
+   * Disables user interaction with the switch.
+   */
+  isDisabled?: boolean;
 }
 
 const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
@@ -133,6 +137,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
       checked,
       defaultChecked,
       disabled = false,
+      isDisabled: propIsDisabled,
       onChange,
       label,
       description,
@@ -142,6 +147,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     },
     ref
   ) => {
+    const resolvedDisabled = Boolean(disabled || propIsDisabled);
     // Unique ID fallback for label association
     const generatedId = React.useId();
     const id = customId || generatedId;
@@ -152,7 +158,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     const isCurrentChecked = isControlled ? checked : internalChecked;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (disabled) return;
+      if (resolvedDisabled) return;
       if (!isControlled) {
         setInternalChecked(e.target.checked);
       }
@@ -167,7 +173,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
         className={cn(
           "group relative inline-flex gap-3 transition-opacity duration-150",
           description ? "items-start" : "items-center",
-          disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+          resolvedDisabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
           className
         )}
       >
@@ -179,7 +185,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
           role="switch"
           aria-checked={isCurrentChecked}
           checked={isCurrentChecked}
-          disabled={disabled}
+          disabled={resolvedDisabled}
           onChange={handleChange}
           className="peer sr-only"
           {...props}
@@ -192,7 +198,7 @@ const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
               size,
               color,
               isChecked: isCurrentChecked,
-              disabled,
+              disabled: resolvedDisabled,
             }),
             description ? "mt-0.5" : "",
             "peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 dark:peer-focus-visible:ring-offset-[#161618]",

@@ -23,6 +23,7 @@ describe("SaaS landing collection", () => {
       "split-product",
       "center-canvas",
       "editorial-photo",
+      "remit-grid",
       "slideshow",
       "video",
     ]);
@@ -30,6 +31,7 @@ describe("SaaS landing collection", () => {
       "split-product",
       "center-canvas",
       "editorial-photo",
+      "remit-grid",
       "slideshow",
       "video",
     ] as const) {

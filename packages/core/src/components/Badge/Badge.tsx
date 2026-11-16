@@ -21,7 +21,7 @@ const badgeVariants = cva(
         outline: "bg-transparent border",
         flat: "font-medium",
         modern:
-          "rounded-lg bg-white text-zinc-700 ring-1 ring-inset ring-zinc-200/90 shadow-xs font-medium dark:bg-[#161618] dark:text-zinc-200 dark:ring-white/15",
+          "rounded-full bg-white text-zinc-700 ring-1 ring-inset ring-zinc-200 font-medium tracking-[-0.01em] dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/15",
         default: "font-semibold shadow-xs",
       },
       color: {

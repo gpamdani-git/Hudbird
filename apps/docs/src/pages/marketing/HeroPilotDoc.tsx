@@ -42,6 +42,8 @@ export const heroLabels: Record<HeroSectionConfig["variant"], string> = {
   "center-canvas": "Hero Center Video",
   "center-video": "Hero Center Video",
   "editorial-photo": "Hero Editorial Photo",
+  "remit-grid": "Hero Remit Grid",
+  "fintech-remit": "Hero Remit Grid",
   centered: "Centered image",
   split: "Split image",
   slideshow: "Slideshow",

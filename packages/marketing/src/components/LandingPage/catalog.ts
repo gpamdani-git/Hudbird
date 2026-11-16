@@ -174,6 +174,12 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         description: "Full photo layout with solid surface copy panel and optional credit link.",
       },
       {
+        id: "remit-grid",
+        name: "Hero Remit Grid · New",
+        description:
+          "Fintech 2 col → 2 col → 3 col → 3 col layout with live dashboard, morphing arrows, and Pexels hover reveal.",
+      },
+      {
         id: "slideshow",
         name: "Slideshow (additional)",
         description: "A manual image sequence from the existing hero kit.",
@@ -478,6 +484,11 @@ export const landingSectionRegistry: LandingSectionDefinition[] = [
         id: "banner",
         name: "High-contrast banner card",
         description: "A bordered full-width callout banner with inline benefit pills.",
+      },
+      {
+        id: "editorial-showcase",
+        name: "Editorial Showcase",
+        description: "Pair a joyful portrait, video trigger, and rating social proof.",
       },
     ],
   },

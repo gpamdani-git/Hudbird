@@ -1,10 +1,16 @@
 "use client";
 import * as React from "react";
-import { Button, Container, Heading, Section, Text } from "@hudbird/ui";
+import { Button, Container, EditorialImage, Heading, Section, Text } from "@hudbird/ui";
 import { Play } from "lucide-react";
 import type { HeroContent, HeroImage, HeroSectionConfig } from "@hudbird/schemas";
 import { useBrandMode } from "./BrandScope";
-import { useLandingMotion, FullscreenVideoPlayer } from "../LandingShared";
+import {
+  renderInlineFormattedText,
+  useLandingAppearance,
+  useLandingMotion,
+  useLandingNavigation,
+  FullscreenVideoPlayer,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 import "./hero-center-canvas.css";
 
@@ -22,7 +28,9 @@ export type HeroCenterVideoProps = HeroCenterCanvasProps;
 
 // Only navigable destinations become links; incomplete editor data stays non-interactive.
 function hasDestination(value?: string) {
-  return Boolean(value && /^(https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim()));
+  return Boolean(
+    value && /^(website-page:|https?:\/\/|mailto:|tel:|\/|#[^\s]+)/i.test(value.trim())
+  );
 }
 
 function ProductCanvas({
@@ -36,13 +44,32 @@ function ProductCanvas({
 }) {
   const mode = useBrandMode();
   const motion = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const mediaCfg = appearance?.media;
+  const illustrationCfg = appearance?.illustration;
+  const effectiveImage =
+    illustrationCfg?.mode === "custom-image" && illustrationCfg.customImage?.src
+      ? illustrationCfg.customImage
+      : image;
+  const hasMediaOverrides = Boolean(
+    mediaCfg &&
+    (mediaCfg.aspectRatio ||
+      mediaCfg.radius ||
+      mediaCfg.hasBorder !== undefined ||
+      mediaCfg.overlayGradient !== undefined ||
+      mediaCfg.isZoomable !== undefined)
+  );
   const [failed, setFailed] = React.useState(false);
   const [captionVisible, setCaptionVisible] = React.useState(motion.reveal === "off");
   const mediaRef = React.useRef<HTMLDivElement>(null);
 
   // Active theme assets
-  const desktopSrc = mode === "dark" ? image.darkSrc || image.src : image.src;
-  const mobileSrc = mode === "dark" ? image.darkMobileSrc || image.mobileSrc : image.mobileSrc;
+  const desktopSrc =
+    mode === "dark" ? effectiveImage.darkSrc || effectiveImage.src : effectiveImage.src;
+  const mobileSrc =
+    mode === "dark"
+      ? effectiveImage.darkMobileSrc || effectiveImage.mobileSrc
+      : effectiveImage.mobileSrc;
 
   // R01: Caption reveal trigger after 30% of media enters viewport
   React.useEffect(() => {
@@ -75,6 +102,11 @@ function ProductCanvas({
     <figure className="hb-center-canvas-figure">
       <div
         ref={mediaRef}
+        data-hb-node="media"
+        data-hb-edit={hasVideo ? "hero:video.src" : "hero:illustration"}
+        data-hb-visual="code-illustration"
+        data-hb-edit-mode="popover"
+        data-hb-video-trigger={hasVideo ? "true" : undefined}
         className={cn("hb-center-canvas-chassis group/canvas", hasVideo && "cursor-pointer")}
         onClick={hasVideo ? onPlayVideo : undefined}
         role={hasVideo ? "button" : undefined}
@@ -96,6 +128,17 @@ function ProductCanvas({
             <Text role="status" className="px-5 text-center">
               Product preview unavailable. {image.alt}
             </Text>
+          ) : hasMediaOverrides ? (
+            <EditorialImage
+              src={desktopSrc}
+              alt={image.alt}
+              aspectRatio={mediaCfg?.aspectRatio ?? "auto"}
+              radius={mediaCfg?.radius ?? "lg"}
+              hasBorder={mediaCfg?.hasBorder ?? false}
+              overlayGradient={mediaCfg?.overlayGradient ?? false}
+              isZoomable={mediaCfg?.isZoomable ?? false}
+              className="h-full w-full"
+            />
           ) : mobileSrc ? (
             <picture>
               <source media="(max-width: 639px)" srcSet={mobileSrc} />
@@ -122,6 +165,29 @@ function ProductCanvas({
               className="h-full w-full object-cover"
             />
           )}
+
+          {illustrationCfg?.showFloatingCallout &&
+            (illustrationCfg.badgeText ||
+              illustrationCfg.titleText ||
+              illustrationCfg.metricValue) && (
+              <div className="pointer-events-none absolute bottom-4 left-4 z-10 max-w-[260px] rounded-xl border border-white/15 bg-zinc-950/80 px-3.5 py-2.5 text-left text-white shadow-lg backdrop-blur-md">
+                {illustrationCfg.badgeText && (
+                  <div className="text-[10px] font-semibold tracking-wider text-indigo-300 uppercase">
+                    {illustrationCfg.badgeText}
+                  </div>
+                )}
+                {illustrationCfg.titleText && (
+                  <div className="mt-0.5 text-xs font-semibold text-white">
+                    {illustrationCfg.titleText}
+                  </div>
+                )}
+                {illustrationCfg.metricValue && (
+                  <div className="mt-0.5 font-mono text-sm font-bold text-emerald-400">
+                    {illustrationCfg.metricValue}
+                  </div>
+                )}
+              </div>
+            )}
 
           {hasVideo && !failed && (
             <div className="hb-center-canvas-play-wrapper">
@@ -162,6 +228,12 @@ export function HeroCenterCanvas({
   ...props
 }: HeroCenterCanvasProps) {
   const motion = useLandingMotion();
+  const appearance = useLandingAppearance();
+  const { hrefFor } = useLandingNavigation();
+  const headingCfg = appearance?.heading;
+  const textCfg = appearance?.text;
+  const primaryCfg = appearance?.button;
+  const secondaryCfg = appearance?.secondaryButton;
   const image = config.image;
   const hasMedia = Boolean(image?.src?.trim());
 
@@ -186,32 +258,66 @@ export function HeroCenterCanvas({
     >
       <Container size="xl" gutter="md" className="hb-center-canvas-container">
         <div className="hb-center-canvas-header">
-          <Heading as={headingLevel} className="hb-center-canvas-title">
-            {content.title}
+          <Heading
+            as={headingLevel}
+            size={headingCfg?.size}
+            tracking={headingCfg?.tracking}
+            color={headingCfg?.color}
+            withDivider={headingCfg?.withDivider}
+            data-hb-node="heading"
+            data-hb-edit="hero:title"
+            className={cn(!headingCfg?.size && "hb-center-canvas-title")}
+          >
+            {renderInlineFormattedText(content.title)}
           </Heading>
           {content.description && (
-            <Text className="hb-center-canvas-description">{content.description}</Text>
+            <Text
+              variant={textCfg?.variant}
+              weight={textCfg?.weight}
+              align={textCfg?.align}
+              data-hb-node="text"
+              data-hb-edit="hero:description"
+              className="hb-center-canvas-description"
+            >
+              {content.description}
+            </Text>
           )}
 
           {(hasPrimary || hasSecondary) && (
             <div className="hb-center-canvas-actions">
               {hasPrimary && (
                 <Button
-                  href={content.primaryAction.href}
-                  className="hb-primary hb-radius hb-center-canvas-cta"
-                  size="lg"
+                  href={hrefFor(content.primaryAction.href)}
+                  data-hb-node="primary-button"
+                  data-hb-edit="hero:primaryAction.label"
+                  variant={primaryCfg?.variant}
+                  color={primaryCfg?.color}
+                  radius={primaryCfg?.radius}
+                  size={primaryCfg?.size ?? "lg"}
+                  className={cn(
+                    "hb-center-canvas-cta",
+                    !primaryCfg?.variant && !primaryCfg?.color && "hb-primary",
+                    !primaryCfg?.radius && "hb-radius"
+                  )}
                 >
-                  {content.primaryAction.label}
+                  <span data-hb-edit-text="">{content.primaryAction.label}</span>
                 </Button>
               )}
               {hasSecondary && content.secondaryAction && (
                 <Button
-                  href={content.secondaryAction.href}
-                  variant="outline"
-                  className="hb-secondary hb-radius"
-                  size="lg"
+                  href={hrefFor(content.secondaryAction.href)}
+                  variant={secondaryCfg?.variant ?? "outline"}
+                  color={secondaryCfg?.color}
+                  radius={secondaryCfg?.radius}
+                  size={secondaryCfg?.size ?? "lg"}
+                  data-hb-node="secondary-button"
+                  data-hb-edit="hero:secondaryAction.label"
+                  className={cn(
+                    !secondaryCfg?.variant && !secondaryCfg?.color && "hb-secondary",
+                    !secondaryCfg?.radius && "hb-radius"
+                  )}
                 >
-                  {content.secondaryAction.label}
+                  <span data-hb-edit-text="">{content.secondaryAction.label}</span>
                 </Button>
               )}
             </div>
@@ -219,11 +325,13 @@ export function HeroCenterCanvas({
         </div>
 
         {hasMedia && image && (
-          <ProductCanvas
-            image={image}
-            hasVideo={hasVideo}
-            onPlayVideo={() => setIsVideoModalOpen(true)}
-          />
+          <div data-hb-node="media">
+            <ProductCanvas
+              image={image}
+              hasVideo={hasVideo}
+              onPlayVideo={() => setIsVideoModalOpen(true)}
+            />
+          </div>
         )}
       </Container>
 

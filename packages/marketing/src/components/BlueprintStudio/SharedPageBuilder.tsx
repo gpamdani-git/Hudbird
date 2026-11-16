@@ -1,3 +1,4 @@
+import { LoginPage } from "../LoginPage";
 import React, { useState } from "react";
 import type { BrandProfile, SharedBlockSelection, SharedPageCategorySlug } from "@hudbird/schemas";
 import {
@@ -616,6 +617,22 @@ export const SharedPageRenderer: React.FC<SharedPageRendererProps> = ({
     (b) => b.type === "trust-aside" && b.enabled && b.variant !== "none"
   );
   const supportFooter = blocks.find((b) => b.type === "support-footer" && b.enabled);
+
+  if (category === "login" && (!coreFlow || coreFlow.variant === "login-form")) {
+    return (
+      <div data-hudbird-domain="shared-pages" data-shared-category="login">
+        <LoginPage
+          brandName={brand.name}
+          variant={trustAside ? "split" : "centered"}
+          showBrand={Boolean(brandBar)}
+          showForm={Boolean(coreFlow)}
+          showFooter={Boolean(supportFooter)}
+          showSocial={Boolean(socialAuth && socialAuth.variant !== "hidden")}
+          socialMode={socialAuth?.variant === "sso-enterprise" ? "sso" : "oauth"}
+        />
+      </div>
+    );
+  }
 
   return (
     <div

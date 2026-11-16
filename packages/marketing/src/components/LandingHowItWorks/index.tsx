@@ -3,7 +3,13 @@ import * as React from "react";
 import { Button, Card, Grid, Heading, Text } from "@hudbird/ui";
 import type { LandingSectionProps } from "@hudbird/schemas";
 import { HeroImageView } from "../HeroSection";
-import { LandingFrame, useLandingNavigation } from "../LandingShared";
+import {
+  LandingFrame,
+  resolveLandingGridProps,
+  resolveMarketingIcon,
+  useLandingAppearance,
+  useLandingNavigation,
+} from "../LandingShared";
 import { cn } from "../../utils/cn";
 
 // ============================================================================
@@ -77,6 +83,46 @@ const step3DeployTargets: SubStepItem[] = [
     description: "Self-host anywhere with standalone micro-frontend or monorepo packages.",
   },
 ];
+
+type RawSubStep =
+  | {
+      id?: string | null;
+      label?: string | null;
+      badge?: string | null;
+      description?: string | null;
+    }
+  | null
+  | undefined;
+
+function resolveCardSubSteps(
+  rawSubSteps: RawSubStep[] | undefined,
+  defaults: SubStepItem[]
+): SubStepItem[] {
+  if (!Array.isArray(rawSubSteps) || rawSubSteps.length === 0) {
+    return defaults;
+  }
+  const resolved = rawSubSteps
+    .map((entry, idx): SubStepItem | null => {
+      const fallback = defaults[idx];
+      if (!entry || typeof entry !== "object") {
+        return fallback ?? null;
+      }
+      const label = typeof entry.label === "string" ? entry.label.trim() : "";
+      const description =
+        (typeof entry.description === "string" ? entry.description.trim() : "") ||
+        (typeof entry.badge === "string" ? entry.badge.trim() : "") ||
+        fallback?.description ||
+        label;
+      return {
+        id: (typeof entry.id === "string" && entry.id.trim()) || fallback?.id || `sub-${idx}`,
+        title: label || fallback?.title || `Step ${idx + 1}`,
+        description,
+      };
+    })
+    .filter((item): item is SubStepItem => item !== null);
+
+  return resolved.length > 0 ? resolved : defaults;
+}
 
 // ============================================================================
 // NATIVE STICKY CARD STACK HOOK (Zero External Libraries, 60fps rAF)
@@ -869,7 +915,7 @@ function Interactive3DShapeStage({
 // ============================================================================
 
 interface StepCardProps {
-  index: 0 | 1 | 2;
+  index: number;
   numberLabel: string;
   title: string;
   description: string;
@@ -904,11 +950,15 @@ function StepStackCard({
   onMouseLeave,
 }: StepCardProps) {
   const { hrefFor } = useLandingNavigation();
+  const appearance = useLandingAppearance();
+  const illustrationCfg = appearance?.illustration;
   const stickyTopPx = 88 + index * 24;
 
   return (
     <div
       ref={cardRef}
+      data-hb-node="card"
+      data-hb-item={index}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       style={{
@@ -935,12 +985,20 @@ function StepStackCard({
 
             <Heading
               as="h3"
+              data-hb-node="heading"
+              data-hb-item={index}
+              data-hb-edit={`how-it-works:items.${index}.title`}
               className="text-2xl leading-[1.12] font-bold tracking-tight text-zinc-950 sm:text-3xl lg:text-[40px] dark:text-white"
             >
               {title}
             </Heading>
 
-            <Text className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
+            <Text
+              data-hb-node="text"
+              data-hb-item={index}
+              data-hb-edit={`how-it-works:items.${index}.description`}
+              className="mt-4 max-w-sm text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
+            >
               {description}
             </Text>
           </div>
@@ -951,41 +1009,77 @@ function StepStackCard({
               href={hrefFor(secondaryHref)}
               variant="outline"
               size="sm"
+              data-hb-node="secondary-button"
+              data-hb-item={index}
+              data-hb-edit={`how-it-works:items.${index}.secondaryLabel`}
               className="hb-secondary hb-radius font-mono text-xs tracking-wider uppercase"
             >
-              {secondaryCtaLabel}
+              <span data-hb-edit-text="">{secondaryCtaLabel}</span>
             </Button>
             <Button
               href={hrefFor(primaryHref)}
               variant="solid"
               color="primary"
               size="sm"
+              data-hb-node="primary-button"
+              data-hb-item={index}
+              data-hb-edit={`how-it-works:items.${index}.actionLabel`}
               className="hb-primary hb-radius font-mono text-xs tracking-wider uppercase"
             >
-              {primaryCtaLabel}
+              <span data-hb-edit-text="">{primaryCtaLabel}</span>
             </Button>
           </div>
         </div>
 
         {/* COLUMN 2: Center Interactive 3D Transform Wireframe Illustration (Stroke Only) */}
-        <div className="flex w-full items-center justify-center md:w-[38%] md:shrink-0">
-          <Interactive3DShapeStage
-            stepIndex={index}
-            activeSubStep={activeSubStep}
-            stackDepth={stackDepth}
-            onCycleSubStep={() => onSelectSubStep((activeSubStep + 1) % subSteps.length)}
-          />
+        <div
+          data-hb-node="media"
+          data-hb-item={index}
+          data-hb-edit="how-it-works:illustration"
+          data-hb-visual="code-illustration"
+          data-hb-edit-mode="popover"
+          className="relative flex w-full cursor-pointer flex-col items-center justify-center md:w-[38%] md:shrink-0"
+        >
+          {illustrationCfg?.badgeText && (
+            <span className="mb-2 inline-flex items-center rounded-full border border-zinc-200/80 bg-zinc-50 px-2.5 py-0.5 font-mono text-[10px] font-medium text-zinc-700 dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-200">
+              {illustrationCfg.badgeText}
+            </span>
+          )}
+          {illustrationCfg?.mode === "custom-image" && illustrationCfg.customImage?.src ? (
+            <div className="h-[220px] w-full max-w-[320px] overflow-hidden rounded-2xl border border-zinc-200/80 shadow-sm dark:border-zinc-800">
+              <img
+                src={illustrationCfg.customImage.src}
+                alt={illustrationCfg.customImage.alt || title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+          ) : (
+            <Interactive3DShapeStage
+              stepIndex={(index % 3) as 0 | 1 | 2}
+              activeSubStep={activeSubStep}
+              stackDepth={stackDepth}
+              onCycleSubStep={() =>
+                onSelectSubStep(subSteps.length > 0 ? (activeSubStep + 1) % subSteps.length : 0)
+              }
+            />
+          )}
         </div>
 
         {/* COLUMN 3: Right Minimal List with Hairline Dividers (Exact LlamaParse Reference) */}
-        <div className="flex w-full flex-col justify-center md:w-[28%] md:shrink-0">
+        <div
+          className="flex w-full flex-col justify-center md:w-[28%] md:shrink-0"
+          data-hb-node="items"
+        >
           {subSteps.map((sub, i) => {
+            if (!sub) return null;
             const isActive = activeSubStep === i;
             return (
               <div
-                key={sub.id}
+                key={sub.id || `sub-${i}`}
                 role="button"
                 tabIndex={0}
+                data-hb-node="items"
+                data-hb-item={index}
                 onClick={() => onSelectSubStep(i)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -1004,17 +1098,30 @@ function StepStackCard({
                       <span className="inline-block h-1.5 w-1.5 shrink-0 bg-zinc-950 dark:bg-white" />
                       <Heading
                         as="h4"
+                        data-hb-node="heading"
+                        data-hb-item={index}
+                        data-hb-edit={`how-it-works:items.${index}.subSteps.${i}.label`}
                         className="text-sm font-semibold tracking-tight text-zinc-950 sm:text-base lg:text-lg dark:text-white"
                       >
                         {sub.title}
                       </Heading>
                     </div>
-                    <Text className="mt-2 pl-4 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
+                    <Text
+                      data-hb-node="text"
+                      data-hb-item={index}
+                      data-hb-edit={`how-it-works:items.${index}.subSteps.${i}.description`}
+                      className="mt-2 pl-4 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
+                    >
                       {sub.description}
                     </Text>
                   </div>
                 ) : (
-                  <div className="text-sm font-normal text-zinc-400 transition-colors hover:text-zinc-800 sm:text-base lg:text-lg dark:text-zinc-500 dark:hover:text-zinc-200">
+                  <div
+                    data-hb-node="text"
+                    data-hb-item={index}
+                    data-hb-edit={`how-it-works:items.${index}.subSteps.${i}.label`}
+                    className="text-sm font-normal text-zinc-400 transition-colors hover:text-zinc-800 sm:text-base lg:text-lg dark:text-zinc-500 dark:hover:text-zinc-200"
+                  >
                     {sub.title}
                   </div>
                 )}
@@ -1036,6 +1143,8 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
   const [activeStep2Mode, setActiveStep2Mode] = React.useState(0);
   const [activeStep3Target, setActiveStep3Target] = React.useState(0);
   const [isStep1Hovered, setIsStep1Hovered] = React.useState(false);
+  const appearance = useLandingAppearance();
+  const horizontalGridProps = resolveLandingGridProps(appearance?.grid, { cols: 3, gap: "lg" });
 
   const { stackContainerRef, cardRefs, depths } = useStickyCardStack(3);
 
@@ -1053,33 +1162,67 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
       {variant === "horizontal" ? (
         /* Horizontal concise overview variant */
         <div className="space-y-12">
-          <Grid cols={3} gap="lg">
-            {content.items.map((item, index) => (
-              <Card
-                key={item.id}
-                variant="bordered"
-                radius="lg"
-                className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-950"
-              >
-                <div className="min-w-0">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="font-mono text-xs font-semibold text-zinc-500 dark:text-zinc-400">
-                      ▪ 0{index + 1}
-                    </span>
-                  </div>
-                  <Heading as="h3" className="text-lg font-bold text-zinc-950 dark:text-white">
-                    {item.title}
-                  </Heading>
-                  <Text className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400">
-                    {item.description}
-                  </Text>
-                </div>
-              </Card>
-            ))}
+          <Grid {...horizontalGridProps}>
+            {(Array.isArray(content.items) ? content.items : [])
+              .filter((item): item is NonNullable<typeof item> =>
+                Boolean(item && typeof item === "object")
+              )
+              .map((item, index) => {
+                const Icon = resolveMarketingIcon((item as { icon?: string }).icon);
+                return (
+                  <Card
+                    key={item.id || `step-${index}`}
+                    variant="bordered"
+                    radius="lg"
+                    data-hb-node="card"
+                    data-hb-item={index}
+                    className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-xs dark:border-zinc-800 dark:bg-zinc-950"
+                  >
+                    <div className="min-w-0">
+                      <div className="mb-4 flex items-center justify-between">
+                        <span className="font-mono text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                          ▪ 0{index + 1}
+                        </span>
+                        <span
+                          data-hb-node="badge"
+                          data-hb-item={index}
+                          data-hb-edit={`how-it-works:items.${index}.icon`}
+                          data-hb-edit-mode="popover"
+                          className="inline-flex h-7 w-7 cursor-pointer items-center justify-center rounded-lg border border-zinc-200/80 bg-zinc-50 text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300"
+                        >
+                          <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                        </span>
+                      </div>
+                      <Heading
+                        as="h3"
+                        data-hb-node="heading"
+                        data-hb-item={index}
+                        data-hb-edit={`how-it-works:items.${index}.title`}
+                        className="text-lg font-bold text-zinc-950 dark:text-white"
+                      >
+                        {item.title}
+                      </Heading>
+                      <Text
+                        data-hb-node="text"
+                        data-hb-item={index}
+                        data-hb-edit={`how-it-works:items.${index}.description`}
+                        className="mt-2 text-xs leading-relaxed text-zinc-600 sm:text-sm dark:text-zinc-400"
+                      >
+                        {item.description}
+                      </Text>
+                    </div>
+                  </Card>
+                );
+              })}
           </Grid>
           {content.items[0] && (
-            <div className="overflow-hidden rounded-2xl border border-zinc-200 shadow-xs dark:border-zinc-800">
-              <HeroImageView image={content.items[0].image} priority={false} />
+            <div
+              data-hb-node="media"
+              data-hb-edit="how-it-works:media.src"
+              data-hb-edit-mode="popover"
+              className="cursor-pointer overflow-hidden rounded-2xl border border-zinc-200 shadow-xs dark:border-zinc-800"
+            >
+              <HeroImageView image={content.media ?? content.items[0].image} priority={false} />
             </div>
           )}
         </div>
@@ -1098,10 +1241,10 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
               "Compose production-ready SaaS landing pages with real-time visual section stacking, live theme token syncing, and instant responsive previews."
             }
             secondaryCtaLabel="Learn more"
-            primaryCtaLabel="Get started"
+            primaryCtaLabel={content.items[0]?.actionLabel || "Get started"}
             secondaryHref="#features"
-            primaryHref="#pricing"
-            subSteps={step1SubSteps}
+            primaryHref={content.items[0]?.actionHref || "#pricing"}
+            subSteps={resolveCardSubSteps(content.items[0]?.subSteps, step1SubSteps)}
             activeSubStep={activeStep1Sub}
             onSelectSubStep={setActiveStep1Sub}
             stackDepth={depths[0] ?? 0}
@@ -1121,11 +1264,11 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
               content.items[1]?.description ||
               "Generate full-stack React & Next.js projects with Tailwind CSS v4, pristine static HTML/CSS, or copy-paste AI prompt recipes."
             }
-            secondaryCtaLabel="Learn more"
-            primaryCtaLabel="Export now"
-            secondaryHref="#features"
-            primaryHref="#pricing"
-            subSteps={step2ExportModes}
+            secondaryCtaLabel={content.items[1]?.secondaryLabel || "Learn more"}
+            primaryCtaLabel={content.items[1]?.actionLabel || "Export now"}
+            secondaryHref={content.items[1]?.secondaryHref || "#features"}
+            primaryHref={content.items[1]?.actionHref || "#pricing"}
+            subSteps={resolveCardSubSteps(content.items[1]?.subSteps, step2ExportModes)}
             activeSubStep={activeStep2Mode}
             onSelectSubStep={setActiveStep2Mode}
             stackDepth={depths[1] ?? 0}
@@ -1143,11 +1286,11 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
               content.items[2]?.description ||
               "Automate edge delivery to Vercel, Cloudflare, or Docker with 100/100 Lighthouse performance and zero layout shift."
             }
-            secondaryCtaLabel="Audit report"
-            primaryCtaLabel="Deploy now"
-            secondaryHref="#faq"
-            primaryHref="#cta"
-            subSteps={step3DeployTargets}
+            secondaryCtaLabel={content.items[2]?.secondaryLabel || "Audit report"}
+            primaryCtaLabel={content.items[2]?.actionLabel || "Deploy now"}
+            secondaryHref={content.items[2]?.secondaryHref || "#faq"}
+            primaryHref={content.items[2]?.actionHref || "#cta"}
+            subSteps={resolveCardSubSteps(content.items[2]?.subSteps, step3DeployTargets)}
             activeSubStep={activeStep3Target}
             onSelectSubStep={setActiveStep3Target}
             stackDepth={depths[2] ?? 0}
@@ -1155,6 +1298,36 @@ export function LandingHowItWorks({ variant, content }: LandingSectionProps<"how
               cardRefs.current[2] = el;
             }}
           />
+
+          {/* EXTRA DYNAMIC STEPS ADDED BY USER */}
+          {(Array.isArray(content.items) ? content.items.slice(3) : [])
+            .filter((extraItem): extraItem is NonNullable<typeof extraItem> =>
+              Boolean(extraItem && typeof extraItem === "object")
+            )
+            .map((extraItem, extraOffset) => {
+              const idx = 3 + extraOffset;
+              const customSteps = resolveCardSubSteps(extraItem.subSteps, step1SubSteps);
+              return (
+                <StepStackCard
+                  key={extraItem.id || `extra-${idx}`}
+                  index={idx}
+                  numberLabel={`0${idx + 1}`}
+                  title={extraItem.title}
+                  description={extraItem.description}
+                  secondaryCtaLabel={extraItem.secondaryLabel || "Learn more"}
+                  primaryCtaLabel={extraItem.actionLabel || "Get started"}
+                  secondaryHref={extraItem.secondaryHref || "#features"}
+                  primaryHref={extraItem.actionHref || "#cta"}
+                  subSteps={customSteps}
+                  activeSubStep={activeStep1Sub}
+                  onSelectSubStep={setActiveStep1Sub}
+                  stackDepth={depths[idx] ?? 0}
+                  cardRef={(el) => {
+                    cardRefs.current[idx] = el;
+                  }}
+                />
+              );
+            })}
         </div>
       )}
     </LandingFrame>

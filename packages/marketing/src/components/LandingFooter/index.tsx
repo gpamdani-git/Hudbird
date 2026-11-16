@@ -25,45 +25,74 @@ export function LandingFooter({
   const { visible, hrefFor } = useLandingNavigation();
   const signature = (
     <div>
-      <div className="flex items-center gap-2.5">
-        {brand.logo && (
-          <img
-            src={brand.logo.src}
-            alt={brand.logo.alt}
-            width={24}
-            height={24}
-            className="h-6 w-6 object-contain"
-          />
+      <div className="flex items-center gap-2.5" data-hb-node="brand">
+        {brand.logo?.src && (
+          <>
+            <img
+              src={brand.logo.src}
+              alt={brand.logo.alt}
+              width={24}
+              height={24}
+              className={
+                brand.logo.darkSrc
+                  ? "h-6 w-auto max-w-[120px] object-contain dark:hidden"
+                  : "h-6 w-auto max-w-[120px] object-contain"
+              }
+            />
+            {brand.logo.darkSrc && (
+              <img
+                src={brand.logo.darkSrc}
+                alt={brand.logo.alt}
+                width={24}
+                height={24}
+                className="hidden h-6 w-auto max-w-[120px] object-contain dark:block"
+              />
+            )}
+          </>
         )}
         <Text className="hb-landing-title text-xl font-semibold tracking-tight">{brand.name}</Text>
       </div>
-      <Text className="text-muted-foreground mt-3 max-w-[36ch] leading-relaxed">
+      <Text
+        data-hb-node="text"
+        data-hb-edit="footer:description"
+        className="text-muted-foreground mt-3 max-w-[36ch] leading-relaxed"
+      >
         {content.description}
       </Text>
     </div>
   );
   const links = content.groups
-    .map((group) => ({
+    .map((group, groupIndex) => ({
       ...group,
-      links: group.links.filter((link) => "href" in link || visible.includes(link.target)),
+      groupIndex,
+      links: group.links
+        .map((link, linkIndex) => ({ link, linkIndex }))
+        .filter(({ link }) => "href" in link || visible.includes(link.target)),
     }))
     .filter((group) => group.links.length);
-  const linkHref = (link: (typeof links)[number]["links"][number]) =>
+  const linkHref = (link: (typeof links)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : hrefFor(`#${link.target}`);
-  const linkKey = (link: (typeof links)[number]["links"][number]) =>
+  const linkKey = (link: (typeof links)[number]["links"][number]["link"]) =>
     "href" in link ? link.href : link.target;
 
   // Compact links for minimal & simple footer (keeps menu concise like before)
   const compactLinks = React.useMemo(() => {
-    const firstGroupLinks = links[0]?.links ?? [];
+    const firstGroup = links[0];
+    const firstGroupLinks = (firstGroup?.links ?? []).map((entry) => ({
+      ...entry,
+      groupIndex: firstGroup?.groupIndex ?? 0,
+    }));
     if (firstGroupLinks.length >= 4 && firstGroupLinks.length <= 8) {
       return firstGroupLinks;
     }
-    const all = links.flatMap((group) => group.links);
+    const all = links.flatMap((group) =>
+      group.links.map((entry) => ({ ...entry, groupIndex: group.groupIndex }))
+    );
     if (all.length <= 6) return all;
     const coreTargets = ["features", "benefits", "how-it-works", "integrations", "pricing", "faq"];
     const matched = all.filter(
-      (l) => "target" in l && typeof l.target === "string" && coreTargets.includes(l.target)
+      ({ link }) =>
+        "target" in link && typeof link.target === "string" && coreTargets.includes(link.target)
     );
     if (matched.length >= 4) return matched.slice(0, 6);
     return all.slice(0, 6);
@@ -76,12 +105,16 @@ export function LandingFooter({
           {signature}
           <nav
             aria-label="Footer navigation"
+            data-hb-node="links"
             className="flex flex-wrap items-center gap-x-6 gap-y-2"
           >
-            {compactLinks.map((link) => (
+            {compactLinks.map(({ link, groupIndex, linkIndex }) => (
               <a
-                key={linkKey(link)}
+                key={`${groupIndex}-${linkIndex}-${linkKey(link)}`}
                 href={linkHref(link)}
+                data-hb-node="links"
+                data-hb-item={groupIndex}
+                data-hb-edit={`footer:columns.${groupIndex}.links.${linkIndex}.label`}
                 className="hb-footer-nav-link text-muted-foreground hover:text-foreground text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
               >
                 {link.label}
@@ -92,32 +125,55 @@ export function LandingFooter({
       ) : variant === "centered" ? (
         <div className="flex flex-col items-center gap-6 text-center">
           <div className="flex flex-col items-center">
-            <div className="flex items-center gap-2.5">
-              {brand.logo && (
-                <img
-                  src={brand.logo.src}
-                  alt={brand.logo.alt}
-                  width={24}
-                  height={24}
-                  className="h-6 w-6 object-contain"
-                />
+            <div className="flex items-center gap-2.5" data-hb-node="brand">
+              {brand.logo?.src && (
+                <>
+                  <img
+                    src={brand.logo.src}
+                    alt={brand.logo.alt}
+                    width={24}
+                    height={24}
+                    className={
+                      brand.logo.darkSrc
+                        ? "h-6 w-auto max-w-[120px] object-contain dark:hidden"
+                        : "h-6 w-auto max-w-[120px] object-contain"
+                    }
+                  />
+                  {brand.logo.darkSrc && (
+                    <img
+                      src={brand.logo.darkSrc}
+                      alt={brand.logo.alt}
+                      width={24}
+                      height={24}
+                      className="hidden h-6 w-auto max-w-[120px] object-contain dark:block"
+                    />
+                  )}
+                </>
               )}
               <Text className="hb-landing-title text-xl font-semibold tracking-tight">
                 {brand.name}
               </Text>
             </div>
-            <Text className="text-muted-foreground mt-3 max-w-[42ch] leading-relaxed">
+            <Text
+              data-hb-node="text"
+              data-hb-edit="footer:description"
+              className="text-muted-foreground mt-3 max-w-[42ch] leading-relaxed"
+            >
               {content.description}
             </Text>
           </div>
           <nav
             aria-label="Footer navigation"
+            data-hb-node="links"
             className="flex flex-wrap justify-center gap-x-6 gap-y-2"
           >
-            {compactLinks.map((link) => (
+            {compactLinks.map(({ link, groupIndex, linkIndex }) => (
               <a
-                key={linkKey(link)}
+                key={`${groupIndex}-${linkIndex}-${linkKey(link)}`}
                 href={linkHref(link)}
+                data-hb-node="links"
+                data-hb-item={groupIndex}
+                data-hb-edit={`footer:columns.${groupIndex}.links.${linkIndex}.label`}
                 className="hb-footer-nav-link text-muted-foreground hover:text-foreground text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
               >
                 {link.label}
@@ -135,22 +191,30 @@ export function LandingFooter({
             <Grid cols={3} gap="lg">
               {links.map((group) => (
                 <nav
-                  key={group.title}
+                  key={`${group.groupIndex}-${group.title}`}
                   aria-label={group.title}
+                  data-hb-node="links"
+                  data-hb-item={group.groupIndex}
                   className="flex flex-col items-start"
                 >
                   <Heading
                     as="h2"
                     size="h6"
+                    data-hb-node="heading"
+                    data-hb-item={group.groupIndex}
+                    data-hb-edit={`footer:columns.${group.groupIndex}.title`}
                     className="text-muted-foreground mb-3.5 text-xs font-semibold tracking-wider uppercase"
                   >
                     {group.title}
                   </Heading>
                   <div className="flex flex-col items-start gap-2.5">
-                    {group.links.map((link) => (
+                    {group.links.map(({ link, linkIndex }) => (
                       <a
-                        key={linkKey(link)}
+                        key={`${linkIndex}-${linkKey(link)}`}
                         href={linkHref(link)}
+                        data-hb-node="links"
+                        data-hb-item={group.groupIndex}
+                        data-hb-edit={`footer:columns.${group.groupIndex}.links.${linkIndex}.label`}
                         className="hb-footer-nav-link text-muted-foreground hover:text-foreground text-sm decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
                       >
                         {link.label}
@@ -163,14 +227,47 @@ export function LandingFooter({
           </div>
         </Grid>
       )}
-      <div className="border-border mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
-        <Text variant="small" className="text-muted-foreground">
-          {content.note}
-        </Text>
-        <Badge variant="modern" size="sm">
-          Built with @hudbird/ui
-        </Badge>
-      </div>
+      {(() => {
+        const wiredLegalLinks = (content.legalLinks ?? []).filter((item) => {
+          const href = item.href?.trim();
+          return Boolean(
+            href && (href.startsWith("/") || href.startsWith("#") || /^https?:\/\//i.test(href))
+          );
+        });
+        return (
+          <div className="border-border mt-12 flex flex-wrap items-center justify-between gap-4 border-t pt-6">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <Text
+                variant="small"
+                data-hb-node="text"
+                data-hb-edit="footer:note"
+                className="text-muted-foreground"
+              >
+                {content.note}
+              </Text>
+              {wiredLegalLinks.length > 0 && (
+                <nav
+                  aria-label="Legal policies"
+                  className="flex flex-wrap items-center gap-x-4 gap-y-1.5"
+                >
+                  {wiredLegalLinks.map((item) => (
+                    <a
+                      key={item.href ?? item.label}
+                      href={item.href}
+                      className="hb-footer-legal-link text-muted-foreground hover:text-foreground text-xs decoration-current/40 underline-offset-4 transition-colors duration-150 hover:underline hover:decoration-current"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+              )}
+            </div>
+            <Badge variant="modern" size="sm">
+              Built with @hudbird/ui
+            </Badge>
+          </div>
+        );
+      })()}
     </LandingFrame>
   );
 }
