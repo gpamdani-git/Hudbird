@@ -145,6 +145,13 @@
       "skillPath": "skills/imagegen-frontend-web/SKILL.md",
       "computedHash": "5494a06e7bd76130ffad8d1f36d26fe28cdd53f3ba27f2f9f4525e487dc1b1bd"
     },
+    "improve": {
+      "source": "shadcn/improve",
+      "commit": "cac56e1ebd3c279aa9153616cfeac7b174ab90f9",
+      "sourceType": "github",
+      "skillPath": "skills/improve/SKILL.md",
+      "computedHash": "9e8fe9ea4f9a0e4155801d1624e38ca23798467bb88b447efaa5120f7b1fe802"
+    },
     "improve-animations": {
       "source": "emilkowalski/skills",
       "sourceType": "github",
